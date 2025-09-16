@@ -5,64 +5,172 @@
 class Camera2D;
 class SNAKE_Engine;
 struct GLFWwindow;
-
+/**
+ * @brief Handles keyboard, mouse, and scroll input events.
+ *
+ * @details
+ * InputManager maintains current and previous key/mouse states using bitsets,
+ * allowing queries for pressed, released, and held events. It also tracks
+ * mouse position (window and world-space with a given camera) and scroll deltas.
+ *
+ * Input is updated per-frame via Update() and Reset() is called when the
+ * window resizes (to resync staged state). Callbacks (OnKey, OnMouseButton)
+ * are fed by GLFW.
+ *
+ * Example usage:
+ * @code
+ * if (engineContext.inputManager->IsKeyPressed(KEY_SPACE)) {
+ *     // Trigger jump action
+ * }
+ * glm::vec2 mouseWorld = engineContext.inputManager->GetMouseWorldPos(camera);
+ * @endcode
+ */
 class InputManager
 {
     friend SNAKE_Engine;
 
 public:
-
     InputManager() :window(nullptr), mouseX(0.0), mouseY(0.0) {}
 
+    /**
+     * @brief Checks if a key is currently held down.
+     * @param key Key code (see @ref InputKey).
+     * @return True if held.
+     */
     [[nodiscard]] bool IsKeyDown(int key) const;
 
+    /**
+     * @brief Checks if a key was pressed this frame.
+     * @param key Key code.
+     * @return True if pressed this frame.
+     */
     [[nodiscard]] bool IsKeyPressed(int key) const;
 
+    /**
+     * @brief Checks if a key was released this frame.
+     * @param key Key code.
+     * @return True if released this frame.
+     */
     [[nodiscard]] bool IsKeyReleased(int key) const;
 
+    /**
+     * @brief Checks if a mouse button is currently held down.
+     * @param button Mouse button code (see @ref InputMouseButton).
+     * @return True if held.
+     */
     [[nodiscard]] bool IsMouseButtonDown(int button) const;
 
+    /**
+     * @brief Checks if a mouse button was pressed this frame.
+     * @param button Mouse button code.
+     * @return True if pressed this frame.
+     */
     [[nodiscard]] bool IsMouseButtonPressed(int button) const;
 
+    /**
+     * @brief Checks if a mouse button was released this frame.
+     * @param button Mouse button code.
+     * @return True if released this frame.
+     */
     [[nodiscard]] bool IsMouseButtonReleased(int button) const;
 
+    /**
+     * @brief Checks if a mouse button is dragging (held + moved).
+     * @param button Mouse button code.
+     * @return True if dragging.
+     */
     [[nodiscard]] bool IsMouseButtonDragging(int button) const;
 
+    /**
+     * @brief Returns the current mouse X coordinate (window space).
+     */
     [[nodiscard]] double GetMouseX() const;
 
+    /**
+     * @brief Returns the current mouse Y coordinate (window space).
+     */
     [[nodiscard]] double GetMouseY() const;
 
+    /**
+     * @brief Returns the current mouse position in window coordinates.
+     */
     [[nodiscard]] glm::vec2 GetMousePos() const;
 
+    /**
+     * @brief Returns the mouse X position transformed to world space.
+     * @param camera Camera2D used for conversion.
+     */
     [[nodiscard]] double GetMouseWorldX(Camera2D* camera) const;
 
+    /**
+     * @brief Returns the mouse Y position transformed to world space.
+     * @param camera Camera2D used for conversion.
+     */
     [[nodiscard]] double GetMouseWorldY(Camera2D* camera) const;
 
+    /**
+     * @brief Returns the mouse position transformed to world space.
+     * @param camera Camera2D used for conversion.
+     */
     [[nodiscard]] glm::vec2 GetMouseWorldPos(Camera2D* camera) const;
 
+    /**
+     * @brief Adds scroll delta received from a scroll callback.
+     * @param dx Horizontal scroll delta.
+     * @param dy Vertical scroll delta.
+     */
     void AddScroll(double dx, double dy);
 
+    /**
+     * @brief Returns accumulated scroll delta (x,y).
+     */
     [[nodiscard]] glm::vec2 GetScrollDelta() const;
     [[nodiscard]] double GetScrollXDelta() const;
     [[nodiscard]] double GetScrollYDelta() const;
 
+    /**
+     * @brief Returns true if user scrolled up in this frame.
+     */
     [[nodiscard]] bool IsScrolledUp() const;
+
+    /**
+     * @brief Returns true if user scrolled down in this frame.
+     */
     [[nodiscard]] bool IsScrolledDown() const;
 
+    /**
+     * @brief GLFW key callback entry point.
+     * @details Called internally by the engine to stage key events.
+     */
     void OnKey(int key, int, int action, int);
+
+    /**
+     * @brief GLFW mouse button callback entry point.
+     * @details Called internally by the engine to stage mouse button events.
+     */
     void OnMouseButton(int button, int action, int);
 
+    /**
+     * @brief Resets staged state after window resize.
+     * @note Called on framebuffer size change, not every frame.
+     */
     void Reset();
 
 private:
+    /**
+     * @brief Initializes the manager with a GLFW window.
+     */
     void Init(GLFWwindow* _window);
 
+    /**
+     * @brief Updates state each frame (commits staged input).
+     */
     void Update();
 
     GLFWwindow* window;
 
-    static constexpr int MAX_KEYS = 349;
-    static constexpr int MAX_MOUSE_BUTTONS = 9;
+    static constexpr int MAX_KEYS = 349;          ///< Number of supported keys.
+    static constexpr int MAX_MOUSE_BUTTONS = 9;   ///< Number of supported mouse buttons.
 
     std::bitset<MAX_KEYS> currentKeyState;
     std::bitset<MAX_KEYS> previousKeyState;
@@ -79,8 +187,8 @@ private:
 
     std::bitset<MAX_KEYS> stagedKeyState;
     std::bitset<MAX_MOUSE_BUTTONS> stagedMouseState;
-
 };
+
 
 enum InputKey
 {
