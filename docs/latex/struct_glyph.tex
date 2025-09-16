@@ -1,0 +1,113 @@
+\doxysection{Glyph Struct Reference}
+\hypertarget{struct_glyph}{}\label{struct_glyph}\index{Glyph@{Glyph}}
+
+
+\doxylink{struct_glyph}{Glyph} information for a single character.  
+
+
+
+
+{\ttfamily \#include $<$Font.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::ivec2 \mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}
+\begin{DoxyCompactList}\small\item\em Size of the glyph in pixels. \end{DoxyCompactList}\item 
+glm\+::ivec2 \mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}
+\begin{DoxyCompactList}\small\item\em Offset from baseline to left/top. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}
+\begin{DoxyCompactList}\small\item\em Advance to next glyph in 1/64 pixels. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}{uv\+Top\+Left}}
+\begin{DoxyCompactList}\small\item\em UV coordinates of top-\/left corner. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}{uv\+Bottom\+Right}}
+\begin{DoxyCompactList}\small\item\em UV coordinates of bottom-\/right corner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{struct_glyph}{Glyph} information for a single character. 
+
+Stores Free\+Type-\/extracted glyph metrics and its location in the texture atlas (UV coordinates). 
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00046}{46}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_glyph_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_glyph_a8ca87856d75474821f736a7d64c63946}\index{Glyph@{Glyph}!advance@{advance}}
+\index{advance@{advance}!Glyph@{Glyph}}
+\doxysubsubsection{\texorpdfstring{advance}{advance}}
+{\footnotesize\ttfamily \label{struct_glyph_a8ca87856d75474821f736a7d64c63946} 
+uint32\+\_\+t Glyph\+::advance}
+
+
+
+Advance to next glyph in 1/64 pixels. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00050}{50}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{struct_glyph_a7757876feac1bfaadb127530f5f48b33}\index{Glyph@{Glyph}!bearing@{bearing}}
+\index{bearing@{bearing}!Glyph@{Glyph}}
+\doxysubsubsection{\texorpdfstring{bearing}{bearing}}
+{\footnotesize\ttfamily \label{struct_glyph_a7757876feac1bfaadb127530f5f48b33} 
+glm\+::ivec2 Glyph\+::bearing}
+
+
+
+Offset from baseline to left/top. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00049}{49}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}\index{Glyph@{Glyph}!size@{size}}
+\index{size@{size}!Glyph@{Glyph}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \label{struct_glyph_a6dacfc5a354c3458b8345e804b2637af} 
+glm\+::ivec2 Glyph\+::size}
+
+
+
+Size of the glyph in pixels. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00048}{48}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}\index{Glyph@{Glyph}!uvBottomRight@{uvBottomRight}}
+\index{uvBottomRight@{uvBottomRight}!Glyph@{Glyph}}
+\doxysubsubsection{\texorpdfstring{uvBottomRight}{uvBottomRight}}
+{\footnotesize\ttfamily \label{struct_glyph_ae5a6124bbab282e4263439dd0a30634f} 
+glm\+::vec2 Glyph\+::uv\+Bottom\+Right}
+
+
+
+UV coordinates of bottom-\/right corner. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00052}{52}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}\index{Glyph@{Glyph}!uvTopLeft@{uvTopLeft}}
+\index{uvTopLeft@{uvTopLeft}!Glyph@{Glyph}}
+\doxysubsubsection{\texorpdfstring{uvTopLeft}{uvTopLeft}}
+{\footnotesize\ttfamily \label{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99} 
+glm\+::vec2 Glyph\+::uv\+Top\+Left}
+
+
+
+UV coordinates of top-\/left corner. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00051}{51}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_font_8h}{Font.\+h}}\end{DoxyCompactItemize}

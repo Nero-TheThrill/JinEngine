@@ -1,0 +1,778 @@
+\doxysection{Font Class Reference}
+\hypertarget{class_font}{}\label{class_font}\index{Font@{Font}}
+
+
+\doxylink{class_font}{Font} class for text rendering using Free\+Type.  
+
+
+
+
+{\ttfamily \#include $<$Font.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{Font}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&render\+Manager, const std\+::string \&ttf\+Path, uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_font}{Font} and loads glyphs from a TTF file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_font_a134aaa2f78af0c12d3ce504957169768}{\texorpdfstring{$\sim$}{\string~}\+Font}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. Frees Free\+Type resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_font_a8565f67b994cd67a316b5c2f0689dc74}{Get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Returns the material associated with this font. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_font_acf5f6a72d40d2002b5648bef769a5ac2}{Get\+Text\+Size}} (const std\+::string \&text) const
+\begin{DoxyCompactList}\small\item\em Computes the size of the given text string in pixels. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_font_a3a3963ea1c039525cbf922f52ae03670}{Generate\+Text\+Mesh}} (const std\+::string \&text, \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} alignH=\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Text\+Align\+H\+::\+Left}}, \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} alignV=\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Text\+Align\+V\+::\+Top}})
+\begin{DoxyCompactList}\small\item\em Generates a mesh for the given text. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_font_a3e647cb6b0aa60318eb3ecc479395c0e}{Get\+Text\+Atlas\+Version}} ()
+\begin{DoxyCompactList}\small\item\em Returns the atlas version number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{Load\+Font}} (const std\+::string \&path, uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}})
+\begin{DoxyCompactList}\small\item\em Loads a font face using Free\+Type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{Bake\+Atlas}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&render\+Manager)
+\begin{DoxyCompactList}\small\item\em Builds the initial glyph atlas and uploads it to GPU. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_glyph}{Glyph}} \& \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{Get\+Glyph}} (char32\+\_\+t c) const
+\begin{DoxyCompactList}\small\item\em Retrieves the glyph for a given character. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{Try\+Bake\+Glyph}} (char32\+\_\+t c)
+\begin{DoxyCompactList}\small\item\em Attempts to bake a glyph into the atlas if not already present. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{Expand\+Atlas}} ()
+\begin{DoxyCompactList}\small\item\em Expands the atlas texture to accommodate more glyphs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+FT\+\_\+\+Library \mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}}
+\begin{DoxyCompactList}\small\item\em Free\+Type library handle. \end{DoxyCompactList}\item 
+FT\+\_\+\+Face \mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}
+\begin{DoxyCompactList}\small\item\em Free\+Type font face. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_font}{Font} size in pixels. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ char32\+\_\+t, \mbox{\hyperlink{struct_glyph}{Glyph}} $>$ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}
+\begin{DoxyCompactList}\small\item\em Map of codepoints to glyphs. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlas\+Texture}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_texture}{Texture} atlas storing glyph bitmaps. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_material}{Material} using atlas + text shader. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}} = 0
+\begin{DoxyCompactList}\small\item\em Current X offset for atlas packing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}} = 0
+\begin{DoxyCompactList}\small\item\em Current Y offset for atlas packing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{max\+Row\+Height}} = 0
+\begin{DoxyCompactList}\small\item\em Max height of the current row in atlas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlas\+Version}} = 0
+\begin{DoxyCompactList}\small\item\em Version number of atlas, incremented on rebuild. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_font}{Font} class for text rendering using Free\+Type. 
+
+\doxylink{class_font}{Font} handles glyph extraction from a TTF file, dynamic atlas baking, and text mesh generation. Each \doxylink{class_font}{Font} maintains its own texture atlas and associated \doxylink{class_material}{Material} used for rendering text.
+
+Atlas baking uses a "{}lazy baking"{} strategy\+: missing glyphs are added to the atlas when requested. The atlas can expand if more space is needed. 
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00066}{66}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_font_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_font_a30ee4458f14e43b6f18291a43a76c3cc}\index{Font@{Font}!Font@{Font}}
+\index{Font@{Font}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{Font()}{Font()}}
+{\footnotesize\ttfamily \label{class_font_a30ee4458f14e43b6f18291a43a76c3cc} 
+Font\+::\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&}]{render\+Manager}{, }\item[{const std\+::string \&}]{ttf\+Path}{, }\item[{uint32\+\_\+t}]{font\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_font}{Font} and loads glyphs from a TTF file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+Manager} & \doxylink{class_render_manager}{Render\+Manager} for registering the atlas texture. \\
+\hline
+{\em ttf\+Path} & Path to a True\+Type font file. \\
+\hline
+{\em font\+Size} & Requested pixel size of the font. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{LoadFont}}(ttfPath,\ fontSize\_);}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{BakeAtlas}}(renderManager);}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}}\ =\ fontSize\_;}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a134aaa2f78af0c12d3ce504957169768}\index{Font@{Font}!````~Font@{\texorpdfstring{$\sim$}{\string~}Font}}
+\index{````~Font@{\texorpdfstring{$\sim$}{\string~}Font}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Font()}{\string~Font()}}
+{\footnotesize\ttfamily \label{class_font_a134aaa2f78af0c12d3ce504957169768} 
+Font\+::\texorpdfstring{$\sim$}{\string~}\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor. Frees Free\+Type resources. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ FT\_Done\_Face(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}});}
+\DoxyCodeLine{00068\ \ \ \ \ FT\_Done\_FreeType(\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}});}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_font_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_font_a519e6bd2c2c23ff7af6307cac87fd204}\index{Font@{Font}!BakeAtlas@{BakeAtlas}}
+\index{BakeAtlas@{BakeAtlas}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{BakeAtlas()}{BakeAtlas()}}
+{\footnotesize\ttfamily \label{class_font_a519e6bd2c2c23ff7af6307cac87fd204} 
+void Font\+::\+Bake\+Atlas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&}]{render\+Manager}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Builds the initial glyph atlas and uploads it to GPU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+Manager} & \doxylink{class_render_manager}{Render\+Manager} used for registering textures. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ texWidth\ =\ 128;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ texHeight\ =\ 128;}
+\DoxyCodeLine{00086\ \ \ \ \ std::vector<unsigned\ char>\ pixels(texWidth\ *\ texHeight,\ 0);}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}}\ prevAlignment\ =\ 0;}
+\DoxyCodeLine{00088\ \ \ \ \ glGetIntegerv(GL\_UNPACK\_ALIGNMENT,\ \&prevAlignment);}
+\DoxyCodeLine{00089\ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ 1);}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}\ =\ std::make\_unique<Texture>(pixels.data(),\ texWidth,\ texHeight,\ 1);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ Shader*\ textShader\ =\ renderManager.\mbox{\hyperlink{class_render_manager_a67c1df4d0a8b98e45b56f0d58874c8d2}{GetShaderByTag}}(\textcolor{stringliteral}{"{}[EngineShader]internal\_text"{}});}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}\ =\ std::make\_unique<Material>(textShader);}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetTexture(\textcolor{stringliteral}{"{}u\_FontTexture"{}},\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}.get());}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetUniform(\textcolor{stringliteral}{"{}u\_Color"{}},\ glm::vec4(1.0f));}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{00100\ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ prevAlignment);}
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a225429b93aa4fe0d76b2fecd9ac88142}\index{Font@{Font}!ExpandAtlas@{ExpandAtlas}}
+\index{ExpandAtlas@{ExpandAtlas}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{ExpandAtlas()}{ExpandAtlas()}}
+{\footnotesize\ttfamily \label{class_font_a225429b93aa4fe0d76b2fecd9ac88142} 
+void Font\+::\+Expand\+Atlas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expands the atlas texture to accommodate more glyphs. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00336\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keywordtype}{int}\ oldWidth\ =\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth();}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordtype}{int}\ oldHeight\ =\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight();}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{int}\ newWidth\ =\ oldWidth\ *\ 2;}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordtype}{int}\ newHeight\ =\ oldHeight\ *\ 2;}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ std::vector<unsigned\ char>\ newPixels(newWidth\ *\ newHeight,\ 0);}
+\DoxyCodeLine{00344\ \ \ \ \ std::unique\_ptr<Texture>\ newAtlas\ =\ std::make\_unique<Texture>(newPixels.data(),\ newWidth,\ newHeight,\ 1);}
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetTexture(\textcolor{stringliteral}{"{}u\_FontTexture"{}},\ newAtlas.get());}
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}\ =\ std::move(newAtlas);}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{00349\ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ =\ 0;}
+\DoxyCodeLine{00350\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ std::unordered\_map<char32\_t,\ Glyph>\ oldGlyphs\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}};}
+\DoxyCodeLine{00353\ \ \ \ \ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.clear();}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [c,\ \_]\ :\ oldGlyphs)}
+\DoxyCodeLine{00356\ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}}++;}
+\DoxyCodeLine{00363\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a3a3963ea1c039525cbf922f52ae03670}\index{Font@{Font}!GenerateTextMesh@{GenerateTextMesh}}
+\index{GenerateTextMesh@{GenerateTextMesh}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{GenerateTextMesh()}{GenerateTextMesh()}}
+{\footnotesize\ttfamily \label{class_font_a3a3963ea1c039525cbf922f52ae03670} 
+\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} Font\+::\+Generate\+Text\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text}{, }\item[{\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}}}]{alignH}{ = {\ttfamily \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Text\+Align\+H\+::\+Left}}}, }\item[{\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}}}]{alignV}{ = {\ttfamily \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Text\+Align\+V\+::\+Top}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Generates a mesh for the given text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & UTF-\/8 encoded string. \\
+\hline
+{\em alignH} & Horizontal alignment (default\+: Left). \\
+\hline
+{\em alignV} & Vertical alignment (default\+: Top). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a \doxylink{class_mesh}{Mesh} representing the text geometry. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00238}{238}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00239\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ std::vector<Vertex>\ vertices;}
+\DoxyCodeLine{00241\ \ \ \ \ std::vector<uint32\_t>\ indices;}
+\DoxyCodeLine{00242\ \ \ \ \ uint32\_t\ indexOffset\ =\ 0;}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ std::stringstream\ ss(text);}
+\DoxyCodeLine{00245\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00246\ \ \ \ \ std::vector<std::string>\ lines;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ line,\ \textcolor{charliteral}{'\(\backslash\)n'}))}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ lines.push\_back(line);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{float}\ lineSpacing\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}});}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ lineCount\ =\ lines.size();}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ std::vector<float>\ lineWidths;}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{float}\ maxLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::string\&\ lineText\ :\ lines)}
+\DoxyCodeLine{00256\ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ std::vector<char32\_t>\ u32Line\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(lineText);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pre-\/bake\ for\ calculating\ width}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ 0.0f;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ lineWidth\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c).\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ >>\ 6);}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ maxLineWidth\ =\ std::max(maxLineWidth,\ lineWidth);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ lineWidths.push\_back(lineWidth);}
+\DoxyCodeLine{00271\ \ \ \ \ \}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{float}\ totalHeight\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(lineCount)\ *\ lineSpacing;}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{float}\ yStart\ =\ 0;}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{TextAlignV::Middle}})}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ yStart\ +=\ totalHeight\ *\ 0.5f\ -\/\ lineSpacing;}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4}{TextAlignV::Bottom}})}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ yStart\ +=\ totalHeight\ -\/\ lineSpacing;}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{TextAlignV::Top}})}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ yStart\ -\/=\ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}};}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{float}\ yCursor\ =\ yStart;}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ lineCount;\ ++i)}
+\DoxyCodeLine{00285\ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ lineText\ =\ lines[i];}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ lineWidths[i];}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xCursor\ =\ 0;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alignH\ ==\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{TextAlignH::Center}})}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ -\/=\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (alignH\ ==\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c}{TextAlignH::Right}})}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ -\/=\ lineWidth;}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ std::vector<char32\_t>\ u32\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(lineText);}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32)}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Glyph\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xpos\ =\ xCursor\ +\ (float)glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}.x;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ypos\ =\ yCursor\ -\/\ (float)(glyph.size.y\ -\/\ glyph.bearing.y);}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ (float)glyph.size.x;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ (float)glyph.size.y;}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u0\ =\ glyph.uvTopLeft.x;}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v0\ =\ glyph.uvTopLeft.y;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u1\ =\ glyph.uvBottomRight.x;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v1\ =\ glyph.uvBottomRight.y;}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ vertices.insert(vertices.end(),\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos,\ \ \ \ \ ypos\ +\ h,\ 0.0f\ \},\ \{\ u0,\ v0\ \}\ \},}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos,\ \ \ \ \ ypos,\ \ \ \ \ 0.0f\},\ \{u0,\ v1\}\ \},}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos\ +\ w,\ ypos,\ \ \ \ \ 0.0f\},\ \{u1,\ v1\}\ \},}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{\ xpos\ +\ w,\ ypos\ +\ h,\ 0.0f\},\ \{u1,\ v0\}\ \}\ \});}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ indices.insert(indices.end(),\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +\ 0,\ indexOffset\ +\ 1,\ indexOffset\ +\ 2,}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +\ 0,\ indexOffset\ +\ 2,\ indexOffset\ +\ 3}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glyph.advance\ >>\ 6);}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +=\ 4;}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ yCursor\ -\/=\ lineSpacing;}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Mesh(vertices,\ indices);}
+\DoxyCodeLine{00332\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a3eb05778bb059a2f0bd730432f6e9653}\index{Font@{Font}!GetGlyph@{GetGlyph}}
+\index{GetGlyph@{GetGlyph}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{GetGlyph()}{GetGlyph()}}
+{\footnotesize\ttfamily \label{class_font_a3eb05778bb059a2f0bd730432f6e9653} 
+const \mbox{\hyperlink{struct_glyph}{Glyph}} \& Font\+::\+Get\+Glyph (\begin{DoxyParamCaption}\item[{char32\+\_\+t}]{c}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [private]}}
+
+
+
+Retrieves the glyph for a given character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Unicode codepoint. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the glyph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00196\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(c);}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char32\_t}\ fallbackCodepoint\ =\ U\textcolor{charliteral}{'?'};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{auto}\ fallbackIt\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(fallbackCodepoint);}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{if}\ (fallbackIt\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fallbackIt-\/>second;}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keyword}{static}\ Glyph\ empty\{\};}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{return}\ empty;}
+\DoxyCodeLine{00209\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a8565f67b994cd67a316b5c2f0689dc74}\index{Font@{Font}!GetMaterial@{GetMaterial}}
+\index{GetMaterial@{GetMaterial}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{GetMaterial()}{GetMaterial()}}
+{\footnotesize\ttfamily \label{class_font_a8565f67b994cd67a316b5c2f0689dc74} 
+\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} Font\+::\+Get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Returns the material associated with this font. 
+
+The material internally binds the atlas texture and a text shader. 
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00088}{88}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}.get();\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a3e647cb6b0aa60318eb3ecc479395c0e}\index{Font@{Font}!GetTextAtlasVersion@{GetTextAtlasVersion}}
+\index{GetTextAtlasVersion@{GetTextAtlasVersion}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{GetTextAtlasVersion()}{GetTextAtlasVersion()}}
+{\footnotesize\ttfamily \label{class_font_a3e647cb6b0aa60318eb3ecc479395c0e} 
+int Font\+::\+Get\+Text\+Atlas\+Version (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the atlas version number. 
+
+Increments when the atlas is rebuilt or expanded, allowing text objects to detect when they need to update. 
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00115}{115}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_acf5f6a72d40d2002b5648bef769a5ac2}\index{Font@{Font}!GetTextSize@{GetTextSize}}
+\index{GetTextSize@{GetTextSize}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{GetTextSize()}{GetTextSize()}}
+{\footnotesize\ttfamily \label{class_font_acf5f6a72d40d2002b5648bef769a5ac2} 
+glm\+::vec2 Font\+::\+Get\+Text\+Size (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Computes the size of the given text string in pixels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & UTF-\/8 encoded string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 2D size of the rendered text in pixels. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00211}{211}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00212\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{float}\ maxWidth\ =\ 0.0f;}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{float}\ currentLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{int}\ lineCount\ =\ 1;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ std::vector<char32\_t>\ codepoints\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(text);}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ codepoints)}
+\DoxyCodeLine{00219\ \ \ \ \ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ U\textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ maxWidth\ =\ std::max(maxWidth,\ currentLineWidth);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ currentLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ ++lineCount;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Glyph\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ currentLineWidth\ +=\ (glyph.\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ >>\ 6);}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ maxWidth\ =\ std::max(maxWidth,\ currentLineWidth);}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{float}\ totalHeight\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}}\ *\ lineCount);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ maxWidth,\ totalHeight\ \};}
+\DoxyCodeLine{00236\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_a01d89ae3949e69a5bdf67ad586faddbf}\index{Font@{Font}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily \label{class_font_a01d89ae3949e69a5bdf67ad586faddbf} 
+void Font\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{, }\item[{uint32\+\_\+t}]{font\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads a font face using Free\+Type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to TTF file. \\
+\hline
+{\em font\+Size} & \doxylink{class_font}{Font} size in pixels. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Init\_FreeType(\&\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}}))}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ init\ FreeType"{}});}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_New\_Face(\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}},\ path.c\_str(),\ 0,\ \&\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}))}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ load\ font:\ "{}}\ +\ path);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ FT\_Set\_Pixel\_Sizes(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ 0,\ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}});}
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}\index{Font@{Font}!TryBakeGlyph@{TryBakeGlyph}}
+\index{TryBakeGlyph@{TryBakeGlyph}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{TryBakeGlyph()}{TryBakeGlyph()}}
+{\footnotesize\ttfamily \label{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6} 
+bool Font\+::\+Try\+Bake\+Glyph (\begin{DoxyParamCaption}\item[{char32\+\_\+t}]{c}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [private]}}
+
+
+
+Attempts to bake a glyph into the atlas if not already present. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Unicode codepoint. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successfully baked or already exists. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(c)\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Load\_Char(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ c,\ FT\_LOAD\_RENDER))}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ FT\_GlyphSlot\ g\ =\ \mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}-\/>glyph;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ g-\/>bitmap.width;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ g-\/>bitmap.rows;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasBitmap\ =\ (w\ >\ 0\ \&\&\ h\ >\ 0);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasAdvance\ =\ (g-\/>advance.x\ >\ 0);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hasBitmap\ \&\&\ !hasAdvance)}
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ padding\ =\ 1;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ safeW\ =\ std::max(1,\ w);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ safeH\ =\ std::max(1,\ h);}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ cellW\ =\ safeW\ +\ padding\ *\ 2;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ cellH\ =\ safeH\ +\ padding\ *\ 2;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +\ cellW\ >\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth())}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +=\ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +\ cellH\ >\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight())}
+\DoxyCodeLine{00140\ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{ExpandAtlas}}();}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c);}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ drawX\ =\ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +\ padding;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ drawY\ =\ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +\ padding;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (hasBitmap\ \&\&\ g-\/>bitmap.buffer)}
+\DoxyCodeLine{00149\ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}}\ prevAlignment\ =\ 0;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ glGetIntegerv(GL\_UNPACK\_ALIGNMENT,\ \&prevAlignment);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ 1);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ glTextureSubImage2D(}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetID(),\ 0,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ drawX,\ drawY,\ w,\ h,}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RED,\ GL\_UNSIGNED\_BYTE,}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>bitmap.buffer}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ prevAlignment);}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00162\ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ dummy\ =\ 0;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ glTextureSubImage2D(}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetID(),\ 0,}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ drawX,\ drawY,\ 1,\ 1,}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RED,\ GL\_UNSIGNED\_BYTE,}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \&dummy}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ Glyph\ glyph;}
+\DoxyCodeLine{00173\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}\ =\ \{\ w,\ h\ \};}
+\DoxyCodeLine{00174\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}\ =\ \{\ g-\/>bitmap\_left,\ g-\/>bitmap\_top\ \};}
+\DoxyCodeLine{00175\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ =\ g-\/>advance.x;}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}{uvTopLeft}}\ =\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawX)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth(),}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawY)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight()}
+\DoxyCodeLine{00180\ \ \ \ \ \};}
+\DoxyCodeLine{00181\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}{uvBottomRight}}\ =\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawX\ +\ safeW)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth(),}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawY\ +\ safeH)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight()}
+\DoxyCodeLine{00184\ \ \ \ \ \};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}[c]\ =\ glyph;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +=\ cellW;}
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ std::max(\mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}},\ cellH);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00192\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_font_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_font_af10416f6a4440b9a272b37d5eba53fd3}\index{Font@{Font}!atlasTexture@{atlasTexture}}
+\index{atlasTexture@{atlasTexture}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{atlasTexture}{atlasTexture}}
+{\footnotesize\ttfamily \label{class_font_af10416f6a4440b9a272b37d5eba53fd3} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_texture}{Texture}}$>$ Font\+::atlas\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_texture}{Texture} atlas storing glyph bitmaps. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00156}{156}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_a365549c4e256695c5578a48693f59fab}\index{Font@{Font}!atlasVersion@{atlasVersion}}
+\index{atlasVersion@{atlasVersion}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{atlasVersion}{atlasVersion}}
+{\footnotesize\ttfamily \label{class_font_a365549c4e256695c5578a48693f59fab} 
+int Font\+::atlas\+Version = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Version number of atlas, incremented on rebuild. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00162}{162}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}\index{Font@{Font}!face@{face}}
+\index{face@{face}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{face}{face}}
+{\footnotesize\ttfamily \label{class_font_aea6f16a9c6cd63b14a77d31a08c17b46} 
+FT\+\_\+\+Face Font\+::face\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Free\+Type font face. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00151}{151}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_a3616d4dfa35341856399b0783fad5fed}\index{Font@{Font}!fontSize@{fontSize}}
+\index{fontSize@{fontSize}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{fontSize}{fontSize}}
+{\footnotesize\ttfamily \label{class_font_a3616d4dfa35341856399b0783fad5fed} 
+uint32\+\_\+t Font\+::font\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_font}{Font} size in pixels. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00153}{153}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_ae975f79e48736a286097d01c19f6fe6e}\index{Font@{Font}!ft@{ft}}
+\index{ft@{ft}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{ft}{ft}}
+{\footnotesize\ttfamily \label{class_font_ae975f79e48736a286097d01c19f6fe6e} 
+FT\+\_\+\+Library Font\+::ft\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Free\+Type library handle. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00150}{150}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}\index{Font@{Font}!glyphs@{glyphs}}
+\index{glyphs@{glyphs}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{glyphs}{glyphs}}
+{\footnotesize\ttfamily \label{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484} 
+std\+::unordered\+\_\+map$<$char32\+\_\+t, \mbox{\hyperlink{struct_glyph}{Glyph}}$>$ Font\+::glyphs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map of codepoints to glyphs. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00155}{155}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_a9c5883ed047d2492cee2ed5340e96274}\index{Font@{Font}!material@{material}}
+\index{material@{material}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{material}{material}}
+{\footnotesize\ttfamily \label{class_font_a9c5883ed047d2492cee2ed5340e96274} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_material}{Material}}$>$ Font\+::material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_material}{Material} using atlas + text shader. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00157}{157}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}\index{Font@{Font}!maxRowHeight@{maxRowHeight}}
+\index{maxRowHeight@{maxRowHeight}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{maxRowHeight}{maxRowHeight}}
+{\footnotesize\ttfamily \label{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9} 
+int Font\+::max\+Row\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Max height of the current row in atlas. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00161}{161}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_ad6a01f54e759dacf31006b3d38bed1a7}\index{Font@{Font}!nextX@{nextX}}
+\index{nextX@{nextX}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{nextX}{nextX}}
+{\footnotesize\ttfamily \label{class_font_ad6a01f54e759dacf31006b3d38bed1a7} 
+int Font\+::nextX = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current X offset for atlas packing. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00159}{159}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{class_font_a9f863b51686f62525c47c945c726bf8f}\index{Font@{Font}!nextY@{nextY}}
+\index{nextY@{nextY}!Font@{Font}}
+\doxysubsubsection{\texorpdfstring{nextY}{nextY}}
+{\footnotesize\ttfamily \label{class_font_a9f863b51686f62525c47c945c726bf8f} 
+int Font\+::nextY = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current Y offset for atlas packing. 
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00160}{160}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_font_8h}{Font.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_font_8cpp}{Font.\+cpp}}\end{DoxyCompactItemize}

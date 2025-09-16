@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['texturefilter_0',['TextureFilter',['../_texture_8h.html#ac4b92e6b8c820ded95490092f8bfff74',1,'Texture.h']]],
-  ['texturewrap_1',['TextureWrap',['../_texture_8h.html#ae99e0f833ccd2a830a871dba98d1c5bf',1,'Texture.h']]]
+  ['objecttype_0',['ObjectType',['../_object_8h.html#a842c5e2e69277690b064bf363c017980',1,'Object.h']]]
 ];

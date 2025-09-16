@@ -2,22 +2,28 @@
 \hypertarget{class_game_state}{}\label{class_game_state}\index{GameState@{GameState}}
 
 
-Abstract base class representing a game state or scene.  
+Abstract base class representing a game state in the engine.  
 
 
 
 
 {\ttfamily \#include $<$Game\+State.\+h$>$}
 
+Inheritance diagram for Game\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_state}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{class_game_state_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor to allow safe cleanup of derived states. \end{DoxyCompactList}\item 
+\item 
 virtual \mbox{\hyperlink{class_object_manager}{Object\+Manager}} \& \mbox{\hyperlink{class_game_state_abea569338b92e0b499193fdbdab94e86}{Get\+Object\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Returns the object manager used by this state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Provides access to this state\textquotesingle{}s \doxylink{class_object_manager}{Object\+Manager}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \& \mbox{\hyperlink{class_game_state_a116bca1d8804cda67f37e199eb470dfd}{Get\+Camera\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Returns the camera manager for this state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Provides access to this state\textquotesingle{}s \doxylink{class_camera_manager}{Camera\+Manager}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_state_aca3df3a97dc9c97a03665bc1842ffd78}{Get\+Active\+Camera}} () const
 \begin{DoxyCompactList}\small\item\em Returns the currently active camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_state_aadc8c33fe485c1f8ac9bccaec1cebe74}{Set\+Active\+Camera}} (const std\+::string \&tag)
@@ -26,43 +32,45 @@ void \mbox{\hyperlink{class_game_state_aadc8c33fe485c1f8ac9bccaec1cebe74}{Set\+A
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called once at the start of the state\textquotesingle{}s lifetime. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initialization hook for derived states. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}{Late\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called after Init and after all game objects are initialized. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Late initialization hook after \doxylink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init()}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Per-\/frame update logic for the state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Per-\/frame update hook. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}{Late\+Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called after all objects have been updated. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Post-\/update hook called after \doxylink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update()}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Loads persistent assets like textures or audio. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load resources needed by this state. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_ab3f79ba850091b4853d800b1ff2e2974}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Draws the state to the screen. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Per-\/frame draw hook. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_game_state_a5b46058b4310096491ff70ed2fccc94d}{Post\+Processing}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
+\begin{DoxyCompactList}\small\item\em Post-\/processing pass hook. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a46b0b108e44fa42845f27d20bc242d93}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Frees memory created in \doxylink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init()}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Cleanup hook before objects are destroyed. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Unload}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Unloads persistent assets previously loaded in \doxylink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load()}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resource unload hook (called before state exit). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_state_a279f1dc798ad39da9329dc73c1c85933}{Restart}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Restarts the state without unloading its assets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Restarts the state by calling Free then Init. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_manager}{Object\+Manager}} \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{object\+Manager}}
-\item 
+\begin{DoxyCompactList}\small\item\em Per-\/state object manager. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{camera\+Manager}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Per-\/state camera manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_game_state_a7210d9f614b4bc65064ade7edee9f38a}{System\+Load}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called internally by the engine to begin loading phase. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Internal\+: calls \doxylink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load()}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a471d08b2632c8696a1105abf356d11e1}{System\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called internally to initialize the state and its objects. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Internal\+: orchestrates Init, \doxylink{class_object_manager}{Object\+Manager} Init\+All, Late\+Init. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a6264f6b70aa45b3e72b6067061cc2395}{System\+Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called every frame to update the state and its objects. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Internal\+: orchestrates Update, collision checks, debug draw, Late\+Update. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_aebbf582b359e3fb6c929626dba68f8ae}{System\+Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called during shutdown or Restart to clean up state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Internal\+: orchestrates Free and \doxylink{class_object_manager}{Object\+Manager} Free\+All. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_game_state_a165b6e53f7da556b52a29978fef1b812}{System\+Unload}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Called after shutdown to unload persistent assets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Internal\+: calls \doxylink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Unload()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -71,16 +79,37 @@ friend \mbox{\hyperlink{class_game_state_a3f6dcf0c9675fb7a9862d710b887264f}{Stat
 
 
 \doxysubsection{Detailed Description}
-Abstract base class representing a game state or scene. 
+Abstract base class representing a game state in the engine. 
 
-A \doxylink{class_game_state}{Game\+State} represents a self-\/contained mode in the game such as title screen, gameplay, or pause. It defines a full lifecycle\+: Load -\/\texorpdfstring{$>$}{>} Init -\/\texorpdfstring{$>$}{>} Update/\+Draw -\/\texorpdfstring{$>$}{>} Free -\/\texorpdfstring{$>$}{>} Unload. Each state manages its own \doxylink{class_object_manager}{Object\+Manager} and \doxylink{class_camera_manager}{Camera\+Manager}.
+\doxylink{class_game_state}{Game\+State} defines the lifecycle and update/draw pipeline of a state (e.\+g., title screen, main menu, gameplay). It owns its own \doxylink{class_object_manager}{Object\+Manager} and \doxylink{class_camera_manager}{Camera\+Manager}, and exposes overridable hooks for initialization, updating, drawing, and cleanup.
 
-Override protected methods to implement the specific logic of your game state. 
+The engine calls internal System\texorpdfstring{$\ast$}{*} functions to guarantee correct ordering of Init, Update, Collision checks, Draw, and Free steps. Derived classes should override the protected virtual hooks (Init, Update, Draw, etc.) rather than calling System\texorpdfstring{$\ast$}{*} directly.
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00017}{17}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Typical usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }PlayState\ :\ \textcolor{keyword}{public}\ GameState\ \{}
+\DoxyCodeLine{\textcolor{keyword}{protected}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load}}(\textcolor{keyword}{const}\ EngineContext\&\ engineContext)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Load\ textures,\ shaders,\ sounds}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init}}(\textcolor{keyword}{const}\ EngineContext\&\ engineContext)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Spawn\ player\ and\ enemies}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ EngineContext\&\ engineContext)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{GameState::Update}}(dt,\ engineContext);\ \textcolor{comment}{//\ updates\ objects}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extra\ game\ logic}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00040}{40}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 
+\label{doc-constructors}
+\Hypertarget{class_game_state_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_game_state_adc1bfdf7ee7c1f48e4841995db4e16c3}\index{GameState@{GameState}!````~GameState@{\texorpdfstring{$\sim$}{\string~}GameState}}
 \index{````~GameState@{\texorpdfstring{$\sim$}{\string~}GameState}!GameState@{GameState}}
@@ -90,10 +119,8 @@ virtual Game\+State\+::\texorpdfstring{$\sim$}{\string~}\+Game\+State (\begin{Do
 
 
 
-Virtual destructor to allow safe cleanup of derived states. 
-
-
-
+\label{doc-func-members}
+\Hypertarget{class_game_state_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_game_state_ab3f79ba850091b4853d800b1ff2e2974}\index{GameState@{GameState}!Draw@{Draw}}
 \index{Draw@{Draw}!GameState@{GameState}}
@@ -103,24 +130,21 @@ virtual void Game\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\
 
 
 
-Draws the state to the screen. 
+Per-\/frame draw hook. 
 
-Default implementation draws all registered objects using the active camera.
+Default implementation draws all objects via \doxylink{class_object_manager}{Object\+Manager}. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Provides access to renderer and camera. \\
-\hline
-\end{DoxyParams}
+Reimplemented in \mbox{\hyperlink{class_loading_state_a9d7471af478429371619bff2ccda0e2a}{Loading\+State}}.
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00114}{114}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00109}{109}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00115\ \ \ \ \ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.DrawAll(engineContext,\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.GetActiveCamera());}
-\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.DrawAll(engineContext);}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a46b0b108e44fa42845f27d20bc242d93}\index{GameState@{GameState}!Free@{Free}}
@@ -131,15 +155,12 @@ virtual void Game\+State\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\
 
 
 
-Frees memory created in \doxylink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init()}. 
-
-Called when the state is being shut down or restarted.
+Cleanup hook before objects are destroyed. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em engine\+Context} & For resource cleanup. \\
-\hline
-\end{DoxyParams}
+
+Reimplemented in \mbox{\hyperlink{class_loading_state_a1f2fb872ba3b6dbcb11bfbc46b72c386}{Loading\+State}}.
+
 
 
 Definition at line \mbox{\hyperlink{_game_state_8h_source_l00126}{126}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
@@ -153,46 +174,38 @@ Definition at line \mbox{\hyperlink{_game_state_8h_source_l00126}{126}} of file 
 \index{GetActiveCamera@{GetActiveCamera}!GameState@{GameState}}
 \doxysubsubsection{\texorpdfstring{GetActiveCamera()}{GetActiveCamera()}}
 {\footnotesize\ttfamily \label{class_game_state_aca3df3a97dc9c97a03665bc1842ffd78} 
-\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} Game\+State\+::\+Get\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} Game\+State\+::\+Get\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
 
 
 
 Returns the currently active camera. 
 
-\begin{DoxyReturn}{Returns}
-Pointer to the active \doxylink{class_camera2_d}{Camera2D}, or nullptr if none is set. 
-\end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00050}{50}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00060}{60}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00050\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.GetActiveCamera();\ \}}
+\DoxyCodeLine{00060\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.GetActiveCamera();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a116bca1d8804cda67f37e199eb470dfd}\index{GameState@{GameState}!GetCameraManager@{GetCameraManager}}
 \index{GetCameraManager@{GetCameraManager}!GameState@{GameState}}
 \doxysubsubsection{\texorpdfstring{GetCameraManager()}{GetCameraManager()}}
 {\footnotesize\ttfamily \label{class_game_state_a116bca1d8804cda67f37e199eb470dfd} 
-\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \& Game\+State\+::\+Get\+Camera\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \& Game\+State\+::\+Get\+Camera\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
 
 
 
-Returns the camera manager for this state. 
-
-Provides access to registered 2D cameras and camera switching.
-
-\begin{DoxyReturn}{Returns}
-Reference to the \doxylink{class_camera_manager}{Camera\+Manager}. 
-\end{DoxyReturn}
+Provides access to this state\textquotesingle{}s \doxylink{class_camera_manager}{Camera\+Manager}. 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00043}{43}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00055}{55}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00043\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}};\ \}}
+\DoxyCodeLine{00055\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_abea569338b92e0b499193fdbdab94e86}\index{GameState@{GameState}!GetObjectManager@{GetObjectManager}}
@@ -203,20 +216,15 @@ virtual \mbox{\hyperlink{class_object_manager}{Object\+Manager}} \& Game\+State\
 
 
 
-Returns the object manager used by this state. 
-
-Provides access to game object creation, update, and rendering.
-
-\begin{DoxyReturn}{Returns}
-Reference to the \doxylink{class_object_manager}{Object\+Manager}. 
-\end{DoxyReturn}
+Provides access to this state\textquotesingle{}s \doxylink{class_object_manager}{Object\+Manager}. 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00034}{34}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00050}{50}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00034\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}};\ \}}
+\DoxyCodeLine{00050\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_ab4bdccf42209d9d3465a33739ad59646}\index{GameState@{GameState}!Init@{Init}}
@@ -227,22 +235,24 @@ virtual void Game\+State\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\
 
 
 
-Called once at the start of the state\textquotesingle{}s lifetime. 
-
-Override to create game objects and initialize state variables.
+Initialization hook for derived states. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Provides access to engine-\/wide systems. \\
+{\em engine\+Context} & Engine subsystems context. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00067}{67}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Reimplemented in \mbox{\hyperlink{class_loading_state_a84ce856d66c4167866a24f49d5c7f471}{Loading\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00075}{75}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00067\ \{\}}
+\DoxyCodeLine{00075\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}\index{GameState@{GameState}!LateInit@{LateInit}}
@@ -253,22 +263,19 @@ virtual void Game\+State\+::\+Late\+Init (\begin{DoxyParamCaption}\item[{const \
 
 
 
-Called after Init and after all game objects are initialized. 
-
-Useful for referencing other objects or setting up systems that depend on them.
+Late initialization hook after \doxylink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init()}. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
-\hline
-\end{DoxyParams}
+
+Reimplemented in \mbox{\hyperlink{class_loading_state_aaeb0439da526b6933f6b61bde194a64f}{Loading\+State}}.
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00076}{76}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00080}{80}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00076\ \{\}}
+\DoxyCodeLine{00080\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}\index{GameState@{GameState}!LateUpdate@{LateUpdate}}
@@ -279,17 +286,12 @@ virtual void Game\+State\+::\+Late\+Update (\begin{DoxyParamCaption}\item[{float
 
 
 
-Called after all objects have been updated. 
-
-Useful for post-\/processing, cleanup, or deferred logic.
+Post-\/update hook called after \doxylink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update()}. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em dt} & Delta time. \\
-\hline
-{\em engine\+Context} & Engine context. \\
-\hline
-\end{DoxyParams}
+
+Reimplemented in \mbox{\hyperlink{class_loading_state_a7f934a83650c18f8603320de29a18fbe}{Loading\+State}}.
+
 
 
 Definition at line \mbox{\hyperlink{_game_state_8h_source_l00096}{96}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
@@ -307,22 +309,38 @@ virtual void Game\+State\+::\+Load (\begin{DoxyParamCaption}\item[{const \mbox{\
 
 
 
-Loads persistent assets like textures or audio. 
-
-Called before \doxylink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init()}. Override to preload large assets.
+Load resources needed by this state. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Used for resource loading. \\
-\hline
-\end{DoxyParams}
+
+Reimplemented in \mbox{\hyperlink{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7}{Loading\+State}}.
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00105}{105}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00101}{101}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00105\ \{\}}
+\DoxyCodeLine{00101\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_game_state_a5b46058b4310096491ff70ed2fccc94d}\index{GameState@{GameState}!PostProcessing@{PostProcessing}}
+\index{PostProcessing@{PostProcessing}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{PostProcessing()}{PostProcessing()}}
+{\footnotesize\ttfamily \label{class_game_state_a5b46058b4310096491ff70ed2fccc94d} 
+virtual void Game\+State\+::\+Post\+Processing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Post-\/processing pass hook. 
+
+Called after all objects have been drawn. Override to apply fullscreen effects or post-\/render logic. 
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00121}{121}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a279f1dc798ad39da9329dc73c1c85933}\index{GameState@{GameState}!Restart@{Restart}}
@@ -333,30 +351,23 @@ void Game\+State\+::\+Restart (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Restarts the state without unloading its assets. 
-
-Calls Free and Init again.
+Restarts the state by calling Free then Init. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine context passed into Init and Free.\\
+{\em engine\+Context} & Engine context. \\
 \hline
 \end{DoxyParams}
-Example usage\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{engineContext.stateManager-\/>GetCurrentState()-\/>Restart(engineContext);}
 
-\end{DoxyCode}
- 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00147}{147}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00138}{138}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00148\ \ \ \ \ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_aebbf582b359e3fb6c929626dba68f8ae}{SystemFree}}(engineContext);}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a471d08b2632c8696a1105abf356d11e1}{SystemInit}}(engineContext);}
-\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_aebbf582b359e3fb6c929626dba68f8ae}{SystemFree}}(engineContext);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a471d08b2632c8696a1105abf356d11e1}{SystemInit}}(engineContext);}
+\DoxyCodeLine{00142\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_aadc8c33fe485c1f8ac9bccaec1cebe74}\index{GameState@{GameState}!SetActiveCamera@{SetActiveCamera}}
@@ -371,16 +382,16 @@ Sets the active camera by tag.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & A string key matching a previously registered camera. \\
+{\em tag} & Camera tag registered in \doxylink{class_camera_manager}{Camera\+Manager}. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00057}{57}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00067}{67}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00057\ \{\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.SetActiveCamera(tag);\ \}}
+\DoxyCodeLine{00067\ \{\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.SetActiveCamera(tag);\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_aebbf582b359e3fb6c929626dba68f8ae}\index{GameState@{GameState}!SystemFree@{SystemFree}}
@@ -391,18 +402,18 @@ virtual void Game\+State\+::\+System\+Free (\begin{DoxyParamCaption}\item[{const
 
 
 
-Called during shutdown or Restart to clean up state. 
+Internal\+: orchestrates Free and \doxylink{class_object_manager}{Object\+Manager} Free\+All. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00188}{188}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00184}{184}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00189\ \ \ \ \ \{}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a46b0b108e44fa42845f27d20bc242d93}{Free}}(engineContext);}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.FreeAll(engineContext);}
-\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a46b0b108e44fa42845f27d20bc242d93}{Free}}(engineContext);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.FreeAll(engineContext);}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a471d08b2632c8696a1105abf356d11e1}\index{GameState@{GameState}!SystemInit@{SystemInit}}
@@ -413,19 +424,20 @@ virtual void Game\+State\+::\+System\+Init (\begin{DoxyParamCaption}\item[{const
 
 
 
-Called internally to initialize the state and its objects. 
+Internal\+: orchestrates Init, \doxylink{class_object_manager}{Object\+Manager} Init\+All, Late\+Init. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00168}{168}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00159}{159}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00169\ \ \ \ \ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init}}(engineContext);}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.InitAll(engineContext);}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}{LateInit}}(engineContext);}
-\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Init}}(engineContext);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.InitAll(engineContext);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}{LateInit}}(engineContext);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.AddAllPendingObjects(engineContext);}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a7210d9f614b4bc65064ade7edee9f38a}\index{GameState@{GameState}!SystemLoad@{SystemLoad}}
@@ -436,17 +448,17 @@ virtual void Game\+State\+::\+System\+Load (\begin{DoxyParamCaption}\item[{const
 
 
 
-Called internally by the engine to begin loading phase. 
+Internal\+: calls \doxylink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load()}. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00160}{160}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00151}{151}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00161\ \ \ \ \ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load}}(engineContext);}
-\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load}}(engineContext);}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a165b6e53f7da556b52a29978fef1b812}\index{GameState@{GameState}!SystemUnload@{SystemUnload}}
@@ -457,17 +469,17 @@ virtual void Game\+State\+::\+System\+Unload (\begin{DoxyParamCaption}\item[{con
 
 
 
-Called after shutdown to unload persistent assets. 
+Internal\+: calls \doxylink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Unload()}. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00197}{197}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00193}{193}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00198\ \ \ \ \ \{}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Unload}}(engineContext);}
-\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Unload}}(engineContext);}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a6264f6b70aa45b3e72b6067061cc2395}\index{GameState@{GameState}!SystemUpdate@{SystemUpdate}}
@@ -478,19 +490,23 @@ virtual void Game\+State\+::\+System\+Update (\begin{DoxyParamCaption}\item[{flo
 
 
 
-Called every frame to update the state and its objects. 
+Internal\+: orchestrates Update, collision checks, debug draw, Late\+Update. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00178}{178}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00170}{170}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00179\ \ \ \ \ \{}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update}}(dt,\ engineContext);}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.UpdateAll(dt,\ engineContext);}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}{LateUpdate}}(dt,\ engineContext);}
-\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Update}}(dt,\ engineContext);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.CheckCollision();}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_ad9836cdfc607ba27f100f5e0e892987f}{engine}}-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a54039eae5badaa378973ccbe973713ee}{ShouldRenderDebugDraws}}())}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.DrawColliderDebug(engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}},\ \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{cameraManager}}.GetActiveCamera());}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}{LateUpdate}}(dt,\ engineContext);}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_ab9a398de72a4201a69093dfd574220c6}\index{GameState@{GameState}!Unload@{Unload}}
@@ -501,20 +517,19 @@ virtual void Game\+State\+::\+Unload (\begin{DoxyParamCaption}\item[{const \mbox
 
 
 
-Unloads persistent assets previously loaded in \doxylink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Load()}. 
+Resource unload hook (called before state exit). 
 
 
-\begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Used to access file/resource systems. \\
-\hline
-\end{DoxyParams}
+
+Reimplemented in \mbox{\hyperlink{class_loading_state_a3754de47c0b00b40517645df5e5625cf}{Loading\+State}}.
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00133}{133}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00131}{131}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00133\ \{\}}
+\DoxyCodeLine{00131\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}\index{GameState@{GameState}!Update@{Update}}
@@ -525,28 +540,34 @@ virtual void Game\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}
 
 
 
-Per-\/frame update logic for the state. 
+Per-\/frame update hook. 
 
-Runs before \doxylink{class_object_manager}{Object\+Manager} updates its objects.
+Default implementation updates all objects via \doxylink{class_object_manager}{Object\+Manager}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em dt} & Delta time since last frame. \\
+{\em dt} & Delta time in seconds. \\
 \hline
-{\em engine\+Context} & Engine services and data access. \\
+{\em engine\+Context} & Engine context. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00086}{86}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Reimplemented in \mbox{\hyperlink{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93}{Loading\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00091}{91}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00086\ \{\}}
+\DoxyCodeLine{00091\ \{\ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.UpdateAll(dt,\ engineContext);\ \}}
 
 \end{DoxyCode}
 
 
+\label{doc-variable-members}
+\Hypertarget{class_game_state_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_game_state_a8791f5177bdd9959553a98bac8cf092b}\index{GameState@{GameState}!cameraManager@{cameraManager}}
 \index{cameraManager@{cameraManager}!GameState@{GameState}}
@@ -556,7 +577,11 @@ Definition at line \mbox{\hyperlink{_game_state_8h_source_l00086}{86}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00154}{154}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Per-\/state camera manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00145}{145}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 \Hypertarget{class_game_state_a688b4f8864623a3d8e9ad873434b062e}\index{GameState@{GameState}!objectManager@{objectManager}}
 \index{objectManager@{objectManager}!GameState@{GameState}}
@@ -566,7 +591,11 @@ Definition at line \mbox{\hyperlink{_game_state_8h_source_l00154}{154}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00153}{153}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Per-\/state object manager. 
+
+
+
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00144}{144}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 \Hypertarget{class_game_state_a3f6dcf0c9675fb7a9862d710b887264f}\index{GameState@{GameState}!StateManager@{StateManager}}
 \index{StateManager@{StateManager}!GameState@{GameState}}
@@ -576,7 +605,7 @@ friend Game\+State\+::\+State\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_game_state_8h_source_l00019}{19}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
+Definition at line \mbox{\hyperlink{_game_state_8h_source_l00042}{42}} of file \mbox{\hyperlink{_game_state_8h_source}{Game\+State.\+h}}.
 
 
 

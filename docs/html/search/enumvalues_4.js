@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['linear_0',['Linear',['../_texture_8h.html#ac4b92e6b8c820ded95490092f8bfff74a32a843da6ea40ab3b17a3421ccdf671b',1,'Texture.h']]],
-  ['linearmipmaplinear_1',['LinearMipmapLinear',['../_texture_8h.html#ac4b92e6b8c820ded95490092f8bfff74a1173bd3987b1e185d86b9c3fe1b8bd72',1,'Texture.h']]],
-  ['linearmipmapnearest_2',['LinearMipmapNearest',['../_texture_8h.html#ac4b92e6b8c820ded95490092f8bfff74ac164897273ad7f6d61626f5610d86425',1,'Texture.h']]]
+  ['game_0',['GAME',['../_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13',1,'Object.h']]],
+  ['geometry_1',['Geometry',['../_shader_8h.html#a22fa67f5720e9bfbd075bd088285c531ad9c6333623e6357515fcbf17be806273',1,'Shader.h']]]
 ];

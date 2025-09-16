@@ -2,7 +2,7 @@
 \hypertarget{class_frustum_culler}{}\label{class_frustum_culler}\index{FrustumCuller@{FrustumCuller}}
 
 
-Utility class for view frustum culling based on 2D bounding circles.  
+View-\/frustum culling helper for 2D camera.  
 
 
 
@@ -12,78 +12,75 @@ Utility class for view frustum culling based on 2D bounding circles.
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{class_frustum_culler_aa4192022ba99e757949f6aa20fb60085}{Cull\+Visible}} (const \mbox{\hyperlink{class_camera2_d}{Camera2D}} \&camera, const std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \&all\+Objects, std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \&out\+Visible\+List, glm\+::vec2 viewport\+Size)
-\begin{DoxyCompactList}\small\item\em Filters out invisible Game\+Objects from a list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d}{Cull\+Visible}} (const \mbox{\hyperlink{class_camera2_d}{Camera2D}} \&camera, const std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&all\+Objects, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&out\+Visible\+List, glm\+::vec2 viewport\+Size)
+\begin{DoxyCompactList}\small\item\em Filters visible objects against the 2D camera frustum. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Utility class for view frustum culling based on 2D bounding circles. 
+View-\/frustum culling helper for 2D camera. 
 
-\doxylink{class_frustum_culler}{Frustum\+Culler} performs visibility checks for a list of Game\+Objects using simple 2D bounding radius tests against the camera\textquotesingle{}s visible area. This helps improve performance by skipping rendering of off-\/screen objects. 
+Removes objects that are outside the camera’s visible rectangle. Uses each object’s bounding radius and transform to produce a conservative visibility test. 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00340}{340}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00431}{431}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 
+\label{doc-func-members}
+\Hypertarget{class_frustum_culler_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_frustum_culler_aa4192022ba99e757949f6aa20fb60085}\index{FrustumCuller@{FrustumCuller}!CullVisible@{CullVisible}}
+\Hypertarget{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d}\index{FrustumCuller@{FrustumCuller}!CullVisible@{CullVisible}}
 \index{CullVisible@{CullVisible}!FrustumCuller@{FrustumCuller}}
 \doxysubsubsection{\texorpdfstring{CullVisible()}{CullVisible()}}
-{\footnotesize\ttfamily \label{class_frustum_culler_aa4192022ba99e757949f6aa20fb60085} 
-static void Frustum\+Culler\+::\+Cull\+Visible (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_camera2_d}{Camera2D}} \&}]{camera}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \&}]{all\+Objects}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \&}]{out\+Visible\+List}{, }\item[{glm\+::vec2}]{viewport\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d} 
+void Frustum\+Culler\+::\+Cull\+Visible (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_camera2_d}{Camera2D}} \&}]{camera}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&}]{all\+Objects}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&}]{out\+Visible\+List}{, }\item[{glm\+::vec2}]{viewport\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Filters out invisible Game\+Objects from a list. 
-
-For each object in the input list, this method\+:
-\begin{DoxyItemize}
-\item Skips objects that are not alive or not marked as visible.
-\item Checks if the object\textquotesingle{}s 2D bounding circle intersects the camera view.
-\item Adds visible objects to the output list.
-\end{DoxyItemize}
+Filters visible objects against the 2D camera frustum. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em camera} & Reference camera used for visibility testing. \\
+{\em camera} & Reference camera. \\
 \hline
-{\em all\+Objects} & Full list of objects to evaluate. \\
+{\em all\+Objects} & All candidates to test. \\
 \hline
-{\em out\+Visible\+List} & Output list of visible objects. \\
+{\em out\+Visible\+List} & Output list filled with visible objects. \\
 \hline
-{\em viewport\+Size} & Size of the rendering viewport in pixels.\\
+{\em viewport\+Size} & Size in pixels (width,height) used with camera zoom. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+Out list is not cleared; the function appends visible objects. 
+\end{DoxyNote}
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{std::vector<GameObject*>\ visible;}
-\DoxyCodeLine{\mbox{\hyperlink{class_frustum_culler_aa4192022ba99e757949f6aa20fb60085}{FrustumCuller::CullVisible}}(mainCamera,\ allObjects,\ visible,\ glm::vec2(1280,\ 720));}
 
-\end{DoxyCode}
- 
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00362}{362}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_render_manager_8cpp_source}{Render\+Manager.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00364\ \ \ \ \ \{}
-\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ outVisibleList.clear();}
-\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (GameObject*\ obj\ :\ allObjects)}
-\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>IsAlive()\ \&\&\ !obj-\/>IsVisible())}
-\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00370\ }
-\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ pos\ =\ obj-\/>GetTransform2D().GetPosition();}
-\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>GetBoundingRadius();}
-\DoxyCodeLine{00373\ }
-\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (camera.\mbox{\hyperlink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{IsInView}}(pos,\ radius,\ viewportSize\ /\ camera.\mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{GetZoom}}()))}
-\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outVisibleList.push\_back(obj);}
-\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00377\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ outVisibleList.clear();}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{for}\ (Object*\ obj\ :\ allObjects)}
+\DoxyCodeLine{00135\ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>IsAlive()\ ||\ !obj-\/>IsVisible())}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj-\/>ShouldIgnoreCamera())}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ outVisibleList.push\_back(obj);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ pos\ =\ obj-\/>GetWorldPosition();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>GetBoundingRadius();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (camera.\mbox{\hyperlink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{IsInView}}(pos,\ radius,\ viewportSize))}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ outVisibleList.push\_back(obj);}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \}}
 
 \end{DoxyCode}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\end{DoxyCompactItemize}
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_render_manager_8cpp}{Render\+Manager.\+cpp}}\end{DoxyCompactItemize}

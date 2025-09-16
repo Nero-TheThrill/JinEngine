@@ -1,6 +1,24 @@
 var searchData=
 [
-  ['ebo_0',['ebo',['../class_mesh.html#a17bb0f1901ce2f3bc62e7d6d2ca9e2f7',1,'Mesh']]],
-  ['engine_1',['engine',['../struct_engine_context.html#ad9836cdfc607ba27f100f5e0e892987f',1,'EngineContext']]],
-  ['enginecontext_2',['engineContext',['../class_s_n_a_k_e___engine.html#aee0757b5b1d709f1da33ea5fc9b7bf18',1,'SNAKE_Engine']]]
+  ['cameramanager_0',['cameraManager',['../class_game_state.html#a8791f5177bdd9959553a98bac8cf092b',1,'GameState']]],
+  ['cameramap_1',['cameraMap',['../class_camera_manager.html#a766512f18ed65d79f35fe37b9846ae14',1,'CameraManager']]],
+  ['cellsize_2',['cellSize',['../class_spatial_hash_grid.html#af3d8a474161e4f52e06fadd344cfe891',1,'SpatialHashGrid']]],
+  ['channels_3',['channels',['../struct_texture_result.html#ae713abf848cf45f4e6fe03062b723f5a',1,'TextureResult::channels'],['../class_texture.html#a69c58068e4b82a86d24e8c797705d515',1,'Texture::channels']]],
+  ['circlecollider_4',['CircleCollider',['../class_collider.html#a12cf416c51b48e672ffdfe63e6118f22',1,'Collider::CircleCollider'],['../class_a_a_b_b_collider.html#a4090be2a3f0d7745dbaee9c8e23e327f',1,'AABBCollider::CircleCollider']]],
+  ['clipframeindex_5',['clipFrameIndex',['../class_sprite_animator.html#ae4b7c71c1e14cb5fb6b430ed58ae5bfd',1,'SpriteAnimator']]],
+  ['collider_6',['Collider',['../class_collision_group_registry.html#aaf200e4026f673a79f1c2bf29459de07',1,'CollisionGroupRegistry']]],
+  ['collider_7',['collider',['../class_object.html#a4b6e56f7a8f6d8dae69cb029cb6e5bd7',1,'Object']]],
+  ['collisioncategory_8',['collisionCategory',['../class_object.html#aca82263c28421c17cb204ae27492d3e2',1,'Object']]],
+  ['collisiongroupregistry_9',['collisionGroupRegistry',['../class_object_manager.html#a697bf14420d66f3c4d88b68cf58bc6e3',1,'ObjectManager']]],
+  ['collisionmask_10',['collisionMask',['../class_object.html#a8b9f93c681a4d64d8ad30ea03b85c9a0',1,'Object']]],
+  ['color_11',['color',['../class_object.html#a3d1a20796927cc278a924836c14cf48a',1,'Object::color'],['../struct_line_instance.html#ae499492ef256243e41402daadbca4a9c',1,'LineInstance::color']]],
+  ['columns_12',['columns',['../class_sprite_sheet.html#a79d8b4d9cbeafaa3a12b37b6d3129553',1,'SpriteSheet']]],
+  ['completed_13',['completed',['../class_async_resource_loader.html#a849aef3d6c1fd0ac57461e11f6d28d65',1,'AsyncResourceLoader']]],
+  ['completedmutex_14',['completedMutex',['../class_async_resource_loader.html#a2e86e6e3efd75ef87eeb648eae4421e3',1,'AsyncResourceLoader']]],
+  ['currentbit_15',['currentBit',['../class_collision_group_registry.html#a56e97b092b3b9a4872dc4ad796d00443',1,'CollisionGroupRegistry']]],
+  ['currentframe_16',['currentFrame',['../class_sprite_animator.html#add19e00a74d70def2375d6fa40605b8e',1,'SpriteAnimator']]],
+  ['currentkeystate_17',['currentKeyState',['../class_input_manager.html#aefae2af7e4cb8d8dca2b3e400cfd066b',1,'InputManager']]],
+  ['currentmousestate_18',['currentMouseState',['../class_input_manager.html#a9d9751f5b8375e4ca8322b4429fb624c',1,'InputManager']]],
+  ['currentstate_19',['currentState',['../class_state_manager.html#a23b9db8ba856509ed476ed1144247b83',1,'StateManager']]],
+  ['cv_20',['cv',['../class_async_resource_loader.html#a26382b1f0dc319ae9fb3c0561f4edb6a',1,'AsyncResourceLoader']]]
 ];

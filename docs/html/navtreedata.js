@@ -31,10 +31,13 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -43,6 +46,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -54,10 +58,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_camera2_d_8cpp.html",
-"class_game_object.html#a6ec65a8b875cfcf7d9155390579fcaab",
-"dir_ffd1f789ec7bd0a45fc6ad92579c5070.html"
+"_animation_8cpp.html",
+"_texture_8cpp.html#a5452d1498009851a733aba8e0484032b",
+"class_input_manager.html#a76462a4bb8c97cfab4bc68035ec598d1",
+"class_render_manager.html#abe4e30c3165baa0304fe8e196ffac510",
+"classes.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
 var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

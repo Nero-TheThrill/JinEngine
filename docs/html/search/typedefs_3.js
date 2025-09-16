@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rendercommand_0',['RenderCommand',['../_render_manager_8h.html#ab1dda4d750e0cc5f202e4ebd8172bef6',1,'RenderManager.h']]],
-  ['rendermap_1',['RenderMap',['../_render_manager_8h.html#aff65631d564da184ff5b1625aee3df0a',1,'RenderManager.h']]]
+  ['instancedbatchmap_0',['InstancedBatchMap',['../_instance_batch_key_8h.html#a89183dea2a482689b325a6fa102a641a',1,'InstanceBatchKey.h']]]
 ];

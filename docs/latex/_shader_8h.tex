@@ -2,14 +2,16 @@
 \hypertarget{_shader_8h}{}\label{_shader_8h}\index{Project/SNAKE\_Engine/Public/Shader.h@{Project/SNAKE\_Engine/Public/Shader.h}}
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include "{}../\+Third\+Party/glm/glm.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm.\+hpp"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_shader}{Shader}}
-\begin{DoxyCompactList}\small\item\em Represents an Open\+GL shader program composed of multiple shader stages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Encapsulates an Open\+GL shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} = int
 \item 
 using \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} = unsigned int
 \end{DoxyCompactItemize}
@@ -25,9 +27,11 @@ enum class \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader
 \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa554dab289074ae03dda3280d0f7feb0}{Tess\+Eval}}
 , \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa623a8d0366bf079411aa30be45b2d10}{Compute}}
  \}
-\begin{DoxyCompactList}\small\item\em Stages of a shader program in the Open\+GL pipeline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
+\label{doc-typedef-members}
+\Hypertarget{_shader_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}\index{Shader.h@{Shader.h}!GLenum@{GLenum}}
 \index{GLenum@{GLenum}!Shader.h@{Shader.h}}
@@ -37,10 +41,22 @@ using \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} = 
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00027}{27}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00024}{24}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+
+\Hypertarget{_shader_8h_ac64cb152838786587bfafa749c3f2018}\index{Shader.h@{Shader.h}!GLint@{GLint}}
+\index{GLint@{GLint}!Shader.h@{Shader.h}}
+\doxysubsubsection{\texorpdfstring{GLint}{GLint}}
+{\footnotesize\ttfamily \label{_shader_8h_ac64cb152838786587bfafa749c3f2018} 
+using \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} = int}
 
 
 
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00023}{23}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{_shader_8h_doc-enum-members}
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}\index{Shader.h@{Shader.h}!ShaderStage@{ShaderStage}}
 \index{ShaderStage@{ShaderStage}!Shader.h@{Shader.h}}
@@ -48,11 +64,7 @@ Definition at line \mbox{\hyperlink{_shader_8h_source_l00027}{27}} of file \mbox
 {\footnotesize\ttfamily \label{_shader_8h_a22fa67f5720e9bfbd075bd088285c531} 
 enum class \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}}\hspace{0.3cm}{\ttfamily [strong]}}
 
-
-
-Stages of a shader program in the Open\+GL pipeline. 
-
-Used to specify which part of the GPU pipeline a shader source corresponds to. \begin{DoxyEnumFields}[2]{Enumerator}
+\begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Vertex@{Vertex}!Shader.h@{Shader.h}}\index{Shader.h@{Shader.h}!Vertex@{Vertex}}}\Hypertarget{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6}\label{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6} 
 Vertex&\\
 \hline
@@ -80,17 +92,17 @@ Compute&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00013}{13}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00009}{9}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00014\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6}{Vertex}},}
-\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531a37d01b98065725fe3a1d30acf3a0064a}{Fragment}},}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ad9c6333623e6357515fcbf17be806273}{Geometry}},}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531a6c2ab859b54837522f9f738ef3bf846d}{TessControl}},}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa554dab289074ae03dda3280d0f7feb0}{TessEval}},}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa623a8d0366bf079411aa30be45b2d10}{Compute}}}
-\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6}{Vertex}},}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531a37d01b98065725fe3a1d30acf3a0064a}{Fragment}},}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531ad9c6333623e6357515fcbf17be806273}{Geometry}},}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531a6c2ab859b54837522f9f738ef3bf846d}{TessControl}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa554dab289074ae03dda3280d0f7feb0}{TessEval}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531aa623a8d0366bf079411aa30be45b2d10}{Compute}}}
+\DoxyCodeLine{00017\ \};}
 
 \end{DoxyCode}

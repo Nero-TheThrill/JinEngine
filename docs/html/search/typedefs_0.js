@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filepath_0',['FilePath',['../_render_manager_8h.html#a1db05f4e4bd57f5e7db00f908dab03be',1,'RenderManager.h']]]
+  ['cameraandwidth_0',['CameraAndWidth',['../class_render_manager.html#a5a098c2d7e968765c5821403453b00e0',1,'RenderManager']]]
 ];

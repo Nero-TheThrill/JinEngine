@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['magfilter_0',['magFilter',['../struct_texture_settings.html#a0a6c426bd860abc26412f0a2d7469608',1,'TextureSettings']]],
-  ['material_1',['Material',['../class_mesh.html#aa36ea23707449cf3c872cafa9068a4de',1,'Mesh::Material'],['../class_shader.html#abd90567f8b213f3bf1b40200a4257ae1',1,'Shader::Material']]],
-  ['material_2',['material',['../struct_instance_batch_key.html#ae51910aa5faba8bc934d401509962b7a',1,'InstanceBatchKey::material'],['../class_game_object.html#ae96b21c69e34f42fbe118f526331a701',1,'GameObject::material']]],
-  ['materialmap_3',['materialMap',['../class_render_manager.html#abab1e694fabb0d1ac10fd119770e4f4f',1,'RenderManager']]],
-  ['matrix_4',['matrix',['../class_transform2_d.html#a143a0ddbd4ce6c0dc7e1eb8833fcfdde',1,'Transform2D']]],
-  ['max_5fkeys_5',['MAX_KEYS',['../class_input_manager.html#a336069275a5424ae336b0f8d3e839c60',1,'InputManager']]],
-  ['max_5flayers_6',['MAX_LAYERS',['../class_render_layer_manager.html#a0fa4422181dc1af5f490062a8fe84e6d',1,'RenderLayerManager']]],
-  ['max_5fmouse_5fbuttons_7',['MAX_MOUSE_BUTTONS',['../class_input_manager.html#ace3b1ab4e59c400c00b49a2f2010a13b',1,'InputManager']]],
-  ['mesh_8',['mesh',['../struct_instance_batch_key.html#ab784a277d381b24fc2b40f30ecddce23',1,'InstanceBatchKey::mesh'],['../class_game_object.html#acccd1ae1f4cf9f9436d25f6cb9399380',1,'GameObject::mesh']]],
-  ['meshmap_9',['meshMap',['../class_render_manager.html#a38415ded934cd5ed4ff0da4a14cb84eb',1,'RenderManager']]],
-  ['minfilter_10',['minFilter',['../struct_texture_settings.html#a59e9d9364034325e1e23d8d14fe9adbe',1,'TextureSettings']]],
-  ['mousex_11',['mouseX',['../class_input_manager.html#a7ee958ea909a395cddeff25f5ba9641d',1,'InputManager']]],
-  ['mousey_12',['mouseY',['../class_input_manager.html#a766a16e7ae54676804c08e80bb061233',1,'InputManager']]]
+  ['id_0',['id',['../class_texture.html#aed42161a5c00b6020c85833401da6da6',1,'Texture']]],
+  ['idtoname_1',['idToName',['../class_render_layer_manager.html#a6ca8bbbea3fa65b28b7865102fa4e491',1,'RenderLayerManager']]],
+  ['ignorecamera_2',['ignoreCamera',['../class_object.html#ab4177081168011726b6dc63ab4e2b046',1,'Object']]],
+  ['images_3',['images',['../class_compute_material.html#a497a355327b35d25ed8602883a7f105f',1,'ComputeMaterial']]],
+  ['indexcount_4',['indexCount',['../class_mesh.html#ae89f95e85ae7fa157545324aa5f5db7d',1,'Mesh']]],
+  ['inputmanager_5',['inputManager',['../struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a',1,'EngineContext::inputManager'],['../class_s_n_a_k_e___engine.html#a13554a7b74f0ceb548e942dba80133d9',1,'SNAKE_Engine::inputManager']]],
+  ['instancemap_6',['instanceMap',['../class_sound_manager.html#af2c6998eead9b15cac317be3c26a03ef',1,'SoundManager']]],
+  ['instancevao_7',['instanceVAO',['../class_mesh.html#ad41509844e200245ce71b4cc5441c504',1,'Mesh']]],
+  ['instancevbo_8',['instanceVBO',['../class_mesh.html#a33810b4cdfaae0d1eb1ada168cd3c1a5',1,'Mesh']]],
+  ['isalive_9',['isAlive',['../class_object.html#a6cad8db6361d0ab0b95ec578fdf0d1b7',1,'Object']]],
+  ['ischanged_10',['isChanged',['../class_transform2_d.html#a78a183e05988fdacd5dabb6d02e192b0',1,'Transform2D']]],
+  ['iscursorvisible_11',['isCursorVisible',['../class_window_manager.html#a7a12b135fea8aff358e281232b0b3ce1',1,'WindowManager']]],
+  ['isfullscreen_12',['isFullscreen',['../class_window_manager.html#a33c7b7c623763a5336fa5b2b835fbd74',1,'WindowManager']]],
+  ['isinstancingenabled_13',['isInstancingEnabled',['../class_material.html#a88e57329587a1d1d2852d926890e2c4f',1,'Material']]],
+  ['issupportinstancing_14',['isSupportInstancing',['../class_shader.html#a821763f22b88dfc27ef72c0eec1a8b8c',1,'Shader']]],
+  ['isvisible_15',['isVisible',['../class_object.html#a418eac6726dcadd9710d94a041446f28',1,'Object']]]
 ];

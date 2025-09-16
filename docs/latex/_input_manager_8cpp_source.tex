@@ -2,68 +2,160 @@
 \hypertarget{_input_manager_8cpp_source}{}\label{_input_manager_8cpp_source}\index{Project/SNAKE\_Engine/Private/InputManager.cpp@{Project/SNAKE\_Engine/Private/InputManager.cpp}}
 \mbox{\hyperlink{_input_manager_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_manager_8h}{InputManager.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}glfw3/glfw3.h"{}}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00003}00003\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00004}\mbox{\hyperlink{class_input_manager_a222eea359d455ca0517bde4f74536754}{00004}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a222eea359d455ca0517bde4f74536754}{InputManager::Init}}(GLFWwindow*\ \_window)}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00005}00005\ \{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00006}00006\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}}\ =\ \_window;}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00007}00007\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00009}\mbox{\hyperlink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{InputManager::Update}}()}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}\ =\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}};}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}\ =\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}};}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00013}00013\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ key\ =\ 0;\ key\ <=\ GLFW\_KEY\_LAST;\ key++)}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00015}00015\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.set(key,\ glfwGetKey(\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}},\ key)\ ==\ GLFW\_PRESS);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00017}00017\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ button\ =\ 0;\ button\ <=\ GLFW\_MOUSE\_BUTTON\_LAST;\ button++)}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00019}00019\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.set(button,\ glfwGetMouseButton(\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}},\ button)\ ==\ GLFW\_PRESS);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00021}00021\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00022}00022\ \ \ \ \ glfwGetCursorPos(\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}},\ \&\mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}},\ \&\mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}});}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00023}00023\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00025}\mbox{\hyperlink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{00025}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{InputManager::IsKeyDown}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00026}00026\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00028}00028\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00030}\mbox{\hyperlink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{00030}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{InputManager::IsKeyPressed}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00031}00031\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key)\ \&\&\ !\mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}.test(key);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00033}00033\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00034}00034\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00035}\mbox{\hyperlink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{00035}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{InputManager::IsKeyReleased}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00036}00036\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key)\ \&\&\ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}.test(key);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00038}00038\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00039}00039\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00040}\mbox{\hyperlink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{00040}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{InputManager::IsMouseButtonDown}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00041}00041\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00043}00043\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00045}\mbox{\hyperlink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{00045}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{InputManager::IsMouseButtonPressed}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00046}00046\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button)\ \&\&\ !\mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.test(button);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00048}00048\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00049}00049\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00050}\mbox{\hyperlink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{00050}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{InputManager::IsMouseButtonReleased}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00051}00051\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button)\ \&\&\ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.test(button);}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00053}00053\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00055}\mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{00055}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{InputManager::GetMouseX}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00056}00056\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}};}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00058}00058\ \}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00060}\mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{00060}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{InputManager::GetMouseY}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00061}00061\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}};}
-\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}glfw3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00005}\mbox{\hyperlink{class_input_manager_a222eea359d455ca0517bde4f74536754}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a222eea359d455ca0517bde4f74536754}{InputManager::Init}}(GLFWwindow*\ \_window)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}}\ =\ \_window;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00010}\mbox{\hyperlink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{InputManager::Update}}()}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}\ =\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}\ =\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a34bc0b94bf3d5a6087e5b25fdb71d808}{scrollDeltaX}}\ =\ \mbox{\hyperlink{class_input_manager_af98f979b0c74d37efd4947fcc125fc77}{scrollAccumX}};\ \mbox{\hyperlink{class_input_manager_af98f979b0c74d37efd4947fcc125fc77}{scrollAccumX}}\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scrollDeltaY}}\ =\ \mbox{\hyperlink{class_input_manager_abb09df427175cadf802e77f3e5087c4f}{scrollAccumY}};\ \mbox{\hyperlink{class_input_manager_abb09df427175cadf802e77f3e5087c4f}{scrollAccumY}}\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}\ =\ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}\ =\ \mbox{\hyperlink{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}{stagedMouseState}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00021}00021\ \ \ \ \ glfwGetCursorPos(\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}},\ \&\mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}},\ \&\mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00024}\mbox{\hyperlink{class_input_manager_a92319ec0b9f5eff3fd9a2e22a434a3a1}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a92319ec0b9f5eff3fd9a2e22a434a3a1}{InputManager::Reset}}()}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}{stagedMouseState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00034}\mbox{\hyperlink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{00034}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{InputManager::IsKeyDown}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00035}00035\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00039}\mbox{\hyperlink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{00039}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{InputManager::IsKeyPressed}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00040}00040\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key)\ \&\&\ !\mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}.test(key);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00044}\mbox{\hyperlink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{00044}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{InputManager::IsKeyReleased}}(\textcolor{keywordtype}{int}\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00045}00045\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{currentKeyState}}.test(key)\ \&\&\ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previousKeyState}}.test(key);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00049}\mbox{\hyperlink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{00049}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{InputManager::IsMouseButtonDown}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00050}00050\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00054}\mbox{\hyperlink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{00054}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{InputManager::IsMouseButtonPressed}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00055}00055\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button)\ \&\&\ !\mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.test(button);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00059}\mbox{\hyperlink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{00059}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{InputManager::IsMouseButtonReleased}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00060}00060\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button)\ \&\&\ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.test(button);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00064}\mbox{\hyperlink{class_input_manager_afb908706c127374a1450c3a6400677f1}{00064}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_afb908706c127374a1450c3a6400677f1}{InputManager::IsMouseButtonDragging}}(\textcolor{keywordtype}{int}\ button)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00065}00065\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{currentMouseState}}.test(button)\ \&\&\ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previousMouseState}}.test(button);}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00069}\mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{00069}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{InputManager::GetMouseX}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00070}00070\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00074}\mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{00074}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{InputManager::GetMouseY}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00075}00075\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00079}\mbox{\hyperlink{class_input_manager_a67fc23629ffc128363f074a549f38ee4}{00079}}\ glm::vec2\ \mbox{\hyperlink{class_input_manager_a67fc23629ffc128363f074a549f38ee4}{InputManager::GetMousePos}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00080}00080\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec2(\mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}},\ \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00084}\mbox{\hyperlink{class_input_manager_a507dcf0711e211639d929454177b9374}{00084}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_a507dcf0711e211639d929454177b9374}{InputManager::GetMouseWorldX}}(\mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ camera)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00085}00085\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{return}\ (camera-\/>\mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{GetPosition}}().x\ +\ \mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{GetMouseX}}()\ -\/\ camera-\/>\mbox{\hyperlink{class_camera2_d_a61688205777baba2ca92df7e62674a1d}{GetScreenWidth}}()\ /\ 2.f)\ /\ camera-\/>\mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{GetZoom}}();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00089}\mbox{\hyperlink{class_input_manager_a3611627023a950f1efd20b9da37b499a}{00089}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_a3611627023a950f1efd20b9da37b499a}{InputManager::GetMouseWorldY}}(\mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ camera)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00090}00090\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ (camera-\/>\mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{GetPosition}}().y\ +\ camera-\/>\mbox{\hyperlink{class_camera2_d_ab2b1626c3cf744e7b8c0316fd875ffc7}{GetScreenHeight}}()\ /\ 2.f\ -\/\ \mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{GetMouseY}}())\ /\ camera-\/>\mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{GetZoom}}();}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00094}\mbox{\hyperlink{class_input_manager_a55e789665aa293ce52e768d959ff27c1}{00094}}\ glm::vec2\ \mbox{\hyperlink{class_input_manager_a55e789665aa293ce52e768d959ff27c1}{InputManager::GetMouseWorldPos}}(\mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ camera)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00095}00095\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec2(\mbox{\hyperlink{class_input_manager_a507dcf0711e211639d929454177b9374}{GetMouseWorldX}}(camera),\ \mbox{\hyperlink{class_input_manager_a3611627023a950f1efd20b9da37b499a}{GetMouseWorldY}}(camera));}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00099}\mbox{\hyperlink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{00099}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{InputManager::AddScroll}}(\textcolor{keywordtype}{double}\ dx,\ \textcolor{keywordtype}{double}\ dy)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00100}00100\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{class_input_manager_af98f979b0c74d37efd4947fcc125fc77}{scrollAccumX}}\ +=\ dx;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{class_input_manager_abb09df427175cadf802e77f3e5087c4f}{scrollAccumY}}\ +=\ dy;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00105}\mbox{\hyperlink{class_input_manager_a76462a4bb8c97cfab4bc68035ec598d1}{00105}}\ glm::vec2\ \mbox{\hyperlink{class_input_manager_a76462a4bb8c97cfab4bc68035ec598d1}{InputManager::GetScrollDelta}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00106}00106\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \mbox{\hyperlink{class_input_manager_a34bc0b94bf3d5a6087e5b25fdb71d808}{scrollDeltaX}},\ \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scrollDeltaY}}\ \};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00110}\mbox{\hyperlink{class_input_manager_a6fd162bbac7bd828ae4b51eac22f9fe1}{00110}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_a6fd162bbac7bd828ae4b51eac22f9fe1}{InputManager::GetScrollXDelta}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00111}00111\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_a34bc0b94bf3d5a6087e5b25fdb71d808}{scrollDeltaX}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00115}\mbox{\hyperlink{class_input_manager_ae1b4ac869cb097c4103dad139e6cfb3b}{00115}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_input_manager_ae1b4ac869cb097c4103dad139e6cfb3b}{InputManager::GetScrollYDelta}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00116}00116\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scrollDeltaY}};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00120}\mbox{\hyperlink{class_input_manager_aae2e8d40fbd199038bc573245deedfc6}{00120}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_aae2e8d40fbd199038bc573245deedfc6}{InputManager::IsScrolledUp}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00121}00121\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scrollDeltaY}}\ >\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00125}\mbox{\hyperlink{class_input_manager_a0847068dcd89e9ca0169be41186391ac}{00125}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_manager_a0847068dcd89e9ca0169be41186391ac}{InputManager::IsScrolledDown}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00126}00126\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scrollDeltaY}}\ <\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00130}\mbox{\hyperlink{class_input_manager_ae569ff5be56bca62b47a7bdfffe2c867}{00130}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_ae569ff5be56bca62b47a7bdfffe2c867}{InputManager::OnKey}}(\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ \textcolor{comment}{/*sc*/},\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ \textcolor{comment}{/*mods*/})}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00131}00131\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ <\ 0\ ||\ key\ >\ GLFW\_KEY\_LAST)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_PRESS)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}}.set(key,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00137}00137\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_RELEASE)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}}.set(key,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_REPEAT)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00140}00140\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}}.test(key))}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{stagedKeyState}}.set(key,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00146}\mbox{\hyperlink{class_input_manager_a84f610e644a2de5cb64b55220d4a4c8e}{00146}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a84f610e644a2de5cb64b55220d4a4c8e}{InputManager::OnMouseButton}}(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ \textcolor{comment}{/*mods*/})}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00147}00147\ \{}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (button\ <\ 0\ ||\ button\ >\ GLFW\_MOUSE\_BUTTON\_LAST)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_PRESS)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}{stagedMouseState}}.set(button,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_RELEASE)}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}{stagedMouseState}}.set(button,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_input_manager_8cpp_source_l00155}00155\ \}}
 
 \end{DoxyCode}

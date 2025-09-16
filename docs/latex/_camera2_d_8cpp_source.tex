@@ -2,50 +2,64 @@
 \hypertarget{_camera2_d_8cpp_source}{}\label{_camera2_d_8cpp_source}\index{Project/SNAKE\_Engine/Private/Camera2D.cpp@{Project/SNAKE\_Engine/Private/Camera2D.cpp}}
 \mbox{\hyperlink{_camera2_d_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_camera2_d_8h}{Camera2D.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}glm/gtc/matrix\_transform.hpp"{}}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00003}00003\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00004}\mbox{\hyperlink{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}{00004}}\ \mbox{\hyperlink{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}{Camera2D::Camera2D}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}})}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00005}00005\ \ \ \ \ :\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}(\mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}),\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}}(\mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}})}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00006}00006\ \{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00007}00007\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00009}\mbox{\hyperlink{class_camera2_d_a77fff49c88c066f322abcd2683276069}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a77fff49c88c066f322abcd2683276069}{Camera2D::SetScreenSize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}\ =\ width;}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}}\ =\ height;}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00013}00013\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00014}00014\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00015}\mbox{\hyperlink{class_camera2_d_a56ab4d0705a8f03b3dfc4db14805ed76}{00015}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a56ab4d0705a8f03b3dfc4db14805ed76}{Camera2D::SetPosition}}(\textcolor{keyword}{const}\ glm::vec2\&\ pos)}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00016}00016\ \{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}\ =\ pos;}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00018}00018\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00020}\mbox{\hyperlink{class_camera2_d_a62857071bf38d87ae34c2fc7cfab2730}{00020}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a62857071bf38d87ae34c2fc7cfab2730}{Camera2D::SetZoom}}(\textcolor{keywordtype}{float}\ z)}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00021}00021\ \{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}}\ =\ z;}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00023}00023\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00025}\mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{00025}}\ \textcolor{keyword}{const}\ glm::vec2\&\ \mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{Camera2D::GetPosition}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00026}00026\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}};}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00028}00028\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00030}\mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{00030}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{Camera2D::GetZoom}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00031}00031\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}};}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00033}00033\ \}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00034}00034\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00035}\mbox{\hyperlink{class_camera2_d_a01c3bcd77bfc25fa22b519edfb56a45b}{00035}}\ glm::mat4\ \mbox{\hyperlink{class_camera2_d_a01c3bcd77bfc25fa22b519edfb56a45b}{Camera2D::GetProjectionMatrix}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00036}00036\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{float}\ halfW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}})\ *\ 0.5f\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}};}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{float}\ halfH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}})\ *\ 0.5f\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}};}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00039}00039\ }
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::ortho(}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ -\/halfW\ +\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}.x,\ halfW\ +\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}.x,}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ -\/halfH\ +\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}.y,\ halfH\ +\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}.y,}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ -\/1.0f,\ 1.0f}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00044}00044\ \ \ \ \ );}
-\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}gtc/matrix\_transform.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00006}\mbox{\hyperlink{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}{00006}}\ \mbox{\hyperlink{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}{Camera2D::Camera2D}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}})}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00007}00007\ \ \ \ \ :\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}(\mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}),\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}}(\mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}})}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00011}\mbox{\hyperlink{class_camera2_d_a77fff49c88c066f322abcd2683276069}{00011}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a77fff49c88c066f322abcd2683276069}{Camera2D::SetScreenSize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}}\ =\ width;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}}\ =\ height;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00017}\mbox{\hyperlink{class_camera2_d_a56ab4d0705a8f03b3dfc4db14805ed76}{00017}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a56ab4d0705a8f03b3dfc4db14805ed76}{Camera2D::SetPosition}}(\textcolor{keyword}{const}\ glm::vec2\&\ pos)}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}\ =\ pos;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00022}\mbox{\hyperlink{class_camera2_d_a310690322ff72ff448e8c500b58042fe}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a310690322ff72ff448e8c500b58042fe}{Camera2D::AddPosition}}(\textcolor{keyword}{const}\ glm::vec2\&\ pos)}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}}\ +=\ pos;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00027}\mbox{\hyperlink{class_camera2_d_a62857071bf38d87ae34c2fc7cfab2730}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera2_d_a62857071bf38d87ae34c2fc7cfab2730}{Camera2D::SetZoom}}(\textcolor{keywordtype}{float}\ z)}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}}\ =\ std::clamp<float>(z,0.1f,100.f);}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00032}\mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{00032}}\ \textcolor{keyword}{const}\ glm::vec2\&\ \mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{Camera2D::GetPosition}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00033}00033\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}};}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00037}\mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{00037}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{Camera2D::GetZoom}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00038}00038\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}};}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00042}\mbox{\hyperlink{class_camera2_d_a375e047d2e5c2a5fc36e3b44091efe24}{00042}}\ glm::mat4\ \mbox{\hyperlink{class_camera2_d_a375e047d2e5c2a5fc36e3b44091efe24}{Camera2D::GetViewMatrix}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00043}00043\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00044}00044\ \ \ \ \ glm::mat4\ view\ =\ glm::mat4(1.0f);}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00045}00045\ \ \ \ \ view\ =\ glm::translate(view,\ glm::vec3(-\/\mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}},\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00046}00046\ \ \ \ \ view\ =\ glm::scale(view,\ glm::vec3(\mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}},\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}},\ 1.0f));}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ view;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00050}\mbox{\hyperlink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{00050}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{Camera2D::IsInView}}(\textcolor{keyword}{const}\ glm::vec2\&\ pos,\ \textcolor{keywordtype}{float}\ radius,\ glm::vec2\ viewportSize)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00051}00051\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00052}00052\ \ \ \ \ glm::vec2\ camPos\ =\ \mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{GetPosition}}();}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00053}00053\ \ \ \ \ glm::vec2\ halfSize\ =\ viewportSize\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ !(pos.x\ +\ radius\ <\ (camPos.x\ -\/\ halfSize.x)\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}}\ ||}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ pos.x\ -\/\ radius\ >\ (camPos.x\ +\ halfSize.x)\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}}\ ||}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ pos.y\ +\ radius\ <\ (camPos.y\ -\/\ halfSize.y)\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}}\ ||}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ pos.y\ -\/\ radius\ >\ (camPos.y\ +\ halfSize.y)\ /\ \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}});}
+\DoxyCodeLine{\Hypertarget{_camera2_d_8cpp_source_l00059}00059\ \}}
 
 \end{DoxyCode}

@@ -10,6 +10,7 @@ var class_game_state =
     [ "LateInit", "class_game_state.html#a98a9fbfcd4afe6bcd90fc94d5aa93b85", null ],
     [ "LateUpdate", "class_game_state.html#a5079b8eccc7846e03e17917e07d6da3f", null ],
     [ "Load", "class_game_state.html#a89713af22cf5b07b602c3315b1f90296", null ],
+    [ "PostProcessing", "class_game_state.html#a5b46058b4310096491ff70ed2fccc94d", null ],
     [ "Restart", "class_game_state.html#a279f1dc798ad39da9329dc73c1c85933", null ],
     [ "SetActiveCamera", "class_game_state.html#aadc8c33fe485c1f8ac9bccaec1cebe74", null ],
     [ "SystemFree", "class_game_state.html#aebbf582b359e3fb6c929626dba68f8ae", null ],

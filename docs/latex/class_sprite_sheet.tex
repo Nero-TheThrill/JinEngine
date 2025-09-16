@@ -1,0 +1,421 @@
+\doxysection{Sprite\+Sheet Class Reference}
+\hypertarget{class_sprite_sheet}{}\label{class_sprite_sheet}\index{SpriteSheet@{SpriteSheet}}
+
+
+Represents a grid-\/based sprite sheet backed by a texture.  
+
+
+
+
+{\ttfamily \#include $<$Animation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8}{Sprite\+Sheet}} (\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture\+\_\+, int frameW, int frameH)
+\begin{DoxyCompactList}\small\item\em Construct a sprite sheet. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}{Get\+UVOffset}} (int frame\+Index) const
+\begin{DoxyCompactList}\small\item\em Get UV offset for a frame index. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a}{Get\+UVScale}} () const
+\begin{DoxyCompactList}\small\item\em Get UV scaling factor for a single frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943}{Get\+Texture}} () const
+\begin{DoxyCompactList}\small\item\em Access the backing texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_sheet_acc6bb35d4dc6fce692316cb745be99cf}{Get\+Frame\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Get total number of frames in the sheet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_sheet_a0656d33c5b84e8b82abb34a7107ca823}{Add\+Clip}} (const std\+::string \&name, const std\+::vector$<$ int $>$ \&frames, float frame\+Duration, bool looping=true)
+\begin{DoxyCompactList}\small\item\em Add a named animation clip. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_aaa4e33b8d39dc2f9b714a1d4152e5271}{Get\+Clip}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em Retrieve a clip by name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} $>$ \mbox{\hyperlink{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}{animation\+Clips}}
+\begin{DoxyCompactList}\small\item\em Map of clip name → \doxylink{struct_sprite_clip}{Sprite\+Clip}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}}
+\begin{DoxyCompactList}\small\item\em Backing texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frame\+Width}}
+\item 
+int \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frame\+Height}}
+\begin{DoxyCompactList}\small\item\em Frame dimensions in pixels. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}
+\item 
+int \mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}
+\begin{DoxyCompactList}\small\item\em Grid subdivision counts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{tex\+Width}} = 0
+\item 
+int \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{tex\+Height}} = 0
+\begin{DoxyCompactList}\small\item\em Backing texture dimensions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sprite_sheet_a27ca8f909b155bc0c630ecba9927f704}{flip\+UV\+\_\+X}} = false
+\begin{DoxyCompactList}\small\item\em Whether to flip horizontally. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sprite_sheet_add5883b0e807cabfa77edb84bcce8cf6}{flip\+UV\+\_\+Y}} = false
+\begin{DoxyCompactList}\small\item\em Whether to flip vertically. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a grid-\/based sprite sheet backed by a texture. 
+
+The \doxylink{class_sprite_sheet}{Sprite\+Sheet} divides a texture into frames of fixed width and height, supports querying UV offsets/scales for a given frame, and can store named animation clips referencing frame sequences. 
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00044}{44}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_sprite_sheet_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8}\index{SpriteSheet@{SpriteSheet}!SpriteSheet@{SpriteSheet}}
+\index{SpriteSheet@{SpriteSheet}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{SpriteSheet()}{SpriteSheet()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8} 
+Sprite\+Sheet\+::\+Sprite\+Sheet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture\+\_\+}{, }\item[{int}]{frameW}{, }\item[{int}]{frameH}{}\end{DoxyParamCaption})}
+
+
+
+Construct a sprite sheet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+} & Pointer to the backing texture. \\
+\hline
+{\em frameW} & Width of each frame in pixels. \\
+\hline
+{\em frameH} & Height of each frame in pixels. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ :\ \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}}(texture\_),\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}}(frameW),\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}}(frameH) }
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}}\ =\ texture\_-\/>\mbox{\hyperlink{class_texture_a7f5ee18c7466f904fa371bd97399a944}{GetWidth}}();}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}\ =\ texture\_-\/>\mbox{\hyperlink{class_texture_a289701837e23c9272509f377524ee8f2}{GetHeight}}();}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ =\ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}}\ /\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}};}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}\ =\ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}\ /\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ ==\ 0)\ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ =\ 1;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}\ ==\ 0)\ \mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}\ =\ 1;}
+\DoxyCodeLine{00012\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_sprite_sheet_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sprite_sheet_a0656d33c5b84e8b82abb34a7107ca823}\index{SpriteSheet@{SpriteSheet}!AddClip@{AddClip}}
+\index{AddClip@{AddClip}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{AddClip()}{AddClip()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a0656d33c5b84e8b82abb34a7107ca823} 
+void Sprite\+Sheet\+::\+Add\+Clip (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{const std\+::vector$<$ int $>$ \&}]{frames}{, }\item[{float}]{frame\+Duration}{, }\item[{bool}]{looping}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Add a named animation clip. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the clip. \\
+\hline
+{\em frames} & Frame indices included in the clip. \\
+\hline
+{\em frame\+Duration} & Duration per frame (seconds). \\
+\hline
+{\em looping} & Whether the clip should loop (default true). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ SpriteClip\ clip;}
+\DoxyCodeLine{00040\ \ \ \ \ clip.\mbox{\hyperlink{struct_sprite_clip_a64edc4b888946923170ee69fc00a75b3}{frameIndices}}\ =\ frames;}
+\DoxyCodeLine{00041\ \ \ \ \ clip.\mbox{\hyperlink{struct_sprite_clip_a523b8e6b2ae91841db8d0a695af55728}{frameDuration}}\ =\ frameDuration;}
+\DoxyCodeLine{00042\ \ \ \ \ clip.\mbox{\hyperlink{struct_sprite_clip_a0f0f0cf07d19607cef868cbd1090dbaf}{looping}}\ =\ looping;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}{animationClips}}[name]\ =\ clip;}
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_sheet_aaa4e33b8d39dc2f9b714a1d4152e5271}\index{SpriteSheet@{SpriteSheet}!GetClip@{GetClip}}
+\index{GetClip@{GetClip}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetClip()}{GetClip()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_aaa4e33b8d39dc2f9b714a1d4152e5271} 
+const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \texorpdfstring{$\ast$}{*} Sprite\+Sheet\+::\+Get\+Clip (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Retrieve a clip by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the clip. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{struct_sprite_clip}{Sprite\+Clip} if found, otherwise nullptr. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}{animationClips}}.find(name);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}{animationClips}}.end())}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&it-\/>second;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_sheet_acc6bb35d4dc6fce692316cb745be99cf}\index{SpriteSheet@{SpriteSheet}!GetFrameCount@{GetFrameCount}}
+\index{GetFrameCount@{GetFrameCount}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetFrameCount()}{GetFrameCount()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_acc6bb35d4dc6fce692316cb745be99cf} 
+int Sprite\+Sheet\+::\+Get\+Frame\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get total number of frames in the sheet. 
+
+\begin{DoxyReturn}{Returns}
+Count of frames (rows \texorpdfstring{$\ast$}{*} columns). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ *\ \mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}};}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943}\index{SpriteSheet@{SpriteSheet}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943} 
+\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} Sprite\+Sheet\+::\+Get\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Access the backing texture. 
+
+\begin{DoxyReturn}{Returns}
+Non-\/null texture pointer. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00076}{76}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}\index{SpriteSheet@{SpriteSheet}!GetUVOffset@{GetUVOffset}}
+\index{GetUVOffset@{GetUVOffset}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetUVOffset()}{GetUVOffset()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a} 
+glm\+::vec2 Sprite\+Sheet\+::\+Get\+UVOffset (\begin{DoxyParamCaption}\item[{int}]{frame\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get UV offset for a frame index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Index} & Index of the frame in the grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UV offset (top-\/left coordinate). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ frameIndex\ \%\ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ frameIndex\ /\ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ flippedRow\ =\ (\mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}\ -\/\ 1)\ -\/\ row;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ u\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(col\ *\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}})\ /\ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{float}\ v\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(flippedRow\ *\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}})\ /\ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ u,\ v\ \};}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a}\index{SpriteSheet@{SpriteSheet}!GetUVScale@{GetUVScale}}
+\index{GetUVScale@{GetUVScale}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetUVScale()}{GetUVScale()}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a} 
+glm\+::vec2 Sprite\+Sheet\+::\+Get\+UVScale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get UV scaling factor for a single frame. 
+
+\begin{DoxyReturn}{Returns}
+UV scale size relative to texture dimensions. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}})\ /\ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}})\ /\ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_sprite_sheet_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}\index{SpriteSheet@{SpriteSheet}!animationClips@{animationClips}}
+\index{animationClips@{animationClips}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{animationClips}{animationClips}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d} 
+std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}}$>$ Sprite\+Sheet\+::animation\+Clips\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map of clip name → \doxylink{struct_sprite_clip}{Sprite\+Clip}. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00104}{104}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}\index{SpriteSheet@{SpriteSheet}!columns@{columns}}
+\index{columns@{columns}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{columns}{columns}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553} 
+int Sprite\+Sheet\+::columns\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00107}{107}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_a27ca8f909b155bc0c630ecba9927f704}\index{SpriteSheet@{SpriteSheet}!flipUV\_X@{flipUV\_X}}
+\index{flipUV\_X@{flipUV\_X}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{flipUV\_X}{flipUV\_X}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a27ca8f909b155bc0c630ecba9927f704} 
+bool Sprite\+Sheet\+::flip\+UV\+\_\+X = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether to flip horizontally. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00110}{110}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_add5883b0e807cabfa77edb84bcce8cf6}\index{SpriteSheet@{SpriteSheet}!flipUV\_Y@{flipUV\_Y}}
+\index{flipUV\_Y@{flipUV\_Y}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{flipUV\_Y}{flipUV\_Y}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_add5883b0e807cabfa77edb84bcce8cf6} 
+bool Sprite\+Sheet\+::flip\+UV\+\_\+Y = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether to flip vertically. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00111}{111}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}\index{SpriteSheet@{SpriteSheet}!frameHeight@{frameHeight}}
+\index{frameHeight@{frameHeight}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{frameHeight}{frameHeight}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f} 
+int Sprite\+Sheet\+::frame\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Frame dimensions in pixels. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00106}{106}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}\index{SpriteSheet@{SpriteSheet}!frameWidth@{frameWidth}}
+\index{frameWidth@{frameWidth}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{frameWidth}{frameWidth}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506} 
+int Sprite\+Sheet\+::frame\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00106}{106}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}\index{SpriteSheet@{SpriteSheet}!rows@{rows}}
+\index{rows@{rows}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{rows}{rows}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b} 
+int Sprite\+Sheet\+::rows\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Grid subdivision counts. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00107}{107}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}\index{SpriteSheet@{SpriteSheet}!texHeight@{texHeight}}
+\index{texHeight@{texHeight}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{texHeight}{texHeight}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20} 
+int Sprite\+Sheet\+::tex\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Backing texture dimensions. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00108}{108}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}\index{SpriteSheet@{SpriteSheet}!texture@{texture}}
+\index{texture@{texture}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38} 
+\mbox{\hyperlink{class_texture}{Texture}}\texorpdfstring{$\ast$}{*} Sprite\+Sheet\+::texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Backing texture. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00105}{105}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}\index{SpriteSheet@{SpriteSheet}!texWidth@{texWidth}}
+\index{texWidth@{texWidth}!SpriteSheet@{SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{texWidth}{texWidth}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1} 
+int Sprite\+Sheet\+::tex\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00108}{108}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_animation_8h}{Animation.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_animation_8cpp}{Animation.\+cpp}}\end{DoxyCompactItemize}

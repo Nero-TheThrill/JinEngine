@@ -3,27 +3,42 @@
 \mbox{\hyperlink{_debug_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_debug_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG\_}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00029}00029\ \textcolor{preprocessor}{\#define\ FILENAME\ (strrchr(\_\_FILE\_\_,\ '\(\backslash\)\(\backslash\)')\ ?\ strrchr(\_\_FILE\_\_,\ '\(\backslash\)\(\backslash\)')\ +\ 1\ :\ \_\_FILE\_\_)}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00030}00030\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ SNAKE\_LOG(x)\ std::cout\ <<\ "{}[LOG]\ "{}\ <<\ FILENAME\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{}\ -\/\ "{}\ <<\ x\ <<\ std::endl}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00036}00036\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00041}00041\ \textcolor{preprocessor}{\#define\ SNAKE\_ERR(x)\ std::cerr\ <<\ "{}[ERR]\ "{}\ <<\ FILENAME\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{}\ -\/\ "{}\ <<\ x\ <<\ std::endl}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00042}00042\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ SNAKE\_WRN(x)\ std::cerr\ <<\ "{}[WRN]\ "{}\ <<\ FILENAME\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{}\ -\/\ "{}\ <<\ x\ <<\ std::endl}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00049}00049\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00050}00050\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00051}00051\ \ \textcolor{comment}{//\ In\ release\ mode,\ these\ do\ nothing.}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00052}\mbox{\hyperlink{_debug_8h_a781ebc1f48f84958e0e53b493206116b}{00052}}\ \textcolor{preprocessor}{\#define\ SNAKE\_LOG(x)\ do\ \{\}\ while\ (0)}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00053}\mbox{\hyperlink{_debug_8h_a4bea2ba782ca7e8f40195f8827c71ecf}{00053}}\ \textcolor{preprocessor}{\#define\ SNAKE\_ERR(x)\ do\ \{\}\ while\ (0)}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00054}\mbox{\hyperlink{_debug_8h_a76dcc2dada341abb94ed74214eca553a}{00054}}\ \textcolor{preprocessor}{\#define\ SNAKE\_WRN(x)\ do\ \{\}\ while\ (0)}}
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00055}00055\ }
-\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00056}00056\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00004}00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ FILENAME\ (strrchr(\_\_FILE\_\_,\ '\(\backslash\)\(\backslash\)')\ ?\ strrchr(\_\_FILE\_\_,\ '\(\backslash\)\(\backslash\)')\ +\ 1\ :\ \_\_FILE\_\_)}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00021}00021\ \textcolor{preprocessor}{\#define\ SNAKE\_LOG(x)\ \ \ do\ \{\ std::ostringstream\ oss;\ oss\ <<\ x;\ DebugLogger::Log(oss.str(),\ FILENAME,\ \_\_LINE\_\_);\ \}\ while(0)}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ SNAKE\_WRN(x)\ \ \ do\ \{\ std::ostringstream\ oss;\ oss\ <<\ x;\ DebugLogger::Warn(oss.str(),\ FILENAME,\ \_\_LINE\_\_);\ \}\ while(0)}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ SNAKE\_ERR(x)\ \ \ do\ \{\ std::ostringstream\ oss;\ oss\ <<\ x;\ DebugLogger::Error(oss.str(),\ FILENAME,\ \_\_LINE\_\_);\ \}\ while(0)}}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00050}00050\ \textcolor{keyword}{enum\ class}\ LogLevel}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754}{None}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00053}00053\ \ \ \ \ Error,\ \ \ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00054}00054\ \ \ \ \ Warning,\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00055}00055\ \ \ \ \ Log,\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00056}00056\ \ \ \ \ All\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00057}00057\ \};}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00068}00068\ \textcolor{keyword}{class\ }DebugLogger}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00070}00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetLogLevel(LogLevel\ level);}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{static}\ LogLevel\ GetLogLevel();}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Log(\textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Warn(\textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Error(\textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00107}00107\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{static}\ LogLevel\ currentLevel;\ }
+\DoxyCodeLine{\Hypertarget{_debug_8h_source_l00109}00109\ \};}
 
 \end{DoxyCode}

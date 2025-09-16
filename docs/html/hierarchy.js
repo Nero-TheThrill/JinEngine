@@ -1,0 +1,65 @@
+var hierarchy =
+[
+    [ "AsyncResourceLoader", "class_async_resource_loader.html", null ],
+    [ "Camera2D", "class_camera2_d.html", null ],
+    [ "RenderManager::CameraAndWidthHash", "struct_render_manager_1_1_camera_and_width_hash.html", null ],
+    [ "CameraManager", "class_camera_manager.html", null ],
+    [ "Collider", "class_collider.html", [
+      [ "AABBCollider", "class_a_a_b_b_collider.html", null ],
+      [ "CircleCollider", "class_circle_collider.html", null ]
+    ] ],
+    [ "CollisionGroupRegistry", "class_collision_group_registry.html", null ],
+    [ "EngineContext", "struct_engine_context.html", null ],
+    [ "EngineTimer", "struct_engine_timer.html", null ],
+    [ "Font", "class_font.html", null ],
+    [ "FontJob", "struct_font_job.html", null ],
+    [ "FontResult", "struct_font_result.html", null ],
+    [ "FrustumCuller", "class_frustum_culler.html", null ],
+    [ "GameState", "class_game_state.html", [
+      [ "LoadingState", "class_loading_state.html", null ]
+    ] ],
+    [ "Glyph", "struct_glyph.html", null ],
+    [ "std::hash< InstanceBatchKey >", "structstd_1_1hash_3_01_instance_batch_key_01_4.html", null ],
+    [ "ComputeMaterial::ImageBind", "struct_compute_material_1_1_image_bind.html", null ],
+    [ "InputManager", "class_input_manager.html", null ],
+    [ "InstanceBatchKey", "struct_instance_batch_key.html", null ],
+    [ "LineInstance", "struct_line_instance.html", null ],
+    [ "Material", "class_material.html", [
+      [ "ComputeMaterial", "class_compute_material.html", null ]
+    ] ],
+    [ "Mesh", "class_mesh.html", null ],
+    [ "Object", "class_object.html", [
+      [ "GameObject", "class_game_object.html", null ],
+      [ "TextObject", "class_text_object.html", null ]
+    ] ],
+    [ "ObjectManager", "class_object_manager.html", null ],
+    [ "RenderLayerManager", "class_render_layer_manager.html", null ],
+    [ "RenderManager", "class_render_manager.html", null ],
+    [ "Shader", "class_shader.html", null ],
+    [ "ShaderFile", "struct_shader_file.html", null ],
+    [ "ShaderJob", "struct_shader_job.html", null ],
+    [ "ShaderResult", "struct_shader_result.html", null ],
+    [ "ShaderSource", "struct_shader_source.html", null ],
+    [ "SNAKE_Engine", "class_s_n_a_k_e___engine.html", null ],
+    [ "SoundManager::SoundInfo", "struct_sound_manager_1_1_sound_info.html", null ],
+    [ "SoundManager::SoundInstanceMA", "struct_sound_manager_1_1_sound_instance_m_a.html", null ],
+    [ "SoundJob", "struct_sound_job.html", null ],
+    [ "SoundManager", "class_sound_manager.html", null ],
+    [ "SoundResult", "struct_sound_result.html", null ],
+    [ "SpatialHashGrid", "class_spatial_hash_grid.html", null ],
+    [ "SpriteAnimator", "class_sprite_animator.html", null ],
+    [ "SpriteClip", "struct_sprite_clip.html", null ],
+    [ "SpriteFrame", "struct_sprite_frame.html", null ],
+    [ "SpriteSheet", "class_sprite_sheet.html", null ],
+    [ "SpriteSheetJob", "struct_sprite_sheet_job.html", null ],
+    [ "StateManager", "class_state_manager.html", null ],
+    [ "TextInstance", "struct_text_instance.html", null ],
+    [ "Texture", "class_texture.html", null ],
+    [ "TextureJob", "struct_texture_job.html", null ],
+    [ "TextureResult", "struct_texture_result.html", null ],
+    [ "TextureSettings", "struct_texture_settings.html", null ],
+    [ "Transform2D", "class_transform2_d.html", null ],
+    [ "Vec2Hash", "struct_vec2_hash.html", null ],
+    [ "Vertex", "struct_vertex.html", null ],
+    [ "WindowManager", "class_window_manager.html", null ]
+];

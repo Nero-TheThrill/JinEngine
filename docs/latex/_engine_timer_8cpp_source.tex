@@ -3,7 +3,7 @@
 \mbox{\hyperlink{_engine_timer_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_timer_8h}{EngineTimer.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <glfw3/glfw3.h>}}
+\DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}glfw3.h"{}}}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00003}00003\ }
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00004}\mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{00004}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{EngineTimer::Start}}()}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00005}00005\ \{}
@@ -25,7 +25,7 @@
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00021}00021\ }
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00022}\mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{00022}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{EngineTimer::ShouldUpdateFPS}}(\textcolor{keywordtype}{float}\&\ outFPS)}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00023}00023\ \{}
-\DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ >=\ 1.0f)}
+\DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ >=\ 0.3f)}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00025}00025\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ outFPS\ =\ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ /\ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}};}
 \DoxyCodeLine{\Hypertarget{_engine_timer_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ =\ 0.0f;}

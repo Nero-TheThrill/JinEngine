@@ -1,10 +1,5 @@
 \doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Engine.h File Reference}
 \hypertarget{_engine_8h}{}\label{_engine_8h}\index{Project/SNAKE\_Engine/Public/Engine.h@{Project/SNAKE\_Engine/Public/Engine.h}}
-
-
-Unified include file for all core engine modules.  
-
-
 {\ttfamily \#include "{}SNAKE\+\_\+\+Engine.\+h"{}}\newline
 {\ttfamily \#include "{}Game\+State.\+h"{}}\newline
 {\ttfamily \#include "{}Engine\+Context.\+h"{}}\newline
@@ -13,24 +8,24 @@ Unified include file for all core engine modules.
 {\ttfamily \#include "{}State\+Manager.\+h"{}}\newline
 {\ttfamily \#include "{}Object\+Manager.\+h"{}}\newline
 {\ttfamily \#include "{}Render\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Sound\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Camera\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Render\+Layer\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Engine\+Timer.\+h"{}}\newline
+{\ttfamily \#include "{}Object.\+h"{}}\newline
+{\ttfamily \#include "{}Text\+Object.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Object.\+h"{}}\newline
 {\ttfamily \#include "{}Texture.\+h"{}}\newline
 {\ttfamily \#include "{}Shader.\+h"{}}\newline
 {\ttfamily \#include "{}Transform.\+h"{}}\newline
 {\ttfamily \#include "{}Material.\+h"{}}\newline
 {\ttfamily \#include "{}Mesh.\+h"{}}\newline
-{\ttfamily \#include "{}Engine\+Timer.\+h"{}}\newline
-{\ttfamily \#include "{}Camera\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Font.\+h"{}}\newline
 {\ttfamily \#include "{}Camera2\+D.\+h"{}}\newline
-{\ttfamily \#include "{}../\+Third\+Party/glm/glm.\+hpp"{}}\newline
-{\ttfamily \#include "{}../\+Third\+Party/glm/gtc/matrix\+\_\+transform.\+hpp"{}}\newline
-
-
-\doxysubsection{Detailed Description}
-Unified include file for all core engine modules. 
-
-Aggregates commonly used engine headers into a single location for convenience. This is intended for source files (.cpp) that require broad access to engine features, including subsystems such as rendering, input, game state, and math utilities.
-
-Recommended for use in application entry points, game state files, or quick prototypes. Avoid including this in header files to prevent unnecessary coupling and compilation overhead. 
-
-Definition in file \mbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
-
+{\ttfamily \#include "{}Collider.\+h"{}}\newline
+{\ttfamily \#include "{}Animation.\+h"{}}\newline
+{\ttfamily \#include "{}Async\+Resource\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}Loading\+State.\+h"{}}\newline
+{\ttfamily \#include "{}Debug.\+h"{}}\newline
+{\ttfamily \#include "{}glm.\+hpp"{}}\newline
+{\ttfamily \#include "{}gtc/matrix\+\_\+transform.\+hpp"{}}\newline

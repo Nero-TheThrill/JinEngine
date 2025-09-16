@@ -1,17 +1,30 @@
 \doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Private/\+Texture.cpp File Reference}
 \hypertarget{_texture_8cpp}{}\label{_texture_8cpp}\index{Project/SNAKE\_Engine/Private/Texture.cpp@{Project/SNAKE\_Engine/Private/Texture.cpp}}
-{\ttfamily \#include "{}Render\+Manager.\+h"{}}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
-{\ttfamily \#include "{}glad/gl.\+h"{}}\newline
-{\ttfamily \#include "{}Debug.\+h"{}}\newline
+{\ttfamily \#include "{}Engine.\+h"{}}\newline
+{\ttfamily \#include "{}gl.\+h"{}}\newline
 {\ttfamily \#include "{}stb\+\_\+image.\+h"{}}\newline
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{_texture_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}{STB\+\_\+\+IMAGE\+\_\+\+IMPLEMENTATION}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} \mbox{\hyperlink{_texture_8cpp_ab75b69b03a8f2522b42f32b72db5bed2}{Convert\+Min\+Filter}} (\mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6}{Texture\+Min\+Filter}} filter)
+\item 
+static \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} \mbox{\hyperlink{_texture_8cpp_af62e9ef5b37a3dfea0d3efe5097e7510}{Convert\+Mag\+Filter}} (\mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915}{Texture\+Mag\+Filter}} filter)
+\item 
+static \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} \mbox{\hyperlink{_texture_8cpp_a28997e2d8d29d407c701cacaab7ca7ad}{Convert\+Wrap}} (\mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bf}{Texture\+Wrap}} wrap)
+\item 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} \mbox{\hyperlink{_texture_8cpp_a5452d1498009851a733aba8e0484032b}{Convert\+Access}} (\mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{Image\+Access}} access)
+\item 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} \mbox{\hyperlink{_texture_8cpp_ad44748ef31a8b474ad37b2347bae5ee7}{Convert\+Format}} (\mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{Image\+Format}} fmt)
+\end{DoxyCompactItemize}
 
 
+\label{doc-define-members}
+\Hypertarget{_texture_8cpp_doc-define-members}
 \doxysubsection{Macro Definition Documentation}
 \Hypertarget{_texture_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}\index{Texture.cpp@{Texture.cpp}!STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}}
 \index{STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}!Texture.cpp@{Texture.cpp}}
@@ -21,5 +34,144 @@
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
 
+
+
+\label{doc-func-members}
+\Hypertarget{_texture_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_texture_8cpp_a5452d1498009851a733aba8e0484032b}\index{Texture.cpp@{Texture.cpp}!ConvertAccess@{ConvertAccess}}
+\index{ConvertAccess@{ConvertAccess}!Texture.cpp@{Texture.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertAccess()}{ConvertAccess()}}
+{\footnotesize\ttfamily \label{_texture_8cpp_a5452d1498009851a733aba8e0484032b} 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} Convert\+Access (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{Image\+Access}}}]{access}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{switch}\ (access)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53fa131fb182a881796e7606ed6da27f1197}{ImageAccess::ReadOnly}}:\ \ \textcolor{keywordflow}{return}\ GL\_READ\_ONLY;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53fa53dfe5089ae9e65887cb0215cb0098f5}{ImageAccess::WriteOnly}}:\ \textcolor{keywordflow}{return}\ GL\_WRITE\_ONLY;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53fa70a2a84088d405a2e3f1e3accaa16723}{ImageAccess::ReadWrite}}:\ \textcolor{keywordflow}{return}\ GL\_READ\_WRITE;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_READ\_ONLY;}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+\Hypertarget{_texture_8cpp_ad44748ef31a8b474ad37b2347bae5ee7}\index{Texture.cpp@{Texture.cpp}!ConvertFormat@{ConvertFormat}}
+\index{ConvertFormat@{ConvertFormat}!Texture.cpp@{Texture.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertFormat()}{ConvertFormat()}}
+{\footnotesize\ttfamily \label{_texture_8cpp_ad44748ef31a8b474ad37b2347bae5ee7} 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} Convert\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{Image\+Format}}}]{fmt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{switch}\ (fmt)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cacfff813d86d447fa2a9c858650ebbb90}{ImageFormat::R8}}:\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_R8;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca0367a93b9e3e7aa2fbe9802d80298e46}{ImageFormat::RG8}}:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_RG8;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cab4b279046a02077466fa26cabb00c642}{ImageFormat::RGBA8}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_RGBA8;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca8dfbaada0d68227f5c299c2aa637df68}{ImageFormat::R16F}}:\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_R16F;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cad28539b874a2bc4c5d40f49b375af474}{ImageFormat::RG16F}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_RG16F;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5caa29d843695056f9c171a9eb702d6910a}{ImageFormat::RGBA16F}}:\ \ \textcolor{keywordflow}{return}\ GL\_RGBA16F;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5caca70b53fb0610461a2327973614a76ce}{ImageFormat::R32F}}:\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_R32F;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cab968b93cd3c34fc9583050ce7e267394}{ImageFormat::RG32F}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_RG32F;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca703a7a81e586669c930e3dcaf3e8c428}{ImageFormat::RGBA32F}}:\ \ \textcolor{keywordflow}{return}\ GL\_RGBA32F;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca477722a31a67b4a8f4bdb09e796e343b}{ImageFormat::R8UI}}:\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_R8UI;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca65264dd5d010ab021cbec10f07f97ed5}{ImageFormat::RG8UI}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_RG8UI;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5caeb843f86a572765b9be8a71bd9563bea}{ImageFormat::RGBA8UI}}:\ \ \textcolor{keywordflow}{return}\ GL\_RGBA8UI;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5ca2c102dbf18ef5770d3beb5385661c1c2}{ImageFormat::R32UI}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_R32UI;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cac16ead63f9b07b5c97635edac05412cd}{ImageFormat::RG32UI}}:\ \ \ \textcolor{keywordflow}{return}\ GL\_RG32UI;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5cac050956335d883e2f6ed07cc6b0c90d8}{ImageFormat::RGBA32UI}}:\ \textcolor{keywordflow}{return}\ GL\_RGBA32UI;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_RGBA8;}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+\Hypertarget{_texture_8cpp_af62e9ef5b37a3dfea0d3efe5097e7510}\index{Texture.cpp@{Texture.cpp}!ConvertMagFilter@{ConvertMagFilter}}
+\index{ConvertMagFilter@{ConvertMagFilter}!Texture.cpp@{Texture.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertMagFilter()}{ConvertMagFilter()}}
+{\footnotesize\ttfamily \label{_texture_8cpp_af62e9ef5b37a3dfea0d3efe5097e7510} 
+\mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} Convert\+Mag\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915}{Texture\+Mag\+Filter}}}]{filter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{switch}\ (filter)}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915a60494f02d440f316319dd0fad40ad007}{TextureMagFilter::Nearest}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_NEAREST;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915a32a843da6ea40ab3b17a3421ccdf671b}{TextureMagFilter::Linear}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_LINEAR;}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_LINEAR;}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+\Hypertarget{_texture_8cpp_ab75b69b03a8f2522b42f32b72db5bed2}\index{Texture.cpp@{Texture.cpp}!ConvertMinFilter@{ConvertMinFilter}}
+\index{ConvertMinFilter@{ConvertMinFilter}!Texture.cpp@{Texture.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertMinFilter()}{ConvertMinFilter()}}
+{\footnotesize\ttfamily \label{_texture_8cpp_ab75b69b03a8f2522b42f32b72db5bed2} 
+\mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} Convert\+Min\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6}{Texture\+Min\+Filter}}}]{filter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{switch}\ (filter)}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a60494f02d440f316319dd0fad40ad007}{TextureMinFilter::Nearest}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_NEAREST;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a32a843da6ea40ab3b17a3421ccdf671b}{TextureMinFilter::Linear}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_LINEAR;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a35d97e4a37fa3a0d76c692f3e318599b}{TextureMinFilter::NearestMipmapNearest}}:\ \textcolor{keywordflow}{return}\ GL\_NEAREST\_MIPMAP\_NEAREST;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6ac164897273ad7f6d61626f5610d86425}{TextureMinFilter::LinearMipmapNearest}}:\ \ \textcolor{keywordflow}{return}\ GL\_LINEAR\_MIPMAP\_NEAREST;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a9a79df5c07e4d2a2875689f608b50529}{TextureMinFilter::NearestMipmapLinear}}:\ \ \textcolor{keywordflow}{return}\ GL\_NEAREST\_MIPMAP\_LINEAR;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a1173bd3987b1e185d86b9c3fe1b8bd72}{TextureMinFilter::LinearMipmapLinear}}:\ \ \ \textcolor{keywordflow}{return}\ GL\_LINEAR\_MIPMAP\_LINEAR;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_LINEAR;}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\Hypertarget{_texture_8cpp_a28997e2d8d29d407c701cacaab7ca7ad}\index{Texture.cpp@{Texture.cpp}!ConvertWrap@{ConvertWrap}}
+\index{ConvertWrap@{ConvertWrap}!Texture.cpp@{Texture.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertWrap()}{ConvertWrap()}}
+{\footnotesize\ttfamily \label{_texture_8cpp_a28997e2d8d29d407c701cacaab7ca7ad} 
+\mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} Convert\+Wrap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bf}{Texture\+Wrap}}}]{wrap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{switch}\ (wrap)}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfa74556551231333c36debc3d373261134}{TextureWrap::ClampToEdge}}:\ \ \ \ \textcolor{keywordflow}{return}\ GL\_CLAMP\_TO\_EDGE;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfa7020426cfb0a204051be4b3053d2acc8}{TextureWrap::Repeat}}:\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_REPEAT;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfa12ce4a5977988214a6b098b8cb0bf695}{TextureWrap::MirroredRepeat}}:\ \textcolor{keywordflow}{return}\ GL\_MIRRORED\_REPEAT;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfafb07f88f6f11cc5ab9c951290716f147}{TextureWrap::ClampToBorder}}:\ \ \textcolor{keywordflow}{return}\ GL\_CLAMP\_TO\_BORDER;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_CLAMP\_TO\_EDGE;}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}

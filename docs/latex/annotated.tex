@@ -1,25 +1,61 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
-\item\contentsline{section}{\mbox{\hyperlink{class_camera2_d}{Camera2D}} \\*A simple 2D orthographic camera for screen-\/space rendering }{\pageref{class_camera2_d}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \\*Manages multiple cameras within a \doxylink{class_game_state}{Game\+State}. Cameras are registered and referenced by string tags. This manager owns all cameras and handles their lifetime }{\pageref{class_camera_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \\*Shared access point to all major engine systems }{\pageref{struct_engine_context}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_engine_timer}{Engine\+Timer}} \\*Tracks frame timing and calculates delta time and FPS }{\pageref{struct_engine_timer}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_frustum_culler}{Frustum\+Culler}} \\*Utility class for view frustum culling based on 2D bounding circles }{\pageref{class_frustum_culler}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_game_object}{Game\+Object}} \\*Base interface for all game world objects }{\pageref{class_game_object}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_game_state}{Game\+State}} \\*Abstract base class representing a game state or scene }{\pageref{class_game_state}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structstd_1_1hash_3_01_instance_batch_key_01_4}{std\+::hash$<$ Instance\+Batch\+Key $>$}} }{\pageref{structstd_1_1hash_3_01_instance_batch_key_01_4}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_input_manager}{Input\+Manager}} \\*Handles per-\/frame keyboard and mouse input polling using GLFW }{\pageref{class_input_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}} \\*Represents a unique pair of mesh and material for batching }{\pageref{struct_instance_batch_key}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_material}{Material}} \\*Represents a GPU-\/bound material used to render objects }{\pageref{class_material}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_mesh}{Mesh}} \\*Represents a GPU-\/side 2D mesh including vertex and optional index data }{\pageref{class_mesh}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \\*Manages the lifecycle, visibility, and rendering of Game\+Objects in a scene }{\pageref{class_object_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_render_layer_manager}{Render\+Layer\+Manager}} \\*Manages custom render layer names and their numeric IDs }{\pageref{class_render_layer_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \\*Central renderer and asset registry for GPU resources }{\pageref{class_render_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_shader}{Shader}} \\*Represents an Open\+GL shader program composed of multiple shader stages }{\pageref{class_shader}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_s_n_a_k_e___engine}{SNAKE\+\_\+\+Engine}} \\*Main entry point and system coordinator for the entire engine lifecycle }{\pageref{class_s_n_a_k_e___engine}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_state_manager}{State\+Manager}} \\*Manages the current and next game states }{\pageref{class_state_manager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_texture}{Texture}} \\*Represents an Open\+GL 2D texture loaded from file }{\pageref{class_texture}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \\*Stores texture sampling behavior including filter and wrap modes }{\pageref{struct_texture_settings}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_transform2_d}{Transform2D}} \\*Represents a 2D spatial transform with position, rotation, and scale }{\pageref{class_transform2_d}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_window_manager}{Window\+Manager}} \\*Handles creation and control of the main GLFW application window }{\pageref{class_window_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \\*Axis-\/aligned bounding box collider centered at owner plus offset }{\pageref{class_a_a_b_b_collider}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_async_resource_loader}{Async\+Resource\+Loader}} \\*Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds) }{\pageref{class_async_resource_loader}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_camera2_d}{Camera2D}} \\*A simple 2D camera for managing position, zoom, and screen size }{\pageref{class_camera2_d}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_render_manager_1_1_camera_and_width_hash}{Render\+Manager\+::\+Camera\+And\+Width\+Hash}} }{\pageref{struct_render_manager_1_1_camera_and_width_hash}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \\*Manages multiple 2D cameras and the active camera selection }{\pageref{class_camera_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \\*Circle collider with radius centered at owner\textquotesingle{}s position plus offset }{\pageref{class_circle_collider}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_collider}{Collider}} \\*Abstract base for 2D colliders attached to an \doxylink{class_object}{Object} }{\pageref{class_collider}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_collision_group_registry}{Collision\+Group\+Registry}} \\*Registry mapping collision group tags to bitmasks }{\pageref{class_collision_group_registry}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_compute_material}{Compute\+Material}} \\*\doxylink{class_material}{Material} subtype for compute shaders (image load/store) }{\pageref{class_compute_material}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \\*Central context holding pointers to all core engine subsystems }{\pageref{struct_engine_context}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_engine_timer}{Engine\+Timer}} }{\pageref{struct_engine_timer}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_font}{Font}} \\*\doxylink{class_font}{Font} class for text rendering using Free\+Type }{\pageref{class_font}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_font_job}{Font\+Job}} \\*Job for asynchronously loading a font }{\pageref{struct_font_job}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_font_result}{Font\+Result}} \\*Result of a font load request }{\pageref{struct_font_result}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_frustum_culler}{Frustum\+Culler}} \\*View-\/frustum culling helper for 2D camera }{\pageref{class_frustum_culler}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_game_object}{Game\+Object}} \\*Default implementation of a basic in-\/game object }{\pageref{class_game_object}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_game_state}{Game\+State}} \\*Abstract base class representing a game state in the engine }{\pageref{class_game_state}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_glyph}{Glyph}} \\*\doxylink{struct_glyph}{Glyph} information for a single character }{\pageref{struct_glyph}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structstd_1_1hash_3_01_instance_batch_key_01_4}{std\+::hash$<$ Instance\+Batch\+Key $>$}} \\*Custom hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} }{\pageref{structstd_1_1hash_3_01_instance_batch_key_01_4}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_compute_material_1_1_image_bind}{Compute\+Material\+::\+Image\+Bind}} \\*Internal structure for image bindings }{\pageref{struct_compute_material_1_1_image_bind}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_input_manager}{Input\+Manager}} \\*Handles keyboard, mouse, and scroll input events }{\pageref{class_input_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}} \\*Key structure used for grouping objects into instanced batches }{\pageref{struct_instance_batch_key}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_line_instance}{Line\+Instance}} \\*One line segment for debug rendering }{\pageref{struct_line_instance}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_loading_state}{Loading\+State}} \\*Transitional game state that asynchronously loads resources before entering the next state }{\pageref{class_loading_state}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_material}{Material}} \\*High-\/level wrapper that binds a shader with uniforms and textures }{\pageref{class_material}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_mesh}{Mesh}} \\*GPU-\/backed draw-\/able geometry (VAO/\+VBO/\+EBO) with optional instancing }{\pageref{class_mesh}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_object}{Object}} \\*Base class for all renderable and updatable objects }{\pageref{class_object}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \\*Owns, updates, draws, and queries scene objects }{\pageref{class_object_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_render_layer_manager}{Render\+Layer\+Manager}} \\*Manages mapping between custom render-\/layer names and numeric layer IDs }{\pageref{class_render_layer_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \\*Central rendering subsystem\+: resources, frame lifecycle, and draw submission }{\pageref{class_render_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_shader}{Shader}} \\*Encapsulates an Open\+GL shader program }{\pageref{class_shader}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_shader_file}{Shader\+File}} \\*A single shader source file description }{\pageref{struct_shader_file}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_shader_job}{Shader\+Job}} \\*Job for asynchronously loading a shader program from disk }{\pageref{struct_shader_job}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_shader_result}{Shader\+Result}} \\*Result of an asynchronous shader load }{\pageref{struct_shader_result}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_shader_source}{Shader\+Source}} \\*In-\/memory shader source after load }{\pageref{struct_shader_source}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_s_n_a_k_e___engine}{SNAKE\+\_\+\+Engine}} \\*Core engine class that manages all subsystems and the main loop }{\pageref{class_s_n_a_k_e___engine}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{Sound\+Manager\+::\+Sound\+Info}} }{\pageref{struct_sound_manager_1_1_sound_info}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Manager\+::\+Sound\+Instance\+MA}} }{\pageref{struct_sound_manager_1_1_sound_instance_m_a}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sound_job}{Sound\+Job}} \\*Job for asynchronously loading a sound file }{\pageref{struct_sound_job}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} \\*Manages sound resources and playback through miniaudio }{\pageref{class_sound_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sound_result}{Sound\+Result}} \\*Result of a sound load request }{\pageref{struct_sound_result}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_spatial_hash_grid}{Spatial\+Hash\+Grid}} \\*Uniform spatial hash grid for broad-\/phase collision candidate generation }{\pageref{class_spatial_hash_grid}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} \\*Time-\/based animator for playing sprite sheet frames and clips }{\pageref{class_sprite_animator}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \\*Represents an animation clip within a sprite sheet }{\pageref{struct_sprite_clip}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sprite_frame}{Sprite\+Frame}} \\*Represents a single frame of a sprite sheet }{\pageref{struct_sprite_frame}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \\*Represents a grid-\/based sprite sheet backed by a texture }{\pageref{class_sprite_sheet}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job}} \\*Job for asynchronously creating a sprite sheet from a texture }{\pageref{struct_sprite_sheet_job}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_state_manager}{State\+Manager}} \\*Manages game states and their transitions }{\pageref{class_state_manager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_text_instance}{Text\+Instance}} \\*Holds text rendering parameters for a text instance }{\pageref{struct_text_instance}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_text_object}{Text\+Object}} \\*Scene object specialized for rendering 2D text }{\pageref{class_text_object}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_texture}{Texture}} \\*Encapsulates an Open\+GL texture object }{\pageref{class_texture}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_texture_job}{Texture\+Job}} \\*Job for asynchronously loading a texture from disk }{\pageref{struct_texture_job}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_texture_result}{Texture\+Result}} \\*Result of an asynchronous texture load }{\pageref{struct_texture_result}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \\*Configuration structure for texture creation }{\pageref{struct_texture_settings}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_transform2_d}{Transform2D}} \\*Represents a 2D transform with position, rotation, scale, and depth }{\pageref{class_transform2_d}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}} \\*Hash functor for glm\+::ivec2 to use in unordered containers }{\pageref{struct_vec2_hash}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_vertex}{Vertex}} \\*\doxylink{struct_vertex}{Vertex} format used by \doxylink{class_mesh}{Mesh} }{\pageref{struct_vertex}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_window_manager}{Window\+Manager}} \\*Manages the application window and its properties }{\pageref{class_window_manager}}{}
 \end{DoxyCompactList}

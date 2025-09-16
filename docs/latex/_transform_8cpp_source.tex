@@ -2,21 +2,19 @@
 \hypertarget{_transform_8cpp_source}{}\label{_transform_8cpp_source}\index{Project/SNAKE\_Engine/Private/Transform.cpp@{Project/SNAKE\_Engine/Private/Transform.cpp}}
 \mbox{\hyperlink{_transform_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_8h}{Transform.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../ThirdParty/glm/ext/matrix\_transform.hpp"{}}}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00004}00004\ }
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00005}\mbox{\hyperlink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{00005}}\ glm::mat4\&\ \mbox{\hyperlink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Transform2D::GetMatrix}}()}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00006}00006\ \{}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}})}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00008}00008\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ glm::mat4\ t\ =\ glm::translate(glm::mat4(1.0f),\ glm::vec3(\mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}},\ 0.0f));}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ glm::mat4\ r\ =\ glm::rotate(glm::mat4(1.0f),\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}},\ glm::vec3(0,\ 0,\ 1));}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ glm::mat4\ s\ =\ glm::scale(glm::mat4(1.0f),\ glm::vec3(\mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}},\ 1.0f));}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}}\ =\ t\ *\ r\ *\ s;}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00014}00014\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}};}
-\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00003}\mbox{\hyperlink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{00003}}\ glm::mat4\&\ \mbox{\hyperlink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Transform2D::GetMatrix}}()}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}})}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00006}00006\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00007}00007\ \ \ \ \ \ \ \ \ glm::mat4\ t\ =\ glm::translate(glm::mat4(1.0f),\ glm::vec3(\mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}},\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00008}00008\ \ \ \ \ \ \ \ \ glm::mat4\ r\ =\ glm::rotate(glm::mat4(1.0f),\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}},\ glm::vec3(0,\ 0,\ 1));}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ glm::mat4\ s\ =\ glm::scale(glm::mat4(1.0f),\ glm::vec3(\mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}},\ 1.0f));}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}}\ =\ t\ *\ r\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}};}
+\DoxyCodeLine{\Hypertarget{_transform_8cpp_source_l00014}00014\ \}}
 
 \end{DoxyCode}

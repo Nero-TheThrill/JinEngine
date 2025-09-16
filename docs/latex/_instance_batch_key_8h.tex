@@ -1,26 +1,26 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Private/\+Instance\+Batch\+Key.h File Reference}
-\hypertarget{_instance_batch_key_8h}{}\label{_instance_batch_key_8h}\index{Project/SNAKE\_Engine/Private/InstanceBatchKey.h@{Project/SNAKE\_Engine/Private/InstanceBatchKey.h}}
-{\ttfamily \#include "{}Mesh.\+h"{}}\newline
-{\ttfamily \#include "{}Material.\+h"{}}\newline
+\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Instance\+Batch\+Key.h File Reference}
+\hypertarget{_instance_batch_key_8h}{}\label{_instance_batch_key_8h}\index{Project/SNAKE\_Engine/Public/InstanceBatchKey.h@{Project/SNAKE\_Engine/Public/InstanceBatchKey.h}}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}
-\begin{DoxyCompactList}\small\item\em Represents a unique pair of mesh and material for batching. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Key structure used for grouping objects into instanced batches. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structstd_1_1hash_3_01_instance_batch_key_01_4}{std\+::hash$<$ Instance\+Batch\+Key $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Custom hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacestd}{std}}
-\begin{DoxyCompactList}\small\item\em Custom hash function for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} to support use in unordered\+\_\+map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}{Instanced\+Batch\+Map}} = std\+::unordered\+\_\+map$<$int, std\+::unordered\+\_\+map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$
-\begin{DoxyCompactList}\small\item\em Type alias for a two-\/level map used to group objects for instanced rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Map type for grouping objects by layer and batch key. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\label{doc-typedef-members}
+\Hypertarget{_instance_batch_key_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}\index{InstanceBatchKey.h@{InstanceBatchKey.h}!InstancedBatchMap@{InstancedBatchMap}}
 \index{InstancedBatchMap@{InstancedBatchMap}!InstanceBatchKey.h@{InstanceBatchKey.h}}
@@ -30,13 +30,11 @@ using \mbox{\hyperlink{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}
 
 
 
-Type alias for a two-\/level map used to group objects for instanced rendering. 
+Map type for grouping objects by layer and batch key. 
 
-Groups objects by\+:
-\begin{DoxyItemize}
-\item Render layer (int)
-\item Batch key (mesh + material) 
-\end{DoxyItemize}
+The outer map is keyed by layer index (int). The inner map groups Game\+Objects by their \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}.
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00058}{58}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+This allows \doxylink{class_render_manager}{Render\+Manager} to quickly build per-\/layer instanced draw calls. 
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00080}{80}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 

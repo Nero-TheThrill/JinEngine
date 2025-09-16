@@ -2,57 +2,65 @@
 \hypertarget{_state_manager_8cpp_source}{}\label{_state_manager_8cpp_source}\index{Project/SNAKE\_Engine/Private/StateManager.cpp@{Project/SNAKE\_Engine/Private/StateManager.cpp}}
 \mbox{\hyperlink{_state_manager_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_state_manager_8h}{StateManager.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_state_8h}{GameState.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_context_8h}{EngineContext.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{_window_manager_8h}{WindowManager.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{_render_manager_8h}{RenderManager.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00006}\mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{00006}}\ \mbox{\hyperlink{class_game_state}{GameState}}*\ \mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{StateManager::GetCurrentState}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00007}00007\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ ?\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}.get()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00009}00009\ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00010}00010\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00011}\mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{00011}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{StateManager::ChangeState}}(std::unique\_ptr<GameState>\ newState)}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00012}00012\ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}}\ =\ std::move(newState);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00014}00014\ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00015}00015\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00016}\mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{00016}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{StateManager::Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00017}00017\ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}}\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00019}00019\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00021}00021\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemFree(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUnload(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00024}00024\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ =\ std::move(\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}});}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemLoad(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemInit(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>GetCameraManager().SetScreenSizeForAll(engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{GetWidth}}(),\ engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{GetHeight}}());}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00029}00029\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00031}00031\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUpdate(dt,\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00033}00033\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00034}00034\ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00036}\mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{StateManager::Draw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00037}00037\ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00003}\mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{00003}}\ \mbox{\hyperlink{class_game_state}{GameState}}*\ \mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{StateManager::GetCurrentState}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00004}00004\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ ?\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}.get()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00006}00006\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00008}\mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{StateManager::ChangeState}}(std::unique\_ptr<GameState>\ newState)}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}}\ =\ std::move(newState);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00013}\mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{StateManager::Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemFree(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUnload(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{soundManager}}-\/>\mbox{\hyperlink{class_sound_manager_ad78be412f57622826d4d7bf5f46378a8}{ControlAll}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481}{SoundManager::SoundControlType::Stop}});}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ =\ std::move(\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}});}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemLoad(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemInit(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>GetCameraManager().SetScreenSizeForAll(engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{GetWidth}}(),\ engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{GetHeight}}());}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUpdate(dt,\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00034}\mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{StateManager::Draw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00038}00038\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a375da2d8afa977405cd3200f643b3e84}{BeginFrame}}(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00039}00039\ }
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>Draw(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00041}00041\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_aff85070eef9769739f2478fd5b86da87}{FlushDrawCommands}}();}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00042}00042\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00041}00041\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a620231f7f4119dbf26ef416478578cde}{FlushDrawCommands}}(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_ad9836cdfc607ba27f100f5e0e892987f}{engine}}-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a54039eae5badaa378973ccbe973713ee}{ShouldRenderDebugDraws}}())}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a7c058729d4929a4295ebee1c6d324001}{FlushDebugLineDrawCommands}}(engineContext);}
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00045}\mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{00045}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{StateManager::Free}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00046}00046\ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00048}00048\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemFree(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUnload(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00051}00051\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00045}00045\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a61a2ee6952f8da0aee3ac21cd8033d0b}{EndFrame}}(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>PostProcessing(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00048}00048\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a620231f7f4119dbf26ef416478578cde}{FlushDrawCommands}}(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00052}\mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{StateManager::Free}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemFree(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>SystemUnload(engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}.reset();}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00060}00060\ \}}
 
 \end{DoxyCode}

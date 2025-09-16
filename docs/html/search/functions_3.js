@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['draw_0',['Draw',['../class_game_object.html#a9d3fa8a1c64815a19c4b5540478584a0',1,'GameObject::Draw()'],['../class_game_state.html#ab3f79ba850091b4853d800b1ff2e2974',1,'GameState::Draw()'],['../class_mesh.html#abf84fe4ef735490769268685087e0e32',1,'Mesh::Draw()'],['../class_state_manager.html#ae161e57265af366c58b0e2b5d936553d',1,'StateManager::Draw()']]],
-  ['drawall_1',['DrawAll',['../class_object_manager.html#a3c02b8caf296aad4f4b582954b0080b4',1,'ObjectManager']]],
-  ['drawinstanced_2',['DrawInstanced',['../class_mesh.html#ae2933e498cc249ab798bbf265dace77b',1,'Mesh']]],
-  ['drawobjects_3',['DrawObjects',['../class_object_manager.html#a4afc2f27ecb2af80d870ccb108b6c251',1,'ObjectManager']]],
-  ['drawobjectswithtag_4',['DrawObjectsWithTag',['../class_object_manager.html#a54cc897ed8451b94b01f4f4306b2a1b0',1,'ObjectManager']]]
+  ['destroyscenetarget_0',['DestroySceneTarget',['../class_render_manager.html#a406d21649293962d860d216a8728c5a2',1,'RenderManager']]],
+  ['detachanimator_1',['DetachAnimator',['../class_object.html#ae3c65d98ad8b1c3fdae221a5390cc757',1,'Object::DetachAnimator()'],['../class_text_object.html#a551df8f2b4542163665e3bb86d359ce6',1,'TextObject::DetachAnimator()']]],
+  ['dispatchagainst_2',['DispatchAgainst',['../class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7',1,'Collider::DispatchAgainst(const CircleCollider &amp;other) const =0'],['../class_collider.html#ae6038e89a98d8b252f143ddbc960a484',1,'Collider::DispatchAgainst(const AABBCollider &amp;other) const =0'],['../class_circle_collider.html#a69a051ea02a260f7b5c46cb76058cbe5',1,'CircleCollider::DispatchAgainst(const CircleCollider &amp;other) const override'],['../class_circle_collider.html#a951f365eb24e6e1a286bc7c518e8ab46',1,'CircleCollider::DispatchAgainst(const AABBCollider &amp;other) const override'],['../class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846',1,'AABBCollider::DispatchAgainst(const CircleCollider &amp;other) const override'],['../class_a_a_b_b_collider.html#acab757f9231fa6acb535784d77915600',1,'AABBCollider::DispatchAgainst(const AABBCollider &amp;other) const override']]],
+  ['dispatchcompute_3',['DispatchCompute',['../class_render_manager.html#a899b5c4c86e6fce0a3dca0bda01af4e8',1,'RenderManager']]],
+  ['draw_4',['Draw',['../class_game_object.html#a64fa4b69133f89e55fd4a51b468ce410',1,'GameObject::Draw()'],['../class_game_state.html#ab3f79ba850091b4853d800b1ff2e2974',1,'GameState::Draw()'],['../class_loading_state.html#a9d7471af478429371619bff2ccda0e2a',1,'LoadingState::Draw()'],['../class_mesh.html#abf84fe4ef735490769268685087e0e32',1,'Mesh::Draw()'],['../class_object.html#a8d36cf36a47b76a005590557116814e6',1,'Object::Draw()'],['../class_state_manager.html#ae161e57265af366c58b0e2b5d936553d',1,'StateManager::Draw()'],['../class_text_object.html#a534ee1073bdc4b0b2d953dfbe8166f03',1,'TextObject::Draw()']]],
+  ['drawall_5',['DrawAll',['../class_object_manager.html#ad883ccf6dee940514c8c5fea7137ca9b',1,'ObjectManager']]],
+  ['drawcolliderdebug_6',['DrawColliderDebug',['../class_object_manager.html#a79459c25593a2ad3ccc8cfdb88cf10a9',1,'ObjectManager']]],
+  ['drawdebug_7',['DrawDebug',['../class_collider.html#a222e52491ae094943420952fd3182c90',1,'Collider::DrawDebug()'],['../class_circle_collider.html#ae67885becfba36118e3ed5fc7a35d252',1,'CircleCollider::DrawDebug()'],['../class_a_a_b_b_collider.html#ac436555bab262272195f5081b33db006',1,'AABBCollider::DrawDebug()']]],
+  ['drawdebugline_8',['DrawDebugLine',['../class_render_manager.html#a30299b0394f71c9ac4d924a24addbf26',1,'RenderManager']]],
+  ['drawinstanced_9',['DrawInstanced',['../class_mesh.html#ae2933e498cc249ab798bbf265dace77b',1,'Mesh']]],
+  ['drawobjects_10',['DrawObjects',['../class_object_manager.html#acea98a91604863db6b232b6e67582740',1,'ObjectManager']]],
+  ['drawobjectswithtag_11',['DrawObjectsWithTag',['../class_object_manager.html#abfc58bcbcd4e0b4f988939b9b16296e5',1,'ObjectManager']]]
 ];

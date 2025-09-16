@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['pendingobjects_0',['pendingObjects',['../class_object_manager.html#a4bd518be4b2cc15776baf4e31f6afb79',1,'ObjectManager']]],
-  ['position_1',['position',['../class_camera2_d.html#a998840db69cc35ba61e70927800e0480',1,'Camera2D::position'],['../class_transform2_d.html#a37619589b97a182f1aed38eeaf8e3a32',1,'Transform2D::position']]],
-  ['previouskeystate_2',['previousKeyState',['../class_input_manager.html#a1d459d5b5115502ffd50c8d90a9e6514',1,'InputManager']]],
-  ['previousmousestate_3',['previousMouseState',['../class_input_manager.html#a732a36a1572545c3c201c3742247f524',1,'InputManager']]],
-  ['programid_4',['programID',['../class_shader.html#afce507f5013e82f7a62b47bbfb2fb048',1,'Shader']]]
+  ['nametoid_0',['nameToID',['../class_render_layer_manager.html#a93b99251ecafc4a49453250d95cd651f',1,'RenderLayerManager']]],
+  ['nextfactory_1',['nextFactory',['../class_loading_state.html#a40db3522932ae35699d1db2ab5d728b0',1,'LoadingState']]],
+  ['nextinstanceid_2',['nextInstanceID',['../class_sound_manager.html#a910b1fd3f58c344c1b2185b031d188d0',1,'SoundManager']]],
+  ['nextstate_3',['nextState',['../class_state_manager.html#a598a8e8b997a38333b28dbbe9c87cfe6',1,'StateManager']]],
+  ['nextx_4',['nextX',['../class_font.html#ad6a01f54e759dacf31006b3d38bed1a7',1,'Font']]],
+  ['nexty_5',['nextY',['../class_font.html#a9f863b51686f62525c47c945c726bf8f',1,'Font']]]
 ];

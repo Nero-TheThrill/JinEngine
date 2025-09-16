@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['texturetag_0',['TextureTag',['../_render_manager_8h.html#ae4e6e1a3e9edc17c8fd355b231eebc82',1,'RenderManager.h']]]
+  ['rendercommand_0',['RenderCommand',['../_render_manager_8h.html#ab1dda4d750e0cc5f202e4ebd8172bef6',1,'RenderManager.h']]],
+  ['rendermap_1',['RenderMap',['../_render_manager_8h.html#ac442dd962bc57bfa60125f977d6edea5',1,'RenderManager.h']]]
 ];

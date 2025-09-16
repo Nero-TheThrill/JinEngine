@@ -1,0 +1,318 @@
+\doxysection{Spatial\+Hash\+Grid Class Reference}
+\hypertarget{class_spatial_hash_grid}{}\label{class_spatial_hash_grid}\index{SpatialHashGrid@{SpatialHashGrid}}
+
+
+Uniform spatial hash grid for broad-\/phase collision candidate generation.  
+
+
+
+
+{\ttfamily \#include $<$Collider.\+h$>$}
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Remove all buckets and cached per-\/frame state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{Insert}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj)
+\begin{DoxyCompactList}\small\item\em Insert an object based on its collider\textquotesingle{}s world position and radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{Compute\+Collisions}} (std\+::function$<$ void(\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*})$>$ on\+Collision)
+\begin{DoxyCompactList}\small\item\em Enumerate candidate pairs inside buckets and invoke a callback. \end{DoxyCompactList}\item 
+glm\+::ivec2 \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{Get\+Cell}} (const glm\+::vec2 \&pos) const
+\begin{DoxyCompactList}\small\item\em Convert a world position to integer cell coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{Insert\+To\+Cell}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj, const glm\+::ivec2 \&cell)
+\begin{DoxyCompactList}\small\item\em Insert an object into a specific grid cell bucket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a}{Object\+Manager}}
+\item 
+int \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size}} = 50
+\begin{DoxyCompactList}\small\item\em Cell side length in world units (default\+: 50). \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ glm\+::ivec2, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$, \mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}} $>$ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}
+\begin{DoxyCompactList}\small\item\em Cell buckets\+: map from cell coords to resident objects. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}}
+\begin{DoxyCompactList}\small\item\em Objects too large for regular buckets (tracked separately). \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}
+\begin{DoxyCompactList}\small\item\em Staging cache used within the current frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Uniform spatial hash grid for broad-\/phase collision candidate generation. 
+
+Partitions world space into square cells of side \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} (in world units). Objects with colliders are inserted into one or more cells based on their world position and \doxylink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Collider\+::\+Get\+Bounding\+Radius}. Objects that are too large relative to \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} are tracked in \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}.
+
+Pipeline\+:
+\begin{DoxyItemize}
+\item \doxylink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{Clear} resets internal buckets for the current frame.
+\item \doxylink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{Insert} assigns each object to all cells touched by its bounding circle, or to \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects} if it spans many cells.
+\item \doxylink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{Compute\+Collisions} iterates buckets and invokes the supplied callback for each unique candidate pair (Object\texorpdfstring{$\ast$}{*}, Object\texorpdfstring{$\ast$}{*}). Mask/group filtering is performed at a higher layer (\doxylink{class_object_manager}{Object\+Manager}).
+\end{DoxyItemize}
+
+\begin{DoxyWarning}{Warning}
+The grid is rebuilt every frame; choose \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} carefully to balance insertion cost and bucket density. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00411}{411}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_spatial_hash_grid_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}\index{SpatialHashGrid@{SpatialHashGrid}!Clear@{Clear}}
+\index{Clear@{Clear}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df} 
+void Spatial\+Hash\+Grid\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Remove all buckets and cached per-\/frame state. 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00179\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}.clear();}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.clear();}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.clear();}
+\DoxyCodeLine{00183\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}\index{SpatialHashGrid@{SpatialHashGrid}!ComputeCollisions@{ComputeCollisions}}
+\index{ComputeCollisions@{ComputeCollisions}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{ComputeCollisions()}{ComputeCollisions()}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56} 
+void Spatial\+Hash\+Grid\+::\+Compute\+Collisions (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*})$>$}]{on\+Collision}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Enumerate candidate pairs inside buckets and invoke a callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Collision} & Callback invoked with (A, B) for each candidate pair.\\
+\hline
+\end{DoxyParams}
+Pairs are generated per-\/cell and across \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}; duplicates across cells are suppressed. The callback should perform fine-\/grained checks (masks, group tags, and \doxylink{class_collider_a41660505ae4b413d3d4b004162857426}{Collider\+::\+Check\+Collision}). 
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00212}{212}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00213\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ obj\ :\ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}})}
+\DoxyCodeLine{00215\ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ other\ :\ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}})}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ !=\ other)\ onCollision(obj,\ other);}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [cell,\ list]\ :\ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}})}
+\DoxyCodeLine{00222\ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ list.size();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ count;\ ++i)}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ i\ +\ 1;\ j\ <\ count;\ ++j)}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onCollision(list[i],\ list[j]);}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}\index{SpatialHashGrid@{SpatialHashGrid}!GetCell@{GetCell}}
+\index{GetCell@{GetCell}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{GetCell()}{GetCell()}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923} 
+glm\+::ivec2 Spatial\+Hash\+Grid\+::\+Get\+Cell (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [private]}}
+
+
+
+Convert a world position to integer cell coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & World-\/space position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Discrete cell index (x, y). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00235\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::ivec2(}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.x\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}})),}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.y\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}}))}
+\DoxyCodeLine{00239\ \ \ \ \ );}
+\DoxyCodeLine{00240\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}\index{SpatialHashGrid@{SpatialHashGrid}!Insert@{Insert}}
+\index{Insert@{Insert}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{Insert()}{Insert()}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9} 
+void Spatial\+Hash\+Grid\+::\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Insert an object based on its collider\textquotesingle{}s world position and radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & \doxylink{class_object}{Object} with a non-\/null collider.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Objects exceeding a size threshold may be routed to \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00186\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>\mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{IsAlive}}()\ ||\ !obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}())}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.push\_back(obj);}
+\DoxyCodeLine{00190\ \ \ \ \ Collider*\ collider\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}();}
+\DoxyCodeLine{00191\ \ \ \ \ glm::vec2\ offset\ =\ collider?\ collider-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}():\ glm::vec2(0);}
+\DoxyCodeLine{00192\ \ \ \ \ glm::vec2\ pos\ =\ obj-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+\ offset;}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{GetBoundingRadius}}();}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ glm::ivec2\ minCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ -\/\ glm::vec2(radius));}
+\DoxyCodeLine{00196\ \ \ \ \ glm::ivec2\ maxCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ +\ glm::vec2(radius));}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{int}\ coveredCells\ =\ (maxCell.x\ -\/\ minCell.x\ +\ 1)\ *\ (maxCell.y\ -\/\ minCell.y\ +\ 1);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coveredCells\ >\ \mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{LARGE\_OBJECT\_THRESHOLD}})}
+\DoxyCodeLine{00199\ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.push\_back(obj);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ minCell.y;\ y\ <=\ maxCell.y;\ ++y)}
+\DoxyCodeLine{00205\ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ minCell.x;\ x\ <=\ maxCell.x;\ ++x)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{InsertToCell}}(obj,\ \{\ x,\ y\ \});}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}\index{SpatialHashGrid@{SpatialHashGrid}!InsertToCell@{InsertToCell}}
+\index{InsertToCell@{InsertToCell}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{InsertToCell()}{InsertToCell()}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf} 
+void Spatial\+Hash\+Grid\+::\+Insert\+To\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj}{, }\item[{const glm\+::ivec2 \&}]{cell}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Insert an object into a specific grid cell bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & \doxylink{class_object}{Object} pointer. \\
+\hline
+{\em cell} & Discrete cell index. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00243\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}[cell].push\_back(obj);}
+\DoxyCodeLine{00245\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_spatial_hash_grid_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}\index{SpatialHashGrid@{SpatialHashGrid}!cellSize@{cellSize}}
+\index{cellSize@{cellSize}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{cellSize}{cellSize}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891} 
+int Spatial\+Hash\+Grid\+::cell\+Size = 50\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cell side length in world units (default\+: 50). 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00454}{454}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+\Hypertarget{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}\index{SpatialHashGrid@{SpatialHashGrid}!grid@{grid}}
+\index{grid@{grid}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a} 
+std\+::unordered\+\_\+map$<$glm\+::ivec2, std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$, \mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}}$>$ Spatial\+Hash\+Grid\+::grid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cell buckets\+: map from cell coords to resident objects. 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00457}{457}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+\Hypertarget{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}\index{SpatialHashGrid@{SpatialHashGrid}!largeObjects@{largeObjects}}
+\index{largeObjects@{largeObjects}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{largeObjects}{largeObjects}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5} 
+std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$ Spatial\+Hash\+Grid\+::large\+Objects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Objects too large for regular buckets (tracked separately). 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00460}{460}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+\Hypertarget{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a}\index{SpatialHashGrid@{SpatialHashGrid}!ObjectManager@{ObjectManager}}
+\index{ObjectManager@{ObjectManager}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{ObjectManager}{ObjectManager}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a} 
+friend Spatial\+Hash\+Grid\+::\+Object\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00413}{413}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+\Hypertarget{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}\index{SpatialHashGrid@{SpatialHashGrid}!objects@{objects}}
+\index{objects@{objects}!SpatialHashGrid@{SpatialHashGrid}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily \label{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5} 
+std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$ Spatial\+Hash\+Grid\+::objects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Staging cache used within the current frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00463}{463}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}

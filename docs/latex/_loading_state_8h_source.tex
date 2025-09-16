@@ -1,0 +1,53 @@
+\doxysection{Loading\+State.\+h}
+\hypertarget{_loading_state_8h_source}{}\label{_loading_state_8h_source}\index{Project/SNAKE\_Engine/Public/LoadingState.h@{Project/SNAKE\_Engine/Public/LoadingState.h}}
+\mbox{\hyperlink{_loading_state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_async_resource_loader_8h}{AsyncResourceLoader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00013}\mbox{\hyperlink{class_loading_state}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_loading_state_ac696a3c24805322e0b09a104ceb132e8}{LoadingState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_state}{GameState}}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00015}00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_loading_state_ac696a3c24805322e0b09a104ceb132e8}{LoadingState}}(std::function<std::unique\_ptr<GameState>()>\ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{nextFactory}});}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7}{Load}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a84ce856d66c4167866a24f49d5c7f471}{Init}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_aaeb0439da526b6933f6b61bde194a64f}{LateInit}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93}{Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a7f934a83650c18f8603320de29a18fbe}{LateUpdate}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a9d7471af478429371619bff2ccda0e2a}{Draw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a1f2fb872ba3b6dbcb11bfbc46b72c386}{Free}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a3754de47c0b00b40517645df5e5625cf}{Unload}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_af0573a8838bb173f6bd6c6a881931cd8}{QueueTexture}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::string\&\ filePath,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\&\ settings\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00142}00142\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_aeeeb157f13d158cd0d4ae1590dec2178}{QueueShader}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::vector<std::pair<ShaderStage,\ FilePath>>\&\ files);}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00156}00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a6f683c033cd51cf736410353556ff668}{QueueFont}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::string\&\ ttfPath,\ uint32\_t\ pixelSize);}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00169}00169\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_ae0f36c66d2fdfd6b186b49dac023ca27}{QueueSound}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::string\&\ path,\ \textcolor{keywordtype}{bool}\ loop);}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00179}\mbox{\hyperlink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{00179}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{GetProgress01}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.GetProgress();\ \}}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00181}00181\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00193}00193\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{UploadToGPU}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{LoadResult}}\&\ r,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00195}00195\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00196}\mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{00196}}\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader}{AsyncResourceLoader}}\ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00197}\mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{00197}}\ \ \ \ \ std::function<std::unique\_ptr<GameState>()>\ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{nextFactory}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00199}\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{00199}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}}\ =\ \textcolor{stringliteral}{"{}[Loading]UIFont"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00200}\mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{00200}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{uiReady}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00201}\mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{00201}}\ \ \ \ \ \mbox{\hyperlink{class_text_object}{TextObject}}*\ \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_loading_state_8h_source_l00202}00202\ \};}
+
+\end{DoxyCode}

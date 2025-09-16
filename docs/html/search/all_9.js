@@ -89,5 +89,5 @@ var searchData=
   ['key_5fx_86',['KEY_X',['../_input_manager_8h.html#a3a1ad9c72a28e97d9440d4cf7072b6d9a480a807305121d41673b8c208898f497',1,'InputManager.h']]],
   ['key_5fy_87',['KEY_Y',['../_input_manager_8h.html#a3a1ad9c72a28e97d9440d4cf7072b6d9a5d44524b2a6090fa97aa9353d69f67a3',1,'InputManager.h']]],
   ['key_5fz_88',['KEY_Z',['../_input_manager_8h.html#a3a1ad9c72a28e97d9440d4cf7072b6d9aadc60d2de1d019604547c0df88f84cda',1,'InputManager.h']]],
-  ['kill_89',['Kill',['../class_game_object.html#aa6dbb50deac7be1d693871a6aad6d3cf',1,'GameObject']]]
+  ['kill_89',['Kill',['../class_object.html#abed008ac27116fcd520eed806751ed34',1,'Object']]]
 ];

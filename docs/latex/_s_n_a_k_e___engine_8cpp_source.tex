@@ -3,79 +3,86 @@
 \mbox{\hyperlink{_s_n_a_k_e___engine_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00001}\mbox{\hyperlink{_s_n_a_k_e___engine_8cpp_a09f9c3bf094ecaf707c673924ffd615a}{00001}}\ \textcolor{preprocessor}{\#define\ GLAD\_GL\_IMPLEMENTATION}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}glad/gl.h"{}}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include"{}glfw3/glfw3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}gl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}glfw3.h"{}}}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include<vld.h>}\textcolor{comment}{//TODO:\ remove\ this\ and\ directories\ before\ release\ (VC++\ Directories\ -\/>\ Include\ Directories\ \&\ Library\ Directories)}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00005}00005\ \textcolor{comment}{//\#include<vld.h>//TODO:\ remove\ this\ and\ directories\ before\ release\ (VC++\ Directories\ -\/>\ Include\ Directories\ \&\ Library\ Directories)}}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_s_n_a_k_e___engine_8h}{SNAKE\_Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debug_8h}{Debug.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_timer_8h}{EngineTimer.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00013}00013\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00014}\mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{00014}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{SNAKE\_Engine::SetEngineContext}}()}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00015}00015\ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.stateManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.windowManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.inputManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.renderManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a57df097ca018981295adb9d2e53f9c42}{renderManager}};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.engine\ =\ \textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00021}00021\ \}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00024}\mbox{\hyperlink{class_s_n_a_k_e___engine_af5d0b5a08cbe7d74150b64571e51e6e3}{00024}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_af5d0b5a08cbe7d74150b64571e51e6e3}{SNAKE\_Engine::Init}}(\textcolor{keywordtype}{int}\ windowWidth,\ \textcolor{keywordtype}{int}\ windowHeight)}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00025}00025\ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.Init(windowWidth,\ windowHeight,*\textcolor{keyword}{this}))}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00027}00027\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_debug_8h_a4bea2ba782ca7e8f40195f8827c71ecf}{SNAKE\_ERR}}(\textcolor{stringliteral}{"{}Window\ Initialization\ failed."{}});}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00030}00030\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}}.Init(\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.GetHandle());}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{SetEngineContext}}();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00034}00034\ \}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00010}\mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{SNAKE\_Engine::SetEngineContext}}()}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.stateManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.windowManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.inputManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.renderManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a57df097ca018981295adb9d2e53f9c42}{renderManager}};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.soundManager\ =\ \&\mbox{\hyperlink{class_s_n_a_k_e___engine_a6986afeddc00b86f4bea5f390ae733e2}{soundManager}};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}}.engine\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00021}\mbox{\hyperlink{class_s_n_a_k_e___engine_af5d0b5a08cbe7d74150b64571e51e6e3}{00021}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_af5d0b5a08cbe7d74150b64571e51e6e3}{SNAKE\_Engine::Init}}(\textcolor{keywordtype}{int}\ windowWidth,\ \textcolor{keywordtype}{int}\ windowHeight)}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_aa6891c4512199870f8ee25cc6d82e45a}{SetEngineContext}}();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.Init(windowWidth,\ windowHeight,\ *\textcolor{keyword}{this}))}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}WindowManager\ Initialization\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}}.Init(\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.GetHandle());}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_s_n_a_k_e___engine_a6986afeddc00b86f4bea5f390ae733e2}{soundManager}}.Init())}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}SoundManager\ Initialization\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a57df097ca018981295adb9d2e53f9c42}{renderManager}}.Init(\mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00036}00036\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00037}\mbox{\hyperlink{class_s_n_a_k_e___engine_a46b7d591e84ba5746e8b00b7139f650b}{00037}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_a46b7d591e84ba5746e8b00b7139f650b}{SNAKE\_Engine::Run}}()}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00038}00038\ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer}{EngineTimer}}\ timer;}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00040}00040\ \ \ \ \ timer.\mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start}}();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00041}00041\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_s_n_a_k_e___engine_a44bd8a38c62bb97cc07d8d7bdcffc2ea}{shouldRun}}\ \&\&\ !glfwWindowShouldClose(\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.GetHandle()))}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00043}00043\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ timer.\mbox{\hyperlink{struct_engine_timer_a10ee28d56bb7d30bd29929e870e8e2f1}{Tick}}();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fps\ =\ 0.0f;}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer.\mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{ShouldUpdateFPS}}(fps))}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.SetTitle(\textcolor{stringliteral}{"{}SNAKE\_Engine\ -\/\ FPS:\ "{}}\ +\ std::to\_string(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(fps)));}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00051}00051\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.PollEvents();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}}.Update();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.ClearScreen();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00055}00055\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Update(dt,\ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Draw(\mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00041}\mbox{\hyperlink{class_s_n_a_k_e___engine_a46b7d591e84ba5746e8b00b7139f650b}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_a46b7d591e84ba5746e8b00b7139f650b}{SNAKE\_Engine::Run}}()}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer}{EngineTimer}}\ timer;}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00044}00044\ \ \ \ \ timer.\mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start}}();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_s_n_a_k_e___engine_a44bd8a38c62bb97cc07d8d7bdcffc2ea}{shouldRun}}\ \&\&\ !glfwWindowShouldClose(\mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.GetHandle()))}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ timer.\mbox{\hyperlink{struct_engine_timer_a10ee28d56bb7d30bd29929e870e8e2f1}{Tick}}();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fps\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer.\mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{ShouldUpdateFPS}}(fps))}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.SetTitle(\textcolor{stringliteral}{"{}SNAKE\_Engine\ -\/\ FPS:\ "{}}\ +\ std::to\_string(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(fps)));}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.PollEvents();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a13554a7b74f0ceb548e942dba80133d9}{inputManager}}.Update();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.ClearScreen();}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00058}00058\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.SwapBuffers();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Update(dt,\ \mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Draw(\mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Free(\mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.Free();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{Free}}();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a6986afeddc00b86f4bea5f390ae733e2}{soundManager}}.Update();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.SwapBuffers();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00065}00065\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00066}00066\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00067}\mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{00067}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{SNAKE\_Engine::Free}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00068}00068\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00069}00069\ \ \ \ \ glfwTerminate();}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00070}00070\ \}}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00071}00071\ }
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00072}\mbox{\hyperlink{class_s_n_a_k_e___engine_abc2c17ba271c262a62bf2f06ec8334d4}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_abc2c17ba271c262a62bf2f06ec8334d4}{SNAKE\_Engine::RequestQuit}}()}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00073}00073\ \{}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a44bd8a38c62bb97cc07d8d7bdcffc2ea}{shouldRun}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a6986afeddc00b86f4bea5f390ae733e2}{soundManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a57df097ca018981295adb9d2e53f9c42}{renderManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a76b32f34f8f0e7607c1047a77877bca6}{stateManager}}.Free(\mbox{\hyperlink{class_s_n_a_k_e___engine_aee0757b5b1d709f1da33ea5fc9b7bf18}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_ae837d579ccaad44987a40d5580e683cf}{windowManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{Free}}();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00074}\mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{00074}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_a1d4c98eabd373d6b9cb3e7e5ffa24e3e}{SNAKE\_Engine::Free}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00075}00075\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00076}00076\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00079}\mbox{\hyperlink{class_s_n_a_k_e___engine_abc2c17ba271c262a62bf2f06ec8334d4}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_n_a_k_e___engine_abc2c17ba271c262a62bf2f06ec8334d4}{SNAKE\_Engine::RequestQuit}}()}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine_a44bd8a38c62bb97cc07d8d7bdcffc2ea}{shouldRun}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_n_a_k_e___engine_8cpp_source_l00082}00082\ \}}
 
 \end{DoxyCode}

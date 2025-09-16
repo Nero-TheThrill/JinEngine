@@ -1,0 +1,72 @@
+\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Collider.h File Reference}
+\hypertarget{_collider_8h}{}\label{_collider_8h}\index{Project/SNAKE\_Engine/Public/Collider.h@{Project/SNAKE\_Engine/Public/Collider.h}}
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}glm.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_collider}{Collider}}
+\begin{DoxyCompactList}\small\item\em Abstract base for 2D colliders attached to an \doxylink{class_object}{Object}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}}
+\begin{DoxyCompactList}\small\item\em Circle collider with radius centered at owner\textquotesingle{}s position plus offset. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}}
+\begin{DoxyCompactList}\small\item\em Axis-\/aligned bounding box collider centered at owner plus offset. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}}
+\begin{DoxyCompactList}\small\item\em Hash functor for glm\+::ivec2 to use in unordered containers. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_spatial_hash_grid}{Spatial\+Hash\+Grid}}
+\begin{DoxyCompactList}\small\item\em Uniform spatial hash grid for broad-\/phase collision candidate generation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_collision_group_registry}{Collision\+Group\+Registry}}
+\begin{DoxyCompactList}\small\item\em Registry mapping collision group tags to bitmasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} \{ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754}{None}}
+, \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{Circle}}
+, \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{AABB}}
+ \}
+\begin{DoxyCompactList}\small\item\em Collision shape categories for type-\/based dispatch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{_collider_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_collider_8h_a7f138e75fc3cc79e825c39e040690395}\index{Collider.h@{Collider.h}!ColliderType@{ColliderType}}
+\index{ColliderType@{ColliderType}!Collider.h@{Collider.h}}
+\doxysubsubsection{\texorpdfstring{ColliderType}{ColliderType}}
+{\footnotesize\ttfamily \label{_collider_8h_a7f138e75fc3cc79e825c39e040690395} 
+enum class \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Collision shape categories for type-\/based dispatch. 
+
+Identifies which concrete collider a shape belongs to so the collision system can route pair tests using double dispatch (e.\+g., Circle vs AABB). Extend this enum when introducing new collider types and implement the corresponding overrides in each subclass. \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!Collider.h@{Collider.h}}\index{Collider.h@{Collider.h}!None@{None}}}\Hypertarget{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754}\label{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Circle@{Circle}!Collider.h@{Collider.h}}\index{Collider.h@{Collider.h}!Circle@{Circle}}}\Hypertarget{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}\label{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3} 
+Circle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AABB@{AABB}!Collider.h@{Collider.h}}\index{Collider.h@{Collider.h}!AABB@{AABB}}}\Hypertarget{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}\label{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99} 
+AABB&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00027}{27}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754}{None}},}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{Circle}},}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{AABB}}}
+\DoxyCodeLine{00032\ \};}
+
+\end{DoxyCode}

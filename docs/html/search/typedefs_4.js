@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['shadermap_0',['ShaderMap',['../_render_manager_8h.html#af06c6289a6847d547d7480421d34e14b',1,'RenderManager.h']]]
+  ['loadrequest_0',['LoadRequest',['../_async_resource_loader_8h.html#ae1b8cce382c5ee957e16be16b2cded39',1,'AsyncResourceLoader.h']]],
+  ['loadresult_1',['LoadResult',['../_async_resource_loader_8h.html#a6a60ad85728d8591ed1f4246e5d3af21',1,'AsyncResourceLoader.h']]]
 ];

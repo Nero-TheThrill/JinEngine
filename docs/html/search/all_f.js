@@ -1,28 +1,8 @@
 var searchData=
 [
-  ['rawptrobjects_0',['rawPtrObjects',['../class_object_manager.html#a15410022da4f50cc9d9a732da1b5550f',1,'ObjectManager']]],
-  ['registercamera_1',['RegisterCamera',['../class_camera_manager.html#a1e0ed16927c7e6c0cf8b5d6dcf583263',1,'CameraManager']]],
-  ['registerlayer_2',['RegisterLayer',['../class_render_layer_manager.html#a956b0e9f4e06af9b252fa47410cd39ad',1,'RenderLayerManager']]],
-  ['registermaterial_3',['RegisterMaterial',['../class_render_manager.html#af4915e57d6c66fb2f5a16646fccf67e3',1,'RenderManager::RegisterMaterial(const std::string &amp;tag, const std::string &amp;shaderTag, const std::unordered_map&lt; UniformName, TextureTag &gt; &amp;textureBindings)'],['../class_render_manager.html#ab6579c1378d7bd959f904cd9873de718',1,'RenderManager::RegisterMaterial(const std::string &amp;tag, std::unique_ptr&lt; Material &gt; material)']]],
-  ['registermesh_4',['RegisterMesh',['../class_render_manager.html#a0c653bad0572ea65efe1cea470d319ab',1,'RenderManager::RegisterMesh(const std::string &amp;tag, const std::vector&lt; float &gt; &amp;vertices, const std::vector&lt; unsigned int &gt; &amp;indices={})'],['../class_render_manager.html#a1ff449a750370ad55b640f36f7360201',1,'RenderManager::RegisterMesh(const std::string &amp;tag, std::unique_ptr&lt; Mesh &gt; mesh)']]],
-  ['registerrenderlayer_5',['RegisterRenderLayer',['../class_render_manager.html#ae665a48a358691f878caf513fc37e0fa',1,'RenderManager']]],
-  ['registershader_6',['RegisterShader',['../class_render_manager.html#a3ad25e59a96852a1685a0eba9898d11d',1,'RenderManager::RegisterShader(const std::string &amp;tag, const std::vector&lt; std::pair&lt; ShaderStage, FilePath &gt; &gt; &amp;sources)'],['../class_render_manager.html#ae40eaa505bcc1ecfb90c373ffe1325a0',1,'RenderManager::RegisterShader(const std::string &amp;tag, std::unique_ptr&lt; Shader &gt; shader)']]],
-  ['registertexture_7',['RegisterTexture',['../class_render_manager.html#af93785c56505bee5bf8d6793b14ad862',1,'RenderManager::RegisterTexture(const std::string &amp;tag, const FilePath &amp;path, const TextureSettings &amp;settings)'],['../class_render_manager.html#a9037fe19d94d48401a84d3ccb107b8d0',1,'RenderManager::RegisterTexture(const std::string &amp;tag, std::unique_ptr&lt; Texture &gt; texture)']]],
-  ['rendercommand_8',['RenderCommand',['../_render_manager_8h.html#ab1dda4d750e0cc5f202e4ebd8172bef6',1,'RenderManager.h']]],
-  ['renderlayer_9',['renderLayer',['../class_game_object.html#a6abcc84dbe5e41cf42832aa3aa430afa',1,'GameObject']]],
-  ['renderlayermanager_10',['RenderLayerManager',['../class_render_layer_manager.html',1,'']]],
-  ['renderlayermanager_11',['renderLayerManager',['../class_render_manager.html#a5f281747995cce653d8c1c29664985d7',1,'RenderManager']]],
-  ['renderlayermanager_2eh_12',['RenderLayerManager.h',['../_render_layer_manager_8h.html',1,'']]],
-  ['rendermanager_13',['RenderManager',['../class_render_manager.html',1,'RenderManager'],['../class_material.html#ac45dc348bf7022593d789b6bf7b407cb',1,'Material::RenderManager'],['../class_mesh.html#a99cf3d4862433af3b73292a510a6a179',1,'Mesh::RenderManager'],['../class_render_layer_manager.html#ab78ba6d0ee97ab2b8e8fe49a36112d3e',1,'RenderLayerManager::RenderManager'],['../class_shader.html#a2cbf5adc5d868219094df11bab36009b',1,'Shader::RenderManager']]],
-  ['rendermanager_14',['renderManager',['../struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095',1,'EngineContext::renderManager'],['../class_s_n_a_k_e___engine.html#a57df097ca018981295adb9d2e53f9c42',1,'SNAKE_Engine::renderManager']]],
-  ['rendermanager_2ecpp_15',['RenderManager.cpp',['../_render_manager_8cpp.html',1,'']]],
-  ['rendermanager_2eh_16',['RenderManager.h',['../_render_manager_8h.html',1,'']]],
-  ['rendermap_17',['RenderMap',['../_render_manager_8h.html#aff65631d564da184ff5b1625aee3df0a',1,'RenderManager.h']]],
-  ['renderqueue_18',['renderQueue',['../class_render_manager.html#a38351db8b0eb65397ece072ea4324566',1,'RenderManager']]],
-  ['repeat_19',['Repeat',['../_texture_8h.html#ae99e0f833ccd2a830a871dba98d1c5bfa7020426cfb0a204051be4b3053d2acc8',1,'Texture.h']]],
-  ['requestquit_20',['RequestQuit',['../class_s_n_a_k_e___engine.html#abc2c17ba271c262a62bf2f06ec8334d4',1,'SNAKE_Engine']]],
-  ['resize_21',['Resize',['../class_window_manager.html#a231381ad1948955f29a6702b4a0e2111',1,'WindowManager']]],
-  ['restart_22',['Restart',['../class_game_state.html#a279f1dc798ad39da9329dc73c1c85933',1,'GameState']]],
-  ['rotation_23',['rotation',['../class_transform2_d.html#a538205f416a3b800cae8268f6364b025',1,'Transform2D']]],
-  ['run_24',['Run',['../class_s_n_a_k_e___engine.html#a46b7d591e84ba5746e8b00b7139f650b',1,'SNAKE_Engine']]]
+  ['queuefont_0',['QueueFont',['../class_loading_state.html#a6f683c033cd51cf736410353556ff668',1,'LoadingState']]],
+  ['queuemutex_1',['queueMutex',['../class_async_resource_loader.html#ad704ddc2357b43bef5bc75f211bae71c',1,'AsyncResourceLoader']]],
+  ['queueshader_2',['QueueShader',['../class_loading_state.html#aeeeb157f13d158cd0d4ae1590dec2178',1,'LoadingState']]],
+  ['queuesound_3',['QueueSound',['../class_loading_state.html#ae0f36c66d2fdfd6b186b49dac023ca27',1,'LoadingState']]],
+  ['queuetexture_4',['QueueTexture',['../class_loading_state.html#af0573a8838bb173f6bd6c6a881931cd8',1,'LoadingState']]]
 ];

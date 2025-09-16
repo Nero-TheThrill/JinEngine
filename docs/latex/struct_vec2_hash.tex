@@ -1,0 +1,52 @@
+\doxysection{Vec2\+Hash Struct Reference}
+\hypertarget{struct_vec2_hash}{}\label{struct_vec2_hash}\index{Vec2Hash@{Vec2Hash}}
+
+
+Hash functor for glm\+::ivec2 to use in unordered containers.  
+
+
+
+
+{\ttfamily \#include $<$Collider.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b}{operator()}} (const glm\+::ivec2 \&v) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Hash functor for glm\+::ivec2 to use in unordered containers. 
+
+Uses a pair of large primes and XOR to mix 2D integer coordinates. Suitable for sparse 2D grids such as spatial hashing buckets. 
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00383}{383}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{struct_vec2_hash_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b}\index{Vec2Hash@{Vec2Hash}!operator()@{operator()}}
+\index{operator()@{operator()}!Vec2Hash@{Vec2Hash}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \label{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b} 
+size\+\_\+t Vec2\+Hash\+::operator() (\begin{DoxyParamCaption}\item[{const glm\+::ivec2 \&}]{v}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00385}{385}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00386\ \ \ \ \ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<int>()(v.x\ *\ 73856093\ \string^\ v.y\ *\ 19349663);}
+\DoxyCodeLine{00388\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,607 @@
+\doxysection{Async\+Resource\+Loader Class Reference}
+\hypertarget{class_async_resource_loader}{}\label{class_async_resource_loader}\index{AsyncResourceLoader@{AsyncResourceLoader}}
+
+
+Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds).  
+
+
+
+
+{\ttfamily \#include $<$Async\+Resource\+Loader.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{Async\+Resource\+Loader}} ()=default
+\item 
+\mbox{\hyperlink{class_async_resource_loader_af67c49c71131de520765f33060dd1058}{\texorpdfstring{$\sim$}{\string~}\+Async\+Resource\+Loader}} ()
+\item 
+void \mbox{\hyperlink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Start the worker thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Stop the worker thread and wait for it to finish. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}} (const \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} \&req)
+\begin{DoxyCompactList}\small\item\em Enqueue a new asynchronous load request. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}{Get\+Progress}} () const
+\begin{DoxyCompactList}\small\item\em Get overall progress ratio. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}{Has\+Finished}} () const
+\begin{DoxyCompactList}\small\item\em Check if all jobs have finished. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} $>$ \mbox{\hyperlink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{Fetch\+Completed}} ()
+\begin{DoxyCompactList}\small\item\em Retrieve all completed load results since last call. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{Get\+Total\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Total number of requests ever enqueued. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{Get\+Loaded\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Number of jobs successfully processed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker}} ()
+\begin{DoxyCompactList}\small\item\em Worker thread entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::thread \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{worker\+Thread}}
+\begin{DoxyCompactList}\small\item\em Dedicated background thread. \end{DoxyCompactList}\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}} \{ false \}
+\begin{DoxyCompactList}\small\item\em Worker running flag. \end{DoxyCompactList}\item 
+std\+::queue$<$ \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} $>$ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}}
+\begin{DoxyCompactList}\small\item\em Pending job queue. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queue\+Mutex}}
+\begin{DoxyCompactList}\small\item\em Protects \doxylink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}. \end{DoxyCompactList}\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}}
+\begin{DoxyCompactList}\small\item\em Signals when new jobs arrive. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} $>$ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}
+\begin{DoxyCompactList}\small\item\em Completed job results. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completed\+Mutex}}
+\begin{DoxyCompactList}\small\item\em Protects \doxylink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}. \end{DoxyCompactList}\item 
+std\+::atomic$<$ int $>$ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{total\+Count}} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Total jobs submitted. \end{DoxyCompactList}\item 
+std\+::atomic$<$ int $>$ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loaded\+Count}} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Jobs completed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds). 
+
+\doxylink{class_async_resource_loader}{Async\+Resource\+Loader} runs a background thread that processes queued \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} jobs. Each completed load produces a \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} which can be fetched and uploaded to GPU or audio engine.
+
+Typical flow\+:
+\begin{DoxyItemize}
+\item Call \doxylink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start} to launch the worker thread.
+\item Enqueue resource jobs with \doxylink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}.
+\item Periodically call \doxylink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{Fetch\+Completed} to retrieve finished results and register them with engine managers.
+\item Call \doxylink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop} when shutting down or leaving the loading state.
+\end{DoxyItemize}
+
+Thread safety\+:
+\begin{DoxyItemize}
+\item Public API is thread-\/safe for enqueueing jobs and fetching results.
+\item Internal synchronization uses a mutex + condition variable to wake the worker thread. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00150}{150}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_async_resource_loader_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}\index{AsyncResourceLoader@{AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
+\index{AsyncResourceLoader@{AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{AsyncResourceLoader()}{AsyncResourceLoader()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b} 
+Async\+Resource\+Loader\+::\+Async\+Resource\+Loader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{class_async_resource_loader_af67c49c71131de520765f33060dd1058}\index{AsyncResourceLoader@{AsyncResourceLoader}!````~AsyncResourceLoader@{\texorpdfstring{$\sim$}{\string~}AsyncResourceLoader}}
+\index{````~AsyncResourceLoader@{\texorpdfstring{$\sim$}{\string~}AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AsyncResourceLoader()}{\string~AsyncResourceLoader()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_af67c49c71131de520765f33060dd1058} 
+Async\+Resource\+Loader\+::\texorpdfstring{$\sim$}{\string~}\+Async\+Resource\+Loader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop}}();}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_async_resource_loader_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}\index{AsyncResourceLoader@{AsyncResourceLoader}!Enqueue@{Enqueue}}
+\index{Enqueue@{Enqueue}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{Enqueue()}{Enqueue()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09} 
+void Async\+Resource\+Loader\+::\+Enqueue (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} \&}]{req}{}\end{DoxyParamCaption})}
+
+
+
+Enqueue a new asynchronous load request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & The load request to add.\\
+\hline
+\end{DoxyParams}
+Increments \doxylink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{total\+Count} and wakes the worker thread to process jobs. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queueMutex}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}}.push(req);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.fetch\_add(1);}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}}.notify\_one();}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}\index{AsyncResourceLoader@{AsyncResourceLoader}!FetchCompleted@{FetchCompleted}}
+\index{FetchCompleted@{FetchCompleted}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{FetchCompleted()}{FetchCompleted()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7} 
+std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} $>$ Async\+Resource\+Loader\+::\+Fetch\+Completed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Retrieve all completed load results since last call. 
+
+\begin{DoxyReturn}{Returns}
+Vector of \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} values.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Clears internal completed list. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<LoadResult>\ out;}
+\DoxyCodeLine{00078\ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}});}
+\DoxyCodeLine{00079\ \ \ \ \ out.swap(\mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}});}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}\index{AsyncResourceLoader@{AsyncResourceLoader}!GetLoadedCount@{GetLoadedCount}}
+\index{GetLoadedCount@{GetLoadedCount}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{GetLoadedCount()}{GetLoadedCount()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f} 
+int Async\+Resource\+Loader\+::\+Get\+Loaded\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Number of jobs successfully processed so far. 
+
+\begin{DoxyReturn}{Returns}
+Count of completed jobs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00215}{215}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00215\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}\index{AsyncResourceLoader@{AsyncResourceLoader}!GetProgress@{GetProgress}}
+\index{GetProgress@{GetProgress}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{GetProgress()}{GetProgress()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a5689fa771581393a3186273928d5fae0} 
+float Async\+Resource\+Loader\+::\+Get\+Progress (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get overall progress ratio. 
+
+\begin{DoxyReturn}{Returns}
+Float in \mbox{[}0,1\mbox{]} representing fraction of jobs completed. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ tot\ =\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ done\ =\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (tot\ <=\ 0)\ \textcolor{keywordflow}{return}\ 1.0f;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(done)\ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(tot);}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}\index{AsyncResourceLoader@{AsyncResourceLoader}!GetTotalCount@{GetTotalCount}}
+\index{GetTotalCount@{GetTotalCount}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{GetTotalCount()}{GetTotalCount()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852} 
+int Async\+Resource\+Loader\+::\+Get\+Total\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Total number of requests ever enqueued. 
+
+\begin{DoxyReturn}{Returns}
+Count of enqueued jobs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00208}{208}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00208\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}\index{AsyncResourceLoader@{AsyncResourceLoader}!HasFinished@{HasFinished}}
+\index{HasFinished@{HasFinished}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{HasFinished()}{HasFinished()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e} 
+bool Async\+Resource\+Loader\+::\+Has\+Finished (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Check if all jobs have finished. 
+
+\begin{DoxyReturn}{Returns}
+True if loaded\+Count == total\+Count. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load()\ >=\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load()\ \&\&\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load()\ >\ 0;}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}\index{AsyncResourceLoader@{AsyncResourceLoader}!Start@{Start}}
+\index{Start@{Start}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6} 
+void Async\+Resource\+Loader\+::\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Start the worker thread. 
+
+\begin{DoxyNote}{Note}
+Safe to call once before enqueueing jobs. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}.load())}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{workerThread}}\ =\ std::thread([\textcolor{keyword}{this}]()}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}\index{AsyncResourceLoader@{AsyncResourceLoader}!Stop@{Stop}}
+\index{Stop@{Stop}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f} 
+void Async\+Resource\+Loader\+::\+Stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the worker thread and wait for it to finish. 
+
+\begin{DoxyNote}{Note}
+Should be called before engine shutdown. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}.load())}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queueMutex}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}}.notify\_all();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{workerThread}}.joinable())}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{workerThread}}.join();}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}\index{AsyncResourceLoader@{AsyncResourceLoader}!Worker@{Worker}}
+\index{Worker@{Worker}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{Worker()}{Worker()}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30} 
+void Async\+Resource\+Loader\+::\+Worker (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Worker thread entry point. 
+
+Continuously waits on \doxylink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv} until requests are available or stop is requested. Processes jobs synchronously (e.\+g., file IO, image decoding). 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ stbi\_set\_flip\_vertically\_on\_load(\textcolor{keyword}{true});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{LoadRequest}}\ req;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_lock<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queueMutex}});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}}.wait(lk,\ [\textcolor{keyword}{this}]()}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}.load()\ ||\ !\mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}}.empty();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}.load()\ \&\&\ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}}.empty())}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ req\ =\ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}}.front();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}}.pop();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ std::visit([\textcolor{keyword}{this}](\textcolor{keyword}{auto}\&\&\ job)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(job)>;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ TextureJob>)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TextureResult\ r;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{tag}}\ =\ job.tag;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{settings}}\ =\ job.settings;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ 0,\ h\ =\ 0,\ ch\ =\ 0;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data\ =\ stbi\_load(job.filePath.c\_str(),\ \&w,\ \&h,\ \&ch,\ 0);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data)}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{width}}\ =\ w;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{height}}\ =\ h;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{channels}}\ =\ ch;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{pixels}}.assign(data,\ data\ +\ (w\ *\ h\ *\ ch));}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stbi\_image\_free(data);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ texture\ load\ failed:\ "{}}\ <<\ job.filePath);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}.emplace\_back(std::move(r));}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ ShaderJob>)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ShaderResult\ r;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}{tag}}\ =\ job.tag;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ f\ :\ job.sources)}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ShaderSource\ src;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.\mbox{\hyperlink{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}{stage}}\ =\ f.stage;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}\ =\ ReadTextFile(f.path);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}.empty())}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ shader\ file\ read\ failed:\ "{}}\ <<\ f.path);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{sources}}.emplace\_back(std::move(src));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}});}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}.emplace\_back(std::move(r));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ FontJob>)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontResult\ r;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}{tag}}\ =\ job.tag;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}{ttfPath}}\ =\ job.ttfPath;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}{pixelSize}}\ =\ job.pixelSize;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}});}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}.emplace\_back(std::move(r));}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ SoundJob>)}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SoundResult\ r;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_sound_result_a11177b9460d009b44e7b28209baa7622}{tag}}\ =\ job.tag;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_sound_result_a77cadea03769685e16ec56e93a7a7c55}{filePath}}\ =\ job.filePath;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_sound_result_a42a122883680aec5e340ad28da270dd0}{loop}}\ =\ job.loop;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}.emplace\_back(std::move(r));}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.fetch\_add(1);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ req);}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_async_resource_loader_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}\index{AsyncResourceLoader@{AsyncResourceLoader}!completed@{completed}}
+\index{completed@{completed}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{completed}{completed}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65} 
+std\+::vector$<$\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}}$>$ Async\+Resource\+Loader\+::completed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Completed job results. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00235}{235}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+\Hypertarget{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}\index{AsyncResourceLoader@{AsyncResourceLoader}!completedMutex@{completedMutex}}
+\index{completedMutex@{completedMutex}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{completedMutex}{completedMutex}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3} 
+std\+::mutex Async\+Resource\+Loader\+::completed\+Mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Protects \doxylink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00236}{236}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+\Hypertarget{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}\index{AsyncResourceLoader@{AsyncResourceLoader}!cv@{cv}}
+\index{cv@{cv}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{cv}{cv}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a} 
+std\+::condition\+\_\+variable Async\+Resource\+Loader\+::cv\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Signals when new jobs arrive. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00233}{233}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+\Hypertarget{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}\index{AsyncResourceLoader@{AsyncResourceLoader}!loadedCount@{loadedCount}}
+\index{loadedCount@{loadedCount}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{loadedCount}{loadedCount}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1} 
+std\+::atomic$<$int$>$ Async\+Resource\+Loader\+::loaded\+Count \{ 0 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Jobs completed so far. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00239}{239}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00239\ \{\ 0\ \};\ \ \ \ }
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}\index{AsyncResourceLoader@{AsyncResourceLoader}!queueMutex@{queueMutex}}
+\index{queueMutex@{queueMutex}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{queueMutex}{queueMutex}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c} 
+std\+::mutex Async\+Resource\+Loader\+::queue\+Mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Protects \doxylink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00232}{232}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+\Hypertarget{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}\index{AsyncResourceLoader@{AsyncResourceLoader}!requestQueue@{requestQueue}}
+\index{requestQueue@{requestQueue}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{requestQueue}{requestQueue}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18} 
+std\+::queue$<$\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}}$>$ Async\+Resource\+Loader\+::request\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pending job queue. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00231}{231}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+\Hypertarget{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}\index{AsyncResourceLoader@{AsyncResourceLoader}!running@{running}}
+\index{running@{running}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8} 
+std\+::atomic$<$bool$>$ Async\+Resource\+Loader\+::running \{ false \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Worker running flag. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00229}{229}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00229\ \{\ \textcolor{keyword}{false}\ \};\ \ \ }
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}\index{AsyncResourceLoader@{AsyncResourceLoader}!totalCount@{totalCount}}
+\index{totalCount@{totalCount}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{totalCount}{totalCount}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b} 
+std\+::atomic$<$int$>$ Async\+Resource\+Loader\+::total\+Count \{ 0 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Total jobs submitted. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00238}{238}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00238\ \{\ 0\ \};\ \ \ \ \ }
+
+\end{DoxyCode}
+\Hypertarget{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}\index{AsyncResourceLoader@{AsyncResourceLoader}!workerThread@{workerThread}}
+\index{workerThread@{workerThread}!AsyncResourceLoader@{AsyncResourceLoader}}
+\doxysubsubsection{\texorpdfstring{workerThread}{workerThread}}
+{\footnotesize\ttfamily \label{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2} 
+std\+::thread Async\+Resource\+Loader\+::worker\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dedicated background thread. 
+
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00228}{228}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_async_resource_loader_8cpp}{Async\+Resource\+Loader.\+cpp}}\end{DoxyCompactItemize}

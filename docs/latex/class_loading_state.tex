@@ -1,0 +1,767 @@
+\doxysection{Loading\+State Class Reference}
+\hypertarget{class_loading_state}{}\label{class_loading_state}\index{LoadingState@{LoadingState}}
+
+
+Transitional game state that asynchronously loads resources before entering the next state.  
+
+
+
+
+{\ttfamily \#include $<$Loading\+State.\+h$>$}
+
+Inheritance diagram for Loading\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_loading_state}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_loading_state_ac696a3c24805322e0b09a104ceb132e8}{Loading\+State}} (std\+::function$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_game_state}{Game\+State}} $>$()$>$ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{next\+Factory}})
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{class_loading_state}{Loading\+State} with a factory for the next \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7}{Load}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Prepare this state before it becomes active (enqueue initial jobs, pre-\/create UI). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a84ce856d66c4167866a24f49d5c7f471}{Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Initialize runtime objects (e.\+g., create \doxylink{class_text_object}{Text\+Object} for progress). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_aaeb0439da526b6933f6b61bde194a64f}{Late\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Perform late initialization once this state is the current active state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Advance asynchronous loading and upload finished assets; trigger state transition when done. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a7f934a83650c18f8603320de29a18fbe}{Late\+Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Perform post-\/update work (optional), such as deferring GPU registrations or UI adjustments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a9d7471af478429371619bff2ccda0e2a}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Render the loading screen (background, spinner, progress text). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a1f2fb872ba3b6dbcb11bfbc46b72c386}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Release runtime objects created by this state (but keep shared engine systems alive). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a3754de47c0b00b40517645df5e5625cf}{Unload}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
+\begin{DoxyCompactList}\small\item\em Cancel outstanding jobs and detach from loader threads/resources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_af0573a8838bb173f6bd6c6a881931cd8}{Queue\+Texture}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag, const std\+::string \&file\+Path, const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&settings=\{\})
+\begin{DoxyCompactList}\small\item\em Enqueue a texture to be loaded asynchronously and registered by tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_aeeeb157f13d158cd0d4ae1590dec2178}{Queue\+Shader}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag, const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}}, \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}} $>$ $>$ \&files)
+\begin{DoxyCompactList}\small\item\em Enqueue a shader program to be built from multiple stage files and registered by tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_a6f683c033cd51cf736410353556ff668}{Queue\+Font}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag, const std\+::string \&ttf\+Path, uint32\+\_\+t pixel\+Size)
+\begin{DoxyCompactList}\small\item\em Enqueue a font to be loaded and baked for the specified pixel size, then registered by tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_loading_state_ae0f36c66d2fdfd6b186b49dac023ca27}{Queue\+Sound}} (const std\+::string \&tag, const std\+::string \&path, bool loop)
+\begin{DoxyCompactList}\small\item\em Enqueue a sound to be loaded/decoded and registered by tag. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{Get\+Progress01}} () const
+\begin{DoxyCompactList}\small\item\em Current loading progress in the range \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_state}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_game_state_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_object_manager}{Object\+Manager}} \& \mbox{\hyperlink{class_game_state_abea569338b92e0b499193fdbdab94e86}{Get\+Object\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Provides access to this state\textquotesingle{}s \doxylink{class_object_manager}{Object\+Manager}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \& \mbox{\hyperlink{class_game_state_a116bca1d8804cda67f37e199eb470dfd}{Get\+Camera\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Provides access to this state\textquotesingle{}s \doxylink{class_camera_manager}{Camera\+Manager}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_state_aca3df3a97dc9c97a03665bc1842ffd78}{Get\+Active\+Camera}} () const
+\begin{DoxyCompactList}\small\item\em Returns the currently active camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_state_aadc8c33fe485c1f8ac9bccaec1cebe74}{Set\+Active\+Camera}} (const std\+::string \&tag)
+\begin{DoxyCompactList}\small\item\em Sets the active camera by tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{Upload\+To\+GPU}} (const \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} \&r, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
+\begin{DoxyCompactList}\small\item\em Register a finished \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} with engine systems (e.\+g., upload to GPU and tag it). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_async_resource_loader}{Async\+Resource\+Loader}} \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}
+\begin{DoxyCompactList}\small\item\em Background loader owned by this state. \end{DoxyCompactList}\item 
+std\+::function$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_game_state}{Game\+State}} $>$()$>$ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{next\+Factory}}
+\begin{DoxyCompactList}\small\item\em Factory for the next \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{ui\+Font\+Tag}} = "{}\mbox{[}Loading\mbox{]}UIFont"{}
+\begin{DoxyCompactList}\small\item\em Default tag for loading UI font. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{ui\+Ready}} = false
+\begin{DoxyCompactList}\small\item\em True once the progress UI has been created. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_text_object}{Text\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progress\+Text}} = nullptr
+\begin{DoxyCompactList}\small\item\em Optional text node showing progress percentage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_game_state}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_game_state_a5b46058b4310096491ff70ed2fccc94d}{Post\+Processing}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
+\begin{DoxyCompactList}\small\item\em Post-\/processing pass hook. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_state_a279f1dc798ad39da9329dc73c1c85933}{Restart}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
+\begin{DoxyCompactList}\small\item\em Restarts the state by calling Free then Init. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_game_state}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{object\+Manager}}
+\begin{DoxyCompactList}\small\item\em Per-\/state object manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_camera_manager}{Camera\+Manager}} \mbox{\hyperlink{class_game_state_a8791f5177bdd9959553a98bac8cf092b}{camera\+Manager}}
+\begin{DoxyCompactList}\small\item\em Per-\/state camera manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Transitional game state that asynchronously loads resources before entering the next state. 
+
+\doxylink{class_loading_state}{Loading\+State} owns an \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} and exposes queue functions to register textures, shaders, fonts, and sounds. When all jobs are done it constructs the next \doxylink{class_game_state}{Game\+State} using {\ttfamily next\+Factory} and hands off control to it. 
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00013}{13}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_loading_state_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_loading_state_ac696a3c24805322e0b09a104ceb132e8}\index{LoadingState@{LoadingState}!LoadingState@{LoadingState}}
+\index{LoadingState@{LoadingState}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{LoadingState()}{LoadingState()}}
+{\footnotesize\ttfamily \label{class_loading_state_ac696a3c24805322e0b09a104ceb132e8} 
+Loading\+State\+::\+Loading\+State (\begin{DoxyParamCaption}\item[{std\+::function$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_game_state}{Game\+State}} $>$()$>$}]{next\+Factory}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a \doxylink{class_loading_state}{Loading\+State} with a factory for the next \doxylink{class_game_state}{Game\+State}. 
+
+The {\ttfamily next\+Factory} is invoked after all queued resources have been loaded and uploaded. It should return a fully constructed \doxylink{class_game_state}{Game\+State} instance that becomes active immediately.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Factory} & A callable that returns std\+::unique\+\_\+ptr$<$\+Game\+State$>$ for the next state. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ :\ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{nextFactory}}(std::move(nextFactory\_)) }
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_loading_state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_loading_state_a9d7471af478429371619bff2ccda0e2a}\index{LoadingState@{LoadingState}!Draw@{Draw}}
+\index{Draw@{Draw}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_loading_state_a9d7471af478429371619bff2ccda0e2a} 
+void Loading\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Render the loading screen (background, spinner, progress text). 
+
+Draw any background image, simple progress bar, and a \doxylink{class_text_object}{Text\+Object} showing percentage using {\ttfamily ui\+Font\+Tag}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine rendering interfaces and registries. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_ab3f79ba850091b4853d800b1ff2e2974}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ w\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{GetWidth}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{GetHeight}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ barW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(w\ *\ 0.6f);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ barH\ =\ 24;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x\ =\ (w\ -\/\ barW)\ /\ 2;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y\ =\ h\ /\ 2\ -\/\ barH;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a80b5e6df0bbbb276abb3a2da87bb2007}{ClearBackground}}(x,\ y,\ barW,\ barH,\ \{\ 0.2f,\ 0.2f,\ 0.2f,\ 1.0f\ \});}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ filled\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(barW\ *\ \mbox{\hyperlink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{GetProgress01}}());}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (filled\ >\ 0)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a80b5e6df0bbbb276abb3a2da87bb2007}{ClearBackground}}(x,\ y,\ filled,\ barH,\ \{\ 0.1f,\ 0.4f,\ 1.0f,\ 1.0f\ \});}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_game_state_a688b4f8864623a3d8e9ad873434b062e}{objectManager}}.DrawAll(engineContext);}
+\DoxyCodeLine{00086\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a1f2fb872ba3b6dbcb11bfbc46b72c386}\index{LoadingState@{LoadingState}!Free@{Free}}
+\index{Free@{Free}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Free()}{Free()}}
+{\footnotesize\ttfamily \label{class_loading_state_a1f2fb872ba3b6dbcb11bfbc46b72c386} 
+void Loading\+State\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Release runtime objects created by this state (but keep shared engine systems alive). 
+
+Destroy UI nodes such as {\ttfamily progress\+Text} and any temporary resources owned solely by this state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services for destruction and deregistration. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_a46b0b108e44fa42845f27d20bc242d93}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Stop();}
+\DoxyCodeLine{00095\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}\index{LoadingState@{LoadingState}!GetProgress01@{GetProgress01}}
+\index{GetProgress01@{GetProgress01}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{GetProgress01()}{GetProgress01()}}
+{\footnotesize\ttfamily \label{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69} 
+float Loading\+State\+::\+Get\+Progress01 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Current loading progress in the range \mbox{[}0, 1\mbox{]}. 
+
+Returns the normalized progress value as reported by the \doxylink{class_async_resource_loader}{Async\+Resource\+Loader}.
+
+\begin{DoxyReturn}{Returns}
+A float in \mbox{[}0, 1\mbox{]}, where 1 means all queued jobs are complete. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00179}{179}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00179\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.GetProgress();\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a84ce856d66c4167866a24f49d5c7f471}\index{LoadingState@{LoadingState}!Init@{Init}}
+\index{Init@{Init}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_loading_state_a84ce856d66c4167866a24f49d5c7f471} 
+void Loading\+State\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize runtime objects (e.\+g., create \doxylink{class_text_object}{Text\+Object} for progress). 
+
+Create or acquire any engine objects the loading UI needs (fonts, text material, etc.). Avoid heavy I/O here—prefer queuing in \doxylink{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7}{Load()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services used to create/register runtime objects. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_ab4bdccf42209d9d3465a33739ad59646}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{uiReady}})}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ font\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a1db9a464555a13cecb1a865f92eae85c}{GetFontByTag}}(\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (font)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ text\ =\ std::make\_unique<TextObject>(font,\ \textcolor{stringliteral}{"{}Loading...\ 0\%"{}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ text-\/>SetIgnoreCamera(\textcolor{keyword}{true},\ \mbox{\hyperlink{class_game_state_aca3df3a97dc9c97a03665bc1842ffd78}{GetActiveCamera}}());}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ text-\/>GetTransform2D().SetPosition(\{\ 0.0f,\ -\/50.0f\ \});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}}\ =\ \textcolor{keyword}{static\_cast<}TextObject*\textcolor{keyword}{>}(\mbox{\hyperlink{class_game_state_abea569338b92e0b499193fdbdab94e86}{GetObjectManager}}().\mbox{\hyperlink{class_object_manager_ae1f29824763903213d6044d463742db4}{AddObject}}(std::move(text),\ \textcolor{stringliteral}{"{}[Loading]ProgressText"{}}));}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}}-\/>SetAlignH(\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{TextAlignH::Center}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}}-\/>SetAlignV(\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{TextAlignV::Middle}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_aaeb0439da526b6933f6b61bde194a64f}\index{LoadingState@{LoadingState}!LateInit@{LateInit}}
+\index{LateInit@{LateInit}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{LateInit()}{LateInit()}}
+{\footnotesize\ttfamily \label{class_loading_state_aaeb0439da526b6933f6b61bde194a64f} 
+void Loading\+State\+::\+Late\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Perform late initialization once this state is the current active state. 
+
+Use this to finalize UI placement, viewport dependent sizing, or to kick the loader thread after graphics context is fully active.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services available after activation. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_game_state_a98a9fbfcd4afe6bcd90fc94d5aa93b85}{GameState::LateInit}}(engineContext);}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a7f934a83650c18f8603320de29a18fbe}\index{LoadingState@{LoadingState}!LateUpdate@{LateUpdate}}
+\index{LateUpdate@{LateUpdate}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{LateUpdate()}{LateUpdate()}}
+{\footnotesize\ttfamily \label{class_loading_state_a7f934a83650c18f8603320de29a18fbe} 
+void Loading\+State\+::\+Late\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Perform post-\/update work (optional), such as deferring GPU registrations or UI adjustments. 
+
+If your loader delivers results that must be staged and then committed, do the commit here.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time in seconds. \\
+\hline
+{\em engine\+Context} & Engine services for any finalization tasks. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_game_state_a5079b8eccc7846e03e17917e07d6da3f}{GameState::LateUpdate}}(dt,\ engineContext);}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7}\index{LoadingState@{LoadingState}!Load@{Load}}
+\index{Load@{Load}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \label{class_loading_state_abece8e8c4a6e42ee1540b5130fc2fde7} 
+void Loading\+State\+::\+Load (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Prepare this state before it becomes active (enqueue initial jobs, pre-\/create UI). 
+
+Typical responsibilities\+:
+\begin{DoxyItemize}
+\item Prime the \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} with jobs via Queue\+Texture/\+Queue\+Shader/\+Queue\+Font/\+Queue\+Sound.
+\item Optionally set up a progress \doxylink{class_text_object}{Text\+Object} using {\ttfamily ui\+Font\+Tag} to display percentage.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide services and registries required by the loader and UI. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_a89713af22cf5b07b602c3315b1f90296}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Start();}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a125f91cca7722e193b0d60f408f50858}{HasFont}}(\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}}))}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a0762465f3bfa7573ec3261767a68eb16}{RegisterFont}}(\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}},\ \textcolor{stringliteral}{"{}Fonts/font1.ttf"{}},\ 32);}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{uiReady}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a6f683c033cd51cf736410353556ff668}\index{LoadingState@{LoadingState}!QueueFont@{QueueFont}}
+\index{QueueFont@{QueueFont}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{QueueFont()}{QueueFont()}}
+{\footnotesize\ttfamily \label{class_loading_state_a6f683c033cd51cf736410353556ff668} 
+void Loading\+State\+::\+Queue\+Font (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::string \&}]{ttf\+Path}{, }\item[{uint32\+\_\+t}]{pixel\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Enqueue a font to be loaded and baked for the specified pixel size, then registered by tag. 
+
+The font at {\ttfamily ttf\+Path} is loaded (e.\+g., via Free\+Type), baked to an atlas at {\ttfamily pixel\+Size}, and registered under {\ttfamily tag} for later use by Text\+Object/\+UI rendering.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services used for font atlas creation and registration. \\
+\hline
+{\em tag} & Resource tag to retrieve the font later. \\
+\hline
+{\em ttf\+Path} & Path to a True\+Type/\+Open\+Type font file. \\
+\hline
+{\em pixel\+Size} & Target pixel size for glyph baking. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a125f91cca7722e193b0d60f408f50858}{HasFont}}(tag))}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Enqueue(FontJob\{\ tag,\ ttfPath,\ pixelSize\ \});}
+\DoxyCodeLine{00122\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_aeeeb157f13d158cd0d4ae1590dec2178}\index{LoadingState@{LoadingState}!QueueShader@{QueueShader}}
+\index{QueueShader@{QueueShader}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{QueueShader()}{QueueShader()}}
+{\footnotesize\ttfamily \label{class_loading_state_aeeeb157f13d158cd0d4ae1590dec2178} 
+void Loading\+State\+::\+Queue\+Shader (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}}, \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}} $>$ $>$ \&}]{files}{}\end{DoxyParamCaption})}
+
+
+
+Enqueue a shader program to be built from multiple stage files and registered by tag. 
+
+Provide a list of (stage, file) pairs. When compilation/linking finishes off-\/thread, \doxylink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{Upload\+To\+GPU()} installs the shader into the engine with {\ttfamily tag}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services required for GPU program creation. \\
+\hline
+{\em tag} & Resource tag used to fetch the shader later. \\
+\hline
+{\em files} & Vector of (\doxylink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}, \doxylink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}) pairs for all required stages. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_af2a96d2e81a279531985c0f1ef093e76}{HasShader}}(tag))}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00110\ \ \ \ \ ShaderJob\ job;}
+\DoxyCodeLine{00111\ \ \ \ \ job.\mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{tag}}\ =\ tag;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ f\ :\ files)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ job.\mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{sources}}.push\_back(ShaderFile\{\ f.first,\ f.second\ \});}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Enqueue(job);}
+\DoxyCodeLine{00115\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_ae0f36c66d2fdfd6b186b49dac023ca27}\index{LoadingState@{LoadingState}!QueueSound@{QueueSound}}
+\index{QueueSound@{QueueSound}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{QueueSound()}{QueueSound()}}
+{\footnotesize\ttfamily \label{class_loading_state_ae0f36c66d2fdfd6b186b49dac023ca27} 
+void Loading\+State\+::\+Queue\+Sound (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::string \&}]{path}{, }\item[{bool}]{loop}{}\end{DoxyParamCaption})}
+
+
+
+Enqueue a sound to be loaded/decoded and registered by tag. 
+
+The sound at {\ttfamily path} is loaded asynchronously and, on completion, registered in the sound system under {\ttfamily tag}. If {\ttfamily loop} is true, the default playback mode will be looped.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Resource tag to retrieve the sound later. \\
+\hline
+{\em path} & Path to the audio file (e.\+g., .wav, .ogg). \\
+\hline
+{\em loop} & Whether the sound should be looped by default. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Enqueue(SoundJob\{\ tag,\ path,\ loop\ \});}
+\DoxyCodeLine{00127\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_af0573a8838bb173f6bd6c6a881931cd8}\index{LoadingState@{LoadingState}!QueueTexture@{QueueTexture}}
+\index{QueueTexture@{QueueTexture}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{QueueTexture()}{QueueTexture()}}
+{\footnotesize\ttfamily \label{class_loading_state_af0573a8838bb173f6bd6c6a881931cd8} 
+void Loading\+State\+::\+Queue\+Texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::string \&}]{file\+Path}{, }\item[{const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&}]{settings}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})}
+
+
+
+Enqueue a texture to be loaded asynchronously and registered by tag. 
+
+The texture is read from {\ttfamily file\+Path} with {\ttfamily settings}, then upon completion \doxylink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{Upload\+To\+GPU()} registers it in engine resource tables using {\ttfamily tag}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services required for final GPU registration. \\
+\hline
+{\em tag} & Resource tag used later to retrieve the texture (e.\+g., via \doxylink{class_render_manager}{Render\+Manager}). \\
+\hline
+{\em file\+Path} & File system path to the texture image. \\
+\hline
+{\em settings} & Optional texture creation parameters (format, filtering, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a687a26c8df1f31684d40c4c122480194}{HasTexture}}(tag))}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.Enqueue(TextureJob\{\ tag,\ filePath,\ settings\ \});}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a3754de47c0b00b40517645df5e5625cf}\index{LoadingState@{LoadingState}!Unload@{Unload}}
+\index{Unload@{Unload}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Unload()}{Unload()}}
+{\footnotesize\ttfamily \label{class_loading_state_a3754de47c0b00b40517645df5e5625cf} 
+void Loading\+State\+::\+Unload (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Cancel outstanding jobs and detach from loader threads/resources. 
+
+Ensure the \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} is drained or safely stopped before leaving the state stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine services used for safe teardown. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_ab9a398de72a4201a69093dfd574220c6}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93}\index{LoadingState@{LoadingState}!Update@{Update}}
+\index{Update@{Update}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93} 
+void Loading\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Advance asynchronous loading and upload finished assets; trigger state transition when done. 
+
+Steps usually include\+: 1) Pump the \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} to progress background jobs. 2) Collect finished \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} items and call \doxylink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{Upload\+To\+GPU()} for each. 3) Update progress text (0–100\%) via \doxylink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{Get\+Progress01()}. 4) If all jobs are complete, construct the next state via {\ttfamily next\+Factory} and request a state change.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time in seconds. \\
+\hline
+{\em engine\+Context} & Engine services used during polling and uploads. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_game_state_a6d11e92e629e2d4cbba792faeb75a71f}{Game\+State}}.
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{auto}\ done\ =\ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.FetchCompleted();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ r\ :\ done)}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{UploadToGPU}}(r,\ engineContext);}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}})}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pct\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{class_loading_state_a2a2abd4d6eae2b9f012e02bdc718dd69}{GetProgress01}}()\ *\ 100.0f);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}{progressText}}-\/>SetText(\textcolor{stringliteral}{"{}Loading...\ "{}}\ +\ std::to\_string(pct)\ +\ \textcolor{stringliteral}{"{}\%"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.HasFinished()\ \&\&\ \mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{nextFactory}})}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ done\ =\ \mbox{\hyperlink{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}{loader}}.FetchCompleted();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ r\ :\ done)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_loading_state_a8d02a948b169581ad59b589c67f1f589}{UploadToGPU}}(r,\ engineContext);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{stateManager}}-\/>\mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{ChangeState}}(\mbox{\hyperlink{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}{nextFactory}}());}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_loading_state_a8d02a948b169581ad59b589c67f1f589}\index{LoadingState@{LoadingState}!UploadToGPU@{UploadToGPU}}
+\index{UploadToGPU@{UploadToGPU}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{UploadToGPU()}{UploadToGPU()}}
+{\footnotesize\ttfamily \label{class_loading_state_a8d02a948b169581ad59b589c67f1f589} 
+void Loading\+State\+::\+Upload\+To\+GPU (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} \&}]{r}{, }\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Register a finished \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} with engine systems (e.\+g., upload to GPU and tag it). 
+
+This internal helper inspects the \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} type (texture, shader, font, sound), performs the appropriate GPU upload or engine registration, and binds the resource to its tag. It is typically called from \doxylink{class_loading_state_a56063d7d8b5ae48cbbee33d16aad3e93}{Update()}/\+Late\+Update() when the loader reports completed jobs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Completed load result produced by \doxylink{class_async_resource_loader}{Async\+Resource\+Loader}. \\
+\hline
+{\em engine\+Context} & Engine services used to create GPU objects and register resources. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{_loading_state_8cpp_source}{Loading\+State.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00133\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ std::visit([\&](\textcolor{keyword}{auto}\&\&\ res)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(res)>;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ TextureResult>)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!res.ok)}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tex\ =\ std::make\_unique<Texture>(res.pixels.data(),\ res.width,\ res.height,\ res.channels,\ res.settings);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a8645efdc911bde8ae83409d18a2d9cfd}{RegisterTexture}}(res.tag,\ std::move(tex));}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ ShaderResult>)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!res.ok)}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ shader\ =\ std::make\_unique<Shader>();}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ res.sources)}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>AttachFromSource(s.stage,\ s.source);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!shader-\/>Link())}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Shader\ link\ failed\ (tag="{}}\ <<\ res.tag\ <<\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a3ad25e59a96852a1685a0eba9898d11d}{RegisterShader}}(res.tag,\ std::move(shader));}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ FontResult>)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a0762465f3bfa7573ec3261767a68eb16}{RegisterFont}}(res.tag,\ res.ttfPath,\ res.pixelSize);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ SoundResult>)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{soundManager}}-\/>\mbox{\hyperlink{class_sound_manager_a8e52926369f4ff23599507c5e7cf7246}{LoadSound}}(res.tag,\ res.filePath,\ res.loop);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \},\ r);}
+\DoxyCodeLine{00171\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_loading_state_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219}\index{LoadingState@{LoadingState}!loader@{loader}}
+\index{loader@{loader}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{loader}{loader}}
+{\footnotesize\ttfamily \label{class_loading_state_af7bd294a5dfe6f36c4e6291bf64aa219} 
+\mbox{\hyperlink{class_async_resource_loader}{Async\+Resource\+Loader}} Loading\+State\+::loader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Background loader owned by this state. 
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00196}{196}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+\Hypertarget{class_loading_state_a40db3522932ae35699d1db2ab5d728b0}\index{LoadingState@{LoadingState}!nextFactory@{nextFactory}}
+\index{nextFactory@{nextFactory}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{nextFactory}{nextFactory}}
+{\footnotesize\ttfamily \label{class_loading_state_a40db3522932ae35699d1db2ab5d728b0} 
+std\+::function$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_game_state}{Game\+State}}$>$()$>$ Loading\+State\+::next\+Factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Factory for the next \doxylink{class_game_state}{Game\+State}. 
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00197}{197}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+\Hypertarget{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3}\index{LoadingState@{LoadingState}!progressText@{progressText}}
+\index{progressText@{progressText}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{progressText}{progressText}}
+{\footnotesize\ttfamily \label{class_loading_state_aecfe4e3c0b70523fe2f15935743340a3} 
+\mbox{\hyperlink{class_text_object}{Text\+Object}}\texorpdfstring{$\ast$}{*} Loading\+State\+::progress\+Text = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Optional text node showing progress percentage. 
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00201}{201}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+\Hypertarget{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}\index{LoadingState@{LoadingState}!uiFontTag@{uiFontTag}}
+\index{uiFontTag@{uiFontTag}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{uiFontTag}{uiFontTag}}
+{\footnotesize\ttfamily \label{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f} 
+std\+::string Loading\+State\+::ui\+Font\+Tag = "{}\mbox{[}Loading\mbox{]}UIFont"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Default tag for loading UI font. 
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00199}{199}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+\Hypertarget{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}\index{LoadingState@{LoadingState}!uiReady@{uiReady}}
+\index{uiReady@{uiReady}!LoadingState@{LoadingState}}
+\doxysubsubsection{\texorpdfstring{uiReady}{uiReady}}
+{\footnotesize\ttfamily \label{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e} 
+bool Loading\+State\+::ui\+Ready = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+True once the progress UI has been created. 
+
+
+
+Definition at line \mbox{\hyperlink{_loading_state_8h_source_l00200}{200}} of file \mbox{\hyperlink{_loading_state_8h_source}{Loading\+State.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_loading_state_8h}{Loading\+State.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_loading_state_8cpp}{Loading\+State.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,369 @@
+\doxysection{Font.\+cpp}
+\hypertarget{_font_8cpp_source}{}\label{_font_8cpp_source}\index{Project/SNAKE\_Engine/Private/Font.cpp@{Project/SNAKE\_Engine/Private/Font.cpp}}
+\mbox{\hyperlink{_font_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}gl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00009}\mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{00009}}\ \textcolor{keyword}{static}\ std::vector<char32\_t>\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(\textcolor{keyword}{const}\ std::string\&\ text)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00011}00011\ \ \ \ \ std::vector<char32\_t>\ result;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ text.size())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char32\_t}\ cp\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \textcolor{keywordtype}{byte}\ =\ text[i];}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b10000000)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ byte;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11100000)\ ==\ 0b11000000)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00011111)\ <<\ 6;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 2;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11110000)\ ==\ 0b11100000)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00001111)\ <<\ 12;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111)\ <<\ 6;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 2]\ \&\ 0b00111111);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 3;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11111000)\ ==\ 0b11110000)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00000111)\ <<\ 18;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111)\ <<\ 12;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 2]\ \&\ 0b00111111)\ <<\ 6;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 3]\ \&\ 0b00111111);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 4;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ result.push\_back(cp);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00058}\mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{00058}}\ \mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{Font::Font}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}\&\ renderManager,\ \textcolor{keyword}{const}\ std::string\&\ ttfPath,\ uint32\_t\ fontSize\_)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{LoadFont}}(ttfPath,\ fontSize\_);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{BakeAtlas}}(renderManager);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}}\ =\ fontSize\_;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00065}\mbox{\hyperlink{class_font_a134aaa2f78af0c12d3ce504957169768}{00065}}\ \mbox{\hyperlink{class_font_a134aaa2f78af0c12d3ce504957169768}{Font::\string~Font}}()}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00067}00067\ \ \ \ \ FT\_Done\_Face(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00068}00068\ \ \ \ \ FT\_Done\_FreeType(\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00071}\mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{Font::LoadFont}}(\textcolor{keyword}{const}\ std::string\&\ path,\ uint32\_t\ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Init\_FreeType(\&\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}}))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ init\ FreeType"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_New\_Face(\mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}},\ path.c\_str(),\ 0,\ \&\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ load\ font:\ "{}}\ +\ path);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00079}00079\ \ \ \ \ FT\_Set\_Pixel\_Sizes(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ 0,\ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00082}\mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{00082}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{Font::BakeAtlas}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}\&\ renderManager)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ texWidth\ =\ 128;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{int}\ texHeight\ =\ 128;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00086}00086\ \ \ \ \ std::vector<unsigned\ char>\ pixels(texWidth\ *\ texHeight,\ 0);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}}\ prevAlignment\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00088}00088\ \ \ \ \ glGetIntegerv(GL\_UNPACK\_ALIGNMENT,\ \&prevAlignment);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00089}00089\ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ 1);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}\ =\ std::make\_unique<Texture>(pixels.data(),\ texWidth,\ texHeight,\ 1);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{class_shader}{Shader}}*\ textShader\ =\ renderManager.\mbox{\hyperlink{class_render_manager_a67c1df4d0a8b98e45b56f0d58874c8d2}{GetShaderByTag}}(\textcolor{stringliteral}{"{}[EngineShader]internal\_text"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}\ =\ std::make\_unique<Material>(textShader);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetTexture(\textcolor{stringliteral}{"{}u\_FontTexture"{}},\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}.get());}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetUniform(\textcolor{stringliteral}{"{}u\_Color"{}},\ glm::vec4(1.0f));}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00100}00100\ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ prevAlignment);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00103}\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{00103}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{Font::TryBakeGlyph}}(\textcolor{keywordtype}{char32\_t}\ c)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(c)\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Load\_Char(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ c,\ FT\_LOAD\_RENDER))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00109}00109\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00114}00114\ \ \ \ \ FT\_GlyphSlot\ g\ =\ \mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}-\/>glyph;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ g-\/>bitmap.width;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ g-\/>bitmap.rows;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasBitmap\ =\ (w\ >\ 0\ \&\&\ h\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasAdvance\ =\ (g-\/>advance.x\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hasBitmap\ \&\&\ !hasAdvance)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ padding\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ safeW\ =\ std::max(1,\ w);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ safeH\ =\ std::max(1,\ h);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ cellW\ =\ safeW\ +\ padding\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ cellH\ =\ safeH\ +\ padding\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +\ cellW\ >\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +=\ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +\ cellH\ >\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00140}00140\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{ExpandAtlas}}();}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{keywordtype}{int}\ drawX\ =\ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +\ padding;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{int}\ drawY\ =\ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ +\ padding;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (hasBitmap\ \&\&\ g-\/>bitmap.buffer)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}}\ prevAlignment\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ glGetIntegerv(GL\_UNPACK\_ALIGNMENT,\ \&prevAlignment);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ 1);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ glTextureSubImage2D(}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetID(),\ 0,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ drawX,\ drawY,\ w,\ h,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RED,\ GL\_UNSIGNED\_BYTE,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>bitmap.buffer}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ prevAlignment);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00162}00162\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ dummy\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ glTextureSubImage2D(}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetID(),\ 0,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ drawX,\ drawY,\ 1,\ 1,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ GL\_RED,\ GL\_UNSIGNED\_BYTE,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \&dummy}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00172}00172\ \ \ \ \ \mbox{\hyperlink{struct_glyph}{Glyph}}\ glyph;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00173}00173\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}\ =\ \{\ w,\ h\ \};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00174}00174\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}\ =\ \{\ g-\/>bitmap\_left,\ g-\/>bitmap\_top\ \};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00175}00175\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ =\ g-\/>advance.x;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00177}00177\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}{uvTopLeft}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawX)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth(),}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawY)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight()}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00180}00180\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00181}00181\ \ \ \ \ glyph.\mbox{\hyperlink{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}{uvBottomRight}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawX\ +\ safeW)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth(),}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(drawY\ +\ safeH)\ /\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight()}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00184}00184\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00186}00186\ \ \ \ \ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}[c]\ =\ glyph;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ +=\ cellW;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ std::max(\mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}},\ cellH);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00195}\mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{00195}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_glyph}{Glyph}}\&\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{Font::GetGlyph}}(\textcolor{keywordtype}{char32\_t}\ c)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00196}00196\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char32\_t}\ fallbackCodepoint\ =\ U\textcolor{charliteral}{'?'};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keyword}{auto}\ fallbackIt\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.find(fallbackCodepoint);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{if}\ (fallbackIt\ !=\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.end())}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fallbackIt-\/>second;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00207}00207\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_glyph}{Glyph}}\ empty\{\};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{return}\ empty;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00211}\mbox{\hyperlink{class_font_acf5f6a72d40d2002b5648bef769a5ac2}{00211}}\ glm::vec2\ \mbox{\hyperlink{class_font_acf5f6a72d40d2002b5648bef769a5ac2}{Font::GetTextSize}}(\textcolor{keyword}{const}\ std::string\&\ text)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00212}00212\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordtype}{float}\ maxWidth\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{float}\ currentLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{keywordtype}{int}\ lineCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00217}00217\ \ \ \ \ std::vector<char32\_t>\ codepoints\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(text);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ codepoints)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00219}00219\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ U\textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ maxWidth\ =\ std::max(maxWidth,\ currentLineWidth);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ currentLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ ++lineCount;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_glyph}{Glyph}}\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ currentLineWidth\ +=\ (glyph.\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ >>\ 6);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00232}00232\ \ \ \ \ maxWidth\ =\ std::max(maxWidth,\ currentLineWidth);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordtype}{float}\ totalHeight\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}}\ *\ lineCount);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00235}00235\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ maxWidth,\ totalHeight\ \};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00236}00236\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00238}\mbox{\hyperlink{class_font_a3a3963ea1c039525cbf922f52ae03670}{00238}}\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ \mbox{\hyperlink{class_font_a3a3963ea1c039525cbf922f52ae03670}{Font::GenerateTextMesh}}(\textcolor{keyword}{const}\ std::string\&\ text,\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ alignH,\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ alignV)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00239}00239\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00240}00240\ \ \ \ \ std::vector<Vertex>\ vertices;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00241}00241\ \ \ \ \ std::vector<uint32\_t>\ indices;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00242}00242\ \ \ \ \ uint32\_t\ indexOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00244}00244\ \ \ \ \ std::stringstream\ ss(text);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00245}00245\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00246}00246\ \ \ \ \ std::vector<std::string>\ lines;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00247}00247\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ line,\ \textcolor{charliteral}{'\(\backslash\)n'}))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ lines.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordtype}{float}\ lineSpacing\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00251}00251\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ lineCount\ =\ lines.size();}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00253}00253\ \ \ \ \ std::vector<float>\ lineWidths;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordtype}{float}\ maxLineWidth\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::string\&\ lineText\ :\ lines)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00256}00256\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ std::vector<char32\_t>\ u32Line\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(lineText);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pre-\/bake\ for\ calculating\ width}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ lineWidth\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c).\mbox{\hyperlink{struct_glyph_a8ca87856d75474821f736a7d64c63946}{advance}}\ >>\ 6);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ maxLineWidth\ =\ std::max(maxLineWidth,\ lineWidth);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ lineWidths.push\_back(lineWidth);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00273}00273\ \ \ \ \ \textcolor{keywordtype}{float}\ totalHeight\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(lineCount)\ *\ lineSpacing;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00274}00274\ \ \ \ \ \textcolor{keywordtype}{float}\ yStart\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{TextAlignV::Middle}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ yStart\ +=\ totalHeight\ *\ 0.5f\ -\/\ lineSpacing;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00277}00277\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4}{TextAlignV::Bottom}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ yStart\ +=\ totalHeight\ -\/\ lineSpacing;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{keywordflow}{if}\ (alignV\ ==\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{TextAlignV::Top}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ yStart\ -\/=\ \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{fontSize}};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00282}00282\ \ \ \ \ \textcolor{keywordtype}{float}\ yCursor\ =\ yStart;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ lineCount;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00285}00285\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ lineText\ =\ lines[i];}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ lineWidths[i];}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xCursor\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alignH\ ==\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{TextAlignH::Center}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ -\/=\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (alignH\ ==\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c}{TextAlignH::Right}})}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ -\/=\ lineWidth;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ std::vector<char32\_t>\ u32\ =\ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8ToCodepoints}}(lineText);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_glyph}{Glyph}}\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xpos\ =\ xCursor\ +\ (float)glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}.x;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ypos\ =\ yCursor\ -\/\ (float)(glyph.\mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}.y\ -\/\ glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}.y);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ (float)glyph.\mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}.x;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ (float)glyph.\mbox{\hyperlink{struct_glyph_a6dacfc5a354c3458b8345e804b2637af}{size}}.y;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u0\ =\ glyph.\mbox{\hyperlink{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}{uvTopLeft}}.x;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v0\ =\ glyph.\mbox{\hyperlink{struct_glyph_a34a9c2f5bb4db32834e6bfbd67914f99}{uvTopLeft}}.y;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u1\ =\ glyph.\mbox{\hyperlink{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}{uvBottomRight}}.x;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ v1\ =\ glyph.\mbox{\hyperlink{struct_glyph_ae5a6124bbab282e4263439dd0a30634f}{uvBottomRight}}.y;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ vertices.insert(vertices.end(),\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos,\ \ \ \ \ ypos\ +\ h,\ 0.0f\ \},\ \{\ u0,\ v0\ \}\ \},}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos,\ \ \ \ \ ypos,\ \ \ \ \ 0.0f\},\ \{u0,\ v1\}\ \},}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{xpos\ +\ w,\ ypos,\ \ \ \ \ 0.0f\},\ \{u1,\ v1\}\ \},}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \{\ xpos\ +\ w,\ ypos\ +\ h,\ 0.0f\},\ \{u1,\ v0\}\ \}\ \});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ indices.insert(indices.end(),\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +\ 0,\ indexOffset\ +\ 1,\ indexOffset\ +\ 2,}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +\ 0,\ indexOffset\ +\ 2,\ indexOffset\ +\ 3}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ xCursor\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glyph.advance\ >>\ 6);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ indexOffset\ +=\ 4;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ yCursor\ -\/=\ lineSpacing;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00329}00329\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00331}00331\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_mesh}{Mesh}}(vertices,\ indices);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00332}00332\ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00335}\mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{00335}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{Font::ExpandAtlas}}()}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00336}00336\ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00337}00337\ \ \ \ \ \textcolor{keywordtype}{int}\ oldWidth\ =\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetWidth();}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00338}00338\ \ \ \ \ \textcolor{keywordtype}{int}\ oldHeight\ =\ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}-\/>GetHeight();}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00340}00340\ \ \ \ \ \textcolor{keywordtype}{int}\ newWidth\ =\ oldWidth\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00341}00341\ \ \ \ \ \textcolor{keywordtype}{int}\ newHeight\ =\ oldHeight\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00343}00343\ \ \ \ \ std::vector<unsigned\ char>\ newPixels(newWidth\ *\ newHeight,\ 0);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00344}00344\ \ \ \ \ std::unique\_ptr<Texture>\ newAtlas\ =\ std::make\_unique<Texture>(newPixels.data(),\ newWidth,\ newHeight,\ 1);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00345}00345\ \ \ \ \ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}-\/>SetTexture(\textcolor{stringliteral}{"{}u\_FontTexture"{}},\ newAtlas.get());}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00346}00346\ \ \ \ \ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlasTexture}}\ =\ std::move(newAtlas);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00348}00348\ \ \ \ \ \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00349}00349\ \ \ \ \ \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00350}00350\ \ \ \ \ \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{maxRowHeight}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00352}00352\ \ \ \ \ std::unordered\_map<char32\_t,\ Glyph>\ oldGlyphs\ =\ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}};}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00353}00353\ \ \ \ \ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}.clear();}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00355}00355\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [c,\ \_]\ :\ oldGlyphs)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00356}00356\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00361}00361\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00362}00362\ \ \ \ \ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}}++;}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00363}00363\ \}}
+
+\end{DoxyCode}

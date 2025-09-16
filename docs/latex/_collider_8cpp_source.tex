@@ -1,0 +1,278 @@
+\doxysection{Collider.\+cpp}
+\hypertarget{_collider_8cpp_source}{}\label{_collider_8cpp_source}\index{Project/SNAKE\_Engine/Private/Collider.cpp@{Project/SNAKE\_Engine/Private/Collider.cpp}}
+\mbox{\hyperlink{_collider_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00003}\mbox{\hyperlink{_collider_8cpp_abd75661fe7969e19439052a5f69ba5d1}{00003}}\ \textcolor{preprocessor}{\#define\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}gtx/norm.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00008}\mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{00008}}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{LARGE\_OBJECT\_THRESHOLD}}\ =\ 128;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00010}\mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{00010}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{CircleCollider::GetRadius}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00011}00011\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}}\ ?\ \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{baseRadius}}\ *\ std::max(glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale().x),\ glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale().y)):\ \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaledRadius}};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00015}\mbox{\hyperlink{class_circle_collider_a8bcc2d7586a3380e55317e7671c52d94}{00015}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_circle_collider_a8bcc2d7586a3380e55317e7671c52d94}{CircleCollider::GetSize}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00016}00016\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}()\ *\ 2.f;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00020}\mbox{\hyperlink{class_circle_collider_add83b7e1b2eb124b5d065bf96ea4dcd3}{00020}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_circle_collider_add83b7e1b2eb124b5d065bf96ea4dcd3}{CircleCollider::SetRadius}}(\textcolor{keywordtype}{float}\ r)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{baseRadius}}\ =\ r;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaledRadius}}\ =\ r;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00028}\mbox{\hyperlink{class_circle_collider_afc46297adb83cfaab9487e89d7a25298}{00028}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_circle_collider_afc46297adb83cfaab9487e89d7a25298}{CircleCollider::GetBoundingRadius}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00029}00029\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00033}\mbox{\hyperlink{class_circle_collider_a9598b67bc72342284318d19f3c0cf35b}{00033}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_circle_collider_a9598b67bc72342284318d19f3c0cf35b}{CircleCollider::CheckCollision}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}*\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00034}00034\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ other-\/>\mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{DispatchAgainst}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00038}\mbox{\hyperlink{class_circle_collider_a69a051ea02a260f7b5c46cb76058cbe5}{00038}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_circle_collider_a69a051ea02a260f7b5c46cb76058cbe5}{CircleCollider::DispatchAgainst}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_circle_collider_a597cd7fc15521b49b7bda1476caaadb4}{CircleCollider}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00039}00039\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00040}00040\ \ \ \ \ glm::vec2\ a\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()+\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00041}00041\ \ \ \ \ glm::vec2\ b\ =\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()\ +\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{float}\ distSqr\ =\ glm::length2(a\ -\/\ b);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{float}\ rSum\ =\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}()\ +\ other.\mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ distSqr\ <=\ rSum\ *\ rSum;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00048}\mbox{\hyperlink{class_circle_collider_a951f365eb24e6e1a286bc7c518e8ab46}{00048}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_circle_collider_a69a051ea02a260f7b5c46cb76058cbe5}{CircleCollider::DispatchAgainst}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_circle_collider_a1444c449e346513260829327c9617db4}{AABBCollider}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00049}00049\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ other.\mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{DispatchAgainst}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00053}\mbox{\hyperlink{class_circle_collider_a8f00aeea30fb3ffb45ebbcaab0d96fdd}{00053}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_circle_collider_a8f00aeea30fb3ffb45ebbcaab0d96fdd}{CircleCollider::SyncWithTransformScale}}()}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{float}\ scale\ =\ std::max(glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale().x),glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale().y));}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaledRadius}}\ =\ \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{baseRadius}}\ *\ scale;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00061}\mbox{\hyperlink{class_circle_collider_a4fa87c8b2fb9204f9d5e9d47dc3a44bc}{00061}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_circle_collider_a4fa87c8b2fb9204f9d5e9d47dc3a44bc}{CircleCollider::CheckPointCollision}}(\textcolor{keyword}{const}\ glm::vec2\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00062}00062\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00063}00063\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{float}\ distSqr\ =\ glm::dot(center\ -\/\ point,\ center\ -\/\ point);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ distSqr\ <=\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}()\ *\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00068}\mbox{\hyperlink{class_circle_collider_ae67885becfba36118e3ed5fc7a35d252}{00068}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_circle_collider_ae67885becfba36118e3ed5fc7a35d252}{CircleCollider::DrawDebug}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}*\ rm,\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ cam,\ \textcolor{keyword}{const}\ glm::vec4\&\ color)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00069}00069\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00070}00070\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{float}\ r\ =\ \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ segments\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ angleStep\ =\ glm::two\_pi<float>()\ /\ segments;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ segments;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angleA\ =\ i\ *\ angleStep;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angleB\ =\ (i\ +\ 1)\ *\ angleStep;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ glm::vec2\ a\ =\ center\ +\ r\ *\ glm::vec2(std::cos(angleA),\ std::sin(angleA));}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ glm::vec2\ b\ =\ center\ +\ r\ *\ glm::vec2(std::cos(angleB),\ std::sin(angleB));}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(a,\ b,\ cam,\ color);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00088}\mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{00088}}\ glm::vec2\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{AABBCollider::GetHalfSize}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00089}00089\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}}\ ?\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ *\ glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale())\ :\ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00093}\mbox{\hyperlink{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d}{00093}}\ glm::vec2\ \mbox{\hyperlink{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d}{AABBCollider::GetSize}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00094}00094\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}()\ *\ glm::vec2(2);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00098}\mbox{\hyperlink{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}{00098}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}{AABBCollider::SetSize}}(\textcolor{keyword}{const}\ glm::vec2\&\ size)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ =\ size/glm::vec2(2);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}\ =\ size\ /\ glm::vec2(2);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00106}\mbox{\hyperlink{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}{00106}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}{AABBCollider::GetBoundingRadius}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00107}00107\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00108}00108\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::length(half);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00113}\mbox{\hyperlink{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}{00113}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}{AABBCollider::CheckCollision}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}*\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00114}00114\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{return}\ other-\/>\mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{DispatchAgainst}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00118}\mbox{\hyperlink{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba}{00118}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba}{AABBCollider::CheckPointCollision}}(\textcolor{keyword}{const}\ glm::vec2\&\ point)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00119}00119\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00120}00120\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00121}00121\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00123}00123\ \ \ \ \ glm::vec2\ min\ =\ center\ -\/\ half;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00124}00124\ \ \ \ \ glm::vec2\ max\ =\ center\ +\ half;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{return}\ point.x\ >=\ min.x\ \&\&\ point.x\ <=\ max.x\ \&\&}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ point.y\ >=\ min.y\ \&\&\ point.y\ <=\ max.y;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00130}\mbox{\hyperlink{class_a_a_b_b_collider_acab757f9231fa6acb535784d77915600}{00130}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{AABBCollider::DispatchAgainst}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42}{AABBCollider}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00131}00131\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00132}00132\ \ \ \ \ glm::vec2\ aPos\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00133}00133\ \ \ \ \ glm::vec2\ bPos\ =\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00135}00135\ \ \ \ \ glm::vec2\ aHalf\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00136}00136\ \ \ \ \ glm::vec2\ bHalf\ =\ other.\mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{return}\ std::abs(aPos.x\ -\/\ bPos.x)\ <=\ (aHalf.x\ +\ bHalf.x)\ \&\&}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ std::abs(aPos.y\ -\/\ bPos.y)\ <=\ (aHalf.y\ +\ bHalf.y);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00142}\mbox{\hyperlink{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}{00142}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}{AABBCollider::SyncWithTransformScale}}()}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00143}00143\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ *\ glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale());}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00148}\mbox{\hyperlink{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006}{00148}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006}{AABBCollider::DrawDebug}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}*\ rm,\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ cam,\ \textcolor{keyword}{const}\ glm::vec4\&\ color)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00149}00149\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00150}00150\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()+\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00151}00151\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00153}00153\ \ \ \ \ glm::vec2\ min\ =\ center\ -\/\ half;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00154}00154\ \ \ \ \ glm::vec2\ max\ =\ center\ +\ half;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00156}00156\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ min.x,\ min.y\ \},\ \{\ max.x,\ min.y\ \},\ cam,\ color);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00157}00157\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ max.x,\ min.y\ \},\ \{\ max.x,\ max.y\ \},\ cam,\ color);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00158}00158\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ max.x,\ max.y\ \},\ \{\ min.x,\ max.y\ \},\ cam,\ color);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00159}00159\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ min.x,\ max.y\ \},\ \{\ min.x,\ min.y\ \},\ cam,\ color);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00162}\mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{00162}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{AABBCollider::DispatchAgainst}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f}{CircleCollider}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00163}00163\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00164}00164\ \ \ \ \ glm::vec2\ aPos\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00165}00165\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00167}00167\ \ \ \ \ glm::vec2\ circlePos\ =\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()\ +\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ other.\mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00170}00170\ \ \ \ \ glm::vec2\ closest\ =\ glm::clamp(circlePos,\ aPos\ -\/\ half,\ aPos\ +\ half);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordtype}{float}\ distSqr\ =\ glm::length2(circlePos\ -\/\ closest);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{return}\ distSqr\ <=\ radius\ *\ radius;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00178}\mbox{\hyperlink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{00178}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{SpatialHashGrid::Clear}}()}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00179}00179\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00180}00180\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}.clear();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00181}00181\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.clear();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.clear();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00185}\mbox{\hyperlink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{00185}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{SpatialHashGrid::Insert}}(\mbox{\hyperlink{class_object}{Object}}*\ obj)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00186}00186\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>\mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{IsAlive}}()\ ||\ !obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}())}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.push\_back(obj);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00190}00190\ \ \ \ \ \mbox{\hyperlink{class_collider}{Collider}}*\ collider\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00191}00191\ \ \ \ \ glm::vec2\ offset\ =\ collider?\ collider-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}():\ glm::vec2(0);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00192}00192\ \ \ \ \ glm::vec2\ pos\ =\ obj-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+\ offset;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{GetBoundingRadius}}();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00195}00195\ \ \ \ \ glm::ivec2\ minCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ -\/\ glm::vec2(radius));}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00196}00196\ \ \ \ \ glm::ivec2\ maxCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ +\ glm::vec2(radius));}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{keywordtype}{int}\ coveredCells\ =\ (maxCell.x\ -\/\ minCell.x\ +\ 1)\ *\ (maxCell.y\ -\/\ minCell.y\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00198}00198\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coveredCells\ >\ \mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{LARGE\_OBJECT\_THRESHOLD}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00199}00199\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.push\_back(obj);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ minCell.y;\ y\ <=\ maxCell.y;\ ++y)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00205}00205\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ minCell.x;\ x\ <=\ maxCell.x;\ ++x)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{InsertToCell}}(obj,\ \{\ x,\ y\ \});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00210}00210\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00212}\mbox{\hyperlink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{00212}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{SpatialHashGrid::ComputeCollisions}}(std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{class_object}{Object}}*,\ \mbox{\hyperlink{class_object}{Object}}*)>\ onCollision)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00213}00213\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ obj\ :\ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00215}00215\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ other\ :\ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ !=\ other)\ onCollision(obj,\ other);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [cell,\ list]\ :\ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}})}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00222}00222\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ list.size();}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ count;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ i\ +\ 1;\ j\ <\ count;\ ++j)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onCollision(list[i],\ list[j]);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00231}00231\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00232}00232\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00234}\mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{00234}}\ glm::ivec2\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{SpatialHashGrid::GetCell}}(\textcolor{keyword}{const}\ glm::vec2\&\ pos)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00235}00235\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00236}00236\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::ivec2(}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.x\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}})),}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.y\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}}))}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00239}00239\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00242}\mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{00242}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{SpatialHashGrid::InsertToCell}}(\mbox{\hyperlink{class_object}{Object}}*\ obj,\ \textcolor{keyword}{const}\ glm::ivec2\&\ cell)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00243}00243\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00244}00244\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}[cell].push\_back(obj);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00245}00245\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00247}\mbox{\hyperlink{class_collision_group_registry_ac68cd443ab9e050383111ffd46dad625}{00247}}\ uint32\_t\ \mbox{\hyperlink{class_collision_group_registry_ac68cd443ab9e050383111ffd46dad625}{CollisionGroupRegistry::GetGroupBit}}(\textcolor{keyword}{const}\ std::string\&\ tag)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00248}00248\ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00249}00249\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_collision_group_registry_ab95c6214265044dd64b94eede30bf228}{tagToBit}}.find(tag);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_collision_group_registry_ab95c6214265044dd64b94eede30bf228}{tagToBit}}.end())}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_collision_group_registry_a56e97b092b3b9a4872dc4ad796d00443}{currentBit}}\ >=\ 32)}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00254}00254\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Exceeded\ maximum\ number\ of\ collision\ groups"{}});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UINT32\_MAX;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00257}00257\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00259}00259\ \ \ \ \ uint32\_t\ bit\ =\ (1\ <<\ \mbox{\hyperlink{class_collision_group_registry_a56e97b092b3b9a4872dc4ad796d00443}{currentBit}});}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00260}00260\ \ \ \ \ \mbox{\hyperlink{class_collision_group_registry_ab95c6214265044dd64b94eede30bf228}{tagToBit}}[tag]\ =\ bit;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00261}00261\ \ \ \ \ \mbox{\hyperlink{class_collision_group_registry_a03eaa11789a579244d7352b9bbdf07f1}{bitToTag}}[bit]\ =\ tag;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00262}00262\ \ \ \ \ ++\mbox{\hyperlink{class_collision_group_registry_a56e97b092b3b9a4872dc4ad796d00443}{currentBit}};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00263}00263\ \ \ \ \ \textcolor{keywordflow}{return}\ bit;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00266}\mbox{\hyperlink{class_collision_group_registry_adeb0ee190820fb34f8acc1474921cab5}{00266}}\ std::string\ \mbox{\hyperlink{class_collision_group_registry_adeb0ee190820fb34f8acc1474921cab5}{CollisionGroupRegistry::GetGroupTag}}(uint32\_t\ bit)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00267}00267\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_collision_group_registry_a03eaa11789a579244d7352b9bbdf07f1}{bitToTag}}.find(bit);}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_collision_group_registry_a03eaa11789a579244d7352b9bbdf07f1}{bitToTag}}.end())}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00271}00271\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}unknown"{}};}
+\DoxyCodeLine{\Hypertarget{_collider_8cpp_source_l00272}00272\ \}}
+
+\end{DoxyCode}

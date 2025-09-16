@@ -11,50 +11,61 @@
 \DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00007}00007\ }
 \DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debug_8h}{Debug.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00024}\mbox{\hyperlink{class_render_layer_manager}{00024}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_layer_manager}{RenderLayerManager}}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00025}00025\ \{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00026}\mbox{\hyperlink{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}{00026}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}{RenderManager}};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00027}00027\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00028}\mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{00028}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}}\ =\ 16;\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00036}\mbox{\hyperlink{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}{00036}}\ \ \ \ \ std::optional<uint8\_t>\ \mbox{\hyperlink{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}{GetLayerID}}(\textcolor{keyword}{const}\ std::string\&\ name)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00037}00037\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00042}00042\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00050}\mbox{\hyperlink{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}{00050}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}{GetLayerName}}(uint8\_t\ \textcolor{keywordtype}{id})\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00051}00051\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}.at(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00053}00053\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00055}00055\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00066}\mbox{\hyperlink{class_render_layer_manager_a956b0e9f4e06af9b252fa47410cd39ad}{00066}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render_layer_manager_a956b0e9f4e06af9b252fa47410cd39ad}{RegisterLayer}}(\textcolor{keyword}{const}\ std::string\&\ name)}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00067}00067\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_debug_8h_a76dcc2dada341abb94ed74214eca553a}{SNAKE\_WRN}}(\textcolor{stringliteral}{"{}Already\ have\ '"{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}'\ tag.\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00074}00074\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{nextID}}\ >=\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}})}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_debug_8h_a4bea2ba782ca7e8f40195f8827c71ecf}{SNAKE\_ERR}}(\textcolor{stringliteral}{"{}Already\ have\ max\ count\ of\ layers.\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}[name]\ =\ \mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{nextID}};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[\mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{nextID}}]\ =\ name;}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{nextID}}++;}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00084}00084\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00085}00085\ }
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00086}\mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{00086}}\ \ \ \ \ std::unordered\_map<std::string,\ uint8\_t>\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00087}\mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{00087}}\ \ \ \ \ std::array<std::string,\ MAX\_LAYERS>\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}};}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00088}\mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{00088}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_render_layer_manager_a20f95a00fa1051dfd1760b8f73dfbdd9}{nextID}}\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00089}00089\ \};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00027}\mbox{\hyperlink{class_render_layer_manager}{00027}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_layer_manager}{RenderLayerManager}}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00029}\mbox{\hyperlink{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}{00029}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}{RenderManager}};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00030}00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00034}\mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{00034}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}}\ =\ 16;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00052}\mbox{\hyperlink{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}{00052}}\ \ \ \ \ [[nodiscard]]\ std::optional<uint8\_t>\ \mbox{\hyperlink{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}{GetLayerID}}(\textcolor{keyword}{const}\ std::string\&\ name)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00053}00053\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00071}\mbox{\hyperlink{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}{00071}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}{GetLayerName}}(uint8\_t\ \textcolor{keywordtype}{id})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00072}00072\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}.at(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00076}00076\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00092}\mbox{\hyperlink{class_render_layer_manager_a7725080ef9d7db52bc8be4d3f5a6e544}{00092}}\ \ \ \ \ [[maybe\_unused]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_render_layer_manager_a7725080ef9d7db52bc8be4d3f5a6e544}{RegisterLayer}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ uint8\_t\ layer)}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(tag)\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Layer\ already\ exists:\ "{}}\ <<\ tag);}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer\ >=\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}}\ ||\ !\mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer].empty())}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Layer\ ID\ "{}}\ <<\ layer\ <<\ \textcolor{stringliteral}{"{}\ is\ already\ in\ use\ or\ out\ of\ range"{}});}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}[tag]\ =\ layer;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer]\ =\ tag;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00120}\mbox{\hyperlink{class_render_layer_manager_a70566ea3ed358ec340a46e2f9fe69662}{00120}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render_layer_manager_a70566ea3ed358ec340a46e2f9fe69662}{UnregisterLayer}}(\textcolor{keyword}{const}\ std::string\&\ name)}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_LOG(\textcolor{stringliteral}{"{}Cannot\ unregister:\ layer\ '"{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}'\ not\ found"{}});}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ uint8\_t\ \textcolor{keywordtype}{id}\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.erase(it);}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[id].clear();}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00134}\mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{00134}}\ \ \ \ \ std::unordered\_map<std::string,\ uint8\_t>\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00135}\mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{00135}}\ \ \ \ \ std::array<std::string,\ MAX\_LAYERS>\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_render_layer_manager_8h_source_l00136}00136\ \};}
 
 \end{DoxyCode}

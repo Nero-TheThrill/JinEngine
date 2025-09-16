@@ -2,7 +2,7 @@
 \hypertarget{struct_instance_batch_key}{}\label{struct_instance_batch_key}\index{InstanceBatchKey@{InstanceBatchKey}}
 
 
-Represents a unique pair of mesh and material for batching.  
+Key structure used for grouping objects into instanced batches.  
 
 
 
@@ -13,27 +13,38 @@ Represents a unique pair of mesh and material for batching.
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{struct_instance_batch_key_a982a5c97e6d6ccd7142064bdf4141043}{operator==}} (const \mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}} \&other) const
-\begin{DoxyCompactList}\small\item\em Equality comparison used in hash-\/based containers. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Equality comparison operator. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{struct_instance_batch_key_a2c62cfe4c5c9038f36c506d04be17b14}{operator$<$}} (const \mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}} \&other) const
-\begin{DoxyCompactList}\small\item\em Ordering comparison used in sorted containers like std\+::map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Ordering operator for associative containers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}
-\begin{DoxyCompactList}\small\item\em Pointer to the mesh used by a group of objects. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Shared mesh pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}
-\begin{DoxyCompactList}\small\item\em Pointer to the material shared by the same group. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Shared material pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{sprite\+Sheet}}
+\begin{DoxyCompactList}\small\item\em Shared sprite sheet pointer (for animated sprites). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represents a unique pair of mesh and material for batching. 
+Key structure used for grouping objects into instanced batches. 
 
-This struct is used as a key when grouping Game\+Objects that share both a \doxylink{class_mesh}{Mesh} and a \doxylink{class_material}{Material}. Such groups can be rendered together efficiently using instancing. Comparison and ordering operators are provided for use in maps and sets. 
+The batch key is defined by a unique combination of\+:
+\begin{DoxyItemize}
+\item \doxylink{class_mesh}{Mesh} pointer
+\item \doxylink{class_material}{Material} pointer
+\item \doxylink{class_sprite_sheet}{Sprite\+Sheet} pointer
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00013}{13}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+Objects that share the same key can be drawn together using GPU instancing. 
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00012}{12}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
 
+\label{doc-func-members}
+\Hypertarget{struct_instance_batch_key_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{struct_instance_batch_key_a2c62cfe4c5c9038f36c506d04be17b14}\index{InstanceBatchKey@{InstanceBatchKey}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!InstanceBatchKey@{InstanceBatchKey}}
@@ -43,19 +54,29 @@ bool Instance\+Batch\+Key\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \
 
 
 
-Ordering comparison used in sorted containers like std\+::map. 
+Ordering operator for associative containers. 
+
+Comparison is lexicographical by mesh, then material, then sprite\+Sheet pointer addresses.
 
 
+\begin{DoxyParams}{Parameters}
+{\em other} & Key to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this key is ordered before {\ttfamily other}. 
+\end{DoxyReturn}
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00028}{28}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00041}{41}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ !=\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}})}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ <\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}};}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ <\ other.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}};}
-\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ !=\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ <\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ !=\ other.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ <\ other.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{spriteSheet}}\ <\ other.\mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{spriteSheet}};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{struct_instance_batch_key_a982a5c97e6d6ccd7142064bdf4141043}\index{InstanceBatchKey@{InstanceBatchKey}!operator==@{operator==}}
@@ -66,21 +87,33 @@ bool Instance\+Batch\+Key\+::operator== (\begin{DoxyParamCaption}\item[{const \m
 
 
 
-Equality comparison used in hash-\/based containers. 
+Equality comparison operator. 
+
+Two keys are considered equal if all three pointers (mesh, material, sprite\+Sheet) match.
 
 
+\begin{DoxyParams}{Parameters}
+{\em other} & Key to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all members are equal. 
+\end{DoxyReturn}
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00021}{21}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00027}{27}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ ==\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ \&\&\ \mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ ==\ other.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}};}
-\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ ==\ other.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}}\ \&\&\ \mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ ==\ other.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}}\ \&\&\ \mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{spriteSheet}}\ ==\ other.\mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{spriteSheet}};}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
+\label{doc-variable-members}
+\Hypertarget{struct_instance_batch_key_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}\index{InstanceBatchKey@{InstanceBatchKey}!material@{material}}
 \index{material@{material}!InstanceBatchKey@{InstanceBatchKey}}
@@ -90,11 +123,11 @@ Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00021}{21}} o
 
 
 
-Pointer to the material shared by the same group. 
+Shared material pointer. 
 
 
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00016}{16}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00015}{15}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 \Hypertarget{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}\index{InstanceBatchKey@{InstanceBatchKey}!mesh@{mesh}}
 \index{mesh@{mesh}!InstanceBatchKey@{InstanceBatchKey}}
@@ -104,14 +137,28 @@ Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00016}{16}} o
 
 
 
-Pointer to the mesh used by a group of objects. 
+Shared mesh pointer. 
 
 
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00015}{15}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00014}{14}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+
+\Hypertarget{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}\index{InstanceBatchKey@{InstanceBatchKey}!spriteSheet@{spriteSheet}}
+\index{spriteSheet@{spriteSheet}!InstanceBatchKey@{InstanceBatchKey}}
+\doxysubsubsection{\texorpdfstring{spriteSheet}{spriteSheet}}
+{\footnotesize\ttfamily \label{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c} 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}}\texorpdfstring{$\ast$}{*} Instance\+Batch\+Key\+::sprite\+Sheet}
+
+
+
+Shared sprite sheet pointer (for animated sprites). 
+
+
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00016}{16}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_instance_batch_key_8h}{Instance\+Batch\+Key.\+h}}\end{DoxyCompactItemize}
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_instance_batch_key_8h}{Instance\+Batch\+Key.\+h}}\end{DoxyCompactItemize}

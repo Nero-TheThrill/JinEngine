@@ -9,23 +9,23 @@
 \DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00005}00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_n_a_k_e___engine}{SNAKE\_Engine}};}
 \DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00006}00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_engine_context}{EngineContext}};}
 \DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00007}00007\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00026}\mbox{\hyperlink{class_state_manager}{00026}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state_manager}{StateManager}}}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00027}00027\ \{}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00028}\mbox{\hyperlink{class_state_manager_a2d51b51c9cf169dca9ae37291ad26a39}{00028}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_state_manager_a2d51b51c9cf169dca9ae37291ad26a39}{SNAKE\_Engine}};}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00029}00029\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00039}00039\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_game_state}{GameState}}*\ \mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{GetCurrentState}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{ChangeState}}(std::unique\_ptr<GameState>\ newState);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00057}00057\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{Draw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{Free}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00023}\mbox{\hyperlink{class_state_manager}{00023}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state_manager}{StateManager}}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00025}\mbox{\hyperlink{class_state_manager_a2d51b51c9cf169dca9ae37291ad26a39}{00025}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_state_manager_a2d51b51c9cf169dca9ae37291ad26a39}{SNAKE\_Engine}};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00026}00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00040}00040\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_game_state}{GameState}}*\ \mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{GetCurrentState}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{ChangeState}}(std::unique\_ptr<GameState>\ newState);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00060}00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{Draw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
 \DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00089}00089\ }
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00090}\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{00090}}\ \ \ \ \ std::unique\_ptr<GameState>\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}};}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00091}\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{00091}}\ \ \ \ \ std::unique\_ptr<GameState>\ \mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}};}
-\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00092}00092\ \};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{Free}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00101}\mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{00101}}\ \ \ \ \ std::unique\_ptr<GameState>\ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}};\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00102}\mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{00102}}\ \ \ \ \ std::unique\_ptr<GameState>\ \mbox{\hyperlink{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}{nextState}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00103}00103\ \};}
 
 \end{DoxyCode}

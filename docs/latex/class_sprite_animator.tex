@@ -1,0 +1,516 @@
+\doxysection{Sprite\+Animator Class Reference}
+\hypertarget{class_sprite_animator}{}\label{class_sprite_animator}\index{SpriteAnimator@{SpriteAnimator}}
+
+
+Time-\/based animator for playing sprite sheet frames and clips.  
+
+
+
+
+{\ttfamily \#include $<$Animation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sprite_animator_a67de66a8bb6d95c356e1384c87cf359f}{Sprite\+Animator}} (\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}sheet\+\_\+, float frame\+Time\+\_\+, bool loop\+\_\+=true)
+\begin{DoxyCompactList}\small\item\em Construct a sprite animator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_animator_af2935db4720fc2387d34796559412404}{Play\+Clip}} (int start, int end, bool loop\+\_\+=true)
+\begin{DoxyCompactList}\small\item\em Play a frame range as an animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_animator_aac8752dcb1e73427d97e4f3126ec841a}{Play\+Clip}} (const std\+::string \&clip\+Name)
+\begin{DoxyCompactList}\small\item\em Play a named \doxylink{struct_sprite_clip}{Sprite\+Clip}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_animator_a23f9880b2fdbbd23fe48f25526cafb07}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Advance animation based on elapsed time. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_sprite_animator_a8128f7ba56f5127ee553411395eb3256}{Get\+UVOffset}} () const
+\begin{DoxyCompactList}\small\item\em Get UV offset of the current frame. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_sprite_animator_aabc0ec5b983de02c99eaf51b4fefc3b5}{Get\+UVScale}} () const
+\begin{DoxyCompactList}\small\item\em Get UV scale of the current frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_animator_a0b81f72271d4317d88ba9e235cca8f1c}{Get\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Access the backing texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_animator_ac1f67603f393000a573dff1308e1245f}{Set\+Frame}} (int frame)
+\begin{DoxyCompactList}\small\item\em Force the current frame index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_animator_adb6d3704d6333f420d16bb2e2e7b5855}{Get\+Current\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em Get the current frame index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_animator_a75066ecd65e5bf5c3a683b91420cfdf9}{Get\+Sprite\+Sheet}} () const
+\begin{DoxyCompactList}\small\item\em Access the sprite sheet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}
+\begin{DoxyCompactList}\small\item\em Backing sprite sheet. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frame\+Time}}
+\begin{DoxyCompactList}\small\item\em Duration per frame when playing ranges. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Elapsed time accumulator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{current\+Frame}} = 0
+\begin{DoxyCompactList}\small\item\em Current frame index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_animator_af0127d4a6d5804580ed0bdc749e48fe6}{start\+Frame}} = 0
+\begin{DoxyCompactList}\small\item\em Range start frame index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c}{end\+Frame}} = 0
+\begin{DoxyCompactList}\small\item\em Range end frame index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626}{loop}} = true
+\begin{DoxyCompactList}\small\item\em Whether playback should loop. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playing\+Clip}} = nullptr
+\begin{DoxyCompactList}\small\item\em Currently playing clip (if any). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clip\+Frame\+Index}} = 0
+\begin{DoxyCompactList}\small\item\em Index into the playing clip\textquotesingle{}s frame sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time-\/based animator for playing sprite sheet frames and clips. 
+
+The \doxylink{class_sprite_animator}{Sprite\+Animator} advances frames based on elapsed time and plays either a continuous frame range or a named \doxylink{struct_sprite_clip}{Sprite\+Clip}. 
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00121}{121}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_sprite_animator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sprite_animator_a67de66a8bb6d95c356e1384c87cf359f}\index{SpriteAnimator@{SpriteAnimator}!SpriteAnimator@{SpriteAnimator}}
+\index{SpriteAnimator@{SpriteAnimator}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{SpriteAnimator()}{SpriteAnimator()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a67de66a8bb6d95c356e1384c87cf359f} 
+Sprite\+Animator\+::\+Sprite\+Animator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}}]{sheet\+\_\+}{, }\item[{float}]{frame\+Time\+\_\+}{, }\item[{bool}]{loop\+\_\+}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Construct a sprite animator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sheet\+\_\+} & Pointer to the sprite sheet. \\
+\hline
+{\em frame\+Time\+\_\+} & Duration of each frame when not using a clip. \\
+\hline
+{\em loop\+\_\+} & Whether playback should loop (default true). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ :\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}(sheet\_),\ \mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frameTime}}(frameTime\_),\ \mbox{\hyperlink{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626}{loop}}(loop\_)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frameTime}}\ ==\ 0.f)\ \mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frameTime}}\ =\ 0.001f;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_sprite_animator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sprite_animator_adb6d3704d6333f420d16bb2e2e7b5855}\index{SpriteAnimator@{SpriteAnimator}!GetCurrentFrame@{GetCurrentFrame}}
+\index{GetCurrentFrame@{GetCurrentFrame}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{GetCurrentFrame()}{GetCurrentFrame()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_adb6d3704d6333f420d16bb2e2e7b5855} 
+int Sprite\+Animator\+::\+Get\+Current\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the current frame index. 
+
+\begin{DoxyReturn}{Returns}
+Frame index. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00189}{189}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00189\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_a75066ecd65e5bf5c3a683b91420cfdf9}\index{SpriteAnimator@{SpriteAnimator}!GetSpriteSheet@{GetSpriteSheet}}
+\index{GetSpriteSheet@{GetSpriteSheet}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{GetSpriteSheet()}{GetSpriteSheet()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a75066ecd65e5bf5c3a683b91420cfdf9} 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*} Sprite\+Animator\+::\+Get\+Sprite\+Sheet (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Access the sprite sheet. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the sprite sheet. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00196}{196}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00196\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_a0b81f72271d4317d88ba9e235cca8f1c}\index{SpriteAnimator@{SpriteAnimator}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a0b81f72271d4317d88ba9e235cca8f1c} 
+\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} Sprite\+Animator\+::\+Get\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Access the backing texture. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the texture from the sprite sheet. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00175}{175}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00175\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}-\/>GetTexture();\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_a8128f7ba56f5127ee553411395eb3256}\index{SpriteAnimator@{SpriteAnimator}!GetUVOffset@{GetUVOffset}}
+\index{GetUVOffset@{GetUVOffset}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{GetUVOffset()}{GetUVOffset()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a8128f7ba56f5127ee553411395eb3256} 
+glm\+::vec2 Sprite\+Animator\+::\+Get\+UVOffset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get UV offset of the current frame. 
+
+\begin{DoxyReturn}{Returns}
+UV offset vector. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}\ ?\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}-\/>GetUVOffset(\mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}})\ :\ glm::vec2(0.0f);}
+\DoxyCodeLine{00134\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_aabc0ec5b983de02c99eaf51b4fefc3b5}\index{SpriteAnimator@{SpriteAnimator}!GetUVScale@{GetUVScale}}
+\index{GetUVScale@{GetUVScale}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{GetUVScale()}{GetUVScale()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_aabc0ec5b983de02c99eaf51b4fefc3b5} 
+glm\+::vec2 Sprite\+Animator\+::\+Get\+UVScale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get UV scale of the current frame. 
+
+\begin{DoxyReturn}{Returns}
+UV scale vector. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00137\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}\ ?\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}-\/>GetUVScale()\ :\ glm::vec2(1.0f);}
+\DoxyCodeLine{00139\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_aac8752dcb1e73427d97e4f3126ec841a}\index{SpriteAnimator@{SpriteAnimator}!PlayClip@{PlayClip}}
+\index{PlayClip@{PlayClip}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{PlayClip()}{PlayClip()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_sprite_animator_aac8752dcb1e73427d97e4f3126ec841a} 
+void Sprite\+Animator\+::\+Play\+Clip (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{clip\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Play a named \doxylink{struct_sprite_clip}{Sprite\+Clip}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+Name} & Name of the clip in the sprite sheet. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}})}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Can't\ play\ clip:\ Sprite\ sheet\ is\ nullptr"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}*\ clip\ =\ \mbox{\hyperlink{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}{sheet}}-\/>GetClip(clipName);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (!clip\ ||\ clip-\/>frameIndices.empty())}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Can't\ play\ clip:\ There\ is\ no\ clip\ named\ \(\backslash\)"{}"{}}\ <<clipName<<\ \textcolor{stringliteral}{"{}\(\backslash\)"{}."{}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}\ =\ clip;}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}\ =\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ =\ 0.0f;}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ clip-\/>frameIndices[\mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}];}
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_af2935db4720fc2387d34796559412404}\index{SpriteAnimator@{SpriteAnimator}!PlayClip@{PlayClip}}
+\index{PlayClip@{PlayClip}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{PlayClip()}{PlayClip()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_sprite_animator_af2935db4720fc2387d34796559412404} 
+void Sprite\+Animator\+::\+Play\+Clip (\begin{DoxyParamCaption}\item[{int}]{start}{, }\item[{int}]{end}{, }\item[{bool}]{loop\+\_\+}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Play a frame range as an animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Start frame index (inclusive). \\
+\hline
+{\em end} & End frame index (inclusive). \\
+\hline
+{\em loop\+\_\+} & Whether to loop this range (default true). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00065\ \ \ \ \ this-\/>\mbox{\hyperlink{class_sprite_animator_af0127d4a6d5804580ed0bdc749e48fe6}{startFrame}}\ =\ start;}
+\DoxyCodeLine{00066\ \ \ \ \ this-\/>\mbox{\hyperlink{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c}{endFrame}}\ =\ end;}
+\DoxyCodeLine{00067\ \ \ \ \ this-\/>\mbox{\hyperlink{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626}{loop}}\ =\ loop\_;}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ start;}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ =\ 0.0f;}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_ac1f67603f393000a573dff1308e1245f}\index{SpriteAnimator@{SpriteAnimator}!SetFrame@{SetFrame}}
+\index{SetFrame@{SetFrame}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{SetFrame()}{SetFrame()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_ac1f67603f393000a573dff1308e1245f} 
+void Sprite\+Animator\+::\+Set\+Frame (\begin{DoxyParamCaption}\item[{int}]{frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Force the current frame index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & New frame index. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00182}{182}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \{\ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ frame;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_sprite_animator_a23f9880b2fdbbd23fe48f25526cafb07}\index{SpriteAnimator@{SpriteAnimator}!Update@{Update}}
+\index{Update@{Update}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a23f9880b2fdbbd23fe48f25526cafb07} 
+void Sprite\+Animator\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Advance animation based on elapsed time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time (seconds). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ +=\ dt;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}})}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ >=\ \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>frameDuration)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ -\/=\ \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>frameDuration;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ ++\mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}\ >=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>frameIndices.size()))}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>looping)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>frameIndices.size())\ -\/\ 1;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ \mbox{\hyperlink{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}{playingClip}}-\/>frameIndices[\mbox{\hyperlink{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}{clipFrameIndex}}];}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ >=\ \mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frameTime}})}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_abc34368dd943697e8657a68c554329fe}{elapsed}}\ -\/=\ \mbox{\hyperlink{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}{frameTime}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ ++\mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ >\ \mbox{\hyperlink{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c}{endFrame}})}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626}{loop}})}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ \mbox{\hyperlink{class_sprite_animator_af0127d4a6d5804580ed0bdc749e48fe6}{startFrame}};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}{currentFrame}}\ =\ \mbox{\hyperlink{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c}{endFrame}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_sprite_animator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd}\index{SpriteAnimator@{SpriteAnimator}!clipFrameIndex@{clipFrameIndex}}
+\index{clipFrameIndex@{clipFrameIndex}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{clipFrameIndex}{clipFrameIndex}}
+{\footnotesize\ttfamily \label{class_sprite_animator_ae4b7c71c1e14cb5fb6b430ed58ae5bfd} 
+int Sprite\+Animator\+::clip\+Frame\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Index into the playing clip\textquotesingle{}s frame sequence. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00207}{207}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e}\index{SpriteAnimator@{SpriteAnimator}!currentFrame@{currentFrame}}
+\index{currentFrame@{currentFrame}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{currentFrame}{currentFrame}}
+{\footnotesize\ttfamily \label{class_sprite_animator_add19e00a74d70def2375d6fa40605b8e} 
+int Sprite\+Animator\+::current\+Frame = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current frame index. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00202}{202}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_abc34368dd943697e8657a68c554329fe}\index{SpriteAnimator@{SpriteAnimator}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{elapsed}{elapsed}}
+{\footnotesize\ttfamily \label{class_sprite_animator_abc34368dd943697e8657a68c554329fe} 
+float Sprite\+Animator\+::elapsed = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Elapsed time accumulator. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00201}{201}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c}\index{SpriteAnimator@{SpriteAnimator}!endFrame@{endFrame}}
+\index{endFrame@{endFrame}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{endFrame}{endFrame}}
+{\footnotesize\ttfamily \label{class_sprite_animator_ac7766936f67b1e7bd0d031d3d53c087c} 
+int Sprite\+Animator\+::end\+Frame = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Range end frame index. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00204}{204}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_ad6c488dd70434014d2d203482e188a93}\index{SpriteAnimator@{SpriteAnimator}!frameTime@{frameTime}}
+\index{frameTime@{frameTime}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{frameTime}{frameTime}}
+{\footnotesize\ttfamily \label{class_sprite_animator_ad6c488dd70434014d2d203482e188a93} 
+float Sprite\+Animator\+::frame\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Duration per frame when playing ranges. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00200}{200}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626}\index{SpriteAnimator@{SpriteAnimator}!loop@{loop}}
+\index{loop@{loop}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{loop}{loop}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a0de89a6edb4094e019640ee24e21d626} 
+bool Sprite\+Animator\+::loop = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether playback should loop. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00205}{205}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2}\index{SpriteAnimator@{SpriteAnimator}!playingClip@{playingClip}}
+\index{playingClip@{playingClip}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{playingClip}{playingClip}}
+{\footnotesize\ttfamily \label{class_sprite_animator_a3b0b375da67fba82d5767da746200ba2} 
+const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}}\texorpdfstring{$\ast$}{*} Sprite\+Animator\+::playing\+Clip = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Currently playing clip (if any). 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00206}{206}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7}\index{SpriteAnimator@{SpriteAnimator}!sheet@{sheet}}
+\index{sheet@{sheet}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{sheet}{sheet}}
+{\footnotesize\ttfamily \label{class_sprite_animator_ac69e0d3cdfccaaf0952a68cc67501ed7} 
+\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}}\texorpdfstring{$\ast$}{*} Sprite\+Animator\+::sheet\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Backing sprite sheet. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00199}{199}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+\Hypertarget{class_sprite_animator_af0127d4a6d5804580ed0bdc749e48fe6}\index{SpriteAnimator@{SpriteAnimator}!startFrame@{startFrame}}
+\index{startFrame@{startFrame}!SpriteAnimator@{SpriteAnimator}}
+\doxysubsubsection{\texorpdfstring{startFrame}{startFrame}}
+{\footnotesize\ttfamily \label{class_sprite_animator_af0127d4a6d5804580ed0bdc749e48fe6} 
+int Sprite\+Animator\+::start\+Frame = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Range start frame index. 
+
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00203}{203}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_animation_8h}{Animation.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_animation_8cpp}{Animation.\+cpp}}\end{DoxyCompactItemize}

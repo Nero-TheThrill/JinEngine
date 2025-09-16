@@ -8,20 +8,28 @@
 {\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include "{}Animation.\+h"{}}\newline
 {\ttfamily \#include "{}Material.\+h"{}}\newline
 {\ttfamily \#include "{}Mesh.\+h"{}}\newline
 {\ttfamily \#include "{}Shader.\+h"{}}\newline
 {\ttfamily \#include "{}Texture.\+h"{}}\newline
 {\ttfamily \#include "{}Camera2\+D.\+h"{}}\newline
+{\ttfamily \#include "{}Font.\+h"{}}\newline
 {\ttfamily \#include "{}Game\+Object.\+h"{}}\newline
+{\ttfamily \#include "{}Instance\+Batch\+Key.\+h"{}}\newline
 {\ttfamily \#include "{}Render\+Layer\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}Window\+Manager.\+h"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{struct_line_instance}{Line\+Instance}}
+\begin{DoxyCompactList}\small\item\em One line segment for debug rendering. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_render_manager}{Render\+Manager}}
-\begin{DoxyCompactList}\small\item\em Central renderer and asset registry for GPU resources. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Central rendering subsystem\+: resources, frame lifecycle, and draw submission. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_render_manager_1_1_camera_and_width_hash}{Render\+Manager\+::\+Camera\+And\+Width\+Hash}}
+\item 
 class \mbox{\hyperlink{class_frustum_culler}{Frustum\+Culler}}
-\begin{DoxyCompactList}\small\item\em Utility class for view frustum culling based on 2D bounding circles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em View-\/frustum culling helper for 2D camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,12 +41,14 @@ using \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{Fil
 \item 
 using \mbox{\hyperlink{_render_manager_8h_ab1dda4d750e0cc5f202e4ebd8172bef6}{Render\+Command}} = std\+::function$<$void()$>$
 \item 
-using \mbox{\hyperlink{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}{Shader\+Map}} = std\+::map$<$\mbox{\hyperlink{class_shader}{Shader}}\texorpdfstring{$\ast$}{*}, std\+::map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$
-\begin{DoxyCompactList}\small\item\em Render batching structure organized by \doxylink{class_shader}{Shader} and instancing key. \end{DoxyCompactList}\item 
-using \mbox{\hyperlink{_render_manager_8h_aff65631d564da184ff5b1625aee3df0a}{Render\+Map}} = std\+::array$<$\mbox{\hyperlink{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}{Shader\+Map}}, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS}}$>$
-\begin{DoxyCompactList}\small\item\em Fixed-\/size array mapping render layers to Shader\+Maps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+using \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}} = std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_shader}{Shader}}\texorpdfstring{$\ast$}{*}, std\+::map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$
+\begin{DoxyCompactList}\small\item\em Batched draw map by (layer -\/\texorpdfstring{$>$}{>} shader -\/\texorpdfstring{$>$}{>} instance-\/key -\/\texorpdfstring{$>$}{>} object list). \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map}} = std\+::array$<$std\+::map$<$int, \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}}$>$, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS}}$>$
+\end{DoxyCompactItemize}
 
 
+\label{doc-typedef-members}
+\Hypertarget{_render_manager_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}\index{RenderManager.h@{RenderManager.h}!FilePath@{FilePath}}
 \index{FilePath@{FilePath}!RenderManager.h@{RenderManager.h}}
@@ -48,7 +58,7 @@ using \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{Fil
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00024}{24}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00029}{29}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{_render_manager_8h_ab1dda4d750e0cc5f202e4ebd8172bef6}\index{RenderManager.h@{RenderManager.h}!RenderCommand@{RenderCommand}}
 \index{RenderCommand@{RenderCommand}!RenderManager.h@{RenderManager.h}}
@@ -58,37 +68,31 @@ using \mbox{\hyperlink{_render_manager_8h_ab1dda4d750e0cc5f202e4ebd8172bef6}{Ren
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00025}{25}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00030}{30}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
-\Hypertarget{_render_manager_8h_aff65631d564da184ff5b1625aee3df0a}\index{RenderManager.h@{RenderManager.h}!RenderMap@{RenderMap}}
+\Hypertarget{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}\index{RenderManager.h@{RenderManager.h}!RenderMap@{RenderMap}}
 \index{RenderMap@{RenderMap}!RenderManager.h@{RenderManager.h}}
 \doxysubsubsection{\texorpdfstring{RenderMap}{RenderMap}}
-{\footnotesize\ttfamily \label{_render_manager_8h_aff65631d564da184ff5b1625aee3df0a} 
-using \mbox{\hyperlink{_render_manager_8h_aff65631d564da184ff5b1625aee3df0a}{Render\+Map}} = std\+::array$<$\mbox{\hyperlink{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}{Shader\+Map}}, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS}}$>$}
+{\footnotesize\ttfamily \label{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5} 
+using \mbox{\hyperlink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map}} = std\+::array$<$std\+::map$<$int, \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}}$>$, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS}}$>$}
 
 
 
-Fixed-\/size array mapping render layers to Shader\+Maps. 
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00043}{43}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
-\doxylink{_render_manager_8h_aff65631d564da184ff5b1625aee3df0a}{Render\+Map} is a 16-\/element array (MAX\+\_\+\+LAYERS) where each entry represents a render layer. Each layer holds a \doxylink{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}{Shader\+Map}, which batches objects by \doxylink{class_shader}{Shader} and instance data.
-
-Internally used by \doxylink{class_render_manager}{Render\+Manager} for layered and instanced rendering. 
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00049}{49}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
-
-\Hypertarget{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}\index{RenderManager.h@{RenderManager.h}!ShaderMap@{ShaderMap}}
+\Hypertarget{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}\index{RenderManager.h@{RenderManager.h}!ShaderMap@{ShaderMap}}
 \index{ShaderMap@{ShaderMap}!RenderManager.h@{RenderManager.h}}
 \doxysubsubsection{\texorpdfstring{ShaderMap}{ShaderMap}}
-{\footnotesize\ttfamily \label{_render_manager_8h_af06c6289a6847d547d7480421d34e14b} 
-using \mbox{\hyperlink{_render_manager_8h_af06c6289a6847d547d7480421d34e14b}{Shader\+Map}} = std\+::map$<$\mbox{\hyperlink{class_shader}{Shader}}\texorpdfstring{$\ast$}{*}, std\+::map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$}
+{\footnotesize\ttfamily \label{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759} 
+using \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}} = std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_shader}{Shader}}\texorpdfstring{$\ast$}{*}, std\+::map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$}
 
 
 
-Render batching structure organized by \doxylink{class_shader}{Shader} and instancing key. 
+Batched draw map by (layer -\/\texorpdfstring{$>$}{>} shader -\/\texorpdfstring{$>$}{>} instance-\/key -\/\texorpdfstring{$>$}{>} object list). 
 
-Each Shader\texorpdfstring{$\ast$}{*} points to a map from (\doxylink{class_mesh}{Mesh} + \doxylink{class_material}{Material}) -\/\texorpdfstring{$>$}{>} list of Game\+Objects. Used internally by \doxylink{class_object_manager}{Object\+Manager} to prepare instanced draw submissions. 
+\doxylink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map} organizes draw submission for optimal GPU usage\+: 1) Sort by user-\/defined render layer (0..MAX\+\_\+\+LAYERS-\/1), 2) Group by bound Shader\texorpdfstring{$\ast$}{*}, 3) Group by \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} (material, mesh, textures, states), 4) Iterate vectors of Object\texorpdfstring{$\ast$}{*} and issue draws (instanced when possible). 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00038}{38}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00042}{42}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{_render_manager_8h_ae4e6e1a3e9edc17c8fd355b231eebc82}\index{RenderManager.h@{RenderManager.h}!TextureTag@{TextureTag}}
 \index{TextureTag@{TextureTag}!RenderManager.h@{RenderManager.h}}
@@ -98,7 +102,7 @@ using \mbox{\hyperlink{_render_manager_8h_ae4e6e1a3e9edc17c8fd355b231eebc82}{Tex
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00022}{22}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{_render_manager_8h_abe8cf4755d44c6997e2dc40d1ee0c797}\index{RenderManager.h@{RenderManager.h}!UniformName@{UniformName}}
 \index{UniformName@{UniformName}!RenderManager.h@{RenderManager.h}}
@@ -108,5 +112,5 @@ using \mbox{\hyperlink{_render_manager_8h_abe8cf4755d44c6997e2dc40d1ee0c797}{Uni
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00023}{23}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00028}{28}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 

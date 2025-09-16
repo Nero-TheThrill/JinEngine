@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['snake_5ferr_0',['SNAKE_ERR',['../_debug_8h.html#a4bea2ba782ca7e8f40195f8827c71ecf',1,'Debug.h']]],
-  ['snake_5flog_1',['SNAKE_LOG',['../_debug_8h.html#a781ebc1f48f84958e0e53b493206116b',1,'Debug.h']]],
-  ['snake_5fwrn_2',['SNAKE_WRN',['../_debug_8h.html#a76dcc2dada341abb94ed74214eca553a',1,'Debug.h']]],
-  ['stb_5fimage_5fimplementation_3',['STB_IMAGE_IMPLEMENTATION',['../_texture_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'Texture.cpp']]]
+  ['ma_5fno_5fwasapi_0',['MA_NO_WASAPI',['../_sound_manager_8cpp.html#abc7a0f43b4e80a6b3ed65684e62cd255',1,'SoundManager.cpp']]],
+  ['miniaudio_5fimplementation_1',['MINIAUDIO_IMPLEMENTATION',['../_sound_manager_8cpp.html#abf77f70dc931f91a9f09e7b54d8278f5',1,'SoundManager.cpp']]]
 ];

@@ -1,0 +1,108 @@
+\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Font.h File Reference}
+\hypertarget{_font_8h}{}\label{_font_8h}\index{Project/SNAKE\_Engine/Public/Font.h@{Project/SNAKE\_Engine/Public/Font.h}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}glm.\+hpp"{}}\newline
+{\ttfamily \#include "{}ft2build.\+h"{}}\newline
+{\ttfamily \#include "{}Texture.\+h"{}}\newline
+{\ttfamily \#include "{}Material.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_glyph}{Glyph}}
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_glyph}{Glyph} information for a single character. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_font}{Font}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_font}{Font} class for text rendering using Free\+Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} \{ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Left}}
+, \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{Center}}
+, \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c}{Right}}
+ \}
+\begin{DoxyCompactList}\small\item\em Horizontal alignment options for text rendering. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} \{ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Top}}
+, \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{Middle}}
+, \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4}{Bottom}}
+ \}
+\begin{DoxyCompactList}\small\item\em Vertical alignment options for text rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{_font_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_font_8h_adba6445b3653352a2f932f18e80c4c44}\index{Font.h@{Font.h}!TextAlignH@{TextAlignH}}
+\index{TextAlignH@{TextAlignH}!Font.h@{Font.h}}
+\doxysubsubsection{\texorpdfstring{TextAlignH}{TextAlignH}}
+{\footnotesize\ttfamily \label{_font_8h_adba6445b3653352a2f932f18e80c4c44} 
+enum class \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Horizontal alignment options for text rendering. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Left@{Left}}}\Hypertarget{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}\label{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff} 
+Left&Align text to the left edge. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Center@{Center}}}\Hypertarget{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}\label{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd} 
+Center&Align text to the center. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Right@{Right}}}\Hypertarget{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c}\label{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c} 
+Right&Align text to the right edge. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00022}{22}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Left}},\ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{Center}},\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a92b09c7c48c520c3c55e497875da437c}{Right}}\ \ \ }
+\DoxyCodeLine{00027\ \};}
+
+\end{DoxyCode}
+\Hypertarget{_font_8h_adddce2e8703c25cb1fda789220605572}\index{Font.h@{Font.h}!TextAlignV@{TextAlignV}}
+\index{TextAlignV@{TextAlignV}!Font.h@{Font.h}}
+\doxysubsubsection{\texorpdfstring{TextAlignV}{TextAlignV}}
+{\footnotesize\ttfamily \label{_font_8h_adddce2e8703c25cb1fda789220605572} 
+enum class \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Vertical alignment options for text rendering. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Top@{Top}}}\Hypertarget{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}\label{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00} 
+Top&Align text to the top edge. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Middle@{Middle}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Middle@{Middle}}}\Hypertarget{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}\label{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05} 
+Middle&Align text to the vertical middle. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!Font.h@{Font.h}}\index{Font.h@{Font.h}!Bottom@{Bottom}}}\Hypertarget{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4}\label{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4} 
+Bottom&Align text to the bottom edge. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00032}{32}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Top}},\ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{Middle}},\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572a2ad9d63b69c4a10a5cc9cad923133bc4}{Bottom}}\ \ }
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

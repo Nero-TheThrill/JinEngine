@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['texture_0',['Texture',['../class_texture.html',1,'']]],
-  ['texturesettings_1',['TextureSettings',['../struct_texture_settings.html',1,'']]],
-  ['transform2d_2',['Transform2D',['../class_transform2_d.html',1,'']]]
+  ['renderlayermanager_0',['RenderLayerManager',['../class_render_layer_manager.html',1,'']]],
+  ['rendermanager_1',['RenderManager',['../class_render_manager.html',1,'']]]
 ];

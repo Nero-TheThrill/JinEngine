@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['kill_0',['Kill',['../class_game_object.html#aa6dbb50deac7be1d693871a6aad6d3cf',1,'GameObject']]]
+  ['init_0',['Init',['../class_game_object.html#a34ba812ec949058ea5ab184618e91590',1,'GameObject::Init()'],['../class_game_state.html#ab4bdccf42209d9d3465a33739ad59646',1,'GameState::Init()'],['../class_input_manager.html#a222eea359d455ca0517bde4f74536754',1,'InputManager::Init()'],['../class_loading_state.html#a84ce856d66c4167866a24f49d5c7f471',1,'LoadingState::Init()'],['../class_object.html#a97dc6d6a1c56efaa682b8eef6dd4384b',1,'Object::Init()'],['../class_render_manager.html#a609c5c837826585acabe5e0dcdbe6d91',1,'RenderManager::Init()'],['../class_s_n_a_k_e___engine.html#af5d0b5a08cbe7d74150b64571e51e6e3',1,'SNAKE_Engine::Init()'],['../class_sound_manager.html#af1ee5e29fca894a8ac9aeeb56b81f21d',1,'SoundManager::Init()'],['../class_text_object.html#a640e4ef674fb2192f5d29b0f81f95107',1,'TextObject::Init()'],['../class_window_manager.html#a2ce03918b6123264cd9013cc4e403f39',1,'WindowManager::Init()']]],
+  ['initall_1',['InitAll',['../class_object_manager.html#ad7d870215c2f3033b6f2641e4c9dc8da',1,'ObjectManager']]],
+  ['inputmanager_2',['InputManager',['../class_input_manager.html#a8be46886da639b26d67181c29dab6d6c',1,'InputManager']]],
+  ['insert_3',['Insert',['../class_spatial_hash_grid.html#a3beecc4cb4fe0ba6ac6d99eca08f7fb9',1,'SpatialHashGrid']]],
+  ['inserttocell_4',['InsertToCell',['../class_spatial_hash_grid.html#a6303f1125394feeef151f935672eb2cf',1,'SpatialHashGrid']]],
+  ['isalive_5',['IsAlive',['../class_object.html#af92e9a809354c281d464011a1f009d02',1,'Object']]],
+  ['iscompute_6',['IsCompute',['../class_material.html#aaf5018873649fa4149f4780fa1d4145d',1,'Material::IsCompute()'],['../class_compute_material.html#ad5a9a88431fa1b207fb59f4d52528fe2',1,'ComputeMaterial::IsCompute()']]],
+  ['isfullscreen_7',['IsFullScreen',['../class_window_manager.html#ae1f28e7be82fb12644c7737316d4b21c',1,'WindowManager']]],
+  ['isinstancingsupported_8',['IsInstancingSupported',['../class_material.html#a7a9c710b2d7a286c1349315b6fd6ab7a',1,'Material']]],
+  ['isinview_9',['IsInView',['../class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825',1,'Camera2D']]],
+  ['iskeydown_10',['IsKeyDown',['../class_input_manager.html#afd4bcb5fd69d6262fa79f64a4ae43b01',1,'InputManager']]],
+  ['iskeypressed_11',['IsKeyPressed',['../class_input_manager.html#ac052ac0d0831d40848031aca922a00ef',1,'InputManager']]],
+  ['iskeyreleased_12',['IsKeyReleased',['../class_input_manager.html#ab0e1cd02dfbeea18402babfa3a2cc88e',1,'InputManager']]],
+  ['ismousebuttondown_13',['IsMouseButtonDown',['../class_input_manager.html#adb20eaed0386dab5239202ea0022e313',1,'InputManager']]],
+  ['ismousebuttondragging_14',['IsMouseButtonDragging',['../class_input_manager.html#afb908706c127374a1450c3a6400677f1',1,'InputManager']]],
+  ['ismousebuttonpressed_15',['IsMouseButtonPressed',['../class_input_manager.html#a9d4212a5b4b4485a9e5934930ab4de2a',1,'InputManager']]],
+  ['ismousebuttonreleased_16',['IsMouseButtonReleased',['../class_input_manager.html#a1adf3a1c58a545d0721479bbbedf81c3',1,'InputManager']]],
+  ['isscrolleddown_17',['IsScrolledDown',['../class_input_manager.html#a0847068dcd89e9ca0169be41186391ac',1,'InputManager']]],
+  ['isscrolledup_18',['IsScrolledUp',['../class_input_manager.html#aae2e8d40fbd199038bc573245deedfc6',1,'InputManager']]],
+  ['isusingtransformscale_19',['IsUsingTransformScale',['../class_collider.html#a9f9dd44c772f34a84789018f59df905a',1,'Collider']]],
+  ['isvisible_20',['IsVisible',['../class_object.html#a77092a4fc48339007ed32e7d48f6140a',1,'Object']]]
 ];

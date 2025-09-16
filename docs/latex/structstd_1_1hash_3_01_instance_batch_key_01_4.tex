@@ -2,6 +2,11 @@
 \hypertarget{structstd_1_1hash_3_01_instance_batch_key_01_4}{}\label{structstd_1_1hash_3_01_instance_batch_key_01_4}\index{std::hash$<$ InstanceBatchKey $>$@{std::hash$<$ InstanceBatchKey $>$}}
 
 
+Custom hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}.  
+
+
+
+
 {\ttfamily \#include $<$Instance\+Batch\+Key.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -12,12 +17,16 @@ std\+::size\+\_\+t \mbox{\hyperlink{structstd_1_1hash_3_01_instance_batch_key_01
 
 
 \doxysubsection{Detailed Description}
+Custom hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}. 
+
+Combines the hashes of mesh, material, and sprite\+Sheet pointers. This enables use of \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} as a key in unordered\+\_\+map. 
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00059}{59}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00041}{41}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
-
-
+\label{doc-func-members}
+\Hypertarget{structstd_1_1hash_3_01_instance_batch_key_01_4_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structstd_1_1hash_3_01_instance_batch_key_01_4_a0bd3a0b2af19337bcda4df34bd462542}\index{std::hash$<$ InstanceBatchKey $>$@{std::hash$<$ InstanceBatchKey $>$}!operator()@{operator()}}
 \index{operator()@{operator()}!std::hash$<$ InstanceBatchKey $>$@{std::hash$<$ InstanceBatchKey $>$}}
@@ -27,17 +36,20 @@ std\+::size\+\_\+t std\+::hash$<$ \mbox{\hyperlink{struct_instance_batch_key}{In
 
 
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00043}{43}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00061}{61}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hash<Mesh*>()(key.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}})\ \string^\ (hash<Material*>()(key.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}})\ <<\ 1);}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ h1\ =\ std::hash<Mesh*>()(key.\mbox{\hyperlink{struct_instance_batch_key_ab784a277d381b24fc2b40f30ecddce23}{mesh}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ h2\ =\ std::hash<Material*>()(key.\mbox{\hyperlink{struct_instance_batch_key_ae51910aa5faba8bc934d401509962b7a}{material}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ h3\ =\ std::hash<SpriteSheet*>()(key.\mbox{\hyperlink{struct_instance_batch_key_ac3d999ceb3d523ddca3a92b999f5134c}{spriteSheet}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ h1\ \string^\ (h2\ <<\ 1)\ \string^\ (h3\ <<\ 2);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_instance_batch_key_8h}{Instance\+Batch\+Key.\+h}}\end{DoxyCompactItemize}
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_instance_batch_key_8h}{Instance\+Batch\+Key.\+h}}\end{DoxyCompactItemize}

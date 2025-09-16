@@ -1,6 +1,40 @@
 \doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Private/\+Mesh.cpp File Reference}
 \hypertarget{_mesh_8cpp}{}\label{_mesh_8cpp}\index{Project/SNAKE\_Engine/Private/Mesh.cpp@{Project/SNAKE\_Engine/Private/Mesh.cpp}}
-{\ttfamily \#include "{}Mesh.\+h"{}}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
-{\ttfamily \#include $<$glad/gl.\+h$>$}\newline
-{\ttfamily \#include "{}../\+Third\+Party/glm/glm.\+hpp"{}}\newline
+{\ttfamily \#include "{}Engine.\+h"{}}\newline
+{\ttfamily \#include "{}gl.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} \mbox{\hyperlink{_mesh_8cpp_ab39cc2afcd825e405cee2a083d83b416}{To\+GL}} (\mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type}} type)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_mesh_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_mesh_8cpp_ab39cc2afcd825e405cee2a083d83b416}\index{Mesh.cpp@{Mesh.cpp}!ToGL@{ToGL}}
+\index{ToGL@{ToGL}!Mesh.cpp@{Mesh.cpp}}
+\doxysubsubsection{\texorpdfstring{ToGL()}{ToGL()}}
+{\footnotesize\ttfamily \label{_mesh_8cpp_ab39cc2afcd825e405cee2a083d83b416} 
+\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}} To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)}
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{PrimitiveType::Triangles}}:\ \textcolor{keywordflow}{return}\ GL\_TRIANGLES;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819}{PrimitiveType::Lines}}:\ \textcolor{keywordflow}{return}\ GL\_LINES;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3}{PrimitiveType::Points}}:\ \textcolor{keywordflow}{return}\ GL\_POINTS;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047}{PrimitiveType::TriangleFan}}:\ \textcolor{keywordflow}{return}\ GL\_TRIANGLE\_FAN;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c}{PrimitiveType::TriangleStrip}}:\ \textcolor{keywordflow}{return}\ GL\_TRIANGLE\_STRIP;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{PrimitiveType::LineStrip}}:\ \textcolor{keywordflow}{return}\ GL\_LINE\_STRIP;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{return}\ GL\_TRIANGLES;}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}

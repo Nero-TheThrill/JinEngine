@@ -1,0 +1,552 @@
+\doxysection{AABBCollider Class Reference}
+\hypertarget{class_a_a_b_b_collider}{}\label{class_a_a_b_b_collider}\index{AABBCollider@{AABBCollider}}
+
+
+Axis-\/aligned bounding box collider centered at owner plus offset.  
+
+
+
+
+{\ttfamily \#include $<$Collider.\+h$>$}
+
+Inheritance diagram for AABBCollider\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_a_b_b_collider}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42}{AABBCollider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}, const glm\+::vec2 \&size)
+\begin{DoxyCompactList}\small\item\em Construct an AABB collider. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{Get\+Half\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Current half-\/size (scaled if enabled). \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d}{Get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Current full size (2 \texorpdfstring{$\ast$}{*} half-\/size). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}{Set\+Size}} (const glm\+::vec2 \&hs)
+\begin{DoxyCompactList}\small\item\em Set full size (updates base\+Half\+Size; scaled on sync). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba}{Check\+Point\+Collision}} (const glm\+::vec2 \&point) const override
+\begin{DoxyCompactList}\small\item\em Point-\/in-\/\+AABB test in world space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}} ()=delete
+\item 
+\mbox{\hyperlink{class_collider_a5a49c6e929279578b12e7d1c60c50c75}{Collider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}owner\+\_\+)
+\begin{DoxyCompactList}\small\item\em Construct with an owning \doxylink{class_object}{Object}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_collider_a7b43c72a6424d8c11dec965d166953d3}{\texorpdfstring{$\sim$}{\string~}\+Collider}} ()=default
+\item 
+void \mbox{\hyperlink{class_collider_abcbc7a880210f872f2704035940f243c}{Set\+Use\+Transform\+Scale}} (bool use)
+\begin{DoxyCompactList}\small\item\em Enable/disable syncing the shape with the owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_collider_a9f9dd44c772f34a84789018f59df905a}{Is\+Using\+Transform\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Whether transform-\/scale synchronization is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_collider_ad96c878cd28533c4ec6d3ad6b1decdae}{Set\+Offset}} (const glm\+::vec2 \&pos)
+\begin{DoxyCompactList}\small\item\em Set local shape offset in world units relative to the owner. \end{DoxyCompactList}\item 
+const glm\+::vec2 \& \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{Get\+Offset}} () const
+\begin{DoxyCompactList}\small\item\em Get local shape offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} \mbox{\hyperlink{class_a_a_b_b_collider_a02a5aef8ae047a6e77dea4d9ee3bdc91}{Get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Concrete collider type for dispatch. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}{Get\+Bounding\+Radius}} () const override
+\begin{DoxyCompactList}\small\item\em Bounding radius used by broad phase and camera culling. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}{Check\+Collision}} (const \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*}other) const override
+\begin{DoxyCompactList}\small\item\em Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{Dispatch\+Against}} (const \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \&other) const override
+\begin{DoxyCompactList}\small\item\em AABB–\+Circle overlap test. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_a_b_b_collider_acab757f9231fa6acb535784d77915600}{Dispatch\+Against}} (const \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \&other) const override
+\begin{DoxyCompactList}\small\item\em AABB–\+AABB overlap test. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}{Sync\+With\+Transform\+Scale}} () override
+\begin{DoxyCompactList}\small\item\em Refresh \doxylink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size} from owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006}{Draw\+Debug}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \texorpdfstring{$\ast$}{*}rm, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}cam, const glm\+::vec4 \&color) const override
+\begin{DoxyCompactList}\small\item\em Debug-\/draw box outline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f}{Circle\+Collider}}
+\item 
+friend \mbox{\hyperlink{class_a_a_b_b_collider_af10e414616e9c15986e9913919d276f3}{Spatial\+Hash\+Grid}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{base\+Half\+Size}} = \{ 0.\+5f, 0.\+5f \}
+\begin{DoxyCompactList}\small\item\em Authoring half-\/size (before applying owner scale). \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size}} = \{ 0.\+5f, 0.\+5f \}
+\begin{DoxyCompactList}\small\item\em Cached world-\/space half-\/size after scale sync. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{Get\+Owner}} () const
+\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object} accessor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_collider}{Collider}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}
+\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object}; non-\/null after construction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{use\+Transform\+Scale}} = true
+\begin{DoxyCompactList}\small\item\em Whether to read scale from the owner\textquotesingle{}s Transform (default\+: true). \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}
+\begin{DoxyCompactList}\small\item\em Local XY offset from the owner\textquotesingle{}s origin, applied to shape center. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Axis-\/aligned bounding box collider centered at owner plus offset. 
+
+Stores authoring half-\/size and a cached, scale-\/applied half-\/size for fast overlap tests, point tests, and debug visualization. 
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00290}{290}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_a_a_b_b_collider_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42}\index{AABBCollider@{AABBCollider}!AABBCollider@{AABBCollider}}
+\index{AABBCollider@{AABBCollider}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{AABBCollider()}{AABBCollider()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42} 
+AABBCollider\+::\+AABBCollider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}}]{owner}{, }\item[{const glm\+::vec2 \&}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct an AABB collider. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em owner} & Non-\/null owning \doxylink{class_object}{Object}. \\
+\hline
+{\em size} & Full width/height in world units (half stored internally). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00300}{300}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}),\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}(size\ /\ glm::vec2(2)),\ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}(size\ /\ glm::vec2(2))\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_a_a_b_b_collider_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}\index{AABBCollider@{AABBCollider}!CheckCollision@{CheckCollision}}
+\index{CheckCollision@{CheckCollision}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{CheckCollision()}{CheckCollision()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22} 
+bool AABBCollider\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other collider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if overlapping. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_a41660505ae4b413d3d4b004162857426}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ other-\/>\mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{DispatchAgainst}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00116\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba}\index{AABBCollider@{AABBCollider}!CheckPointCollision@{CheckPointCollision}}
+\index{CheckPointCollision@{CheckPointCollision}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{CheckPointCollision()}{CheckPointCollision()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba} 
+bool AABBCollider\+::\+Check\+Point\+Collision (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Point-\/in-\/\+AABB test in world space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & World-\/space point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if inside or on the box. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_a96da52831351800d25be94893cfaddf0}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00121\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ glm::vec2\ min\ =\ center\ -\/\ half;}
+\DoxyCodeLine{00124\ \ \ \ \ glm::vec2\ max\ =\ center\ +\ half;}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ point.x\ >=\ min.x\ \&\&\ point.x\ <=\ max.x\ \&\&}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ point.y\ >=\ min.y\ \&\&\ point.y\ <=\ max.y;}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_acab757f9231fa6acb535784d77915600}\index{AABBCollider@{AABBCollider}!DispatchAgainst@{DispatchAgainst}}
+\index{DispatchAgainst@{DispatchAgainst}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{DispatchAgainst()}{DispatchAgainst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_acab757f9231fa6acb535784d77915600} 
+bool AABBCollider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+AABB–\+AABB overlap test. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Box collider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if overlapping. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_ae6038e89a98d8b252f143ddbc960a484}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ glm::vec2\ aPos\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00133\ \ \ \ \ glm::vec2\ bPos\ =\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ glm::vec2\ aHalf\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00136\ \ \ \ \ glm::vec2\ bHalf\ =\ other.\mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ std::abs(aPos.x\ -\/\ bPos.x)\ <=\ (aHalf.x\ +\ bHalf.x)\ \&\&}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ std::abs(aPos.y\ -\/\ bPos.y)\ <=\ (aHalf.y\ +\ bHalf.y);}
+\DoxyCodeLine{00140\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}\index{AABBCollider@{AABBCollider}!DispatchAgainst@{DispatchAgainst}}
+\index{DispatchAgainst@{DispatchAgainst}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{DispatchAgainst()}{DispatchAgainst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846} 
+bool AABBCollider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+AABB–\+Circle overlap test. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Circle collider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if overlapping. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00162}{162}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00163\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ glm::vec2\ aPos\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()\ +\ \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00165\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ glm::vec2\ circlePos\ =\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()\ +\ other.\mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{GetOwner}}()-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ other.\mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{GetRadius}}();}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ glm::vec2\ closest\ =\ glm::clamp(circlePos,\ aPos\ -\/\ half,\ aPos\ +\ half);}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{float}\ distSqr\ =\ glm::length2(circlePos\ -\/\ closest);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ distSqr\ <=\ radius\ *\ radius;}
+\DoxyCodeLine{00174\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006}\index{AABBCollider@{AABBCollider}!DrawDebug@{DrawDebug}}
+\index{DrawDebug@{DrawDebug}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{DrawDebug()}{DrawDebug()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006} 
+void AABBCollider\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \texorpdfstring{$\ast$}{*}}]{rm}{, }\item[{\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}}]{cam}{, }\item[{const glm\+::vec4 \&}]{color}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Debug-\/draw box outline. 
+
+
+
+Implements \mbox{\hyperlink{class_collider_a222e52491ae094943420952fd3182c90}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00149\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ glm::vec2\ center\ =\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldPosition()+\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}();}
+\DoxyCodeLine{00151\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ glm::vec2\ min\ =\ center\ -\/\ half;}
+\DoxyCodeLine{00154\ \ \ \ \ glm::vec2\ max\ =\ center\ +\ half;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ min.x,\ min.y\ \},\ \{\ max.x,\ min.y\ \},\ cam,\ color);}
+\DoxyCodeLine{00157\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ max.x,\ min.y\ \},\ \{\ max.x,\ max.y\ \},\ cam,\ color);}
+\DoxyCodeLine{00158\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ max.x,\ max.y\ \},\ \{\ min.x,\ max.y\ \},\ cam,\ color);}
+\DoxyCodeLine{00159\ \ \ \ \ rm-\/>\mbox{\hyperlink{class_render_manager_a30299b0394f71c9ac4d924a24addbf26}{DrawDebugLine}}(\{\ min.x,\ max.y\ \},\ \{\ min.x,\ min.y\ \},\ cam,\ color);}
+\DoxyCodeLine{00160\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}\index{AABBCollider@{AABBCollider}!GetBoundingRadius@{GetBoundingRadius}}
+\index{GetBoundingRadius@{GetBoundingRadius}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{GetBoundingRadius()}{GetBoundingRadius()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a} 
+float AABBCollider\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Bounding radius used by broad phase and camera culling. 
+
+\begin{DoxyReturn}{Returns}
+Circle radius that encloses the AABB. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ glm::vec2\ half\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}();}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::length(half);}
+\DoxyCodeLine{00110\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}\index{AABBCollider@{AABBCollider}!GetHalfSize@{GetHalfSize}}
+\index{GetHalfSize@{GetHalfSize}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{GetHalfSize()}{GetHalfSize()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8} 
+glm\+::vec2 AABBCollider\+::\+Get\+Half\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Current half-\/size (scaled if enabled). 
+
+\begin{DoxyReturn}{Returns}
+Half extents in world units. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}}\ ?\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ *\ glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale())\ :\ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}};}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d}\index{AABBCollider@{AABBCollider}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d} 
+glm\+::vec2 AABBCollider\+::\+Get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Current full size (2 \texorpdfstring{$\ast$}{*} half-\/size). 
+
+\begin{DoxyReturn}{Returns}
+Width/height in world units. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{GetHalfSize}}()\ *\ glm::vec2(2);}
+\DoxyCodeLine{00096\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a02a5aef8ae047a6e77dea4d9ee3bdc91}\index{AABBCollider@{AABBCollider}!GetType@{GetType}}
+\index{GetType@{GetType}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a02a5aef8ae047a6e77dea4d9ee3bdc91} 
+\mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} AABBCollider\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Concrete collider type for dispatch. 
+
+\begin{DoxyReturn}{Returns}
+One of \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type} values. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_collider_a677c9e05fcee3ef2ed94998dc5f2458d}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00330}{330}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00330\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{ColliderType::AABB}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}\index{AABBCollider@{AABBCollider}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53} 
+void AABBCollider\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{const glm\+::vec2 \&}]{hs}{}\end{DoxyParamCaption})}
+
+
+
+Set full size (updates base\+Half\+Size; scaled on sync). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hs} & New full width/height in world units. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ =\ size/glm::vec2(2);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}\ =\ size\ /\ glm::vec2(2);}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}\index{AABBCollider@{AABBCollider}!SyncWithTransformScale@{SyncWithTransformScale}}
+\index{SyncWithTransformScale@{SyncWithTransformScale}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{SyncWithTransformScale()}{SyncWithTransformScale()}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67} 
+void AABBCollider\+::\+Sync\+With\+Transform\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Refresh \doxylink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size} from owner\textquotesingle{}s Transform scale. 
+
+
+
+Implements \mbox{\hyperlink{class_collider_a188380ff8ece20474e86a662f995887e}{Collider}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}})}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}\ =\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}\ *\ glm::abs(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}-\/>GetWorldScale());}
+\DoxyCodeLine{00146\ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_a_a_b_b_collider_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}\index{AABBCollider@{AABBCollider}!baseHalfSize@{baseHalfSize}}
+\index{baseHalfSize@{baseHalfSize}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{baseHalfSize}{baseHalfSize}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515} 
+glm\+::vec2 AABBCollider\+::base\+Half\+Size = \{ 0.\+5f, 0.\+5f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Authoring half-\/size (before applying owner scale). 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00370}{370}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00370\ \{\ 0.5f,\ 0.5f\ \};}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f}\index{AABBCollider@{AABBCollider}!CircleCollider@{CircleCollider}}
+\index{CircleCollider@{CircleCollider}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{CircleCollider}{CircleCollider}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f} 
+friend AABBCollider\+::\+Circle\+Collider\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00292}{292}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+\Hypertarget{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}\index{AABBCollider@{AABBCollider}!scaledHalfSize@{scaledHalfSize}}
+\index{scaledHalfSize@{scaledHalfSize}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{scaledHalfSize}{scaledHalfSize}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2} 
+glm\+::vec2 AABBCollider\+::scaled\+Half\+Size = \{ 0.\+5f, 0.\+5f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cached world-\/space half-\/size after scale sync. 
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00373}{373}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00373\ \{\ 0.5f,\ 0.5f\ \};}
+
+\end{DoxyCode}
+\Hypertarget{class_a_a_b_b_collider_af10e414616e9c15986e9913919d276f3}\index{AABBCollider@{AABBCollider}!SpatialHashGrid@{SpatialHashGrid}}
+\index{SpatialHashGrid@{SpatialHashGrid}!AABBCollider@{AABBCollider}}
+\doxysubsubsection{\texorpdfstring{SpatialHashGrid}{SpatialHashGrid}}
+{\footnotesize\ttfamily \label{class_a_a_b_b_collider_af10e414616e9c15986e9913919d276f3} 
+friend AABBCollider\+::\+Spatial\+Hash\+Grid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00293}{293}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
+Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}

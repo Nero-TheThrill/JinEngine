@@ -1,0 +1,77 @@
+\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Private/\+Font.cpp File Reference}
+\hypertarget{_font_8cpp}{}\label{_font_8cpp}\index{Project/SNAKE\_Engine/Private/Font.cpp@{Project/SNAKE\_Engine/Private/Font.cpp}}
+{\ttfamily \#include "{}Engine.\+h"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include "{}gl.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ char32\+\_\+t $>$ \mbox{\hyperlink{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}{UTF8\+To\+Codepoints}} (const std\+::string \&text)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_font_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f}\index{Font.cpp@{Font.cpp}!UTF8ToCodepoints@{UTF8ToCodepoints}}
+\index{UTF8ToCodepoints@{UTF8ToCodepoints}!Font.cpp@{Font.cpp}}
+\doxysubsubsection{\texorpdfstring{UTF8ToCodepoints()}{UTF8ToCodepoints()}}
+{\footnotesize\ttfamily \label{_font_8cpp_a534c79683973e3a230bdaa108ef8ee9f} 
+std\+::vector$<$ char32\+\_\+t $>$ UTF8\+To\+Codepoints (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ std::vector<char32\_t>\ result;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ text.size())}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char32\_t}\ cp\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \textcolor{keywordtype}{byte}\ =\ text[i];}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b10000000)\ ==\ 0)}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ byte;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11100000)\ ==\ 0b11000000)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00011111)\ <<\ 6;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 2;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11110000)\ ==\ 0b11100000)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00001111)\ <<\ 12;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111)\ <<\ 6;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 2]\ \&\ 0b00111111);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 3;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{byte}\ \&\ 0b11111000)\ ==\ 0b11110000)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ =\ (\textcolor{keywordtype}{byte}\ \&\ 0b00000111)\ <<\ 18;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 1]\ \&\ 0b00111111)\ <<\ 12;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 2]\ \&\ 0b00111111)\ <<\ 6;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ cp\ |=\ (text[i\ +\ 3]\ \&\ 0b00111111);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 4;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ result.push\_back(cp);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
