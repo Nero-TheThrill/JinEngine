@@ -6,6 +6,8 @@
 
 A lightweight C++ game engine (sample framework) that bundles 2D rendering, input, sound, text, collision, and state management in one place. Built on OpenGL 4.6, it supports batched rendering and instancing, and handles text via runtime glyph baking (FreeType). It provides a dependency/tag–based resource system so you can pull in only the modules your project needs.
 
+<img width="605" height="410" alt="sn" src="https://github.com/user-attachments/assets/e3324563-7210-484a-85d3-f3ff0d2b710e" />
+
 ---
 
 ## Key Features
