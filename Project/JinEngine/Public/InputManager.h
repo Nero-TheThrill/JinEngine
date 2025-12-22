@@ -6,57 +6,216 @@ class Camera2D;
 class JinEngine;
 struct GLFWwindow;
 
+/**
+ * @brief Manages keyboard, mouse button, cursor position, and scroll input states.
+ *
+ * @details
+ * InputManager provides a frame-based input querying system built on top of GLFW callbacks.
+ * It tracks both current and previous input states to allow detection of:
+ * - key/button down
+ * - key/button pressed (down this frame)
+ * - key/button released (released this frame)
+ *
+ * Input events are first written into staged states via GLFW callbacks,
+ * then committed to current states during the engine update phase.
+ *
+ * Mouse position and scroll input are accumulated and processed separately.
+ * World-space mouse coordinates are calculated using a Camera2D projection.
+ */
 class InputManager
 {
     friend JinEngine;
 
 public:
 
+    /**
+     * @brief Constructs an InputManager with default-initialized state.
+     *
+     * @details
+     * The window pointer is initialized to nullptr.
+     * Mouse position values are initialized to zero.
+     */
     InputManager() :window(nullptr), mouseX(0.0), mouseY(0.0) {}
 
+    /**
+     * @brief Checks whether a key is currently held down.
+     *
+     * @param key Key code to query.
+     * @return true if the key is currently pressed.
+     */
     [[nodiscard]] bool IsKeyDown(int key) const;
 
+    /**
+     * @brief Checks whether a key was pressed during the current frame.
+     *
+     * @details
+     * Returns true only if the key is down in the current state
+     * and was not down in the previous state.
+     *
+     * @param key Key code to query.
+     * @return true if the key was pressed this frame.
+     */
     [[nodiscard]] bool IsKeyPressed(int key) const;
 
+    /**
+     * @brief Checks whether a key was released during the current frame.
+     *
+     * @param key Key code to query.
+     * @return true if the key was released this frame.
+     */
     [[nodiscard]] bool IsKeyReleased(int key) const;
 
+    /**
+     * @brief Checks whether a mouse button is currently held down.
+     *
+     * @param button Mouse button index to query.
+     * @return true if the mouse button is currently pressed.
+     */
     [[nodiscard]] bool IsMouseButtonDown(int button) const;
 
+    /**
+     * @brief Checks whether a mouse button was pressed during the current frame.
+     *
+     * @param button Mouse button index to query.
+     * @return true if the mouse button was pressed this frame.
+     */
     [[nodiscard]] bool IsMouseButtonPressed(int button) const;
 
+    /**
+     * @brief Checks whether a mouse button was released during the current frame.
+     *
+     * @param button Mouse button index to query.
+     * @return true if the mouse button was released this frame.
+     */
     [[nodiscard]] bool IsMouseButtonReleased(int button) const;
 
+    /**
+     * @brief Checks whether a mouse button is being held while the mouse is moving.
+     *
+     * @details
+     * This is typically used for drag operations.
+     *
+     * @param button Mouse button index to query.
+     * @return true if the button is down and the cursor is moving.
+     */
     [[nodiscard]] bool IsMouseButtonDragging(int button) const;
 
+    /**
+     * @brief Returns the current mouse X position in screen space.
+     */
     [[nodiscard]] double GetMouseX() const;
 
+    /**
+     * @brief Returns the current mouse Y position in screen space.
+     */
     [[nodiscard]] double GetMouseY() const;
 
+    /**
+     * @brief Returns the current mouse position in screen space.
+     */
     [[nodiscard]] glm::vec2 GetMousePos() const;
 
+    /**
+     * @brief Returns the mouse X position in world space.
+     *
+     * @param camera Camera used to convert screen space to world space.
+     */
     [[nodiscard]] double GetMouseWorldX(Camera2D* camera) const;
 
+    /**
+     * @brief Returns the mouse Y position in world space.
+     *
+     * @param camera Camera used to convert screen space to world space.
+     */
     [[nodiscard]] double GetMouseWorldY(Camera2D* camera) const;
 
+    /**
+     * @brief Returns the mouse position in world space.
+     *
+     * @param camera Camera used to convert screen space to world space.
+     */
     [[nodiscard]] glm::vec2 GetMouseWorldPos(Camera2D* camera) const;
 
+    /**
+     * @brief Accumulates scroll input delta values.
+     *
+     * @details
+     * This function is typically called from a GLFW scroll callback.
+     * The accumulated values are later converted into per-frame deltas.
+     *
+     * @param dx Horizontal scroll delta.
+     * @param dy Vertical scroll delta.
+     */
     void AddScroll(double dx, double dy);
 
+    /**
+     * @brief Returns the scroll delta for the current frame.
+     */
     [[nodiscard]] glm::vec2 GetScrollDelta() const;
+
+    /**
+     * @brief Returns the horizontal scroll delta for the current frame.
+     */
     [[nodiscard]] double GetScrollXDelta() const;
+
+    /**
+     * @brief Returns the vertical scroll delta for the current frame.
+     */
     [[nodiscard]] double GetScrollYDelta() const;
 
+    /**
+     * @brief Checks whether the scroll wheel was moved upward this frame.
+     */
     [[nodiscard]] bool IsScrolledUp() const;
+
+    /**
+     * @brief Checks whether the scroll wheel was moved downward this frame.
+     */
     [[nodiscard]] bool IsScrolledDown() const;
 
+    /**
+     * @brief Receives keyboard input events from GLFW.
+     *
+     * @details
+     * This function updates the staged key state and does not immediately
+     * affect the current input state.
+     */
     void OnKey(int key, int, int action, int);
+
+    /**
+     * @brief Receives mouse button input events from GLFW.
+     *
+     * @details
+     * This function updates the staged mouse state and does not immediately
+     * affect the current input state.
+     */
     void OnMouseButton(int button, int action, int);
 
+    /**
+     * @brief Resets per-frame transient input data.
+     *
+     * @details
+     * This function clears scroll deltas and updates previous input states.
+     * It is not intended to be called every frame manually.
+     */
     void Reset();
 
 private:
+
+    /**
+     * @brief Initializes the InputManager with a GLFW window.
+     *
+     * @param _window GLFW window handle.
+     */
     void Init(GLFWwindow* _window);
 
+    /**
+     * @brief Updates internal input state transitions.
+     *
+     * @details
+     * Commits staged input states to current states and stores previous states.
+     * This function is called internally by the engine update loop.
+     */
     void Update();
 
     GLFWwindow* window;
@@ -79,8 +238,8 @@ private:
 
     std::bitset<MAX_KEYS> stagedKeyState;
     std::bitset<MAX_MOUSE_BUTTONS> stagedMouseState;
-
 };
+
 
 enum InputKey
 {
