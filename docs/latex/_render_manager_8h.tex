@@ -1,5 +1,5 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Render\+Manager.h File Reference}
-\hypertarget{_render_manager_8h}{}\label{_render_manager_8h}\index{Project/SNAKE\_Engine/Public/RenderManager.h@{Project/SNAKE\_Engine/Public/RenderManager.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Render\+Manager.h File Reference}
+\hypertarget{_render_manager_8h}{}\label{_render_manager_8h}\index{Project/JinEngine/Public/RenderManager.h@{Project/JinEngine/Public/RenderManager.h}}
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include $<$memory$>$}\newline
@@ -23,13 +23,13 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_line_instance}{Line\+Instance}}
-\begin{DoxyCompactList}\small\item\em One line segment for debug rendering. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Parameters describing a single debug line draw request. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_render_manager}{Render\+Manager}}
-\begin{DoxyCompactList}\small\item\em Central rendering subsystem\+: resources, frame lifecycle, and draw submission. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Central rendering system responsible for resource registration and batched object rendering. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_render_manager_1_1_camera_and_width_hash}{Render\+Manager\+::\+Camera\+And\+Width\+Hash}}
-\item 
+\begin{DoxyCompactList}\small\item\em Hash functor for (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width) keys used in debug\+Line\+Map. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_frustum_culler}{Frustum\+Culler}}
-\begin{DoxyCompactList}\small\item\em View-\/frustum culling helper for 2D camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Simple visibility culling utility based on a \doxylink{class_camera2_d}{Camera2D} view test and object bounding radius. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,13 +42,11 @@ using \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{Fil
 using \mbox{\hyperlink{_render_manager_8h_ab1dda4d750e0cc5f202e4ebd8172bef6}{Render\+Command}} = std\+::function$<$void()$>$
 \item 
 using \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}} = std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_shader}{Shader}}\texorpdfstring{$\ast$}{*}, std\+::map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$
-\begin{DoxyCompactList}\small\item\em Batched draw map by (layer -\/\texorpdfstring{$>$}{>} shader -\/\texorpdfstring{$>$}{>} instance-\/key -\/\texorpdfstring{$>$}{>} object list). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Maps a \doxylink{class_shader}{Shader} pointer to depth-\/sorted instance batches. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map}} = std\+::array$<$std\+::map$<$int, \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Shader\+Map}}$>$, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS}}$>$
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Layered render map used to batch and sort objects for rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-typedef-members}
-\Hypertarget{_render_manager_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}\index{RenderManager.h@{RenderManager.h}!FilePath@{FilePath}}
 \index{FilePath@{FilePath}!RenderManager.h@{RenderManager.h}}
@@ -78,7 +76,16 @@ using \mbox{\hyperlink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Ren
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00043}{43}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Layered render map used to batch and sort objects for rendering. 
+
+\doxylink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map} is an array with \doxylink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS} entries. Each layer contains a depth-\/sorted map\+:
+\begin{DoxyItemize}
+\item std\+::map$<$int, Shader\+Map$>$ where the int key is a quantized depth bin derived from \doxylink{class_transform2_d_a8fc04cb417fb1169c2af9ba0b0539394}{Transform2\+D\+::\+Get\+Depth()}.
+\end{DoxyItemize}
+
+The render pipeline order is\+: 1) layer (0..MAX\+\_\+\+LAYERS-\/1) 2) depth bin (ascending int) 3) shader 4) \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} (mesh/material/spritesheet grouping) 5) objects in the batch 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00058}{58}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}\index{RenderManager.h@{RenderManager.h}!ShaderMap@{ShaderMap}}
 \index{ShaderMap@{ShaderMap}!RenderManager.h@{RenderManager.h}}
@@ -88,11 +95,13 @@ using \mbox{\hyperlink{_render_manager_8h_a6dc798d95abd4b3fe7fe5051c9920759}{Sha
 
 
 
-Batched draw map by (layer -\/\texorpdfstring{$>$}{>} shader -\/\texorpdfstring{$>$}{>} instance-\/key -\/\texorpdfstring{$>$}{>} object list). 
+Maps a \doxylink{class_shader}{Shader} pointer to depth-\/sorted instance batches. 
 
-\doxylink{_render_manager_8h_ac442dd962bc57bfa60125f977d6edea5}{Render\+Map} organizes draw submission for optimal GPU usage\+: 1) Sort by user-\/defined render layer (0..MAX\+\_\+\+LAYERS-\/1), 2) Group by bound Shader\texorpdfstring{$\ast$}{*}, 3) Group by \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} (material, mesh, textures, states), 4) Iterate vectors of Object\texorpdfstring{$\ast$}{*} and issue draws (instanced when possible). 
+The outer key is the \doxylink{class_shader}{Shader} used for rendering. The value is a depth-\/ordered map (std\+::map) whose key is \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}, and whose value is a list of Object\texorpdfstring{$\ast$}{*}.
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00042}{42}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+This structure is produced by Build\+Render\+Map() and consumed by Flush\+Draw\+Commands(). 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00041}{41}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{_render_manager_8h_ae4e6e1a3e9edc17c8fd355b231eebc82}\index{RenderManager.h@{RenderManager.h}!TextureTag@{TextureTag}}
 \index{TextureTag@{TextureTag}!RenderManager.h@{RenderManager.h}}

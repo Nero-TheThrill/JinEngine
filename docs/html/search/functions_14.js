@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['_7easyncresourceloader_0',['~AsyncResourceLoader',['../class_async_resource_loader.html#af67c49c71131de520765f33060dd1058',1,'AsyncResourceLoader']]],
-  ['_7ecollider_1',['~Collider',['../class_collider.html#a7b43c72a6424d8c11dec965d166953d3',1,'Collider']]],
-  ['_7efont_2',['~Font',['../class_font.html#a134aaa2f78af0c12d3ce504957169768',1,'Font']]],
-  ['_7egameobject_3',['~GameObject',['../class_game_object.html#acf01e9889fbc277c44594322abf9683b',1,'GameObject']]],
-  ['_7egamestate_4',['~GameState',['../class_game_state.html#adc1bfdf7ee7c1f48e4841995db4e16c3',1,'GameState']]],
-  ['_7ematerial_5',['~Material',['../class_material.html#a255ba20d0325e6b78ff68ac739df40de',1,'Material']]],
-  ['_7emesh_6',['~Mesh',['../class_mesh.html#a5efe4da1a4c0971cfb037bd70304c303',1,'Mesh']]],
-  ['_7eobject_7',['~Object',['../class_object.html#a226f2ae2af766b77d83c09a4d766b725',1,'Object']]],
-  ['_7eshader_8',['~Shader',['../class_shader.html#aff01df87e8a102f270b5b135a295e59d',1,'Shader']]],
-  ['_7esoundmanager_9',['~SoundManager',['../class_sound_manager.html#ad5dbf8eab22db48ff8f3db51b02f8938',1,'SoundManager']]],
-  ['_7etextobject_10',['~TextObject',['../class_text_object.html#ad0b8bd85c7d39f8109d8f1025ba3b5f6',1,'TextObject']]],
-  ['_7etexture_11',['~Texture',['../class_texture.html#a09c4bcb7462f64c1d20fa69dba3cee8a',1,'Texture']]]
+  ['unbind_0',['UnBind',['../class_material.html#abe3526386e44d6a10fec0e6859dd564a',1,'Material::UnBind()'],['../class_texture.html#a62d394297d5965ea6085378c94b00b0d',1,'Texture::UnBind()']]],
+  ['unload_1',['Unload',['../class_game_state.html#ab9a398de72a4201a69093dfd574220c6',1,'GameState::Unload()'],['../class_loading_state.html#a3754de47c0b00b40517645df5e5625cf',1,'LoadingState::Unload()']]],
+  ['unregisterfont_2',['UnregisterFont',['../class_render_manager.html#a77348f92a23223a313dd8981efc3bb87',1,'RenderManager']]],
+  ['unregisterlayer_3',['UnregisterLayer',['../class_render_layer_manager.html#a70566ea3ed358ec340a46e2f9fe69662',1,'RenderLayerManager']]],
+  ['unregistermaterial_4',['UnregisterMaterial',['../class_render_manager.html#aae7d889c2e7216462908f73c9369ae37',1,'RenderManager']]],
+  ['unregistermesh_5',['UnregisterMesh',['../class_render_manager.html#aba8ba1fb8365c04177fc545e9f6d80ed',1,'RenderManager']]],
+  ['unregisterrenderlayer_6',['UnregisterRenderLayer',['../class_render_manager.html#aea708b1db195edcdac71b71c41a73333',1,'RenderManager']]],
+  ['unregistershader_7',['UnregisterShader',['../class_render_manager.html#aee30676350ebd6abc8a1b0ae7e088185',1,'RenderManager']]],
+  ['unregisterspritesheet_8',['UnregisterSpriteSheet',['../class_render_manager.html#a2a016c56f9b3ada807e9064ab90feaa5',1,'RenderManager']]],
+  ['unregistertexture_9',['UnregisterTexture',['../class_render_manager.html#a2ed3ff69917c8fccdaa1e05962af09da',1,'RenderManager']]],
+  ['unuse_10',['Unuse',['../class_shader.html#a9429b4a4f790f9de8e5476ee65ed0dc9',1,'Shader']]],
+  ['update_11',['Update',['../class_sprite_animator.html#a23f9880b2fdbbd23fe48f25526cafb07',1,'SpriteAnimator::Update()'],['../class_game_object.html#a2af113da2569ef4e651ad8cfb3be50d8',1,'GameObject::Update()'],['../class_game_state.html#a6d11e92e629e2d4cbba792faeb75a71f',1,'GameState::Update()'],['../class_input_manager.html#aa5480931dba2720e7d80dd00a53adae0',1,'InputManager::Update()'],['../class_loading_state.html#a56063d7d8b5ae48cbbee33d16aad3e93',1,'LoadingState::Update()'],['../class_object.html#a6184ab2516fed16398670b75a2360859',1,'Object::Update()'],['../class_sound_manager.html#aaf241621221cdbefeba78e8b6bc29240',1,'SoundManager::Update()'],['../class_state_manager.html#ab4ebd3189a4623e805d95f768b314acb',1,'StateManager::Update()'],['../class_text_object.html#aff767a41326a8242063743e15bfb28d7',1,'TextObject::Update()']]],
+  ['updateall_12',['UpdateAll',['../class_object_manager.html#a00c892376f4874c2f033a69526e18111',1,'ObjectManager']]],
+  ['updateinstancebuffer_13',['UpdateInstanceBuffer',['../class_mesh.html#a45673d65011bf8f70c0f7de2a37d7f6c',1,'Mesh']]],
+  ['updatemesh_14',['UpdateMesh',['../class_text_object.html#a0705bf6f2f40788da1c9fb60368c183b',1,'TextObject']]],
+  ['uploadtogpu_15',['UploadToGPU',['../class_loading_state.html#a8d02a948b169581ad59b589c67f1f589',1,'LoadingState']]],
+  ['use_16',['Use',['../class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1',1,'Shader']]],
+  ['utf8tocodepoints_17',['UTF8ToCodepoints',['../_font_8cpp.html#a534c79683973e3a230bdaa108ef8ee9f',1,'Font.cpp']]]
 ];

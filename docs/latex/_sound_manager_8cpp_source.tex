@@ -1,5 +1,5 @@
 \doxysection{Sound\+Manager.\+cpp}
-\hypertarget{_sound_manager_8cpp_source}{}\label{_sound_manager_8cpp_source}\index{Project/SNAKE\_Engine/Private/SoundManager.cpp@{Project/SNAKE\_Engine/Private/SoundManager.cpp}}
+\hypertarget{_sound_manager_8cpp_source}{}\label{_sound_manager_8cpp_source}\index{Project/JinEngine/Private/SoundManager.cpp@{Project/JinEngine/Private/SoundManager.cpp}}
 \mbox{\hyperlink{_sound_manager_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
@@ -46,7 +46,7 @@
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00042}00042\ \ \ \ \ ma\_result\ res\ =\ ma\_engine\_init(\textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}});}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ !=\ MA\_SUCCESS)}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00044}00044\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}miniaudio\ engine\ init\ failed:\ "{}}\ <<\ (\textcolor{keywordtype}{int})res);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}miniaudio\ engine\ init\ failed:\ "{}}\ <<\ (\textcolor{keywordtype}{int})res);}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}};}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}}\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
@@ -136,7 +136,7 @@
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00132}00132\ \ \ \ \ ma\_result\ res\ =\ ma\_sound\_init\_from\_file(\mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}},\ path.c\_str(),\ 0,\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \&inst-\/>\mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a_ab863cac5d7f4d6695ebc7e85c2b8a0b1}{sound}});}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ !=\ MA\_SUCCESS)}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00134}00134\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ sound:\ "{}}\ <<\ path);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ sound:\ "{}}\ <<\ path);}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ inst;}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8cpp_source_l00138}00138\ \ \ \ \ \}}

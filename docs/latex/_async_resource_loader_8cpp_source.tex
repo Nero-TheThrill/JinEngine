@@ -1,5 +1,5 @@
 \doxysection{Async\+Resource\+Loader.\+cpp}
-\hypertarget{_async_resource_loader_8cpp_source}{}\label{_async_resource_loader_8cpp_source}\index{Project/SNAKE\_Engine/Private/AsyncResourceLoader.cpp@{Project/SNAKE\_Engine/Private/AsyncResourceLoader.cpp}}
+\hypertarget{_async_resource_loader_8cpp_source}{}\label{_async_resource_loader_8cpp_source}\index{Project/JinEngine/Private/AsyncResourceLoader.cpp@{Project/JinEngine/Private/AsyncResourceLoader.cpp}}
 \mbox{\hyperlink{_async_resource_loader_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_async_resource_loader_8h}{AsyncResourceLoader.h}}"{}}}
@@ -129,7 +129,7 @@
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ texture\ load\ failed:\ "{}}\ <<\ job.filePath);}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Async\ texture\ load\ failed:\ "{}}\ <<\ job.filePath);}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00131}00131\ }
@@ -149,7 +149,7 @@
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}\ =\ ReadTextFile(f.path);}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}.empty())}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ shader\ file\ read\ failed:\ "{}}\ <<\ f.path);}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Async\ shader\ file\ read\ failed:\ "{}}\ <<\ f.path);}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{sources}}.emplace\_back(std::move(src));}

@@ -2,7 +2,7 @@
 \hypertarget{class_text_object}{}\label{class_text_object}\index{TextObject@{TextObject}}
 
 
-Scene object specialized for rendering 2D text.  
+Scene object responsible for rendering text within the standard \doxylink{class_object}{Object} pipeline.  
 
 
 
@@ -19,216 +19,213 @@ Inheritance diagram for Text\+Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}{Text\+Object}} (\mbox{\hyperlink{class_font}{Font}} \texorpdfstring{$\ast$}{*}font, const std\+::string \&text, \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}}=\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Text\+Align\+H\+::\+Left}}, \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}}=\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Text\+Align\+V\+::\+Top}})
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_text_object}{Text\+Object} with the given font and text. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_text_object}{Text\+Object} with initial text content and alignment. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_text_object_ad0b8bd85c7d39f8109d8f1025ba3b5f6}{\texorpdfstring{$\sim$}{\string~}\+Text\+Object}} () override=default
 \begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a640e4ef674fb2192f5d29b0f81f95107}{Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Initializes object-\/side resources. No-\/op for \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initializes text-\/related resources. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_ac135df5aeb1986940a538ab9c1b8e10f}{Late\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Late initialization hook. No-\/op for \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs late initialization after all objects are initialized. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_aff767a41326a8242063743e15bfb28d7}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Per-\/frame update. No-\/op for \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{class_text_object}{Text\+Object} each frame. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a534ee1073bdc4b0b2d953dfbe8166f03}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Issue draw-\/time hooks. No-\/op; actual draw is driven by \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Submits the text mesh for rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a7aea94fb38f3c3e3771af8f88e4a7fc4}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Frees resources before removal. No-\/op (unique\+\_\+ptr handles mesh). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Releases resources owned by this \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a22c3477a5f4774b57cdd641120d6a248}{Late\+Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Late free hook. No-\/op for \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs late cleanup after all objects have been freed. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_text_object_a76097945db69268cb1970762ad1d4f23}{Get\+Bounding\+Radius}} () const override
-\begin{DoxyCompactList}\small\item\em Approximates a bounding radius in world space for culling. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the bounding radius used for spatial queries or culling. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_af1154768cc7042d52deb50ace196502b}{Set\+Text}} (const std\+::string \&text)
-\begin{DoxyCompactList}\small\item\em Replaces the current UTF-\/8 text and rebuilds the mesh if changed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets a new text string and marks the mesh for regeneration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_adc5d289fc11362ba89c47bcdfe48c2cc}{Set\+Text\+Instance}} (const \mbox{\hyperlink{struct_text_instance}{Text\+Instance}} \&text\+Instance\+\_\+)
-\begin{DoxyCompactList}\small\item\em Replaces both font and text in a single operation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Replaces the entire \doxylink{struct_text_instance}{Text\+Instance} payload. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a1bf378e176da4cecba2332929664aaac}{Set\+AlignH}} (\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} align\+H\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets horizontal alignment and rebuilds the mesh if changed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets horizontal text alignment. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a23b10b7bb52773bc289a9e1791d18037}{Set\+AlignV}} (\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} align\+V\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets vertical alignment and rebuilds the mesh if changed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets vertical text alignment. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_text_instance}{Text\+Instance}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_text_object_a7cb75669bbe0cb18acbc2c3c2989c3c3}{Get\+Text\+Instance}} ()
-\begin{DoxyCompactList}\small\item\em Returns a modifiable pointer to the current \doxylink{struct_text_instance}{Text\+Instance}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a mutable pointer to the internal \doxylink{struct_text_instance}{Text\+Instance}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{Has\+Animation}} () const override
-\begin{DoxyCompactList}\small\item\em \doxylink{class_text_object}{Text\+Object} does not support sprite animation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Indicates whether this object has animation support. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}{Get\+Sprite\+Animator}} () const override
-\begin{DoxyCompactList}\small\item\em \doxylink{class_text_object}{Text\+Object} does not provide a \doxylink{class_sprite_animator}{Sprite\+Animator}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the sprite animator attached to this object. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_text_object_ae46387856cc2195661fd838ad862e516}{Get\+World\+Position}} () const override
-\begin{DoxyCompactList}\small\item\em Returns the world-\/space anchor position, honoring alignment and HUD mode. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the world-\/space position of the text. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_text_object_aaa922c3c1925bcd634fd80a56f5a9e03}{Get\+World\+Scale}} () const override
-\begin{DoxyCompactList}\small\item\em Returns the world-\/space scaled size of the text quad area. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the world-\/space scale of the text. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a02f4f3ea69e456a0353031edd8bb9438}{Check\+Font\+Atlas\+And\+Mesh\+Update}} ()
-\begin{DoxyCompactList}\small\item\em Rebuilds the mesh on-\/demand when the font atlas changes. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Validates font atlas state and updates the text mesh if required. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f}{Set\+Material}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} manages its own material through \doxylink{class_font}{Font}. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_af23cfdfe8eafd743b798aab9f187d954}{Set\+Material}} (\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}material\+\_\+)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} manages its own material through \doxylink{class_font}{Font}. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd}{Get\+Material}} () const =delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_material}{Material} is internal; use \doxylink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{Text\+Instance\+::font} to affect visuals. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}{Set\+Mesh}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} owns and rebuilds its mesh automatically. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_a727d943d75ec32a4815699a8644ab282}{Set\+Mesh}} (\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh\+\_\+)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} owns and rebuilds its mesh automatically. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_text_object_a560a96aed0e107df59e96bbcffa74084}{Get\+Mesh}} () const =delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} is not sprite-\/animated. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_a8b050cd1dcdef86b139cc9706042d226}{Attach\+Animator}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ anim)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support attaching sprite animators. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_a1337c05632a054194b4e8f42373a01bd}{Attach\+Animator}} (\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}sheet, float frame\+Time, bool loop=true)=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support attaching sprite animators. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_text_object_a551df8f2b4542163665e3bb86d359ce6}{Detach\+Animator}} ()=delete
-\begin{DoxyCompactList}\small\item\em Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support sprite animators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}} ()=delete
-\begin{DoxyCompactList}\small\item\em Default constructor is not allowed; derived classes must choose a type. \end{DoxyCompactList}\item 
+\item 
 virtual \mbox{\hyperlink{class_object_a226f2ae2af766b77d83c09a4d766b725}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic deletion. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a0230b42c88134134da384129e1a4d64d}{On\+Collision}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}other)
-\begin{DoxyCompactList}\small\item\em Collision callback. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Collision callback invoked when this object collides with another object. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{Is\+Alive}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the object is alive (eligible for update/draw). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is alive. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_a77092a4fc48339007ed32e7d48f6140a}{Is\+Visible}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the object should be rendered. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is visible. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a1905fc7497de984a176acdcf8ecb81be}{Set\+Visibility}} (bool \+\_\+is\+Visible)
-\begin{DoxyCompactList}\small\item\em Enables or disables object visibility. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the visibility state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_abed008ac27116fcd520eed806751ed34}{Kill}} ()
-\begin{DoxyCompactList}\small\item\em Marks the object as dead and schedules its removal. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Marks the object as dead. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a5a8c0663fb3e668d16c8a045937a9c82}{Set\+Tag}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Assigns a string tag to the object for lookups. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the object tag used for lookup/grouping. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_a9744dc473026e6b7cba610d00f510e81}{Get\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object tag. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_aeeca329acbcb4de9843012537efd02cc}{Get\+Render\+Layer\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the render-\/layer tag used for batching/sorting. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the render-\/layer tag used for \doxylink{class_render_layer_manager}{Render\+Layer\+Manager} mapping. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae14fd11d21f05d538d10813e53566152}{Set\+Render\+Layer}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Assigns the object to a named render layer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the render-\/layer tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a53ae391764eac5e3d62e52bf7441ceec}{Set\+Material}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Binds a material by tag from \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the material by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_aab1e520477fbd67aef665b8c8207a35d}{Set\+Material}} (\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}material\+\_\+)
-\begin{DoxyCompactList}\small\item\em Directly assigns a material pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the material pointer directly. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ab521a1333884f821312dac04d176656d}{Get\+Material}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned material. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the assigned material pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a469da1fde04db75a05aad5cd30c6e4b2}{Set\+Mesh}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Binds a mesh by tag from \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the mesh by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae94b6c3d2c0bdc27eff25f07390fdb58}{Set\+Mesh}} (\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh\+\_\+)
-\begin{DoxyCompactList}\small\item\em Directly assigns a mesh pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the mesh pointer directly. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad1325c6fcdb74f68110b0518bd7beb05}{Get\+Mesh}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned mesh. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the assigned mesh pointer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_a2db79de87d0743178af0c8817ada974f}{Can\+Be\+Instanced}} () const
-\begin{DoxyCompactList}\small\item\em Indicates whether this object can be drawn via GPU instancing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this object is eligible for instanced rendering. \end{DoxyCompactList}\item 
 glm\+::mat4 \mbox{\hyperlink{class_object_aee07a084c7a7e462fe09a74a91f1bb45}{Get\+Transform2\+DMatrix}} ()
-\begin{DoxyCompactList}\small\item\em Returns the 2D model matrix composed from \doxylink{class_transform2_d}{Transform2D}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the cached \doxylink{class_transform2_d}{Transform2D} matrix, updating it if necessary. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \& \mbox{\hyperlink{class_object_a453aea9866458ef777bbe908ac71b938}{Get\+Transform2D}} ()
-\begin{DoxyCompactList}\small\item\em Access to the 2D transform (position/rotation/scale/depth). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a mutable reference to the \doxylink{class_transform2_d}{Transform2D} component. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a8d5b80a21f9fdb4e46f81936ae1d2b78}{Set\+Color}} (const glm\+::vec4 \&color\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets a per-\/object color (e.\+g., tint/alpha). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the per-\/object color used by the renderer. \end{DoxyCompactList}\item 
 const glm\+::vec4 \& \mbox{\hyperlink{class_object_adbcd6fb6a64f9921341d212558f23318}{Get\+Color}} ()
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned per-\/object color. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current per-\/object color. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_af39935a92d3881c1a0f2ca0a3c4ba027}{Attach\+Animator}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ anim)
-\begin{DoxyCompactList}\small\item\em Attaches an existing \doxylink{class_sprite_animator}{Sprite\+Animator}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Attaches an animator by transferring ownership. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_afdc6709946b43992d8dbb44c229adc0b}{Attach\+Animator}} (\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}sheet, float frame\+Time, bool loop=true)
-\begin{DoxyCompactList}\small\item\em Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a sheet. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a \doxylink{class_sprite_sheet}{Sprite\+Sheet} and playback settings. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae3c65d98ad8b1c3fdae221a5390cc757}{Detach\+Animator}} ()
-\begin{DoxyCompactList}\small\item\em Detaches and destroys the current \doxylink{class_sprite_animator}{Sprite\+Animator}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Detaches and destroys the current animator, if any. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a4ba9c8096492c37bf3db474b5c5f31a0}{Set\+Collider}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_collider}{Collider}} $>$ c)
-\begin{DoxyCompactList}\small\item\em Assigns a collider to this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the collider by transferring ownership. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{Get\+Collider}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collider (if any). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current collider pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a7ce1a12c241c5a64ec03e67ee17e1260}{Set\+Collision}} (\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \&object\+Manager, const std\+::string \&tag, const std\+::vector$<$ std\+::string $>$ \&check\+Collision\+List)
-\begin{DoxyCompactList}\small\item\em Registers this object into collision groups and masks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Configures collision category and mask using \doxylink{class_object_manager}{Object\+Manager}\textquotesingle{}s collision registry. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a76b94bea7f5f5e6454cd2c134ddc6260}{Get\+Collision\+Mask}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision bitmask of groups this object collides with. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision mask used for collision filtering. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a431dc9b1eab4227c9c5d002fae5ec017}{Get\+Collision\+Category}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision category bit for this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision category used for collision filtering. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{Should\+Ignore\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Internal check\+: whether this object ignores the camera transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this object should ignore the active camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a93406d31ceabece6e7fb08814ac188c5}{Set\+Ignore\+Camera}} (bool should\+Ignore\+Camera, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera\+For\+Transform\+Calc=nullptr)
-\begin{DoxyCompactList}\small\item\em Enables HUD-\/style rendering that ignores the camera transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets whether the object should ignore the active camera and optionally stores a reference camera. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \mbox{\hyperlink{class_object_a2ce43cdb7eae414e94b4285dbe01a85c}{Get\+Type}} () const
-\begin{DoxyCompactList}\small\item\em Returns the runtime object type (GAME/\+TEXT). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a94edf37fadeb8c59420d35730d14464e}{Get\+Reference\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Returns the reference camera used when ignoring camera transforms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the reference camera used when ignore\+Camera is enabled. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_acb3716809623d005e893452f2973b604}{Set\+Flip\+UV\+\_\+X}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Flips the object\textquotesingle{}s UVs horizontally for sprite mirroring. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables horizontal UV flipping for this object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ac20a8c5f662aa6b8f7cc2e1da304c12f}{Set\+Flip\+UV\+\_\+Y}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Flips the object\textquotesingle{}s UVs vertically for sprite mirroring. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables vertical UV flipping for this object. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_object_a9c9dd596d37ae4ab88ce7a33b725ba68}{Get\+UVFlip\+Vector}} () const
-\begin{DoxyCompactList}\small\item\em Returns a vector encoding UV flip (-\/1 or +1 per axis). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a vector encoding UV flip multipliers used by the renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{Update\+Mesh}} ()
-\begin{DoxyCompactList}\small\item\em Rebuilds the internal mesh from current text/alignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Regenerates the internal mesh based on current text and alignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_ac31ad8e33d6fd852422f4605f287b2da}{Object}} (\mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} object\+Type)
-\begin{DoxyCompactList}\small\item\em Protected constructor; derived classes must specify an object type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_object}{Object} with a concrete type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}}
-\begin{DoxyCompactList}\small\item\em Horizontal alignment mode. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}}
-\begin{DoxyCompactList}\small\item\em Vertical alignment mode. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{struct_text_instance}{Text\+Instance}} \mbox{\hyperlink{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}{text\+Instance}}
-\begin{DoxyCompactList}\small\item\em Current font+text bundle used to build the mesh. \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \mbox{\hyperlink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{text\+Mesh}}
-\begin{DoxyCompactList}\small\item\em Owned mesh generated from glyph quads. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}{text\+Atlas\+Version\+Tracker}} = 0
-\begin{DoxyCompactList}\small\item\em Tracks \doxylink{class_font}{Font} atlas version to trigger on-\/demand rebuilds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}}
-\begin{DoxyCompactList}\small\item\em \doxylink{class_object}{Object} type (GAME, TYPE) \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_a6cad8db6361d0ab0b95ec578fdf0d1b7}{is\+Alive}} = true
-\begin{DoxyCompactList}\small\item\em Alive flag; dead objects are removed by \doxylink{class_object_manager}{Object\+Manager}. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_a418eac6726dcadd9710d94a041446f28}{is\+Visible}} = true
-\begin{DoxyCompactList}\small\item\em Visibility flag; hidden objects still \doxylink{class_object_a6184ab2516fed16398670b75a2360859}{Update()}. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignore\+Camera}} = false
-\begin{DoxyCompactList}\small\item\em If true, draw ignores camera transform (HUD). \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{reference\+Camera}} = nullptr
-\begin{DoxyCompactList}\small\item\em Reference camera for HUD transform calculations. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{class_object_a884feb6d3b893651c612a1a3254f73e6}{object\+Tag}}
-\begin{DoxyCompactList}\small\item\em User-\/defined identifier. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{class_object_aa00855f8cc3dc0f7fd06e2a76d523458}{render\+Layer\+Tag}}
-\begin{DoxyCompactList}\small\item\em Name-\/based render layer. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}
-\begin{DoxyCompactList}\small\item\em 2D transform (position/rotation/scale/depth). \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}} = nullptr
-\begin{DoxyCompactList}\small\item\em Non-\/owning material pointer. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}} = nullptr
-\begin{DoxyCompactList}\small\item\em Non-\/owning mesh pointer. \end{DoxyCompactList}\item 
+\item 
 glm\+::vec4 \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}} = glm\+::vec4(1)
-\begin{DoxyCompactList}\small\item\em Per-\/object color (tint/alpha). \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{sprite\+Animator}}
-\begin{DoxyCompactList}\small\item\em Optional sprite animation component. \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_collider}{Collider}} $>$ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}
-\begin{DoxyCompactList}\small\item\em Optional collision component. \end{DoxyCompactList}\item 
+\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collision\+Category}} = 0
-\begin{DoxyCompactList}\small\item\em Collision category bit. \end{DoxyCompactList}\item 
+\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collision\+Mask}} = 0
-\begin{DoxyCompactList}\small\item\em Collision mask bits (which groups to test against). \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flip\+UV\+\_\+X}} = false
-\begin{DoxyCompactList}\small\item\em Flip UV horizontally. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flip\+UV\+\_\+Y}} = false
-\begin{DoxyCompactList}\small\item\em Flip UV vertically. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Scene object specialized for rendering 2D text. 
+Scene object responsible for rendering text within the standard \doxylink{class_object}{Object} pipeline. 
 
-\doxylink{class_text_object}{Text\+Object} produces a mesh from a UTF-\/8 string using the provided \doxylink{class_font}{Font}\textquotesingle{}s dynamic glyph atlas. It honors horizontal/vertical alignment, integrates with the engine\textquotesingle{}s camera rules (including HUD-\/style "{}ignore camera"{}), and updates its mesh lazily when the text or font atlas changes.
+\doxylink{class_text_object}{Text\+Object} is a specialized \doxylink{class_object}{Object} implementation for in-\/world text rendering. Unlike HUD or immediate-\/mode text systems, \doxylink{class_text_object}{Text\+Object} participates in the normal \doxylink{class_object}{Object} lifecycle (Init / Update / Draw / Free) and render ordering.
 
-\begin{DoxyNote}{Note}
-Material/\+Mesh setters and animator APIs are intentionally deleted to prevent misuse. \doxylink{class_text_object}{Text\+Object} internally owns its mesh and uses the Font-\/provided material. 
-\end{DoxyNote}
+Internally, \doxylink{class_text_object}{Text\+Object} owns a dynamically generated \doxylink{class_mesh}{Mesh} representing the glyph geometry of the current text. The mesh is regenerated whenever the text content changes or when the associated \doxylink{class_font}{Font}\textquotesingle{}s atlas version changes.
 
+\doxylink{class_text_object}{Text\+Object} deliberately disables access to generic material, mesh, and animation interfaces inherited from \doxylink{class_object}{Object} to prevent misuse. Text rendering is tightly coupled to Font-\/driven mesh generation and a dedicated text material/shader setup. 
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00036}{36}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
-
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00039}{39}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
-\label{doc-constructors}
-\Hypertarget{class_text_object_doc-constructors}
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}\index{TextObject@{TextObject}!TextObject@{TextObject}}
 \index{TextObject@{TextObject}!TextObject@{TextObject}}
@@ -238,27 +235,19 @@ Text\+Object\+::\+Text\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{
 
 
 
-Constructs a \doxylink{class_text_object}{Text\+Object} with the given font and text. 
+Constructs a \doxylink{class_text_object}{Text\+Object} with initial text content and alignment. 
 
-Stores the font and UTF-\/8 text, alignment preferences, and immediately builds the internal mesh via \doxylink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{Update\+Mesh}. The material comes from the \doxylink{class_font}{Font} (internal text shader + atlas texture).
+The provided \doxylink{class_font}{Font} pointer is stored but not owned by this object. The actual text mesh is generated during Init/\+Late\+Init once the rendering context and font atlas are available.
 
 
 \begin{DoxyParams}{Parameters}
-{\em font} & \doxylink{class_font}{Font} resource used to bake glyphs and supply material. \\
+{\em font} & \doxylink{class_font}{Font} used for glyph lookup and atlas access. \\
 \hline
-{\em text} & UTF-\/8 text to render. \\
+{\em text} & Initial UTF-\/8 text string. \\
 \hline
-{\em alignH} & Horizontal alignment (Left/\+Center/\+Right). Defaults to Left. \\
+{\em alignH} & Horizontal text alignment. \\
 \hline
-{\em alignV} & Vertical alignment (Top/\+Middle/\+Bottom). Defaults to Top. 
-\begin{DoxyCode}{1}
-\DoxyCodeLine{\textcolor{keyword}{auto}*\ t\ =\ state-\/>GetObjectManager().AddObject(}
-\DoxyCodeLine{\ \ \ \ std::make\_unique<TextObject>(rm-\/>GetFontByTag(\textcolor{stringliteral}{"{}[Font]ui"{}}),\ \textcolor{stringliteral}{"{}Hello"{}},\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd}{TextAlignH::Center}},\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05}{TextAlignV::Middle}}),}
-\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}[Object]UIHello"{}});}
-\DoxyCodeLine{t-\/>SetIgnoreCamera(\textcolor{keyword}{true},\ state-\/>GetActiveCamera());\ \textcolor{comment}{//\ HUD\ text}}
-
-\end{DoxyCode}
- \\
+{\em alignV} & Vertical text alignment. \\
 \hline
 \end{DoxyParams}
 
@@ -293,8 +282,6 @@ Virtual destructor.
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_text_object_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_text_object_a1337c05632a054194b4e8f42373a01bd}\index{TextObject@{TextObject}!AttachAnimator@{AttachAnimator}}
 \index{AttachAnimator@{AttachAnimator}!TextObject@{TextObject}}
@@ -302,19 +289,11 @@ Virtual destructor.
 {\footnotesize\ttfamily \label{class_text_object_a1337c05632a054194b4e8f42373a01bd} 
 void Text\+Object\+::\+Attach\+Animator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}}]{sheet}{, }\item[{float}]{frame\+Time}{, }\item[{bool}]{loop}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support attaching sprite animators. 
-
 \Hypertarget{class_text_object_a8b050cd1dcdef86b139cc9706042d226}\index{TextObject@{TextObject}!AttachAnimator@{AttachAnimator}}
 \index{AttachAnimator@{AttachAnimator}!TextObject@{TextObject}}
 \doxysubsubsection{\texorpdfstring{AttachAnimator()}{AttachAnimator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_text_object_a8b050cd1dcdef86b139cc9706042d226} 
 void Text\+Object\+::\+Attach\+Animator (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$}]{anim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support attaching sprite animators. 
 
 \Hypertarget{class_text_object_a02f4f3ea69e456a0353031edd8bb9438}\index{TextObject@{TextObject}!CheckFontAtlasAndMeshUpdate@{CheckFontAtlasAndMeshUpdate}}
 \index{CheckFontAtlasAndMeshUpdate@{CheckFontAtlasAndMeshUpdate}!TextObject@{TextObject}}
@@ -324,9 +303,9 @@ void Text\+Object\+::\+Check\+Font\+Atlas\+And\+Mesh\+Update (\begin{DoxyParamCa
 
 
 
-Rebuilds the mesh on-\/demand when the font atlas changes. 
+Validates font atlas state and updates the text mesh if required. 
 
-Compares an internal atlas version tracker to \doxylink{class_font_a3e647cb6b0aa60318eb3ecc479395c0e}{Font\+::\+Get\+Text\+Atlas\+Version()}. If different, regenerates the mesh via \doxylink{class_font_a3a3963ea1c039525cbf922f52ae03670}{Font\+::\+Generate\+Text\+Mesh()}. This keeps glyph UVs valid when the dynamic atlas expands. 
+If the font\textquotesingle{}s atlas version differs from the last recorded version, the mesh is regenerated to reflect newly baked glyphs. 
 
 Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{_text_object_8cpp_source}{Text\+Object.\+cpp}}.
 
@@ -349,10 +328,6 @@ Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00136}{136}} of fi
 {\footnotesize\ttfamily \label{class_text_object_a551df8f2b4542163665e3bb86d359ce6} 
 void Text\+Object\+::\+Detach\+Animator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} does not support sprite animators. 
-
 \Hypertarget{class_text_object_a534ee1073bdc4b0b2d953dfbe8166f03}\index{TextObject@{TextObject}!Draw@{Draw}}
 \index{Draw@{Draw}!TextObject@{TextObject}}
 \doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
@@ -361,9 +336,16 @@ void Text\+Object\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Issue draw-\/time hooks. No-\/op; actual draw is driven by \doxylink{class_render_manager}{Render\+Manager}. 
+Submits the text mesh for rendering. 
 
-\doxylink{class_render_manager}{Render\+Manager} batches and draws using the internal mesh/material of \doxylink{class_text_object}{Text\+Object}. 
+The text mesh is submitted through the standard \doxylink{class_object}{Object} rendering path, using a text-\/specific material and shader configuration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide context. \\
+\hline
+\end{DoxyParams}
+
 
 Implements \mbox{\hyperlink{class_object_a8d36cf36a47b76a005590557116814e6}{Object}}.
 
@@ -385,8 +367,15 @@ void Text\+Object\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Frees resources before removal. No-\/op (unique\+\_\+ptr handles mesh). 
+Releases resources owned by this \doxylink{class_text_object}{Text\+Object}. 
 
+This stage releases GPU-\/side resources associated with the text mesh.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide context. \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{class_object_aceba19437c716d229fc247463c381da5}{Object}}.
@@ -409,14 +398,9 @@ float Text\+Object\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Approximates a bounding radius in world space for culling. 
+Returns the bounding radius used for spatial queries or culling. 
 
-Computes the text\textquotesingle{}s pixel size via Font\+::\+Get\+Text\+Size(text), scales by \doxylink{class_transform2_d}{Transform2D} scale, and returns the length as a conservative radius.
-
-\begin{DoxyReturn}{Returns}
-Bounding radius of this text in world space units. 
-\end{DoxyReturn}
-
+The radius is derived from the current text mesh extents. 
 
 Reimplemented from \mbox{\hyperlink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Object}}.
 
@@ -440,19 +424,11 @@ Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00040}{40}} of fil
 {\footnotesize\ttfamily \label{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd} 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} Text\+Object\+::\+Get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [delete]}}
 
-
-
-Deleted\+: \doxylink{class_material}{Material} is internal; use \doxylink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{Text\+Instance\+::font} to affect visuals. 
-
 \Hypertarget{class_text_object_a560a96aed0e107df59e96bbcffa74084}\index{TextObject@{TextObject}!GetMesh@{GetMesh}}
 \index{GetMesh@{GetMesh}!TextObject@{TextObject}}
 \doxysubsubsection{\texorpdfstring{GetMesh()}{GetMesh()}}
 {\footnotesize\ttfamily \label{class_text_object_a560a96aed0e107df59e96bbcffa74084} 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} Text\+Object\+::\+Get\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [delete]}}
-
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} is not sprite-\/animated. 
 
 \Hypertarget{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}\index{TextObject@{TextObject}!GetSpriteAnimator@{GetSpriteAnimator}}
 \index{GetSpriteAnimator@{GetSpriteAnimator}!TextObject@{TextObject}}
@@ -462,10 +438,10 @@ Deleted\+: \doxylink{class_text_object}{Text\+Object} is not sprite-\/animated.
 
 
 
-\doxylink{class_text_object}{Text\+Object} does not provide a \doxylink{class_sprite_animator}{Sprite\+Animator}. 
+Returns the sprite animator attached to this object. 
 
 \begin{DoxyReturn}{Returns}
-Always nullptr. 
+Always nullptr for \doxylink{class_text_object}{Text\+Object}. 
 \end{DoxyReturn}
 
 
@@ -473,11 +449,11 @@ Reimplemented from \mbox{\hyperlink{class_object_a5037bc2d36bcecdb601fa135a8fc6b
 
 
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00171}{171}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00184}{184}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00171\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00184\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_text_object_a7cb75669bbe0cb18acbc2c3c2989c3c3}\index{TextObject@{TextObject}!GetTextInstance@{GetTextInstance}}
@@ -488,15 +464,9 @@ Definition at line \mbox{\hyperlink{_text_object_8h_source_l00171}{171}} of file
 
 
 
-Returns a modifiable pointer to the current \doxylink{struct_text_instance}{Text\+Instance}. 
+Returns a mutable pointer to the internal \doxylink{struct_text_instance}{Text\+Instance}. 
 
-\begin{DoxyReturn}{Returns}
-Pointer to the internal \doxylink{struct_text_instance}{Text\+Instance}. 
-\end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-Mutating the returned data does not auto-\/rebuild the mesh. Call \doxylink{class_text_object_af1154768cc7042d52deb50ace196502b}{Set\+Text} or \doxylink{class_text_object_adc5d289fc11362ba89c47bcdfe48c2cc}{Set\+Text\+Instance} (or \doxylink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{Update\+Mesh}) after modifications to reflect changes. 
-\end{DoxyWarning}
-
+Direct modification requires a subsequent mesh update to take effect. 
 
 Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_text_object_8cpp_source}{Text\+Object.\+cpp}}.
 
@@ -515,18 +485,9 @@ glm\+::vec2 Text\+Object\+::\+Get\+World\+Position (\begin{DoxyParamCaption}{}{}
 
 
 
-Returns the world-\/space anchor position, honoring alignment and HUD mode. 
+Returns the world-\/space position of the text. 
 
-Computes an offset based on alignment and text size, then\+:
-\begin{DoxyItemize}
-\item If \doxylink{class_object_afe474c804f6bab83b89958356e1857af}{Should\+Ignore\+Camera()} and reference\+Camera are set\+: converts from screen space (HUD) to world space by applying camera position/zoom.
-\item Otherwise, returns \doxylink{class_transform2_d}{Transform2D} position (already in world space).
-\end{DoxyItemize}
-
-\begin{DoxyReturn}{Returns}
-World-\/space position used for culling and debug. 
-\end{DoxyReturn}
-
+This is derived from the underlying Transform without additional offsets. 
 
 Reimplemented from \mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{Object}}.
 
@@ -578,13 +539,8 @@ glm\+::vec2 Text\+Object\+::\+Get\+World\+Scale (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Returns the world-\/space scaled size of the text quad area. 
+Returns the world-\/space scale of the text. 
 
-Uses Font\+::\+Get\+Text\+Size(text) and \doxylink{class_transform2_d}{Transform2D} scale. In HUD mode (ignore camera), also divides by reference camera zoom.
-
-\begin{DoxyReturn}{Returns}
-World-\/space 2D extent derived from text size and scale. 
-\end{DoxyReturn}
 
 
 Reimplemented from \mbox{\hyperlink{class_object_a8c2784b2a928fa1050d8a036091754c4}{Object}}.
@@ -611,10 +567,10 @@ bool Text\+Object\+::\+Has\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 
 
 
-\doxylink{class_text_object}{Text\+Object} does not support sprite animation. 
+Indicates whether this object has animation support. 
 
 \begin{DoxyReturn}{Returns}
-Always false. 
+Always false for \doxylink{class_text_object}{Text\+Object}. 
 \end{DoxyReturn}
 
 
@@ -622,11 +578,11 @@ Reimplemented from \mbox{\hyperlink{class_object_a73b8c8aca393668f11cef22b19b707
 
 
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00164}{164}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00177}{177}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00164\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00177\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_text_object_a640e4ef674fb2192f5d29b0f81f95107}\index{TextObject@{TextObject}!Init@{Init}}
@@ -637,9 +593,16 @@ void Text\+Object\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Initializes object-\/side resources. No-\/op for \doxylink{class_text_object}{Text\+Object}. 
+Initializes text-\/related resources. 
 
-\doxylink{class_text_object}{Text\+Object} builds its mesh in the constructor/\+Update\+Mesh, so Init is empty. 
+Called during the standard \doxylink{class_object}{Object} initialization phase. This function typically prepares internal state required for text mesh generation but may defer actual mesh creation until \doxylink{class_text_object_ac135df5aeb1986940a538ab9c1b8e10f}{Late\+Init()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide context providing access to managers. \\
+\hline
+\end{DoxyParams}
+
 
 Implements \mbox{\hyperlink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Object}}.
 
@@ -661,8 +624,13 @@ void Text\+Object\+::\+Late\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\h
 
 
 
-Late free hook. No-\/op for \doxylink{class_text_object}{Text\+Object}. 
+Performs late cleanup after all objects have been freed. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide context. \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{class_object_acbc48ef4fd5b14b01a681e8fef4aaa20}{Object}}.
@@ -685,8 +653,15 @@ void Text\+Object\+::\+Late\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\h
 
 
 
-Late initialization hook. No-\/op for \doxylink{class_text_object}{Text\+Object}. 
+Performs late initialization after all objects are initialized. 
 
+This stage ensures that \doxylink{class_font}{Font} atlases and rendering resources are fully available before generating the initial text mesh.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine-\/wide context. \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{class_object_af71fa9147e1a1f17ca5e93cc599d8eef}{Object}}.
@@ -709,7 +684,7 @@ void Text\+Object\+::\+Set\+AlignH (\begin{DoxyParamCaption}\item[{\mbox{\hyperl
 
 
 
-Sets horizontal alignment and rebuilds the mesh if changed. 
+Sets horizontal text alignment. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -740,7 +715,7 @@ void Text\+Object\+::\+Set\+AlignV (\begin{DoxyParamCaption}\item[{\mbox{\hyperl
 
 
 
-Sets vertical alignment and rebuilds the mesh if changed. 
+Sets vertical text alignment. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -769,19 +744,11 @@ Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00079}{79}} of fil
 {\footnotesize\ttfamily \label{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f} 
 void Text\+Object\+::\+Set\+Material (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} manages its own material through \doxylink{class_font}{Font}. 
-
-Prevents external material override; text rendering requires a specific shader/atlas. \Hypertarget{class_text_object_af23cfdfe8eafd743b798aab9f187d954}\index{TextObject@{TextObject}!SetMaterial@{SetMaterial}}
+\Hypertarget{class_text_object_af23cfdfe8eafd743b798aab9f187d954}\index{TextObject@{TextObject}!SetMaterial@{SetMaterial}}
 \index{SetMaterial@{SetMaterial}!TextObject@{TextObject}}
 \doxysubsubsection{\texorpdfstring{SetMaterial()}{SetMaterial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_text_object_af23cfdfe8eafd743b798aab9f187d954} 
 void Text\+Object\+::\+Set\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}}]{material\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} manages its own material through \doxylink{class_font}{Font}. 
 
 \Hypertarget{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}\index{TextObject@{TextObject}!SetMesh@{SetMesh}}
 \index{SetMesh@{SetMesh}!TextObject@{TextObject}}
@@ -789,19 +756,11 @@ Deleted\+: \doxylink{class_text_object}{Text\+Object} manages its own material t
 {\footnotesize\ttfamily \label{class_text_object_ac124a2f940a62efd2d63ca3decf321bb} 
 void Text\+Object\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} owns and rebuilds its mesh automatically. 
-
 \Hypertarget{class_text_object_a727d943d75ec32a4815699a8644ab282}\index{TextObject@{TextObject}!SetMesh@{SetMesh}}
 \index{SetMesh@{SetMesh}!TextObject@{TextObject}}
 \doxysubsubsection{\texorpdfstring{SetMesh()}{SetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_text_object_a727d943d75ec32a4815699a8644ab282} 
 void Text\+Object\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-
-
-Deleted\+: \doxylink{class_text_object}{Text\+Object} owns and rebuilds its mesh automatically. 
 
 \Hypertarget{class_text_object_af1154768cc7042d52deb50ace196502b}\index{TextObject@{TextObject}!SetText@{SetText}}
 \index{SetText@{SetText}!TextObject@{TextObject}}
@@ -811,16 +770,13 @@ void Text\+Object\+::\+Set\+Text (\begin{DoxyParamCaption}\item[{const std\+::st
 
 
 
-Replaces the current UTF-\/8 text and rebuilds the mesh if changed. 
+Sets a new text string and marks the mesh for regeneration. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em text} & New UTF-\/8 string. No-\/op if identical to the current value. \\
+{\em text} & New UTF-\/8 text string. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-Triggers \doxylink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{Update\+Mesh} on change. Also affects alignment and radius. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_text_object_8cpp_source}{Text\+Object.\+cpp}}.
@@ -845,13 +801,13 @@ void Text\+Object\+::\+Set\+Text\+Instance (\begin{DoxyParamCaption}\item[{const
 
 
 
-Replaces both font and text in a single operation. 
+Replaces the entire \doxylink{struct_text_instance}{Text\+Instance} payload. 
 
-Useful when changing the font (e.\+g., size or style) together with text. Rebuilds the internal mesh if either value changes.
+This can change both the font and the text string simultaneously.
 
 
 \begin{DoxyParams}{Parameters}
-{\em text\+Instance\+\_\+} & New text instance (font + text). \\
+{\em text\+Instance\+\_\+} & New text instance data. \\
 \hline
 \end{DoxyParams}
 
@@ -878,9 +834,18 @@ void Text\+Object\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\it
 
 
 
-Per-\/frame update. No-\/op for \doxylink{class_text_object}{Text\+Object}. 
+Updates the \doxylink{class_text_object}{Text\+Object} each frame. 
 
-\doxylink{class_text_object}{Text\+Object} does not animate by itself. Use Set\+Text/\+Set\+Align\texorpdfstring{$\ast$}{*} to trigger mesh rebuilds. 
+This function checks whether the text content or font atlas has changed and triggers mesh regeneration if required.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time in seconds. \\
+\hline
+{\em engine\+Context} & Engine-\/wide context. \\
+\hline
+\end{DoxyParams}
+
 
 Implements \mbox{\hyperlink{class_object_a6184ab2516fed16398670b75a2360859}{Object}}.
 
@@ -902,9 +867,9 @@ void Text\+Object\+::\+Update\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Rebuilds the internal mesh from current text/alignment. 
+Regenerates the internal mesh based on current text and alignment. 
 
-Calls Font\+::\+Generate\+Text\+Mesh(text, align\+H, align\+V) and stores the result in \doxylink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{text\+Mesh}, updating the raw \doxylink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh} pointer inherited from \doxylink{class_object}{Object}. Invoked by setters and the constructor to keep geometry in sync. 
+This function rebuilds vertex and index buffers according to glyph metrics provided by the \doxylink{class_font}{Font} and applies horizontal and vertical alignment rules. 
 
 Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{_text_object_8cpp_source}{Text\+Object.\+cpp}}.
 
@@ -920,8 +885,6 @@ Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00147}{147}} of fi
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_text_object_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}\index{TextObject@{TextObject}!alignH@{alignH}}
 \index{alignH@{alignH}!TextObject@{TextObject}}
@@ -931,11 +894,7 @@ Definition at line \mbox{\hyperlink{_text_object_8cpp_source_l00147}{147}} of fi
 
 
 
-Horizontal alignment mode. 
-
-
-
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00265}{265}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00230}{230}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 \Hypertarget{class_text_object_a053ba58bf598730947f87eef44bd62a7}\index{TextObject@{TextObject}!alignV@{alignV}}
 \index{alignV@{alignV}!TextObject@{TextObject}}
@@ -945,11 +904,7 @@ Definition at line \mbox{\hyperlink{_text_object_8h_source_l00265}{265}} of file
 
 
 
-Vertical alignment mode. 
-
-
-
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00266}{266}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00231}{231}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 \Hypertarget{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}\index{TextObject@{TextObject}!textAtlasVersionTracker@{textAtlasVersionTracker}}
 \index{textAtlasVersionTracker@{textAtlasVersionTracker}!TextObject@{TextObject}}
@@ -959,11 +914,7 @@ int Text\+Object\+::text\+Atlas\+Version\+Tracker = 0\hspace{0.3cm}{\ttfamily [p
 
 
 
-Tracks \doxylink{class_font}{Font} atlas version to trigger on-\/demand rebuilds. 
-
-
-
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00271}{271}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00236}{236}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 \Hypertarget{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}\index{TextObject@{TextObject}!textInstance@{textInstance}}
 \index{textInstance@{textInstance}!TextObject@{TextObject}}
@@ -973,11 +924,7 @@ Definition at line \mbox{\hyperlink{_text_object_8h_source_l00271}{271}} of file
 
 
 
-Current font+text bundle used to build the mesh. 
-
-
-
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00268}{268}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00233}{233}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 \Hypertarget{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}\index{TextObject@{TextObject}!textMesh@{textMesh}}
 \index{textMesh@{textMesh}!TextObject@{TextObject}}
@@ -987,15 +934,11 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_mesh}{Mesh}}$>$ Text\+Object\+::
 
 
 
-Owned mesh generated from glyph quads. 
-
-
-
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00269}{269}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00234}{234}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_text_object_8h}{Text\+Object.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_text_object_8cpp}{Text\+Object.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_text_object_8h}{Text\+Object.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_text_object_8cpp}{Text\+Object.\+cpp}}\end{DoxyCompactItemize}

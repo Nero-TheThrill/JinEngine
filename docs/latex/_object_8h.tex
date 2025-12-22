@@ -1,5 +1,5 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Object.h File Reference}
-\hypertarget{_object_8h}{}\label{_object_8h}\index{Project/SNAKE\_Engine/Public/Object.h@{Project/SNAKE\_Engine/Public/Object.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Object.h File Reference}
+\hypertarget{_object_8h}{}\label{_object_8h}\index{Project/JinEngine/Public/Object.h@{Project/JinEngine/Public/Object.h}}
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include "{}Animation.\+h"{}}\newline
@@ -10,18 +10,16 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_object}{Object}}
-\begin{DoxyCompactList}\small\item\em Base class for all renderable and updatable objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Base interface for all runtime entities managed by \doxylink{class_object_manager}{Object\+Manager} and rendered by \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \{ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{GAME}}
 , \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8}{TEXT}}
  \}
-\begin{DoxyCompactList}\small\item\em Runtime type tag for objects handled by the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Identifies the runtime category of an \doxylink{class_object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-enum-members}
-\Hypertarget{_object_8h_doc-enum-members}
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{_object_8h_a842c5e2e69277690b064bf363c017980}\index{Object.h@{Object.h}!ObjectType@{ObjectType}}
 \index{ObjectType@{ObjectType}!Object.h@{Object.h}}
@@ -31,27 +29,27 @@ enum class \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object
 
 
 
-Runtime type tag for objects handled by the engine. 
+Identifies the runtime category of an \doxylink{class_object}{Object}. 
 
-\begin{DoxyEnumFields}[2]{Enumerator}
+The engine uses \doxylink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} to distinguish between gameplay objects and text objects. Some systems (render submission, resource validation, font/mesh sync, etc.) may branch behavior based on this type. \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GAME@{GAME}!Object.h@{Object.h}}\index{Object.h@{Object.h}!GAME@{GAME}}}\Hypertarget{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}\label{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13} 
-GAME&Regular game object rendered with material/mesh. \\
+GAME&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{TEXT@{TEXT}!Object.h@{Object.h}}\index{Object.h@{Object.h}!TEXT@{TEXT}}}\Hypertarget{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8}\label{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8} 
-TEXT&Text-\/only object (e.\+g., \doxylink{class_text_object}{Text\+Object}). \\
+TEXT&\\
 \hline
 
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00015}{15}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00021}{21}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00016\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{GAME}},\ \ }
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8}{TEXT}}\ \ \ }
-\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{GAME}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8}{TEXT}}}
+\DoxyCodeLine{00025\ \};}
 
 \end{DoxyCode}

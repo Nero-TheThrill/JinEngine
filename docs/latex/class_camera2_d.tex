@@ -2,7 +2,7 @@
 \hypertarget{class_camera2_d}{}\label{class_camera2_d}\index{Camera2D@{Camera2D}}
 
 
-A simple 2D camera for managing position, zoom, and screen size.  
+2D camera providing view transformation and visibility tests.  
 
 
 
@@ -13,51 +13,56 @@ A simple 2D camera for managing position, zoom, and screen size.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}{Camera2D}} (int \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screen\+Width}}=800, int \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screen\+Height}}=600)
-\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_camera2_d}{Camera2D}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_camera2_d}{Camera2D} with an initial screen size. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera2_d_a77fff49c88c066f322abcd2683276069}{Set\+Screen\+Size}} (int width, int height)
-\begin{DoxyCompactList}\small\item\em Set the screen size for the camera. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the screen size used by the camera. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_camera2_d_a61688205777baba2ca92df7e62674a1d}{Get\+Screen\+Width}} () const
-\begin{DoxyCompactList}\small\item\em Get the current screen width. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current screen width. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_camera2_d_ab2b1626c3cf744e7b8c0316fd875ffc7}{Get\+Screen\+Height}} () const
-\begin{DoxyCompactList}\small\item\em Get the current screen height. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current screen height. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera2_d_a56ab4d0705a8f03b3dfc4db14805ed76}{Set\+Position}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Set the world position of the camera center. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the world-\/space position of the camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera2_d_a310690322ff72ff448e8c500b58042fe}{Add\+Position}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Move the camera by a given offset. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Translates the camera by the given offset. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_camera2_d_a107d6516d1fdb17883af65460bd6752f}{Get\+Position}} () const
-\begin{DoxyCompactList}\small\item\em Get the current camera position in world space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current world-\/space position of the camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera2_d_a62857071bf38d87ae34c2fc7cfab2730}{Set\+Zoom}} (float z)
-\begin{DoxyCompactList}\small\item\em Set the zoom level of the camera. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the camera zoom factor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_camera2_d_af8d9ff1e06b780cc2917b9559ab4a369}{Get\+Zoom}} () const
-\begin{DoxyCompactList}\small\item\em Get the current zoom level. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current camera zoom factor. \end{DoxyCompactList}\item 
 glm\+::mat4 \mbox{\hyperlink{class_camera2_d_a375e047d2e5c2a5fc36e3b44091efe24}{Get\+View\+Matrix}} () const
-\begin{DoxyCompactList}\small\item\em Compute and return the view matrix. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Computes and returns the view matrix for this camera. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{Is\+In\+View}} (const glm\+::vec2 \&pos, float radius, glm\+::vec2 viewport\+Size) const
-\begin{DoxyCompactList}\small\item\em Determine if a world-\/space point is visible in the viewport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tests whether a circular object is inside the camera view. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec2 \mbox{\hyperlink{class_camera2_d_a998840db69cc35ba61e70927800e0480}{position}} = glm\+::vec2(0.\+0f)
-\begin{DoxyCompactList}\small\item\em Camera center position in world space. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}{zoom}} = 1.\+0f
-\begin{DoxyCompactList}\small\item\em Zoom factor (scale applied to view). \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screen\+Width}} = 800
-\begin{DoxyCompactList}\small\item\em Current screen width in pixels. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screen\+Height}} = 600
-\begin{DoxyCompactList}\small\item\em Current screen height in pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-A simple 2D camera for managing position, zoom, and screen size. 
+2D camera providing view transformation and visibility tests. 
 
-\doxylink{class_camera2_d}{Camera2D} provides functionality for transforming world coordinates into screen-\/space via view matrices. It supports zoom, screen resizing, and viewport culling checks. Typically used by \doxylink{class_render_manager}{Render\+Manager} and \doxylink{class_camera_manager}{Camera\+Manager} to control scene rendering. 
+\doxylink{class_camera2_d}{Camera2D} represents a simple orthographic-\/style camera for 2D rendering. It maintains position, zoom, and screen size information and provides\+:
+\begin{DoxyItemize}
+\item View matrix generation for rendering
+\item Screen size management
+\item World-\/space visibility testing for basic view culling
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00013}{13}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+The camera operates in world space using a position and a uniform zoom factor. Screen size is used to determine the visible region in world coordinates. 
+
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00017}{17}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_camera2_d_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_camera2_d_a1e373f26fbf3a2ad457e4afc0542644c}\index{Camera2D@{Camera2D}!Camera2D@{Camera2D}}
 \index{Camera2D@{Camera2D}!Camera2D@{Camera2D}}
@@ -67,13 +72,15 @@ Camera2\+D\+::\+Camera2D (\begin{DoxyParamCaption}\item[{int}]{screen\+Width}{ =
 
 
 
-Construct a new \doxylink{class_camera2_d}{Camera2D}. 
+Constructs a \doxylink{class_camera2_d}{Camera2D} with an initial screen size. 
+
+Initializes the camera at the origin with a default zoom of 1.\+0.
 
 
 \begin{DoxyParams}{Parameters}
-{\em screen\+Width} & Initial screen width in pixels. Defaults to 800. \\
+{\em screen\+Width} & Initial screen width in pixels. \\
 \hline
-{\em screen\+Height} & Initial screen height in pixels. Defaults to 600. \\
+{\em screen\+Height} & Initial screen height in pixels. \\
 \hline
 \end{DoxyParams}
 
@@ -89,8 +96,6 @@ Definition at line \mbox{\hyperlink{_camera2_d_8cpp_source_l00006}{6}} of file \
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_camera2_d_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_camera2_d_a310690322ff72ff448e8c500b58042fe}\index{Camera2D@{Camera2D}!AddPosition@{AddPosition}}
 \index{AddPosition@{AddPosition}!Camera2D@{Camera2D}}
@@ -100,11 +105,11 @@ void Camera2\+D\+::\+Add\+Position (\begin{DoxyParamCaption}\item[{const glm\+::
 
 
 
-Move the camera by a given offset. 
+Translates the camera by the given offset. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & 2D offset to add to the current position. \\
+{\em pos} & Offset to add to the current camera position. \\
 \hline
 \end{DoxyParams}
 
@@ -126,11 +131,8 @@ const glm\+::vec2 \& Camera2\+D\+::\+Get\+Position (\begin{DoxyParamCaption}{}{}
 
 
 
-Get the current camera position in world space. 
+Returns the current world-\/space position of the camera. 
 
-\begin{DoxyReturn}{Returns}
-2D vector representing the camera position. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_camera2_d_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_camera2_d_8cpp_source}{Camera2\+D.\+cpp}}.
@@ -150,18 +152,15 @@ int Camera2\+D\+::\+Get\+Screen\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Get the current screen height. 
-
-\begin{DoxyReturn}{Returns}
-Screen height in pixels. 
-\end{DoxyReturn}
+Returns the current screen height. 
 
 
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00044}{44}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00050}{50}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00044\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}};\ \}}
+\DoxyCodeLine{00050\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}{screenHeight}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera2_d_a61688205777baba2ca92df7e62674a1d}\index{Camera2D@{Camera2D}!GetScreenWidth@{GetScreenWidth}}
@@ -172,18 +171,15 @@ int Camera2\+D\+::\+Get\+Screen\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Get the current screen width. 
-
-\begin{DoxyReturn}{Returns}
-Screen width in pixels. 
-\end{DoxyReturn}
+Returns the current screen width. 
 
 
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00037}{37}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00045}{45}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00037\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}};\ \}}
+\DoxyCodeLine{00045\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera2_d_a7b7971364cef32360d4c753a158313f9}{screenWidth}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera2_d_a375e047d2e5c2a5fc36e3b44091efe24}\index{Camera2D@{Camera2D}!GetViewMatrix@{GetViewMatrix}}
@@ -194,10 +190,12 @@ glm\+::mat4 Camera2\+D\+::\+Get\+View\+Matrix (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Compute and return the view matrix. 
+Computes and returns the view matrix for this camera. 
+
+The view matrix is constructed from the camera position and zoom, and is intended to be combined with a projection matrix in the rendering pipeline.
 
 \begin{DoxyReturn}{Returns}
-4x4 matrix representing the camera\textquotesingle{}s view transformation. 
+View transformation matrix. 
 \end{DoxyReturn}
 
 
@@ -221,11 +219,8 @@ float Camera2\+D\+::\+Get\+Zoom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Get the current zoom level. 
+Returns the current camera zoom factor. 
 
-\begin{DoxyReturn}{Returns}
-Zoom factor. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_camera2_d_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_camera2_d_8cpp_source}{Camera2\+D.\+cpp}}.
@@ -245,19 +240,23 @@ bool Camera2\+D\+::\+Is\+In\+View (\begin{DoxyParamCaption}\item[{const glm\+::v
 
 
 
-Determine if a world-\/space point is visible in the viewport. 
+Tests whether a circular object is inside the camera view. 
+
+This function performs a simple visibility test by checking whether a circle defined by a center position and radius intersects the camera\textquotesingle{}s visible world-\/space rectangle.
+
+It is commonly used for view frustum culling in 2D scenes.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & World-\/space position of the object. \\
+{\em pos} & Center position of the object in world space. \\
 \hline
-{\em radius} & Bounding radius of the object in world units. \\
+{\em radius} & Bounding radius of the object. \\
 \hline
-{\em viewport\+Size} & Size of the viewport in pixels (width, height). \\
+{\em viewport\+Size} & Size of the viewport in world units. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the object is at least partially within the view, false otherwise. 
+true if the object is considered visible; false otherwise. 
 \end{DoxyReturn}
 
 
@@ -284,11 +283,11 @@ void Camera2\+D\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{const glm\+::
 
 
 
-Set the world position of the camera center. 
+Sets the world-\/space position of the camera. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & 2D vector representing the new camera position. \\
+{\em pos} & New camera position in world space. \\
 \hline
 \end{DoxyParams}
 
@@ -310,7 +309,9 @@ void Camera2\+D\+::\+Set\+Screen\+Size (\begin{DoxyParamCaption}\item[{int}]{wid
 
 
 
-Set the screen size for the camera. 
+Sets the screen size used by the camera. 
+
+This function should be called when the window is resized.
 
 
 \begin{DoxyParams}{Parameters}
@@ -339,11 +340,13 @@ void Camera2\+D\+::\+Set\+Zoom (\begin{DoxyParamCaption}\item[{float}]{z}{}\end{
 
 
 
-Set the zoom level of the camera. 
+Sets the camera zoom factor. 
+
+Values greater than 1.\+0 zoom in, while values less than 1.\+0 zoom out.
 
 
 \begin{DoxyParams}{Parameters}
-{\em z} & Zoom factor. Values \texorpdfstring{$>$}{>}1 zoom in, values \texorpdfstring{$<$}{<}1 zoom out. \\
+{\em z} & New zoom factor. \\
 \hline
 \end{DoxyParams}
 
@@ -359,8 +362,6 @@ Definition at line \mbox{\hyperlink{_camera2_d_8cpp_source_l00027}{27}} of file 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_camera2_d_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_camera2_d_a998840db69cc35ba61e70927800e0480}\index{Camera2D@{Camera2D}!position@{position}}
 \index{position@{position}!Camera2D@{Camera2D}}
@@ -370,11 +371,7 @@ glm\+::vec2 Camera2\+D\+::position = glm\+::vec2(0.\+0f)\hspace{0.3cm}{\ttfamily
 
 
 
-Camera center position in world space. 
-
-
-
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00099}{99}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00116}{116}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 \Hypertarget{class_camera2_d_ae8ba4a81b96923a42e1d3ca9cca8a63d}\index{Camera2D@{Camera2D}!screenHeight@{screenHeight}}
 \index{screenHeight@{screenHeight}!Camera2D@{Camera2D}}
@@ -384,11 +381,7 @@ int Camera2\+D\+::screen\+Height = 600\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Current screen height in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00102}{102}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00119}{119}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 \Hypertarget{class_camera2_d_a7b7971364cef32360d4c753a158313f9}\index{Camera2D@{Camera2D}!screenWidth@{screenWidth}}
 \index{screenWidth@{screenWidth}!Camera2D@{Camera2D}}
@@ -398,11 +391,7 @@ int Camera2\+D\+::screen\+Width = 800\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Current screen width in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00101}{101}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00118}{118}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 \Hypertarget{class_camera2_d_ac617e7e6d2ef6aa9df681b63d958d8ac}\index{Camera2D@{Camera2D}!zoom@{zoom}}
 \index{zoom@{zoom}!Camera2D@{Camera2D}}
@@ -412,15 +401,11 @@ float Camera2\+D\+::zoom = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Zoom factor (scale applied to view). 
-
-
-
-Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00100}{100}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
+Definition at line \mbox{\hyperlink{_camera2_d_8h_source_l00117}{117}} of file \mbox{\hyperlink{_camera2_d_8h_source}{Camera2\+D.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_camera2_d_8h}{Camera2\+D.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_camera2_d_8cpp}{Camera2\+D.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_camera2_d_8h}{Camera2\+D.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_camera2_d_8cpp}{Camera2\+D.\+cpp}}\end{DoxyCompactItemize}

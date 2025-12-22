@@ -22,7 +22,7 @@ var searchData=
   ['getcurrentstate_19',['GetCurrentState',['../class_state_manager.html#aeb24049cbe185fe0faec5c771e34c2bb',1,'StateManager']]],
   ['getdepth_20',['GetDepth',['../class_transform2_d.html#a8fc04cb417fb1169c2af9ba0b0539394',1,'Transform2D']]],
   ['getdsttexture_21',['GetDstTexture',['../class_compute_material.html#a0d675b8c206ad554a189dfa58373cbbe',1,'ComputeMaterial']]],
-  ['getenginecontext_22',['GetEngineContext',['../class_s_n_a_k_e___engine.html#a0e199889c920470b908d9cee49f25a15',1,'SNAKE_Engine']]],
+  ['getenginecontext_22',['GetEngineContext',['../class_jin_engine.html#a304c17961ba994ba426ac9c42bb95c0f',1,'JinEngine']]],
   ['getfontbytag_23',['GetFontByTag',['../class_render_manager.html#a1db9a464555a13cecb1a865f92eae85c',1,'RenderManager']]],
   ['getframecount_24',['GetFrameCount',['../class_sprite_sheet.html#acc6bb35d4dc6fce692316cb745be99cf',1,'SpriteSheet']]],
   ['getglyph_25',['GetGlyph',['../class_font.html#a3eb05778bb059a2f0bd730432f6e9653',1,'Font']]],

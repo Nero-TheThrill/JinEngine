@@ -1,5 +1,5 @@
 \doxysection{State\+Manager.\+cpp}
-\hypertarget{_state_manager_8cpp_source}{}\label{_state_manager_8cpp_source}\index{Project/SNAKE\_Engine/Private/StateManager.cpp@{Project/SNAKE\_Engine/Private/StateManager.cpp}}
+\hypertarget{_state_manager_8cpp_source}{}\label{_state_manager_8cpp_source}\index{Project/JinEngine/Private/StateManager.cpp@{Project/JinEngine/Private/StateManager.cpp}}
 \mbox{\hyperlink{_state_manager_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
@@ -43,7 +43,7 @@
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00039}00039\ }
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{class_state_manager_a23b9db8ba856509ed476ed1144247b83}{currentState}}-\/>Draw(engineContext);}
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00041}00041\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a620231f7f4119dbf26ef416478578cde}{FlushDrawCommands}}(engineContext);}
-\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_ad9836cdfc607ba27f100f5e0e892987f}{engine}}-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a54039eae5badaa378973ccbe973713ee}{ShouldRenderDebugDraws}}())}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (engineContext.\mbox{\hyperlink{struct_engine_context_a9f2c2e2e2f267e5a86ecb50124cca61e}{engine}}-\/>\mbox{\hyperlink{class_jin_engine_a35998b207827eaccd30459251853c9da}{ShouldRenderDebugDraws}}())}
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a7c058729d4929a4295ebee1c6d324001}{FlushDebugLineDrawCommands}}(engineContext);}
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00044}00044\ }
 \DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00045}00045\ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a61a2ee6952f8da0aee3ac21cd8033d0b}{EndFrame}}(engineContext);}

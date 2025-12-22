@@ -6,6 +6,8 @@ var class_texture =
     [ "~Texture", "class_texture.html#a09c4bcb7462f64c1d20fa69dba3cee8a", null ],
     [ "BindAsImage", "class_texture.html#a28b89a5f6f78de411c85fc83c04963b9", null ],
     [ "BindToUnit", "class_texture.html#a6e1092f212113f38bf84b245b982943c", null ],
+    [ "ForceUpdateTexture", "class_texture.html#aa34f9924e6c77003325a389907795677", null ],
+    [ "ForceUpdateTexture", "class_texture.html#ad8edd3321be6b88b4f98d39ee5ebabc0", null ],
     [ "GenerateTexture", "class_texture.html#a5b7154fd70c6f1d7eacc68c04e31ea92", null ],
     [ "GetHeight", "class_texture.html#a289701837e23c9272509f377524ee8f2", null ],
     [ "GetID", "class_texture.html#a407a62eb84bc65d2a7b2ff8ca71f050f", null ],

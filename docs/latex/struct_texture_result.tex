@@ -2,7 +2,7 @@
 \hypertarget{struct_texture_result}{}\label{struct_texture_result}\index{TextureResult@{TextureResult}}
 
 
-Result of an asynchronous texture load.  
+Result data produced by an asynchronous texture load.  
 
 
 
@@ -13,30 +13,32 @@ Result of an asynchronous texture load.
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{tag}}
-\begin{DoxyCompactList}\small\item\em Identifier tag. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{settings}} \{\}
-\begin{DoxyCompactList}\small\item\em Original texture settings. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{width}} = 0
-\begin{DoxyCompactList}\small\item\em Width in pixels. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{height}} = 0
-\begin{DoxyCompactList}\small\item\em Height in pixels. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{channels}} = 0
-\begin{DoxyCompactList}\small\item\em Number of color channels. \end{DoxyCompactList}\item 
+\item 
 std\+::vector$<$ unsigned char $>$ \mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{pixels}}
-\begin{DoxyCompactList}\small\item\em Raw pixel data. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}} = false
-\begin{DoxyCompactList}\small\item\em Whether loading succeeded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Result of an asynchronous texture load. 
+Result data produced by an asynchronous texture load. 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00078}{78}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Contains decoded pixel data along with dimensions and channel count. The ok flag indicates whether loading/decoding succeeded.
+
+The main thread typically consumes this result to create a GPU texture. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00128}{128}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_texture_result_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}\index{TextureResult@{TextureResult}!channels@{channels}}
 \index{channels@{channels}!TextureResult@{TextureResult}}
@@ -46,11 +48,7 @@ int Texture\+Result\+::channels = 0}
 
 
 
-Number of color channels. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00084}{84}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00134}{134}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}\index{TextureResult@{TextureResult}!height@{height}}
 \index{height@{height}!TextureResult@{TextureResult}}
@@ -60,11 +58,7 @@ int Texture\+Result\+::height = 0}
 
 
 
-Height in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00083}{83}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00133}{133}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}\index{TextureResult@{TextureResult}!ok@{ok}}
 \index{ok@{ok}!TextureResult@{TextureResult}}
@@ -74,11 +68,7 @@ bool Texture\+Result\+::ok = false}
 
 
 
-Whether loading succeeded. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00086}{86}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00136}{136}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}\index{TextureResult@{TextureResult}!pixels@{pixels}}
 \index{pixels@{pixels}!TextureResult@{TextureResult}}
@@ -88,11 +78,7 @@ std\+::vector$<$unsigned char$>$ Texture\+Result\+::pixels}
 
 
 
-Raw pixel data. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00085}{85}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00135}{135}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a36de397e8aaf253080b1569c15882e69}\index{TextureResult@{TextureResult}!settings@{settings}}
 \index{settings@{settings}!TextureResult@{TextureResult}}
@@ -102,15 +88,11 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00085}{85}
 
 
 
-Original texture settings. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00081}{81}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00131}{131}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00081\ \{\};\ }
+\DoxyCodeLine{00131\ \{\};}
 
 \end{DoxyCode}
 \Hypertarget{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}\index{TextureResult@{TextureResult}!tag@{tag}}
@@ -121,11 +103,7 @@ std\+::string Texture\+Result\+::tag}
 
 
 
-Identifier tag. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00080}{80}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00130}{130}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}\index{TextureResult@{TextureResult}!width@{width}}
 \index{width@{width}!TextureResult@{TextureResult}}
@@ -135,14 +113,10 @@ int Texture\+Result\+::width = 0}
 
 
 
-Width in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00082}{82}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00132}{132}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
 \doxysection{Async\+Resource\+Loader.\+h}
-\hypertarget{_async_resource_loader_8h_source}{}\label{_async_resource_loader_8h_source}\index{Project/SNAKE\_Engine/Public/AsyncResourceLoader.h@{Project/SNAKE\_Engine/Public/AsyncResourceLoader.h}}
+\hypertarget{_async_resource_loader_8h_source}{}\label{_async_resource_loader_8h_source}\index{Project/JinEngine/Public/AsyncResourceLoader.h@{Project/JinEngine/Public/AsyncResourceLoader.h}}
 \mbox{\hyperlink{_async_resource_loader_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -14,129 +14,130 @@
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_shader_8h}{Shader.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_texture_8h}{Texture.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00016}\mbox{\hyperlink{struct_texture_job}{00016}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_texture_job}{TextureJob}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00017}00017\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00018}\mbox{\hyperlink{struct_texture_job_a8ae4dec0cf3a3eb77dac31badc6844a9}{00018}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_job_a8ae4dec0cf3a3eb77dac31badc6844a9}{tag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00019}\mbox{\hyperlink{struct_texture_job_a03882f684a0f026bf62c66b235cd211f}{00019}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_job_a03882f684a0f026bf62c66b235cd211f}{filePath}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00020}\mbox{\hyperlink{struct_texture_job_aa1d5dd11a257cc26ffbb0839f07d39c7}{00020}}\ \ \ \ \ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\ \mbox{\hyperlink{struct_texture_job_aa1d5dd11a257cc26ffbb0839f07d39c7}{settings}}\{\};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00021}00021\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00026}\mbox{\hyperlink{struct_shader_file}{00026}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_file}{ShaderFile}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00027}00027\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00028}\mbox{\hyperlink{struct_shader_file_a8d7a922b1ae553900ac6abcf49d127db}{00028}}\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{ShaderStage}}\ \mbox{\hyperlink{struct_shader_file_a8d7a922b1ae553900ac6abcf49d127db}{stage}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00029}\mbox{\hyperlink{struct_shader_file_ae180386252d5f58d39c1486853dc26e5}{00029}}\ \ \ \ \ \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{FilePath}}\ \ \ \ \mbox{\hyperlink{struct_shader_file_ae180386252d5f58d39c1486853dc26e5}{path}};\ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00030}00030\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00035}\mbox{\hyperlink{struct_shader_job}{00035}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_job}{ShaderJob}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00036}00036\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00037}\mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{00037}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{tag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00038}\mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{00038}}\ \ \ \ \ std::vector<ShaderFile>\ \mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{sources}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00039}00039\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00044}\mbox{\hyperlink{struct_font_job}{00044}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_font_job}{FontJob}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00045}00045\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00046}\mbox{\hyperlink{struct_font_job_a4ccf351fbc68d0167113ec8593415514}{00046}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_job_a4ccf351fbc68d0167113ec8593415514}{tag}};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00047}\mbox{\hyperlink{struct_font_job_a8b2444439d7af005fdb0e09248bb95a5}{00047}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_job_a8b2444439d7af005fdb0e09248bb95a5}{ttfPath}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00048}\mbox{\hyperlink{struct_font_job_a44f98fce3f8eacfa18fab030db632acd}{00048}}\ \ \ \ \ uint32\_t\ \ \ \ \mbox{\hyperlink{struct_font_job_a44f98fce3f8eacfa18fab030db632acd}{pixelSize}}\ =\ 32;\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00049}00049\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00050}00050\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00054}\mbox{\hyperlink{struct_sound_job}{00054}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_job}{SoundJob}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00055}00055\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00056}\mbox{\hyperlink{struct_sound_job_a7871a6b228a3a56fd7dd4fceacf76984}{00056}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_job_a7871a6b228a3a56fd7dd4fceacf76984}{tag}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00057}\mbox{\hyperlink{struct_sound_job_ad9dfb85fc37057c18191ac3905fc87f1}{00057}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_job_ad9dfb85fc37057c18191ac3905fc87f1}{filePath}};\ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00058}\mbox{\hyperlink{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}{00058}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}{loop}}\ =\ \textcolor{keyword}{false};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00059}00059\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00064}\mbox{\hyperlink{struct_sprite_sheet_job}{00064}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sprite_sheet_job}{SpriteSheetJob}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00065}00065\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00066}\mbox{\hyperlink{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}{00066}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}{tag}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00067}\mbox{\hyperlink{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}{00067}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}{textureTag}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00068}\mbox{\hyperlink{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}{00068}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}{frameW}}\ =\ 1;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00069}\mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{00069}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{frameH}}\ =\ 1;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00023}\mbox{\hyperlink{struct_texture_job}{00023}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_texture_job}{TextureJob}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00025}\mbox{\hyperlink{struct_texture_job_a8ae4dec0cf3a3eb77dac31badc6844a9}{00025}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_job_a8ae4dec0cf3a3eb77dac31badc6844a9}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00026}\mbox{\hyperlink{struct_texture_job_a03882f684a0f026bf62c66b235cd211f}{00026}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_job_a03882f684a0f026bf62c66b235cd211f}{filePath}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00027}\mbox{\hyperlink{struct_texture_job_aa1d5dd11a257cc26ffbb0839f07d39c7}{00027}}\ \ \ \ \ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\ \mbox{\hyperlink{struct_texture_job_aa1d5dd11a257cc26ffbb0839f07d39c7}{settings}}\{\};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00028}00028\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00037}\mbox{\hyperlink{struct_shader_file}{00037}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_file}{ShaderFile}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00039}\mbox{\hyperlink{struct_shader_file_a8d7a922b1ae553900ac6abcf49d127db}{00039}}\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{ShaderStage}}\ \mbox{\hyperlink{struct_shader_file_a8d7a922b1ae553900ac6abcf49d127db}{stage}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00040}\mbox{\hyperlink{struct_shader_file_ae180386252d5f58d39c1486853dc26e5}{00040}}\ \ \ \ \ \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{FilePath}}\ \ \ \ \mbox{\hyperlink{struct_shader_file_ae180386252d5f58d39c1486853dc26e5}{path}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00041}00041\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00051}\mbox{\hyperlink{struct_shader_job}{00051}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_job}{ShaderJob}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00053}\mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{00053}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00054}\mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{00054}}\ \ \ \ \ std::vector<ShaderFile>\ \mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{sources}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00055}00055\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00065}\mbox{\hyperlink{struct_font_job}{00065}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_font_job}{FontJob}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00067}\mbox{\hyperlink{struct_font_job_a4ccf351fbc68d0167113ec8593415514}{00067}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_job_a4ccf351fbc68d0167113ec8593415514}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00068}\mbox{\hyperlink{struct_font_job_a8b2444439d7af005fdb0e09248bb95a5}{00068}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_job_a8b2444439d7af005fdb0e09248bb95a5}{ttfPath}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00069}\mbox{\hyperlink{struct_font_job_a44f98fce3f8eacfa18fab030db632acd}{00069}}\ \ \ \ \ uint32\_t\ \ \ \ \mbox{\hyperlink{struct_font_job_a44f98fce3f8eacfa18fab030db632acd}{pixelSize}}\ =\ 32;}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00070}00070\ \};}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00071}00071\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00073}\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{00073}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{LoadRequest}}\ =\ std::variant<TextureJob,\ ShaderJob,\ FontJob,\ SoundJob,\ SpriteSheetJob>;}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00074}00074\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00078}\mbox{\hyperlink{struct_texture_result}{00078}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_texture_result}{TextureResult}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00079}00079\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00080}\mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{00080}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{tag}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00081}\mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{00081}}\ \ \ \ \ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\ \mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{settings}}\{\};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00082}\mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{00082}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{width}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00083}\mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{00083}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{height}}\ =\ 0;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00084}\mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{00084}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{channels}}\ =\ 0;\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00085}\mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{00085}}\ \ \ \ \ std::vector<unsigned\ char>\ \mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{pixels}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00086}\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{00086}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00087}00087\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00088}00088\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00092}\mbox{\hyperlink{struct_shader_source}{00092}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_source}{ShaderSource}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00093}00093\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00094}\mbox{\hyperlink{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}{00094}}\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{ShaderStage}}\ \mbox{\hyperlink{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}{stage}};\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00095}\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{00095}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00096}00096\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00097}00097\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00101}\mbox{\hyperlink{struct_shader_result}{00101}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_result}{ShaderResult}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00102}00102\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00103}\mbox{\hyperlink{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}{00103}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}{tag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00104}\mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{00104}}\ \ \ \ \ std::vector<ShaderSource>\ \mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{sources}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00105}\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{00105}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00106}00106\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00107}00107\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00111}\mbox{\hyperlink{struct_font_result}{00111}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_font_result}{FontResult}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00112}00112\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00113}\mbox{\hyperlink{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}{00113}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}{tag}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00114}\mbox{\hyperlink{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}{00114}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}{ttfPath}};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00115}\mbox{\hyperlink{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}{00115}}\ \ \ \ \ uint32\_t\ \ \ \ \mbox{\hyperlink{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}{pixelSize}}\ =\ 32;\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00116}\mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{00116}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{ok}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00117}00117\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00079}\mbox{\hyperlink{struct_sound_job}{00079}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_job}{SoundJob}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00081}\mbox{\hyperlink{struct_sound_job_a7871a6b228a3a56fd7dd4fceacf76984}{00081}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_job_a7871a6b228a3a56fd7dd4fceacf76984}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00082}\mbox{\hyperlink{struct_sound_job_ad9dfb85fc37057c18191ac3905fc87f1}{00082}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_job_ad9dfb85fc37057c18191ac3905fc87f1}{filePath}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00083}\mbox{\hyperlink{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}{00083}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}{loop}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00084}00084\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00097}\mbox{\hyperlink{struct_sprite_sheet_job}{00097}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sprite_sheet_job}{SpriteSheetJob}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00099}\mbox{\hyperlink{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}{00099}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00100}\mbox{\hyperlink{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}{00100}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}{textureTag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00101}\mbox{\hyperlink{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}{00101}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}{frameW}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00102}\mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{00102}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{frameH}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00103}00103\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00117}\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{00117}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{LoadRequest}}\ =\ std::variant<TextureJob,\ ShaderJob,\ FontJob,\ SoundJob,\ SpriteSheetJob>;}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00122}\mbox{\hyperlink{struct_sound_result}{00122}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_result}{SoundResult}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00123}00123\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00124}\mbox{\hyperlink{struct_sound_result_a11177b9460d009b44e7b28209baa7622}{00124}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_result_a11177b9460d009b44e7b28209baa7622}{tag}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00125}\mbox{\hyperlink{struct_sound_result_a77cadea03769685e16ec56e93a7a7c55}{00125}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_result_a77cadea03769685e16ec56e93a7a7c55}{filePath}};\ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00126}\mbox{\hyperlink{struct_sound_result_a42a122883680aec5e340ad28da270dd0}{00126}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_result_a42a122883680aec5e340ad28da270dd0}{loop}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00127}\mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{00127}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{ok}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00128}00128\ \};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00129}00129\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00131}\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{00131}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{LoadResult}}\ =\ std::variant<TextureResult,\ ShaderResult,\ FontResult,\ SoundResult>;}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00132}00132\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00150}\mbox{\hyperlink{class_async_resource_loader}{00150}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{AsyncResourceLoader}}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00151}00151\ \{}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00152}00152\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00153}\mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{00153}}\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{AsyncResourceLoader}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_af67c49c71131de520765f33060dd1058}{\string~AsyncResourceLoader}}();}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00155}00155\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start}}();}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00162}00162\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop}}();}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00169}00169\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00178}00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{LoadRequest}}\&\ req);}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00179}00179\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00185}00185\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}{GetProgress}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00186}00186\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00192}00192\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}{HasFinished}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00128}\mbox{\hyperlink{struct_texture_result}{00128}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_texture_result}{TextureResult}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00130}\mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{00130}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00131}\mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{00131}}\ \ \ \ \ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\ \mbox{\hyperlink{struct_texture_result_a36de397e8aaf253080b1569c15882e69}{settings}}\{\};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00132}\mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{00132}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}{width}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00133}\mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{00133}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}{height}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00134}\mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{00134}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_texture_result_ae713abf848cf45f4e6fe03062b723f5a}{channels}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00135}\mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{00135}}\ \ \ \ \ std::vector<unsigned\ char>\ \mbox{\hyperlink{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}{pixels}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00136}\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{00136}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00137}00137\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00142}\mbox{\hyperlink{struct_shader_source}{00142}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_source}{ShaderSource}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00143}00143\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00144}\mbox{\hyperlink{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}{00144}}\ \ \ \ \ \mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{ShaderStage}}\ \mbox{\hyperlink{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}{stage}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00145}\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{00145}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00146}00146\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00157}\mbox{\hyperlink{struct_shader_result}{00157}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_shader_result}{ShaderResult}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00158}00158\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00159}\mbox{\hyperlink{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}{00159}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00160}\mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{00160}}\ \ \ \ \ std::vector<ShaderSource>\ \mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{sources}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00161}\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{00161}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00162}00162\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00171}\mbox{\hyperlink{struct_font_result}{00171}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_font_result}{FontResult}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00172}00172\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00173}\mbox{\hyperlink{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}{00173}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00174}\mbox{\hyperlink{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}{00174}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}{ttfPath}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00175}\mbox{\hyperlink{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}{00175}}\ \ \ \ \ uint32\_t\ \ \ \ \mbox{\hyperlink{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}{pixelSize}}\ =\ 32;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00176}\mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{00176}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00177}00177\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00186}\mbox{\hyperlink{struct_sound_result}{00186}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_result}{SoundResult}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00187}00187\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00188}\mbox{\hyperlink{struct_sound_result_a11177b9460d009b44e7b28209baa7622}{00188}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_result_a11177b9460d009b44e7b28209baa7622}{tag}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00189}\mbox{\hyperlink{struct_sound_result_a77cadea03769685e16ec56e93a7a7c55}{00189}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_result_a77cadea03769685e16ec56e93a7a7c55}{filePath}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00190}\mbox{\hyperlink{struct_sound_result_a42a122883680aec5e340ad28da270dd0}{00190}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_result_a42a122883680aec5e340ad28da270dd0}{loop}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00191}\mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{00191}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{ok}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00192}00192\ \};}
 \DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00193}00193\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00201}00201\ \ \ \ \ [[nodiscard]]\ std::vector<LoadResult>\ \mbox{\hyperlink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{FetchCompleted}}();}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00202}00202\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00208}\mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{00208}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{GetTotalCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();\ \}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00209}00209\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00215}\mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{00215}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{GetLoadedCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();\ \}}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00216}00216\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00217}00217\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00225}00225\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker}}();}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00226}00226\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00227}00227\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00228}\mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{00228}}\ \ \ \ \ std::thread\ \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{workerThread}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00229}\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{00229}}\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}\{\ \textcolor{keyword}{false}\ \};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00230}00230\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00231}\mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{00231}}\ \ \ \ \ std::queue<LoadRequest>\ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}};\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00232}\mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{00232}}\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queueMutex}};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00233}\mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{00233}}\ \ \ \ \ std::condition\_variable\ \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00234}00234\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00235}\mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{00235}}\ \ \ \ \ std::vector<LoadResult>\ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00236}\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{00236}}\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00237}00237\ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00238}\mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{00238}}\ \ \ \ \ std::atomic<int>\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}\{\ 0\ \};\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00239}\mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{00239}}\ \ \ \ \ std::atomic<int>\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}\{\ 0\ \};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00240}00240\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00203}\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{00203}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{LoadResult}}\ =\ std::variant<TextureResult,\ ShaderResult,\ FontResult,\ SoundResult>;}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00225}\mbox{\hyperlink{class_async_resource_loader}{00225}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{AsyncResourceLoader}}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00226}00226\ \{}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00227}00227\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00231}\mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{00231}}\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{AsyncResourceLoader}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00240}00240\ \ \ \ \ \mbox{\hyperlink{class_async_resource_loader_af67c49c71131de520765f33060dd1058}{\string~AsyncResourceLoader}}();}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start}}();}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00266}00266\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop}}();}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00277}00277\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{LoadRequest}}\&\ req);}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00289}00289\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}{GetProgress}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00301}00301\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}{HasFinished}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00317}00317\ \ \ \ \ [[nodiscard]]\ std::vector<LoadResult>\ \mbox{\hyperlink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{FetchCompleted}}();}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00322}\mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{00322}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{GetTotalCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();\ \}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00327}\mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{00327}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{GetLoadedCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();\ \}}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00329}00329\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00348}00348\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker}}();}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00350}00350\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00351}\mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{00351}}\ \ \ \ \ std::thread\ \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{workerThread}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00352}\mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{00352}}\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}}\{\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00354}\mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{00354}}\ \ \ \ \ std::queue<LoadRequest>\ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{requestQueue}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00355}\mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{00355}}\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queueMutex}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00356}\mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{00356}}\ \ \ \ \ std::condition\_variable\ \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00358}\mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{00358}}\ \ \ \ \ std::vector<LoadResult>\ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00359}\mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{00359}}\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completedMutex}};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00361}\mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{00361}}\ \ \ \ \ std::atomic<int>\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}\{\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00362}\mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{00362}}\ \ \ \ \ std::atomic<int>\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}\{\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_async_resource_loader_8h_source_l00363}00363\ \};}
 
 \end{DoxyCode}

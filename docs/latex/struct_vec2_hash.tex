@@ -2,7 +2,7 @@
 \hypertarget{struct_vec2_hash}{}\label{struct_vec2_hash}\index{Vec2Hash@{Vec2Hash}}
 
 
-Hash functor for glm\+::ivec2 to use in unordered containers.  
+Hash function for glm\+::ivec2 used as a key in unordered containers.  
 
 
 
@@ -13,20 +13,18 @@ Hash functor for glm\+::ivec2 to use in unordered containers.
 \begin{DoxyCompactItemize}
 \item 
 size\+\_\+t \mbox{\hyperlink{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b}{operator()}} (const glm\+::ivec2 \&v) const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Computes a hash value for a grid cell coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Hash functor for glm\+::ivec2 to use in unordered containers. 
+Hash function for glm\+::ivec2 used as a key in unordered containers. 
 
-Uses a pair of large primes and XOR to mix 2D integer coordinates. Suitable for sparse 2D grids such as spatial hashing buckets. 
+Designed for \doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} cell hashing. Uses integer mixing with large primes to reduce collisions. 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00383}{383}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00377}{377}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
-\label{doc-func-members}
-\Hypertarget{struct_vec2_hash_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b}\index{Vec2Hash@{Vec2Hash}!operator()@{operator()}}
 \index{operator()@{operator()}!Vec2Hash@{Vec2Hash}}
@@ -34,6 +32,18 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00383}{383}} of file \m
 {\footnotesize\ttfamily \label{struct_vec2_hash_a25ef08f20bd5a5d76a22d33941f9852b} 
 size\+\_\+t Vec2\+Hash\+::operator() (\begin{DoxyParamCaption}\item[{const glm\+::ivec2 \&}]{v}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Computes a hash value for a grid cell coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Cell coordinate as an integer vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hash value for the coordinate. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_collider_8h_source_l00385}{385}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
@@ -49,4 +59,4 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00385}{385}} of file \m
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\end{DoxyCompactItemize}

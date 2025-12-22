@@ -1,5 +1,5 @@
 \doxysection{Material.\+h}
-\hypertarget{_material_8h_source}{}\label{_material_8h_source}\index{Project/SNAKE\_Engine/Public/Material.h@{Project/SNAKE\_Engine/Public/Material.h}}
+\hypertarget{_material_8h_source}{}\label{_material_8h_source}\index{Project/JinEngine/Public/Material.h@{Project/JinEngine/Public/Material.h}}
 \mbox{\hyperlink{_material_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -17,99 +17,97 @@
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00013}00013\ }
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00014}\mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{00014}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ =\ \textcolor{keywordtype}{unsigned}\ int;}
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00015}00015\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00022}\mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{00022}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{UniformValue}}\ =\ std::variant<}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00023}00023\ \ \ \ \ int,}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00024}00024\ \ \ \ \ float,}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00025}00025\ \ \ \ \ glm::vec2,}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00026}00026\ \ \ \ \ glm::vec3,}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00027}00027\ \ \ \ \ glm::vec4,}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00028}00028\ \ \ \ \ glm::mat4}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00029}00029\ >;}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00030}00030\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00046}\mbox{\hyperlink{class_material}{00046}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}\ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00047}\mbox{\hyperlink{class_material_ac45dc348bf7022593d789b6bf7b407cb}{00047}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_material_ac45dc348bf7022593d789b6bf7b407cb}{RenderManager}};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00049}00049\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00055}\mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{00055}}\ \ \ \ \ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\mbox{\hyperlink{class_shader}{Shader}}*\ \_shader)\ :\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}(\_shader),\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}}(false)\ \{\}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00060}\mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{00060}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{\string~Material}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00067}\mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{00067}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{IsCompute}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00068}00068\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00075}\mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{00075}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{SetTexture}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture)}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00076}00076\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}[uniformName]\ =\ texture;}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00078}00078\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00089}\mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{00089}}\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{SetUniform}}(\textcolor{keyword}{const}\ std::string\ \&\ name,\ \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{UniformValue}}\ value)}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00090}00090\ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}[name]\ =\ value;}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00092}00092\ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00093}00093\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00102}00102\ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}{IsInstancingSupported}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00026}\mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{00026}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{UniformValue}}\ =\ std::variant<}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00027}00027\ \ \ \ \ int,}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00028}00028\ \ \ \ \ float,}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00029}00029\ \ \ \ \ glm::vec2,}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00030}00030\ \ \ \ \ glm::vec3,}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00031}00031\ \ \ \ \ glm::vec4,}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00032}00032\ \ \ \ \ glm::mat4}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00033}00033\ >;}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00060}\mbox{\hyperlink{class_material}{00060}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00061}\mbox{\hyperlink{class_material_ac45dc348bf7022593d789b6bf7b407cb}{00061}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_material_ac45dc348bf7022593d789b6bf7b407cb}{RenderManager}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00063}00063\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00072}\mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{00072}}\ \ \ \ \ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\mbox{\hyperlink{class_shader}{Shader}}*\ \_shader)\ :\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}(\_shader),\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}}(false)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00077}\mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{00077}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{\string~Material}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00085}\mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{00085}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{IsCompute}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00099}\mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{00099}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{SetTexture}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture)}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}[uniformName]\ =\ texture;}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00102}00102\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00103}00103\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00115}00115\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_ae790a5b6e8836e871f6e01f4431350dd}{EnableInstancing}}(\textcolor{keywordtype}{bool}\ enable,\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh);}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00116}00116\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00117}00117\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00124}00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00125}00125\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_abe3526386e44d6a10fec0e6859dd564a}{UnBind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00114}\mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{00114}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{SetUniform}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{UniformValue}}\ value)}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}[name]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00129}00129\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}{IsInstancingSupported}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_ae4ad039257d5695090655fbd89ef179b}{SendData}}();}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00139}00139\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a39001e95de2408283f42efa7e8657a05}{SendUniforms}}();}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00147}00147\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00148}\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{00148}}\ \ \ \ \ \mbox{\hyperlink{class_shader}{Shader}}*\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00149}\mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{00149}}\ \ \ \ \ std::unordered\_map<std::string,\ UniformValue>\ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00150}\mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{00150}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00151}00151\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00152}00152\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00159}00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_aa3a56da50b75b341743552348b587611}{SendTextures}}();}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00160}00160\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00164}\mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{00164}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{HasTexture}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}.empty();\ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00165}00165\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00172}00172\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{HasTexture}}(\mbox{\hyperlink{class_texture}{Texture}}*\ texture)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00173}00173\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00180}00180\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6324af47ca232b9af228180e11705588}{HasShader}}(\mbox{\hyperlink{class_shader}{Shader}}*\ shader\_)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00181}00181\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00185}\mbox{\hyperlink{class_material_a7b5cb52b3d21fc071a614b6051e816f7}{00185}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_shader}{Shader}}*\ \mbox{\hyperlink{class_material_a7b5cb52b3d21fc071a614b6051e816f7}{GetShader}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};\ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00186}00186\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00187}\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{00187}}\ \ \ \ \ std::unordered\_map<std::string,\ Texture*>\ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00188}00188\ \};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00143}00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_ae790a5b6e8836e871f6e01f4431350dd}{EnableInstancing}}(\textcolor{keywordtype}{bool}\ enable,\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00145}00145\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00170}00170\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_abe3526386e44d6a10fec0e6859dd564a}{UnBind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_ae4ad039257d5695090655fbd89ef179b}{SendData}}();}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00188}00188\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a39001e95de2408283f42efa7e8657a05}{SendUniforms}}();}
 \DoxyCodeLine{\Hypertarget{_material_8h_source_l00189}00189\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00198}\mbox{\hyperlink{class_compute_material}{00198}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{ComputeMaterial}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00199}00199\ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00203}\mbox{\hyperlink{struct_compute_material_1_1_image_bind}{00203}}\ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00204}00204\ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00205}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}{00205}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}{tex}};\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00206}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_ae79bc6e7fa54bdd075da9a5256cef43d}{00206}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{ImageAccess}}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_ae79bc6e7fa54bdd075da9a5256cef43d}{access}};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00207}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}{00207}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{ImageFormat}}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}{format}};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00208}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}{00208}}\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}{level}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00209}00209\ \ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00210}00210\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00211}\mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{00211}}\ \ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00212}\mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{00212}}\ \ \ \ \ \ std::unordered\_map<std::string,\ ImageBind>\ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}};\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00213}00213\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00214}00214\ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00220}\mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{00220}}\ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{ComputeMaterial}}(\mbox{\hyperlink{class_shader}{Shader}}*\ \_shader)\ :\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\_shader)\ \{\}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00221}00221\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00227}\mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{00227}}\ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{IsCompute}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00228}00228\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00241}\mbox{\hyperlink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{00241}}\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{SetImage}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture,\ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{ImageAccess}}\ access,\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{ImageFormat}}\ format,\ \textcolor{keywordtype}{int}\ level)}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00242}00242\ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}\ img\ =\ \{\ texture,access,format,level\ \};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}}[uniformName]\ =\ img;}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uniformName\ ==\ \textcolor{stringliteral}{"{}u\_Dst"{}})}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}}\ =\ texture;}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00247}00247\ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00248}00248\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00254}\mbox{\hyperlink{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}{00254}}\ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}{GetDstTexture}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};\ \}}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00255}00255\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00259}\mbox{\hyperlink{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}{00259}}\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}{EnableInstancing}}(\textcolor{keywordtype}{bool}\ enable,\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00260}00260\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00264}\mbox{\hyperlink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{00264}}\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{SetTexture}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00265}00265\ }
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00273}00273\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}{SendData}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_material_8h_source_l00274}00274\ \ \};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00190}\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{00190}}\ \ \ \ \ \mbox{\hyperlink{class_shader}{Shader}}*\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00191}\mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{00191}}\ \ \ \ \ std::unordered\_map<std::string,\ UniformValue>\ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00192}\mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{00192}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00194}00194\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_aa3a56da50b75b341743552348b587611}{SendTextures}}();}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00210}\mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{00210}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{HasTexture}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}.empty();\ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00218}00218\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{HasTexture}}(\mbox{\hyperlink{class_texture}{Texture}}*\ texture)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00226}00226\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_material_a6324af47ca232b9af228180e11705588}{HasShader}}(\mbox{\hyperlink{class_shader}{Shader}}*\ shader\_)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00234}\mbox{\hyperlink{class_material_a7b5cb52b3d21fc071a614b6051e816f7}{00234}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_shader}{Shader}}*\ \mbox{\hyperlink{class_material_a7b5cb52b3d21fc071a614b6051e816f7}{GetShader}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};\ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00236}\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{00236}}\ \ \ \ \ std::unordered\_map<std::string,\ Texture*>\ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00237}00237\ \};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00256}\mbox{\hyperlink{class_compute_material}{00256}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{ComputeMaterial}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00257}00257\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00264}\mbox{\hyperlink{struct_compute_material_1_1_image_bind}{00264}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00265}00265\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00266}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}{00266}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}{tex}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00267}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_ae79bc6e7fa54bdd075da9a5256cef43d}{00267}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{ImageAccess}}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_ae79bc6e7fa54bdd075da9a5256cef43d}{access}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00268}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}{00268}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{ImageFormat}}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}{format}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00269}\mbox{\hyperlink{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}{00269}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}{level}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00270}00270\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00271}\mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{00271}}\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00272}\mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{00272}}\ \ \ \ \ std::unordered\_map<std::string,\ ImageBind>\ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00273}00273\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00279}\mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{00279}}\ \ \ \ \ \mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{ComputeMaterial}}(\mbox{\hyperlink{class_shader}{Shader}}*\ \_shader)\ :\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\_shader)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00284}\mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{00284}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{IsCompute}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00301}\mbox{\hyperlink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{00301}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{SetImage}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture,\ \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{ImageAccess}}\ access,\ \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{ImageFormat}}\ format,\ \textcolor{keywordtype}{int}\ level)}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00302}00302\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00303}00303\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}\ img\ =\ \{\ texture,access,format,level\ \};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00304}00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}}[uniformName]\ =\ img;}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uniformName\ ==\ \textcolor{stringliteral}{"{}u\_Dst"{}})}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}}\ =\ texture;}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00307}00307\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00317}\mbox{\hyperlink{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}{00317}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}{GetDstTexture}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};\ \}}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00322}\mbox{\hyperlink{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}{00322}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}{EnableInstancing}}(\textcolor{keywordtype}{bool}\ enable,\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00327}\mbox{\hyperlink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{00327}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{SetTexture}}(\textcolor{keyword}{const}\ std::string\&\ uniformName,\ \mbox{\hyperlink{class_texture}{Texture}}*\ texture)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00339}00339\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}{SendData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_material_8h_source_l00340}00340\ \};}
 
 \end{DoxyCode}

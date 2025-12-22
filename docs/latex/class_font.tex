@@ -2,7 +2,7 @@
 \hypertarget{class_font}{}\label{class_font}\index{Font@{Font}}
 
 
-\doxylink{class_font}{Font} class for text rendering using Free\+Type.  
+Free\+Type-\/backed font that generates text meshes using a dynamically baked atlas.  
 
 
 
@@ -12,87 +12,97 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{Font}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&render\+Manager, const std\+::string \&ttf\+Path, uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}})
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_font}{Font} and loads glyphs from a TTF file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_font_aa8d3052d3c2bec79460419fa1910eb92}{Font}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&engine\+Context, const std\+::string \&ttf\+Path, uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}})
+\begin{DoxyCompactList}\small\item\em Creates a font from a TTF file and builds the initial empty atlas/material. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_font_a134aaa2f78af0c12d3ce504957169768}{\texorpdfstring{$\sim$}{\string~}\+Font}} ()
-\begin{DoxyCompactList}\small\item\em Destructor. Frees Free\+Type resources. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the font and releases Free\+Type resources. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_font_a8565f67b994cd67a316b5c2f0689dc74}{Get\+Material}} () const
-\begin{DoxyCompactList}\small\item\em Returns the material associated with this font. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the \doxylink{class_material}{Material} used for text rendering. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_font_acf5f6a72d40d2002b5648bef769a5ac2}{Get\+Text\+Size}} (const std\+::string \&text) const
-\begin{DoxyCompactList}\small\item\em Computes the size of the given text string in pixels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Calculates the pixel size of a UTF-\/8 string using cached glyph advances. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_font_a3a3963ea1c039525cbf922f52ae03670}{Generate\+Text\+Mesh}} (const std\+::string \&text, \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{Text\+AlignH}} alignH=\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{Text\+Align\+H\+::\+Left}}, \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{Text\+AlignV}} alignV=\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{Text\+Align\+V\+::\+Top}})
-\begin{DoxyCompactList}\small\item\em Generates a mesh for the given text. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Generates a mesh containing quads for the given UTF-\/8 text. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_font_a3e647cb6b0aa60318eb3ecc479395c0e}{Get\+Text\+Atlas\+Version}} ()
-\begin{DoxyCompactList}\small\item\em Returns the atlas version number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the current atlas version counter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{Load\+Font}} (const std\+::string \&path, uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}})
-\begin{DoxyCompactList}\small\item\em Loads a font face using Free\+Type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Loads and configures the Free\+Type face from a .ttf file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{Bake\+Atlas}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&render\+Manager)
-\begin{DoxyCompactList}\small\item\em Builds the initial glyph atlas and uploads it to GPU. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates the initial atlas texture and text material. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{struct_glyph}{Glyph}} \& \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{Get\+Glyph}} (char32\+\_\+t c) const
-\begin{DoxyCompactList}\small\item\em Retrieves the glyph for a given character. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the cached \doxylink{struct_glyph}{Glyph} for a Unicode codepoint. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{Try\+Bake\+Glyph}} (char32\+\_\+t c)
-\begin{DoxyCompactList}\small\item\em Attempts to bake a glyph into the atlas if not already present. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Ensures the glyph for a Unicode codepoint exists in the atlas cache. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{Expand\+Atlas}} ()
-\begin{DoxyCompactList}\small\item\em Expands the atlas texture to accommodate more glyphs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Expands the atlas texture and re-\/bakes all cached glyphs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 FT\+\_\+\+Library \mbox{\hyperlink{class_font_ae975f79e48736a286097d01c19f6fe6e}{ft}}
-\begin{DoxyCompactList}\small\item\em Free\+Type library handle. \end{DoxyCompactList}\item 
+\item 
 FT\+\_\+\+Face \mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}}
-\begin{DoxyCompactList}\small\item\em Free\+Type font face. \end{DoxyCompactList}\item 
+\item 
 uint32\+\_\+t \mbox{\hyperlink{class_font_a3616d4dfa35341856399b0783fad5fed}{font\+Size}}
-\begin{DoxyCompactList}\small\item\em \doxylink{class_font}{Font} size in pixels. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ char32\+\_\+t, \mbox{\hyperlink{struct_glyph}{Glyph}} $>$ \mbox{\hyperlink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{glyphs}}
-\begin{DoxyCompactList}\small\item\em Map of codepoints to glyphs. \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{class_font_af10416f6a4440b9a272b37d5eba53fd3}{atlas\+Texture}}
-\begin{DoxyCompactList}\small\item\em \doxylink{class_texture}{Texture} atlas storing glyph bitmaps. \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}
-\begin{DoxyCompactList}\small\item\em \doxylink{class_material}{Material} using atlas + text shader. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_font_ad6a01f54e759dacf31006b3d38bed1a7}{nextX}} = 0
-\begin{DoxyCompactList}\small\item\em Current X offset for atlas packing. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_font_a9f863b51686f62525c47c945c726bf8f}{nextY}} = 0
-\begin{DoxyCompactList}\small\item\em Current Y offset for atlas packing. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}{max\+Row\+Height}} = 0
-\begin{DoxyCompactList}\small\item\em Max height of the current row in atlas. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlas\+Version}} = 0
-\begin{DoxyCompactList}\small\item\em Version number of atlas, incremented on rebuild. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{class_font}{Font} class for text rendering using Free\+Type. 
+Free\+Type-\/backed font that generates text meshes using a dynamically baked atlas. 
 
-\doxylink{class_font}{Font} handles glyph extraction from a TTF file, dynamic atlas baking, and text mesh generation. Each \doxylink{class_font}{Font} maintains its own texture atlas and associated \doxylink{class_material}{Material} used for rendering text.
+\doxylink{class_font}{Font} loads a TTF face using Free\+Type and maintains a single-\/channel (GL\+\_\+\+RED) atlas texture that is populated on demand.
 
-Atlas baking uses a "{}lazy baking"{} strategy\+: missing glyphs are added to the atlas when requested. The atlas can expand if more space is needed. 
+Key behaviors based on the implementation\+:
+\begin{DoxyItemize}
+\item The input string is treated as UTF-\/8 and decoded into Unicode codepoints.
+\item \doxylink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{Font\+::\+Try\+Bake\+Glyph} lazily renders a glyph via FT\+\_\+\+Load\+\_\+\+Char(..., FT\+\_\+\+LOAD\+\_\+\+RENDER) and uploads it into the atlas using gl\+Texture\+Sub\+Image2D.
+\item If the atlas becomes full, \doxylink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{Font\+::\+Expand\+Atlas} doubles the atlas size and re-\/bakes all previously baked glyphs into the new texture, then increments atlas\+Version.
+\item \doxylink{class_font_a3a3963ea1c039525cbf922f52ae03670}{Font\+::\+Generate\+Text\+Mesh} builds a quad per glyph (4 vertices, 6 indices) and supports horizontal/vertical alignment for multi-\/line text.
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_font_8h_source_l00066}{66}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+The \doxylink{class_font}{Font} also owns a \doxylink{class_material}{Material} that references the atlas texture via the uniform name "{}u\+\_\+\+Font\+Texture"{} and sets a default "{}u\+\_\+\+Color"{} uniform. 
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00087}{87}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_font_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_font_a30ee4458f14e43b6f18291a43a76c3cc}\index{Font@{Font}!Font@{Font}}
+\Hypertarget{class_font_aa8d3052d3c2bec79460419fa1910eb92}\index{Font@{Font}!Font@{Font}}
 \index{Font@{Font}!Font@{Font}}
 \doxysubsubsection{\texorpdfstring{Font()}{Font()}}
-{\footnotesize\ttfamily \label{class_font_a30ee4458f14e43b6f18291a43a76c3cc} 
-Font\+::\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&}]{render\+Manager}{, }\item[{const std\+::string \&}]{ttf\+Path}{, }\item[{uint32\+\_\+t}]{font\+Size}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_font_aa8d3052d3c2bec79460419fa1910eb92} 
+Font\+::\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \&}]{engine\+Context}{, }\item[{const std\+::string \&}]{ttf\+Path}{, }\item[{uint32\+\_\+t}]{font\+Size}{}\end{DoxyParamCaption})}
 
 
 
-Constructs a \doxylink{class_font}{Font} and loads glyphs from a TTF file. 
+Creates a font from a TTF file and builds the initial empty atlas/material. 
+
+This constructor\+: 1) Initializes Free\+Type and loads the face from ttf\+Path. 2) Sets the pixel size to font\+Size. 3) Creates an initial atlas texture (starting at 128x128, single channel). 4) Creates a \doxylink{class_material}{Material} using the internal text shader tag "{}\mbox{[}\+Engine\+Shader\mbox{]}internal\+\_\+text"{} and binds the atlas to "{}u\+\_\+\+Font\+Texture"{}.
+
+Note\+: The parameter name is engine\+Context in the header, but the implementation uses it as a \doxylink{class_render_manager}{Render\+Manager} reference for shader lookup and material setup.
 
 
 \begin{DoxyParams}{Parameters}
-{\em render\+Manager} & \doxylink{class_render_manager}{Render\+Manager} for registering the atlas texture. \\
+{\em engine\+Context} & \doxylink{class_render_manager}{Render\+Manager} used to obtain the internal text shader and configure the material. \\
 \hline
-{\em ttf\+Path} & Path to a True\+Type font file. \\
+{\em ttf\+Path} & Path to the .ttf font file. \\
 \hline
-{\em font\+Size} & Requested pixel size of the font. \\
+{\em font\+Size} & Pixel height used for FT\+\_\+\+Set\+\_\+\+Pixel\+\_\+\+Sizes. \\
 \hline
 \end{DoxyParams}
 
@@ -116,9 +126,9 @@ Font\+::\texorpdfstring{$\sim$}{\string~}\+Font (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Destructor. Frees Free\+Type resources. 
+Destroys the font and releases Free\+Type resources. 
 
-
+Calls FT\+\_\+\+Done\+\_\+\+Face and FT\+\_\+\+Done\+\_\+\+Free\+Type. (GPU resources such as Texture/\+Material are released via unique\+\_\+ptr ownership.) 
 
 Definition at line \mbox{\hyperlink{_font_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
 
@@ -132,8 +142,6 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00065}{65}} of file \mbox
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_font_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_font_a519e6bd2c2c23ff7af6307cac87fd204}\index{Font@{Font}!BakeAtlas@{BakeAtlas}}
 \index{BakeAtlas@{BakeAtlas}!Font@{Font}}
@@ -143,11 +151,20 @@ void Font\+::\+Bake\+Atlas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{clas
 
 
 
-Builds the initial glyph atlas and uploads it to GPU. 
+Creates the initial atlas texture and text material. 
+
+
+\begin{DoxyItemize}
+\item Allocates a 128x128 single-\/channel atlas (initially filled with zeros).
+\item Temporarily forces GL\+\_\+\+UNPACK\+\_\+\+ALIGNMENT to 1 for tight byte uploads.
+\item Creates a \doxylink{class_material}{Material} using shader tag "{}\mbox{[}\+Engine\+Shader\mbox{]}internal\+\_\+text"{}.
+\item Binds the atlas texture to "{}u\+\_\+\+Font\+Texture"{} and sets "{}u\+\_\+\+Color"{} to (1,1,1,1).
+\item Resets packing cursor state (nextX, nextY, max\+Row\+Height).
+\end{DoxyItemize}
 
 
 \begin{DoxyParams}{Parameters}
-{\em render\+Manager} & \doxylink{class_render_manager}{Render\+Manager} used for registering textures. \\
+{\em render\+Manager} & \doxylink{class_render_manager}{Render\+Manager} used to look up the internal text shader. \\
 \hline
 \end{DoxyParams}
 
@@ -185,9 +202,11 @@ void Font\+::\+Expand\+Atlas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Expands the atlas texture to accommodate more glyphs. 
+Expands the atlas texture and re-\/bakes all cached glyphs. 
 
+Doubles the atlas width and height, creates a new \doxylink{class_texture}{Texture}, rebinds the material\textquotesingle{}s "{}u\+\_\+\+Font\+Texture"{} to the new atlas, clears the glyph cache, then re-\/bakes every previously known codepoint.
 
+Increments atlas\+Version after the rebuild completes. 
 
 Definition at line \mbox{\hyperlink{_font_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_font_8cpp_source}{Font.\+cpp}}.
 
@@ -216,7 +235,7 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00335}{335}} of file \mbo
 \DoxyCodeLine{00356\ \ \ \ \ \{}
 \DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00361\ \ \ \ \ \}}
 \DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}}++;}
@@ -231,19 +250,37 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00335}{335}} of file \mbo
 
 
 
-Generates a mesh for the given text. 
+Generates a mesh containing quads for the given UTF-\/8 text. 
+
+This function\+:
+\begin{DoxyItemize}
+\item Splits the input by \textquotesingle{}~\newline
+\textquotesingle{} into lines.
+\item Pre-\/bakes glyphs for each line to compute accurate line widths.
+\item Applies horizontal alignment per line by shifting the X cursor\+:
+\begin{DoxyItemize}
+\item Left\+: no shift
+\item Center\+: -\/line\+Width \texorpdfstring{$\ast$}{*} 0.\+5
+\item Right\+: -\/line\+Width
+\end{DoxyItemize}
+\item Applies vertical alignment by shifting the starting Y cursor based on total height.
+\item For each codepoint, appends a quad (4 vertices, 6 indices) using the glyph\textquotesingle{}s bearing, size, and atlas UVs.
+\end{DoxyItemize}
+
+The returned \doxylink{class_mesh}{Mesh} is allocated with new and must be managed/freed by the caller according to the engine\textquotesingle{}s ownership conventions.
 
 
 \begin{DoxyParams}{Parameters}
-{\em text} & UTF-\/8 encoded string. \\
+{\em text} & UTF-\/8 text, may contain \textquotesingle{}~\newline
+\textquotesingle{} for multiple lines. \\
 \hline
-{\em alignH} & Horizontal alignment (default\+: Left). \\
+{\em alignH} & Horizontal alignment mode. \\
 \hline
-{\em alignV} & Vertical alignment (default\+: Top). \\
+{\em alignV} & Vertical alignment mode. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to a \doxylink{class_mesh}{Mesh} representing the text geometry. 
+Newly allocated \doxylink{class_mesh}{Mesh} pointer containing the generated geometry. 
 \end{DoxyReturn}
 
 
@@ -274,7 +311,7 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00238}{238}} of file \mbo
 \DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
 \DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00264\ }
 \DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ 0.0f;}
@@ -312,7 +349,7 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00238}{238}} of file \mbo
 \DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Glyph\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
 \DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xpos\ =\ xCursor\ +\ (float)glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}.x;}
@@ -355,7 +392,11 @@ const \mbox{\hyperlink{struct_glyph}{Glyph}} \& Font\+::\+Get\+Glyph (\begin{Dox
 
 
 
-Retrieves the glyph for a given character. 
+Returns the cached \doxylink{struct_glyph}{Glyph} for a Unicode codepoint. 
+
+If the glyph is missing, this function attempts to return the cached fallback glyph for U\textquotesingle{}?\textquotesingle{} if it exists. If neither exists, it returns a static empty \doxylink{struct_glyph}{Glyph}.
+
+This function does not perform baking; use Try\+Bake\+Glyph to populate glyphs.
 
 
 \begin{DoxyParams}{Parameters}
@@ -363,7 +404,7 @@ Retrieves the glyph for a given character.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Reference to the glyph. 
+Reference to the cached \doxylink{struct_glyph}{Glyph} (or fallback/empty glyph). 
 \end{DoxyReturn}
 
 
@@ -395,15 +436,20 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00195}{195}} of file \mbo
 
 
 
-Returns the material associated with this font. 
+Returns the \doxylink{class_material}{Material} used for text rendering. 
 
-The material internally binds the atlas texture and a text shader. 
+The returned material references the atlas texture via "{}u\+\_\+\+Font\+Texture"{}.
 
-Definition at line \mbox{\hyperlink{_font_8h_source_l00088}{88}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+\begin{DoxyReturn}{Returns}
+Pointer to the owned \doxylink{class_material}{Material}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00127}{127}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00088\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}.get();\ \}}
+\DoxyCodeLine{00127\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a9c5883ed047d2492cee2ed5340e96274}{material}}.get();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_font_a3e647cb6b0aa60318eb3ecc479395c0e}\index{Font@{Font}!GetTextAtlasVersion@{GetTextAtlasVersion}}
@@ -414,15 +460,20 @@ int Font\+::\+Get\+Text\+Atlas\+Version (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Returns the atlas version number. 
+Returns the current atlas version counter. 
 
-Increments when the atlas is rebuilt or expanded, allowing text objects to detect when they need to update. 
+atlas\+Version is incremented when the atlas is expanded and re-\/baked (\doxylink{class_font_a225429b93aa4fe0d76b2fecd9ac88142}{Font\+::\+Expand\+Atlas}). This can be used by render code to detect when cached GPU bindings/state should be refreshed.
 
-Definition at line \mbox{\hyperlink{_font_8h_source_l00115}{115}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+\begin{DoxyReturn}{Returns}
+Integer version that increases when the atlas is rebuilt. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00182}{182}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00115\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}};\ \}}
+\DoxyCodeLine{00182\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_font_acf5f6a72d40d2002b5648bef769a5ac2}\index{Font@{Font}!GetTextSize@{GetTextSize}}
@@ -433,15 +484,22 @@ glm\+::vec2 Font\+::\+Get\+Text\+Size (\begin{DoxyParamCaption}\item[{const std\
 
 
 
-Computes the size of the given text string in pixels. 
+Calculates the pixel size of a UTF-\/8 string using cached glyph advances. 
+
+The width is computed by summing (advance \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 6) per codepoint for each line, and taking the maximum line width.
+
+The height is computed as (font\+Size \texorpdfstring{$\ast$}{*} line\+Count), where line\+Count is the number of newline-\/separated lines in the string.
+
+This function uses cached \doxylink{struct_glyph}{Glyph} data via Get\+Glyph and does not bake new glyphs. If a codepoint is missing from the cache, the fallback behavior of Get\+Glyph applies.
 
 
 \begin{DoxyParams}{Parameters}
-{\em text} & UTF-\/8 encoded string. \\
+{\em text} & UTF-\/8 text, may contain \textquotesingle{}~\newline
+\textquotesingle{} for multiple lines. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The 2D size of the rendered text in pixels. 
+\{max\+Line\+Width, total\+Height\} in pixels. 
 \end{DoxyReturn}
 
 
@@ -484,13 +542,15 @@ void Font\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&
 
 
 
-Loads a font face using Free\+Type. 
+Loads and configures the Free\+Type face from a .ttf file. 
+
+Initializes the Free\+Type library (FT\+\_\+\+Init\+\_\+\+Free\+Type), loads the font face (FT\+\_\+\+New\+\_\+\+Face), and sets the pixel size (FT\+\_\+\+Set\+\_\+\+Pixel\+\_\+\+Sizes).
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & Path to TTF file. \\
+{\em path} & Path to the .ttf font file. \\
 \hline
-{\em font\+Size} & \doxylink{class_font}{Font} size in pixels. \\
+{\em font\+Size} & Pixel height used for FT\+\_\+\+Set\+\_\+\+Pixel\+\_\+\+Sizes. \\
 \hline
 \end{DoxyParams}
 
@@ -518,15 +578,27 @@ bool Font\+::\+Try\+Bake\+Glyph (\begin{DoxyParamCaption}\item[{char32\+\_\+t}]{
 
 
 
-Attempts to bake a glyph into the atlas if not already present. 
+Ensures the glyph for a Unicode codepoint exists in the atlas cache. 
+
+If the glyph already exists in \doxylink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{Font\+::glyphs}, returns true immediately.
+
+Otherwise\+:
+\begin{DoxyItemize}
+\item Renders the glyph via Free\+Type (FT\+\_\+\+Load\+\_\+\+Char with FT\+\_\+\+LOAD\+\_\+\+RENDER).
+\item Computes a padded cell placement in the atlas.
+\item Uploads bitmap data into the atlas using gl\+Texture\+Sub\+Image2D.
+\item Stores glyph metrics and UVs in \doxylink{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}{Font\+::glyphs}.
+\end{DoxyItemize}
+
+If the atlas does not have enough space, Expand\+Atlas is called, and this function retries the baking operation.
 
 
 \begin{DoxyParams}{Parameters}
-{\em c} & Unicode codepoint. \\
+{\em c} & Unicode codepoint to bake. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if successfully baked or already exists. 
+true if the glyph is available after the call; false on failure. 
 \end{DoxyReturn}
 
 
@@ -540,7 +612,7 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00103}{103}} of file \mbo
 \DoxyCodeLine{00107\ }
 \DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Load\_Char(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ c,\ FT\_LOAD\_RENDER))}
 \DoxyCodeLine{00109\ \ \ \ \ \{}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00112\ \ \ \ \ \}}
 \DoxyCodeLine{00113\ }
@@ -552,7 +624,7 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00103}{103}} of file \mbo
 \DoxyCodeLine{00119\ }
 \DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hasBitmap\ \&\&\ !hasAdvance)}
 \DoxyCodeLine{00121\ \ \ \ \ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
 \DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00124\ \ \ \ \ \}}
 \DoxyCodeLine{00125\ }
@@ -627,8 +699,6 @@ Definition at line \mbox{\hyperlink{_font_8cpp_source_l00103}{103}} of file \mbo
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_font_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_font_af10416f6a4440b9a272b37d5eba53fd3}\index{Font@{Font}!atlasTexture@{atlasTexture}}
 \index{atlasTexture@{atlasTexture}!Font@{Font}}
@@ -638,11 +708,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_texture}{Texture}}$>$ Font\+::at
 
 
 
-\doxylink{class_texture}{Texture} atlas storing glyph bitmaps. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00156}{156}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00264}{264}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_a365549c4e256695c5578a48693f59fab}\index{Font@{Font}!atlasVersion@{atlasVersion}}
 \index{atlasVersion@{atlasVersion}!Font@{Font}}
@@ -652,11 +718,7 @@ int Font\+::atlas\+Version = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Version number of atlas, incremented on rebuild. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00162}{162}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00271}{271}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}\index{Font@{Font}!face@{face}}
 \index{face@{face}!Font@{Font}}
@@ -666,11 +728,7 @@ FT\+\_\+\+Face Font\+::face\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Free\+Type font face. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00151}{151}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00259}{259}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_a3616d4dfa35341856399b0783fad5fed}\index{Font@{Font}!fontSize@{fontSize}}
 \index{fontSize@{fontSize}!Font@{Font}}
@@ -680,11 +738,7 @@ uint32\+\_\+t Font\+::font\+Size\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-\doxylink{class_font}{Font} size in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00153}{153}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00261}{261}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_ae975f79e48736a286097d01c19f6fe6e}\index{Font@{Font}!ft@{ft}}
 \index{ft@{ft}!Font@{Font}}
@@ -694,11 +748,7 @@ FT\+\_\+\+Library Font\+::ft\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Free\+Type library handle. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00150}{150}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00258}{258}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_afbb7e0139ebb5cfbdd3c51a9bd070484}\index{Font@{Font}!glyphs@{glyphs}}
 \index{glyphs@{glyphs}!Font@{Font}}
@@ -708,11 +758,7 @@ std\+::unordered\+\_\+map$<$char32\+\_\+t, \mbox{\hyperlink{struct_glyph}{Glyph}
 
 
 
-Map of codepoints to glyphs. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00155}{155}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00263}{263}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_a9c5883ed047d2492cee2ed5340e96274}\index{Font@{Font}!material@{material}}
 \index{material@{material}!Font@{Font}}
@@ -722,11 +768,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_material}{Material}}$>$ Font\+::
 
 
 
-\doxylink{class_material}{Material} using atlas + text shader. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00157}{157}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00265}{265}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_ae1992e35d0091e1d2a8ae6fa9a4461e9}\index{Font@{Font}!maxRowHeight@{maxRowHeight}}
 \index{maxRowHeight@{maxRowHeight}!Font@{Font}}
@@ -736,11 +778,7 @@ int Font\+::max\+Row\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Max height of the current row in atlas. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00161}{161}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00269}{269}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_ad6a01f54e759dacf31006b3d38bed1a7}\index{Font@{Font}!nextX@{nextX}}
 \index{nextX@{nextX}!Font@{Font}}
@@ -750,11 +788,7 @@ int Font\+::nextX = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Current X offset for atlas packing. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00159}{159}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00267}{267}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 \Hypertarget{class_font_a9f863b51686f62525c47c945c726bf8f}\index{Font@{Font}!nextY@{nextY}}
 \index{nextY@{nextY}!Font@{Font}}
@@ -764,15 +798,11 @@ int Font\+::nextY = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Current Y offset for atlas packing. 
-
-
-
-Definition at line \mbox{\hyperlink{_font_8h_source_l00160}{160}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+Definition at line \mbox{\hyperlink{_font_8h_source_l00268}{268}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_font_8h}{Font.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_font_8cpp}{Font.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_font_8h}{Font.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_font_8cpp}{Font.\+cpp}}\end{DoxyCompactItemize}

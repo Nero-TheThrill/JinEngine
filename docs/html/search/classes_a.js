@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['renderlayermanager_0',['RenderLayerManager',['../class_render_layer_manager.html',1,'']]],
-  ['rendermanager_1',['RenderManager',['../class_render_manager.html',1,'']]]
+  ['object_0',['Object',['../class_object.html',1,'']]],
+  ['objectmanager_1',['ObjectManager',['../class_object_manager.html',1,'']]]
 ];

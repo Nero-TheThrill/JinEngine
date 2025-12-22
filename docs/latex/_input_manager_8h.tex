@@ -1,12 +1,12 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Input\+Manager.h File Reference}
-\hypertarget{_input_manager_8h}{}\label{_input_manager_8h}\index{Project/SNAKE\_Engine/Public/InputManager.h@{Project/SNAKE\_Engine/Public/InputManager.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Input\+Manager.h File Reference}
+\hypertarget{_input_manager_8h}{}\label{_input_manager_8h}\index{Project/JinEngine/Public/InputManager.h@{Project/JinEngine/Public/InputManager.h}}
 {\ttfamily \#include $<$bitset$>$}\newline
 {\ttfamily \#include "{}vec2.\+hpp"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_input_manager}{Input\+Manager}}
-\begin{DoxyCompactList}\small\item\em Handles keyboard, mouse, and scroll input events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Manages keyboard, mouse button, cursor position, and scroll input states. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -143,8 +143,6 @@ enum \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8}{Input
 \end{DoxyCompactItemize}
 
 
-\label{doc-enum-members}
-\Hypertarget{_input_manager_8h_doc-enum-members}
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9}\index{InputManager.h@{InputManager.h}!InputKey@{InputKey}}
 \index{InputKey@{InputKey}!InputManager.h@{InputManager.h}}
@@ -512,105 +510,105 @@ KEY\+\_\+\+MENU&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00193}{193}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00244}{244}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00194\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af037df577a49760d0258458966eec71d}{KEY\_UNKNOWN}}\ =\ -\/1,}
-\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a01d2889f9a7550008ad6140c41e733de}{KEY\_SPACE}}\ =\ 32,}
-\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aeb8aae681ab9fbf1111ac69841330e0b}{KEY\_APOSTROPHE}}\ =\ 39,}
-\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af92cd55661a716ee7466f960896041e3}{KEY\_COMMA}}\ =\ 44,}
-\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5f8f8f15bcfc7a3e745d4b5e0008832c}{KEY\_MINUS}}\ =\ 45,}
-\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7680b8131b831989b5068d0832b99bd4}{KEY\_PERIOD}}\ =\ 46,}
-\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a54249cfb873b3e7ae0432bbec5bc0d6f}{KEY\_SLASH}}\ =\ 47,}
-\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6b30f8af6c880e1aca01b91aa13c6ff9}{KEY\_0}}\ =\ 48,}
-\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a35bcc2bc85513df4f3897a9d64a9c51c}{KEY\_1}}\ =\ 49,}
-\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2333d7c312aa98622c41e74c5d13e8de}{KEY\_2}}\ =\ 50,}
-\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aef054680a9be7da17d196e15aec894f8}{KEY\_3}}\ =\ 51,}
-\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae9f20352b4ef69ae68b9ff44abadfd79}{KEY\_4}}\ =\ 52,}
-\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aed864c0209ba46546ba112f6c36e0cc4}{KEY\_5}}\ =\ 53,}
-\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2fe7fe99bcb0fd90bf4234be9e4ce5be}{KEY\_6}}\ =\ 54,}
-\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae78c88108d428cb8066e7a056195f489}{KEY\_7}}\ =\ 55,}
-\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aab8917d426f9be27c95c0d3810006d7b}{KEY\_8}}\ =\ 56,}
-\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a601382e2da6215882c129b43b3384611}{KEY\_9}}\ =\ 57,}
-\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2a2ea4c0ed101dcec44d5ec7de0329ef}{KEY\_SEMICOLON}}\ =\ 59,}
-\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9acdf916d73b721baa46f5f54bdcc0d39b}{KEY\_EQUAL}}\ =\ 61,}
-\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa7b3a3d0503a46bec51c6e3da95747cc}{KEY\_A}}\ =\ 65,}
-\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a10072b5ee7aa1faf316434ecc9e2bb3a}{KEY\_B}}\ =\ 66,}
-\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9cabc5fc0d1f7f6a78e78b8ff29dbb61}{KEY\_C}}\ =\ 67,}
-\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2fd73a4d527efe137e8f259db2092766}{KEY\_D}}\ =\ 68,}
-\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2af9840d90c49239339bfd42f9f32868}{KEY\_E}}\ =\ 69,}
-\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3c069efeb1638c2ab0d2a50ff45b529f}{KEY\_F}}\ =\ 70,}
-\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4ec980867be1d5bded2bccdee2ebd601}{KEY\_G}}\ =\ 71,}
-\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a41d1aa573d29ca6a9eb429a680dc53cd}{KEY\_H}}\ =\ 72,}
-\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2c98fd67709a9fd5409498d4f7175877}{KEY\_I}}\ =\ 73,}
-\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abb3108883bee68e265b554542484c5d7}{KEY\_J}}\ =\ 74,}
-\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6b0799a9923c55f8a73550a371ea69f6}{KEY\_K}}\ =\ 75,}
-\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aece16de35a5ea11f9b228c9376bebc62}{KEY\_L}}\ =\ 76,}
-\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0d94112555886427204ad0c0711ca327}{KEY\_M}}\ =\ 77,}
-\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa606b8c6deaec8077387975d195cd824}{KEY\_N}}\ =\ 78,}
-\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae7edd672641b587364ea4a0c89388290}{KEY\_O}}\ =\ 79,}
-\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0a4c7291c92b7fc84da27a363dc53fa6}{KEY\_P}}\ =\ 80,}
-\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ac8234231b36474d3666ad56752fe6f5e}{KEY\_Q}}\ =\ 81,}
-\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa3ec8a2ffd5b0e200db5ebe7b65515ff}{KEY\_R}}\ =\ 82,}
-\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abb2f0ce8efc3067757dbf091437f89f5}{KEY\_S}}\ =\ 83,}
-\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6167a8727e73df1eb96f19c2460766c9}{KEY\_T}}\ =\ 84,}
-\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad4961a6c7ea9d008812aaaa8c4ea9730}{KEY\_U}}\ =\ 85,}
-\DoxyCodeLine{00235\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9afa1c237398bdfc48e5c1a55ce4a977fe}{KEY\_V}}\ =\ 86,}
-\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2e6a652ccd7afc5ce75ac4d902b6a60a}{KEY\_W}}\ =\ 87,}
-\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a480a807305121d41673b8c208898f497}{KEY\_X}}\ =\ 88,}
-\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5d44524b2a6090fa97aa9353d69f67a3}{KEY\_Y}}\ =\ 89,}
-\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aadc60d2de1d019604547c0df88f84cda}{KEY\_Z}}\ =\ 90,}
-\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a03da438c85c9fc0ebda53d0c669d7c52}{KEY\_LEFT\_BRACKET}}\ =\ 91,}
-\DoxyCodeLine{00241\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af621aad7268fdcafe3a88bc4de7012cd}{KEY\_BACKSLASH}}\ =\ 92,}
-\DoxyCodeLine{00242\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2ec43a67eb0c7d2b4576708e6d4a6b70}{KEY\_RIGHT\_BRACKET}}\ =\ 93,}
-\DoxyCodeLine{00243\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9491ca146d57afe324bd2c63676450ce}{KEY\_GRAVE\_ACCENT}}\ =\ 96,}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3a471c8b61a5f730dcbdd50fe53f3ab7}{KEY\_ESCAPE}}\ =\ 256,}
-\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2a662d23aadd7106a3a2afdfd5d426ed}{KEY\_ENTER}}\ =\ 257,}
-\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a60c75f9c8eded88ef76c0c94da27963c}{KEY\_TAB}}\ =\ 258,}
-\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa3cd0158e01f834cebcfb3fc5578df4b}{KEY\_BACKSPACE}}\ =\ 259,}
-\DoxyCodeLine{00249\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a26f2c18a3a0a7eabf7bd11f0ec93be78}{KEY\_INSERT}}\ =\ 260,}
-\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae7a3a4540031b038014294aa6743a7a4}{KEY\_DELETE}}\ =\ 261,}
-\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6504370d9c6391e1a9da6a1a529b089d}{KEY\_RIGHT}}\ =\ 262,}
-\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a612120b69c7dfd46086db7aaebdbcf65}{KEY\_LEFT}}\ =\ 263,}
-\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa9cdac7967bf7d88fdb761138a2a3416}{KEY\_DOWN}}\ =\ 264,}
-\DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0848a442d907968b211b97bc2bd88acd}{KEY\_UP}}\ =\ 265,}
-\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad435c2e06f3d05728ed52ede8a68295b}{KEY\_PAGE\_UP}}\ =\ 266,}
-\DoxyCodeLine{00256\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ada883d03c9fb53deb33064a13ca97639}{KEY\_PAGE\_DOWN}}\ =\ 267,}
-\DoxyCodeLine{00257\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad5b83418c285e43af5d3a87b4d4049d7}{KEY\_HOME}}\ =\ 268,}
-\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa8adb6fcb92dec58fb19410eacfdd403}{KEY\_END}}\ =\ 269,}
-\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abc5ade8c1b7fc0d409201d5fc46e02cc}{KEY\_CAPS\_LOCK}}\ =\ 280,}
-\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a34a1a5fd5080d4e7923d9e93d7b17e19}{KEY\_SCROLL\_LOCK}}\ =\ 281,}
-\DoxyCodeLine{00261\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad8909c03dc1731c8ce83220590f9f9dc}{KEY\_NUM\_LOCK}}\ =\ 282,}
-\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3d24a3f2d5bad01abd32bee373c4e8aa}{KEY\_PRINT\_SCREEN}}\ =\ 283,}
-\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad26d172dc2cd90741c3939ca4fab0b84}{KEY\_PAUSE}}\ =\ 284,}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9afcf70bc39c0032de8a1c6452ac9860a5}{KEY\_F1}}\ =\ 290,}
-\DoxyCodeLine{00266\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a87897fd25282941e1a9bf72b9f64559a}{KEY\_F2}}\ =\ 291,}
-\DoxyCodeLine{00267\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a965c99b1f4fc05cec09ef61b0af8e74a}{KEY\_F3}}\ =\ 292,}
-\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a01bce78a73ad136a7b42941297aff373}{KEY\_F4}}\ =\ 293,}
-\DoxyCodeLine{00269\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6a69ea34f5d1372692bf040637e57c8f}{KEY\_F5}}\ =\ 294,}
-\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a247a20a9998f080827dd34004abc2f9a}{KEY\_F6}}\ =\ 295,}
-\DoxyCodeLine{00271\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a34a07203a0a4f3e996b44e9a4fcfd1c6}{KEY\_F7}}\ =\ 296,}
-\DoxyCodeLine{00272\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9eaf4e9e3d8451fd1332c013d12c1375}{KEY\_F8}}\ =\ 297,}
-\DoxyCodeLine{00273\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a160e82eea885870bfa4924c27040cd7f}{KEY\_F9}}\ =\ 298,}
-\DoxyCodeLine{00274\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3b922025c26b38585ab140c7e40b291c}{KEY\_F10}}\ =\ 299,}
-\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad54743bc4e7f9279abf671cc2a091ce1}{KEY\_F11}}\ =\ 300,}
-\DoxyCodeLine{00276\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a835f8397baa58fd73ff9c268d6458add}{KEY\_F12}}\ =\ 301,}
-\DoxyCodeLine{00277\ }
-\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5d5eb3601a49913c3ab0f9bcbdc5918a}{KEY\_LEFT\_SHIFT}}\ =\ 340,}
-\DoxyCodeLine{00279\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7c9c57571c47a267791fabb5e5dca6f0}{KEY\_LEFT\_CONTROL}}\ =\ 341,}
-\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4789cb1577c6b157cca51831266d2e71}{KEY\_LEFT\_ALT}}\ =\ 342,}
-\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a81142e22fad8478646b7dec2d992f671}{KEY\_LEFT\_SUPER}}\ =\ 343,}
-\DoxyCodeLine{00282\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a125ed6244c499a097a3e1cb111c8fa9c}{KEY\_RIGHT\_SHIFT}}\ =\ 344,}
-\DoxyCodeLine{00283\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7952b899556457f74a9ed51a0484a323}{KEY\_RIGHT\_CONTROL}}\ =\ 345,}
-\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4f14c2020a65b3498ad86cf66e5f0ed5}{KEY\_RIGHT\_ALT}}\ =\ 346,}
-\DoxyCodeLine{00285\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad32216b5168b7bc799899dc2dc601312}{KEY\_RIGHT\_SUPER}}\ =\ 347,}
-\DoxyCodeLine{00286\ }
-\DoxyCodeLine{00287\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0483607aa811d9b40ce925494621a188}{KEY\_MENU}}\ =\ 348}
-\DoxyCodeLine{00288\ \};}
+\DoxyCodeLine{00245\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af037df577a49760d0258458966eec71d}{KEY\_UNKNOWN}}\ =\ -\/1,}
+\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a01d2889f9a7550008ad6140c41e733de}{KEY\_SPACE}}\ =\ 32,}
+\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aeb8aae681ab9fbf1111ac69841330e0b}{KEY\_APOSTROPHE}}\ =\ 39,}
+\DoxyCodeLine{00249\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af92cd55661a716ee7466f960896041e3}{KEY\_COMMA}}\ =\ 44,}
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5f8f8f15bcfc7a3e745d4b5e0008832c}{KEY\_MINUS}}\ =\ 45,}
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7680b8131b831989b5068d0832b99bd4}{KEY\_PERIOD}}\ =\ 46,}
+\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a54249cfb873b3e7ae0432bbec5bc0d6f}{KEY\_SLASH}}\ =\ 47,}
+\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6b30f8af6c880e1aca01b91aa13c6ff9}{KEY\_0}}\ =\ 48,}
+\DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a35bcc2bc85513df4f3897a9d64a9c51c}{KEY\_1}}\ =\ 49,}
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2333d7c312aa98622c41e74c5d13e8de}{KEY\_2}}\ =\ 50,}
+\DoxyCodeLine{00256\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aef054680a9be7da17d196e15aec894f8}{KEY\_3}}\ =\ 51,}
+\DoxyCodeLine{00257\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae9f20352b4ef69ae68b9ff44abadfd79}{KEY\_4}}\ =\ 52,}
+\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aed864c0209ba46546ba112f6c36e0cc4}{KEY\_5}}\ =\ 53,}
+\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2fe7fe99bcb0fd90bf4234be9e4ce5be}{KEY\_6}}\ =\ 54,}
+\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae78c88108d428cb8066e7a056195f489}{KEY\_7}}\ =\ 55,}
+\DoxyCodeLine{00261\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aab8917d426f9be27c95c0d3810006d7b}{KEY\_8}}\ =\ 56,}
+\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a601382e2da6215882c129b43b3384611}{KEY\_9}}\ =\ 57,}
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2a2ea4c0ed101dcec44d5ec7de0329ef}{KEY\_SEMICOLON}}\ =\ 59,}
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9acdf916d73b721baa46f5f54bdcc0d39b}{KEY\_EQUAL}}\ =\ 61,}
+\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa7b3a3d0503a46bec51c6e3da95747cc}{KEY\_A}}\ =\ 65,}
+\DoxyCodeLine{00266\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a10072b5ee7aa1faf316434ecc9e2bb3a}{KEY\_B}}\ =\ 66,}
+\DoxyCodeLine{00267\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9cabc5fc0d1f7f6a78e78b8ff29dbb61}{KEY\_C}}\ =\ 67,}
+\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2fd73a4d527efe137e8f259db2092766}{KEY\_D}}\ =\ 68,}
+\DoxyCodeLine{00269\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2af9840d90c49239339bfd42f9f32868}{KEY\_E}}\ =\ 69,}
+\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3c069efeb1638c2ab0d2a50ff45b529f}{KEY\_F}}\ =\ 70,}
+\DoxyCodeLine{00271\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4ec980867be1d5bded2bccdee2ebd601}{KEY\_G}}\ =\ 71,}
+\DoxyCodeLine{00272\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a41d1aa573d29ca6a9eb429a680dc53cd}{KEY\_H}}\ =\ 72,}
+\DoxyCodeLine{00273\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2c98fd67709a9fd5409498d4f7175877}{KEY\_I}}\ =\ 73,}
+\DoxyCodeLine{00274\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abb3108883bee68e265b554542484c5d7}{KEY\_J}}\ =\ 74,}
+\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6b0799a9923c55f8a73550a371ea69f6}{KEY\_K}}\ =\ 75,}
+\DoxyCodeLine{00276\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aece16de35a5ea11f9b228c9376bebc62}{KEY\_L}}\ =\ 76,}
+\DoxyCodeLine{00277\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0d94112555886427204ad0c0711ca327}{KEY\_M}}\ =\ 77,}
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa606b8c6deaec8077387975d195cd824}{KEY\_N}}\ =\ 78,}
+\DoxyCodeLine{00279\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae7edd672641b587364ea4a0c89388290}{KEY\_O}}\ =\ 79,}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0a4c7291c92b7fc84da27a363dc53fa6}{KEY\_P}}\ =\ 80,}
+\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ac8234231b36474d3666ad56752fe6f5e}{KEY\_Q}}\ =\ 81,}
+\DoxyCodeLine{00282\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa3ec8a2ffd5b0e200db5ebe7b65515ff}{KEY\_R}}\ =\ 82,}
+\DoxyCodeLine{00283\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abb2f0ce8efc3067757dbf091437f89f5}{KEY\_S}}\ =\ 83,}
+\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6167a8727e73df1eb96f19c2460766c9}{KEY\_T}}\ =\ 84,}
+\DoxyCodeLine{00285\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad4961a6c7ea9d008812aaaa8c4ea9730}{KEY\_U}}\ =\ 85,}
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9afa1c237398bdfc48e5c1a55ce4a977fe}{KEY\_V}}\ =\ 86,}
+\DoxyCodeLine{00287\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2e6a652ccd7afc5ce75ac4d902b6a60a}{KEY\_W}}\ =\ 87,}
+\DoxyCodeLine{00288\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a480a807305121d41673b8c208898f497}{KEY\_X}}\ =\ 88,}
+\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5d44524b2a6090fa97aa9353d69f67a3}{KEY\_Y}}\ =\ 89,}
+\DoxyCodeLine{00290\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aadc60d2de1d019604547c0df88f84cda}{KEY\_Z}}\ =\ 90,}
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a03da438c85c9fc0ebda53d0c669d7c52}{KEY\_LEFT\_BRACKET}}\ =\ 91,}
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9af621aad7268fdcafe3a88bc4de7012cd}{KEY\_BACKSLASH}}\ =\ 92,}
+\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2ec43a67eb0c7d2b4576708e6d4a6b70}{KEY\_RIGHT\_BRACKET}}\ =\ 93,}
+\DoxyCodeLine{00294\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9491ca146d57afe324bd2c63676450ce}{KEY\_GRAVE\_ACCENT}}\ =\ 96,}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3a471c8b61a5f730dcbdd50fe53f3ab7}{KEY\_ESCAPE}}\ =\ 256,}
+\DoxyCodeLine{00297\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a2a662d23aadd7106a3a2afdfd5d426ed}{KEY\_ENTER}}\ =\ 257,}
+\DoxyCodeLine{00298\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a60c75f9c8eded88ef76c0c94da27963c}{KEY\_TAB}}\ =\ 258,}
+\DoxyCodeLine{00299\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa3cd0158e01f834cebcfb3fc5578df4b}{KEY\_BACKSPACE}}\ =\ 259,}
+\DoxyCodeLine{00300\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a26f2c18a3a0a7eabf7bd11f0ec93be78}{KEY\_INSERT}}\ =\ 260,}
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ae7a3a4540031b038014294aa6743a7a4}{KEY\_DELETE}}\ =\ 261,}
+\DoxyCodeLine{00302\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6504370d9c6391e1a9da6a1a529b089d}{KEY\_RIGHT}}\ =\ 262,}
+\DoxyCodeLine{00303\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a612120b69c7dfd46086db7aaebdbcf65}{KEY\_LEFT}}\ =\ 263,}
+\DoxyCodeLine{00304\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa9cdac7967bf7d88fdb761138a2a3416}{KEY\_DOWN}}\ =\ 264,}
+\DoxyCodeLine{00305\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0848a442d907968b211b97bc2bd88acd}{KEY\_UP}}\ =\ 265,}
+\DoxyCodeLine{00306\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad435c2e06f3d05728ed52ede8a68295b}{KEY\_PAGE\_UP}}\ =\ 266,}
+\DoxyCodeLine{00307\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ada883d03c9fb53deb33064a13ca97639}{KEY\_PAGE\_DOWN}}\ =\ 267,}
+\DoxyCodeLine{00308\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad5b83418c285e43af5d3a87b4d4049d7}{KEY\_HOME}}\ =\ 268,}
+\DoxyCodeLine{00309\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9aa8adb6fcb92dec58fb19410eacfdd403}{KEY\_END}}\ =\ 269,}
+\DoxyCodeLine{00310\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9abc5ade8c1b7fc0d409201d5fc46e02cc}{KEY\_CAPS\_LOCK}}\ =\ 280,}
+\DoxyCodeLine{00311\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a34a1a5fd5080d4e7923d9e93d7b17e19}{KEY\_SCROLL\_LOCK}}\ =\ 281,}
+\DoxyCodeLine{00312\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad8909c03dc1731c8ce83220590f9f9dc}{KEY\_NUM\_LOCK}}\ =\ 282,}
+\DoxyCodeLine{00313\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3d24a3f2d5bad01abd32bee373c4e8aa}{KEY\_PRINT\_SCREEN}}\ =\ 283,}
+\DoxyCodeLine{00314\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad26d172dc2cd90741c3939ca4fab0b84}{KEY\_PAUSE}}\ =\ 284,}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9afcf70bc39c0032de8a1c6452ac9860a5}{KEY\_F1}}\ =\ 290,}
+\DoxyCodeLine{00317\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a87897fd25282941e1a9bf72b9f64559a}{KEY\_F2}}\ =\ 291,}
+\DoxyCodeLine{00318\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a965c99b1f4fc05cec09ef61b0af8e74a}{KEY\_F3}}\ =\ 292,}
+\DoxyCodeLine{00319\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a01bce78a73ad136a7b42941297aff373}{KEY\_F4}}\ =\ 293,}
+\DoxyCodeLine{00320\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a6a69ea34f5d1372692bf040637e57c8f}{KEY\_F5}}\ =\ 294,}
+\DoxyCodeLine{00321\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a247a20a9998f080827dd34004abc2f9a}{KEY\_F6}}\ =\ 295,}
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a34a07203a0a4f3e996b44e9a4fcfd1c6}{KEY\_F7}}\ =\ 296,}
+\DoxyCodeLine{00323\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a9eaf4e9e3d8451fd1332c013d12c1375}{KEY\_F8}}\ =\ 297,}
+\DoxyCodeLine{00324\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a160e82eea885870bfa4924c27040cd7f}{KEY\_F9}}\ =\ 298,}
+\DoxyCodeLine{00325\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a3b922025c26b38585ab140c7e40b291c}{KEY\_F10}}\ =\ 299,}
+\DoxyCodeLine{00326\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad54743bc4e7f9279abf671cc2a091ce1}{KEY\_F11}}\ =\ 300,}
+\DoxyCodeLine{00327\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a835f8397baa58fd73ff9c268d6458add}{KEY\_F12}}\ =\ 301,}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a5d5eb3601a49913c3ab0f9bcbdc5918a}{KEY\_LEFT\_SHIFT}}\ =\ 340,}
+\DoxyCodeLine{00330\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7c9c57571c47a267791fabb5e5dca6f0}{KEY\_LEFT\_CONTROL}}\ =\ 341,}
+\DoxyCodeLine{00331\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4789cb1577c6b157cca51831266d2e71}{KEY\_LEFT\_ALT}}\ =\ 342,}
+\DoxyCodeLine{00332\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a81142e22fad8478646b7dec2d992f671}{KEY\_LEFT\_SUPER}}\ =\ 343,}
+\DoxyCodeLine{00333\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a125ed6244c499a097a3e1cb111c8fa9c}{KEY\_RIGHT\_SHIFT}}\ =\ 344,}
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a7952b899556457f74a9ed51a0484a323}{KEY\_RIGHT\_CONTROL}}\ =\ 345,}
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a4f14c2020a65b3498ad86cf66e5f0ed5}{KEY\_RIGHT\_ALT}}\ =\ 346,}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9ad32216b5168b7bc799899dc2dc601312}{KEY\_RIGHT\_SUPER}}\ =\ 347,}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9a0483607aa811d9b40ce925494621a188}{KEY\_MENU}}\ =\ 348}
+\DoxyCodeLine{00339\ \};}
 
 \end{DoxyCode}
 \Hypertarget{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8}\index{InputManager.h@{InputManager.h}!InputMouseButton@{InputMouseButton}}
@@ -671,24 +669,24 @@ MOUSE\+\_\+\+BUTTON\+\_\+\+LAST&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00290}{290}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00341}{341}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00291\ \{}
-\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a34e69cb83acb2a2367271eea8fb48d87}{MOUSE\_BUTTON\_1}}\ =\ 0,}
-\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a3c2e62b97b30d850c5539d0f3a6d0958}{MOUSE\_BUTTON\_LEFT}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a34e69cb83acb2a2367271eea8fb48d87}{MOUSE\_BUTTON\_1}},}
-\DoxyCodeLine{00294\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8abb887d01f69a32ed9fb4b509beac7ae2}{MOUSE\_BUTTON\_2}}\ =\ 1,}
-\DoxyCodeLine{00295\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a5b61e63e73f15ed6af97d5cd3124bc6f}{MOUSE\_BUTTON\_RIGHT}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8abb887d01f69a32ed9fb4b509beac7ae2}{MOUSE\_BUTTON\_2}},}
-\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a52f4d1f40b03c1d49abff7ec9c47cd06}{MOUSE\_BUTTON\_3}}\ =\ 2,}
-\DoxyCodeLine{00297\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a9b37b35bcb71185dafcb151b3dde9a06}{MOUSE\_BUTTON\_MIDDLE}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a52f4d1f40b03c1d49abff7ec9c47cd06}{MOUSE\_BUTTON\_3}},}
-\DoxyCodeLine{00298\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8afc3d67bb6d13174ffdac114b8a8b83b2}{MOUSE\_BUTTON\_4}}\ =\ 3,}
-\DoxyCodeLine{00299\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a23f87c6a98a4c40b92b173861fdd4d2a}{MOUSE\_BUTTON\_5}}\ =\ 4,}
-\DoxyCodeLine{00300\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ab6cf71a58c29cf320b79d80bbb014f82}{MOUSE\_BUTTON\_6}}\ =\ 5,}
-\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a7fee9a0a99a8e9aacb29419524fa8ce2}{MOUSE\_BUTTON\_7}}\ =\ 6,}
-\DoxyCodeLine{00302\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ac9d02646b99421e70a0c3266918e5e78}{MOUSE\_BUTTON\_8}}\ =\ 7,}
-\DoxyCodeLine{00303\ }
-\DoxyCodeLine{00304\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a216db9f4651c818c243755124dffc84b}{MOUSE\_BUTTON\_LAST}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ac9d02646b99421e70a0c3266918e5e78}{MOUSE\_BUTTON\_8}}}
-\DoxyCodeLine{00305\ \};}
+\DoxyCodeLine{00342\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a34e69cb83acb2a2367271eea8fb48d87}{MOUSE\_BUTTON\_1}}\ =\ 0,}
+\DoxyCodeLine{00344\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a3c2e62b97b30d850c5539d0f3a6d0958}{MOUSE\_BUTTON\_LEFT}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a34e69cb83acb2a2367271eea8fb48d87}{MOUSE\_BUTTON\_1}},}
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8abb887d01f69a32ed9fb4b509beac7ae2}{MOUSE\_BUTTON\_2}}\ =\ 1,}
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a5b61e63e73f15ed6af97d5cd3124bc6f}{MOUSE\_BUTTON\_RIGHT}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8abb887d01f69a32ed9fb4b509beac7ae2}{MOUSE\_BUTTON\_2}},}
+\DoxyCodeLine{00347\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a52f4d1f40b03c1d49abff7ec9c47cd06}{MOUSE\_BUTTON\_3}}\ =\ 2,}
+\DoxyCodeLine{00348\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a9b37b35bcb71185dafcb151b3dde9a06}{MOUSE\_BUTTON\_MIDDLE}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a52f4d1f40b03c1d49abff7ec9c47cd06}{MOUSE\_BUTTON\_3}},}
+\DoxyCodeLine{00349\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8afc3d67bb6d13174ffdac114b8a8b83b2}{MOUSE\_BUTTON\_4}}\ =\ 3,}
+\DoxyCodeLine{00350\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a23f87c6a98a4c40b92b173861fdd4d2a}{MOUSE\_BUTTON\_5}}\ =\ 4,}
+\DoxyCodeLine{00351\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ab6cf71a58c29cf320b79d80bbb014f82}{MOUSE\_BUTTON\_6}}\ =\ 5,}
+\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a7fee9a0a99a8e9aacb29419524fa8ce2}{MOUSE\_BUTTON\_7}}\ =\ 6,}
+\DoxyCodeLine{00353\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ac9d02646b99421e70a0c3266918e5e78}{MOUSE\_BUTTON\_8}}\ =\ 7,}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8a216db9f4651c818c243755124dffc84b}{MOUSE\_BUTTON\_LAST}}\ =\ \mbox{\hyperlink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8ac9d02646b99421e70a0c3266918e5e78}{MOUSE\_BUTTON\_8}}}
+\DoxyCodeLine{00356\ \};}
 
 \end{DoxyCode}

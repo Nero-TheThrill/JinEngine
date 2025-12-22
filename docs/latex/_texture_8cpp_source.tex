@@ -1,5 +1,5 @@
 \doxysection{Texture.\+cpp}
-\hypertarget{_texture_8cpp_source}{}\label{_texture_8cpp_source}\index{Project/SNAKE\_Engine/Private/Texture.cpp@{Project/SNAKE\_Engine/Private/Texture.cpp}}
+\hypertarget{_texture_8cpp_source}{}\label{_texture_8cpp_source}\index{Project/JinEngine/Private/Texture.cpp@{Project/JinEngine/Private/Texture.cpp}}
 \mbox{\hyperlink{_texture_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
@@ -88,7 +88,7 @@
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data\ =\ stbi\_load(path.c\_str(),\ \&\mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}},\ \&\mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}},\ \&\mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}},\ 0);}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (!data)}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00086}00086\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ texture:\ "{}}\ <<\ path);}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ texture:\ "{}}\ <<\ path);}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00089}00089\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
@@ -177,5 +177,28 @@
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00173}00173\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00174}00174\ \ \ \ \ glPixelStorei(GL\_UNPACK\_ALIGNMENT,\ prev);}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00177}\mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{00177}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Texture::ForceUpdateTexture}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ id\_,\ \textcolor{keywordtype}{int}\ width\_,\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{int}\ channels\_)}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00178}00178\ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00181}00181\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00183}00183\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00186}\mbox{\hyperlink{class_texture_aa34f9924e6c77003325a389907795677}{00186}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Texture::ForceUpdateTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{int}\ width\_,\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{int}\ channels\_,}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\&\ settings)}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00188}00188\ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00190}00190\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00193}00193\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00194}00194\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00195}00195\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00196}00196\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00198}00198\ \}}
 
 \end{DoxyCode}

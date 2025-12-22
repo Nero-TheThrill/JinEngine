@@ -2,7 +2,7 @@
 \hypertarget{struct_line_instance}{}\label{struct_line_instance}\index{LineInstance@{LineInstance}}
 
 
-One line segment for debug rendering.  
+Parameters describing a single debug line draw request.  
 
 
 
@@ -13,24 +13,24 @@ One line segment for debug rendering.
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec2 \mbox{\hyperlink{struct_line_instance_ae6aa6b9f64b6314607208e45dc1e2cd1}{from}} = \{ 0,0 \}
-\begin{DoxyCompactList}\small\item\em Line start position in world/screen depending on camera usage. \end{DoxyCompactList}\item 
+\item 
 glm\+::vec2 \mbox{\hyperlink{struct_line_instance_a5ea8c2e98a856fa13e9dd1c8b60a9c34}{to}} = \{ 0,0 \}
-\begin{DoxyCompactList}\small\item\em Line end position. \end{DoxyCompactList}\item 
+\item 
 glm\+::vec4 \mbox{\hyperlink{struct_line_instance_ae499492ef256243e41402daadbca4a9c}{color}} = \{ 1,1,1,1 \}
-\begin{DoxyCompactList}\small\item\em RGBA color. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{struct_line_instance_afbfacbe7c80cdac4ef6da4e274169100}{line\+Width}} = 1
-\begin{DoxyCompactList}\small\item\em Pixel width. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-One line segment for debug rendering. 
+Parameters describing a single debug line draw request. 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00048}{48}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Debug lines are accumulated via Draw\+Debug\+Line() into an internal map keyed by (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width), then emitted in a single flush pass by Flush\+Debug\+Line\+Draw\+Commands(). 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00067}{67}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_line_instance_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_line_instance_ae499492ef256243e41402daadbca4a9c}\index{LineInstance@{LineInstance}!color@{color}}
 \index{color@{color}!LineInstance@{LineInstance}}
@@ -40,15 +40,11 @@ glm\+::vec4 Line\+Instance\+::color = \{ 1,1,1,1 \}}
 
 
 
-RGBA color. 
-
-
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00052}{52}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00071}{71}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00052\ \{\ 1,1,1,1\ \};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \{\ 1,1,1,1\ \};}
 
 \end{DoxyCode}
 \Hypertarget{struct_line_instance_ae6aa6b9f64b6314607208e45dc1e2cd1}\index{LineInstance@{LineInstance}!from@{from}}
@@ -59,15 +55,11 @@ glm\+::vec2 Line\+Instance\+::from = \{ 0,0 \}}
 
 
 
-Line start position in world/screen depending on camera usage. 
-
-
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00050}{50}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00069}{69}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00050\ \{\ 0,0\ \};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \{\ 0,0\ \};}
 
 \end{DoxyCode}
 \Hypertarget{struct_line_instance_afbfacbe7c80cdac4ef6da4e274169100}\index{LineInstance@{LineInstance}!lineWidth@{lineWidth}}
@@ -78,11 +70,7 @@ float Line\+Instance\+::line\+Width = 1}
 
 
 
-Pixel width. 
-
-
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00053}{53}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00072}{72}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 \Hypertarget{struct_line_instance_a5ea8c2e98a856fa13e9dd1c8b60a9c34}\index{LineInstance@{LineInstance}!to@{to}}
 \index{to@{to}!LineInstance@{LineInstance}}
@@ -92,19 +80,15 @@ glm\+::vec2 Line\+Instance\+::to = \{ 0,0 \}}
 
 
 
-Line end position. 
-
-
-
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00051}{51}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00070}{70}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00051\ \{\ 0,0\ \};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \{\ 0,0\ \};}
 
 \end{DoxyCode}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\end{DoxyCompactItemize}

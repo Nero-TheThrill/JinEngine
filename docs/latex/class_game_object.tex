@@ -2,7 +2,7 @@
 \hypertarget{class_game_object}{}\label{class_game_object}\index{GameObject@{GameObject}}
 
 
-Default implementation of a basic in-\/game object.  
+Base class for all in-\/game objects with gameplay behavior.  
 
 
 
@@ -19,186 +19,166 @@ Inheritance diagram for Game\+Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{Game\+Object}} ()
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_object}{Game\+Object} with type GAME. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_object}{Game\+Object} with GAME object type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_game_object_acf01e9889fbc277c44594322abf9683b}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} () override=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_a34ba812ec949058ea5ab184618e91590}{Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Called once when the object is initialized. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initializes the game object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_aafea6dd6a08d29078cc430ddf5a4f18e}{Late\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Called after \doxylink{class_game_object_a34ba812ec949058ea5ab184618e91590}{Init()} for deferred setup. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs post-\/initialization logic for the game object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_a2af113da2569ef4e651ad8cfb3be50d8}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Per-\/frame update function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the game object every frame. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_a64fa4b69133f89e55fd4a51b468ce410}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Per-\/frame draw function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draws the game object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_ae104cfd85a1a55b46a1c47570d408dd3}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Cleanup called before the object is destroyed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Frees runtime resources owned by the game object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_a0386fbb9307311825bf4be78e61d21ca}{Late\+Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context) override
-\begin{DoxyCompactList}\small\item\em Late cleanup after \doxylink{class_game_object_ae104cfd85a1a55b46a1c47570d408dd3}{Free()} for cross-\/object dependencies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Performs late cleanup logic for the game object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}} ()=delete
-\begin{DoxyCompactList}\small\item\em Default constructor is not allowed; derived classes must choose a type. \end{DoxyCompactList}\item 
+\item 
 virtual \mbox{\hyperlink{class_object_a226f2ae2af766b77d83c09a4d766b725}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic deletion. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a0230b42c88134134da384129e1a4d64d}{On\+Collision}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}other)
-\begin{DoxyCompactList}\small\item\em Collision callback. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Collision callback invoked when this object collides with another object. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{Is\+Alive}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the object is alive (eligible for update/draw). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is alive. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_a77092a4fc48339007ed32e7d48f6140a}{Is\+Visible}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the object should be rendered. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is visible. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a1905fc7497de984a176acdcf8ecb81be}{Set\+Visibility}} (bool \+\_\+is\+Visible)
-\begin{DoxyCompactList}\small\item\em Enables or disables object visibility. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the visibility state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_abed008ac27116fcd520eed806751ed34}{Kill}} ()
-\begin{DoxyCompactList}\small\item\em Marks the object as dead and schedules its removal. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Marks the object as dead. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a5a8c0663fb3e668d16c8a045937a9c82}{Set\+Tag}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Assigns a string tag to the object for lookups. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the object tag used for lookup/grouping. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_a9744dc473026e6b7cba610d00f510e81}{Get\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object tag. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_aeeca329acbcb4de9843012537efd02cc}{Get\+Render\+Layer\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the render-\/layer tag used for batching/sorting. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the render-\/layer tag used for \doxylink{class_render_layer_manager}{Render\+Layer\+Manager} mapping. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae14fd11d21f05d538d10813e53566152}{Set\+Render\+Layer}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Assigns the object to a named render layer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the render-\/layer tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a53ae391764eac5e3d62e52bf7441ceec}{Set\+Material}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Binds a material by tag from \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the material by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_aab1e520477fbd67aef665b8c8207a35d}{Set\+Material}} (\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}material\+\_\+)
-\begin{DoxyCompactList}\small\item\em Directly assigns a material pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the material pointer directly. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ab521a1333884f821312dac04d176656d}{Get\+Material}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned material. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the assigned material pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a469da1fde04db75a05aad5cd30c6e4b2}{Set\+Mesh}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Binds a mesh by tag from \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the mesh by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae94b6c3d2c0bdc27eff25f07390fdb58}{Set\+Mesh}} (\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh\+\_\+)
-\begin{DoxyCompactList}\small\item\em Directly assigns a mesh pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the mesh pointer directly. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad1325c6fcdb74f68110b0518bd7beb05}{Get\+Mesh}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned mesh. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the assigned mesh pointer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_a2db79de87d0743178af0c8817ada974f}{Can\+Be\+Instanced}} () const
-\begin{DoxyCompactList}\small\item\em Indicates whether this object can be drawn via GPU instancing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this object is eligible for instanced rendering. \end{DoxyCompactList}\item 
 glm\+::mat4 \mbox{\hyperlink{class_object_aee07a084c7a7e462fe09a74a91f1bb45}{Get\+Transform2\+DMatrix}} ()
-\begin{DoxyCompactList}\small\item\em Returns the 2D model matrix composed from \doxylink{class_transform2_d}{Transform2D}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the cached \doxylink{class_transform2_d}{Transform2D} matrix, updating it if necessary. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \& \mbox{\hyperlink{class_object_a453aea9866458ef777bbe908ac71b938}{Get\+Transform2D}} ()
-\begin{DoxyCompactList}\small\item\em Access to the 2D transform (position/rotation/scale/depth). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a mutable reference to the \doxylink{class_transform2_d}{Transform2D} component. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a8d5b80a21f9fdb4e46f81936ae1d2b78}{Set\+Color}} (const glm\+::vec4 \&color\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets a per-\/object color (e.\+g., tint/alpha). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the per-\/object color used by the renderer. \end{DoxyCompactList}\item 
 const glm\+::vec4 \& \mbox{\hyperlink{class_object_adbcd6fb6a64f9921341d212558f23318}{Get\+Color}} ()
-\begin{DoxyCompactList}\small\item\em Returns the currently assigned per-\/object color. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current per-\/object color. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_object_a73b8c8aca393668f11cef22b19b7070a}{Has\+Animation}} () const
-\begin{DoxyCompactList}\small\item\em Indicates if this object has a sprite animator attached. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object currently has an animator attached. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a5037bc2d36bcecdb601fa135a8fc6bfc}{Get\+Sprite\+Animator}} () const
-\begin{DoxyCompactList}\small\item\em Returns the attached \doxylink{class_sprite_animator}{Sprite\+Animator} (if any). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the active \doxylink{class_sprite_animator}{Sprite\+Animator} pointer, if any. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_af39935a92d3881c1a0f2ca0a3c4ba027}{Attach\+Animator}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ anim)
-\begin{DoxyCompactList}\small\item\em Attaches an existing \doxylink{class_sprite_animator}{Sprite\+Animator}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Attaches an animator by transferring ownership. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_afdc6709946b43992d8dbb44c229adc0b}{Attach\+Animator}} (\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}sheet, float frame\+Time, bool loop=true)
-\begin{DoxyCompactList}\small\item\em Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a sheet. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a \doxylink{class_sprite_sheet}{Sprite\+Sheet} and playback settings. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae3c65d98ad8b1c3fdae221a5390cc757}{Detach\+Animator}} ()
-\begin{DoxyCompactList}\small\item\em Detaches and destroys the current \doxylink{class_sprite_animator}{Sprite\+Animator}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Detaches and destroys the current animator, if any. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a4ba9c8096492c37bf3db474b5c5f31a0}{Set\+Collider}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_collider}{Collider}} $>$ c)
-\begin{DoxyCompactList}\small\item\em Assigns a collider to this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the collider by transferring ownership. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{Get\+Collider}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collider (if any). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current collider pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a7ce1a12c241c5a64ec03e67ee17e1260}{Set\+Collision}} (\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \&object\+Manager, const std\+::string \&tag, const std\+::vector$<$ std\+::string $>$ \&check\+Collision\+List)
-\begin{DoxyCompactList}\small\item\em Registers this object into collision groups and masks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Configures collision category and mask using \doxylink{class_object_manager}{Object\+Manager}\textquotesingle{}s collision registry. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a76b94bea7f5f5e6454cd2c134ddc6260}{Get\+Collision\+Mask}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision bitmask of groups this object collides with. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision mask used for collision filtering. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a431dc9b1eab4227c9c5d002fae5ec017}{Get\+Collision\+Category}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision category bit for this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision category used for collision filtering. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{Should\+Ignore\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Internal check\+: whether this object ignores the camera transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this object should ignore the active camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a93406d31ceabece6e7fb08814ac188c5}{Set\+Ignore\+Camera}} (bool should\+Ignore\+Camera, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera\+For\+Transform\+Calc=nullptr)
-\begin{DoxyCompactList}\small\item\em Enables HUD-\/style rendering that ignores the camera transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets whether the object should ignore the active camera and optionally stores a reference camera. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \mbox{\hyperlink{class_object_a2ce43cdb7eae414e94b4285dbe01a85c}{Get\+Type}} () const
-\begin{DoxyCompactList}\small\item\em Returns the runtime object type (GAME/\+TEXT). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a94edf37fadeb8c59420d35730d14464e}{Get\+Reference\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Returns the reference camera used when ignoring camera transforms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the reference camera used when ignore\+Camera is enabled. \end{DoxyCompactList}\item 
 virtual glm\+::vec2 \mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{Get\+World\+Position}} () const
-\begin{DoxyCompactList}\small\item\em Returns the world-\/space position of the object anchor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s world-\/space position used by systems like culling and debug drawing. \end{DoxyCompactList}\item 
 virtual glm\+::vec2 \mbox{\hyperlink{class_object_a8c2784b2a928fa1050d8a036091754c4}{Get\+World\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Returns the world-\/space scale of the object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s world-\/space scale used by systems like culling and collision sync. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_acb3716809623d005e893452f2973b604}{Set\+Flip\+UV\+\_\+X}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Flips the object\textquotesingle{}s UVs horizontally for sprite mirroring. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables horizontal UV flipping for this object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ac20a8c5f662aa6b8f7cc2e1da304c12f}{Set\+Flip\+UV\+\_\+Y}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Flips the object\textquotesingle{}s UVs vertically for sprite mirroring. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables vertical UV flipping for this object. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_object_a9c9dd596d37ae4ab88ce7a33b725ba68}{Get\+UVFlip\+Vector}} () const
-\begin{DoxyCompactList}\small\item\em Returns a vector encoding UV flip (-\/1 or +1 per axis). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a vector encoding UV flip multipliers used by the renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_ac31ad8e33d6fd852422f4605f287b2da}{Object}} (\mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} object\+Type)
-\begin{DoxyCompactList}\small\item\em Protected constructor; derived classes must specify an object type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_object}{Object} with a concrete type. \end{DoxyCompactList}\item 
 virtual float \mbox{\hyperlink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Get\+Bounding\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Approximates a conservative bounding radius for culling/physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns an approximate bounding radius used for camera visibility tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_object}{Object}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}}
-\begin{DoxyCompactList}\small\item\em \doxylink{class_object}{Object} type (GAME, TYPE) \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_a6cad8db6361d0ab0b95ec578fdf0d1b7}{is\+Alive}} = true
-\begin{DoxyCompactList}\small\item\em Alive flag; dead objects are removed by \doxylink{class_object_manager}{Object\+Manager}. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_a418eac6726dcadd9710d94a041446f28}{is\+Visible}} = true
-\begin{DoxyCompactList}\small\item\em Visibility flag; hidden objects still \doxylink{class_object_a6184ab2516fed16398670b75a2360859}{Update()}. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignore\+Camera}} = false
-\begin{DoxyCompactList}\small\item\em If true, draw ignores camera transform (HUD). \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{reference\+Camera}} = nullptr
-\begin{DoxyCompactList}\small\item\em Reference camera for HUD transform calculations. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{class_object_a884feb6d3b893651c612a1a3254f73e6}{object\+Tag}}
-\begin{DoxyCompactList}\small\item\em User-\/defined identifier. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{class_object_aa00855f8cc3dc0f7fd06e2a76d523458}{render\+Layer\+Tag}}
-\begin{DoxyCompactList}\small\item\em Name-\/based render layer. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}
-\begin{DoxyCompactList}\small\item\em 2D transform (position/rotation/scale/depth). \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}} = nullptr
-\begin{DoxyCompactList}\small\item\em Non-\/owning material pointer. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}} = nullptr
-\begin{DoxyCompactList}\small\item\em Non-\/owning mesh pointer. \end{DoxyCompactList}\item 
+\item 
 glm\+::vec4 \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}} = glm\+::vec4(1)
-\begin{DoxyCompactList}\small\item\em Per-\/object color (tint/alpha). \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{sprite\+Animator}}
-\begin{DoxyCompactList}\small\item\em Optional sprite animation component. \end{DoxyCompactList}\item 
+\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_collider}{Collider}} $>$ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}
-\begin{DoxyCompactList}\small\item\em Optional collision component. \end{DoxyCompactList}\item 
+\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collision\+Category}} = 0
-\begin{DoxyCompactList}\small\item\em Collision category bit. \end{DoxyCompactList}\item 
+\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collision\+Mask}} = 0
-\begin{DoxyCompactList}\small\item\em Collision mask bits (which groups to test against). \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flip\+UV\+\_\+X}} = false
-\begin{DoxyCompactList}\small\item\em Flip UV horizontally. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flip\+UV\+\_\+Y}} = false
-\begin{DoxyCompactList}\small\item\em Flip UV vertically. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Default implementation of a basic in-\/game object. 
+Base class for all in-\/game objects with gameplay behavior. 
 
-\doxylink{class_game_object}{Game\+Object} is a concrete subclass of \doxylink{class_object}{Object} with type = GAME. It provides empty overrides for all lifecycle methods (Init, Update, Draw, Free, etc.), making it suitable as a lightweight placeholder or a base for user-\/defined objects.
+\doxylink{class_game_object}{Game\+Object} is a concrete specialization of \doxylink{class_object}{Object} that represents entities participating in gameplay logic.
 
-Typical usage\+:
-\begin{DoxyItemize}
-\item Inherit from \doxylink{class_game_object}{Game\+Object} to create your own gameplay objects.
-\item Override only the lifecycle functions you need.
-\end{DoxyItemize}
+It is constructed with \doxylink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{Object\+Type\+::\+GAME} and is intended to be managed by \doxylink{class_object_manager}{Object\+Manager} within a \doxylink{class_game_state}{Game\+State}.
 
+All lifecycle functions are provided as overridable hooks and are empty by default, allowing derived classes to implement only the behavior they require. 
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{class\ }Player\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{GameObject}}\ \{}
-\DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a34ba812ec949058ea5ab184618e91590}{Init}}(\textcolor{keyword}{const}\ EngineContext\&\ ctx)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a5a8c0663fb3e668d16c8a045937a9c82}{SetTag}}(\textcolor{stringliteral}{"{}[Object]Player"{}});}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a53ae391764eac5e3d62e52bf7441ceec}{SetMaterial}}(ctx,\ \textcolor{stringliteral}{"{}[Mat]player"{}});}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a2af113da2569ef4e651ad8cfb3be50d8}{Update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ EngineContext\&\ ctx)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Player-\/specific\ logic}}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\};}
-
-\end{DoxyCode}
- 
-
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00030}{30}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00018}{18}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_game_object_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}\index{GameObject@{GameObject}!GameObject@{GameObject}}
 \index{GameObject@{GameObject}!GameObject@{GameObject}}
@@ -208,15 +188,15 @@ Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaptio
 
 
 
-Constructs a \doxylink{class_game_object}{Game\+Object} with type GAME. 
+Constructs a \doxylink{class_game_object}{Game\+Object} with GAME object type. 
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00036}{36}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00024}{24}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00036\ :\ \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}}(\mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{ObjectType::GAME}})\ \{\}}
+\DoxyCodeLine{00024\ :\ \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}}(\mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{ObjectType::GAME}})\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_acf01e9889fbc277c44594322abf9683b}\index{GameObject@{GameObject}!````~GameObject@{\texorpdfstring{$\sim$}{\string~}GameObject}}
@@ -227,12 +207,10 @@ Game\+Object\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Object (\begin{DoxyPara
 
 
 
-Virtual destructor. 
+Virtual destructor for \doxylink{class_game_object}{Game\+Object}. 
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_game_object_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_game_object_a64fa4b69133f89e55fd4a51b468ce410}\index{GameObject@{GameObject}!Draw@{Draw}}
 \index{Draw@{Draw}!GameObject@{GameObject}}
@@ -242,19 +220,19 @@ void Game\+Object\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Per-\/frame draw function. 
+Draws the game object. 
 
-
+This function is called during the rendering phase of the \doxylink{class_game_state}{Game\+State}. 
 
 Implements \mbox{\hyperlink{class_object_a8d36cf36a47b76a005590557116814e6}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00063}{63}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00062}{62}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00063\ \{\}}
+\DoxyCodeLine{00062\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_ae104cfd85a1a55b46a1c47570d408dd3}\index{GameObject@{GameObject}!Free@{Free}}
@@ -265,19 +243,19 @@ void Game\+Object\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Cleanup called before the object is destroyed. 
+Frees runtime resources owned by the game object. 
 
-
+This function is called when the \doxylink{class_game_state}{Game\+State} is being freed or when the object is explicitly destroyed. 
 
 Implements \mbox{\hyperlink{class_object_aceba19437c716d229fc247463c381da5}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00068}{68}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00071}{71}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00068\ \{\}}
+\DoxyCodeLine{00071\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_a34ba812ec949058ea5ab184618e91590}\index{GameObject@{GameObject}!Init@{Init}}
@@ -288,19 +266,19 @@ void Game\+Object\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperli
 
 
 
-Called once when the object is initialized. 
+Initializes the game object. 
 
-
+This function is called during the \doxylink{class_game_state}{Game\+State} initialization phase, after the \doxylink{class_game_state}{Game\+State} Init function and before Late\+Init. 
 
 Implements \mbox{\hyperlink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00046}{46}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00038}{38}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00046\ \{\}}
+\DoxyCodeLine{00038\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_a0386fbb9307311825bf4be78e61d21ca}\index{GameObject@{GameObject}!LateFree@{LateFree}}
@@ -311,19 +289,19 @@ void Game\+Object\+::\+Late\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\h
 
 
 
-Late cleanup after \doxylink{class_game_object_ae104cfd85a1a55b46a1c47570d408dd3}{Free()} for cross-\/object dependencies. 
+Performs late cleanup logic for the game object. 
 
-
+This function is called after Free and is intended for dependency-\/safe cleanup. 
 
 Implements \mbox{\hyperlink{class_object_acbc48ef4fd5b14b01a681e8fef4aaa20}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00073}{73}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00080}{80}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00073\ \{\}}
+\DoxyCodeLine{00080\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_aafea6dd6a08d29078cc430ddf5a4f18e}\index{GameObject@{GameObject}!LateInit@{LateInit}}
@@ -334,19 +312,19 @@ void Game\+Object\+::\+Late\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\h
 
 
 
-Called after \doxylink{class_game_object_a34ba812ec949058ea5ab184618e91590}{Init()} for deferred setup. 
+Performs post-\/initialization logic for the game object. 
 
-
+This function is called after all Game\+Objects have completed Init. 
 
 Implements \mbox{\hyperlink{class_object_af71fa9147e1a1f17ca5e93cc599d8eef}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00051}{51}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00046}{46}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00051\ \{\}}
+\DoxyCodeLine{00046\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_game_object_a2af113da2569ef4e651ad8cfb3be50d8}\index{GameObject@{GameObject}!Update@{Update}}
@@ -357,28 +335,23 @@ void Game\+Object\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\it
 
 
 
-Per-\/frame update function. 
+Updates the game object every frame. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em dt} & Delta time in seconds. \\
-\hline
-\end{DoxyParams}
-
+This function is called once per frame during the \doxylink{class_game_state}{Game\+State} update phase. 
 
 Implements \mbox{\hyperlink{class_object_a6184ab2516fed16398670b75a2360859}{Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_game_object_8h_source_l00058}{58}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_game_object_8h_source_l00054}{54}} of file \mbox{\hyperlink{_game_object_8h_source}{Game\+Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00058\ \{\}}
+\DoxyCodeLine{00054\ \{\}}
 
 \end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}\end{DoxyCompactItemize}

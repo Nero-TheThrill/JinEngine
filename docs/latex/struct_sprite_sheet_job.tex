@@ -2,7 +2,7 @@
 \hypertarget{struct_sprite_sheet_job}{}\label{struct_sprite_sheet_job}\index{SpriteSheetJob@{SpriteSheetJob}}
 
 
-Job for asynchronously creating a sprite sheet from a texture.  
+Load request describing a sprite sheet resource to be created/registered.  
 
 
 
@@ -13,24 +13,26 @@ Job for asynchronously creating a sprite sheet from a texture.
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}{tag}}
-\begin{DoxyCompactList}\small\item\em Identifier tag for the sprite sheet. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}{texture\+Tag}}
-\begin{DoxyCompactList}\small\item\em Existing texture tag to base the sheet on. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}{frameW}} = 1
-\begin{DoxyCompactList}\small\item\em Frame width in pixels. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{frameH}} = 1
-\begin{DoxyCompactList}\small\item\em Frame height in pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Job for asynchronously creating a sprite sheet from a texture. 
+Load request describing a sprite sheet resource to be created/registered. 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00064}{64}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+\doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job} references an existing texture by tag and specifies the sprite sheet grid division (frameW, frameH).
+
+Note\+: This job type exists in \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}, but there is no corresponding Sprite\+Sheet\+Result in \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} in this header. It is expected that the worker/main-\/thread integration handles sprite sheet registration separately. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00097}{97}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_sprite_sheet_job_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}\index{SpriteSheetJob@{SpriteSheetJob}!frameH@{frameH}}
 \index{frameH@{frameH}!SpriteSheetJob@{SpriteSheetJob}}
@@ -40,11 +42,7 @@ int Sprite\+Sheet\+Job\+::frameH = 1}
 
 
 
-Frame height in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00069}{69}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00102}{102}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}\index{SpriteSheetJob@{SpriteSheetJob}!frameW@{frameW}}
 \index{frameW@{frameW}!SpriteSheetJob@{SpriteSheetJob}}
@@ -54,11 +52,7 @@ int Sprite\+Sheet\+Job\+::frameW = 1}
 
 
 
-Frame width in pixels. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00068}{68}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00101}{101}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}\index{SpriteSheetJob@{SpriteSheetJob}!tag@{tag}}
 \index{tag@{tag}!SpriteSheetJob@{SpriteSheetJob}}
@@ -68,11 +62,7 @@ std\+::string Sprite\+Sheet\+Job\+::tag}
 
 
 
-Identifier tag for the sprite sheet. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00066}{66}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00099}{99}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}\index{SpriteSheetJob@{SpriteSheetJob}!textureTag@{textureTag}}
 \index{textureTag@{textureTag}!SpriteSheetJob@{SpriteSheetJob}}
@@ -82,14 +72,10 @@ std\+::string Sprite\+Sheet\+Job\+::texture\+Tag}
 
 
 
-Existing texture tag to base the sheet on. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00067}{67}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00100}{100}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}

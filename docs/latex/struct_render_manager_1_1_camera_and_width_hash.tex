@@ -1,5 +1,10 @@
 \doxysection{Render\+Manager\+::Camera\+And\+Width\+Hash Struct Reference}
 \hypertarget{struct_render_manager_1_1_camera_and_width_hash}{}\label{struct_render_manager_1_1_camera_and_width_hash}\index{RenderManager::CameraAndWidthHash@{RenderManager::CameraAndWidthHash}}
+
+
+Hash functor for (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width) keys used in debug\+Line\+Map.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -8,14 +13,12 @@ std\+::size\+\_\+t \mbox{\hyperlink{struct_render_manager_1_1_camera_and_width_h
 
 
 \doxysubsection{Detailed Description}
+Hash functor for (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width) keys used in debug\+Line\+Map. 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00678}{678}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00384}{384}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
-
-
-\label{doc-func-members}
-\Hypertarget{struct_render_manager_1_1_camera_and_width_hash_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{struct_render_manager_1_1_camera_and_width_hash_afd0fb1104c3122fb53a5f1ff35a7b621}\index{RenderManager::CameraAndWidthHash@{RenderManager::CameraAndWidthHash}!operator()@{operator()}}
 \index{operator()@{operator()}!RenderManager::CameraAndWidthHash@{RenderManager::CameraAndWidthHash}}
@@ -25,17 +28,17 @@ std\+::size\+\_\+t Render\+Manager\+::\+Camera\+And\+Width\+Hash\+::operator() (
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00386}{386}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00680}{680}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<Camera2D*>()(key.first)\ \string^\ std::hash<float>()(key.second);}
-\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<Camera2D*>()(key.first)\ \string^\ std::hash<float>()(key.second);}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\end{DoxyCompactItemize}

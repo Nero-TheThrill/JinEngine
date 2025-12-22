@@ -2,7 +2,7 @@
 \hypertarget{struct_texture_settings}{}\label{struct_texture_settings}\index{TextureSettings@{TextureSettings}}
 
 
-Configuration structure for texture creation.  
+Describes configuration parameters used when creating or updating a texture.  
 
 
 
@@ -13,28 +13,26 @@ Configuration structure for texture creation.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6}{Texture\+Min\+Filter}} \mbox{\hyperlink{struct_texture_settings_a9d30e90e0b8346cad1e6c10a6c543087}{min\+Filter}} = \mbox{\hyperlink{_texture_8h_a5085aa1953bce0fe12fbdb71e56333c6a32a843da6ea40ab3b17a3421ccdf671b}{Texture\+Min\+Filter\+::\+Linear}}
-\begin{DoxyCompactList}\small\item\em Minification filter. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915}{Texture\+Mag\+Filter}} \mbox{\hyperlink{struct_texture_settings_ae47adc7174dcf5bde39e6f8bd1ffc7a0}{mag\+Filter}} = \mbox{\hyperlink{_texture_8h_aee79dc6a68e22c98941b4a3e1489e915a32a843da6ea40ab3b17a3421ccdf671b}{Texture\+Mag\+Filter\+::\+Linear}}
-\begin{DoxyCompactList}\small\item\em Magnification filter. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bf}{Texture\+Wrap}} \mbox{\hyperlink{struct_texture_settings_a3b54cb18a7fd881b2f7e01d1dd29db3a}{wrapS}} = \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfa74556551231333c36debc3d373261134}{Texture\+Wrap\+::\+Clamp\+To\+Edge}}
-\begin{DoxyCompactList}\small\item\em Wrapping mode for S (U) axis. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bf}{Texture\+Wrap}} \mbox{\hyperlink{struct_texture_settings_a89e689b4de2e7f2a7c856d091a19632c}{wrapT}} = \mbox{\hyperlink{_texture_8h_ae99e0f833ccd2a830a871dba98d1c5bfa74556551231333c36debc3d373261134}{Texture\+Wrap\+::\+Clamp\+To\+Edge}}
-\begin{DoxyCompactList}\small\item\em Wrapping mode for T (V) axis. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{struct_texture_settings_a7e4fe01f2ced85bd77fedc1ea9e36518}{generate\+Mipmap}} = true
-\begin{DoxyCompactList}\small\item\em Whether to generate mipmaps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Configuration structure for texture creation. 
+Describes configuration parameters used when creating or updating a texture. 
 
-Stores filtering, wrapping, and mipmap generation settings used when creating a texture. 
+\doxylink{struct_texture_settings}{Texture\+Settings} encapsulates common Open\+GL texture state such as filtering, wrapping, and mipmap generation. It is passed to texture creation and update routines to ensure consistent configuration. 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00054}{54}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00059}{59}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_texture_settings_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_texture_settings_a7e4fe01f2ced85bd77fedc1ea9e36518}\index{TextureSettings@{TextureSettings}!generateMipmap@{generateMipmap}}
 \index{generateMipmap@{generateMipmap}!TextureSettings@{TextureSettings}}
@@ -44,11 +42,7 @@ bool Texture\+Settings\+::generate\+Mipmap = true}
 
 
 
-Whether to generate mipmaps. 
-
-
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00060}{60}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00065}{65}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_ae47adc7174dcf5bde39e6f8bd1ffc7a0}\index{TextureSettings@{TextureSettings}!magFilter@{magFilter}}
 \index{magFilter@{magFilter}!TextureSettings@{TextureSettings}}
@@ -58,11 +52,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00060}{60}} of file \mbo
 
 
 
-Magnification filter. 
-
-
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00057}{57}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00062}{62}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a9d30e90e0b8346cad1e6c10a6c543087}\index{TextureSettings@{TextureSettings}!minFilter@{minFilter}}
 \index{minFilter@{minFilter}!TextureSettings@{TextureSettings}}
@@ -72,11 +62,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00057}{57}} of file \mbo
 
 
 
-Minification filter. 
-
-
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00056}{56}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00061}{61}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a3b54cb18a7fd881b2f7e01d1dd29db3a}\index{TextureSettings@{TextureSettings}!wrapS@{wrapS}}
 \index{wrapS@{wrapS}!TextureSettings@{TextureSettings}}
@@ -86,11 +72,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00056}{56}} of file \mbo
 
 
 
-Wrapping mode for S (U) axis. 
-
-
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00058}{58}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00063}{63}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a89e689b4de2e7f2a7c856d091a19632c}\index{TextureSettings@{TextureSettings}!wrapT@{wrapT}}
 \index{wrapT@{wrapT}!TextureSettings@{TextureSettings}}
@@ -100,14 +82,10 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00058}{58}} of file \mbo
 
 
 
-Wrapping mode for T (V) axis. 
-
-
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00059}{59}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00064}{64}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_texture_8h}{Texture.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_texture_8h}{Texture.\+h}}\end{DoxyCompactItemize}

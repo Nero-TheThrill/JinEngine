@@ -2,37 +2,46 @@
 \hypertarget{struct_engine_timer}{}\label{struct_engine_timer}\index{EngineTimer@{EngineTimer}}
 
 
+Utility structure for frame timing and FPS calculation.  
+
+
+
+
 {\ttfamily \#include $<$Engine\+Timer.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start}} ()
-\item 
-float \mbox{\hyperlink{struct_engine_timer_a10ee28d56bb7d30bd29929e870e8e2f1}{Tick}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the timer state. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}{Tick}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
+\begin{DoxyCompactList}\small\item\em Advances the timer and computes delta time for the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{Should\+Update\+FPS}} (float \&out\+FPS)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Determines whether an updated FPS value should be reported. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{last\+Time}} = 0.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em Time value recorded during the previous frame. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fps\+Timer}} = 0.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em Accumulated elapsed time used for FPS calculation. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frame\+Count}} = 0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of frames accumulated since the last FPS update. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Utility structure for frame timing and FPS calculation. 
+
+\doxylink{struct_engine_timer}{Engine\+Timer} provides basic timing functionality used by the engine loop. It measures delta time between frames and optionally computes frames-\/per-\/second (FPS) over a fixed accumulation interval.
+
+The timer relies on time information provided through \doxylink{struct_engine_context}{Engine\+Context} (typically sourced from a high-\/resolution platform timer).
+
+This structure is intended to be owned and driven by the core engine loop. 
+
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00017}{17}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00003}{3}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
-
-
-\label{doc-func-members}
-\Hypertarget{struct_engine_timer_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}\index{EngineTimer@{EngineTimer}!ShouldUpdateFPS@{ShouldUpdateFPS}}
 \index{ShouldUpdateFPS@{ShouldUpdateFPS}!EngineTimer@{EngineTimer}}
@@ -42,20 +51,36 @@ bool Engine\+Timer\+::\+Should\+Update\+FPS (\begin{DoxyParamCaption}\item[{floa
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
+Determines whether an updated FPS value should be reported. 
+
+This function accumulates frame count and elapsed time internally. When a predefined time interval has elapsed (commonly 1 second), it computes the average FPS, writes it to out\+FPS, resets the internal FPS counters, and returns true.
+
+If the interval has not yet elapsed, the function returns false and out\+FPS remains unmodified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+FPS} & Output parameter that receives the calculated FPS value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a new FPS value was computed; false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ >=\ 0.3f)}
-\DoxyCodeLine{00025\ \ \ \ \ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ outFPS\ =\ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ /\ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}};}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ =\ 0.0f;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ =\ 0;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00030\ \ \ \ \ \}}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ >=\ 0.3f)}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ outFPS\ =\ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ /\ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ =\ 0.0f;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ \}}
 
 \end{DoxyCode}
 \Hypertarget{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}\index{EngineTimer@{EngineTimer}!Start@{Start}}
@@ -66,44 +91,66 @@ void Engine\+Timer\+::\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
+Initializes the timer state. 
+
+Resets internal time tracking values and prepares the timer for the first Tick call. 
+
+Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00005\ \{}
-\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glfwGetTime());}
-\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ =\ 0.0f;}
-\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ =\ 0;}
-\DoxyCodeLine{00009\ \}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glfwGetTime());}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ =\ 0.0f;}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}\ =\ 0;}
+\DoxyCodeLine{00011\ \}}
 
 \end{DoxyCode}
-\Hypertarget{struct_engine_timer_a10ee28d56bb7d30bd29929e870e8e2f1}\index{EngineTimer@{EngineTimer}!Tick@{Tick}}
+\Hypertarget{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}\index{EngineTimer@{EngineTimer}!Tick@{Tick}}
 \index{Tick@{Tick}!EngineTimer@{EngineTimer}}
 \doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
-{\footnotesize\ttfamily \label{struct_engine_timer_a10ee28d56bb7d30bd29929e870e8e2f1} 
-float Engine\+Timer\+::\+Tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de} 
+float Engine\+Timer\+::\+Tick (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&}]{engine\+Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
+Advances the timer and computes delta time for the current frame. 
+
+This function retrieves the current time from \doxylink{struct_engine_context}{Engine\+Context}, computes the elapsed time since the previous frame, updates internal accumulators, and returns delta time in seconds.
+
+The returned delta time is typically used to drive frame-\/based updates throughout the engine.
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Context} & Engine context providing the current time source. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Delta time (seconds) since the last Tick call. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00012\ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{float}\ now\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glfwGetTime());}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ now\ -\/\ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}};}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}}\ =\ now;}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ +=\ dt;}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}++;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ dt;}
-\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ now\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(glfwGetTime());}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ now\ -\/\ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{lastTime}}\ =\ now;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (dt\ >\ 0.05f)}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{inputManager}}-\/>\mbox{\hyperlink{class_input_manager_a92319ec0b9f5eff3fd9a2e22a434a3a1}{Reset}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ dt\ =\ 0.0f;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fpsTimer}}\ +=\ dt;}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frameCount}}++;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ dt;}
+\DoxyCodeLine{00026\ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_engine_timer_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}\index{EngineTimer@{EngineTimer}!fpsTimer@{fpsTimer}}
 \index{fpsTimer@{fpsTimer}!EngineTimer@{EngineTimer}}
@@ -113,7 +160,11 @@ float Engine\+Timer\+::fps\+Timer = 0.\+0f}
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00012}{12}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Accumulated elapsed time used for FPS calculation. 
+
+
+
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00072}{72}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 \Hypertarget{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}\index{EngineTimer@{EngineTimer}!frameCount@{frameCount}}
 \index{frameCount@{frameCount}!EngineTimer@{EngineTimer}}
@@ -123,7 +174,11 @@ int Engine\+Timer\+::frame\+Count = 0}
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00013}{13}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Number of frames accumulated since the last FPS update. 
+
+
+
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00077}{77}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 \Hypertarget{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}\index{EngineTimer@{EngineTimer}!lastTime@{lastTime}}
 \index{lastTime@{lastTime}!EngineTimer@{EngineTimer}}
@@ -133,11 +188,15 @@ float Engine\+Timer\+::last\+Time = 0.\+0f}
 
 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00011}{11}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Time value recorded during the previous frame. 
+
+Used to compute delta time in Tick. 
+
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00067}{67}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_engine_timer_8h}{Engine\+Timer.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_engine_timer_8cpp}{Engine\+Timer.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_engine_timer_8h}{Engine\+Timer.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_engine_timer_8cpp}{Engine\+Timer.\+cpp}}\end{DoxyCompactItemize}

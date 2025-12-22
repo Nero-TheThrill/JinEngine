@@ -2,7 +2,7 @@
 \hypertarget{class_circle_collider}{}\label{class_circle_collider}\index{CircleCollider@{CircleCollider}}
 
 
-Circle collider with radius centered at owner\textquotesingle{}s position plus offset.  
+Circle collider implementation.  
 
 
 
@@ -19,49 +19,49 @@ Inheritance diagram for Circle\+Collider\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_circle_collider_a597cd7fc15521b49b7bda1476caaadb4}{Circle\+Collider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}, float size)
-\begin{DoxyCompactList}\small\item\em Construct a circle collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a circle collider from a diameter-\/like size value. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{Get\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Get current radius in world units (scaled if enabled). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current scaled radius used for collision tests. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_circle_collider_a8bcc2d7586a3380e55317e7671c52d94}{Get\+Size}} () const
-\begin{DoxyCompactList}\small\item\em Get current diameter in world units (2 \texorpdfstring{$\ast$}{*} radius). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current scaled diameter-\/like size (radius \texorpdfstring{$\ast$}{*} 2). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_circle_collider_add83b7e1b2eb124b5d065bf96ea4dcd3}{Set\+Radius}} (float r)
-\begin{DoxyCompactList}\small\item\em Set authoring radius (updates base\+Radius; scaled on sync). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the base radius and updates the scaled radius accordingly. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_circle_collider_a4fa87c8b2fb9204f9d5e9d47dc3a44bc}{Check\+Point\+Collision}} (const glm\+::vec2 \&point) const override
-\begin{DoxyCompactList}\small\item\em Point-\/in-\/circle test in world space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tests whether a point lies within the circle area. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}} ()=delete
-\item 
+\begin{DoxyCompactList}\small\item\em Deleted default constructor to enforce owner association. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_collider_a5a49c6e929279578b12e7d1c60c50c75}{Collider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}owner\+\_\+)
-\begin{DoxyCompactList}\small\item\em Construct with an owning \doxylink{class_object}{Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a collider bound to an owner object. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_collider_a7b43c72a6424d8c11dec965d166953d3}{\texorpdfstring{$\sim$}{\string~}\+Collider}} ()=default
-\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic deletion. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_abcbc7a880210f872f2704035940f243c}{Set\+Use\+Transform\+Scale}} (bool use)
-\begin{DoxyCompactList}\small\item\em Enable/disable syncing the shape with the owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables using the owner\textquotesingle{}s transform scale to size the collider. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_collider_a9f9dd44c772f34a84789018f59df905a}{Is\+Using\+Transform\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Whether transform-\/scale synchronization is enabled. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this collider uses the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_ad96c878cd28533c4ec6d3ad6b1decdae}{Set\+Offset}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Set local shape offset in world units relative to the owner. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the local-\/space offset of the collider relative to the owner\textquotesingle{}s origin. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{Get\+Offset}} () const
-\begin{DoxyCompactList}\small\item\em Get local shape offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the local-\/space offset of the collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} \mbox{\hyperlink{class_circle_collider_ac2513ad483f0fc9789afe8e25f4797c1}{Get\+Type}} () const override
-\begin{DoxyCompactList}\small\item\em Concrete collider type for dispatch. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{Collider\+Type\+::\+Circle}. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_circle_collider_afc46297adb83cfaab9487e89d7a25298}{Get\+Bounding\+Radius}} () const override
-\begin{DoxyCompactList}\small\item\em Bounding radius used by broad phase and camera culling. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a broad-\/phase bounding radius for the circle. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_circle_collider_a9598b67bc72342284318d19f3c0cf35b}{Check\+Collision}} (const \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*}other) const override
-\begin{DoxyCompactList}\small\item\em Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs narrow-\/phase collision test using double dispatch. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_circle_collider_a69a051ea02a260f7b5c46cb76058cbe5}{Dispatch\+Against}} (const \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \&other) const override
-\begin{DoxyCompactList}\small\item\em Circle–\+Circle overlap test. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Circle-\/vs-\/circle narrow-\/phase collision. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_circle_collider_a951f365eb24e6e1a286bc7c518e8ab46}{Dispatch\+Against}} (const \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \&other) const override
-\begin{DoxyCompactList}\small\item\em Circle–\+AABB overlap test. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Circle-\/vs-\/\+AABB narrow-\/phase collision. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_circle_collider_a8f00aeea30fb3ffb45ebbcaab0d96fdd}{Sync\+With\+Transform\+Scale}} () override
-\begin{DoxyCompactList}\small\item\em Refresh \doxylink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaled\+Radius} from owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates scaled\+Radius based on owner transform scale when enabled. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_circle_collider_ae67885becfba36118e3ed5fc7a35d252}{Draw\+Debug}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \texorpdfstring{$\ast$}{*}rm, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}cam, const glm\+::vec4 \&color) const override
-\begin{DoxyCompactList}\small\item\em Debug-\/draw circle outline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draws the circle collider for debugging. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,37 +70,37 @@ friend \mbox{\hyperlink{class_circle_collider_a1444c449e346513260829327c9617db4}
 friend \mbox{\hyperlink{class_circle_collider_a8e1da083b202d4fcfe9f3650b0412ccb}{Spatial\+Hash\+Grid}}
 \item 
 float \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{base\+Radius}} = 0.\+5f
-\begin{DoxyCompactList}\small\item\em Authoring radius (before applying owner scale). \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaled\+Radius}} = 0.\+5f
-\begin{DoxyCompactList}\small\item\em Cached world-\/space radius after scale sync. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{Get\+Owner}} () const
-\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object} accessor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the object that owns this collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}
-\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object}; non-\/null after construction. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{use\+Transform\+Scale}} = true
-\begin{DoxyCompactList}\small\item\em Whether to read scale from the owner\textquotesingle{}s Transform (default\+: true). \end{DoxyCompactList}\item 
+\item 
 glm\+::vec2 \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}
-\begin{DoxyCompactList}\small\item\em Local XY offset from the owner\textquotesingle{}s origin, applied to shape center. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Circle collider with radius centered at owner\textquotesingle{}s position plus offset. 
+Circle collider implementation. 
 
-Maintains both the base (authoring) radius and the scaled radius derived from the owner\textquotesingle{}s Transform scale when \doxylink{class_collider_a10c23d55e50b048078cddb0f806d5731}{use\+Transform\+Scale} is enabled. 
+\doxylink{class_circle_collider}{Circle\+Collider} stores both a base radius and a scaled radius. When transform scale syncing is enabled, scaled\+Radius is updated relative to base\+Radius in Sync\+With\+Transform\+Scale.
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00196}{196}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+The constructor receives a size and converts it to radius by dividing by 2. 
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00200}{200}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_circle_collider_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_circle_collider_a597cd7fc15521b49b7bda1476caaadb4}\index{CircleCollider@{CircleCollider}!CircleCollider@{CircleCollider}}
 \index{CircleCollider@{CircleCollider}!CircleCollider@{CircleCollider}}
@@ -110,29 +110,27 @@ Circle\+Collider\+::\+Circle\+Collider (\begin{DoxyParamCaption}\item[{\mbox{\hy
 
 
 
-Construct a circle collider. 
+Constructs a circle collider from a diameter-\/like size value. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em owner} & Non-\/null owning \doxylink{class_object}{Object}. \\
+{\em owner} & \doxylink{class_object}{Object} that owns this collider. \\
 \hline
-{\em size} & Authoring diameter in world units (radius = size/2). \\
+{\em size} & Full size (diameter) used to initialize radius as size/2. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00206}{206}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00211}{211}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}),\ \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{baseRadius}}(size\ /\ 2.f),\ \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaledRadius}}(size\ /\ 2.f)\ \{}
-\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}),\ \mbox{\hyperlink{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}{baseRadius}}(size\ /\ 2.f),\ \mbox{\hyperlink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaledRadius}}(size\ /\ 2.f)\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_circle_collider_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_circle_collider_a9598b67bc72342284318d19f3c0cf35b}\index{CircleCollider@{CircleCollider}!CheckCollision@{CheckCollision}}
 \index{CheckCollision@{CheckCollision}!CircleCollider@{CircleCollider}}
@@ -142,16 +140,8 @@ bool Circle\+Collider\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{cons
 
 
 
-Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. 
+Performs narrow-\/phase collision test using double dispatch. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Other collider. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a41660505ae4b413d3d4b004162857426}{Collider}}.
@@ -175,15 +165,15 @@ bool Circle\+Collider\+::\+Check\+Point\+Collision (\begin{DoxyParamCaption}\ite
 
 
 
-Point-\/in-\/circle test in world space. 
+Tests whether a point lies within the circle area. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em point} & World-\/space point. \\
+{\em point} & Point to test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the point lies inside or on the circle. 
+true if inside or on the circle; false otherwise. 
 \end{DoxyReturn}
 
 
@@ -210,16 +200,8 @@ bool Circle\+Collider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{con
 
 
 
-Circle–\+AABB overlap test. 
+Circle-\/vs-\/\+AABB narrow-\/phase collision. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Other axis-\/aligned box. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_ae6038e89a98d8b252f143ddbc960a484}{Collider}}.
@@ -243,16 +225,8 @@ bool Circle\+Collider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{con
 
 
 
-Circle–\+Circle overlap test. 
+Circle-\/vs-\/circle narrow-\/phase collision. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Other circle. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Collider}}.
@@ -281,7 +255,7 @@ void Circle\+Collider\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hy
 
 
 
-Debug-\/draw circle outline. 
+Draws the circle collider for debugging. 
 
 
 
@@ -320,11 +294,8 @@ float Circle\+Collider\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\
 
 
 
-Bounding radius used by broad phase and camera culling. 
+Returns a broad-\/phase bounding radius for the circle. 
 
-\begin{DoxyReturn}{Returns}
-Equal to \doxylink{class_circle_collider_a5679b18c3379fb6303c1f41288a4a5b7}{Get\+Radius()}. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Collider}}.
@@ -348,11 +319,8 @@ float Circle\+Collider\+::\+Get\+Radius (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Get current radius in world units (scaled if enabled). 
+Returns the current scaled radius used for collision tests. 
 
-\begin{DoxyReturn}{Returns}
-Non-\/negative radius. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
@@ -372,11 +340,8 @@ float Circle\+Collider\+::\+Get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 
 
 
-Get current diameter in world units (2 \texorpdfstring{$\ast$}{*} radius). 
+Returns the current scaled diameter-\/like size (radius \texorpdfstring{$\ast$}{*} 2). 
 
-\begin{DoxyReturn}{Returns}
-Non-\/negative diameter. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
@@ -396,22 +361,19 @@ Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00015}{15}} of file \
 
 
 
-Concrete collider type for dispatch. 
+Returns \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{Collider\+Type\+::\+Circle}. 
 
-\begin{DoxyReturn}{Returns}
-One of \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type} values. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a677c9e05fcee3ef2ed94998dc5f2458d}{Collider}}.
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00236}{236}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00244}{244}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00236\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{ColliderType::Circle}};\ \}}
+\DoxyCodeLine{00244\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{ColliderType::Circle}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_circle_collider_add83b7e1b2eb124b5d065bf96ea4dcd3}\index{CircleCollider@{CircleCollider}!SetRadius@{SetRadius}}
@@ -422,11 +384,11 @@ void Circle\+Collider\+::\+Set\+Radius (\begin{DoxyParamCaption}\item[{float}]{r
 
 
 
-Set authoring radius (updates base\+Radius; scaled on sync). 
+Sets the base radius and updates the scaled radius accordingly. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em r} & New base radius in world units. \\
+{\em r} & New base radius. \\
 \hline
 \end{DoxyParams}
 
@@ -451,7 +413,7 @@ void Circle\+Collider\+::\+Sync\+With\+Transform\+Scale (\begin{DoxyParamCaption
 
 
 
-Refresh \doxylink{class_circle_collider_a5309cb556ef23c1eba1c9ffbddffe1d0}{scaled\+Radius} from owner\textquotesingle{}s Transform scale. 
+Updates scaled\+Radius based on owner transform scale when enabled. 
 
 
 
@@ -473,8 +435,6 @@ Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00053}{53}} of file \
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_circle_collider_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_circle_collider_a1444c449e346513260829327c9617db4}\index{CircleCollider@{CircleCollider}!AABBCollider@{AABBCollider}}
 \index{AABBCollider@{AABBCollider}!CircleCollider@{CircleCollider}}
@@ -484,17 +444,13 @@ friend Circle\+Collider\+::\+AABBCollider\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00198}{198}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00202}{202}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b}\index{CircleCollider@{CircleCollider}!baseRadius@{baseRadius}}
 \index{baseRadius@{baseRadius}!CircleCollider@{CircleCollider}}
 \doxysubsubsection{\texorpdfstring{baseRadius}{baseRadius}}
 {\footnotesize\ttfamily \label{class_circle_collider_a9ec4c0b866383ac3d9e81afd3fba7d5b} 
 float Circle\+Collider\+::base\+Radius = 0.\+5f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Authoring radius (before applying owner scale). 
 
 
 
@@ -508,11 +464,7 @@ float Circle\+Collider\+::scaled\+Radius = 0.\+5f\hspace{0.3cm}{\ttfamily [priva
 
 
 
-Cached world-\/space radius after scale sync. 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00279}{279}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00277}{277}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_circle_collider_a8e1da083b202d4fcfe9f3650b0412ccb}\index{CircleCollider@{CircleCollider}!SpatialHashGrid@{SpatialHashGrid}}
 \index{SpatialHashGrid@{SpatialHashGrid}!CircleCollider@{CircleCollider}}
@@ -522,11 +474,11 @@ friend Circle\+Collider\+::\+Spatial\+Hash\+Grid\hspace{0.3cm}{\ttfamily [privat
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00199}{199}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00203}{203}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}

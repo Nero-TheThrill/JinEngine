@@ -2,7 +2,7 @@
 \hypertarget{class_sound_manager}{}\label{class_sound_manager}\index{SoundManager@{SoundManager}}
 
 
-Manages sound resources and playback through miniaudio.  
+Manages sound asset registration and runtime playback instances using miniaudio.  
 
 
 
@@ -13,7 +13,7 @@ Manages sound resources and playback through miniaudio.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{Sound\+Info}}
-\item 
+\begin{DoxyCompactList}\small\item\em Registered sound metadata for tag-\/based playback. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Instance\+MA}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Types}
@@ -23,79 +23,91 @@ enum class \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81e
 , \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325}{Resume}}
 , \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481}{Stop}}
  \}
-\begin{DoxyCompactList}\small\item\em Types of playback control operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Control command type used by Control\+By\+ID/\+Control\+By\+Tag/\+Control\+All. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{Sound\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Constructs and initializes the sound manager. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an empty \doxylink{class_sound_manager}{Sound\+Manager} with no initialized audio engine. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}{\texorpdfstring{$\sim$}{\string~}\+Sound\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Destroys the sound manager and frees all audio resources. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_sound_manager}{Sound\+Manager} and releases all audio resources. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}{Sound\+Manager}} (const \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} \&)=delete
 \item 
 \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} \& \mbox{\hyperlink{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}{operator=}} (const \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} \&)=delete
 \item 
 void \mbox{\hyperlink{class_sound_manager_a8e52926369f4ff23599507c5e7cf7246}{Load\+Sound}} (const std\+::string \&tag, const std\+::string \&filepath, bool loop=false)
-\begin{DoxyCompactList}\small\item\em Loads a sound resource from disk. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Registers a sound asset under a tag. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} \mbox{\hyperlink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play}} (const std\+::string \&tag, float volume=1.\+0f, float start\+Time\+Sec=0.\+0f)
-\begin{DoxyCompactList}\small\item\em Plays a sound by tag and returns an instance ID. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Plays a new instance of a previously registered sound. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a66c578e6c2850d673ea035870871e6ab}{Set\+Volume\+By\+ID}} (\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} id, float volume)
-\begin{DoxyCompactList}\small\item\em Sets the volume of a sound instance by its ID. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the volume of a specific playback instance by ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a8581621afa759742160371f27c31e6fa}{Set\+Volume\+By\+Tag}} (const std\+::string \&tag, float volume)
-\begin{DoxyCompactList}\small\item\em Sets the volume for all active instances of a given tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the volume of all active instances associated with a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a4447c313bba2cdfbac3053a094f66776}{Set\+Volume\+All}} (float volume)
-\begin{DoxyCompactList}\small\item\em Sets the volume for all active sounds globally. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the volume of all active instances across all tags. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a8d8a89dcb398e0e51b6853f5aa684280}{Control\+By\+ID}} (\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{Sound\+Control\+Type}} control, \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} id)
-\begin{DoxyCompactList}\small\item\em Controls a specific sound instance by ID. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Applies a control command to a specific playback instance by ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_aaa6392113f543f2bb32e6811bd010100}{Control\+By\+Tag}} (\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{Sound\+Control\+Type}} control, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Controls all active instances of a sound tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Applies a control command to all active instances associated with a tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_ad78be412f57622826d4d7bf5f46378a8}{Control\+All}} (\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{Sound\+Control\+Type}} control)
-\begin{DoxyCompactList}\small\item\em Controls all currently playing sounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Applies a control command to all active instances across all tags. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_sound_manager_af1ee5e29fca894a8ac9aeeb56b81f21d}{Init}} ()
-\begin{DoxyCompactList}\small\item\em Initializes the internal miniaudio engine. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates and initializes the miniaudio engine. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_aaf241621221cdbefeba78e8b6bc29240}{Update}} ()
-\begin{DoxyCompactList}\small\item\em Updates the sound manager state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs per-\/frame maintenance of sound instances. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}{Cleanup}} ()
-\begin{DoxyCompactList}\small\item\em Cleans up all sound instances and channels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Removes finished playback instances and recycles their IDs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_af25662c1d0237540686087a080001f9b}{Free}} ()
-\begin{DoxyCompactList}\small\item\em Frees all resources and uninitializes the engine. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stops all instances and destroys the miniaudio engine. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} \mbox{\hyperlink{class_sound_manager_a1e76b08631c0a87462dab75fb0d526ed}{Generate\+ID}} ()
-\begin{DoxyCompactList}\small\item\em Generates or reuses a unique \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Produces a new \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}, reusing IDs when available. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-friend \mbox{\hyperlink{class_sound_manager_ac041070b4d7ca98d9588d8c7d20909f0}{SNAKE\+\_\+\+Engine}}
+friend \mbox{\hyperlink{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}{Jin\+Engine}}
 \item 
 ma\+\_\+engine \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}} = nullptr
-\begin{DoxyCompactList}\small\item\em Underlying miniaudio engine instance. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{Sound\+Info}} $>$ \mbox{\hyperlink{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}{sounds}}
-\begin{DoxyCompactList}\small\item\em Loaded sound registry. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Instance\+MA}} \texorpdfstring{$\ast$}{*} $>$ $>$ \mbox{\hyperlink{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}{active\+Channels}}
-\begin{DoxyCompactList}\small\item\em Forward-\/declared miniaudio-\/backed sound instance. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}}, \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Instance\+MA}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}{instance\+Map}}
-\begin{DoxyCompactList}\small\item\em Maps IDs to active instances. \end{DoxyCompactList}\item 
+\item 
 std\+::queue$<$ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} $>$ \mbox{\hyperlink{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}{reusable\+IDs}}
-\begin{DoxyCompactList}\small\item\em Queue of reusable instance IDs. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}} \mbox{\hyperlink{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}{next\+Instance\+ID}} = 1
-\begin{DoxyCompactList}\small\item\em Next ID to assign if no reusable IDs available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Manages sound resources and playback through miniaudio. 
+Manages sound asset registration and runtime playback instances using miniaudio. 
 
-\doxylink{class_sound_manager}{Sound\+Manager} loads audio files, creates playback instances, and provides control over volume, pausing, resuming, and stopping. Each sound instance is identified by a unique \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}, which can be reused for efficiency.
+\doxylink{class_sound_manager}{Sound\+Manager} owns a miniaudio engine (ma\+\_\+engine) and provides a tag-\/based interface for\+:
+\begin{DoxyItemize}
+\item Registering sound assets (tag -\/\texorpdfstring{$>$}{>} filepath + loop setting).
+\item Spawning playback instances (each Play call creates a new ma\+\_\+sound instance).
+\item Controlling active instances (pause/resume/stop) by instance ID, by tag, or globally.
+\item Cleaning up finished non-\/looping instances and recycling their IDs.
+\end{DoxyItemize}
 
-Sounds are registered by a string tag and can be controlled individually or in groups (by tag or globally). 
+Each \doxylink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play()} call loads the file and creates a dedicated playback instance. Active instances are tracked in two ways\+:
+\begin{DoxyItemize}
+\item instance\+Map\+: \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID} -\/\texorpdfstring{$>$}{>} instance pointer
+\item active\+Channels\+: tag -\/\texorpdfstring{$>$}{>} list of active instance pointers
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00026}{26}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+IDs are recycled using a queue (reusable\+IDs) to avoid unbounded growth of \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}.
+
+The miniaudio engine is created and initialized in \doxylink{class_sound_manager_af1ee5e29fca894a8ac9aeeb56b81f21d}{Init()}, and destroyed in \doxylink{class_sound_manager_af25662c1d0237540686087a080001f9b}{Free()}. \doxylink{class_sound_manager_aaf241621221cdbefeba78e8b6bc29240}{Update()} performs maintenance by calling \doxylink{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}{Cleanup()} to remove finished instances. 
+
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00035}{35}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 
 
-\label{doc-enum-members}
-\Hypertarget{class_sound_manager_doc-enum-members}
 \doxysubsection{Member Enumeration Documentation}
 \Hypertarget{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}\index{SoundManager@{SoundManager}!SoundControlType@{SoundControlType}}
 \index{SoundControlType@{SoundControlType}!SoundManager@{SoundManager}}
@@ -105,9 +117,14 @@ enum class \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81e
 
 
 
-Types of playback control operations. 
+Control command type used by Control\+By\+ID/\+Control\+By\+Tag/\+Control\+All. 
 
-\begin{DoxyEnumFields}[2]{Enumerator}
+
+\begin{DoxyItemize}
+\item Pause\+: stores playback cursor, stops the sound, and marks the instance as paused.
+\item Resume\+: seeks to stored cursor and restarts if the instance is marked paused.
+\item Stop\+: stops, uninitializes, destroys the instance, removes tracking entries, and recycles its ID. 
+\end{DoxyItemize}\begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Pause@{Pause}!SoundManager@{SoundManager}}\index{SoundManager@{SoundManager}!Pause@{Pause}}}\Hypertarget{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f}\label{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f} 
 Pause&\\
 \hline
@@ -123,17 +140,15 @@ Stop&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00103}{103}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00143}{143}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00103\ \{\ Pause,\ Resume,\ Stop\ \};}
+\DoxyCodeLine{00143\ \{\ Pause,\ Resume,\ Stop\ \};}
 
 \end{DoxyCode}
 
 
-\label{doc-constructors}
-\Hypertarget{class_sound_manager_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}\index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
 \index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
@@ -143,9 +158,9 @@ Sound\+Manager\+::\+Sound\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 
 
-Constructs and initializes the sound manager. 
+Constructs an empty \doxylink{class_sound_manager}{Sound\+Manager} with no initialized audio engine. 
 
-Internally initializes the miniaudio engine. If initialization fails, no audio playback will occur. 
+The underlying miniaudio engine is created/initialized by \doxylink{class_sound_manager_af1ee5e29fca894a8ac9aeeb56b81f21d}{Init()}, which is expected to be called by \doxylink{class_jin_engine}{Jin\+Engine} during engine startup. 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
@@ -165,9 +180,9 @@ Sound\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Sound\+Manager (\begin{Doxy
 
 
 
-Destroys the sound manager and frees all audio resources. 
+Destroys the \doxylink{class_sound_manager}{Sound\+Manager} and releases all audio resources. 
 
-Stops all active sounds, cleans up allocated channels, and uninitializes the miniaudio engine. 
+Calls \doxylink{class_sound_manager_af25662c1d0237540686087a080001f9b}{Free()} to stop and destroy all active instances and to uninitialize/destroy the underlying miniaudio engine. 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
@@ -186,8 +201,6 @@ Sound\+Manager\+::\+Sound\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_sound_manager_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}\index{SoundManager@{SoundManager}!Cleanup@{Cleanup}}
 \index{Cleanup@{Cleanup}!SoundManager@{SoundManager}}
@@ -197,9 +210,15 @@ void Sound\+Manager\+::\+Cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 
-Cleans up all sound instances and channels. 
+Removes finished playback instances and recycles their IDs. 
 
-Stops playback and clears internal data structures. 
+For each tracked instance\+:
+\begin{DoxyItemize}
+\item Looping instances are kept even if not currently playing.
+\item Non-\/looping instances that reached the end are uninitialized, removed from active\+Channels, deleted, removed from instance\+Map, and their IDs are queued for reuse.
+\end{DoxyItemize}
+
+After the main pass, active\+Channels vectors are also pruned to remove nullptr entries and entries that correspond to finished non-\/looping sounds. 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
@@ -270,11 +289,13 @@ void Sound\+Manager\+::\+Control\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyp
 
 
 
-Controls all currently playing sounds. 
+Applies a control command to all active instances across all tags. 
+
+This collects a snapshot list of tags from active\+Channels and calls \doxylink{class_sound_manager_aaa6392113f543f2bb32e6811bd010100}{Control\+By\+Tag()} for each tag, which avoids iterator invalidation while modifying active\+Channels.
 
 
 \begin{DoxyParams}{Parameters}
-{\em control} & Control operation (Pause, Resume, Stop). \\
+{\em control} & Control command. \\
 \hline
 \end{DoxyParams}
 
@@ -306,13 +327,33 @@ void Sound\+Manager\+::\+Control\+By\+ID (\begin{DoxyParamCaption}\item[{\mbox{\
 
 
 
-Controls a specific sound instance by ID. 
+Applies a control command to a specific playback instance by ID. 
+
+Pause\+:
+\begin{DoxyItemize}
+\item Reads the cursor position in PCM frames and stores it.
+\item Stops the sound and marks the instance paused.
+\end{DoxyItemize}
+
+Resume\+:
+\begin{DoxyItemize}
+\item If the instance is paused, seeks to the stored cursor and starts playback.
+\end{DoxyItemize}
+
+Stop\+:
+\begin{DoxyItemize}
+\item Stops and uninitializes the ma\+\_\+sound.
+\item Removes the instance pointer from active\+Channels\mbox{[}inst-\/\texorpdfstring{$>$}{>}tag\mbox{]}.
+\item Deletes the instance, erases it from instance\+Map, and recycles the ID.
+\end{DoxyItemize}
+
+If the ID does not exist, this function does nothing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em control} & Control operation (Pause, Resume, Stop). \\
+{\em control} & Control command. \\
 \hline
-{\em id} & The \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID} to target. \\
+{\em id} & Playback instance ID. \\
 \hline
 \end{DoxyParams}
 
@@ -375,13 +416,25 @@ void Sound\+Manager\+::\+Control\+By\+Tag (\begin{DoxyParamCaption}\item[{\mbox{
 
 
 
-Controls all active instances of a sound tag. 
+Applies a control command to all active instances associated with a tag. 
+
+Pause/\+Resume\+:
+\begin{DoxyItemize}
+\item Iterates active\+Channels\mbox{[}tag\mbox{]} and pauses/resumes each instance using cursor tracking.
+\end{DoxyItemize}
+
+Stop\+:
+\begin{DoxyItemize}
+\item Stops and uninitializes each instance in active\+Channels\mbox{[}tag\mbox{]}, deletes them, removes corresponding entries from instance\+Map, recycles IDs, and clears the vector.
+\end{DoxyItemize}
+
+If the tag has no active instances, this function does nothing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em control} & Control operation (Pause, Resume, Stop). \\
+{\em control} & Control command. \\
 \hline
-{\em tag} & Tag of the sound resource. \\
+{\em tag} & Sound tag whose active instances should be controlled. \\
 \hline
 \end{DoxyParams}
 
@@ -466,9 +519,15 @@ void Sound\+Manager\+::\+Free (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Frees all resources and uninitializes the engine. 
+Stops all instances and destroys the miniaudio engine. 
 
-Called on destruction or when the engine shuts down. 
+
+\begin{DoxyItemize}
+\item Uninitializes and deletes all \doxylink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Instance\+MA} objects tracked by instance\+Map.
+\item Clears instance\+Map, active\+Channels, and the registered sound table.
+\item Clears the reusable ID queue and resets next\+Instance\+ID.
+\item Uninitializes and deletes the ma\+\_\+engine instance. 
+\end{DoxyItemize}
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
@@ -516,12 +575,12 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00053}{53}} of f
 
 
 
-Generates or reuses a unique \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}. 
+Produces a new \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}, reusing IDs when available. 
 
-If there are reusable IDs in the queue, one is popped and reused. Otherwise, increments the {\ttfamily next\+Instance\+ID}.
+If reusable\+IDs contains any previously freed IDs, one is popped and returned. Otherwise, next\+Instance\+ID is returned and incremented.
 
 \begin{DoxyReturn}{Returns}
-A unique \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}. 
+A non-\/zero \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}. 
 \end{DoxyReturn}
 
 
@@ -548,10 +607,12 @@ bool Sound\+Manager\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Initializes the internal miniaudio engine. 
+Creates and initializes the miniaudio engine. 
+
+Allocates ma\+\_\+engine if needed and calls ma\+\_\+engine\+\_\+init(). On failure, the engine is deleted and the pointer is reset to nullptr.
 
 \begin{DoxyReturn}{Returns}
-True if initialization succeeded, false otherwise. 
+True on success; false on failure. 
 \end{DoxyReturn}
 
 
@@ -568,7 +629,7 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00035}{35}} of f
 \DoxyCodeLine{00042\ \ \ \ \ ma\_result\ res\ =\ ma\_engine\_init(\textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}});}
 \DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ !=\ MA\_SUCCESS)}
 \DoxyCodeLine{00044\ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}miniaudio\ engine\ init\ failed:\ "{}}\ <<\ (\textcolor{keywordtype}{int})res);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}miniaudio\ engine\ init\ failed:\ "{}}\ <<\ (\textcolor{keywordtype}{int})res);}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}};}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}}\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
@@ -585,20 +646,19 @@ void Sound\+Manager\+::\+Load\+Sound (\begin{DoxyParamCaption}\item[{const std\+
 
 
 
-Loads a sound resource from disk. 
+Registers a sound asset under a tag. 
+
+This function records the filepath and default looping flag for the given tag. It does not load audio data immediately; loading occurs when \doxylink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play()} is called. If the tag already exists, the entry is overwritten.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Unique string identifier for the sound. \\
+{\em tag} & Tag name used to reference the sound later. \\
 \hline
-{\em filepath} & Path to the audio file. \\
+{\em filepath} & Path to the audio file to be loaded by miniaudio. \\
 \hline
-{\em loop} & Whether the sound should loop during playback. \\
+{\em loop} & Default looping behavior applied to instances created via \doxylink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play()}. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-Loading a sound with an existing tag will overwrite its entry. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
@@ -624,23 +684,34 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00087}{87}} of f
 
 
 
-Plays a sound by tag and returns an instance ID. 
+Plays a new instance of a previously registered sound. 
+
+If the engine is not initialized or the tag is not registered, this returns 0.
+
+A successful call\+:
+\begin{DoxyItemize}
+\item Creates a new \doxylink{struct_sound_manager_1_1_sound_instance_m_a}{Sound\+Instance\+MA}.
+\item Initializes a ma\+\_\+sound from the file path recorded for the tag.
+\item Applies volume and looping state.
+\item Optionally seeks to start\+Time\+Sec (converted to PCM frame using the sound\textquotesingle{}s sample rate if available, otherwise the engine sample rate).
+\item Starts playback and assigns a \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}.
+\item Tracks the instance in instance\+Map and active\+Channels\mbox{[}tag\mbox{]}.
+\end{DoxyItemize}
+
+The returned ID can be used with \doxylink{class_sound_manager_a8d8a89dcb398e0e51b6853f5aa684280}{Control\+By\+ID()} / \doxylink{class_sound_manager_a66c578e6c2850d673ea035870871e6ab}{Set\+Volume\+By\+ID()}. IDs are recycled after instances are destroyed.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Tag of the previously loaded sound. \\
+{\em tag} & Registered sound tag. \\
 \hline
-{\em volume} & Initial volume (0.\+0–1.0). \\
+{\em volume} & Initial volume applied to this instance. \\
 \hline
 {\em start\+Time\+Sec} & Optional start offset in seconds. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID} identifying the created instance. 
+Non-\/zero \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID} on success; 0 on failure. 
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Returns 0 if the sound tag is invalid or playback creation fails. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
@@ -665,7 +736,7 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00116}{116}} of 
 \DoxyCodeLine{00132\ \ \ \ \ ma\_result\ res\ =\ ma\_sound\_init\_from\_file(\mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}},\ path.c\_str(),\ 0,\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \&inst-\/>sound);}
 \DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ !=\ MA\_SUCCESS)}
 \DoxyCodeLine{00134\ \ \ \ \ \{}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ sound:\ "{}}\ <<\ path);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ load\ sound:\ "{}}\ <<\ path);}
 \DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ inst;}
 \DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
 \DoxyCodeLine{00138\ \ \ \ \ \}}
@@ -707,11 +778,13 @@ void Sound\+Manager\+::\+Set\+Volume\+All (\begin{DoxyParamCaption}\item[{float}
 
 
 
-Sets the volume for all active sounds globally. 
+Sets the volume of all active instances across all tags. 
+
+Iterates all tags currently present in active\+Channels and applies \doxylink{class_sound_manager_a8581621afa759742160371f27c31e6fa}{Set\+Volume\+By\+Tag()}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em volume} & Volume level (0.\+0–1.0). \\
+{\em volume} & New volume value to apply globally. \\
 \hline
 \end{DoxyParams}
 
@@ -736,13 +809,15 @@ void Sound\+Manager\+::\+Set\+Volume\+By\+ID (\begin{DoxyParamCaption}\item[{\mb
 
 
 
-Sets the volume of a sound instance by its ID. 
+Sets the volume of a specific playback instance by ID. 
+
+If the ID is not found, this function does nothing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & The \doxylink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID} to modify. \\
+{\em id} & Playback instance ID returned by \doxylink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play()}. \\
 \hline
-{\em volume} & Volume level (0.\+0–1.0). \\
+{\em volume} & New volume value to apply. \\
 \hline
 \end{DoxyParams}
 
@@ -768,13 +843,15 @@ void Sound\+Manager\+::\+Set\+Volume\+By\+Tag (\begin{DoxyParamCaption}\item[{co
 
 
 
-Sets the volume for all active instances of a given tag. 
+Sets the volume of all active instances associated with a tag. 
+
+Only instances currently tracked in active\+Channels\mbox{[}tag\mbox{]} are affected. If the tag has no active instances, this function does nothing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Tag of the sound resource. \\
+{\em tag} & Sound tag whose active instances should be updated. \\
 \hline
-{\em volume} & Volume level (0.\+0–1.0). \\
+{\em volume} & New volume value to apply. \\
 \hline
 \end{DoxyParams}
 
@@ -806,9 +883,9 @@ void Sound\+Manager\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Updates the sound manager state. 
+Performs per-\/frame maintenance of sound instances. 
 
-Cleans up finished sound instances and recycles their IDs. Typically called once per frame by the engine. 
+Currently delegates to \doxylink{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}{Cleanup()} to remove finished non-\/looping instances and to keep internal tracking containers consistent. 
 
 Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00330}{330}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
@@ -821,8 +898,6 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00330}{330}} of 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_sound_manager_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}\index{SoundManager@{SoundManager}!activeChannels@{activeChannels}}
 \index{activeChannels@{activeChannels}!SoundManager@{SoundManager}}
@@ -832,11 +907,7 @@ std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{stru
 
 
 
-Forward-\/declared miniaudio-\/backed sound instance. 
-
-Active instances grouped by tag. 
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00183}{183}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00268}{268}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 \Hypertarget{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}\index{SoundManager@{SoundManager}!engine@{engine}}
 \index{engine@{engine}!SoundManager@{SoundManager}}
@@ -846,11 +917,7 @@ ma\+\_\+engine\texorpdfstring{$\ast$}{*} Sound\+Manager\+::engine = nullptr\hspa
 
 
 
-Underlying miniaudio engine instance. 
-
-
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00173}{173}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00255}{255}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 \Hypertarget{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}\index{SoundManager@{SoundManager}!instanceMap@{instanceMap}}
 \index{instanceMap@{instanceMap}!SoundManager@{SoundManager}}
@@ -860,11 +927,17 @@ std\+::unordered\+\_\+map$<$\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8
 
 
 
-Maps IDs to active instances. 
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00269}{269}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+
+\Hypertarget{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}\index{SoundManager@{SoundManager}!JinEngine@{JinEngine}}
+\index{JinEngine@{JinEngine}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{JinEngine}{JinEngine}}
+{\footnotesize\ttfamily \label{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c} 
+friend Sound\+Manager\+::\+Jin\+Engine\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00184}{184}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00037}{37}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 \Hypertarget{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}\index{SoundManager@{SoundManager}!nextInstanceID@{nextInstanceID}}
 \index{nextInstanceID@{nextInstanceID}!SoundManager@{SoundManager}}
@@ -874,11 +947,7 @@ Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00184}{184}} of fi
 
 
 
-Next ID to assign if no reusable IDs available. 
-
-
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00187}{187}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00272}{272}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 \Hypertarget{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}\index{SoundManager@{SoundManager}!reusableIDs@{reusableIDs}}
 \index{reusableIDs@{reusableIDs}!SoundManager@{SoundManager}}
@@ -888,21 +957,7 @@ std\+::queue$<$\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad
 
 
 
-Queue of reusable instance IDs. 
-
-
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00186}{186}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
-
-\Hypertarget{class_sound_manager_ac041070b4d7ca98d9588d8c7d20909f0}\index{SoundManager@{SoundManager}!SNAKE\_Engine@{SNAKE\_Engine}}
-\index{SNAKE\_Engine@{SNAKE\_Engine}!SoundManager@{SoundManager}}
-\doxysubsubsection{\texorpdfstring{SNAKE\_Engine}{SNAKE\_Engine}}
-{\footnotesize\ttfamily \label{class_sound_manager_ac041070b4d7ca98d9588d8c7d20909f0} 
-friend Sound\+Manager\+::\+SNAKE\+\_\+\+Engine\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00028}{28}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00271}{271}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 \Hypertarget{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}\index{SoundManager@{SoundManager}!sounds@{sounds}}
 \index{sounds@{sounds}!SoundManager@{SoundManager}}
@@ -912,15 +967,11 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{struct_sound_manager
 
 
 
-Loaded sound registry. 
-
-
-
-Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00180}{180}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8h_source_l00265}{265}} of file \mbox{\hyperlink{_sound_manager_8h_source}{Sound\+Manager.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_sound_manager_8h}{Sound\+Manager.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_sound_manager_8cpp}{Sound\+Manager.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_sound_manager_8h}{Sound\+Manager.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_sound_manager_8cpp}{Sound\+Manager.\+cpp}}\end{DoxyCompactItemize}

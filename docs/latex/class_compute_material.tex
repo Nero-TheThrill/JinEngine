@@ -2,7 +2,7 @@
 \hypertarget{class_compute_material}{}\label{class_compute_material}\index{ComputeMaterial@{ComputeMaterial}}
 
 
-\doxylink{class_material}{Material} subtype for compute shaders (image load/store).  
+Compute-\/only material that binds textures as images for compute shader dispatch.  
 
 
 
@@ -19,78 +19,92 @@ Inheritance diagram for Compute\+Material\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{Image\+Bind}}
-\begin{DoxyCompactList}\small\item\em Internal structure for image bindings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Describes a single image binding for a compute shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}{Compute\+Material}} (\mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*}\+\_\+shader)
-\begin{DoxyCompactList}\small\item\em Constructs a compute material with a compute-\/capable shader. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a compute material using a specific compute shader. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{Is\+Compute}} () const override
-\begin{DoxyCompactList}\small\item\em Identifies this material as compute. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Indicates that this material is a compute material. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{Set\+Image}} (const std\+::string \&uniform\+Name, \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture, \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{Image\+Access}} access, \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{Image\+Format}} format, int level)
-\begin{DoxyCompactList}\small\item\em Binds a texture as an image for load/store operations. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds a texture as an image uniform for compute shaders. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}{Get\+Dst\+Texture}} () const
-\begin{DoxyCompactList}\small\item\em Returns the tracked destination texture ("{}u\+\_\+\+Dst"{}), if set. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the destination texture recorded for dispatch sizing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}{Enable\+Instancing}} (bool enable, \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)=delete
-\begin{DoxyCompactList}\small\item\em Instancing is not applicable to compute materials. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Instancing is not supported for compute materials. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{Set\+Texture}} (const std\+::string \&uniform\+Name, \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture)=delete
-\begin{DoxyCompactList}\small\item\em Regular sampler textures are not supported for compute materials. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sampler-\/based texture binding is not supported for compute materials. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}{Send\+Data}} () override
-\begin{DoxyCompactList}\small\item\em Sends uniforms and image bindings needed for a compute dispatch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sends compute-\/specific bindings (images) to the GPU. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_material}{Material}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}} (\mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*}\+\_\+shader)
-\begin{DoxyCompactList}\small\item\em Constructs a material bound to a shader. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a material using a specific shader. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{\texorpdfstring{$\sim$}{\string~}\+Material}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic cleanup. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{Set\+Texture}} (const std\+::string \&uniform\+Name, \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture)
-\begin{DoxyCompactList}\small\item\em Binds a texture to a named sampler uniform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds a texture to a sampler uniform name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{Set\+Uniform}} (const std\+::string \&name, \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value}} value)
-\begin{DoxyCompactList}\small\item\em Sets (or overrides) a uniform value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets a typed uniform value to be sent during binding. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}{Is\+Instancing\+Supported}} () const
-\begin{DoxyCompactList}\small\item\em Whether the underlying shader/mesh combination supports instancing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether instanced rendering is supported for this material. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_ae790a5b6e8836e871f6e01f4431350dd}{Enable\+Instancing}} (bool enable, \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
-\begin{DoxyCompactList}\small\item\em Enables or disables GPU instancing for this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enables or disables instancing for this material and prepares the mesh for instanced draws. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destination\+Texture}}
-\begin{DoxyCompactList}\small\item\em Optional\+: tracked destination ("{}u\+\_\+\+Dst"{}). \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{Image\+Bind}} $>$ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}}
-\begin{DoxyCompactList}\small\item\em Name-\/\texorpdfstring{$>$}{>}image binding table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_material}{Material}}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind}} () const
-\begin{DoxyCompactList}\small\item\em Activates the shader program and common draw state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds this material for rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_abe3526386e44d6a10fec0e6859dd564a}{Un\+Bind}} () const
-\begin{DoxyCompactList}\small\item\em Deactivates the shader program and resets state if needed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Unbinds this material after rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_a39001e95de2408283f42efa7e8657a05}{Send\+Uniforms}} ()
-\begin{DoxyCompactList}\small\item\em Uploads all stored uniform values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sends all typed uniform values stored in the uniform table to the shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_material}{Material}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}
-\begin{DoxyCompactList}\small\item\em Non-\/owning shader pointer. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value}} $>$ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}
-\begin{DoxyCompactList}\small\item\em Name-\/\texorpdfstring{$>$}{>}uniform value table. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{is\+Instancing\+Enabled}}
-\begin{DoxyCompactList}\small\item\em Instancing flag (runtime). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{class_material}{Material} subtype for compute shaders (image load/store). 
+Compute-\/only material that binds textures as images for compute shader dispatch. 
 
-\doxylink{class_compute_material}{Compute\+Material} adds image bindings (uimage\texorpdfstring{$\ast$}{*} / image\texorpdfstring{$\ast$}{*}) on top of base uniforms. It cannot use instancing or regular sampler textures via \doxylink{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}{Set\+Texture()}. A destination image(e.\+g., "{}u\+\_\+\+Dst"{}) can be tracked for post -\/ dispatch use. 
+\doxylink{class_compute_material}{Compute\+Material} specializes \doxylink{class_material}{Material} for compute workloads\+:
+\begin{DoxyItemize}
+\item \doxylink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{Is\+Compute()} returns true so \doxylink{class_render_manager}{Render\+Manager} can route it through Dispatch\+Compute().
+\item \doxylink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{Set\+Image()} binds textures as images (\doxylink{class_texture_a28b89a5f6f78de411c85fc83c04963b9}{Texture\+::\+Bind\+As\+Image}) instead of sampler textures.
+\item destination\+Texture is tracked for dispatch dimension calculation in \doxylink{class_render_manager}{Render\+Manager} (e.\+g., using output size).
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00198}{198}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Restrictions\+:
+\begin{DoxyItemize}
+\item Instancing is not applicable for compute, so Enable\+Instancing is deleted.
+\item Sampler-\/based Set\+Texture is deleted to prevent accidental use; compute uses images instead.
+\end{DoxyItemize}
+
+Convention\+:
+\begin{DoxyItemize}
+\item If \doxylink{class_compute_material_a50f183754e1a0235cb0a061aef1ef72f}{Set\+Image()} is called with uniform\+Name == "{}u\+\_\+\+Dst"{}, destination\+Texture is updated to that texture. \doxylink{class_render_manager}{Render\+Manager} typically uses this to compute dispatch group counts. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00256}{256}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_compute_material_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_compute_material_a0512f2e3adb000e6a870375d79a483fc}\index{ComputeMaterial@{ComputeMaterial}!ComputeMaterial@{ComputeMaterial}}
 \index{ComputeMaterial@{ComputeMaterial}!ComputeMaterial@{ComputeMaterial}}
@@ -100,26 +114,24 @@ Compute\+Material\+::\+Compute\+Material (\begin{DoxyParamCaption}\item[{\mbox{\
 
 
 
-Constructs a compute material with a compute-\/capable shader. 
+Constructs a compute material using a specific compute shader. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em \+\_\+shader} & Non-\/owning pointer to a compiled compute shader program. \\
+{\em \+\_\+shader} & Compute shader program to be used. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00220}{220}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00279}{279}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00220\ :\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\_shader)\ \{\}}
+\DoxyCodeLine{00279\ :\ \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}(\_shader)\ \{\}}
 
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_compute_material_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_compute_material_a3384e74e87e3a745d4025d7557f9cc5b}\index{ComputeMaterial@{ComputeMaterial}!EnableInstancing@{EnableInstancing}}
 \index{EnableInstancing@{EnableInstancing}!ComputeMaterial@{ComputeMaterial}}
@@ -129,7 +141,7 @@ void Compute\+Material\+::\+Enable\+Instancing (\begin{DoxyParamCaption}\item[{b
 
 
 
-Instancing is not applicable to compute materials. 
+Instancing is not supported for compute materials. 
 
 \Hypertarget{class_compute_material_a0d675b8c206ad554a189dfa58373cbbe}\index{ComputeMaterial@{ComputeMaterial}!GetDstTexture@{GetDstTexture}}
 \index{GetDstTexture@{GetDstTexture}!ComputeMaterial@{ComputeMaterial}}
@@ -139,18 +151,20 @@ Instancing is not applicable to compute materials.
 
 
 
-Returns the tracked destination texture ("{}u\+\_\+\+Dst"{}), if set. 
+Returns the destination texture recorded for dispatch sizing. 
+
+This is commonly set by calling Set\+Image("{}u\+\_\+\+Dst"{}, ...).
 
 \begin{DoxyReturn}{Returns}
-Destination texture pointer or nullptr. 
+Destination texture pointer (may be uninitialized if never set). 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00254}{254}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00317}{317}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00254\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};\ \}}
+\DoxyCodeLine{00317\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}\index{ComputeMaterial@{ComputeMaterial}!IsCompute@{IsCompute}}
@@ -161,22 +175,19 @@ bool Compute\+Material\+::\+Is\+Compute (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Identifies this material as compute. 
+Indicates that this material is a compute material. 
 
-\begin{DoxyReturn}{Returns}
-Always true. 
-\end{DoxyReturn}
 
 
 Reimplemented from \mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{Material}}.
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00227}{227}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00284}{284}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00227\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00284\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}\index{ComputeMaterial@{ComputeMaterial}!SendData@{SendData}}
@@ -187,9 +198,15 @@ void Compute\+Material\+::\+Send\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Sends uniforms and image bindings needed for a compute dispatch. 
+Sends compute-\/specific bindings (images) to the GPU. 
 
-Overridden to upload image units (via \doxylink{class_texture_a28b89a5f6f78de411c85fc83c04963b9}{Texture\+::\+Bind\+As\+Image}) in addition to base uniform uploads. Called by \doxylink{class_render_manager}{Render\+Manager} before Dispatch\+Compute(). 
+Overrides \doxylink{class_material_ae4ad039257d5695090655fbd89ef179b}{Material\+::\+Send\+Data()}. Expected responsibilities\+:
+\begin{DoxyItemize}
+\item Bind each \doxylink{struct_compute_material_1_1_image_bind}{Image\+Bind} texture via Texture\+::\+Bind\+As\+Image(...) to the correct unit.
+\item Set any compute-\/related uniforms needed by the shader.
+\end{DoxyItemize}
+
+\doxylink{class_render_manager}{Render\+Manager} calls this when dispatching compute workloads with this material. 
 
 Reimplemented from \mbox{\hyperlink{class_material_ae4ad039257d5695090655fbd89ef179b}{Material}}.
 
@@ -220,36 +237,37 @@ void Compute\+Material\+::\+Set\+Image (\begin{DoxyParamCaption}\item[{const std
 
 
 
-Binds a texture as an image for load/store operations. 
+Binds a texture as an image uniform for compute shaders. 
+
+Stores the binding in the internal image table. The actual Open\+GL image binding is performed during \doxylink{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}{Send\+Data()} when the material is used for a dispatch.
+
+If uniform\+Name is "{}u\+\_\+\+Dst"{}, the provided texture is recorded as destination\+Texture.
 
 
 \begin{DoxyParams}{Parameters}
-{\em uniform\+Name} & Name of the image uniform in the shader (e.\+g., "{}u\+\_\+\+Src"{}, "{}u\+\_\+\+Dst"{}). \\
+{\em uniform\+Name} & Image uniform name in the compute shader. \\
 \hline
-{\em texture} & \doxylink{class_texture}{Texture} to bind as image (non-\/owning). \\
+{\em texture} & \doxylink{class_texture}{Texture} to bind as an image. \\
 \hline
-{\em access} & Image access (read-\/only / write-\/only / read-\/write). \\
+{\em access} & Image access mode (read/write). \\
 \hline
-{\em format} & Image format (e.\+g., RGBA8, R32F). \\
+{\em format} & Image format used for the binding. \\
 \hline
-{\em level} & Mipmap level to bind.\\
+{\em level} & Mipmap level to bind. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-If {\ttfamily uniform\+Name} equals "{}u\+\_\+\+Dst"{}, the texture is tracked as the destination. 
-\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00241}{241}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00301}{301}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00242\ \ \ \ \ \ \{}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}\ img\ =\ \{\ texture,access,format,level\ \};}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}}[uniformName]\ =\ img;}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uniformName\ ==\ \textcolor{stringliteral}{"{}u\_Dst"{}})}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}}\ =\ texture;}
-\DoxyCodeLine{00247\ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_compute_material_1_1_image_bind}{ImageBind}}\ img\ =\ \{\ texture,access,format,level\ \};}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a497a355327b35d25ed8602883a7f105f}{images}}[uniformName]\ =\ img;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (uniformName\ ==\ \textcolor{stringliteral}{"{}u\_Dst"{}})}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}{destinationTexture}}\ =\ texture;}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_compute_material_ae7e75db18e4e190a3956b3768b26855b}\index{ComputeMaterial@{ComputeMaterial}!SetTexture@{SetTexture}}
@@ -260,12 +278,10 @@ void Compute\+Material\+::\+Set\+Texture (\begin{DoxyParamCaption}\item[{const s
 
 
 
-Regular sampler textures are not supported for compute materials. 
+Sampler-\/based texture binding is not supported for compute materials. 
 
 
 
-\label{doc-variable-members}
-\Hypertarget{class_compute_material_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_compute_material_a2840c40d31517d05e818cfb927bb69a9}\index{ComputeMaterial@{ComputeMaterial}!destinationTexture@{destinationTexture}}
 \index{destinationTexture@{destinationTexture}!ComputeMaterial@{ComputeMaterial}}
@@ -275,11 +291,7 @@ Regular sampler textures are not supported for compute materials.
 
 
 
-Optional\+: tracked destination ("{}u\+\_\+\+Dst"{}). 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00211}{211}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00271}{271}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{class_compute_material_a497a355327b35d25ed8602883a7f105f}\index{ComputeMaterial@{ComputeMaterial}!images@{images}}
 \index{images@{images}!ComputeMaterial@{ComputeMaterial}}
@@ -289,15 +301,11 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{struct_compute_mater
 
 
 
-Name-\/\texorpdfstring{$>$}{>}image binding table. 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00212}{212}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00272}{272}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_material_8h}{Material.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_material_8cpp}{Material.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_material_8h}{Material.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_material_8cpp}{Material.\+cpp}}\end{DoxyCompactItemize}

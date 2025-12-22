@@ -1,6 +1,6 @@
 var class_font =
 [
-    [ "Font", "class_font.html#a30ee4458f14e43b6f18291a43a76c3cc", null ],
+    [ "Font", "class_font.html#aa8d3052d3c2bec79460419fa1910eb92", null ],
     [ "~Font", "class_font.html#a134aaa2f78af0c12d3ce504957169768", null ],
     [ "BakeAtlas", "class_font.html#a519e6bd2c2c23ff7af6307cac87fd204", null ],
     [ "ExpandAtlas", "class_font.html#a225429b93aa4fe0d76b2fecd9ac88142", null ],

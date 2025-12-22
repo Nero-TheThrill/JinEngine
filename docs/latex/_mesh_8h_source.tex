@@ -1,5 +1,5 @@
 \doxysection{Mesh.\+h}
-\hypertarget{_mesh_8h_source}{}\label{_mesh_8h_source}\index{Project/SNAKE\_Engine/Public/Mesh.h@{Project/SNAKE\_Engine/Public/Mesh.h}}
+\hypertarget{_mesh_8h_source}{}\label{_mesh_8h_source}\index{Project/JinEngine/Public/Mesh.h@{Project/JinEngine/Public/Mesh.h}}
 \mbox{\hyperlink{_mesh_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -21,75 +21,75 @@
 \DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00024}\mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{00024}}\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{LineStrip}}}
 \DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00025}00025\ \};}
 \DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00026}00026\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00033}\mbox{\hyperlink{struct_vertex}{00033}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vertex}{Vertex}}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00034}00034\ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00035}\mbox{\hyperlink{struct_vertex_a030819fdc241743bbd3e180a6b132ed3}{00035}}\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}};\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00036}\mbox{\hyperlink{struct_vertex_a8d5cc8548016889746f251d98377ec8a}{00036}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_vertex_a8d5cc8548016889746f251d98377ec8a}{uv}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00037}00037\ \};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00049}\mbox{\hyperlink{class_mesh}{00049}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mesh_a2fae383fefb7fe9f7c5fae8266e53e97}{Mesh}}\ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00050}\mbox{\hyperlink{class_mesh_aa36ea23707449cf3c872cafa9068a4de}{00050}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_mesh_aa36ea23707449cf3c872cafa9068a4de}{Material}};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00051}\mbox{\hyperlink{class_mesh_a99cf3d4862433af3b73292a510a6a179}{00051}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_mesh_a99cf3d4862433af3b73292a510a6a179}{RenderManager}};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00052}00052\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00053}00053\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{class_mesh_a2fae383fefb7fe9f7c5fae8266e53e97}{Mesh}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ indices\ =\ \{\},\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{PrimitiveType}}\ \mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{primitiveType}}\ =\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{PrimitiveType::Triangles}});}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{\string~Mesh}}();}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00078}\mbox{\hyperlink{class_mesh_a4a8b413a54afd1dcb83df7c5e2bbefc8}{00078}}\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_mesh_a4a8b413a54afd1dcb83df7c5e2bbefc8}{GetLocalBoundsHalfSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};\ \}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00080}00080\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a30bf909bfd35c62be92824b7d3317326}{BindVAO}}(\textcolor{keywordtype}{bool}\ instanced)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00087}00087\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{SetupInstanceAttributes}}();}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00096}00096\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_abf84fe4ef735490769268685087e0e32}{Draw}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00104}00104\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{DrawInstanced}}(\mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}}\ instanceCount)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00113}00113\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{SetupMesh}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ indices);}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00123}00123\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00133}\mbox{\hyperlink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{00133}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{ComputeLocalBounds}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices)}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00134}00134\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vertices.empty())}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.5f);}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertices.size()\ ==\ 1)}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.0001f);}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ glm::vec2\ minPos\ =\ vertices[0].position;}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ glm::vec2\ maxPos\ =\ vertices[1].position;}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00148}00148\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ v\ :\ vertices)}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ v.position;}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ minPos\ =\ glm::min(minPos,\ pos);}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ maxPos\ =\ glm::max(maxPos,\ pos);}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00155}00155\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ glm::vec2\ size\ =\ maxPos\ -\/\ minPos;}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ size\ *\ 0.5f;}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00158}00158\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00159}00159\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00170}00170\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{UpdateInstanceBuffer}}(\textcolor{keyword}{const}\ std::vector<glm::mat4>\&\ transforms,\ \textcolor{keyword}{const}\ std::vector<glm::vec4>\&\ colors,\ \textcolor{keyword}{const}\ std::vector<glm::vec2>\&\ uvOffsets,\ \textcolor{keyword}{const}\ std::vector<glm::vec2>\&\ uvScales)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00171}00171\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00172}\mbox{\hyperlink{class_mesh_a101a39d88bc5c8d33f0ebd6e77a60129}{00172}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a101a39d88bc5c8d33f0ebd6e77a60129}{vao}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00173}\mbox{\hyperlink{class_mesh_ad8eff04c857fc1f1f42584af599f8267}{00173}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_ad8eff04c857fc1f1f42584af599f8267}{vbo}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00174}\mbox{\hyperlink{class_mesh_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7}{00174}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7}{ebo}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00175}\mbox{\hyperlink{class_mesh_ae89f95e85ae7fa157545324aa5f5db7d}{00175}}\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}}\ \mbox{\hyperlink{class_mesh_ae89f95e85ae7fa157545324aa5f5db7d}{indexCount}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00176}00176\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00177}\mbox{\hyperlink{class_mesh_ad41509844e200245ce71b4cc5441c504}{00177}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_ad41509844e200245ce71b4cc5441c504}{instanceVAO}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00178}\mbox{\hyperlink{class_mesh_a33810b4cdfaae0d1eb1ada168cd3c1a5}{00178}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a33810b4cdfaae0d1eb1ada168cd3c1a5}{instanceVBO}}[4];\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00179}00179\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00180}\mbox{\hyperlink{class_mesh_a3153eeca2bbde0037c365662bbeb52f1}{00180}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_mesh_a3153eeca2bbde0037c365662bbeb52f1}{useIndex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00181}00181\ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00182}\mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{00182}}\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{PrimitiveType}}\ \mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{primitiveType}};}
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00183}\mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{00183}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00184}00184\ \};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00034}\mbox{\hyperlink{struct_vertex}{00034}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vertex}{Vertex}}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00036}\mbox{\hyperlink{struct_vertex_a030819fdc241743bbd3e180a6b132ed3}{00036}}\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00037}\mbox{\hyperlink{struct_vertex_a8d5cc8548016889746f251d98377ec8a}{00037}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_vertex_a8d5cc8548016889746f251d98377ec8a}{uv}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00038}00038\ \};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00058}\mbox{\hyperlink{class_mesh}{00058}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mesh_a2fae383fefb7fe9f7c5fae8266e53e97}{Mesh}}\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00059}\mbox{\hyperlink{class_mesh_aa36ea23707449cf3c872cafa9068a4de}{00059}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_mesh_aa36ea23707449cf3c872cafa9068a4de}{Material}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00060}\mbox{\hyperlink{class_mesh_a99cf3d4862433af3b73292a510a6a179}{00060}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_mesh_a99cf3d4862433af3b73292a510a6a179}{RenderManager}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00062}00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{class_mesh_a2fae383fefb7fe9f7c5fae8266e53e97}{Mesh}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ indices\ =\ \{\},\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{PrimitiveType}}\ \mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{primitiveType}}\ =\ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{PrimitiveType::Triangles}});}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00088}00088\ \ \ \ \ \mbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{\string~Mesh}}();}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00099}\mbox{\hyperlink{class_mesh_a4a8b413a54afd1dcb83df7c5e2bbefc8}{00099}}\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_mesh_a4a8b413a54afd1dcb83df7c5e2bbefc8}{GetLocalBoundsHalfSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00101}00101\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a30bf909bfd35c62be92824b7d3317326}{BindVAO}}(\textcolor{keywordtype}{bool}\ instanced)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{SetupInstanceAttributes}}();}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00135}00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_abf84fe4ef735490769268685087e0e32}{Draw}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{DrawInstanced}}(\mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}}\ instanceCount)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00160}00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{SetupMesh}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ indices);}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00175}\mbox{\hyperlink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{00175}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{ComputeLocalBounds}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices)}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00176}00176\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vertices.empty())}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.5f);}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertices.size()\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00183}00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.0001f);}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ glm::vec2\ minPos\ =\ vertices[0].position;}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ glm::vec2\ maxPos\ =\ vertices[1].position;}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ v\ :\ vertices)}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00192}00192\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ v.position;}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ minPos\ =\ glm::min(minPos,\ pos);}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ maxPos\ =\ glm::max(maxPos,\ pos);}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00196}00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00198}00198\ \ \ \ \ \ \ \ \ glm::vec2\ size\ =\ maxPos\ -\/\ minPos;}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00199}00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ size\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00200}00200\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00219}00219\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{UpdateInstanceBuffer}}(\textcolor{keyword}{const}\ std::vector<glm::mat4>\&\ transforms,\ \textcolor{keyword}{const}\ std::vector<glm::vec4>\&\ colors,\ \textcolor{keyword}{const}\ std::vector<glm::vec2>\&\ uvOffsets,\ \textcolor{keyword}{const}\ std::vector<glm::vec2>\&\ uvScales)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00221}\mbox{\hyperlink{class_mesh_a101a39d88bc5c8d33f0ebd6e77a60129}{00221}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a101a39d88bc5c8d33f0ebd6e77a60129}{vao}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00222}\mbox{\hyperlink{class_mesh_ad8eff04c857fc1f1f42584af599f8267}{00222}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_ad8eff04c857fc1f1f42584af599f8267}{vbo}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00223}\mbox{\hyperlink{class_mesh_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7}{00223}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7}{ebo}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00224}\mbox{\hyperlink{class_mesh_ae89f95e85ae7fa157545324aa5f5db7d}{00224}}\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}}\ \mbox{\hyperlink{class_mesh_ae89f95e85ae7fa157545324aa5f5db7d}{indexCount}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00226}\mbox{\hyperlink{class_mesh_ad41509844e200245ce71b4cc5441c504}{00226}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_ad41509844e200245ce71b4cc5441c504}{instanceVAO}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00227}\mbox{\hyperlink{class_mesh_a33810b4cdfaae0d1eb1ada168cd3c1a5}{00227}}\ \ \ \ \ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \mbox{\hyperlink{class_mesh_a33810b4cdfaae0d1eb1ada168cd3c1a5}{instanceVBO}}[4];}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00229}\mbox{\hyperlink{class_mesh_a3153eeca2bbde0037c365662bbeb52f1}{00229}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_mesh_a3153eeca2bbde0037c365662bbeb52f1}{useIndex}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00231}\mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{00231}}\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{PrimitiveType}}\ \mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{primitiveType}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00232}\mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{00232}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8h_source_l00233}00233\ \};}
 
 \end{DoxyCode}

@@ -1,5 +1,5 @@
 \doxysection{Window\+Manager.\+cpp}
-\hypertarget{_window_manager_8cpp_source}{}\label{_window_manager_8cpp_source}\index{Project/SNAKE\_Engine/Private/WindowManager.cpp@{Project/SNAKE\_Engine/Private/WindowManager.cpp}}
+\hypertarget{_window_manager_8cpp_source}{}\label{_window_manager_8cpp_source}\index{Project/JinEngine/Private/WindowManager.cpp@{Project/JinEngine/Private/WindowManager.cpp}}
 \mbox{\hyperlink{_window_manager_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}gl.h"{}}}
@@ -9,188 +9,209 @@
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00005}\mbox{\hyperlink{class_window_manager_a5180f7bf2b71421af837035824a8c8ac}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_manager_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}}(GLFWwindow*\ \mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00006}00006\ \{}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00007}00007\ \ \ \ \ glViewport(0,\ 0,\ width,\ height);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\ snakeEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}));}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (snakeEngine)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\ jinEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}));}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (jinEngine)}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00010}00010\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ac822306fe0eb51630f31874ec6c469a4}{SetWidth}}(width);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a1224bd8fbce3dac6125e053422c02380}{SetHeight}}(height);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ state\ =\ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{stateManager}}-\/>\mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{GetCurrentState}}();}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ac822306fe0eb51630f31874ec6c469a4}{SetWidth}}(width);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a1224bd8fbce3dac6125e053422c02380}{SetHeight}}(height);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ state\ =\ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{stateManager}}-\/>\mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{GetCurrentState}}();}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state)}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>GetCameraManager().SetScreenSizeForAll(width,\ height);}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a092a8dc2478bd39b98b8f7434da2a8d0}{OnResize}}(width,\ height);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ SNAKE\_LOG(\textcolor{stringliteral}{"{}changed:\ "{}}\ <<\ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{GetWidth}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{GetHeight}}());}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00020}00020\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00021}00021\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00023}\mbox{\hyperlink{class_window_manager_a7de28f37875508720696225cbee9c54d}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a7de28f37875508720696225cbee9c54d}{WindowManager::RestrictResizing}}(\textcolor{keywordtype}{bool}\ shouldRestrict)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00024}00024\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00025}00025\ \ \ \ \ glfwSetWindowAttrib(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_RESIZABLE,\ shouldRestrict?\ GLFW\_FALSE\ :\ GLFW\_TRUE);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00026}00026\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00028}\mbox{\hyperlink{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}{WindowManager::SetCursorVisible}}(\textcolor{keywordtype}{bool}\ visible)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00029}00029\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (visible)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ glfwSetInputMode(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_CURSOR,\ GLFW\_CURSOR\_NORMAL);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ glfwSetInputMode(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_CURSOR,\ GLFW\_CURSOR\_HIDDEN);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00034}00034\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00036}\mbox{\hyperlink{class_window_manager_a2ce03918b6123264cd9013cc4e403f39}{00036}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_window_manager_a2ce03918b6123264cd9013cc4e403f39}{WindowManager::Init}}(\textcolor{keywordtype}{int}\ \_windowWidth,\ \textcolor{keywordtype}{int}\ \_windowHeight,\ \mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}\&\ engine)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00037}00037\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!glfwInit())}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00040}00040\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLFW"{}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00043}00043\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00045}00045\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR,\ 4);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00046}00046\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR,\ 6);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00047}00047\ \ \ \ \ glfwWindowHint(GLFW\_OPENGL\_PROFILE,\ GLFW\_OPENGL\_CORE\_PROFILE);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ \_windowWidth;}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ \_windowHeight;}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00051}00051\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}\ =\ glfwCreateWindow(\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}},\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}},\ \textcolor{stringliteral}{"{}SNAKE\ ENGINE"{}},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00054}00054\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ create\ GLFW\ window"{}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ glfwTerminate();}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00058}00058\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00060}00060\ \ \ \ \ glfwMakeContextCurrent(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a092a8dc2478bd39b98b8f7434da2a8d0}{OnResize}}(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{NotifyResize}}(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ JIN\_LOG(\textcolor{stringliteral}{"{}changed:\ "{}}\ <<\ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{GetWidth}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}-\/>\mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{GetHeight}}());}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00025}\mbox{\hyperlink{class_window_manager_a7de28f37875508720696225cbee9c54d}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a7de28f37875508720696225cbee9c54d}{WindowManager::RestrictResizing}}(\textcolor{keywordtype}{bool}\ shouldRestrict)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00027}00027\ \ \ \ \ glfwSetWindowAttrib(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_RESIZABLE,\ shouldRestrict?\ GLFW\_FALSE\ :\ GLFW\_TRUE);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00030}\mbox{\hyperlink{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}{00030}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}{WindowManager::SetCursorVisible}}(\textcolor{keywordtype}{bool}\ visible)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (visible)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ glfwSetInputMode(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_CURSOR,\ GLFW\_CURSOR\_NORMAL);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ glfwSetInputMode(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ GLFW\_CURSOR,\ GLFW\_CURSOR\_HIDDEN);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00038}\mbox{\hyperlink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{00038}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{WindowManager::Init}}(\textcolor{keywordtype}{int}\ \_windowWidth,\ \textcolor{keywordtype}{int}\ \_windowHeight,\ \mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}\&\ engine)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (!glfwInit())}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLFW"{}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00047}00047\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR,\ 4);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00048}00048\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR,\ 6);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00049}00049\ \ \ \ \ glfwWindowHint(GLFW\_OPENGL\_PROFILE,\ GLFW\_OPENGL\_CORE\_PROFILE);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ \_windowWidth;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ \_windowHeight;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}\ =\ glfwCreateWindow(\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}},\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}},\ \textcolor{stringliteral}{"{}JIN\ ENGINE"{}},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ create\ GLFW\ window"{}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00060}00060\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gladLoadGL(glfwGetProcAddress))}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00063}00063\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLAD"{}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00066}00066\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00067}00067\ \ \ \ \ glEnable(GL\_DEBUG\_OUTPUT);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00068}00068\ \ \ \ \ glEnable(GL\_DEBUG\_OUTPUT\_SYNCHRONOUS);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00070}00070\ \ \ \ \ glDebugMessageControl(GL\_DONT\_CARE,\ GL\_DONT\_CARE,\ GL\_DEBUG\_SEVERITY\_NOTIFICATION,}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ 0,\ \textcolor{keyword}{nullptr},\ GL\_FALSE);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00072}00072\ \ \ \ \ glDebugMessageCallback(}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ [](\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ \textcolor{comment}{/*src*/},\ \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ type,\ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ severity,\ \mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}},\ \textcolor{keyword}{const}\ GLchar*\ msg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*)\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_NOTIFICATION)\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ GL\_DEBUG\_TYPE\_OTHER)\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_HIGH)\ \{\ SNAKE\_ERR(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_MEDIUM)\ \{\ SNAKE\_WRN(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ SNAKE\_LOG(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00081}00081\ \ \ \ \ glViewport(0,\ 0,\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}},\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00082}00082\ \ \ \ \ glfwSetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&engine);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00083}00083\ \ \ \ \ glfwSetFramebufferSizeCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \mbox{\hyperlink{class_window_manager_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00085}00085\ \ \ \ \ glfwSetScrollCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{double}\ xoff,\ \textcolor{keywordtype}{double}\ yoff)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\ snakeEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w));}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (snakeEngine)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snakeEngine-\/>\mbox{\hyperlink{class_s_n_a_k_e___engine_a0e199889c920470b908d9cee49f25a15}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{inputManager}}-\/>\mbox{\hyperlink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{AddScroll}}(xoff,\ yoff);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00092}00092\ \ \ \ \ glfwSetKeyCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ sc,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ snakeEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snakeEngine-\/>GetEngineContext().inputManager-\/>OnKey(key,\ sc,\ action,\ mods);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00098}00098\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00099}00099\ \ \ \ \ glfwSetMouseButtonCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ snakeEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snakeEngine-\/>GetEngineContext().inputManager-\/>OnMouseButton(button,\ action,\ mods);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00105}00105\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00106}00106\ \ \ \ \ glfwSetWindowPosCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (auto*\ snakeEngine\ =\ (SNAKE\_Engine*)glfwGetWindowUserPointer(w))}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ snakeEngine-\/>GetEngineContext().inputManager-\/>Reset();}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00112}00112\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00113}00113\ \ \ \ \ glfwSetWindowCloseCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ [](GLFWwindow*\ w)\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ e\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_ad0966628ad7a8bcb8334f4b15748668d}{SNAKE\_Engine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>RequestQuit();}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00117}00117\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00119}00119\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00121}\mbox{\hyperlink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{00121}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{WindowManager::Resize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00122}00122\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00124}00124\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ glfwSetWindowSize(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ width,\ height);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ width;}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ height;}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00128}00128\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00129}00129\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00131}\mbox{\hyperlink{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}{00131}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}{WindowManager::SetTitle}}(\textcolor{keyword}{const}\ std::string\&\ title)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00132}00132\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00133}00133\ \ \ \ \ glfwSetWindowTitle(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ title.c\_str());}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00134}00134\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00135}00135\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00136}\mbox{\hyperlink{class_window_manager_ace8ed5c7b820428fc835bbe33a732d4c}{00136}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ace8ed5c7b820428fc835bbe33a732d4c}{WindowManager::SetFullScreen}}(\textcolor{keywordtype}{bool}\ enable)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00137}00137\ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}\ ||\ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}}\ ==\ enable)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00140}00140\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00141}00141\ \ \ \ \ GLFWmonitor*\ monitor\ =\ glfwGetPrimaryMonitor();}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{const}\ GLFWvidmode*\ mode\ =\ glfwGetVideoMode(monitor);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00143}00143\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00145}00145\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ glfwGetWindowPos(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&\mbox{\hyperlink{class_window_manager_a20538b93498f90a58eee5caeda18adf2}{windowedPosX}},\ \&\mbox{\hyperlink{class_window_manager_ab1f2a4f9b7cf006e0a16b6013e7c6761}{windowedPosY}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ glfwGetWindowSize(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&\mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}},\ \&\mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00148}00148\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ glfwSetWindowMonitor(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ monitor,\ 0,\ 0,\ mode-\/>width,\ mode-\/>height,\ mode-\/>refreshRate);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00150}00150\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00152}00152\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ glfwSetWindowMonitor(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_window_manager_a20538b93498f90a58eee5caeda18adf2}{windowedPosX}},\ \mbox{\hyperlink{class_window_manager_ab1f2a4f9b7cf006e0a16b6013e7c6761}{windowedPosY}},\ \mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}},\ \mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}},\ 0);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00154}00154\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00155}00155\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}}\ =\ enable;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00062}00062\ \ \ \ \ glfwMakeContextCurrent(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gladLoadGL(glfwGetProcAddress))}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLAD"{}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00069}00069\ \ \ \ \ glEnable(GL\_DEBUG\_OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00070}00070\ \ \ \ \ glEnable(GL\_DEBUG\_OUTPUT\_SYNCHRONOUS);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00072}00072\ \ \ \ \ glDebugMessageControl(GL\_DONT\_CARE,\ GL\_DONT\_CARE,\ GL\_DEBUG\_SEVERITY\_NOTIFICATION,}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ 0,\ \textcolor{keyword}{nullptr},\ GL\_FALSE);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00074}00074\ \ \ \ \ glDebugMessageCallback(}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ [](\mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ \textcolor{comment}{/*src*/},\ \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ type,\ \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{_shader_8h_aabcf3e059d4bfe03f96c378d2533c3ba}{GLenum}}\ severity,\ \mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}},\ \textcolor{keyword}{const}\ GLchar*\ msg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*)\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_NOTIFICATION)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ GL\_DEBUG\_TYPE\_OTHER)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_HIGH)\ \{\ JIN\_ERR(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (severity\ ==\ GL\_DEBUG\_SEVERITY\_MEDIUM)\ \{\ JIN\_WRN(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ JIN\_LOG(std::string(\textcolor{stringliteral}{"{}[GL]\ "{}})\ +\ msg);\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00083}00083\ \ \ \ \ glViewport(0,\ 0,\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}},\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00084}00084\ \ \ \ \ glfwSetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&engine);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00085}00085\ \ \ \ \ glfwSetFramebufferSizeCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \mbox{\hyperlink{class_window_manager_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00087}00087\ \ \ \ \ glfwSetScrollCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{double}\ xoff,\ \textcolor{keywordtype}{double}\ yoff)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\ jinEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w));}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jinEngine)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jinEngine-\/>\mbox{\hyperlink{class_jin_engine_a304c17961ba994ba426ac9c42bb95c0f}{GetEngineContext}}().\mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{inputManager}}-\/>\mbox{\hyperlink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{AddScroll}}(xoff,\ yoff);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00094}00094\ \ \ \ \ glfwSetKeyCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ sc,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ jinEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jinEngine-\/>GetEngineContext().inputManager-\/>OnKey(key,\ sc,\ action,\ mods);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00101}00101\ \ \ \ \ glfwSetMouseButtonCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ jinEngine\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jinEngine-\/>GetEngineContext().inputManager-\/>OnMouseButton(button,\ action,\ mods);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00108}00108\ \ \ \ \ glfwSetWindowPosCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ [](GLFWwindow*\ w,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (auto*\ jinEngine\ =\ (JinEngine*)glfwGetWindowUserPointer(w))}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ jinEngine-\/>GetEngineContext().inputManager-\/>Reset();}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00115}00115\ \ \ \ \ glfwSetWindowCloseCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ [](GLFWwindow*\ w)\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ e\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}{JinEngine}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(w)))}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>RequestQuit();}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00123}\mbox{\hyperlink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{00123}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{WindowManager::Resize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00126}00126\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ glfwSetWindowSize(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ width;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ height;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00133}\mbox{\hyperlink{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}{00133}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}{WindowManager::SetTitle}}(\textcolor{keyword}{const}\ std::string\&\ title)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00134}00134\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00135}00135\ \ \ \ \ glfwSetWindowTitle(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ title.c\_str());}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00138}\mbox{\hyperlink{class_window_manager_ace8ed5c7b820428fc835bbe33a732d4c}{00138}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ace8ed5c7b820428fc835bbe33a732d4c}{WindowManager::SetFullScreen}}(\textcolor{keywordtype}{bool}\ enable)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}\ ||\ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}}\ ==\ enable)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00143}00143\ \ \ \ \ GLFWmonitor*\ monitor\ =\ glfwGetPrimaryMonitor();}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{const}\ GLFWvidmode*\ mode\ =\ glfwGetVideoMode(monitor);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00147}00147\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ glfwGetWindowPos(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&\mbox{\hyperlink{class_window_manager_a20538b93498f90a58eee5caeda18adf2}{windowedPosX}},\ \&\mbox{\hyperlink{class_window_manager_ab1f2a4f9b7cf006e0a16b6013e7c6761}{windowedPosY}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ glfwGetWindowSize(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \&\mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}},\ \&\mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ glfwSetWindowMonitor(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ monitor,\ 0,\ 0,\ mode-\/>width,\ mode-\/>height,\ mode-\/>refreshRate);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00154}00154\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ glfwSetWindowMonitor(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_window_manager_a20538b93498f90a58eee5caeda18adf2}{windowedPosX}},\ \mbox{\hyperlink{class_window_manager_ab1f2a4f9b7cf006e0a16b6013e7c6761}{windowedPosY}},\ \mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}},\ \mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00156}00156\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00157}00157\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ enable\ ?\ mode-\/>width\ :\ \mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ enable\ ?\ mode-\/>height\ :\ \mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}};}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00160}00160\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00161}00161\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00162}\mbox{\hyperlink{class_window_manager_ad476b2084cbbde321623094d616f9427}{00162}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ad476b2084cbbde321623094d616f9427}{WindowManager::Free}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00163}00163\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00165}00165\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ glfwSetFramebufferSizeCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ glfwSetScrollCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ glfwSetKeyCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ glfwSetMouseButtonCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ glfwSetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ glfwSetWindowCloseCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ glfwDestroyWindow(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00173}00173\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00174}00174\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00175}00175\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00176}\mbox{\hyperlink{class_window_manager_aef8b4e018e5210b06095779adb68203b}{00176}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_aef8b4e018e5210b06095779adb68203b}{WindowManager::SwapBuffers}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00177}00177\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00178}00178\ \ \ \ \ glfwSwapBuffers(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00179}00179\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00180}00180\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00181}\mbox{\hyperlink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{00181}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{WindowManager::ClearScreen}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00182}00182\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00183}00183\ \ \ \ \ glClearColor(\mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.r,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.g,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.b,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.a);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00184}00184\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00185}00185\ \}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00186}00186\ }
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00187}\mbox{\hyperlink{class_window_manager_aac8852f37e8b30eb90e4ece0279284e6}{00187}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_aac8852f37e8b30eb90e4ece0279284e6}{WindowManager::PollEvents}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00188}00188\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00189}00189\ \ \ \ \ glfwPollEvents();}
-\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00190}00190\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}}\ =\ enable;}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00160}00160\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ enable\ ?\ mode-\/>width\ :\ \mbox{\hyperlink{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}{windowedWidth}};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00161}00161\ \ \ \ \ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ enable\ ?\ mode-\/>height\ :\ \mbox{\hyperlink{class_window_manager_acb28e5ac0d82147063513465e0ebde25}{windowedHeight}};}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00164}\mbox{\hyperlink{class_window_manager_ad476b2084cbbde321623094d616f9427}{00164}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ad476b2084cbbde321623094d616f9427}{WindowManager::Free}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00165}00165\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}})}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00167}00167\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ glfwSetFramebufferSizeCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ glfwSetScrollCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ glfwSetKeyCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ glfwSetMouseButtonCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ glfwSetWindowUserPointer(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ glfwSetWindowCloseCallback(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ glfwDestroyWindow(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00175}00175\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00176}00176\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00178}\mbox{\hyperlink{class_window_manager_aef8b4e018e5210b06095779adb68203b}{00178}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_aef8b4e018e5210b06095779adb68203b}{WindowManager::SwapBuffers}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00179}00179\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00180}00180\ \ \ \ \ glfwSwapBuffers(\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}});}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00183}\mbox{\hyperlink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{00183}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{WindowManager::ClearScreen}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00184}00184\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00185}00185\ \ \ \ \ glClearColor(\mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.r,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.g,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.b,\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}.a);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00186}00186\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00189}\mbox{\hyperlink{class_window_manager_aac8852f37e8b30eb90e4ece0279284e6}{00189}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_aac8852f37e8b30eb90e4ece0279284e6}{WindowManager::PollEvents}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00190}00190\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00191}00191\ \ \ \ \ glfwPollEvents();}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00194}\mbox{\hyperlink{class_window_manager_ad62fde3811107d11f0444abf3195707b}{00194}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ad62fde3811107d11f0444abf3195707b}{WindowManager::AddResizeCallback}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \mbox{\hyperlink{class_window_manager_a576b3252a0c57544b78e227330ebd945}{ResizeCallback}}\ cb)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00195}00195\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00196}00196\ \ \ \ \ \mbox{\hyperlink{class_window_manager_aa7c4930ec65bec72c75b1e20b22096ff}{resizeCallbacks}}[key]\ =\ std::move(cb);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00199}\mbox{\hyperlink{class_window_manager_a19bcb4b81402b8627227a4e3d9752469}{00199}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_a19bcb4b81402b8627227a4e3d9752469}{WindowManager::RemoveResizeCallback}}(\textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00200}00200\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{class_window_manager_aa7c4930ec65bec72c75b1e20b22096ff}{resizeCallbacks}}.erase(key);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00202}00202\ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00204}\mbox{\hyperlink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{00204}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{WindowManager::NotifyResize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00205}00205\ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [\_,\ callback]\ :\ \mbox{\hyperlink{class_window_manager_aa7c4930ec65bec72c75b1e20b22096ff}{resizeCallbacks}})}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00207}00207\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback)}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ callback(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00210}00210\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_manager_8cpp_source_l00211}00211\ \}}
 
 \end{DoxyCode}

@@ -2,7 +2,7 @@
 \hypertarget{struct_text_instance}{}\label{struct_text_instance}\index{TextInstance@{TextInstance}}
 
 
-Holds text rendering parameters for a text instance.  
+Lightweight data container representing a text rendering request.  
 
 
 
@@ -13,32 +13,26 @@ Holds text rendering parameters for a text instance.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_font}{Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{font}} = nullptr
-\begin{DoxyCompactList}\small\item\em \doxylink{class_font}{Font} resource used to render glyphs. Must be valid while used by \doxylink{class_text_object}{Text\+Object}. \end{DoxyCompactList}\item 
+\item 
 std\+::string \mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{text}} = "{}"{}
-\begin{DoxyCompactList}\small\item\em UTF-\/8 encoded text string to be rendered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Holds text rendering parameters for a text instance. 
+Lightweight data container representing a text rendering request. 
 
-A lightweight bundle that pairs a font resource with the UTF-\/8 text string to render. This is consumed by \doxylink{class_text_object}{Text\+Object} to build/update a mesh of quads per-\/glyph using the engine\textquotesingle{}s dynamic glyph atlas. 
+\doxylink{struct_text_instance}{Text\+Instance} holds a reference to a \doxylink{class_font}{Font} and the UTF-\/8 text string to be rendered. It does not own the \doxylink{class_font}{Font} resource and is intended to be used as a mutable payload that can trigger mesh regeneration when its contents change. 
 
 Definition at line \mbox{\hyperlink{_text_object_8h_source_l00017}{17}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_text_instance_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}\index{TextInstance@{TextInstance}!font@{font}}
 \index{font@{font}!TextInstance@{TextInstance}}
 \doxysubsubsection{\texorpdfstring{font}{font}}
 {\footnotesize\ttfamily \label{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f} 
 \mbox{\hyperlink{class_font}{Font}}\texorpdfstring{$\ast$}{*} Text\+Instance\+::font = nullptr}
-
-
-
-\doxylink{class_font}{Font} resource used to render glyphs. Must be valid while used by \doxylink{class_text_object}{Text\+Object}. 
 
 
 
@@ -52,14 +46,10 @@ std\+::string Text\+Instance\+::text = "{}"{}}
 
 
 
-UTF-\/8 encoded text string to be rendered. 
-
-
-
 Definition at line \mbox{\hyperlink{_text_object_8h_source_l00020}{20}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_text_object_8h}{Text\+Object.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_text_object_8h}{Text\+Object.\+h}}\end{DoxyCompactItemize}

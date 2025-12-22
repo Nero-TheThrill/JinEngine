@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "SNAKE ENGINE", "index.html", [
+  [ "JIN ENGINE", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -60,11 +60,10 @@ var NAVTREEINDEX =
 [
 "_animation_8cpp.html",
 "_texture_8cpp.html#a5452d1498009851a733aba8e0484032b",
-"class_input_manager.html#a76462a4bb8c97cfab4bc68035ec598d1",
-"class_render_manager.html#abe4e30c3165baa0304fe8e196ffac510",
-"classes.html"
+"class_input_manager.html#a766a16e7ae54676804c08e80bb061233",
+"class_render_manager.html#a7c058729d4929a4295ebee1c6d324001",
+"class_window_manager.html#ac706fd9adb665063dbb9cc72006369a1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
 var SYNCOFFMSG = 'click to enable panel synchronization';
-var LISTOFALLMEMBERS = 'List of all members';

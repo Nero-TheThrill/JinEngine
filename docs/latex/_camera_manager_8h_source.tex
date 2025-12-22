@@ -1,5 +1,5 @@
 \doxysection{Camera\+Manager.\+h}
-\hypertarget{_camera_manager_8h_source}{}\label{_camera_manager_8h_source}\index{Project/SNAKE\_Engine/Public/CameraManager.h@{Project/SNAKE\_Engine/Public/CameraManager.h}}
+\hypertarget{_camera_manager_8h_source}{}\label{_camera_manager_8h_source}\index{Project/JinEngine/Public/CameraManager.h@{Project/JinEngine/Public/CameraManager.h}}
 \mbox{\hyperlink{_camera_manager_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -8,64 +8,63 @@
 \DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_camera2_d_8h}{Camera2D.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00023}\mbox{\hyperlink{class_camera_manager}{00023}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{CameraManager}}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00024}00024\ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00025}00025\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{CameraManager}}();}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00042}\mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{00042}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{RegisterCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ std::unique\_ptr<Camera2D>\ camera)}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00043}00043\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]\ =\ std::move(camera);}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00045}00045\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00046}00046\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00056}\mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{00056}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00057}00057\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag);}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (it\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())\ ?\ it-\/>second.get()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00060}00060\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00069}\mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{00069}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{SetActiveCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag)}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00070}00070\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag)\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}}\ =\ tag;}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00075}00075\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00076}00076\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00082}\mbox{\hyperlink{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}{00082}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ \mbox{\hyperlink{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}{GetActiveCamera}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00083}00083\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}});}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00085}00085\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00092}\mbox{\hyperlink{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}{00092}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}{GetActiveCameraTag}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00093}00093\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00095}00095\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00096}00096\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00106}\mbox{\hyperlink{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}{00106}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}{SetScreenSizeForAll}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00107}00107\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [tag,\ cam]\ :\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}})}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cam)}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cam-\/>SetScreenSize(width,\ height);}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00113}00113\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00114}00114\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00124}\mbox{\hyperlink{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}{00124}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}{SetScreenSize}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00125}00125\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag])}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]-\/>SetScreenSize(width,\ height);}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00128}00128\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00129}00129\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00137}\mbox{\hyperlink{class_camera_manager_ace05611218ec9a7e43db3e658b51f404}{00137}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_ace05611218ec9a7e43db3e658b51f404}{Clear}}()}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00138}00138\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.clear();}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00140}00140\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00141}00141\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00142}00142\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00144}\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{00144}}\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Camera2D>>\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}};}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00147}\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{00147}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
-\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00148}00148\ \};}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00020}\mbox{\hyperlink{class_camera_manager}{00020}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{CameraManager}}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00022}00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{CameraManager}}();}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00048}\mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{00048}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{RegisterCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ std::unique\_ptr<Camera2D>\ camera)}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]\ =\ std::move(camera);}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00062}\mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{00062}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00063}00063\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag);}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (it\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())\ ?\ it-\/>second.get()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00077}\mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{00077}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{SetActiveCamera}}(\textcolor{keyword}{const}\ std::string\&\ tag)}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag)\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}}\ =\ tag;}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00094}\mbox{\hyperlink{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}{00094}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ \mbox{\hyperlink{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}{GetActiveCamera}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00095}00095\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}});}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00104}\mbox{\hyperlink{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}{00104}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}{GetActiveCameraTag}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00105}00105\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00119}\mbox{\hyperlink{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}{00119}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}{SetScreenSizeForAll}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [tag,\ cam]\ :\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}})}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cam)}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cam-\/>SetScreenSize(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00142}\mbox{\hyperlink{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}{00142}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}{SetScreenSize}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00143}00143\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag])}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]-\/>SetScreenSize(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00155}\mbox{\hyperlink{class_camera_manager_ace05611218ec9a7e43db3e658b51f404}{00155}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_manager_ace05611218ec9a7e43db3e658b51f404}{Clear}}()}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00156}00156\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.clear();}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00160}00160\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00161}\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{00161}}\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Camera2D>>\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}};}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00162}\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{00162}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
+\DoxyCodeLine{\Hypertarget{_camera_manager_8h_source_l00163}00163\ \};}
 
 \end{DoxyCode}

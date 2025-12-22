@@ -1,0 +1,88 @@
+\doxysection{Jin\+Engine.\+cpp}
+\hypertarget{_jin_engine_8cpp_source}{}\label{_jin_engine_8cpp_source}\index{Project/JinEngine/Private/JinEngine.cpp@{Project/JinEngine/Private/JinEngine.cpp}}
+\mbox{\hyperlink{_jin_engine_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00001}\mbox{\hyperlink{_jin_engine_8cpp_a09f9c3bf094ecaf707c673924ffd615a}{00001}}\ \textcolor{preprocessor}{\#define\ GLAD\_GL\_IMPLEMENTATION}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}gl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}glfw3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00005}00005\ \textcolor{comment}{//\#include<vld.h>//TODO:\ remove\ this\ and\ directories\ before\ release\ (VC++\ Directories\ -\/>\ Include\ Directories\ \&\ Library\ Directories)}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00010}\mbox{\hyperlink{class_jin_engine_a71b75d88fc59fe7c07d7b39585b9a6d4}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jin_engine_a71b75d88fc59fe7c07d7b39585b9a6d4}{JinEngine::SetEngineContext}}()}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.stateManager\ =\ \&\mbox{\hyperlink{class_jin_engine_ad502186dc160a7220927bb097efdf8c8}{stateManager}};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.windowManager\ =\ \&\mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.inputManager\ =\ \&\mbox{\hyperlink{class_jin_engine_a426193d5cd44181e51632e8ea5608386}{inputManager}};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.renderManager\ =\ \&\mbox{\hyperlink{class_jin_engine_a85df41758913ae8039aec5730977343c}{renderManager}};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.soundManager\ =\ \&\mbox{\hyperlink{class_jin_engine_af6d08539edce1338de7b7363d70a68cb}{soundManager}};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}}.engine\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00021}\mbox{\hyperlink{class_jin_engine_af2b70669383ccdbbc05309c7e4eb50db}{00021}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jin_engine_af2b70669383ccdbbc05309c7e4eb50db}{JinEngine::Init}}(\textcolor{keywordtype}{int}\ windowWidth,\ \textcolor{keywordtype}{int}\ windowHeight)}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a71b75d88fc59fe7c07d7b39585b9a6d4}{SetEngineContext}}();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.Init(windowWidth,\ windowHeight,\ *\textcolor{keyword}{this}))}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}WindowManager\ Initialization\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a426193d5cd44181e51632e8ea5608386}{inputManager}}.Init(\mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.GetHandle());}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_jin_engine_af6d08539edce1338de7b7363d70a68cb}{soundManager}}.Init())}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}SoundManager\ Initialization\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a85df41758913ae8039aec5730977343c}{renderManager}}.Init(\mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00041}\mbox{\hyperlink{class_jin_engine_ad8355b55406f0be0b2f39b910ff7913e}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jin_engine_ad8355b55406f0be0b2f39b910ff7913e}{JinEngine::Run}}()}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{struct_engine_timer}{EngineTimer}}\ timer;}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00044}00044\ \ \ \ \ timer.\mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start}}();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_jin_engine_a77f01c1522c951fd70f0556b8e0fbae7}{shouldRun}}\ \&\&\ !glfwWindowShouldClose(\mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.GetHandle()))}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt\ =\ timer.\mbox{\hyperlink{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}{Tick}}(\mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fps\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer.\mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{ShouldUpdateFPS}}(fps))}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.SetTitle(\textcolor{stringliteral}{"{}JinEngine\ -\/\ FPS:\ "{}}\ +\ std::to\_string(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(fps)));}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.PollEvents();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a426193d5cd44181e51632e8ea5608386}{inputManager}}.Update();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.ClearScreen();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_ad502186dc160a7220927bb097efdf8c8}{stateManager}}.Update(dt,\ \mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_ad502186dc160a7220927bb097efdf8c8}{stateManager}}.Draw(\mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_af6d08539edce1338de7b7363d70a68cb}{soundManager}}.Update();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.SwapBuffers();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_af6d08539edce1338de7b7363d70a68cb}{soundManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a85df41758913ae8039aec5730977343c}{renderManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_ad502186dc160a7220927bb097efdf8c8}{stateManager}}.Free(\mbox{\hyperlink{class_jin_engine_a7ec216ca83286f8ad98aead4cfb13d53}{engineContext}});}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a9763340f0811b106956345b6408501e9}{windowManager}}.Free();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a00fa0799a110bb78192a6a643f55d309}{Free}}();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00074}\mbox{\hyperlink{class_jin_engine_a00fa0799a110bb78192a6a643f55d309}{00074}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jin_engine_a00fa0799a110bb78192a6a643f55d309}{JinEngine::Free}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00075}00075\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00076}00076\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00079}\mbox{\hyperlink{class_jin_engine_a0fff451b96b00ef74a4a9975239adfdd}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jin_engine_a0fff451b96b00ef74a4a9975239adfdd}{JinEngine::RequestQuit}}()}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{class_jin_engine_a77f01c1522c951fd70f0556b8e0fbae7}{shouldRun}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_jin_engine_8cpp_source_l00082}00082\ \}}
+
+\end{DoxyCode}

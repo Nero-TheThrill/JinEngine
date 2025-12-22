@@ -1,5 +1,5 @@
 \doxysection{Engine\+Context.\+h}
-\hypertarget{_engine_context_8h_source}{}\label{_engine_context_8h_source}\index{Project/SNAKE\_Engine/Public/EngineContext.h@{Project/SNAKE\_Engine/Public/EngineContext.h}}
+\hypertarget{_engine_context_8h_source}{}\label{_engine_context_8h_source}\index{Project/JinEngine/Public/EngineContext.h@{Project/JinEngine/Public/EngineContext.h}}
 \mbox{\hyperlink{_engine_context_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -11,16 +11,21 @@
 \DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_window_manager_8h}{WindowManager.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00009}00009\ \textcolor{keyword}{struct\ }GLFWwindow;}
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00010}00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_n_a_k_e___engine}{SNAKE\_Engine}};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00010}00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jin_engine}{JinEngine}};}
 \DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00030}\mbox{\hyperlink{struct_engine_context}{00030}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_engine_context}{EngineContext}}}
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00031}00031\ \{}
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00032}\mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{00032}}\ \ \ \ \ \mbox{\hyperlink{class_state_manager}{StateManager}}*\ \mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{stateManager}}\ =\ \textcolor{keyword}{nullptr};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00033}\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{00033}}\ \ \ \ \ \mbox{\hyperlink{class_window_manager}{WindowManager}}*\ \mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}\ =\ \textcolor{keyword}{nullptr};\ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00034}\mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{00034}}\ \ \ \ \ \mbox{\hyperlink{class_input_manager}{InputManager}}*\ \mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{inputManager}}\ =\ \textcolor{keyword}{nullptr};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00035}\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{00035}}\ \ \ \ \ \mbox{\hyperlink{class_render_manager}{RenderManager}}*\ \mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}\ =\ \textcolor{keyword}{nullptr};\ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00036}\mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{00036}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}*\ \mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{soundManager}}\ =\ \textcolor{keyword}{nullptr};\ \ \ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00037}\mbox{\hyperlink{struct_engine_context_ad9836cdfc607ba27f100f5e0e892987f}{00037}}\ \ \ \ \ \mbox{\hyperlink{class_s_n_a_k_e___engine}{SNAKE\_Engine}}*\ \mbox{\hyperlink{struct_engine_context_ad9836cdfc607ba27f100f5e0e892987f}{engine}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00038}00038\ \};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00033}\mbox{\hyperlink{struct_engine_context}{00033}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_engine_context}{EngineContext}}}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00038}\mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{00038}}\ \ \ \ \ \mbox{\hyperlink{class_state_manager}{StateManager}}*\ \mbox{\hyperlink{struct_engine_context_a67f96c1b09ab0393d4f8434900d7419a}{stateManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00043}\mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{00043}}\ \ \ \ \ \mbox{\hyperlink{class_window_manager}{WindowManager}}*\ \mbox{\hyperlink{struct_engine_context_ab6fa006055c2a224931059f7ed840bed}{windowManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00048}\mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{00048}}\ \ \ \ \ \mbox{\hyperlink{class_input_manager}{InputManager}}*\ \mbox{\hyperlink{struct_engine_context_a9c8f61ef311c6f84a93d342eaaa1864a}{inputManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00053}\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{00053}}\ \ \ \ \ \mbox{\hyperlink{class_render_manager}{RenderManager}}*\ \mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00058}\mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{00058}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}*\ \mbox{\hyperlink{struct_engine_context_aa5985216cfd74ab389769abc5a5fdfb6}{soundManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00067}\mbox{\hyperlink{struct_engine_context_a9f2c2e2e2f267e5a86ecb50124cca61e}{00067}}\ \ \ \ \ \mbox{\hyperlink{class_jin_engine}{JinEngine}}*\ \mbox{\hyperlink{struct_engine_context_a9f2c2e2e2f267e5a86ecb50124cca61e}{engine}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_context_8h_source_l00068}00068\ \};}
 
 \end{DoxyCode}

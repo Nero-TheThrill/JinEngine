@@ -27,8 +27,8 @@ var class_sound_manager =
     [ "activeChannels", "class_sound_manager.html#a75b7dcdccb8b231683bb0c21519f5c39", null ],
     [ "engine", "class_sound_manager.html#ac2e5b555ac4b752012ef3032184847f2", null ],
     [ "instanceMap", "class_sound_manager.html#af2c6998eead9b15cac317be3c26a03ef", null ],
+    [ "JinEngine", "class_sound_manager.html#a71aeb8bd4691d83f06f454cb6d52814c", null ],
     [ "nextInstanceID", "class_sound_manager.html#a910b1fd3f58c344c1b2185b031d188d0", null ],
     [ "reusableIDs", "class_sound_manager.html#a2790a08c6ebba08bba3ad5539834ca6b", null ],
-    [ "SNAKE_Engine", "class_sound_manager.html#ac041070b4d7ca98d9588d8c7d20909f0", null ],
     [ "sounds", "class_sound_manager.html#a5446e9c6a2625292765b740ff0a90649", null ]
 ];

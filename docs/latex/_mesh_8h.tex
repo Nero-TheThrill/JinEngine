@@ -1,14 +1,14 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Mesh.h File Reference}
-\hypertarget{_mesh_8h}{}\label{_mesh_8h}\index{Project/SNAKE\_Engine/Public/Mesh.h@{Project/SNAKE\_Engine/Public/Mesh.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Mesh.h File Reference}
+\hypertarget{_mesh_8h}{}\label{_mesh_8h}\index{Project/JinEngine/Public/Mesh.h@{Project/JinEngine/Public/Mesh.h}}
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include "{}Material.\+h"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_vertex}{Vertex}}
-\begin{DoxyCompactList}\small\item\em \doxylink{struct_vertex}{Vertex} format used by \doxylink{class_mesh}{Mesh}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Basic 2D vertex layout used by this engine\textquotesingle{}s \doxylink{class_mesh}{Mesh}. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_mesh}{Mesh}}
-\begin{DoxyCompactList}\small\item\em GPU-\/backed draw-\/able geometry (VAO/\+VBO/\+EBO) with optional instancing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em GPU mesh wrapper that owns VAO/\+VBO/\+EBO and supports optional instanced rendering buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,11 +26,9 @@ enum class \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitiv
 \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c}{Triangle\+Strip}}
 , \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{Line\+Strip}}
  \}
-\begin{DoxyCompactList}\small\item\em Primitive topology used by the mesh draw calls. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines the primitive topology used when issuing draw calls for a \doxylink{class_mesh}{Mesh}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-typedef-members}
-\Hypertarget{_mesh_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_mesh_8h_a2d467e230729e9194068528ee1985327}\index{Mesh.h@{Mesh.h}!GLsizei@{GLsizei}}
 \index{GLsizei@{GLsizei}!Mesh.h@{Mesh.h}}
@@ -44,8 +42,6 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00008}{8}} of file \mbox{\h
 
 
 
-\label{doc-enum-members}
-\Hypertarget{_mesh_8h_doc-enum-members}
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}\index{Mesh.h@{Mesh.h}!PrimitiveType@{PrimitiveType}}
 \index{PrimitiveType@{PrimitiveType}!Mesh.h@{Mesh.h}}
@@ -55,9 +51,9 @@ enum class \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitiv
 
 
 
-Primitive topology used by the mesh draw calls. 
+Defines the primitive topology used when issuing draw calls for a \doxylink{class_mesh}{Mesh}. 
 
-This is mapped to the corresponding Open\+GL primitive modes (e.\+g., Triangles -\/\texorpdfstring{$>$}{>} GL\+\_\+\+TRIANGLES, Lines -\/\texorpdfstring{$>$}{>} GL\+\_\+\+LINES, etc.). \begin{DoxyEnumFields}[2]{Enumerator}
+\doxylink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type} selects how the vertex/index data is interpreted by the GPU draw call. Render\+Manager/\+Mesh map this enum to the corresponding Open\+GL primitive (e.\+g., Triangles -\/\texorpdfstring{$>$}{>} GL\+\_\+\+TRIANGLES). \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Triangles@{Triangles}!Mesh.h@{Mesh.h}}\index{Mesh.h@{Mesh.h}!Triangles@{Triangles}}}\Hypertarget{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}\label{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856} 
 Triangles&\\
 \hline

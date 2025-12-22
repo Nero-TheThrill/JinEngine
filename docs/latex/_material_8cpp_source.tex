@@ -1,5 +1,5 @@
 \doxysection{Material.\+cpp}
-\hypertarget{_material_8cpp_source}{}\label{_material_8cpp_source}\index{Project/SNAKE\_Engine/Private/Material.cpp@{Project/SNAKE\_Engine/Private/Material.cpp}}
+\hypertarget{_material_8cpp_source}{}\label{_material_8cpp_source}\index{Project/JinEngine/Private/Material.cpp@{Project/JinEngine/Private/Material.cpp}}
 \mbox{\hyperlink{_material_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <gl.h>}}
@@ -37,17 +37,17 @@
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00033}00033\ \{}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!mesh)}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00035}00035\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Mesh\ is\ nullptr"{}});}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Mesh\ is\ nullptr"{}});}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00038}00038\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}})}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00040}00040\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Shader\ is\ nullptr"{}});}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Shader\ is\ nullptr"{}});}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00043}00043\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}-\/>SupportsInstancing())}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00045}00045\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Tried\ enable\ instancing,\ but\ shader\ does\ not\ support\ 'i\_Model'."{}});}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Tried\ enable\ instancing,\ but\ shader\ does\ not\ support\ 'i\_Model'."{}});}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00048}00048\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00049}00049\ }

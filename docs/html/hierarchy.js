@@ -23,6 +23,7 @@ var hierarchy =
     [ "ComputeMaterial::ImageBind", "struct_compute_material_1_1_image_bind.html", null ],
     [ "InputManager", "class_input_manager.html", null ],
     [ "InstanceBatchKey", "struct_instance_batch_key.html", null ],
+    [ "JinEngine", "class_jin_engine.html", null ],
     [ "LineInstance", "struct_line_instance.html", null ],
     [ "Material", "class_material.html", [
       [ "ComputeMaterial", "class_compute_material.html", null ]
@@ -40,7 +41,6 @@ var hierarchy =
     [ "ShaderJob", "struct_shader_job.html", null ],
     [ "ShaderResult", "struct_shader_result.html", null ],
     [ "ShaderSource", "struct_shader_source.html", null ],
-    [ "SNAKE_Engine", "class_s_n_a_k_e___engine.html", null ],
     [ "SoundManager::SoundInfo", "struct_sound_manager_1_1_sound_info.html", null ],
     [ "SoundManager::SoundInstanceMA", "struct_sound_manager_1_1_sound_instance_m_a.html", null ],
     [ "SoundJob", "struct_sound_job.html", null ],

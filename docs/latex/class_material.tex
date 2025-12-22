@@ -2,7 +2,7 @@
 \hypertarget{class_material}{}\label{class_material}\index{Material@{Material}}
 
 
-High-\/level wrapper that binds a shader with uniforms and textures.  
+Render-\/time binding object that combines a \doxylink{class_shader}{Shader} with textures and uniform parameters.  
 
 
 
@@ -19,81 +19,99 @@ Inheritance diagram for Material\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}} (\mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*}\+\_\+shader)
-\begin{DoxyCompactList}\small\item\em Constructs a material bound to a shader. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a material using a specific shader. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_material_a255ba20d0325e6b78ff68ac739df40de}{\texorpdfstring{$\sim$}{\string~}\+Material}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic cleanup. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_material_aaf5018873649fa4149f4780fa1d4145d}{Is\+Compute}} () const
-\begin{DoxyCompactList}\small\item\em Indicates whether this material represents a compute pipeline. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Indicates whether this material is intended for compute dispatch. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{Set\+Texture}} (const std\+::string \&uniform\+Name, \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture)
-\begin{DoxyCompactList}\small\item\em Binds a texture to a named sampler uniform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds a texture to a sampler uniform name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{Set\+Uniform}} (const std\+::string \&name, \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value}} value)
-\begin{DoxyCompactList}\small\item\em Sets (or overrides) a uniform value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets a typed uniform value to be sent during binding. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}{Is\+Instancing\+Supported}} () const
-\begin{DoxyCompactList}\small\item\em Whether the underlying shader/mesh combination supports instancing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether instanced rendering is supported for this material. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_ae790a5b6e8836e871f6e01f4431350dd}{Enable\+Instancing}} (bool enable, \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
-\begin{DoxyCompactList}\small\item\em Enables or disables GPU instancing for this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enables or disables instancing for this material and prepares the mesh for instanced draws. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind}} () const
-\begin{DoxyCompactList}\small\item\em Activates the shader program and common draw state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds this material for rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_abe3526386e44d6a10fec0e6859dd564a}{Un\+Bind}} () const
-\begin{DoxyCompactList}\small\item\em Deactivates the shader program and resets state if needed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Unbinds this material after rendering. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_material_ae4ad039257d5695090655fbd89ef179b}{Send\+Data}} ()
-\begin{DoxyCompactList}\small\item\em Sends material state to the GPU (uniforms, textures). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends material-\/specific data beyond the standard textures and uniforms. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_material_a39001e95de2408283f42efa7e8657a05}{Send\+Uniforms}} ()
-\begin{DoxyCompactList}\small\item\em Uploads all stored uniform values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sends all typed uniform values stored in the uniform table to the shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}
-\begin{DoxyCompactList}\small\item\em Non-\/owning shader pointer. \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value}} $>$ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}
-\begin{DoxyCompactList}\small\item\em Name-\/\texorpdfstring{$>$}{>}uniform value table. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{is\+Instancing\+Enabled}}
-\begin{DoxyCompactList}\small\item\em Instancing flag (runtime). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_material_aa3a56da50b75b341743552348b587611}{Send\+Textures}} ()
-\begin{DoxyCompactList}\small\item\em Uploads all bound textures to their sampler uniforms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds all textures stored in the texture table to texture units and assigns sampler uniforms. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_material_a6ffdffe60d4298c93aa14f0913c5b3cb}{Has\+Texture}} () const
-\begin{DoxyCompactList}\small\item\em True if at least one texture is bound. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this material has at least one texture binding. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_material_a7af8f16fc44c4a9dbf02d598b17597ae}{Has\+Texture}} (\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture) const
-\begin{DoxyCompactList}\small\item\em Checks whether a specific texture is bound on any sampler. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks whether the provided texture pointer is currently bound by this material. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_material_a6324af47ca232b9af228180e11705588}{Has\+Shader}} (\mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*}shader\+\_\+) const
-\begin{DoxyCompactList}\small\item\em Checks whether this material uses a specific shader. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks whether this material uses the given shader pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_material_a7b5cb52b3d21fc071a614b6051e816f7}{Get\+Shader}} () const
-\begin{DoxyCompactList}\small\item\em Returns the underlying shader pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the shader used by this material. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 friend \mbox{\hyperlink{class_material_ac45dc348bf7022593d789b6bf7b407cb}{Render\+Manager}}
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}
-\begin{DoxyCompactList}\small\item\em Name-\/\texorpdfstring{$>$}{>}texture bindings (non-\/owning). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-High-\/level wrapper that binds a shader with uniforms and textures. 
+Render-\/time binding object that combines a \doxylink{class_shader}{Shader} with textures and uniform parameters. 
 
-\doxylink{class_material}{Material} manages a \doxylink{class_shader}{Shader}, a set of typed uniforms, and a set of named texture bindings. It also exposes optional GPU instancing toggles if the underlying Shader/\+Mesh pair supports it.
+\doxylink{class_material}{Material} acts as a lightweight state bundle that \doxylink{class_render_manager}{Render\+Manager} uses to drive drawing\+:
+\begin{DoxyItemize}
+\item shader\+: the GPU program used for the draw.
+\item textures\+: a mapping of uniform sampler names to Texture\texorpdfstring{$\ast$}{*} pointers.
+\item uniforms\+: a mapping of uniform names to typed values (\doxylink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value}).
+\end{DoxyItemize}
 
-Typical usage\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{class_material_a60bb6242b4556b0823fd96bd5bf7436a}{Material}}*\ mat\ =\ rm-\/>GetMaterialByTag(\textcolor{stringliteral}{"{}[Mat]sprite"{}});}
-\DoxyCodeLine{mat-\/>\mbox{\hyperlink{class_material_a6c49cb3082a29e0d412577dad3cfde5f}{SetUniform}}(\textcolor{stringliteral}{"{}u\_Tint"{}},\ glm::vec4(1,1,1,1));}
-\DoxyCodeLine{mat-\/>\mbox{\hyperlink{class_material_af587d5938f543479d1d2955cb4da1f48}{SetTexture}}(\textcolor{stringliteral}{"{}u\_MainTex"{}},\ rm-\/>GetTextureByTag(\textcolor{stringliteral}{"{}[Tex]player"{}}));}
+Ownership model\+:
+\begin{DoxyItemize}
+\item \doxylink{class_material}{Material} does not own Shader/\+Texture/\+Mesh. It only stores raw pointers that must remain valid.
+\item \doxylink{class_render_manager}{Render\+Manager} typically owns the registered Shaders/\+Textures/\+Materials and ensures lifetime safety.
+\end{DoxyItemize}
 
-\end{DoxyCode}
- 
+Binding workflow\+:
+\begin{DoxyItemize}
+\item \doxylink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind()} activates the \doxylink{class_shader}{Shader} (Use) and sends all textures/uniforms required for the draw.
+\item \doxylink{class_material_abe3526386e44d6a10fec0e6859dd564a}{Un\+Bind()} deactivates the \doxylink{class_shader}{Shader} (Unuse) and unbinds texture units if needed.
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00046}{46}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Instancing\+:
+\begin{DoxyItemize}
+\item \doxylink{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}{Is\+Instancing\+Supported()} checks whether the underlying \doxylink{class_shader}{Shader} is compatible with the engine\textquotesingle{}s instancing path.
+\item Enable\+Instancing(enable, mesh) toggles the instancing flag and may configure the Mesh-\/side instance attributes.
+\end{DoxyItemize}
+
+Compute\+:
+\begin{DoxyItemize}
+\item \doxylink{class_material_aaf5018873649fa4149f4780fa1d4145d}{Is\+Compute()} identifies whether a \doxylink{class_material}{Material} is a compute dispatch material. Regular materials return false.
+\item \doxylink{class_compute_material}{Compute\+Material} overrides \doxylink{class_material_aaf5018873649fa4149f4780fa1d4145d}{Is\+Compute()} and \doxylink{class_material_ae4ad039257d5695090655fbd89ef179b}{Send\+Data()} and uses image bindings instead of sampler textures. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00060}{60}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_material_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_material_a60bb6242b4556b0823fd96bd5bf7436a}\index{Material@{Material}!Material@{Material}}
 \index{Material@{Material}!Material@{Material}}
@@ -103,20 +121,22 @@ Material\+::\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sh
 
 
 
-Constructs a material bound to a shader. 
+Constructs a material using a specific shader. 
+
+Instancing is disabled by default. Textures and uniforms can be assigned after construction.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \+\_\+shader} & Non-\/owning pointer to a compiled \& linked shader program. \\
+{\em \+\_\+shader} & \doxylink{class_shader}{Shader} program to be used for this material. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00055}{55}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00072}{72}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00055\ :\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}(\_shader),\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}}(\textcolor{keyword}{false})\ \{\}}
+\DoxyCodeLine{00072\ :\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}(\_shader),\ \mbox{\hyperlink{class_material_a88e57329587a1d1d2852d926890e2c4f}{isInstancingEnabled}}(\textcolor{keyword}{false})\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_a255ba20d0325e6b78ff68ac739df40de}\index{Material@{Material}!````~Material@{\texorpdfstring{$\sim$}{\string~}Material}}
@@ -127,12 +147,10 @@ virtual Material\+::\texorpdfstring{$\sim$}{\string~}\+Material (\begin{DoxyPara
 
 
 
-Virtual destructor. 
+Virtual destructor for polymorphic cleanup. 
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_material_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}\index{Material@{Material}!Bind@{Bind}}
 \index{Bind@{Bind}!Material@{Material}}
@@ -142,9 +160,17 @@ void Material\+::\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) con
 
 
 
-Activates the shader program and common draw state. 
+Binds this material for rendering. 
 
-Called by \doxylink{class_render_manager}{Render\+Manager} before issuing draw calls. 
+Expected responsibilities\+:
+\begin{DoxyItemize}
+\item Activates the shader program.
+\item Sends textures (\doxylink{class_material_aa3a56da50b75b341743552348b587611}{Send\+Textures()}).
+\item Sends uniform values (\doxylink{class_material_a39001e95de2408283f42efa7e8657a05}{Send\+Uniforms()}).
+\item Calls \doxylink{class_material_ae4ad039257d5695090655fbd89ef179b}{Send\+Data()} for subclasses to push additional data.
+\end{DoxyItemize}
+
+This is intended to be called by \doxylink{class_render_manager}{Render\+Manager} immediately before drawing. 
 
 Definition at line \mbox{\hyperlink{_material_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
 
@@ -163,15 +189,17 @@ void Material\+::\+Enable\+Instancing (\begin{DoxyParamCaption}\item[{bool}]{ena
 
 
 
-Enables or disables GPU instancing for this material. 
+Enables or disables instancing for this material and prepares the mesh for instanced draws. 
 
-A mesh pointer is provided so the material can configure instance attributes. If the shader or mesh doesn\textquotesingle{}t support instancing, this call has no effect.
+When enabling instancing, the engine may require Mesh-\/side instance attribute setup so that per-\/instance data (model/color/uv) can be streamed and used by the shader.
+
+Disabling instancing only toggles the material flag; \doxylink{class_render_manager}{Render\+Manager} will then use non-\/instanced draws.
 
 
 \begin{DoxyParams}{Parameters}
-{\em enable} & Toggle instancing on/off. \\
+{\em enable} & True to enable instancing; false to disable. \\
 \hline
-{\em mesh} & \doxylink{class_mesh}{Mesh} whose instance attributes will be used. \\
+{\em mesh} & \doxylink{class_mesh}{Mesh} that will be used for instanced draws (used to set up instance attributes). \\
 \hline
 \end{DoxyParams}
 
@@ -183,17 +211,17 @@ Definition at line \mbox{\hyperlink{_material_8cpp_source_l00032}{32}} of file \
 \DoxyCodeLine{00033\ \{}
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!mesh)}
 \DoxyCodeLine{00035\ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Mesh\ is\ nullptr"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Mesh\ is\ nullptr"{}});}
 \DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 \DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}})}
 \DoxyCodeLine{00040\ \ \ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Shader\ is\ nullptr"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Shader\ is\ nullptr"{}});}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00043\ \ \ \ \ \}}
 \DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}-\/>SupportsInstancing())}
 \DoxyCodeLine{00045\ \ \ \ \ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Tried\ enable\ instancing,\ but\ shader\ does\ not\ support\ 'i\_Model'."{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Enable\ Instancing\ skipped:\ Tried\ enable\ instancing,\ but\ shader\ does\ not\ support\ 'i\_Model'."{}});}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00048\ \ \ \ \ \}}
 \DoxyCodeLine{00049\ }
@@ -214,15 +242,15 @@ Definition at line \mbox{\hyperlink{_material_8cpp_source_l00032}{32}} of file \
 
 
 
-Returns the underlying shader pointer. 
+Returns the shader used by this material. 
 
+This is a low-\/level helper for \doxylink{class_render_manager}{Render\+Manager} to read the active shader during batching and binding. 
 
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00185}{185}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00234}{234}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00185\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};\ \}}
+\DoxyCodeLine{00234\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_a6324af47ca232b9af228180e11705588}\index{Material@{Material}!HasShader@{HasShader}}
@@ -233,15 +261,15 @@ bool Material\+::\+Has\+Shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{
 
 
 
-Checks whether this material uses a specific shader. 
+Checks whether this material uses the given shader pointer. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em shader\+\_\+} & \doxylink{class_shader}{Shader} to compare. \\
+{\em shader\+\_\+} & \doxylink{class_shader}{Shader} pointer to test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if this-\/\texorpdfstring{$>$}{>}shader == shader\+\_\+. 
+True if shader\+\_\+ matches this material\textquotesingle{}s shader. 
 \end{DoxyReturn}
 
 
@@ -262,15 +290,15 @@ bool Material\+::\+Has\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-True if at least one texture is bound. 
+Returns whether this material has at least one texture binding. 
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00164}{164}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00210}{210}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00164\ \{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}.empty();\ \}}
+\DoxyCodeLine{00210\ \{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}.empty();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_a7af8f16fc44c4a9dbf02d598b17597ae}\index{Material@{Material}!HasTexture@{HasTexture}}
@@ -281,15 +309,15 @@ bool Material\+::\+Has\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Checks whether a specific texture is bound on any sampler. 
+Checks whether the provided texture pointer is currently bound by this material. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em texture} & \doxylink{class_texture}{Texture} pointer to search for. \\
+{\em texture} & \doxylink{class_texture}{Texture} pointer to test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the texture is already bound by this material. 
+True if any binding references the texture. 
 \end{DoxyReturn}
 
 
@@ -317,22 +345,19 @@ virtual bool Material\+::\+Is\+Compute (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Indicates whether this material represents a compute pipeline. 
+Indicates whether this material is intended for compute dispatch. 
 
-\begin{DoxyReturn}{Returns}
-false for base \doxylink{class_material}{Material}; overridden by \doxylink{class_compute_material}{Compute\+Material}. 
-\end{DoxyReturn}
-
+Regular materials return false. \doxylink{class_compute_material}{Compute\+Material} overrides this to return true. 
 
 Reimplemented in \mbox{\hyperlink{class_compute_material_ad5a9a88431fa1b207fb59f4d52528fe2}{Compute\+Material}}.
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00067}{67}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00085}{85}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00067\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00085\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_a7a9c710b2d7a286c1349315b6fd6ab7a}\index{Material@{Material}!IsInstancingSupported@{IsInstancingSupported}}
@@ -343,12 +368,12 @@ bool Material\+::\+Is\+Instancing\+Supported (\begin{DoxyParamCaption}{}{}\end{D
 
 
 
-Whether the underlying shader/mesh combination supports instancing. 
+Returns whether instanced rendering is supported for this material. 
 
-Checks the shader\textquotesingle{}s instancing attributes and mesh layout.
+This is typically determined by the underlying \doxylink{class_shader}{Shader}\textquotesingle{}s capabilities (e.\+g., presence of required instancing attributes/uniform conventions). If unsupported, \doxylink{class_render_manager}{Render\+Manager} should fall back to per-\/object draws even if objects are batchable.
 
 \begin{DoxyReturn}{Returns}
-true if instancing can be used; false otherwise. 
+True if instancing is supported; false otherwise. 
 \end{DoxyReturn}
 
 
@@ -369,9 +394,9 @@ void Material\+::\+Send\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Sends material state to the GPU (uniforms, textures). 
+Sends material-\/specific data beyond the standard textures and uniforms. 
 
-The base implementation uploads all registered uniforms and textures. Derived classes may extend this to push additional state. 
+Base \doxylink{class_material}{Material} implementation may be a no-\/op or may forward to Send\+Uniforms/\+Send\+Textures. \doxylink{class_compute_material}{Compute\+Material} overrides this to bind images and set up compute-\/specific state. 
 
 Reimplemented in \mbox{\hyperlink{class_compute_material_a3c8944e037369072b1685f9e907bc7dc}{Compute\+Material}}.
 
@@ -395,9 +420,15 @@ void Material\+::\+Send\+Textures (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 
 
-Uploads all bound textures to their sampler uniforms. 
+Binds all textures stored in the texture table to texture units and assigns sampler uniforms. 
 
-Assigns them to consecutive texture units and updates sampler uniforms. 
+Iterates textures and\+:
+\begin{DoxyItemize}
+\item binds each \doxylink{class_texture}{Texture} to a unit (\doxylink{class_texture_a6e1092f212113f38bf84b245b982943c}{Texture\+::\+Bind\+To\+Unit})
+\item updates the corresponding sampler uniform to that unit
+\end{DoxyItemize}
+
+The exact unit assignment strategy is implementation-\/defined. 
 
 Definition at line \mbox{\hyperlink{_material_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
 
@@ -423,9 +454,9 @@ void Material\+::\+Send\+Uniforms (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 
 
-Uploads all stored uniform values. 
+Sends all typed uniform values stored in the uniform table to the shader. 
 
-Dispatches by variant type and calls the appropriate \doxylink{class_shader_a4729e93872d7483b6d5ec1680ec5f35f}{Shader\+::\+Send\+Uniform()}. 
+Iterates uniforms and uses the correct \doxylink{class_shader_a4729e93872d7483b6d5ec1680ec5f35f}{Shader\+::\+Send\+Uniform} overload based on the \doxylink{_material_8h_a06229a425f27fcb99ce02ae045b56e0d}{Uniform\+Value} variant type. This is usually called during \doxylink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind()}. 
 
 Definition at line \mbox{\hyperlink{_material_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
 
@@ -450,24 +481,28 @@ void Material\+::\+Set\+Texture (\begin{DoxyParamCaption}\item[{const std\+::str
 
 
 
-Binds a texture to a named sampler uniform. 
+Binds a texture to a sampler uniform name. 
+
+Stores the mapping in the internal texture table. The texture is not bound immediately; it is bound later during \doxylink{class_material_aa3a56da50b75b341743552348b587611}{Send\+Textures()} when \doxylink{class_render_manager}{Render\+Manager} binds the material for a draw.
+
+If the same uniform name already exists, it is overwritten.
 
 
 \begin{DoxyParams}{Parameters}
-{\em uniform\+Name} & Name of sampler uniform in the shader (e.\+g., "{}u\+\_\+\+Main\+Tex"{}). \\
+{\em uniform\+Name} & Sampler uniform name expected by the shader (e.\+g., "{}u\+\_\+\+Texture"{}). \\
 \hline
-{\em texture} & \doxylink{class_texture}{Texture} to bind (non-\/owning). \\
+{\em texture} & \doxylink{class_texture}{Texture} pointer to bind to the sampler. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00075}{75}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00099}{99}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00076\ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}[uniformName]\ =\ texture;}
-\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_a73c44b66bc920571726bfd6dbdeeec26}{textures}}[uniformName]\ =\ texture;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_a6c49cb3082a29e0d412577dad3cfde5f}\index{Material@{Material}!SetUniform@{SetUniform}}
@@ -478,26 +513,26 @@ void Material\+::\+Set\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::str
 
 
 
-Sets (or overrides) a uniform value. 
+Sets a typed uniform value to be sent during binding. 
 
-The value\textquotesingle{}s type must match the uniform declared in the shader.
+Stores (name -\/\texorpdfstring{$>$}{>} value) in uniforms. Values are sent to the shader during \doxylink{class_material_a1fd6c6c16d1f04e747470a2cc0c52fa1}{Bind()}/\+Send\+Uniforms(). If the same uniform name already exists, it is overwritten.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform variable name. \\
+{\em name} & Uniform name expected by the shader. \\
 \hline
-{\em value} & Variant value (int / float / vec\texorpdfstring{$\ast$}{*} / mat4). \\
+{\em value} & Typed uniform value (int/float/vec2/vec3/vec4/mat4). \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00089}{89}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00114}{114}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00090\ \ \ \ \ \ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}[name]\ =\ value;}
-\DoxyCodeLine{00092\ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_material_ac18d1c428804aef46a8ec751989e0677}{uniforms}}[name]\ =\ value;}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_material_abe3526386e44d6a10fec0e6859dd564a}\index{Material@{Material}!UnBind@{UnBind}}
@@ -508,9 +543,15 @@ void Material\+::\+Un\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})
 
 
 
-Deactivates the shader program and resets state if needed. 
+Unbinds this material after rendering. 
 
+Expected responsibilities\+:
+\begin{DoxyItemize}
+\item Unbind textures if the engine requires explicit cleanup.
+\item Deactivates the shader program.
+\end{DoxyItemize}
 
+This is intended to be called by \doxylink{class_render_manager}{Render\+Manager} after drawing or when switching materials. 
 
 Definition at line \mbox{\hyperlink{_material_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
 
@@ -530,8 +571,6 @@ Definition at line \mbox{\hyperlink{_material_8cpp_source_l00010}{10}} of file \
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_material_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_material_a88e57329587a1d1d2852d926890e2c4f}\index{Material@{Material}!isInstancingEnabled@{isInstancingEnabled}}
 \index{isInstancingEnabled@{isInstancingEnabled}!Material@{Material}}
@@ -541,11 +580,7 @@ bool Material\+::is\+Instancing\+Enabled\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Instancing flag (runtime). 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00150}{150}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00192}{192}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{class_material_ac45dc348bf7022593d789b6bf7b407cb}\index{Material@{Material}!RenderManager@{RenderManager}}
 \index{RenderManager@{RenderManager}!Material@{Material}}
@@ -555,7 +590,7 @@ friend Material\+::\+Render\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00047}{47}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00061}{61}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{class_material_abaac6082ee6cf042b2d4da4f6e6fe403}\index{Material@{Material}!shader@{shader}}
 \index{shader@{shader}!Material@{Material}}
@@ -565,11 +600,7 @@ Definition at line \mbox{\hyperlink{_material_8h_source_l00047}{47}} of file \mb
 
 
 
-Non-\/owning shader pointer. 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00148}{148}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00190}{190}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{class_material_a73c44b66bc920571726bfd6dbdeeec26}\index{Material@{Material}!textures@{textures}}
 \index{textures@{textures}!Material@{Material}}
@@ -579,11 +610,7 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{class_texture}{Textu
 
 
 
-Name-\/\texorpdfstring{$>$}{>}texture bindings (non-\/owning). 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00187}{187}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00236}{236}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{class_material_ac18d1c428804aef46a8ec751989e0677}\index{Material@{Material}!uniforms@{uniforms}}
 \index{uniforms@{uniforms}!Material@{Material}}
@@ -593,15 +620,11 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{_material_8h_a06229a
 
 
 
-Name-\/\texorpdfstring{$>$}{>}uniform value table. 
-
-
-
-Definition at line \mbox{\hyperlink{_material_8h_source_l00149}{149}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00191}{191}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_material_8h}{Material.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_material_8cpp}{Material.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_material_8h}{Material.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_material_8cpp}{Material.\+cpp}}\end{DoxyCompactItemize}

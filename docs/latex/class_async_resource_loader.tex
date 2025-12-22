@@ -2,7 +2,7 @@
 \hypertarget{class_async_resource_loader}{}\label{class_async_resource_loader}\index{AsyncResourceLoader@{AsyncResourceLoader}}
 
 
-Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds).  
+Background worker that processes resource load requests asynchronously.  
 
 
 
@@ -13,84 +13,82 @@ Background worker that asynchronously loads engine resources (textures, shaders,
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}{Async\+Resource\+Loader}} ()=default
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} in a stopped state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_async_resource_loader_af67c49c71131de520765f33060dd1058}{\texorpdfstring{$\sim$}{\string~}\+Async\+Resource\+Loader}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destroys the loader and stops the worker thread if running. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start}} ()
-\begin{DoxyCompactList}\small\item\em Start the worker thread. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Starts the worker thread if it is not already running. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop}} ()
-\begin{DoxyCompactList}\small\item\em Stop the worker thread and wait for it to finish. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Requests the worker thread to stop and waits for it to finish. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}} (const \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} \&req)
-\begin{DoxyCompactList}\small\item\em Enqueue a new asynchronous load request. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enqueues a load request and increases the total request count. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}{Get\+Progress}} () const
-\begin{DoxyCompactList}\small\item\em Get overall progress ratio. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns progress as loaded\+Count / total\+Count. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}{Has\+Finished}} () const
-\begin{DoxyCompactList}\small\item\em Check if all jobs have finished. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the loader considers all work finished. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} $>$ \mbox{\hyperlink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{Fetch\+Completed}} ()
-\begin{DoxyCompactList}\small\item\em Retrieve all completed load results since last call. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Fetches completed results produced by the worker and clears internal storage. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_async_resource_loader_ac95aaba5184c87571d1fbbab20f21852}{Get\+Total\+Count}} () const
-\begin{DoxyCompactList}\small\item\em Total number of requests ever enqueued. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the total number of requests enqueued so far. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_async_resource_loader_a79a2c351242e90b7562d4729d6e4b63f}{Get\+Loaded\+Count}} () const
-\begin{DoxyCompactList}\small\item\em Number of jobs successfully processed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the number of requests that have finished processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker}} ()
-\begin{DoxyCompactList}\small\item\em Worker thread entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Worker thread main loop that processes queued requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::thread \mbox{\hyperlink{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}{worker\+Thread}}
-\begin{DoxyCompactList}\small\item\em Dedicated background thread. \end{DoxyCompactList}\item 
+\item 
 std\+::atomic$<$ bool $>$ \mbox{\hyperlink{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}{running}} \{ false \}
-\begin{DoxyCompactList}\small\item\em Worker running flag. \end{DoxyCompactList}\item 
+\item 
 std\+::queue$<$ \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} $>$ \mbox{\hyperlink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}}
-\begin{DoxyCompactList}\small\item\em Pending job queue. \end{DoxyCompactList}\item 
+\item 
 std\+::mutex \mbox{\hyperlink{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}{queue\+Mutex}}
-\begin{DoxyCompactList}\small\item\em Protects \doxylink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}. \end{DoxyCompactList}\item 
+\item 
 std\+::condition\+\_\+variable \mbox{\hyperlink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv}}
-\begin{DoxyCompactList}\small\item\em Signals when new jobs arrive. \end{DoxyCompactList}\item 
+\item 
 std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} $>$ \mbox{\hyperlink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}}
-\begin{DoxyCompactList}\small\item\em Completed job results. \end{DoxyCompactList}\item 
+\item 
 std\+::mutex \mbox{\hyperlink{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}{completed\+Mutex}}
-\begin{DoxyCompactList}\small\item\em Protects \doxylink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}. \end{DoxyCompactList}\item 
+\item 
 std\+::atomic$<$ int $>$ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{total\+Count}} \{ 0 \}
-\begin{DoxyCompactList}\small\item\em Total jobs submitted. \end{DoxyCompactList}\item 
+\item 
 std\+::atomic$<$ int $>$ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loaded\+Count}} \{ 0 \}
-\begin{DoxyCompactList}\small\item\em Jobs completed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds). 
+Background worker that processes resource load requests asynchronously. 
 
-\doxylink{class_async_resource_loader}{Async\+Resource\+Loader} runs a background thread that processes queued \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} jobs. Each completed load produces a \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} which can be fetched and uploaded to GPU or audio engine.
-
-Typical flow\+:
+\doxylink{class_async_resource_loader}{Async\+Resource\+Loader} maintains\+:
 \begin{DoxyItemize}
-\item Call \doxylink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start} to launch the worker thread.
-\item Enqueue resource jobs with \doxylink{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}{Enqueue}.
-\item Periodically call \doxylink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{Fetch\+Completed} to retrieve finished results and register them with engine managers.
-\item Call \doxylink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop} when shutting down or leaving the loading state.
+\item A worker thread that runs \doxylink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker()}
+\item A thread-\/safe request queue guarded by queue\+Mutex + condition\+\_\+variable
+\item A completed result list guarded by completed\+Mutex
+\item Atomic counters (total\+Count / loaded\+Count) for progress reporting
 \end{DoxyItemize}
 
-Thread safety\+:
-\begin{DoxyItemize}
-\item Public API is thread-\/safe for enqueueing jobs and fetching results.
-\item Internal synchronization uses a mutex + condition variable to wake the worker thread. 
-\end{DoxyItemize}
+Typical usage pattern\+: 1) \doxylink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start()} 2) Enqueue(...) one or more \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} 3) Periodically poll Get\+Progress / Has\+Finished and \doxylink{class_async_resource_loader_a3352680b3061a6abb1970de6cd609eb7}{Fetch\+Completed()} 4) \doxylink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop()} (or rely on destructor to stop/join)
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00150}{150}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Fetch\+Completed is expected to transfer completed results to the caller (and clear the internal list), allowing the main thread to register/compile GPU resources safely. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00225}{225}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_async_resource_loader_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b}\index{AsyncResourceLoader@{AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
 \index{AsyncResourceLoader@{AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
 \doxysubsubsection{\texorpdfstring{AsyncResourceLoader()}{AsyncResourceLoader()}}
 {\footnotesize\ttfamily \label{class_async_resource_loader_ae91bb7fb1c4e67301e52fca4e11f102b} 
 Async\+Resource\+Loader\+::\+Async\+Resource\+Loader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructs an \doxylink{class_async_resource_loader}{Async\+Resource\+Loader} in a stopped state. 
 
 \Hypertarget{class_async_resource_loader_af67c49c71131de520765f33060dd1058}\index{AsyncResourceLoader@{AsyncResourceLoader}!````~AsyncResourceLoader@{\texorpdfstring{$\sim$}{\string~}AsyncResourceLoader}}
 \index{````~AsyncResourceLoader@{\texorpdfstring{$\sim$}{\string~}AsyncResourceLoader}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -99,6 +97,10 @@ Async\+Resource\+Loader\+::\+Async\+Resource\+Loader (\begin{DoxyParamCaption}{}
 Async\+Resource\+Loader\+::\texorpdfstring{$\sim$}{\string~}\+Async\+Resource\+Loader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+
+Destroys the loader and stops the worker thread if running. 
+
+The destructor is expected to ensure the worker thread is not left running. A typical implementation calls \doxylink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop()} and joins the thread. 
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
 
@@ -111,8 +113,6 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00021}{2
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_async_resource_loader_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_async_resource_loader_a1320ce4977f58e8a69689ae1eead3b09}\index{AsyncResourceLoader@{AsyncResourceLoader}!Enqueue@{Enqueue}}
 \index{Enqueue@{Enqueue}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -122,14 +122,16 @@ void Async\+Resource\+Loader\+::\+Enqueue (\begin{DoxyParamCaption}\item[{const 
 
 
 
-Enqueue a new asynchronous load request. 
+Enqueues a load request and increases the total request count. 
+
+Pushes the request into request\+Queue under queue\+Mutex protection and increments total\+Count. Then notifies the worker thread via cv.\+notify\+\_\+one().
 
 
 \begin{DoxyParams}{Parameters}
-{\em req} & The load request to add.\\
+{\em req} & Load request variant to enqueue. \\
 \hline
 \end{DoxyParams}
-Increments \doxylink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{total\+Count} and wakes the worker thread to process jobs. 
+
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
 
@@ -153,14 +155,20 @@ std\+::vector$<$ \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1
 
 
 
-Retrieve all completed load results since last call. 
+Fetches completed results produced by the worker and clears internal storage. 
+
+This function\+:
+\begin{DoxyItemize}
+\item Locks completed\+Mutex
+\item Swaps internal completed vector with a local vector
+\item Returns the local vector
+\end{DoxyItemize}
+
+Because swap() is used, this operation is efficient and leaves the internal completed vector empty after the call.
 
 \begin{DoxyReturn}{Returns}
-Vector of \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} values.
+List of completed results since the last fetch. 
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Clears internal completed list. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
@@ -183,18 +191,15 @@ int Async\+Resource\+Loader\+::\+Get\+Loaded\+Count (\begin{DoxyParamCaption}{}{
 
 
 
-Number of jobs successfully processed so far. 
-
-\begin{DoxyReturn}{Returns}
-Count of completed jobs. 
-\end{DoxyReturn}
+Returns the number of requests that have finished processing. 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00215}{215}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00327}{327}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00215\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();\ \}}
+\DoxyCodeLine{00327\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}{loadedCount}}.load();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_async_resource_loader_a5689fa771581393a3186273928d5fae0}\index{AsyncResourceLoader@{AsyncResourceLoader}!GetProgress@{GetProgress}}
@@ -205,10 +210,16 @@ float Async\+Resource\+Loader\+::\+Get\+Progress (\begin{DoxyParamCaption}{}{}\e
 
 
 
-Get overall progress ratio. 
+Returns progress as loaded\+Count / total\+Count. 
+
+Implementation policy\+:
+\begin{DoxyItemize}
+\item If total\+Count \texorpdfstring{$<$}{<}= 0, this function returns 1.\+0f.
+\item Otherwise returns done / tot as float.
+\end{DoxyItemize}
 
 \begin{DoxyReturn}{Returns}
-Float in \mbox{[}0,1\mbox{]} representing fraction of jobs completed. 
+Progress ratio. Returns 1.\+0f when no requests have been enqueued. 
 \end{DoxyReturn}
 
 
@@ -232,18 +243,15 @@ int Async\+Resource\+Loader\+::\+Get\+Total\+Count (\begin{DoxyParamCaption}{}{}
 
 
 
-Total number of requests ever enqueued. 
-
-\begin{DoxyReturn}{Returns}
-Count of enqueued jobs. 
-\end{DoxyReturn}
+Returns the total number of requests enqueued so far. 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00208}{208}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00322}{322}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00208\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();\ \}}
+\DoxyCodeLine{00322\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}{totalCount}}.load();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_async_resource_loader_a7274278fd5afa70521a8dfa262fcc18e}\index{AsyncResourceLoader@{AsyncResourceLoader}!HasFinished@{HasFinished}}
@@ -254,10 +262,16 @@ bool Async\+Resource\+Loader\+::\+Has\+Finished (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Check if all jobs have finished. 
+Returns whether the loader considers all work finished. 
+
+Current implementation returns true only when\+:
+\begin{DoxyItemize}
+\item loaded\+Count \texorpdfstring{$>$}{>}= total\+Count
+\item total\+Count \texorpdfstring{$>$}{>} 0
+\end{DoxyItemize}
 
 \begin{DoxyReturn}{Returns}
-True if loaded\+Count == total\+Count. 
+true if finished according to counters; false otherwise. 
 \end{DoxyReturn}
 
 
@@ -278,12 +292,9 @@ void Async\+Resource\+Loader\+::\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Start the worker thread. 
+Starts the worker thread if it is not already running. 
 
-\begin{DoxyNote}{Note}
-Safe to call once before enqueueing jobs. 
-\end{DoxyNote}
-
+If running is already true, \doxylink{class_async_resource_loader_a81675496e3c264ebbaace9cc50c628a6}{Start()} returns immediately without creating a new thread. When started, worker\+Thread runs \doxylink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker()} in a lambda. 
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
 
@@ -308,12 +319,20 @@ void Async\+Resource\+Loader\+::\+Stop (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Stop the worker thread and wait for it to finish. 
+Requests the worker thread to stop and waits for it to finish. 
 
-\begin{DoxyNote}{Note}
-Should be called before engine shutdown. 
-\end{DoxyNote}
+\doxylink{class_async_resource_loader_a9c9c0751fe57d2d90910b79bbcd4c18f}{Stop()} performs the following\+:
+\begin{DoxyItemize}
+\item If running is false, returns immediately.
+\item Under queue\+Mutex, sets running to false.
+\item Notifies all waiters via cv.\+notify\+\_\+all().
+\item Joins worker\+Thread if joinable.
+\end{DoxyItemize}
 
+\doxylink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker()} exits when\+:
+\begin{DoxyItemize}
+\item running is false AND request\+Queue is empty. If running becomes false but there are still queued requests, \doxylink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker()} will continue processing until the queue is drained. 
+\end{DoxyItemize}
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
 
@@ -342,9 +361,27 @@ void Async\+Resource\+Loader\+::\+Worker (\begin{DoxyParamCaption}{}{}\end{DoxyP
 
 
 
-Worker thread entry point. 
+Worker thread main loop that processes queued requests. 
 
-Continuously waits on \doxylink{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}{cv} until requests are available or stop is requested. Processes jobs synchronously (e.\+g., file IO, image decoding). 
+\doxylink{class_async_resource_loader_a6d6735825994934b75a0a17574e2bc30}{Worker()} performs\+:
+\begin{DoxyItemize}
+\item stbi\+\_\+set\+\_\+flip\+\_\+vertically\+\_\+on\+\_\+load(true) once at the start of the thread.
+\item Waits on cv until (running is false) OR (request\+Queue is not empty).
+\item Exits only when running is false AND the queue is empty.
+\item Processes one request at a time by visiting the \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} variant.
+\end{DoxyItemize}
+
+For each processed request\+:
+\begin{DoxyItemize}
+\item A corresponding \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} is appended to completed (except \doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job}, which is not handled).
+\item loaded\+Count is incremented exactly once per request, regardless of success.
+\end{DoxyItemize}
+
+Thread-\/safety\+:
+\begin{DoxyItemize}
+\item request\+Queue is protected by queue\+Mutex.
+\item completed is protected by completed\+Mutex. 
+\end{DoxyItemize}
 
 Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_async_resource_loader_8cpp_source}{Async\+Resource\+Loader.\+cpp}}.
 
@@ -394,7 +431,7 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00083}{8
 \DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ texture\ load\ failed:\ "{}}\ <<\ job.filePath);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Async\ texture\ load\ failed:\ "{}}\ <<\ job.filePath);}
 \DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{ok}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00131\ }
@@ -414,7 +451,7 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00083}{8
 \DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}\ =\ ReadTextFile(f.path);}
 \DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (src.\mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bbe0111}{source}}.empty())}
 \DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Async\ shader\ file\ read\ failed:\ "{}}\ <<\ f.path);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Async\ shader\ file\ read\ failed:\ "{}}\ <<\ f.path);}
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}{sources}}.emplace\_back(std::move(src));}
@@ -455,8 +492,6 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8cpp_source_l00083}{8
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_async_resource_loader_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}\index{AsyncResourceLoader@{AsyncResourceLoader}!completed@{completed}}
 \index{completed@{completed}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -466,11 +501,7 @@ std\+::vector$<$\mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f
 
 
 
-Completed job results. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00235}{235}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00358}{358}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{class_async_resource_loader_a2e86e6e3efd75ef87eeb648eae4421e3}\index{AsyncResourceLoader@{AsyncResourceLoader}!completedMutex@{completedMutex}}
 \index{completedMutex@{completedMutex}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -480,11 +511,7 @@ std\+::mutex Async\+Resource\+Loader\+::completed\+Mutex\hspace{0.3cm}{\ttfamily
 
 
 
-Protects \doxylink{class_async_resource_loader_a849aef3d6c1fd0ac57461e11f6d28d65}{completed}. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00236}{236}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00359}{359}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{class_async_resource_loader_a26382b1f0dc319ae9fb3c0561f4edb6a}\index{AsyncResourceLoader@{AsyncResourceLoader}!cv@{cv}}
 \index{cv@{cv}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -494,11 +521,7 @@ std\+::condition\+\_\+variable Async\+Resource\+Loader\+::cv\hspace{0.3cm}{\ttfa
 
 
 
-Signals when new jobs arrive. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00233}{233}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00356}{356}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{class_async_resource_loader_ab47b6e7928f1111788e0d51fa0f177c1}\index{AsyncResourceLoader@{AsyncResourceLoader}!loadedCount@{loadedCount}}
 \index{loadedCount@{loadedCount}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -508,15 +531,11 @@ std\+::atomic$<$int$>$ Async\+Resource\+Loader\+::loaded\+Count \{ 0 \}\hspace{0
 
 
 
-Jobs completed so far. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00239}{239}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00362}{362}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00239\ \{\ 0\ \};\ \ \ \ }
+\DoxyCodeLine{00362\ \{\ 0\ \};}
 
 \end{DoxyCode}
 \Hypertarget{class_async_resource_loader_ad704ddc2357b43bef5bc75f211bae71c}\index{AsyncResourceLoader@{AsyncResourceLoader}!queueMutex@{queueMutex}}
@@ -527,11 +546,7 @@ std\+::mutex Async\+Resource\+Loader\+::queue\+Mutex\hspace{0.3cm}{\ttfamily [mu
 
 
 
-Protects \doxylink{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}{request\+Queue}. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00232}{232}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00355}{355}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{class_async_resource_loader_aa235d8c1f3f3a055245983ec6e8f6e18}\index{AsyncResourceLoader@{AsyncResourceLoader}!requestQueue@{requestQueue}}
 \index{requestQueue@{requestQueue}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -541,11 +556,7 @@ std\+::queue$<$\mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16b
 
 
 
-Pending job queue. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00231}{231}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00354}{354}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{class_async_resource_loader_a241ba91f425aca1cb7ef29e1204e8ab8}\index{AsyncResourceLoader@{AsyncResourceLoader}!running@{running}}
 \index{running@{running}!AsyncResourceLoader@{AsyncResourceLoader}}
@@ -555,15 +566,11 @@ std\+::atomic$<$bool$>$ Async\+Resource\+Loader\+::running \{ false \}\hspace{0.
 
 
 
-Worker running flag. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00229}{229}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00352}{352}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00229\ \{\ \textcolor{keyword}{false}\ \};\ \ \ }
+\DoxyCodeLine{00352\ \{\ \textcolor{keyword}{false}\ \};}
 
 \end{DoxyCode}
 \Hypertarget{class_async_resource_loader_af77d0f813bd3f2d3237a4f168748d22b}\index{AsyncResourceLoader@{AsyncResourceLoader}!totalCount@{totalCount}}
@@ -574,15 +581,11 @@ std\+::atomic$<$int$>$ Async\+Resource\+Loader\+::total\+Count \{ 0 \}\hspace{0.
 
 
 
-Total jobs submitted. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00238}{238}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00361}{361}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00238\ \{\ 0\ \};\ \ \ \ \ }
+\DoxyCodeLine{00361\ \{\ 0\ \};}
 
 \end{DoxyCode}
 \Hypertarget{class_async_resource_loader_a6a3df46c4e1e3b50d93e648316c3a4a2}\index{AsyncResourceLoader@{AsyncResourceLoader}!workerThread@{workerThread}}
@@ -593,15 +596,11 @@ std\+::thread Async\+Resource\+Loader\+::worker\+Thread\hspace{0.3cm}{\ttfamily 
 
 
 
-Dedicated background thread. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00228}{228}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00351}{351}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_async_resource_loader_8cpp}{Async\+Resource\+Loader.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_async_resource_loader_8cpp}{Async\+Resource\+Loader.\+cpp}}\end{DoxyCompactItemize}

@@ -2,7 +2,7 @@
 \hypertarget{struct_sprite_clip}{}\label{struct_sprite_clip}\index{SpriteClip@{SpriteClip}}
 
 
-Represents an animation clip within a sprite sheet.  
+Describes an animation clip as an ordered sequence of frame indices.  
 
 
 
@@ -13,24 +13,27 @@ Represents an animation clip within a sprite sheet.
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{struct_sprite_clip_a64edc4b888946923170ee69fc00a75b3}{frame\+Indices}}
-\begin{DoxyCompactList}\small\item\em Ordered list of frame indices. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{struct_sprite_clip_a523b8e6b2ae91841db8d0a695af55728}{frame\+Duration}}
-\begin{DoxyCompactList}\small\item\em Duration per frame (seconds). \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{struct_sprite_clip_a0f0f0cf07d19607cef868cbd1090dbaf}{looping}}
-\begin{DoxyCompactList}\small\item\em True if the animation should repeat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represents an animation clip within a sprite sheet. 
+Describes an animation clip as an ordered sequence of frame indices. 
 
-Stores a sequence of frame indices, the duration of each frame, and whether the animation loops. 
+\doxylink{struct_sprite_clip}{Sprite\+Clip} represents a named animation\+:
+\begin{DoxyItemize}
+\item frame\+Indices\+: the sequence of sprite sheet frame indices to play
+\item frame\+Duration\+: time per frame in seconds
+\item looping\+: whether the clip loops when reaching the end 
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00029}{29}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00034}{34}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_sprite_clip_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_sprite_clip_a523b8e6b2ae91841db8d0a695af55728}\index{SpriteClip@{SpriteClip}!frameDuration@{frameDuration}}
 \index{frameDuration@{frameDuration}!SpriteClip@{SpriteClip}}
@@ -40,11 +43,7 @@ float Sprite\+Clip\+::frame\+Duration}
 
 
 
-Duration per frame (seconds). 
-
-
-
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00032}{32}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00037}{37}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_clip_a64edc4b888946923170ee69fc00a75b3}\index{SpriteClip@{SpriteClip}!frameIndices@{frameIndices}}
 \index{frameIndices@{frameIndices}!SpriteClip@{SpriteClip}}
@@ -54,11 +53,7 @@ std\+::vector$<$int$>$ Sprite\+Clip\+::frame\+Indices}
 
 
 
-Ordered list of frame indices. 
-
-
-
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00031}{31}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00036}{36}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_clip_a0f0f0cf07d19607cef868cbd1090dbaf}\index{SpriteClip@{SpriteClip}!looping@{looping}}
 \index{looping@{looping}!SpriteClip@{SpriteClip}}
@@ -68,14 +63,10 @@ bool Sprite\+Clip\+::looping}
 
 
 
-True if the animation should repeat. 
-
-
-
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00033}{33}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00038}{38}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_animation_8h}{Animation.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_animation_8h}{Animation.\+h}}\end{DoxyCompactItemize}

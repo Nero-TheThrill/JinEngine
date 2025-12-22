@@ -2,7 +2,7 @@
 \hypertarget{class_a_a_b_b_collider}{}\label{class_a_a_b_b_collider}\index{AABBCollider@{AABBCollider}}
 
 
-Axis-\/aligned bounding box collider centered at owner plus offset.  
+Axis-\/aligned bounding box (AABB) collider implementation.  
 
 
 
@@ -19,49 +19,49 @@ Inheritance diagram for AABBCollider\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42}{AABBCollider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}, const glm\+::vec2 \&size)
-\begin{DoxyCompactList}\small\item\em Construct an AABB collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an AABB collider from a full size. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_aafbb031b5f15094c94044f7460b2b0f8}{Get\+Half\+Size}} () const
-\begin{DoxyCompactList}\small\item\em Current half-\/size (scaled if enabled). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current scaled half size used for collision tests. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_af9bceaa7452b9aab8b0cf8d9236c718d}{Get\+Size}} () const
-\begin{DoxyCompactList}\small\item\em Current full size (2 \texorpdfstring{$\ast$}{*} half-\/size). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current scaled full size (half\+Size \texorpdfstring{$\ast$}{*} 2). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}{Set\+Size}} (const glm\+::vec2 \&hs)
-\begin{DoxyCompactList}\small\item\em Set full size (updates base\+Half\+Size; scaled on sync). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the base half size (or equivalent) and updates scaled values accordingly. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_a_b_b_collider_a0d2cf23fe7b870bc02605ed78b7d4aba}{Check\+Point\+Collision}} (const glm\+::vec2 \&point) const override
-\begin{DoxyCompactList}\small\item\em Point-\/in-\/\+AABB test in world space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tests whether a point lies within the AABB region. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}} ()=delete
-\item 
+\begin{DoxyCompactList}\small\item\em Deleted default constructor to enforce owner association. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_collider_a5a49c6e929279578b12e7d1c60c50c75}{Collider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}owner\+\_\+)
-\begin{DoxyCompactList}\small\item\em Construct with an owning \doxylink{class_object}{Object}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a collider bound to an owner object. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_collider_a7b43c72a6424d8c11dec965d166953d3}{\texorpdfstring{$\sim$}{\string~}\+Collider}} ()=default
-\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic deletion. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_abcbc7a880210f872f2704035940f243c}{Set\+Use\+Transform\+Scale}} (bool use)
-\begin{DoxyCompactList}\small\item\em Enable/disable syncing the shape with the owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables using the owner\textquotesingle{}s transform scale to size the collider. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_collider_a9f9dd44c772f34a84789018f59df905a}{Is\+Using\+Transform\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Whether transform-\/scale synchronization is enabled. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this collider uses the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_ad96c878cd28533c4ec6d3ad6b1decdae}{Set\+Offset}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Set local shape offset in world units relative to the owner. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the local-\/space offset of the collider relative to the owner\textquotesingle{}s origin. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{Get\+Offset}} () const
-\begin{DoxyCompactList}\small\item\em Get local shape offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the local-\/space offset of the collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} \mbox{\hyperlink{class_a_a_b_b_collider_a02a5aef8ae047a6e77dea4d9ee3bdc91}{Get\+Type}} () const override
-\begin{DoxyCompactList}\small\item\em Concrete collider type for dispatch. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{Collider\+Type\+::\+AABB}. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}{Get\+Bounding\+Radius}} () const override
-\begin{DoxyCompactList}\small\item\em Bounding radius used by broad phase and camera culling. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a broad-\/phase bounding radius for the AABB. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}{Check\+Collision}} (const \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*}other) const override
-\begin{DoxyCompactList}\small\item\em Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs narrow-\/phase collision test using double dispatch. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_a_b_b_collider_a22a432aea0dae3f7683c338db68f5846}{Dispatch\+Against}} (const \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \&other) const override
-\begin{DoxyCompactList}\small\item\em AABB–\+Circle overlap test. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em AABB-\/vs-\/circle narrow-\/phase collision. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_a_b_b_collider_acab757f9231fa6acb535784d77915600}{Dispatch\+Against}} (const \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \&other) const override
-\begin{DoxyCompactList}\small\item\em AABB–\+AABB overlap test. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em AABB-\/vs-\/\+AABB narrow-\/phase collision. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}{Sync\+With\+Transform\+Scale}} () override
-\begin{DoxyCompactList}\small\item\em Refresh \doxylink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size} from owner\textquotesingle{}s Transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates scaled\+Half\+Size based on owner transform scale when enabled. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_a_a_b_b_collider_ac436555bab262272195f5081b33db006}{Draw\+Debug}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \texorpdfstring{$\ast$}{*}rm, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}cam, const glm\+::vec4 \&color) const override
-\begin{DoxyCompactList}\small\item\em Debug-\/draw box outline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draws the AABB collider for debugging. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,37 +70,37 @@ friend \mbox{\hyperlink{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f
 friend \mbox{\hyperlink{class_a_a_b_b_collider_af10e414616e9c15986e9913919d276f3}{Spatial\+Hash\+Grid}}
 \item 
 glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{base\+Half\+Size}} = \{ 0.\+5f, 0.\+5f \}
-\begin{DoxyCompactList}\small\item\em Authoring half-\/size (before applying owner scale). \end{DoxyCompactList}\item 
+\item 
 glm\+::vec2 \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size}} = \{ 0.\+5f, 0.\+5f \}
-\begin{DoxyCompactList}\small\item\em Cached world-\/space half-\/size after scale sync. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{Get\+Owner}} () const
-\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object} accessor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the object that owns this collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_collider}{Collider}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}
-\begin{DoxyCompactList}\small\item\em Owning \doxylink{class_object}{Object}; non-\/null after construction. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{use\+Transform\+Scale}} = true
-\begin{DoxyCompactList}\small\item\em Whether to read scale from the owner\textquotesingle{}s Transform (default\+: true). \end{DoxyCompactList}\item 
+\item 
 glm\+::vec2 \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}
-\begin{DoxyCompactList}\small\item\em Local XY offset from the owner\textquotesingle{}s origin, applied to shape center. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Axis-\/aligned bounding box collider centered at owner plus offset. 
+Axis-\/aligned bounding box (AABB) collider implementation. 
 
-Stores authoring half-\/size and a cached, scale-\/applied half-\/size for fast overlap tests, point tests, and debug visualization. 
+\doxylink{class_a_a_b_b_collider}{AABBCollider} stores both base and scaled half-\/extents. When transform scale syncing is enabled, scaled\+Half\+Size is updated relative to base\+Half\+Size in Sync\+With\+Transform\+Scale.
+
+The constructor receives full size and stores half size internally. 
 
 Definition at line \mbox{\hyperlink{_collider_8h_source_l00290}{290}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_a_a_b_b_collider_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_a_a_b_b_collider_a66beb9e931a00c970020f0d7e0c00b42}\index{AABBCollider@{AABBCollider}!AABBCollider@{AABBCollider}}
 \index{AABBCollider@{AABBCollider}!AABBCollider@{AABBCollider}}
@@ -110,29 +110,27 @@ AABBCollider\+::\+AABBCollider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{
 
 
 
-Construct an AABB collider. 
+Constructs an AABB collider from a full size. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em owner} & Non-\/null owning \doxylink{class_object}{Object}. \\
+{\em owner} & \doxylink{class_object}{Object} that owns this collider. \\
 \hline
-{\em size} & Full width/height in world units (half stored internally). \\
+{\em size} & Full width/height used to initialize half size as size/2. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00300}{300}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00301}{301}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}),\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}(size\ /\ glm::vec2(2)),\ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}(size\ /\ glm::vec2(2))\ \{}
-\DoxyCodeLine{00302\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}}(\mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}),\ \mbox{\hyperlink{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}{baseHalfSize}}(size\ /\ glm::vec2(2)),\ \mbox{\hyperlink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaledHalfSize}}(size\ /\ glm::vec2(2))\ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_a_a_b_b_collider_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_a_a_b_b_collider_a8bd480dffa6343fa74035a4df701ca22}\index{AABBCollider@{AABBCollider}!CheckCollision@{CheckCollision}}
 \index{CheckCollision@{CheckCollision}!AABBCollider@{AABBCollider}}
@@ -142,16 +140,8 @@ bool AABBCollider\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{const \m
 
 
 
-Narrow-\/phase entry; routes by other\textquotesingle{}s dynamic type. 
+Performs narrow-\/phase collision test using double dispatch. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Other collider. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a41660505ae4b413d3d4b004162857426}{Collider}}.
@@ -175,15 +165,15 @@ bool AABBCollider\+::\+Check\+Point\+Collision (\begin{DoxyParamCaption}\item[{c
 
 
 
-Point-\/in-\/\+AABB test in world space. 
+Tests whether a point lies within the AABB region. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em point} & World-\/space point. \\
+{\em point} & Point to test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if inside or on the box. 
+true if inside or on the box; false otherwise. 
 \end{DoxyReturn}
 
 
@@ -215,16 +205,8 @@ bool AABBCollider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{const \
 
 
 
-AABB–\+AABB overlap test. 
+AABB-\/vs-\/\+AABB narrow-\/phase collision. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Box collider. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_ae6038e89a98d8b252f143ddbc960a484}{Collider}}.
@@ -255,16 +237,8 @@ bool AABBCollider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{const \
 
 
 
-AABB–\+Circle overlap test. 
+AABB-\/vs-\/circle narrow-\/phase collision. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em other} & Circle collider. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if overlapping. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Collider}}.
@@ -297,7 +271,7 @@ void AABBCollider\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hyperl
 
 
 
-Debug-\/draw box outline. 
+Draws the AABB collider for debugging. 
 
 
 
@@ -331,11 +305,8 @@ float AABBCollider\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Bounding radius used by broad phase and camera culling. 
+Returns a broad-\/phase bounding radius for the AABB. 
 
-\begin{DoxyReturn}{Returns}
-Circle radius that encloses the AABB. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Collider}}.
@@ -360,11 +331,8 @@ glm\+::vec2 AABBCollider\+::\+Get\+Half\+Size (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Current half-\/size (scaled if enabled). 
+Returns the current scaled half size used for collision tests. 
 
-\begin{DoxyReturn}{Returns}
-Half extents in world units. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
@@ -384,11 +352,8 @@ glm\+::vec2 AABBCollider\+::\+Get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Current full size (2 \texorpdfstring{$\ast$}{*} half-\/size). 
+Returns the current scaled full size (half\+Size \texorpdfstring{$\ast$}{*} 2). 
 
-\begin{DoxyReturn}{Returns}
-Width/height in world units. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
@@ -408,22 +373,19 @@ Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00093}{93}} of file \
 
 
 
-Concrete collider type for dispatch. 
+Returns \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{Collider\+Type\+::\+AABB}. 
 
-\begin{DoxyReturn}{Returns}
-One of \doxylink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type} values. 
-\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_collider_a677c9e05fcee3ef2ed94998dc5f2458d}{Collider}}.
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00330}{330}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00334}{334}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00330\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{ColliderType::AABB}};\ \}}
+\DoxyCodeLine{00334\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{ColliderType::AABB}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_a_a_b_b_collider_af414f7035bc0799350ab8d34b4489b53}\index{AABBCollider@{AABBCollider}!SetSize@{SetSize}}
@@ -434,11 +396,11 @@ void AABBCollider\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{const glm\+::ve
 
 
 
-Set full size (updates base\+Half\+Size; scaled on sync). 
+Sets the base half size (or equivalent) and updates scaled values accordingly. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em hs} & New full width/height in world units. \\
+{\em hs} & New size vector (interpretation depends on implementation; typically full size or half size). \\
 \hline
 \end{DoxyParams}
 
@@ -463,7 +425,7 @@ void AABBCollider\+::\+Sync\+With\+Transform\+Scale (\begin{DoxyParamCaption}{}{
 
 
 
-Refresh \doxylink{class_a_a_b_b_collider_af7d136e399faaf88078aa4f6722f3ee2}{scaled\+Half\+Size} from owner\textquotesingle{}s Transform scale. 
+Updates scaled\+Half\+Size based on owner transform scale when enabled. 
 
 
 
@@ -483,8 +445,6 @@ Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00142}{142}} of file 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_a_a_b_b_collider_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_a_a_b_b_collider_a05331cca718b5168694573eaa6075515}\index{AABBCollider@{AABBCollider}!baseHalfSize@{baseHalfSize}}
 \index{baseHalfSize@{baseHalfSize}!AABBCollider@{AABBCollider}}
@@ -494,15 +454,11 @@ glm\+::vec2 AABBCollider\+::base\+Half\+Size = \{ 0.\+5f, 0.\+5f \}\hspace{0.3cm
 
 
 
-Authoring half-\/size (before applying owner scale). 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00370}{370}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00366}{366}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00370\ \{\ 0.5f,\ 0.5f\ \};}
+\DoxyCodeLine{00366\ \{\ 0.5f,\ 0.5f\ \};}
 
 \end{DoxyCode}
 \Hypertarget{class_a_a_b_b_collider_a4090be2a3f0d7745dbaee9c8e23e327f}\index{AABBCollider@{AABBCollider}!CircleCollider@{CircleCollider}}
@@ -523,15 +479,11 @@ glm\+::vec2 AABBCollider\+::scaled\+Half\+Size = \{ 0.\+5f, 0.\+5f \}\hspace{0.3
 
 
 
-Cached world-\/space half-\/size after scale sync. 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00373}{373}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00367}{367}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00373\ \{\ 0.5f,\ 0.5f\ \};}
+\DoxyCodeLine{00367\ \{\ 0.5f,\ 0.5f\ \};}
 
 \end{DoxyCode}
 \Hypertarget{class_a_a_b_b_collider_af10e414616e9c15986e9913919d276f3}\index{AABBCollider@{AABBCollider}!SpatialHashGrid@{SpatialHashGrid}}
@@ -548,5 +500,5 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00293}{293}} of file \m
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}

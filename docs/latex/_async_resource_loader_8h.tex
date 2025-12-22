@@ -1,5 +1,5 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Async\+Resource\+Loader.h File Reference}
-\hypertarget{_async_resource_loader_8h}{}\label{_async_resource_loader_8h}\index{Project/SNAKE\_Engine/Public/AsyncResourceLoader.h@{Project/SNAKE\_Engine/Public/AsyncResourceLoader.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Async\+Resource\+Loader.h File Reference}
+\hypertarget{_async_resource_loader_8h}{}\label{_async_resource_loader_8h}\index{Project/JinEngine/Public/AsyncResourceLoader.h@{Project/JinEngine/Public/AsyncResourceLoader.h}}
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$queue$>$}\newline
@@ -14,40 +14,38 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_texture_job}{Texture\+Job}}
-\begin{DoxyCompactList}\small\item\em Job for asynchronously loading a texture from disk. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load request describing a texture to be loaded asynchronously. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_shader_file}{Shader\+File}}
-\begin{DoxyCompactList}\small\item\em A single shader source file description. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Describes a shader stage source file for a shader job. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_shader_job}{Shader\+Job}}
-\begin{DoxyCompactList}\small\item\em Job for asynchronously loading a shader program from disk. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load request describing a shader program to be loaded asynchronously. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_font_job}{Font\+Job}}
-\begin{DoxyCompactList}\small\item\em Job for asynchronously loading a font. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load request describing a font resource to be registered. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_sound_job}{Sound\+Job}}
-\begin{DoxyCompactList}\small\item\em Job for asynchronously loading a sound file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load request describing a sound asset to be loaded asynchronously. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job}}
-\begin{DoxyCompactList}\small\item\em Job for asynchronously creating a sprite sheet from a texture. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Load request describing a sprite sheet resource to be created/registered. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_texture_result}{Texture\+Result}}
-\begin{DoxyCompactList}\small\item\em Result of an asynchronous texture load. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Result data produced by an asynchronous texture load. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_shader_source}{Shader\+Source}}
-\begin{DoxyCompactList}\small\item\em In-\/memory shader source after load. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{class_shader}{Shader} source data for a single stage. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_shader_result}{Shader\+Result}}
-\begin{DoxyCompactList}\small\item\em Result of an asynchronous shader load. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Result data produced by an asynchronous shader load. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_font_result}{Font\+Result}}
-\begin{DoxyCompactList}\small\item\em Result of a font load request. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Result data for a font job. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_sound_result}{Sound\+Result}}
-\begin{DoxyCompactList}\small\item\em Result of a sound load request. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Result data for a sound job. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_async_resource_loader}{Async\+Resource\+Loader}}
-\begin{DoxyCompactList}\small\item\em Background worker that asynchronously loads engine resources (textures, shaders, fonts, sounds). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Background worker that processes resource load requests asynchronously. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}} = std\+::variant$<$\mbox{\hyperlink{struct_texture_job}{Texture\+Job}}, \mbox{\hyperlink{struct_shader_job}{Shader\+Job}}, \mbox{\hyperlink{struct_font_job}{Font\+Job}}, \mbox{\hyperlink{struct_sound_job}{Sound\+Job}}, \mbox{\hyperlink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job}}$>$
-\begin{DoxyCompactList}\small\item\em Union of all supported asynchronous load job requests. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Variant type representing any supported asynchronous load request. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result}} = std\+::variant$<$\mbox{\hyperlink{struct_texture_result}{Texture\+Result}}, \mbox{\hyperlink{struct_shader_result}{Shader\+Result}}, \mbox{\hyperlink{struct_font_result}{Font\+Result}}, \mbox{\hyperlink{struct_sound_result}{Sound\+Result}}$>$
-\begin{DoxyCompactList}\small\item\em Union of all possible completed load results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variant type representing any supported completed load result. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-typedef-members}
-\Hypertarget{_async_resource_loader_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}\index{AsyncResourceLoader.h@{AsyncResourceLoader.h}!LoadRequest@{LoadRequest}}
 \index{LoadRequest@{LoadRequest}!AsyncResourceLoader.h@{AsyncResourceLoader.h}}
@@ -57,11 +55,16 @@ using \mbox{\hyperlink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded
 
 
 
-Union of all supported asynchronous load job requests. 
+Variant type representing any supported asynchronous load request. 
 
+The worker thread consumes \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} values from a queue and processes them using std\+::visit.
 
+Important implementation notes\+:
+\begin{DoxyItemize}
+\item \doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job} exists as a request type, but the current Worker() implementation does not handle \doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job}. Enqueuing it will still increment loaded\+Count, but no \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} will be produced for it. 
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00073}{73}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00117}{117}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}\index{AsyncResourceLoader.h@{AsyncResourceLoader.h}!LoadResult@{LoadResult}}
 \index{LoadResult@{LoadResult}!AsyncResourceLoader.h@{AsyncResourceLoader.h}}
@@ -71,9 +74,11 @@ using \mbox{\hyperlink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af
 
 
 
-Union of all possible completed load results. 
+Variant type representing any supported completed load result. 
 
+Fetch\+Completed() transfers ownership of the internally stored completed results to the caller using swap().
 
+Results are appended by the worker thread under completed\+Mutex protection. 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00131}{131}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00203}{203}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 

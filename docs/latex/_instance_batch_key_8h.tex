@@ -1,12 +1,17 @@
-\doxysection{Project/\+SNAKE\+\_\+\+Engine/\+Public/\+Instance\+Batch\+Key.h File Reference}
-\hypertarget{_instance_batch_key_8h}{}\label{_instance_batch_key_8h}\index{Project/SNAKE\_Engine/Public/InstanceBatchKey.h@{Project/SNAKE\_Engine/Public/InstanceBatchKey.h}}
+\doxysection{Project/\+Jin\+Engine/\+Public/\+Instance\+Batch\+Key.h File Reference}
+\hypertarget{_instance_batch_key_8h}{}\label{_instance_batch_key_8h}\index{Project/JinEngine/Public/InstanceBatchKey.h@{Project/JinEngine/Public/InstanceBatchKey.h}}
+{\ttfamily \#include "{}Game\+Object.\+h"{}}\newline
+{\ttfamily \#include "{}Mesh.\+h"{}}\newline
+{\ttfamily \#include "{}Material.\+h"{}}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}
-\begin{DoxyCompactList}\small\item\em Key structure used for grouping objects into instanced batches. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Key structure used for grouping Game\+Objects into instanced rendering batches. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structstd_1_1hash_3_01_instance_batch_key_01_4}{std\+::hash$<$ Instance\+Batch\+Key $>$}}
-\begin{DoxyCompactList}\small\item\em Custom hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Hash specialization for \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,11 +21,9 @@ namespace \mbox{\hyperlink{namespacestd}{std}}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}{Instanced\+Batch\+Map}} = std\+::unordered\+\_\+map$<$int, std\+::unordered\+\_\+map$<$\mbox{\hyperlink{struct_instance_batch_key}{Instance\+Batch\+Key}}, std\+::vector$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*}$>$$>$$>$
-\begin{DoxyCompactList}\small\item\em Map type for grouping objects by layer and batch key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Map structure used for organizing instanced rendering batches per render layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\label{doc-typedef-members}
-\Hypertarget{_instance_batch_key_8h_doc-typedef-members}
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}\index{InstanceBatchKey.h@{InstanceBatchKey.h}!InstancedBatchMap@{InstancedBatchMap}}
 \index{InstancedBatchMap@{InstancedBatchMap}!InstanceBatchKey.h@{InstanceBatchKey.h}}
@@ -30,11 +33,22 @@ using \mbox{\hyperlink{_instance_batch_key_8h_a89183dea2a482689b325a6fa102a641a}
 
 
 
-Map type for grouping objects by layer and batch key. 
+Map structure used for organizing instanced rendering batches per render layer. 
 
-The outer map is keyed by layer index (int). The inner map groups Game\+Objects by their \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key}.
+The outer map key (int) typically represents a render layer or render order.
 
-This allows \doxylink{class_render_manager}{Render\+Manager} to quickly build per-\/layer instanced draw calls. 
+Each layer contains an unordered\+\_\+map where\+:
+\begin{DoxyItemize}
+\item The key is \doxylink{struct_instance_batch_key}{Instance\+Batch\+Key} (shared render state)
+\item The value is a list of \doxylink{class_game_object}{Game\+Object} pointers that can be rendered together using instanced rendering.
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00080}{80}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
+This structure allows the renderer to\+:
+\begin{DoxyItemize}
+\item Group objects by layer
+\item Further batch objects by identical render resources
+\item Minimize draw calls during rendering 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_instance_batch_key_8h_source_l00123}{123}} of file \mbox{\hyperlink{_instance_batch_key_8h_source}{Instance\+Batch\+Key.\+h}}.
 

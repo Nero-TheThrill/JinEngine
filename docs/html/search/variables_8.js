@@ -5,15 +5,16 @@ var searchData=
   ['ignorecamera_2',['ignoreCamera',['../class_object.html#ab4177081168011726b6dc63ab4e2b046',1,'Object']]],
   ['images_3',['images',['../class_compute_material.html#a497a355327b35d25ed8602883a7f105f',1,'ComputeMaterial']]],
   ['indexcount_4',['indexCount',['../class_mesh.html#ae89f95e85ae7fa157545324aa5f5db7d',1,'Mesh']]],
-  ['inputmanager_5',['inputManager',['../struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a',1,'EngineContext::inputManager'],['../class_s_n_a_k_e___engine.html#a13554a7b74f0ceb548e942dba80133d9',1,'SNAKE_Engine::inputManager']]],
+  ['inputmanager_5',['inputManager',['../struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a',1,'EngineContext::inputManager'],['../class_jin_engine.html#a426193d5cd44181e51632e8ea5608386',1,'JinEngine::inputManager']]],
   ['instancemap_6',['instanceMap',['../class_sound_manager.html#af2c6998eead9b15cac317be3c26a03ef',1,'SoundManager']]],
   ['instancevao_7',['instanceVAO',['../class_mesh.html#ad41509844e200245ce71b4cc5441c504',1,'Mesh']]],
   ['instancevbo_8',['instanceVBO',['../class_mesh.html#a33810b4cdfaae0d1eb1ada168cd3c1a5',1,'Mesh']]],
   ['isalive_9',['isAlive',['../class_object.html#a6cad8db6361d0ab0b95ec578fdf0d1b7',1,'Object']]],
   ['ischanged_10',['isChanged',['../class_transform2_d.html#a78a183e05988fdacd5dabb6d02e192b0',1,'Transform2D']]],
-  ['iscursorvisible_11',['isCursorVisible',['../class_window_manager.html#a7a12b135fea8aff358e281232b0b3ce1',1,'WindowManager']]],
-  ['isfullscreen_12',['isFullscreen',['../class_window_manager.html#a33c7b7c623763a5336fa5b2b835fbd74',1,'WindowManager']]],
-  ['isinstancingenabled_13',['isInstancingEnabled',['../class_material.html#a88e57329587a1d1d2852d926890e2c4f',1,'Material']]],
-  ['issupportinstancing_14',['isSupportInstancing',['../class_shader.html#a821763f22b88dfc27ef72c0eec1a8b8c',1,'Shader']]],
-  ['isvisible_15',['isVisible',['../class_object.html#a418eac6726dcadd9710d94a041446f28',1,'Object']]]
+  ['isclipfinished_11',['isClipFinished',['../class_sprite_animator.html#a401e9176bb78855cf879768843e033f4',1,'SpriteAnimator']]],
+  ['iscursorvisible_12',['isCursorVisible',['../class_window_manager.html#a7a12b135fea8aff358e281232b0b3ce1',1,'WindowManager']]],
+  ['isfullscreen_13',['isFullscreen',['../class_window_manager.html#a33c7b7c623763a5336fa5b2b835fbd74',1,'WindowManager']]],
+  ['isinstancingenabled_14',['isInstancingEnabled',['../class_material.html#a88e57329587a1d1d2852d926890e2c4f',1,'Material']]],
+  ['issupportinstancing_15',['isSupportInstancing',['../class_shader.html#a821763f22b88dfc27ef72c0eec1a8b8c',1,'Shader']]],
+  ['isvisible_16',['isVisible',['../class_object.html#a418eac6726dcadd9710d94a041446f28',1,'Object']]]
 ];

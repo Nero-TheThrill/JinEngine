@@ -2,7 +2,7 @@
 \hypertarget{class_render_layer_manager}{}\label{class_render_layer_manager}\index{RenderLayerManager@{RenderLayerManager}}
 
 
-Manages mapping between custom render-\/layer names and numeric layer IDs.  
+Maintains a bidirectional mapping between human-\/readable render-\/layer names and numeric layer IDs.  
 
 
 
@@ -13,54 +13,56 @@ Manages mapping between custom render-\/layer names and numeric layer IDs.
 \begin{DoxyCompactItemize}
 \item 
 std\+::optional$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}{Get\+Layer\+ID}} (const std\+::string \&name) const
-\begin{DoxyCompactList}\small\item\em Looks up a layer ID by its name. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the numeric layer ID for a registered layer name. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}{Get\+Layer\+Name}} (uint8\+\_\+t id) const
-\begin{DoxyCompactList}\small\item\em Returns the layer name for a given ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the layer name for a given layer ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr uint8\+\_\+t \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\+\_\+\+LAYERS}} = 16
-\begin{DoxyCompactList}\small\item\em Maximum number of layers that can be registered at the same time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maximum number of user-\/definable render layers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_render_layer_manager_a7725080ef9d7db52bc8be4d3f5a6e544}{Register\+Layer}} (const std\+::string \&tag, uint8\+\_\+t layer)
-\begin{DoxyCompactList}\small\item\em Registers a name-\/\texorpdfstring{$>$}{>}ID mapping for a render layer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Registers a new layer name to a specific numeric ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_render_layer_manager_a70566ea3ed358ec340a46e2f9fe69662}{Unregister\+Layer}} (const std\+::string \&name)
-\begin{DoxyCompactList}\small\item\em Removes a previously registered layer name-\/\texorpdfstring{$>$}{>}ID mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unregisters an existing layer mapping by name. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 friend \mbox{\hyperlink{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}{Render\+Manager}}
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, uint8\+\_\+t $>$ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{name\+To\+ID}}
-\begin{DoxyCompactList}\small\item\em Maps layer names to numeric IDs. \end{DoxyCompactList}\item 
+\item 
 std\+::array$<$ std\+::string, \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\+\_\+\+LAYERS}} $>$ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{id\+To\+Name}}
-\begin{DoxyCompactList}\small\item\em Reverse map\+: ID-\/to-\/name (empty if unassigned). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Manages mapping between custom render-\/layer names and numeric layer IDs. 
+Maintains a bidirectional mapping between human-\/readable render-\/layer names and numeric layer IDs. 
 
-This manager provides a bidirectional mapping between user-\/defined layer tags (names) and small integer layer IDs in the range \mbox{[}0, MAX\+\_\+\+LAYERS-\/1\mbox{]}. The mapping is unique\+:
+\doxylink{class_render_layer_manager}{Render\+Layer\+Manager} provides a fixed-\/capacity layer namespace where users can register up to MAX\+\_\+\+LAYERS custom render layers. A layer is identified externally by a string tag (name), and internally by a compact uint8\+\_\+t ID used for fast indexing into \doxylink{class_render_manager}{Render\+Manager}\textquotesingle{}s per-\/layer render structures.
+
+The mapping is stored in two containers\+:
 \begin{DoxyItemize}
-\item each name maps to exactly one ID,
-\item each ID can be bound to at most one name at a time.
+\item name\+To\+ID\+: std\+::unordered\+\_\+map$<$string, uint8\+\_\+t$>$ mapping layer name -\/\texorpdfstring{$>$}{>} layer ID.
+\item id\+To\+Name\+: std\+::array$<$string, MAX\+\_\+\+LAYERS$>$ mapping layer ID -\/\texorpdfstring{$>$}{>} layer name.
 \end{DoxyItemize}
 
-The maximum number of layers is limited to \doxylink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\+\_\+\+LAYERS} (default 16). Attempting to register a duplicate layer name or to reuse an occupied/out-\/of-\/range ID will fail with a debug log message.
+Registration constraints\+:
+\begin{DoxyItemize}
+\item A name can only be registered once.
+\item An ID can only be assigned once.
+\item layer IDs must be in \mbox{[}0, MAX\+\_\+\+LAYERS).
+\end{DoxyItemize}
 
-\begin{DoxyNote}{Note}
-Layer registration/unregistration is intended to be driven by \doxylink{class_render_manager}{Render\+Manager}. Calling code should prefer name-\/based APIs elsewhere and avoid hard-\/coding IDs. 
-\end{DoxyNote}
+\doxylink{class_render_layer_manager_a7725080ef9d7db52bc8be4d3f5a6e544}{Register\+Layer()} and \doxylink{class_render_layer_manager_a70566ea3ed358ec340a46e2f9fe69662}{Unregister\+Layer()} are private and intended to be driven by \doxylink{class_render_manager}{Render\+Manager} to keep layer registration consistent with the renderer\textquotesingle{}s expectations. 
 
-
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00030}{30}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_render_layer_manager_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_render_layer_manager_ab23f2eb93f1363f199e98f2584f66d8d}\index{RenderLayerManager@{RenderLayerManager}!GetLayerID@{GetLayerID}}
 \index{GetLayerID@{GetLayerID}!RenderLayerManager@{RenderLayerManager}}
@@ -70,38 +72,30 @@ std\+::optional$<$ uint8\+\_\+t $>$ Render\+Layer\+Manager\+::\+Get\+Layer\+ID (
 
 
 
-Looks up a layer ID by its name. 
+Returns the numeric layer ID for a registered layer name. 
 
-Returns an optional containing the layer ID if the name is registered, or std\+::nullopt otherwise.
+If the name is not registered, std\+::nullopt is returned.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & The registered layer name (tag), e.\+g. "{}\mbox{[}\+Layer\mbox{]}\+Background"{}. \\
+{\em name} & Layer name/tag to resolve. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-std\+::optional$<$uint8\+\_\+t$>$ The ID if found; std\+::nullopt if not found. 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ idOpt\ =\ layerMgr.GetLayerID(\textcolor{stringliteral}{"{}[Layer]Player"{}}))\ \{}
-\DoxyCodeLine{\ \ \ \ uint8\_t\ \textcolor{keywordtype}{id}\ =\ *idOpt;}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ use\ id\ ...}}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
- 
+Optional layer ID. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00052}{52}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00051}{51}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00053\ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
-\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_render_layer_manager_a36e4431e2b8f4d2a89289aa199f78249}\index{RenderLayerManager@{RenderLayerManager}!GetLayerName@{GetLayerName}}
@@ -112,30 +106,27 @@ const std\+::string \& Render\+Layer\+Manager\+::\+Get\+Layer\+Name (\begin{Doxy
 
 
 
-Returns the layer name for a given ID. 
+Returns the layer name for a given layer ID. 
 
-Uses bounds-\/checked access. If the ID is valid but currently unassigned, this returns an empty string.
+This uses std\+::array\+::at() and will throw if the ID is out of range. If the ID is valid but currently unused, the returned string will be empty.
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & The numeric layer ID in \mbox{[}0, MAX\+\_\+\+LAYERS-\/1\mbox{]}. \\
+{\em id} & Numeric layer ID. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-const std\+::string\& The registered name (empty if unassigned). 
+Reference to the layer name stored for the ID. 
 \end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-No existence check is performed beyond at(). Ensure the ID is within range. 
-\end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00071}{71}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00069}{69}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00072\ \ \ \ \ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}.at(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}.at(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_render_layer_manager_a7725080ef9d7db52bc8be4d3f5a6e544}\index{RenderLayerManager@{RenderLayerManager}!RegisterLayer@{RegisterLayer}}
@@ -146,50 +137,50 @@ bool Render\+Layer\+Manager\+::\+Register\+Layer (\begin{DoxyParamCaption}\item[
 
 
 
-Registers a name-\/\texorpdfstring{$>$}{>}ID mapping for a render layer. 
+Registers a new layer name to a specific numeric ID. 
 
-Fails if\+:
+Fails when\+:
 \begin{DoxyItemize}
-\item the name is already registered, or
-\item the ID is out of range \mbox{[}0, MAX\+\_\+\+LAYERS-\/1\mbox{]}, or
-\item the ID is already in use.
+\item The name is already registered.
+\item The numeric ID is out of range.
+\item The numeric ID is already in use (id\+To\+Name\mbox{[}layer\mbox{]} is not empty).
 \end{DoxyItemize}
 
-On success, both forward and reverse maps are updated.
+On success, both name\+To\+ID and id\+To\+Name are updated to preserve the bidirectional mapping.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Unique layer name (e.\+g., "{}\mbox{[}\+Layer\mbox{]}\+UI"{}). \\
+{\em tag} & New layer name/tag to register. \\
 \hline
-{\em layer} & Numeric ID to bind to this name. \\
+{\em layer} & Numeric layer ID to associate with the tag. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true on success; false if registration fails. 
+True if the layer was registered; false otherwise. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00092}{92}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00090}{90}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00093\ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(tag)\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Layer\ already\ exists:\ "{}}\ <<\ tag);}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer\ >=\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}}\ ||\ !\mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer].empty())}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}Layer\ ID\ "{}}\ <<\ layer\ <<\ \textcolor{stringliteral}{"{}\ is\ already\ in\ use\ or\ out\ of\ range"{}});}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}[tag]\ =\ layer;}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer]\ =\ tag;}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(tag)\ !=\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Layer\ already\ exists:\ "{}}\ <<\ tag);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layer\ >=\ \mbox{\hyperlink{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}{MAX\_LAYERS}}\ ||\ !\mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer].empty())}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}Layer\ ID\ "{}}\ <<\ layer\ <<\ \textcolor{stringliteral}{"{}\ is\ already\ in\ use\ or\ out\ of\ range"{}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}[tag]\ =\ layer;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[layer]\ =\ tag;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_render_layer_manager_a70566ea3ed358ec340a46e2f9fe69662}\index{RenderLayerManager@{RenderLayerManager}!UnregisterLayer@{UnregisterLayer}}
@@ -200,39 +191,37 @@ void Render\+Layer\+Manager\+::\+Unregister\+Layer (\begin{DoxyParamCaption}\ite
 
 
 
-Removes a previously registered layer name-\/\texorpdfstring{$>$}{>}ID mapping. 
+Unregisters an existing layer mapping by name. 
 
-If the name is not registered, logs a message and returns. On success, clears the reverse mapping slot and erases the name.
+If the name does not exist, the function logs and returns without modifying state. If the name exists, the entry is removed from name\+To\+ID and the corresponding slot in id\+To\+Name is cleared, making the numeric ID available for future registrations.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & The registered layer name to remove. \\
+{\em name} & Layer name/tag to unregister. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00120}{120}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00119}{119}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00121\ \ \ \ \ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_LOG(\textcolor{stringliteral}{"{}Cannot\ unregister:\ layer\ '"{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}'\ not\ found"{}});}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ uint8\_t\ \textcolor{keywordtype}{id}\ =\ it-\/>second;}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.erase(it);}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[id].clear();}
-\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.find(name);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.end())}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_LOG(\textcolor{stringliteral}{"{}Cannot\ unregister:\ layer\ '"{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}'\ not\ found"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ uint8\_t\ \textcolor{keywordtype}{id}\ =\ it-\/>second;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}{nameToID}}.erase(it);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}{idToName}}[id].clear();}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_render_layer_manager_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_render_layer_manager_a6ca8bbbea3fa65b28b7865102fa4e491}\index{RenderLayerManager@{RenderLayerManager}!idToName@{idToName}}
 \index{idToName@{idToName}!RenderLayerManager@{RenderLayerManager}}
@@ -242,11 +231,7 @@ std\+::array$<$std\+::string, \mbox{\hyperlink{class_render_layer_manager_a0fa44
 
 
 
-Reverse map\+: ID-\/to-\/name (empty if unassigned). 
-
-
-
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00135}{135}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00134}{134}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 \Hypertarget{class_render_layer_manager_a0fa4422181dc1af5f490062a8fe84e6d}\index{RenderLayerManager@{RenderLayerManager}!MAX\_LAYERS@{MAX\_LAYERS}}
 \index{MAX\_LAYERS@{MAX\_LAYERS}!RenderLayerManager@{RenderLayerManager}}
@@ -256,11 +241,11 @@ uint8\+\_\+t Render\+Layer\+Manager\+::\+MAX\+\_\+\+LAYERS = 16\hspace{0.3cm}{\t
 
 
 
-Maximum number of layers that can be registered at the same time. 
+Maximum number of user-\/definable render layers. 
 
+Render\+Manager\+::\+Render\+Map is sized using this constant. 
 
-
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00034}{34}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00040}{40}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 \Hypertarget{class_render_layer_manager_a93b99251ecafc4a49453250d95cd651f}\index{RenderLayerManager@{RenderLayerManager}!nameToID@{nameToID}}
 \index{nameToID@{nameToID}!RenderLayerManager@{RenderLayerManager}}
@@ -270,11 +255,7 @@ std\+::unordered\+\_\+map$<$std\+::string, uint8\+\_\+t$>$ Render\+Layer\+Manage
 
 
 
-Maps layer names to numeric IDs. 
-
-
-
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00134}{134}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00133}{133}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 \Hypertarget{class_render_layer_manager_ab78ba6d0ee97ab2b8e8fe49a36112d3e}\index{RenderLayerManager@{RenderLayerManager}!RenderManager@{RenderManager}}
 \index{RenderManager@{RenderManager}!RenderLayerManager@{RenderLayerManager}}
@@ -284,10 +265,10 @@ friend Render\+Layer\+Manager\+::\+Render\+Manager\hspace{0.3cm}{\ttfamily [priv
 
 
 
-Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00029}{29}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_layer_manager_8h_source_l00032}{32}} of file \mbox{\hyperlink{_render_layer_manager_8h_source}{Render\+Layer\+Manager.\+h}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_layer_manager_8h}{Render\+Layer\+Manager.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_render_layer_manager_8h}{Render\+Layer\+Manager.\+h}}\end{DoxyCompactItemize}

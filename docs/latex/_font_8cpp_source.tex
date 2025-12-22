@@ -1,5 +1,5 @@
 \doxysection{Font.\+cpp}
-\hypertarget{_font_8cpp_source}{}\label{_font_8cpp_source}\index{Project/SNAKE\_Engine/Private/Font.cpp@{Project/SNAKE\_Engine/Private/Font.cpp}}
+\hypertarget{_font_8cpp_source}{}\label{_font_8cpp_source}\index{Project/JinEngine/Private/Font.cpp@{Project/JinEngine/Private/Font.cpp}}
 \mbox{\hyperlink{_font_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
@@ -59,7 +59,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00055}00055\ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00056}00056\ }
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00058}\mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{00058}}\ \mbox{\hyperlink{class_font_a30ee4458f14e43b6f18291a43a76c3cc}{Font::Font}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}\&\ renderManager,\ \textcolor{keyword}{const}\ std::string\&\ ttfPath,\ uint32\_t\ fontSize\_)}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00058}\mbox{\hyperlink{class_font_aa8d3052d3c2bec79460419fa1910eb92}{00058}}\ \mbox{\hyperlink{class_font_aa8d3052d3c2bec79460419fa1910eb92}{Font::Font}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}\&\ renderManager,\ \textcolor{keyword}{const}\ std::string\&\ ttfPath,\ uint32\_t\ fontSize\_)}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00059}00059\ \{}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{class_font_a01d89ae3949e69a5bdf67ad586faddbf}{LoadFont}}(ttfPath,\ fontSize\_);}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{class_font_a519e6bd2c2c23ff7af6307cac87fd204}{BakeAtlas}}(renderManager);}
@@ -111,7 +111,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00107}00107\ }
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (FT\_Load\_Char(\mbox{\hyperlink{class_font_aea6f16a9c6cd63b14a77d31a08c17b46}{face}},\ c,\ FT\_LOAD\_RENDER))}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00109}00109\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ SNAKE\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ JIN\_ERR(\textcolor{stringliteral}{"{}FT\_Load\_Char\ failed\ for:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00112}00112\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00113}00113\ }
@@ -123,7 +123,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00119}00119\ }
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hasBitmap\ \&\&\ !hasAdvance)}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00121}00121\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Glyph\ has\ no\ bitmap\ or\ advance:\ U+"{}}\ <<\ std::hex\ <<\ (\textcolor{keywordtype}{int})c);}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00124}00124\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00125}00125\ }
@@ -263,7 +263,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char32\_t}\ c\ :\ u32Line)}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00264}00264\ }
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ 0.0f;}
@@ -301,7 +301,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_glyph}{Glyph}}\&\ glyph\ =\ \mbox{\hyperlink{class_font_a3eb05778bb059a2f0bd730432f6e9653}{GetGlyph}}(c);}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xpos\ =\ xCursor\ +\ (float)glyph.\mbox{\hyperlink{struct_glyph_a7757876feac1bfaadb127530f5f48b33}{bearing}}.x;}
@@ -360,7 +360,7 @@
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00356}00356\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_font_aa3f349ce0e57bfabb0ef4cea1431a1d6}{TryBakeGlyph}}(c))}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ SNAKE\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
+\DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ JIN\_WRN(\textcolor{stringliteral}{"{}Failed\ to\ bake\ glyph"{}});}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00361}00361\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_font_8cpp_source_l00362}00362\ \ \ \ \ \mbox{\hyperlink{class_font_a365549c4e256695c5578a48693f59fab}{atlasVersion}}++;}

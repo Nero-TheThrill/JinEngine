@@ -27,6 +27,7 @@ var class_input_manager =
     [ "Update", "class_input_manager.html#aa5480931dba2720e7d80dd00a53adae0", null ],
     [ "currentKeyState", "class_input_manager.html#aefae2af7e4cb8d8dca2b3e400cfd066b", null ],
     [ "currentMouseState", "class_input_manager.html#a9d9751f5b8375e4ca8322b4429fb624c", null ],
+    [ "JinEngine", "class_input_manager.html#a98846b9e5b34f67967bca356e2e63a94", null ],
     [ "MAX_KEYS", "class_input_manager.html#a336069275a5424ae336b0f8d3e839c60", null ],
     [ "MAX_MOUSE_BUTTONS", "class_input_manager.html#ace3b1ab4e59c400c00b49a2f2010a13b", null ],
     [ "mouseX", "class_input_manager.html#a7ee958ea909a395cddeff25f5ba9641d", null ],
@@ -37,7 +38,6 @@ var class_input_manager =
     [ "scrollAccumY", "class_input_manager.html#abb09df427175cadf802e77f3e5087c4f", null ],
     [ "scrollDeltaX", "class_input_manager.html#a34bc0b94bf3d5a6087e5b25fdb71d808", null ],
     [ "scrollDeltaY", "class_input_manager.html#af6d1ff7196b64fde25c4f5005add4f57", null ],
-    [ "SNAKE_Engine", "class_input_manager.html#a56f4d4b1465892d4098f7af8e22a6a46", null ],
     [ "stagedKeyState", "class_input_manager.html#a5812fd362771cda6edb94ff0106bde19", null ],
     [ "stagedMouseState", "class_input_manager.html#a14d8acf1c4e1059493b0274e1263dcf0", null ],
     [ "window", "class_input_manager.html#a77079cf480ee8e1eb232b9685a7c5431", null ]

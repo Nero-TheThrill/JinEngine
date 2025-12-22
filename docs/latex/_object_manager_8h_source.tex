@@ -1,5 +1,5 @@
 \doxysection{Object\+Manager.\+h}
-\hypertarget{_object_manager_8h_source}{}\label{_object_manager_8h_source}\index{Project/SNAKE\_Engine/Public/ObjectManager.h@{Project/SNAKE\_Engine/Public/ObjectManager.h}}
+\hypertarget{_object_manager_8h_source}{}\label{_object_manager_8h_source}\index{Project/JinEngine/Public/ObjectManager.h@{Project/JinEngine/Public/ObjectManager.h}}
 \mbox{\hyperlink{_object_manager_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -16,47 +16,47 @@
 \DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00012}00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_engine_context}{EngineContext}};}
 \DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00013}00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera2_d}{Camera2D}};}
 \DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00014}00014\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00033}\mbox{\hyperlink{class_object_manager}{00033}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_object_manager}{ObjectManager}}}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00034}00034\ \{}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00035}\mbox{\hyperlink{class_object_manager_a2a6ebf48c01098423ba7857c5df6aecb}{00035}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_object_manager_a2a6ebf48c01098423ba7857c5df6aecb}{GameState}};}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00036}00036\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00053}00053\ \ \ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{class_object}{Object}}*\ \mbox{\hyperlink{class_object_manager_ae1f29824763903213d6044d463742db4}{AddObject}}(std::unique\_ptr<Object>\ obj,\ \textcolor{keyword}{const}\ std::string\&\ tag\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_ad7d870215c2f3033b6f2641e4c9dc8da}{InitAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00066}00066\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a00c892376f4874c2f033a69526e18111}{UpdateAll}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00081}00081\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_ad883ccf6dee940514c8c5fea7137ca9b}{DrawAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00093}00093\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_acea98a91604863db6b232b6e67582740}{DrawObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::vector<Object*>\&\ \mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{objects}});}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_abfc58bcbcd4e0b4f988939b9b16296e5}{DrawObjectsWithTag}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00109}00109\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00119}00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a2dcf63228b4ed4b45ae19304946f923f}{FreeAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00129}00129\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_object}{Object}}*\ \mbox{\hyperlink{class_object_manager_afe47ccc9dd305eae5dda76a15c928e86}{FindByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_afe47ccc9dd305eae5dda76a15c928e86}{FindByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ std::vector<Object*>\&\ result);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00142}00142\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00151}00151\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a1e9cd42ad2252270965253ddf57763de}{CheckCollision}}();}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00152}00152\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00158}\mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{00158}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_collision_group_registry}{CollisionGroupRegistry}}\&\ \mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{GetCollisionGroupRegistry}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{collisionGroupRegistry}};\ \}}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00159}00159\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00169}\mbox{\hyperlink{class_object_manager_aa134339dbf5ed4f2542e2fd28fa490f1}{00169}}\ \ \ \ \ [[nodiscard]]\ std::vector<Object*>\ \mbox{\hyperlink{class_object_manager_aa134339dbf5ed4f2542e2fd28fa490f1}{GetAllRawPtrObjects}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{rawPtrObjects}};\ \}}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00170}00170\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00171}00171\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00182}00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_af5c6a21a87c2fa4204462cacbe07c439}{AddAllPendingObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00183}00183\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00194}00194\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a6150e34acf9947f2d2e36040d472df5f}{EraseDeadObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00195}00195\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a79459c25593a2ad3ccc8cfdb88cf10a9}{DrawColliderDebug}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}*\ rm,\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ cam);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00046}\mbox{\hyperlink{class_object_manager}{00046}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_object_manager}{ObjectManager}}}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00048}\mbox{\hyperlink{class_object_manager_a2a6ebf48c01098423ba7857c5df6aecb}{00048}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_object_manager_a2a6ebf48c01098423ba7857c5df6aecb}{GameState}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00049}00049\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00066}00066\ \ \ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{class_object}{Object}}*\ \mbox{\hyperlink{class_object_manager_ae1f29824763903213d6044d463742db4}{AddObject}}(std::unique\_ptr<Object>\ obj,\ \textcolor{keyword}{const}\ std::string\&\ tag\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_ad7d870215c2f3033b6f2641e4c9dc8da}{InitAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a00c892376f4874c2f033a69526e18111}{UpdateAll}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_ad883ccf6dee940514c8c5fea7137ca9b}{DrawAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_acea98a91604863db6b232b6e67582740}{DrawObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::vector<Object*>\&\ \mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{objects}});}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00130}00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_abfc58bcbcd4e0b4f988939b9b16296e5}{DrawObjectsWithTag}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a2dcf63228b4ed4b45ae19304946f923f}{FreeAll}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00157}00157\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_object}{Object}}*\ \mbox{\hyperlink{class_object_manager_afe47ccc9dd305eae5dda76a15c928e86}{FindByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00173}00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_afe47ccc9dd305eae5dda76a15c928e86}{FindByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ std::vector<Object*>\&\ result);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00192}00192\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a1e9cd42ad2252270965253ddf57763de}{CheckCollision}}();}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00202}\mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{00202}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_collision_group_registry}{CollisionGroupRegistry}}\&\ \mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{GetCollisionGroupRegistry}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{collisionGroupRegistry}};\ \}}
 \DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00203}00203\ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00204}\mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{00204}}\ \ \ \ \ std::vector<std::unique\_ptr<Object>>\ \mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{objects}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00205}\mbox{\hyperlink{class_object_manager_ab889c6da290efdd66daadc2e2296e25c}{00205}}\ \ \ \ \ std::vector<std::unique\_ptr<Object>>\ \mbox{\hyperlink{class_object_manager_ab889c6da290efdd66daadc2e2296e25c}{pendingObjects}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00206}\mbox{\hyperlink{class_object_manager_a169b4f236ff9f2d87091c7f33ec2e42c}{00206}}\ \ \ \ \ std::unordered\_map<std::string,\ Object*>\ \mbox{\hyperlink{class_object_manager_a169b4f236ff9f2d87091c7f33ec2e42c}{objectMap}};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00207}\mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{00207}}\ \ \ \ \ std::vector<Object*>\ \mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{rawPtrObjects}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00208}\mbox{\hyperlink{class_object_manager_a783ce1f6edb5db32d5c7c9826179b8c5}{00208}}\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid}{SpatialHashGrid}}\ \mbox{\hyperlink{class_object_manager_a783ce1f6edb5db32d5c7c9826179b8c5}{broadPhaseGrid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00209}\mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{00209}}\ \ \ \ \ \mbox{\hyperlink{class_collision_group_registry}{CollisionGroupRegistry}}\ \mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{collisionGroupRegistry}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00210}00210\ \};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00212}\mbox{\hyperlink{class_object_manager_aa134339dbf5ed4f2542e2fd28fa490f1}{00212}}\ \ \ \ \ [[nodiscard]]\ std::vector<Object*>\ \mbox{\hyperlink{class_object_manager_aa134339dbf5ed4f2542e2fd28fa490f1}{GetAllRawPtrObjects}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{rawPtrObjects}};\ \}}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00214}00214\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00234}00234\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_af5c6a21a87c2fa4204462cacbe07c439}{AddAllPendingObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a6150e34acf9947f2d2e36040d472df5f}{EraseDeadObjects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00262}00262\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_manager_a79459c25593a2ad3ccc8cfdb88cf10a9}{DrawColliderDebug}}(\mbox{\hyperlink{class_render_manager}{RenderManager}}*\ rm,\ \mbox{\hyperlink{class_camera2_d}{Camera2D}}*\ cam);}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00264}\mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{00264}}\ \ \ \ \ std::vector<std::unique\_ptr<Object>>\ \mbox{\hyperlink{class_object_manager_ac0f18ac96a86c4aabe041642fdb8763b}{objects}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00265}\mbox{\hyperlink{class_object_manager_ab889c6da290efdd66daadc2e2296e25c}{00265}}\ \ \ \ \ std::vector<std::unique\_ptr<Object>>\ \mbox{\hyperlink{class_object_manager_ab889c6da290efdd66daadc2e2296e25c}{pendingObjects}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00266}\mbox{\hyperlink{class_object_manager_a169b4f236ff9f2d87091c7f33ec2e42c}{00266}}\ \ \ \ \ std::unordered\_map<std::string,\ Object*>\ \mbox{\hyperlink{class_object_manager_a169b4f236ff9f2d87091c7f33ec2e42c}{objectMap}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00267}\mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{00267}}\ \ \ \ \ std::vector<Object*>\ \mbox{\hyperlink{class_object_manager_a7cfc43b48f822dcb9d91b580d4d1d874}{rawPtrObjects}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00268}\mbox{\hyperlink{class_object_manager_a783ce1f6edb5db32d5c7c9826179b8c5}{00268}}\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid}{SpatialHashGrid}}\ \mbox{\hyperlink{class_object_manager_a783ce1f6edb5db32d5c7c9826179b8c5}{broadPhaseGrid}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00269}\mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{00269}}\ \ \ \ \ \mbox{\hyperlink{class_collision_group_registry}{CollisionGroupRegistry}}\ \mbox{\hyperlink{class_object_manager_a697bf14420d66f3c4d88b68cf58bc6e3}{collisionGroupRegistry}};}
+\DoxyCodeLine{\Hypertarget{_object_manager_8h_source_l00270}00270\ \};}
 
 \end{DoxyCode}

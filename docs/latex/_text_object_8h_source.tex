@@ -1,5 +1,5 @@
 \doxysection{Text\+Object.\+h}
-\hypertarget{_text_object_8h_source}{}\label{_text_object_8h_source}\index{Project/SNAKE\_Engine/Public/TextObject.h@{Project/SNAKE\_Engine/Public/TextObject.h}}
+\hypertarget{_text_object_8h_source}{}\label{_text_object_8h_source}\index{Project/JinEngine/Public/TextObject.h@{Project/JinEngine/Public/TextObject.h}}
 \mbox{\hyperlink{_text_object_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -12,78 +12,73 @@
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00017}\mbox{\hyperlink{struct_text_instance}{00017}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_instance}{TextInstance}}}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00018}00018\ \{}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00019}\mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{00019}}\ \ \ \ \ \mbox{\hyperlink{class_font}{Font}}*\ \mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{font}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00020}\mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{00020}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{text}}\ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00019}\mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{00019}}\ \ \ \ \ \mbox{\hyperlink{class_font}{Font}}*\ \mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{font}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00020}\mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{00020}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{text}}\ =\ \textcolor{stringliteral}{"{}"{}};}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00021}00021\ \};}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00036}\mbox{\hyperlink{class_text_object}{00036}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}{TextObject}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}}}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00037}00037\ \{}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00038}00038\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}{TextObject}}(\mbox{\hyperlink{class_font}{Font}}*\ font,\ \textcolor{keyword}{const}\ std::string\&\ text,\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}}\ =\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{TextAlignH::Left}},\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}}\ =\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{TextAlignV::Top}});}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00063}\mbox{\hyperlink{class_text_object_ad0b8bd85c7d39f8109d8f1025ba3b5f6}{00063}}\ \ \ \ \ \mbox{\hyperlink{class_text_object_ad0b8bd85c7d39f8109d8f1025ba3b5f6}{\string~TextObject}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a640e4ef674fb2192f5d29b0f81f95107}{Init}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00072}00072\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_ac135df5aeb1986940a538ab9c1b8e10f}{LateInit}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00077}00077\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_aff767a41326a8242063743e15bfb28d7}{Update}}([[maybe\_unused]]\ \textcolor{keywordtype}{float}\ dt,\ [[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00085}00085\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a534ee1073bdc4b0b2d953dfbe8166f03}{Draw}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00093}00093\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a7aea94fb38f3c3e3771af8f88e4a7fc4}{Free}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00098}00098\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a22c3477a5f4774b57cdd641120d6a248}{LateFree}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00103}00103\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00113}00113\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_text_object_a76097945db69268cb1970762ad1d4f23}{GetBoundingRadius}}()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00114}00114\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_af1154768cc7042d52deb50ace196502b}{SetText}}(\textcolor{keyword}{const}\ std::string\&\ text);}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00123}00123\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_adc5d289fc11362ba89c47bcdfe48c2cc}{SetTextInstance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_instance}{TextInstance}}\&\ textInstance\_);}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00134}00134\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00140}00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a1bf378e176da4cecba2332929664aaac}{SetAlignH}}(\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ alignH\_);}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00141}00141\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00147}00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a23b10b7bb52773bc289a9e1791d18037}{SetAlignV}}(\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ alignV\_);}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00148}00148\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00157}00157\ \ \ \ \ \mbox{\hyperlink{struct_text_instance}{TextInstance}}*\ \mbox{\hyperlink{class_text_object_a7cb75669bbe0cb18acbc2c3c2989c3c3}{GetTextInstance}}();}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00158}00158\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00164}\mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{00164}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{HasAnimation}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00165}00165\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00171}\mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}{00171}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_sprite_animator}{SpriteAnimator}}*\ \mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}{GetSpriteAnimator}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00172}00172\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00184}00184\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_text_object_ae46387856cc2195661fd838ad862e516}{GetWorldPosition}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00039}\mbox{\hyperlink{class_text_object}{00039}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}{TextObject}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}}}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00041}00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{class_text_object_a39e1f9fe9cc0385e10f3c29ac8ab1bfe}{TextObject}}(\mbox{\hyperlink{class_font}{Font}}*\ font,\ \textcolor{keyword}{const}\ std::string\&\ text,\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}}\ =\ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44a945d5e233cf7d6240f6b783b36a374ff}{TextAlignH::Left}},\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}}\ =\ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572aa4ffdcf0dc1f31b9acaf295d75b51d00}{TextAlignV::Top}});}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00060}\mbox{\hyperlink{class_text_object_ad0b8bd85c7d39f8109d8f1025ba3b5f6}{00060}}\ \ \ \ \ \mbox{\hyperlink{class_text_object_ad0b8bd85c7d39f8109d8f1025ba3b5f6}{\string~TextObject}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a640e4ef674fb2192f5d29b0f81f95107}{Init}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00083}00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_ac135df5aeb1986940a538ab9c1b8e10f}{LateInit}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_aff767a41326a8242063743e15bfb28d7}{Update}}([[maybe\_unused]]\ \textcolor{keywordtype}{float}\ dt,\ [[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00106}00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a534ee1073bdc4b0b2d953dfbe8166f03}{Draw}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a7aea94fb38f3c3e3771af8f88e4a7fc4}{Free}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a22c3477a5f4774b57cdd641120d6a248}{LateFree}}([[maybe\_unused]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00131}00131\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_text_object_a76097945db69268cb1970762ad1d4f23}{GetBoundingRadius}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_af1154768cc7042d52deb50ace196502b}{SetText}}(\textcolor{keyword}{const}\ std::string\&\ text);}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00148}00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_adc5d289fc11362ba89c47bcdfe48c2cc}{SetTextInstance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_instance}{TextInstance}}\&\ textInstance\_);}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00155}00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a1bf378e176da4cecba2332929664aaac}{SetAlignH}}(\mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ alignH\_);}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00162}00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a23b10b7bb52773bc289a9e1791d18037}{SetAlignV}}(\mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ alignV\_);}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00170}00170\ \ \ \ \ \mbox{\hyperlink{struct_text_instance}{TextInstance}}*\ \mbox{\hyperlink{class_text_object_a7cb75669bbe0cb18acbc2c3c2989c3c3}{GetTextInstance}}();}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00177}\mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{00177}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{HasAnimation}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00184}\mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}{00184}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_sprite_animator}{SpriteAnimator}}*\ \mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a93c657}{GetSpriteAnimator}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00195}00195\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_text_object_aaa922c3c1925bcd634fd80a56f5a9e03}{GetWorldScale}}()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00196}00196\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a02f4f3ea69e456a0353031edd8bb9438}{CheckFontAtlasAndMeshUpdate}}();}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00206}00206\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00213}\mbox{\hyperlink{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f}{00213}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f}{SetMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00214}00214\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00218}\mbox{\hyperlink{class_text_object_af23cfdfe8eafd743b798aab9f187d954}{00218}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_af23cfdfe8eafd743b798aab9f187d954}{SetMaterial}}(\mbox{\hyperlink{class_material}{Material}}*\ material\_)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00192}00192\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_text_object_ae46387856cc2195661fd838ad862e516}{GetWorldPosition}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00197}00197\ \ \ \ \ [[nodiscard]]\ glm::vec2\ \mbox{\hyperlink{class_text_object_aaa922c3c1925bcd634fd80a56f5a9e03}{GetWorldScale}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00206}00206\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a02f4f3ea69e456a0353031edd8bb9438}{CheckFontAtlasAndMeshUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00208}\mbox{\hyperlink{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f}{00208}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a0121550e8ffdcf09ab1f47bf7d0bcd9f}{SetMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00209}\mbox{\hyperlink{class_text_object_af23cfdfe8eafd743b798aab9f187d954}{00209}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_af23cfdfe8eafd743b798aab9f187d954}{SetMaterial}}(\mbox{\hyperlink{class_material}{Material}}*\ material\_)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00210}\mbox{\hyperlink{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd}{00210}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_material}{Material}}*\ \mbox{\hyperlink{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd}{GetMaterial}}()\ \textcolor{keyword}{const}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00212}\mbox{\hyperlink{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}{00212}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}{SetMesh}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00213}\mbox{\hyperlink{class_text_object_a727d943d75ec32a4815699a8644ab282}{00213}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a727d943d75ec32a4815699a8644ab282}{SetMesh}}(\mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh\_)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00214}\mbox{\hyperlink{class_text_object_a560a96aed0e107df59e96bbcffa74084}{00214}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ \mbox{\hyperlink{class_text_object_a560a96aed0e107df59e96bbcffa74084}{GetMesh}}()\ \textcolor{keyword}{const}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00216}\mbox{\hyperlink{class_text_object_a8b050cd1dcdef86b139cc9706042d226}{00216}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a8b050cd1dcdef86b139cc9706042d226}{AttachAnimator}}(std::unique\_ptr<SpriteAnimator>\ anim)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00217}\mbox{\hyperlink{class_text_object_a1337c05632a054194b4e8f42373a01bd}{00217}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a1337c05632a054194b4e8f42373a01bd}{AttachAnimator}}(\mbox{\hyperlink{class_sprite_sheet}{SpriteSheet}}*\ sheet,\ \textcolor{keywordtype}{float}\ frameTime,\ \textcolor{keywordtype}{bool}\ loop\ =\ \textcolor{keyword}{true})\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00218}\mbox{\hyperlink{class_text_object_a551df8f2b4542163665e3bb86d359ce6}{00218}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a551df8f2b4542163665e3bb86d359ce6}{DetachAnimator}}()\ =\ \textcolor{keyword}{delete};}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00219}00219\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00223}\mbox{\hyperlink{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd}{00223}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_material}{Material}}*\ \mbox{\hyperlink{class_text_object_a2ddeaaee422f88c2ac6251119dfc25fd}{GetMaterial}}()\ \textcolor{keyword}{const}\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00224}00224\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00228}\mbox{\hyperlink{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}{00228}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_ac124a2f940a62efd2d63ca3decf321bb}{SetMesh}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_engine_context}{EngineContext}}\&\ engineContext,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00220}00220\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00228}00228\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{UpdateMesh}}();}
 \DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00229}00229\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00233}\mbox{\hyperlink{class_text_object_a727d943d75ec32a4815699a8644ab282}{00233}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a727d943d75ec32a4815699a8644ab282}{SetMesh}}(\mbox{\hyperlink{class_mesh}{Mesh}}*\ mesh\_)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00234}00234\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00238}\mbox{\hyperlink{class_text_object_a560a96aed0e107df59e96bbcffa74084}{00238}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ \mbox{\hyperlink{class_text_object_a560a96aed0e107df59e96bbcffa74084}{GetMesh}}()\ \textcolor{keyword}{const}\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00239}00239\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00243}\mbox{\hyperlink{class_text_object_a8b050cd1dcdef86b139cc9706042d226}{00243}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a8b050cd1dcdef86b139cc9706042d226}{AttachAnimator}}(std::unique\_ptr<SpriteAnimator>\ anim)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00244}00244\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00248}\mbox{\hyperlink{class_text_object_a1337c05632a054194b4e8f42373a01bd}{00248}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a1337c05632a054194b4e8f42373a01bd}{AttachAnimator}}(\mbox{\hyperlink{class_sprite_sheet}{SpriteSheet}}*\ sheet,\ \textcolor{keywordtype}{float}\ frameTime,\ \textcolor{keywordtype}{bool}\ loop\ =\ \textcolor{keyword}{true})\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00249}00249\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00253}\mbox{\hyperlink{class_text_object_a551df8f2b4542163665e3bb86d359ce6}{00253}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a551df8f2b4542163665e3bb86d359ce6}{DetachAnimator}}()\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00254}00254\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_text_object_a0705bf6f2f40788da1c9fb60368c183b}{UpdateMesh}}();}
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00264}00264\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00265}\mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{00265}}\ \ \ \ \ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00266}\mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{00266}}\ \ \ \ \ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00267}00267\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00268}\mbox{\hyperlink{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}{00268}}\ \ \ \ \ \mbox{\hyperlink{struct_text_instance}{TextInstance}}\ \mbox{\hyperlink{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}{textInstance}};\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00269}\mbox{\hyperlink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{00269}}\ \ \ \ \ std::unique\_ptr<Mesh>\ \mbox{\hyperlink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{textMesh}};\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00270}00270\ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00271}\mbox{\hyperlink{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}{00271}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}{textAtlasVersionTracker}}\ =\ 0;\ \ \ }
-\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00272}00272\ \};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00230}\mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{00230}}\ \ \ \ \ \mbox{\hyperlink{_font_8h_adba6445b3653352a2f932f18e80c4c44}{TextAlignH}}\ \mbox{\hyperlink{class_text_object_a7c79ddb7d8db771179edcdd4ca6339eb}{alignH}};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00231}\mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{00231}}\ \ \ \ \ \mbox{\hyperlink{_font_8h_adddce2e8703c25cb1fda789220605572}{TextAlignV}}\ \mbox{\hyperlink{class_text_object_a053ba58bf598730947f87eef44bd62a7}{alignV}};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00233}\mbox{\hyperlink{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}{00233}}\ \ \ \ \ \mbox{\hyperlink{struct_text_instance}{TextInstance}}\ \mbox{\hyperlink{class_text_object_ac858bc57edde091f83b4ce3f7f3f7b21}{textInstance}};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00234}\mbox{\hyperlink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{00234}}\ \ \ \ \ std::unique\_ptr<Mesh>\ \mbox{\hyperlink{class_text_object_ae1cea3af3b91dcda314481b92f9a42ea}{textMesh}};}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00236}\mbox{\hyperlink{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}{00236}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_text_object_af1db1db704b5f0b7b011a8b69b86bf7f}{textAtlasVersionTracker}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_text_object_8h_source_l00237}00237\ \};}
 
 \end{DoxyCode}

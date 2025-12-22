@@ -2,7 +2,7 @@
 \hypertarget{struct_shader_job}{}\label{struct_shader_job}\index{ShaderJob@{ShaderJob}}
 
 
-Job for asynchronously loading a shader program from disk.  
+Load request describing a shader program to be loaded asynchronously.  
 
 
 
@@ -13,20 +13,20 @@ Job for asynchronously loading a shader program from disk.
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}{tag}}
-\begin{DoxyCompactList}\small\item\em Identifier tag for the shader. \end{DoxyCompactList}\item 
+\item 
 std\+::vector$<$ \mbox{\hyperlink{struct_shader_file}{Shader\+File}} $>$ \mbox{\hyperlink{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}{sources}}
-\begin{DoxyCompactList}\small\item\em List of shader source files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Job for asynchronously loading a shader program from disk. 
+Load request describing a shader program to be loaded asynchronously. 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00035}{35}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+\doxylink{struct_shader_job}{Shader\+Job} groups multiple stage files under a single tag. The worker thread reads each file into memory and produces \doxylink{struct_shader_result}{Shader\+Result} containing source strings per stage. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00051}{51}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
-\label{doc-variable-members}
-\Hypertarget{struct_shader_job_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{struct_shader_job_a5eb2b74c79feb2632bb8a0e9ec39f0fc}\index{ShaderJob@{ShaderJob}!sources@{sources}}
 \index{sources@{sources}!ShaderJob@{ShaderJob}}
@@ -36,11 +36,7 @@ std\+::vector$<$\mbox{\hyperlink{struct_shader_file}{Shader\+File}}$>$ Shader\+J
 
 
 
-List of shader source files. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00038}{38}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00054}{54}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}\index{ShaderJob@{ShaderJob}!tag@{tag}}
 \index{tag@{tag}!ShaderJob@{ShaderJob}}
@@ -50,14 +46,10 @@ std\+::string Shader\+Job\+::tag}
 
 
 
-Identifier tag for the shader. 
-
-
-
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00037}{37}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00053}{53}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_async_resource_loader_8h}{Async\+Resource\+Loader.\+h}}\end{DoxyCompactItemize}

@@ -2,7 +2,7 @@
 \hypertarget{class_transform2_d}{}\label{class_transform2_d}\index{Transform2D@{Transform2D}}
 
 
-Represents a 2D transform with position, rotation, scale, and depth.  
+Represents a 2D transform containing position, rotation, scale, and depth information.  
 
 
 
@@ -13,59 +13,61 @@ Represents a 2D transform with position, rotation, scale, and depth.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_transform2_d_a1cd8cbf27214b1b9ddec9e0740d1d52a}{Transform2D}} ()
-\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_transform2_d}{Transform2D} with default values. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a default 2D transform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_aaa66fdff6518df44d6d64280a890e551}{Set\+Position}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Sets the world position of the transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the absolute position of the transform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_aef8029acaabfb6d4e0bd7a8b167cae05}{Add\+Position}} (const glm\+::vec2 \&pos)
 \begin{DoxyCompactList}\small\item\em Adds an offset to the current position. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_a205f74dfec3660f08b25ab0e782b885d}{Set\+Rotation}} (float rot)
-\begin{DoxyCompactList}\small\item\em Sets the rotation of the transform in radians. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the absolute rotation of the transform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_a9af872385cf2e30773593ece402da4b6}{Add\+Rotation}} (float rot)
-\begin{DoxyCompactList}\small\item\em Adds a rotation offset in radians to the current rotation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a delta to the current rotation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_a1edc82d3f10301c9792b8f98f144ed8b}{Set\+Scale}} (const glm\+::vec2 \&scl)
-\begin{DoxyCompactList}\small\item\em Sets the scale of the transform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the absolute scale of the transform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_a6305424de34e7b008aca1e340810a697}{Add\+Scale}} (const glm\+::vec2 \&scl)
-\begin{DoxyCompactList}\small\item\em Adds an incremental scale factor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a delta to the current scale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_transform2_d_a72f8feb7f93522297a09b0a254551120}{Set\+Depth}} (float dpth)
-\begin{DoxyCompactList}\small\item\em Sets the rendering depth value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the depth value of the transform. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_transform2_d_aa4c38c37820eaa6a4c61ee09f57d5053}{Get\+Position}} () const
-\begin{DoxyCompactList}\small\item\em Gets the current position. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current position. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_transform2_d_a0b811ac01223cfcf4b9ac7db944ac2ce}{Get\+Rotation}} () const
-\begin{DoxyCompactList}\small\item\em Gets the current rotation in radians. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current rotation value. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_transform2_d_a132b1deed4b9b9224325dd7e6dd36476}{Get\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Gets the current scale vector. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current scale. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_transform2_d_a8fc04cb417fb1169c2af9ba0b0539394}{Get\+Depth}} () const
-\begin{DoxyCompactList}\small\item\em Gets the current depth value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current depth value. \end{DoxyCompactList}\item 
 glm\+::mat4 \& \mbox{\hyperlink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Get\+Matrix}} ()
-\begin{DoxyCompactList}\small\item\em Retrieves the transformation matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the transformation matrix for this transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec2 \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}
-\begin{DoxyCompactList}\small\item\em 2D position \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}{depth}}
-\begin{DoxyCompactList}\small\item\em Rendering depth. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}
-\begin{DoxyCompactList}\small\item\em Rotation in radians. \end{DoxyCompactList}\item 
+\item 
 glm\+::vec2 \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}
-\begin{DoxyCompactList}\small\item\em 2D scale factor \end{DoxyCompactList}\item 
+\item 
 glm\+::mat4 \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}}
-\begin{DoxyCompactList}\small\item\em Cached transformation matrix. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{is\+Changed}}
-\begin{DoxyCompactList}\small\item\em Flag indicating if matrix needs recomputation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represents a 2D transform with position, rotation, scale, and depth. 
+Represents a 2D transform containing position, rotation, scale, and depth information. 
 
-\doxylink{class_transform2_d}{Transform2D} encapsulates spatial data for objects in 2D space, including position, rotation (in radians), scale, and rendering depth. It maintains a transformation matrix that is lazily updated only when values change, minimizing redundant matrix computations. 
+\doxylink{class_transform2_d}{Transform2D} stores translation, rotation, scaling, and depth values for a 2D object and lazily computes a transformation matrix when requested. Any modification to position, rotation, scale, or depth marks the internal state as dirty via is\+Changed.
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00013}{13}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+The transformation matrix is only recomputed when \doxylink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Get\+Matrix()} is called and the transform has changed since the last computation. This avoids unnecessary matrix recalculations each frame.
+
+Depth is stored separately from position to allow explicit control over rendering order or depth-\/based sorting without affecting the 2D transform matrix composition. 
+
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00018}{18}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 
-\label{doc-constructors}
-\Hypertarget{class_transform2_d_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_transform2_d_a1cd8cbf27214b1b9ddec9e0740d1d52a}\index{Transform2D@{Transform2D}!Transform2D@{Transform2D}}
 \index{Transform2D@{Transform2D}!Transform2D@{Transform2D}}
@@ -75,24 +77,22 @@ Transform2\+D\+::\+Transform2D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaptio
 
 
 
-Constructs a new \doxylink{class_transform2_d}{Transform2D} with default values. 
+Constructs a default 2D transform. 
 
-Initializes position = (0,0), rotation = 0, scale = (1,1), depth = 0, and matrix = identity. The {\ttfamily is\+Changed} flag is set to true so the first call to {\ttfamily \doxylink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Get\+Matrix()}} recomputes the transform. 
+Initializes position to (0, 0), rotation to 0, scale to (1, 1), depth to 0, and the transformation matrix to identity. The transform is marked as changed so the matrix will be computed on first access. 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00024}{24}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00029}{29}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}(0.f),\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}(0.f),\ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}(1.f),}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}}(1.f),\ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}(\textcolor{keyword}{true}),\ \mbox{\hyperlink{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}{depth}}(0.f) }
-\DoxyCodeLine{00027\ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}(0.f),\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}(0.f),\ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}(1.f),}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}{matrix}}(1.f),\ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}(\textcolor{keyword}{true}),\ \mbox{\hyperlink{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}{depth}}(0.f) }
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-func-members}
-\Hypertarget{class_transform2_d_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_transform2_d_aef8029acaabfb6d4e0bd7a8b167cae05}\index{Transform2D@{Transform2D}!AddPosition@{AddPosition}}
 \index{AddPosition@{AddPosition}!Transform2D@{Transform2D}}
@@ -106,19 +106,19 @@ Adds an offset to the current position.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & 2D vector offset to add to the current position. \\
+{\em pos} & Delta value to add to the current position. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00046}{46}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00051}{51}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00047\ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}\ +=\ pos;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}\ +=\ pos;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a9af872385cf2e30773593ece402da4b6}\index{Transform2D@{Transform2D}!AddRotation@{AddRotation}}
@@ -129,23 +129,23 @@ void Transform2\+D\+::\+Add\+Rotation (\begin{DoxyParamCaption}\item[{float}]{ro
 
 
 
-Adds a rotation offset in radians to the current rotation. 
+Adds a delta to the current rotation. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em rot} & Angle in radians to add. \\
+{\em rot} & Rotation delta to add. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00068}{68}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00076}{76}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00069\ \ \ \ \ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}\ +=\ rot;}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}\ +=\ rot;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a6305424de34e7b008aca1e340810a697}\index{Transform2D@{Transform2D}!AddScale@{AddScale}}
@@ -156,23 +156,23 @@ void Transform2\+D\+::\+Add\+Scale (\begin{DoxyParamCaption}\item[{const glm\+::
 
 
 
-Adds an incremental scale factor. 
+Adds a delta to the current scale. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em scl} & Scale vector to add to the current scale. \\
+{\em scl} & Scale delta to add. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00090}{90}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00098}{98}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00091\ \ \ \ \ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}\ +=\ scl;}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}\ +=\ scl;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a8fc04cb417fb1169c2af9ba0b0539394}\index{Transform2D@{Transform2D}!GetDepth@{GetDepth}}
@@ -183,11 +183,8 @@ float Transform2\+D\+::\+Get\+Depth (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Gets the current depth value. 
+Returns the current depth value. 
 
-\begin{DoxyReturn}{Returns}
-Depth value. 
-\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_transform_8h_source_l00137}{137}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
@@ -205,24 +202,12 @@ glm\+::mat4 \& Transform2\+D\+::\+Get\+Matrix (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Retrieves the transformation matrix. 
+Returns the transformation matrix for this transform. 
 
-If any property (position, rotation, scale, depth) has changed, this function recalculates the matrix as T \texorpdfstring{$\ast$}{*} R \texorpdfstring{$\ast$}{*} S, where\+:
-\begin{DoxyItemize}
-\item T = translation matrix
-\item R = rotation around Z axis
-\item S = scale matrix
-\end{DoxyItemize}
-
-Otherwise, it returns the cached matrix.
+If the transform has changed since the last call, the matrix is recomputed using the current position, rotation, and scale. The updated matrix is cached and reused until another modification occurs.
 
 \begin{DoxyReturn}{Returns}
-Reference to the 4x4 transformation matrix. 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{glm::mat4\ model\ =\ transform.GetMatrix();}
-
-\end{DoxyCode}
- 
+Reference to the internally stored transformation matrix. 
 \end{DoxyReturn}
 
 
@@ -251,18 +236,15 @@ const glm\+::vec2 \& Transform2\+D\+::\+Get\+Position (\begin{DoxyParamCaption}{
 
 
 
-Gets the current position. 
-
-\begin{DoxyReturn}{Returns}
-const reference to the 2D position vector. 
-\end{DoxyReturn}
+Returns the current position. 
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00116}{116}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00122}{122}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00116\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}};\ \}}
+\DoxyCodeLine{00122\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a0b811ac01223cfcf4b9ac7db944ac2ce}\index{Transform2D@{Transform2D}!GetRotation@{GetRotation}}
@@ -273,18 +255,15 @@ float Transform2\+D\+::\+Get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Gets the current rotation in radians. 
-
-\begin{DoxyReturn}{Returns}
-Rotation angle in radians. 
-\end{DoxyReturn}
+Returns the current rotation value. 
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00123}{123}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00127}{127}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00123\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}};\ \}}
+\DoxyCodeLine{00127\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a132b1deed4b9b9224325dd7e6dd36476}\index{Transform2D@{Transform2D}!GetScale@{GetScale}}
@@ -295,18 +274,15 @@ const glm\+::vec2 \& Transform2\+D\+::\+Get\+Scale (\begin{DoxyParamCaption}{}{}
 
 
 
-Gets the current scale vector. 
-
-\begin{DoxyReturn}{Returns}
-const reference to the 2D scale vector. 
-\end{DoxyReturn}
+Returns the current scale. 
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00130}{130}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00132}{132}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00130\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}};\ \}}
+\DoxyCodeLine{00132\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a72f8feb7f93522297a09b0a254551120}\index{Transform2D@{Transform2D}!SetDepth@{SetDepth}}
@@ -317,9 +293,9 @@ void Transform2\+D\+::\+Set\+Depth (\begin{DoxyParamCaption}\item[{float}]{dpth}
 
 
 
-Sets the rendering depth value. 
+Sets the depth value of the transform. 
 
-Depth is used for rendering order. Smaller values will be rendered behind bigger ones.
+Depth does not directly affect the transformation matrix but can be used externally for render ordering or depth-\/based logic.
 
 
 \begin{DoxyParams}{Parameters}
@@ -328,14 +304,14 @@ Depth is used for rendering order. Smaller values will be rendered behind bigger
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00105}{105}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00113}{113}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00106\ \ \ \ \ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}{depth}}\ =\ dpth;}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}{depth}}\ =\ dpth;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_aaa66fdff6518df44d6d64280a890e551}\index{Transform2D@{Transform2D}!SetPosition@{SetPosition}}
@@ -346,23 +322,23 @@ void Transform2\+D\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{const glm\
 
 
 
-Sets the world position of the transform. 
+Sets the absolute position of the transform. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & New 2D position vector. \\
+{\em pos} & New position in 2D space. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00035}{35}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00040}{40}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00036\ \ \ \ \ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}\ =\ pos;}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}{position}}\ =\ pos;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a205f74dfec3660f08b25ab0e782b885d}\index{Transform2D@{Transform2D}!SetRotation@{SetRotation}}
@@ -373,23 +349,25 @@ void Transform2\+D\+::\+Set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{ro
 
 
 
-Sets the rotation of the transform in radians. 
+Sets the absolute rotation of the transform. 
+
+Rotation is stored as a single float value, typically interpreted as radians.
 
 
 \begin{DoxyParams}{Parameters}
-{\em rot} & Rotation angle in radians. \\
+{\em rot} & New rotation value. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00057}{57}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00065}{65}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00058\ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}\ =\ rot;}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a538205f416a3b800cae8268f6364b025}{rotation}}\ =\ rot;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_transform2_d_a1edc82d3f10301c9792b8f98f144ed8b}\index{Transform2D@{Transform2D}!SetScale@{SetScale}}
@@ -400,29 +378,27 @@ void Transform2\+D\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{const glm\+::
 
 
 
-Sets the scale of the transform. 
+Sets the absolute scale of the transform. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em scl} & New 2D scale vector. \\
+{\em scl} & New scale vector. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00079}{79}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00087}{87}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00080\ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}\ =\ scl;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}{scale}}\ =\ scl;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}{isChanged}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_transform2_d_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_transform2_d_aacb43ce156aa5fcf9cf0d385ed81832c}\index{Transform2D@{Transform2D}!depth@{depth}}
 \index{depth@{depth}!Transform2D@{Transform2D}}
@@ -432,11 +408,7 @@ float Transform2\+D\+::depth\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Rendering depth. 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00160}{160}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00153}{153}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 \Hypertarget{class_transform2_d_a78a183e05988fdacd5dabb6d02e192b0}\index{Transform2D@{Transform2D}!isChanged@{isChanged}}
 \index{isChanged@{isChanged}!Transform2D@{Transform2D}}
@@ -446,11 +418,7 @@ bool Transform2\+D\+::is\+Changed\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Flag indicating if matrix needs recomputation. 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00164}{164}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00157}{157}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 \Hypertarget{class_transform2_d_a143a0ddbd4ce6c0dc7e1eb8833fcfdde}\index{Transform2D@{Transform2D}!matrix@{matrix}}
 \index{matrix@{matrix}!Transform2D@{Transform2D}}
@@ -460,11 +428,7 @@ glm\+::mat4 Transform2\+D\+::matrix\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Cached transformation matrix. 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00163}{163}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00156}{156}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 \Hypertarget{class_transform2_d_a37619589b97a182f1aed38eeaf8e3a32}\index{Transform2D@{Transform2D}!position@{position}}
 \index{position@{position}!Transform2D@{Transform2D}}
@@ -474,11 +438,7 @@ glm\+::vec2 Transform2\+D\+::position\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-2D position 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00159}{159}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00152}{152}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 \Hypertarget{class_transform2_d_a538205f416a3b800cae8268f6364b025}\index{Transform2D@{Transform2D}!rotation@{rotation}}
 \index{rotation@{rotation}!Transform2D@{Transform2D}}
@@ -488,11 +448,7 @@ float Transform2\+D\+::rotation\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Rotation in radians. 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00161}{161}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00154}{154}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 \Hypertarget{class_transform2_d_a89af86aaab034fb63ac7f8c86579f435}\index{Transform2D@{Transform2D}!scale@{scale}}
 \index{scale@{scale}!Transform2D@{Transform2D}}
@@ -502,15 +458,11 @@ glm\+::vec2 Transform2\+D\+::scale\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-2D scale factor 
-
-
-
-Definition at line \mbox{\hyperlink{_transform_8h_source_l00162}{162}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
+Definition at line \mbox{\hyperlink{_transform_8h_source_l00155}{155}} of file \mbox{\hyperlink{_transform_8h_source}{Transform.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_transform_8h}{Transform.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_transform_8cpp}{Transform.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_transform_8h}{Transform.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_transform_8cpp}{Transform.\+cpp}}\end{DoxyCompactItemize}

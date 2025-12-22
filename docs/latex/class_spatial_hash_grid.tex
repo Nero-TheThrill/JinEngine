@@ -2,7 +2,7 @@
 \hypertarget{class_spatial_hash_grid}{}\label{class_spatial_hash_grid}\index{SpatialHashGrid@{SpatialHashGrid}}
 
 
-Uniform spatial hash grid for broad-\/phase collision candidate generation.  
+Broad-\/phase collision structure using spatial hashing.  
 
 
 
@@ -13,53 +13,47 @@ Uniform spatial hash grid for broad-\/phase collision candidate generation.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{Clear}} ()
-\begin{DoxyCompactList}\small\item\em Remove all buckets and cached per-\/frame state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Clears all stored objects and grid cell mappings. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{Insert}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj)
-\begin{DoxyCompactList}\small\item\em Insert an object based on its collider\textquotesingle{}s world position and radius. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Inserts an object into the spatial hash grid. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{Compute\+Collisions}} (std\+::function$<$ void(\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*})$>$ on\+Collision)
-\begin{DoxyCompactList}\small\item\em Enumerate candidate pairs inside buckets and invoke a callback. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Computes broad-\/phase collision candidate pairs and invokes a callback. \end{DoxyCompactList}\item 
 glm\+::ivec2 \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{Get\+Cell}} (const glm\+::vec2 \&pos) const
-\begin{DoxyCompactList}\small\item\em Convert a world position to integer cell coordinates. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts a world position into a grid cell coordinate. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{Insert\+To\+Cell}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj, const glm\+::ivec2 \&cell)
-\begin{DoxyCompactList}\small\item\em Insert an object into a specific grid cell bucket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Inserts an object into a specific cell bucket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 friend \mbox{\hyperlink{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a}{Object\+Manager}}
 \item 
 int \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size}} = 50
-\begin{DoxyCompactList}\small\item\em Cell side length in world units (default\+: 50). \end{DoxyCompactList}\item 
+\item 
 std\+::unordered\+\_\+map$<$ glm\+::ivec2, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$, \mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}} $>$ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}
-\begin{DoxyCompactList}\small\item\em Cell buckets\+: map from cell coords to resident objects. \end{DoxyCompactList}\item 
+\item 
 std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}}
-\begin{DoxyCompactList}\small\item\em Objects too large for regular buckets (tracked separately). \end{DoxyCompactList}\item 
+\item 
 std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}
-\begin{DoxyCompactList}\small\item\em Staging cache used within the current frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Uniform spatial hash grid for broad-\/phase collision candidate generation. 
+Broad-\/phase collision structure using spatial hashing. 
 
-Partitions world space into square cells of side \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} (in world units). Objects with colliders are inserted into one or more cells based on their world position and \doxylink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Collider\+::\+Get\+Bounding\+Radius}. Objects that are too large relative to \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} are tracked in \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}.
+\doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} divides world space into square cells (cell\+Size). Objects are inserted into one or more cells based on their positions.
 
-Pipeline\+:
+During Compute\+Collisions\+:
 \begin{DoxyItemize}
-\item \doxylink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{Clear} resets internal buckets for the current frame.
-\item \doxylink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{Insert} assigns each object to all cells touched by its bounding circle, or to \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects} if it spans many cells.
-\item \doxylink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{Compute\+Collisions} iterates buckets and invokes the supplied callback for each unique candidate pair (Object\texorpdfstring{$\ast$}{*}, Object\texorpdfstring{$\ast$}{*}). Mask/group filtering is performed at a higher layer (\doxylink{class_object_manager}{Object\+Manager}).
+\item The grid enumerates objects per cell and generates candidate pairs.
+\item The on\+Collision callback is invoked for each candidate pair (typically leading to narrow-\/phase collider checks).
 \end{DoxyItemize}
 
-\begin{DoxyWarning}{Warning}
-The grid is rebuilt every frame; choose \doxylink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cell\+Size} carefully to balance insertion cost and bucket density. 
-\end{DoxyWarning}
+Large objects that exceed cell-\/based assumptions may be tracked separately in large\+Objects, allowing the system to handle them without excessive multi-\/cell insertion. 
 
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00411}{411}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00407}{407}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_spatial_hash_grid_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}\index{SpatialHashGrid@{SpatialHashGrid}!Clear@{Clear}}
 \index{Clear@{Clear}!SpatialHashGrid@{SpatialHashGrid}}
@@ -69,7 +63,7 @@ void Spatial\+Hash\+Grid\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Remove all buckets and cached per-\/frame state. 
+Clears all stored objects and grid cell mappings. 
 
 
 
@@ -92,14 +86,16 @@ void Spatial\+Hash\+Grid\+::\+Compute\+Collisions (\begin{DoxyParamCaption}\item
 
 
 
-Enumerate candidate pairs inside buckets and invoke a callback. 
+Computes broad-\/phase collision candidate pairs and invokes a callback. 
+
+The callback is responsible for deciding what to do with each candidate pair (e.\+g., performing narrow-\/phase collision checks, resolving responses, etc.).
 
 
 \begin{DoxyParams}{Parameters}
-{\em on\+Collision} & Callback invoked with (A, B) for each candidate pair.\\
+{\em on\+Collision} & Callback invoked with (Object\texorpdfstring{$\ast$}{*}, Object\texorpdfstring{$\ast$}{*}) candidate pair. \\
 \hline
 \end{DoxyParams}
-Pairs are generated per-\/cell and across \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}; duplicates across cells are suppressed. The callback should perform fine-\/grained checks (masks, group tags, and \doxylink{class_collider_a41660505ae4b413d3d4b004162857426}{Collider\+::\+Check\+Collision}). 
+
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00212}{212}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
@@ -135,15 +131,15 @@ glm\+::ivec2 Spatial\+Hash\+Grid\+::\+Get\+Cell (\begin{DoxyParamCaption}\item[{
 
 
 
-Convert a world position to integer cell coordinates. 
+Converts a world position into a grid cell coordinate. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & World-\/space position. \\
+{\em pos} & World position. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Discrete cell index (x, y). 
+Integer cell coordinate. 
 \end{DoxyReturn}
 
 
@@ -167,16 +163,15 @@ void Spatial\+Hash\+Grid\+::\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hype
 
 
 
-Insert an object based on its collider\textquotesingle{}s world position and radius. 
+Inserts an object into the spatial hash grid. 
+
+This function computes which cell(s) an object belongs to and stores it. Objects that are considered large may be inserted into large\+Objects instead.
 
 
 \begin{DoxyParams}{Parameters}
-{\em obj} & \doxylink{class_object}{Object} with a non-\/null collider.\\
+{\em obj} & \doxylink{class_object}{Object} to insert. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-Objects exceeding a size threshold may be routed to \doxylink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{large\+Objects}. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
@@ -219,13 +214,13 @@ void Spatial\+Hash\+Grid\+::\+Insert\+To\+Cell (\begin{DoxyParamCaption}\item[{\
 
 
 
-Insert an object into a specific grid cell bucket. 
+Inserts an object into a specific cell bucket. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em obj} & \doxylink{class_object}{Object} pointer. \\
+{\em obj} & \doxylink{class_object}{Object} to insert. \\
 \hline
-{\em cell} & Discrete cell index. \\
+{\em cell} & Cell coordinate. \\
 \hline
 \end{DoxyParams}
 
@@ -241,18 +236,12 @@ Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00242}{242}} of file 
 \end{DoxyCode}
 
 
-\label{doc-variable-members}
-\Hypertarget{class_spatial_hash_grid_doc-variable-members}
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}\index{SpatialHashGrid@{SpatialHashGrid}!cellSize@{cellSize}}
 \index{cellSize@{cellSize}!SpatialHashGrid@{SpatialHashGrid}}
 \doxysubsubsection{\texorpdfstring{cellSize}{cellSize}}
 {\footnotesize\ttfamily \label{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891} 
 int Spatial\+Hash\+Grid\+::cell\+Size = 50\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Cell side length in world units (default\+: 50). 
 
 
 
@@ -266,11 +255,7 @@ std\+::unordered\+\_\+map$<$glm\+::ivec2, std\+::vector$<$\mbox{\hyperlink{class
 
 
 
-Cell buckets\+: map from cell coords to resident objects. 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00457}{457}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00455}{455}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}\index{SpatialHashGrid@{SpatialHashGrid}!largeObjects@{largeObjects}}
 \index{largeObjects@{largeObjects}!SpatialHashGrid@{SpatialHashGrid}}
@@ -280,11 +265,7 @@ std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*
 
 
 
-Objects too large for regular buckets (tracked separately). 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00460}{460}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00456}{456}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a}\index{SpatialHashGrid@{SpatialHashGrid}!ObjectManager@{ObjectManager}}
 \index{ObjectManager@{ObjectManager}!SpatialHashGrid@{SpatialHashGrid}}
@@ -294,7 +275,7 @@ friend Spatial\+Hash\+Grid\+::\+Object\+Manager\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00413}{413}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00409}{409}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}\index{SpatialHashGrid@{SpatialHashGrid}!objects@{objects}}
 \index{objects@{objects}!SpatialHashGrid@{SpatialHashGrid}}
@@ -304,15 +285,11 @@ std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*
 
 
 
-Staging cache used within the current frame. 
-
-
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00463}{463}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00457}{457}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_collider_8cpp}{Collider.\+cpp}}\end{DoxyCompactItemize}

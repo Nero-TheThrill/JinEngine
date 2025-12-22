@@ -2,7 +2,7 @@
 \hypertarget{class_frustum_culler}{}\label{class_frustum_culler}\index{FrustumCuller@{FrustumCuller}}
 
 
-View-\/frustum culling helper for 2D camera.  
+Simple visibility culling utility based on a \doxylink{class_camera2_d}{Camera2D} view test and object bounding radius.  
 
 
 
@@ -13,20 +13,25 @@ View-\/frustum culling helper for 2D camera.
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d}{Cull\+Visible}} (const \mbox{\hyperlink{class_camera2_d}{Camera2D}} \&camera, const std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&all\+Objects, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} $>$ \&out\+Visible\+List, glm\+::vec2 viewport\+Size)
-\begin{DoxyCompactList}\small\item\em Filters visible objects against the 2D camera frustum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Builds a list of objects visible to the camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-View-\/frustum culling helper for 2D camera. 
+Simple visibility culling utility based on a \doxylink{class_camera2_d}{Camera2D} view test and object bounding radius. 
 
-Removes objects that are outside the camera’s visible rectangle. Uses each object’s bounding radius and transform to produce a conservative visibility test. 
+\doxylink{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d}{Cull\+Visible()} filters objects using\+:
+\begin{DoxyItemize}
+\item Is\+Alive() and Is\+Visible() checks
+\item Should\+Ignore\+Camera()\+: such objects are always included
+\item Camera2\+D\+::\+Is\+In\+View(position, radius, viewport\+Size) for camera-\/relative objects
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00431}{431}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+The output list is cleared and rebuilt every call. 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00745}{745}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 
-\label{doc-func-members}
-\Hypertarget{class_frustum_culler_doc-func-members}
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_frustum_culler_a81c3d9c4516d7695b6988c64badf824d}\index{FrustumCuller@{FrustumCuller}!CullVisible@{CullVisible}}
 \index{CullVisible@{CullVisible}!FrustumCuller@{FrustumCuller}}
@@ -36,22 +41,19 @@ void Frustum\+Culler\+::\+Cull\+Visible (\begin{DoxyParamCaption}\item[{const \m
 
 
 
-Filters visible objects against the 2D camera frustum. 
+Builds a list of objects visible to the camera. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em camera} & Reference camera. \\
+{\em camera} & Camera used for view test. \\
 \hline
-{\em all\+Objects} & All candidates to test. \\
+{\em all\+Objects} & Input list of candidate objects. \\
 \hline
-{\em out\+Visible\+List} & Output list filled with visible objects. \\
+{\em out\+Visible\+List} & Output list that will be cleared and filled with visible objects. \\
 \hline
-{\em viewport\+Size} & Size in pixels (width,height) used with camera zoom. \\
+{\em viewport\+Size} & Viewport size used by \doxylink{class_camera2_d_ac59db8b285e9e7c9646b6e369cfda825}{Camera2\+D\+::\+Is\+In\+View}. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-Out list is not cleared; the function appends visible objects. 
-\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_render_manager_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_render_manager_8cpp_source}{Render\+Manager.\+cpp}}.
@@ -82,5 +84,5 @@ Definition at line \mbox{\hyperlink{_render_manager_8cpp_source_l00130}{130}} of
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Project/\+SNAKE\+\_\+\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\item 
-Project/\+SNAKE\+\_\+\+Engine/\+Private/\mbox{\hyperlink{_render_manager_8cpp}{Render\+Manager.\+cpp}}\end{DoxyCompactItemize}
+Project/\+Jin\+Engine/\+Public/\mbox{\hyperlink{_render_manager_8h}{Render\+Manager.\+h}}\item 
+Project/\+Jin\+Engine/\+Private/\mbox{\hyperlink{_render_manager_8cpp}{Render\+Manager.\+cpp}}\end{DoxyCompactItemize}
