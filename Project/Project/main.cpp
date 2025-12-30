@@ -78,6 +78,7 @@ int main(int argc, char* argv[])
     jinEngine.GetEngineContext().renderManager->RegisterRenderLayer("[Layer]FrameBufferTexture", 13);
     jinEngine.GetEngineContext().renderManager->RegisterRenderLayer("[Layer]Cursor", 14);
     jinEngine.GetEngineContext().renderManager->RegisterFont("[Font]default", "Fonts/NotoSans-VariableFont_wdth,wght.ttf", 50);
+    jinEngine.GetEngineContext().renderManager->RegisterFont("[Font]defaultkr", "Fonts/NanumPenScript-Regular.ttf", 50);
 
 
     jinEngine.GetEngineContext().windowManager->SetCursorVisible(false);

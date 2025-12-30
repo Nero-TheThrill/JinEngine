@@ -16,7 +16,7 @@ void FlagObject::Init(const EngineContext& engineContext)
 	SetCollision(engineContext.stateManager->GetCurrentState()->GetObjectManager(), "[CollisionTag]flag", { "[CollisionTag]player" });
 
 	textObject = static_cast<TextObject*>( engineContext.stateManager->GetCurrentState()->GetObjectManager().AddObject(
-		std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]default"),guide,TextAlignH::Center,TextAlignV::Middle),
+		std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]defaultkr"),guide,TextAlignH::Center,TextAlignV::Middle),
 		"[Object]flagText"));
 	textObject->SetRenderLayer("[Layer]UIText");
 	textObject->GetTransform2D().SetPosition(GetWorldPosition()+glm::vec2{-20,150});

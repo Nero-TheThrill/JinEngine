@@ -65,8 +65,8 @@ void JinEngine::Run()
     }
 
     soundManager.Free();
-    renderManager.Free();
     stateManager.Free(engineContext);
+    renderManager.Free();
     windowManager.Free();
     Free();
 }

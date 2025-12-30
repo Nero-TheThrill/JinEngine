@@ -14,7 +14,7 @@ void MainMenu::Load(const EngineContext& engineContext)
 void MainMenu::Init(const EngineContext& engineContext)
 {
     JIN_LOG("[MainMenu] init called");
-    mainText = static_cast<TextObject*>( objectManager.AddObject(std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]default"), "MainMenu", TextAlignH::Center, TextAlignV::Middle)));
+    mainText = static_cast<TextObject*>( objectManager.AddObject(std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]defaultkr"),  u8"메인메뉴", TextAlignH::Center, TextAlignV::Middle)));
     cursor = static_cast<GameObject*>(objectManager.AddObject(std::make_unique<GameObject>()));
     cursor->SetMaterial(engineContext, "[Material]cursor");
     cursor->SetMesh(engineContext, "[EngineMesh]default");
