@@ -20,6 +20,8 @@ public:
 
     [[nodiscard]] int GetHeight() const { return windowHeight; }
 
+    glm::ivec2 GetWindowSize() const { return glm::ivec2(windowWidth, windowHeight); }
+
     void Resize(int width, int height);
 
     void SetTitle(const std::string& title) const;
@@ -46,6 +48,8 @@ private:
     void SetWidth(int width) { this->windowWidth = width; }
 
     void SetHeight(int height) { this->windowHeight = height; }
+
+    void SetWindowSize(glm::ivec2 size) { this->windowWidth = size.x; this->windowHeight = size.y; }
 
     void SwapBuffers() const;
 
