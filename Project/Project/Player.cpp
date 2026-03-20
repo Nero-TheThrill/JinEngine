@@ -6,7 +6,7 @@ void Player::Init(const EngineContext& engineContext)
     transform2D.SetScale(glm::vec2(100.f));
     SetMesh(engineContext, "[EngineMesh]default");
     SetMaterial(engineContext, "[Material]Animation");
-    SpriteSheet* sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]MainCharacter");
+    std::shared_ptr<SpriteSheet> sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]MainCharacter");
     sheet->AddClip("[Clip]Idle", { 0,1,2,3,4,5,6,7 }, 0.15f, true);
     sheet->AddClip("[Clip]Running", {8,9,10,11,12,13}, 0.08f, true);
     sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]MainCharacter1");

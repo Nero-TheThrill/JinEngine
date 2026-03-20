@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <memory>
 #include <string>
 
@@ -49,15 +49,15 @@ public:
 
     void SetMaterial(const EngineContext& engineContext, const std::string& tag);
 
-    void SetMaterial(Material* material_) { material = material_; }
+    void SetMaterial(std::shared_ptr<Material> material_) { material = material_; }
 
-    [[nodiscard]] Material* GetMaterial() const;
+    [[nodiscard]] std::shared_ptr<Material> GetMaterial() const;
 
     void SetMesh(const EngineContext& engineContext, const std::string& tag);
 
-    void SetMesh(Mesh* mesh_) { mesh = mesh_; }
+    void SetMesh(std::shared_ptr<Mesh> mesh_) { mesh = mesh_; }
 
-    [[nodiscard]] Mesh* GetMesh() const;
+    [[nodiscard]] std::shared_ptr<Mesh> GetMesh() const;
 
     [[nodiscard]] bool CanBeInstanced() const;
 
@@ -72,7 +72,7 @@ public:
     [[nodiscard]] virtual SpriteAnimator* GetSpriteAnimator() const { return spriteAnimator.get(); }
 
     void AttachAnimator(std::unique_ptr<SpriteAnimator> anim) { spriteAnimator = std::move(anim); }
-    void AttachAnimator(SpriteSheet* sheet, float frameTime, bool loop = true) { spriteAnimator = std::make_unique<SpriteAnimator>(sheet, frameTime, loop); }
+    void AttachAnimator(std::shared_ptr<SpriteSheet> sheet, float frameTime, bool loop = true) { spriteAnimator = std::make_unique<SpriteAnimator>(sheet, frameTime, loop); }
     void DetachAnimator() { spriteAnimator = nullptr; }
 
     void SetCollider(std::unique_ptr<Collider> c) { collider = std::move(c); }
@@ -112,8 +112,8 @@ protected:
     std::string renderLayerTag;
 
     Transform2D transform2D;
-    Material* material = nullptr;
-    Mesh* mesh = nullptr;
+    std::weak_ptr<Material> material;
+    std::weak_ptr<Mesh> mesh;
 
 
     glm::vec4 color = glm::vec4(1);

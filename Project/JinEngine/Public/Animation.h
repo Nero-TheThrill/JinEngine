@@ -21,12 +21,12 @@ class SpriteSheet
 {
 
 public:
-    SpriteSheet(Texture* texture_, int frameW, int frameH);
+    SpriteSheet(std::shared_ptr<Texture> texture_, int frameW, int frameH);
 
     [[nodiscard]] glm::vec2 GetUVOffset(int frameIndex) const;
     [[nodiscard]] glm::vec2 GetUVScale() const;
 
-    [[nodiscard]] Texture* GetTexture() const { return texture; }
+    [[nodiscard]] std::shared_ptr<Texture> GetTexture() const { return texture; }
 
     [[nodiscard]] int GetFrameCount() const;
 
@@ -35,7 +35,7 @@ public:
 
 private:
     std::unordered_map<std::string, SpriteClip> animationClips;
-    Texture* texture;
+    std::shared_ptr<Texture> texture;
     int frameWidth, frameHeight;
     int columns, rows;
     int texWidth = 0, texHeight = 0;
@@ -47,7 +47,7 @@ private:
 class SpriteAnimator
 {
 public:
-    SpriteAnimator(SpriteSheet* sheet_, float frameTime_, bool loop_ = true);
+    SpriteAnimator(std::shared_ptr<SpriteSheet> sheet_, float frameTime_, bool loop_ = true);
 
     void PlayClip(int start, int end, bool loop_ = true);
     void PlayClip(const std::string& clipName);
@@ -57,16 +57,16 @@ public:
     [[nodiscard]] glm::vec2 GetUVOffset() const;
     [[nodiscard]] glm::vec2 GetUVScale() const;
 
-    [[nodiscard]] Texture* GetTexture() { return sheet? sheet->GetTexture() : nullptr;}
+    [[nodiscard]] std::shared_ptr<Texture> GetTexture() { return sheet? sheet->GetTexture() : nullptr;}
 
     void SetFrame(int frame) { currentFrame = frame; }
     [[nodiscard]] int GetCurrentFrame() const { return currentFrame; }
 
-    [[nodiscard]] SpriteSheet* GetSpriteSheet() const { return sheet; }
+    [[nodiscard]] std::shared_ptr<SpriteSheet> GetSpriteSheet() const { return sheet; }
 
     [[nodiscard]] bool IsClipFinished() const { return isClipFinished; }
 private:
-    SpriteSheet* sheet;
+    std::shared_ptr<SpriteSheet> sheet;
     float frameTime;
     float elapsed = 0.0f;
     int currentFrame = 0;

@@ -276,7 +276,7 @@ void Tutorial::Init(const EngineContext& engineContext)
     cursor->SetRenderLayer("[Layer]Cursor");
     cursor->SetIgnoreCamera(true, cameraManager.GetActiveCamera());
 
-    computeMat = static_cast<ComputeMaterial*>(engineContext.renderManager->GetMaterialByTag("[Material]ComputeWaterDrop"));
+    computeMat = std::dynamic_pointer_cast<ComputeMaterial>(engineContext.renderManager->GetMaterialByTag("[Material]ComputeWaterDrop"));
     computeMat->SetImage("u_Src", engineContext.renderManager->GetTextureByTag("[EngineTexture]RenderTexture"), ImageAccess::ReadOnly, ImageFormat::RGBA16F, 0);
     computeMat->SetImage("u_Dst", engineContext.renderManager->GetTextureByTag("[PostProcessedTexture]WaterDrop"), ImageAccess::WriteOnly, ImageFormat::RGBA8, 0);
     computeMat->SetUniform("u_Resolution", glm::vec2(engineContext.windowManager->GetWidth(), engineContext.windowManager->GetHeight()));
@@ -388,6 +388,10 @@ void Tutorial::Update(float dt, const EngineContext& engineContext)
     }
     if (engineContext.inputManager->IsKeyDown(KEY_LEFT))
     {
+        engineContext.renderManager->UnregisterMaterial("[Material]Background00", engineContext);
+        engineContext.renderManager->UnregisterMaterial("[Material]Background01", engineContext);
+        engineContext.renderManager->UnregisterMaterial("[Material]Background02", engineContext);
+        engineContext.renderManager->UnregisterMesh("[EngineMesh]default", engineContext);
         cameraManager.GetActiveCamera()->AddPosition({ -500 * dt,0 });
     }
     if (engineContext.inputManager->IsKeyDown(KEY_RIGHT))

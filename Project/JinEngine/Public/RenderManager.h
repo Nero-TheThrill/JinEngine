@@ -48,11 +48,11 @@ class RenderManager
 public:
     void RegisterShader(const std::string& tag, const std::vector<std::pair<ShaderStage, FilePath>>& sources);
 
-    void RegisterShader(const std::string& tag, std::unique_ptr<Shader> shader);
+    void RegisterShader(const std::string& tag, std::shared_ptr<Shader> shader);
 
     void RegisterTexture(const std::string& tag, const FilePath& path, const TextureSettings& settings = {});
 
-    void RegisterTexture(const std::string& tag, std::unique_ptr<Texture> texture);
+    void RegisterTexture(const std::string& tag, std::shared_ptr<Texture> texture);
 
     void ForceRegisterTexture(const std::string& tag, unsigned int id_, int width_, int height_, int channels_);
 
@@ -60,15 +60,15 @@ public:
 
     void RegisterMesh(const std::string& tag, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices = {}, PrimitiveType primitiveType = PrimitiveType::Triangles);
 
-    void RegisterMesh(const std::string& tag, std::unique_ptr<Mesh> mesh);
+    void RegisterMesh(const std::string& tag, std::shared_ptr<Mesh> mesh);
 
     void RegisterMaterial(const std::string& tag, const std::string& shaderTag, const std::unordered_map<UniformName, TextureTag>& textureBindings);
 
-    void RegisterMaterial(const std::string& tag, std::unique_ptr<Material> material);
+    void RegisterMaterial(const std::string& tag, std::shared_ptr<Material> material);
 
     void RegisterFont(const std::string& tag, const std::string& ttfPath, uint32_t pixelSize);
 
-    void RegisterFont(const std::string& tag, std::unique_ptr<Font> font);
+    void RegisterFont(const std::string& tag, std::shared_ptr<Font> font);
 
     void RegisterRenderLayer(const std::string& tag, uint8_t layer);
 
@@ -96,17 +96,17 @@ public:
 
     [[nodiscard]] bool HasSpriteSheet(const std::string& tag) const;
 
-    [[nodiscard]] Shader* GetShaderByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<Shader> GetShaderByTag(const std::string& tag);
 
-    [[nodiscard]] Texture* GetTextureByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<Texture> GetTextureByTag(const std::string& tag);
 
-    [[nodiscard]] Mesh* GetMeshByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<Mesh> GetMeshByTag(const std::string& tag);
 
-    [[nodiscard]] Material* GetMaterialByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<Material> GetMaterialByTag(const std::string& tag);
 
-    [[nodiscard]] Font* GetFontByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<Font> GetFontByTag(const std::string& tag);
 
-    [[nodiscard]] SpriteSheet* GetSpriteSheetByTag(const std::string& tag);
+    [[nodiscard]] std::shared_ptr<SpriteSheet> GetSpriteSheetByTag(const std::string& tag);
 
     void FlushDrawCommands(const EngineContext& engineContext);
 
@@ -119,7 +119,7 @@ public:
     [[nodiscard]] RenderLayerManager& GetRenderLayerManager();
     void BeginFrame(const EngineContext& engineContext);
     void EndFrame(const EngineContext& engineContext);
-    void DispatchCompute(ComputeMaterial* material);
+    void DispatchCompute(std::shared_ptr<ComputeMaterial> material);
     void OnResize(int width, int height);
 private:
     void Init(const EngineContext& engineContext);
@@ -134,12 +134,12 @@ private:
 
 
 
-    std::unordered_map<std::string, std::unique_ptr<Shader>> shaderMap;
-    std::unordered_map<std::string, std::unique_ptr<Texture>> textureMap;
-    std::unordered_map<std::string, std::unique_ptr<Mesh>> meshMap;
-    std::unordered_map<std::string, std::unique_ptr<Material>> materialMap;
-    std::unordered_map<std::string, std::unique_ptr<Font>> fontMap;
-    std::unordered_map<std::string, std::unique_ptr<SpriteSheet>> spritesheetMap;
+    std::unordered_map<std::string, std::shared_ptr<Shader>> shaderMap;
+    std::unordered_map<std::string, std::shared_ptr<Texture>> textureMap;
+    std::unordered_map<std::string, std::shared_ptr<Mesh>> meshMap;
+    std::unordered_map<std::string, std::shared_ptr<Material>> materialMap;
+    std::unordered_map<std::string, std::shared_ptr<Font>> fontMap;
+    std::unordered_map<std::string, std::shared_ptr<SpriteSheet>> spritesheetMap;
 
 
     using CameraAndWidth = std::pair<Camera2D*, float>;
@@ -153,16 +153,18 @@ private:
     std::unordered_map<CameraAndWidth, std::vector<LineInstance>, CameraAndWidthHash> debugLineMap;
     GLuint debugLineVAO = 0, debugLineVBO = 0;
 
-    Shader* defaultShader, *debugLineShader;
-    Material* defaultMaterial;
-    SpriteSheet* defaultSpriteSheet;
-    Mesh* defaultMesh;
+    std::shared_ptr<Shader> defaultShader, debugLineShader;
+    std::shared_ptr<Material> defaultMaterial;
+    std::shared_ptr<SpriteSheet> defaultSpriteSheet;
+    std::shared_ptr<Mesh> defaultMesh;
+    std::shared_ptr<Texture> errorTexture;
+
+
     RenderMap renderMap;
     RenderLayerManager renderLayerManager;
 
     Camera2D* renderCamera;
 
-    Texture* errorTexture;
 
 
     unsigned int sceneFBO = 0;

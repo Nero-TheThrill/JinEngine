@@ -1,10 +1,10 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 
-SpriteSheet::SpriteSheet(Texture* texture_, int frameW, int frameH)
-    : texture(texture_), frameWidth(frameW), frameHeight(frameH)
+SpriteSheet::SpriteSheet(std::shared_ptr<Texture> texture_, int frameW, int frameH)
+    : texture(std::move(texture_)), frameWidth(frameW), frameHeight(frameH)
 {
-    texWidth = texture_->GetWidth();
-    texHeight = texture_->GetHeight();
+    texWidth = texture->GetWidth();
+    texHeight = texture->GetHeight();
     columns = texWidth / frameWidth;
     rows = texHeight / frameHeight;
     if (columns == 0) columns = 1;
@@ -53,8 +53,8 @@ const SpriteClip* SpriteSheet::GetClip(const std::string& name) const
 }
 
 
-SpriteAnimator::SpriteAnimator(SpriteSheet* sheet_, float frameTime_, bool loop_)
-    : sheet(sheet_), frameTime(frameTime_), loop(loop_), isClipFinished(false) {
+SpriteAnimator::SpriteAnimator(std::shared_ptr<SpriteSheet> sheet_, float frameTime_, bool loop_)
+    : sheet(std::move(sheet_)), frameTime(frameTime_), loop(loop_), isClipFinished(false) {
     if (frameTime == 0.f) frameTime = 0.001f;
 
 }

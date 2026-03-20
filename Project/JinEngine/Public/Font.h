@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <memory>
 #include <unordered_map>
@@ -45,11 +45,11 @@ public:
     Font(RenderManager& engineContext, const std::string& ttfPath, uint32_t fontSize);
     ~Font();
 
-    [[nodiscard]] Material* GetMaterial() const { return material.get(); }
+    [[nodiscard]] std::shared_ptr<Material> GetMaterial() const { return material; }
 
     [[nodiscard]] glm::vec2 GetTextSize(const std::string& text) const;
 
-    [[nodiscard]] Mesh* GenerateTextMesh(const std::string& text, TextAlignH alignH = TextAlignH::Left, TextAlignV alignV = TextAlignV::Top);
+    [[nodiscard]] std::shared_ptr<Mesh> GenerateTextMesh(const std::string& text, TextAlignH alignH = TextAlignH::Left, TextAlignV alignV = TextAlignV::Top);
 
     int GetTextAtlasVersion() { return atlasVersion; }
 
@@ -70,8 +70,8 @@ private:
     uint32_t fontSize;
 
     std::unordered_map<char32_t, Glyph> glyphs;
-    std::unique_ptr<Texture> atlasTexture;
-    std::unique_ptr<Material> material;
+    std::shared_ptr<Texture> atlasTexture;
+    std::shared_ptr<Material> material;
 
     int nextX = 0;
     int nextY = 0;

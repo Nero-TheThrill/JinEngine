@@ -1,4 +1,4 @@
-#include "CustomLoadingState.h"
+﻿#include "CustomLoadingState.h"
 #include "Engine.h"
 CustomLoadingState::CustomLoadingState(std::function<std::unique_ptr<GameState>()> nextFactory_)
 	:LoadingState(nextFactory_)
@@ -19,7 +19,7 @@ void CustomLoadingState::Init(const EngineContext& engineContext)
 {
     if (uiReady)
     {
-        auto* font = engineContext.renderManager->GetFontByTag(uiFontTag);
+        std::shared_ptr<Font> font = engineContext.renderManager->GetFontByTag(uiFontTag);
         if (font)
         {
             auto text = std::make_unique<TextObject>(font, "Loading... 0%");

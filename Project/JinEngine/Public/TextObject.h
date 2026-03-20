@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "EngineContext.h"
 #include "Mesh.h"
 #include "Object.h"
@@ -8,13 +8,13 @@ class Camera2D;
 
 struct TextInstance
 {
-    Font* font = nullptr;
+    std::weak_ptr<Font> font;
     std::string text = "";
 };
 class TextObject : public Object
 {
 public:
-    TextObject(Font* font, const std::string& text, TextAlignH alignH = TextAlignH::Left, TextAlignV alignV = TextAlignV::Top);
+    TextObject(std::shared_ptr<Font> font, const std::string& text, TextAlignH alignH = TextAlignH::Left, TextAlignV alignV = TextAlignV::Top);
 
     ~TextObject() override = default;
 
@@ -54,15 +54,15 @@ public:
 
     void SetMaterial(const EngineContext& engineContext, const std::string& tag) = delete;
 
-    void SetMaterial(Material* material_) = delete;
+    void SetMaterial(std::shared_ptr<Material> material_) = delete;
 
-    [[nodiscard]] Material* GetMaterial() const = delete;
+    [[nodiscard]] std::shared_ptr<Material> GetMaterial() const = delete;
 
     void SetMesh(const EngineContext& engineContext, const std::string& tag) = delete;
 
-    void SetMesh(Mesh* mesh_) = delete;
+    void SetMesh(std::shared_ptr<Mesh> mesh_) = delete;
 
-    [[nodiscard]] Mesh* GetMesh() const = delete;
+    [[nodiscard]] std::shared_ptr<Mesh> GetMesh() const = delete;
 
     void AttachAnimator(std::unique_ptr<SpriteAnimator> anim) = delete;
 
@@ -76,7 +76,7 @@ protected:
     TextAlignV alignV;
 
     TextInstance textInstance;
-    std::unique_ptr<Mesh> textMesh;
+    std::shared_ptr <Mesh> textMesh;
 
     int textAtlasVersionTracker = 0;
 };

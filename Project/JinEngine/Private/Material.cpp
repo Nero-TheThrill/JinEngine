@@ -29,7 +29,7 @@ bool Material::IsInstancingSupported() const
 {
     return isInstancingEnabled && shader && shader->SupportsInstancing();
 }
-void Material::EnableInstancing(bool enable, Mesh* mesh)
+void Material::EnableInstancing(bool enable, std::shared_ptr<Mesh> mesh)
 {
     if (!mesh)
     {
@@ -78,7 +78,7 @@ void Material::SendTextures()
     }
 }
 
-bool Material::HasTexture(Texture* texture) const
+bool Material::HasTexture(std::shared_ptr<Texture> texture) const
 {
     for (const auto& pair : textures)
     {
@@ -90,7 +90,7 @@ bool Material::HasTexture(Texture* texture) const
     return false;
 }
 
-bool Material::HasShader(Shader* shader_) const
+bool Material::HasShader(std::shared_ptr<Shader> shader_) const
 {
     return shader == shader_;
 }

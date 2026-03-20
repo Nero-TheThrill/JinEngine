@@ -25,11 +25,11 @@ class Material {
     friend RenderManager;
 
 public:
-    Material(Shader* _shader) : shader(_shader), isInstancingEnabled(false){}
+    Material(std::shared_ptr<Shader> _shader) : shader(std::move(_shader)), isInstancingEnabled(false){}
     virtual ~Material() = default;
     virtual bool IsCompute() const { return false; }
 
-    void SetTexture(const std::string& uniformName, Texture* texture)
+    void SetTexture(const std::string& uniformName, std::shared_ptr<Texture> texture)
     {
         textures[uniformName] = texture;
     }
@@ -41,7 +41,7 @@ public:
 
     [[nodiscard]] bool IsInstancingSupported() const;
 
-    void EnableInstancing(bool enable, Mesh* mesh);
+    void EnableInstancing(bool enable, std::shared_ptr<Mesh> mesh);
 
 protected:
     void Bind() const;
@@ -52,7 +52,7 @@ protected:
 
     void SendUniforms();
 
-    Shader* shader;
+    std::shared_ptr<Shader> shader;
     std::unordered_map<std::string, UniformValue> uniforms;
     bool isInstancingEnabled;
 
@@ -61,39 +61,39 @@ private:
 
     [[nodiscard]] bool HasTexture() const { return !textures.empty(); }
 
-    [[nodiscard]] bool HasTexture(Texture* texture) const;
+    [[nodiscard]] bool HasTexture(std::shared_ptr<Texture> texture) const;
 
-    [[nodiscard]] bool HasShader(Shader* shader_) const;
+    [[nodiscard]] bool HasShader(std::shared_ptr<Shader> shader_) const;
 
-    [[nodiscard]] Shader* GetShader() const { return shader; }
+    [[nodiscard]] std::shared_ptr<Shader> GetShader() const { return shader; }
 
 
-    std::unordered_map<std::string, Texture*> textures;
+    std::unordered_map<std::string, std::shared_ptr<Texture>> textures;
 };
 
 class ComputeMaterial : public Material
 {
     struct ImageBind
     {
-        Texture* tex;
+        std::shared_ptr<Texture> tex;
         ImageAccess access;
         ImageFormat format;
         int level;
     };
-    Texture* destinationTexture;
+    std::shared_ptr <Texture> destinationTexture;
     std::unordered_map<std::string, ImageBind> images;
 public:
-    ComputeMaterial(Shader* _shader) : Material(_shader) {}
+    ComputeMaterial(std::shared_ptr<Shader> _shader) : Material(_shader) {}
     [[nodiscard]] bool IsCompute() const override { return true; }
-    void SetImage(const std::string& uniformName, Texture* texture, ImageAccess access, ImageFormat format, int level)
+    void SetImage(const std::string& uniformName, std::shared_ptr<Texture> texture, ImageAccess access, ImageFormat format, int level)
     {
         ImageBind img = { texture,access,format,level};
         images[uniformName] = img;
         if (uniformName == "u_Dst")
             destinationTexture = texture;
     }
-    [[nodiscard]] Texture* GetDstTexture() const { return destinationTexture; }
-    void EnableInstancing(bool enable, Mesh* mesh) = delete;
-    void SetTexture(const std::string& uniformName, Texture* texture) = delete;
+    [[nodiscard]] std::shared_ptr<Texture> GetDstTexture() const { return destinationTexture; }
+    void EnableInstancing(bool enable, std::shared_ptr<Mesh> mesh) = delete;
+    void SetTexture(const std::string& uniformName, std::shared_ptr<Texture> texture) = delete;
     void SendData() override;
 };

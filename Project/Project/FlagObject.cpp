@@ -4,7 +4,7 @@ void FlagObject::Init(const EngineContext& engineContext)
 {
 	SetMesh(engineContext, "[EngineMesh]default");
 	SetMaterial(engineContext, "[Material]Animation");
-	SpriteSheet* sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]Flag");
+	std::shared_ptr<SpriteSheet> sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]Flag");
 	//sheet->AddClip("[Clip]Idle", { 0,1,2,3,4 }, 0.15f, true);
 	AttachAnimator(sheet, 0.2f);
 	GetSpriteAnimator()->PlayClip(0, 4);
