@@ -43,6 +43,8 @@ namespace TutorialState
         loading->QueueFont(engineContext, "F_UI", "Fonts/font1.ttf", 32);
 
         loading->QueueSound("BGM_Main", "Sounds/test.mp3", true);
+        loading->QueueSound("Click", "Sounds/mouse.mp3", false);
+        loading->QueueSound("Beep", "Sounds/beep.mp3", false);
 
 
     }
@@ -388,11 +390,25 @@ void Tutorial::Update(float dt, const EngineContext& engineContext)
     }
     if (engineContext.inputManager->IsKeyDown(KEY_LEFT))
     {
-        engineContext.renderManager->UnregisterMaterial("[Material]Background00", engineContext);
-        engineContext.renderManager->UnregisterMaterial("[Material]Background01", engineContext);
-        engineContext.renderManager->UnregisterMaterial("[Material]Background02", engineContext);
-        engineContext.renderManager->UnregisterMesh("[EngineMesh]default", engineContext);
         cameraManager.GetActiveCamera()->AddPosition({ -500 * dt,0 });
+    }
+    if (engineContext.inputManager->IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+    {
+        engineContext.soundManager->Play("Click", 1.0f, 0.0,[](SoundInstanceID id, const std::string& tag)
+            {
+                JIN_LOG("Sound finished. ID: " << id << ", Tag: " << tag);
+            });
+    }
+    if (engineContext.inputManager->IsKeyPressed(KEY_B))
+    {
+        int x=55, y=66;
+        engineContext.soundManager->Play("Beep", 1.0f, 0.0, 
+            [x, y](SoundInstanceID id, const std::string& tag)
+            {
+                JIN_LOG("x: " << x);
+                JIN_LOG("y: " << y);
+                JIN_LOG("finished sound id: " << id << ", tag: " << tag);
+            });
     }
     if (engineContext.inputManager->IsKeyDown(KEY_RIGHT))
     {

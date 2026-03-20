@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <queue>
 #include <cstdint>
+#include <functional>
 
 struct ma_engine;
 struct ma_sound;
@@ -29,11 +30,22 @@ public:
         float volume = 1.0f,
         float startTimeSec = 0.0f);
 
+    [[maybe_unused]] SoundInstanceID Play(const std::string& tag,
+        float volume,
+        float startTimeSec,
+        std::function<void(SoundInstanceID, const std::string&)> onFinished);
+
     void SetVolumeByID(SoundInstanceID id, float volume);
     void SetVolumeByTag(const std::string& tag, float volume);
     void SetVolumeAll(float volume);
 
-    enum class SoundControlType { Pause, Resume, Stop };
+    enum class SoundControlType
+    {
+        Pause,
+        Resume,
+        Stop
+    };
+
     void ControlByID(SoundControlType control, SoundInstanceID id);
     void ControlByTag(SoundControlType control, const std::string& tag);
     void ControlAll(SoundControlType control);
