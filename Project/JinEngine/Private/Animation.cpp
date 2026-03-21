@@ -79,7 +79,7 @@ void SpriteAnimator::PlayClip(const std::string& clipName)
     const auto* clip = sheet->GetClip(clipName);
     if (!clip || clip->frameIndices.empty())
     {
-        JIN_WRN("Can't play clip: There is no clip named \"" <<clipName<< "\".");
+        JIN_WRN("Can't play clip: There is no clip named \"" << clipName << "\".");
         return;
     }
     playingClip = clip;
@@ -91,7 +91,7 @@ void SpriteAnimator::PlayClip(const std::string& clipName)
 
 void SpriteAnimator::Update(float dt)
 {
-    elapsed += dt;
+    elapsed += dt * playbackSpeed;
 
     if (playingClip)
     {
@@ -153,4 +153,15 @@ glm::vec2 SpriteAnimator::GetUVOffset() const
 glm::vec2 SpriteAnimator::GetUVScale() const
 {
     return sheet ? sheet->GetUVScale() : glm::vec2(1.0f);
+}
+
+void SpriteAnimator::SetPlaybackSpeed(float speed)
+{
+    if (speed <= 0.0f)
+    {
+        playbackSpeed = 0.001f;
+        return;
+    }
+
+    playbackSpeed = speed;
 }

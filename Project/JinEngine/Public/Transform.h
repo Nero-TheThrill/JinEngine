@@ -49,7 +49,11 @@ public:
     void SetDepth(float dpth)
     {
         depth = dpth;
-        isChanged = true;
+    }
+
+    void SetOffset(glm::vec2 os)
+    {
+        offset = os;
     }
 
     [[nodiscard]] const glm::vec2& GetPosition() const { return position; }
@@ -60,10 +64,13 @@ public:
 
     [[nodiscard]] float GetDepth() const { return depth; }
 
+    [[nodiscard]] glm::vec2 GetOffset() const { return offset; }
+
     [[nodiscard]] glm::mat4& GetMatrix();
 
 private:
     glm::vec2 position;
+    glm::vec2 offset;
     float depth;
     float rotation;
     glm::vec2 scale;

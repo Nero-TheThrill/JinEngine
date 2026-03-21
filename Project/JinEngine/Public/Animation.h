@@ -30,7 +30,7 @@ public:
 
     [[nodiscard]] int GetFrameCount() const;
 
-    void AddClip(const std::string& name, const std::vector<int>& frames, float frameDuration, bool looping=true);
+    void AddClip(const std::string& name, const std::vector<int>& frames, float frameDuration, bool looping = true);
     [[nodiscard]] const SpriteClip* GetClip(const std::string& name) const;
 
 private:
@@ -57,7 +57,7 @@ public:
     [[nodiscard]] glm::vec2 GetUVOffset() const;
     [[nodiscard]] glm::vec2 GetUVScale() const;
 
-    [[nodiscard]] std::shared_ptr<Texture> GetTexture() { return sheet? sheet->GetTexture() : nullptr;}
+    [[nodiscard]] std::shared_ptr<Texture> GetTexture() { return sheet ? sheet->GetTexture() : nullptr; }
 
     void SetFrame(int frame) { currentFrame = frame; }
     [[nodiscard]] int GetCurrentFrame() const { return currentFrame; }
@@ -65,6 +65,8 @@ public:
     [[nodiscard]] std::shared_ptr<SpriteSheet> GetSpriteSheet() const { return sheet; }
 
     [[nodiscard]] bool IsClipFinished() const { return isClipFinished; }
+    void SetPlaybackSpeed(float speed);
+    float GetPlaybackSpeed() const { return playbackSpeed; }
 private:
     std::shared_ptr<SpriteSheet> sheet;
     float frameTime;
@@ -76,4 +78,7 @@ private:
     const SpriteClip* playingClip = nullptr;
     int clipFrameIndex = 0;
     bool isClipFinished;
+    float playbackSpeed = 1.0f;
+
+
 };
