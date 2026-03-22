@@ -67,6 +67,10 @@ public:
     [[nodiscard]] bool IsClipFinished() const { return isClipFinished; }
     void SetPlaybackSpeed(float speed);
     float GetPlaybackSpeed() const { return playbackSpeed; }
+
+    void SetClipPlaybackSpeed(const std::string& clipName, float speed);
+    float GetClipPlaybackSpeed(const std::string& clipName) const;
+    void ClearClipPlaybackSpeed(const std::string& clipName);
 private:
     std::shared_ptr<SpriteSheet> sheet;
     float frameTime;
@@ -79,6 +83,6 @@ private:
     int clipFrameIndex = 0;
     bool isClipFinished;
     float playbackSpeed = 1.0f;
-
-
+    std::unordered_map<std::string, float> clipPlaybackSpeeds;
+    std::string currentClipName;
 };

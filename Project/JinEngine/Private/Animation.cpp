@@ -76,22 +76,31 @@ void SpriteAnimator::PlayClip(const std::string& clipName)
         JIN_ERR("Can't play clip: Sprite sheet is nullptr");
         return;
     }
+
     const auto* clip = sheet->GetClip(clipName);
     if (!clip || clip->frameIndices.empty())
     {
         JIN_WRN("Can't play clip: There is no clip named \"" << clipName << "\".");
         return;
     }
+
+    currentClipName = clipName;
     playingClip = clip;
     clipFrameIndex = 0;
     elapsed = 0.0f;
     currentFrame = clip->frameIndices[clipFrameIndex];
     isClipFinished = false;
 }
-
 void SpriteAnimator::Update(float dt)
 {
-    elapsed += dt * playbackSpeed;
+    float speedMultiplier = 1.0f;
+
+    if (playingClip && !currentClipName.empty())
+    {
+        speedMultiplier = GetClipPlaybackSpeed(currentClipName);
+    }
+
+    elapsed += dt * speedMultiplier * playbackSpeed;
 
     if (playingClip)
     {
@@ -144,7 +153,6 @@ void SpriteAnimator::Update(float dt)
 }
 
 
-
 glm::vec2 SpriteAnimator::GetUVOffset() const
 {
     return sheet ? sheet->GetUVOffset(currentFrame) : glm::vec2(0.0f);
@@ -164,4 +172,31 @@ void SpriteAnimator::SetPlaybackSpeed(float speed)
     }
 
     playbackSpeed = speed;
+}
+
+void SpriteAnimator::SetClipPlaybackSpeed(const std::string& clipName, float speed)
+{
+    if (speed <= 0.001f)
+    {
+        clipPlaybackSpeeds[clipName] = 0.001f;
+        return;
+    }
+
+    clipPlaybackSpeeds[clipName] = speed;
+}
+
+float SpriteAnimator::GetClipPlaybackSpeed(const std::string& clipName) const
+{
+    auto it = clipPlaybackSpeeds.find(clipName);
+    if (it != clipPlaybackSpeeds.end())
+    {
+        return it->second;
+    }
+
+    return 1.0f;
+}
+
+void SpriteAnimator::ClearClipPlaybackSpeed(const std::string& clipName)
+{
+    clipPlaybackSpeeds.erase(clipName);
 }
