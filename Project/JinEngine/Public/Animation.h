@@ -1,8 +1,11 @@
 ﻿#pragma once
 #include <unordered_map>
+#include <functional>
+#include <vector>
 
 #include "vec2.hpp"
 #include "Texture.h"
+
 struct SpriteFrame
 {
     glm::vec2 uvTopLeft;
@@ -17,9 +20,9 @@ struct SpriteClip
     float frameDuration;
     bool looping;
 };
+
 class SpriteSheet
 {
-
 public:
     SpriteSheet(std::shared_ptr<Texture> texture_, int frameW, int frameH);
 
@@ -71,6 +74,28 @@ public:
     void SetClipPlaybackSpeed(const std::string& clipName, float speed);
     float GetClipPlaybackSpeed(const std::string& clipName) const;
     void ClearClipPlaybackSpeed(const std::string& clipName);
+
+    void AddFrameCallback(int frame, std::function<void()> callback);
+    void AddFrameCallbackOnce(int frame, std::function<void()> callback);
+
+    void AddClipFrameCallback(const std::string& clipName, int localFrameIndex, std::function<void()> callback);
+    void AddClipFrameCallbackOnce(const std::string& clipName, int localFrameIndex, std::function<void()> callback);
+
+    void ClearFrameCallbacks(int frame);
+    void ClearClipFrameCallbacks(const std::string& clipName, int localFrameIndex);
+    void ClearAllCallbacks();
+
+private:
+    struct CallbackEntry
+    {
+        std::function<void()> callback;
+        bool once = false;
+    };
+
+    void TriggerFrameCallbacks(int frame);
+    void TriggerClipFrameCallbacks();
+    void TriggerAllCallbacksForCurrentFrame();
+
 private:
     std::shared_ptr<SpriteSheet> sheet;
     float frameTime;
@@ -85,4 +110,7 @@ private:
     float playbackSpeed = 1.0f;
     std::unordered_map<std::string, float> clipPlaybackSpeeds;
     std::string currentClipName;
+
+    std::unordered_map<int, std::vector<CallbackEntry>> frameCallbacks;
+    std::unordered_map<std::string, std::unordered_map<int, std::vector<CallbackEntry>>> clipFrameCallbacks;
 };

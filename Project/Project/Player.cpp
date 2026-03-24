@@ -13,6 +13,11 @@ void Player::Init(const EngineContext& engineContext)
     sheet->AddClip("[Clip]Idle", { 0,1,2,3,4,5,6,7 }, 0.15f, true);
     sheet->AddClip("[Clip]Running", { 8,9,10,11,12,13 }, 0.08f, true);
     AttachAnimator(sheet, 0.08f);
+    GetSpriteAnimator()->AddClipFrameCallback("[Clip]Idle", 0, [this]()
+        {
+            
+            JIN_LOG("idle motion clip callback");
+        });
     auto collider = std::make_unique<AABBCollider>(this, glm::vec2(1.0, 1.0));
     collider->SetUseTransformScale(false);
     collider->SetSize({ 90,70 });

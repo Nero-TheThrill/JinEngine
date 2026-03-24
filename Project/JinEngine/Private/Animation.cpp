@@ -52,23 +52,28 @@ const SpriteClip* SpriteSheet::GetClip(const std::string& name) const
     return nullptr;
 }
 
-
 SpriteAnimator::SpriteAnimator(std::shared_ptr<SpriteSheet> sheet_, float frameTime_, bool loop_)
-    : sheet(std::move(sheet_)), frameTime(frameTime_), loop(loop_), isClipFinished(false) {
+    : sheet(std::move(sheet_)), frameTime(frameTime_), loop(loop_), isClipFinished(false)
+{
     if (frameTime == 0.f) frameTime = 0.001f;
-
 }
 
 void SpriteAnimator::PlayClip(int start, int end, bool loop_)
 {
     playingClip = nullptr;
+    currentClipName.clear();
+
     this->startFrame = start;
     this->endFrame = end;
     this->loop = loop_;
     currentFrame = start;
+    clipFrameIndex = 0;
     elapsed = 0.0f;
     isClipFinished = false;
+
+    TriggerAllCallbacksForCurrentFrame();
 }
+
 void SpriteAnimator::PlayClip(const std::string& clipName)
 {
     if (!sheet)
@@ -90,7 +95,10 @@ void SpriteAnimator::PlayClip(const std::string& clipName)
     elapsed = 0.0f;
     currentFrame = clip->frameIndices[clipFrameIndex];
     isClipFinished = false;
+
+    TriggerAllCallbacksForCurrentFrame();
 }
+
 void SpriteAnimator::Update(float dt)
 {
     float speedMultiplier = 1.0f;
@@ -105,6 +113,7 @@ void SpriteAnimator::Update(float dt)
     if (playingClip)
     {
         const float dur = playingClip->frameDuration > 0.f ? playingClip->frameDuration : 0.0001f;
+
         while (elapsed >= dur)
         {
             elapsed -= dur;
@@ -120,16 +129,19 @@ void SpriteAnimator::Update(float dt)
                 {
                     isClipFinished = true;
                     clipFrameIndex = static_cast<int>(playingClip->frameIndices.size()) - 1;
+                    currentFrame = playingClip->frameIndices[clipFrameIndex];
                     break;
                 }
             }
-        }
 
-        currentFrame = playingClip->frameIndices[clipFrameIndex];
+            currentFrame = playingClip->frameIndices[clipFrameIndex];
+            TriggerAllCallbacksForCurrentFrame();
+        }
     }
     else
     {
         const float dur = frameTime > 0.f ? frameTime : 0.0001f;
+
         while (elapsed >= dur)
         {
             elapsed -= dur;
@@ -148,10 +160,11 @@ void SpriteAnimator::Update(float dt)
                     break;
                 }
             }
+
+            TriggerAllCallbacksForCurrentFrame();
         }
     }
 }
-
 
 glm::vec2 SpriteAnimator::GetUVOffset() const
 {
@@ -199,4 +212,139 @@ float SpriteAnimator::GetClipPlaybackSpeed(const std::string& clipName) const
 void SpriteAnimator::ClearClipPlaybackSpeed(const std::string& clipName)
 {
     clipPlaybackSpeeds.erase(clipName);
+}
+
+void SpriteAnimator::AddFrameCallback(int frame, std::function<void()> callback)
+{
+    frameCallbacks[frame].push_back({ std::move(callback), false });
+}
+
+void SpriteAnimator::AddFrameCallbackOnce(int frame, std::function<void()> callback)
+{
+    frameCallbacks[frame].push_back({ std::move(callback), true });
+}
+
+void SpriteAnimator::AddClipFrameCallback(const std::string& clipName, int localFrameIndex, std::function<void()> callback)
+{
+    clipFrameCallbacks[clipName][localFrameIndex].push_back({ std::move(callback), false });
+}
+
+void SpriteAnimator::AddClipFrameCallbackOnce(const std::string& clipName, int localFrameIndex, std::function<void()> callback)
+{
+    clipFrameCallbacks[clipName][localFrameIndex].push_back({ std::move(callback), true });
+}
+
+void SpriteAnimator::ClearFrameCallbacks(int frame)
+{
+    frameCallbacks.erase(frame);
+}
+
+void SpriteAnimator::ClearClipFrameCallbacks(const std::string& clipName, int localFrameIndex)
+{
+    auto clipIt = clipFrameCallbacks.find(clipName);
+    if (clipIt == clipFrameCallbacks.end())
+    {
+        return;
+    }
+
+    clipIt->second.erase(localFrameIndex);
+
+    if (clipIt->second.empty())
+    {
+        clipFrameCallbacks.erase(clipIt);
+    }
+}
+
+void SpriteAnimator::ClearAllCallbacks()
+{
+    frameCallbacks.clear();
+    clipFrameCallbacks.clear();
+}
+
+void SpriteAnimator::TriggerFrameCallbacks(int frame)
+{
+    auto it = frameCallbacks.find(frame);
+    if (it == frameCallbacks.end())
+    {
+        return;
+    }
+
+    auto& callbacks = it->second;
+
+    for (auto iter = callbacks.begin(); iter != callbacks.end(); )
+    {
+        if (iter->callback)
+        {
+            iter->callback();
+        }
+
+        if (iter->once)
+        {
+            iter = callbacks.erase(iter);
+        }
+        else
+        {
+            ++iter;
+        }
+    }
+
+    if (callbacks.empty())
+    {
+        frameCallbacks.erase(it);
+    }
+}
+
+void SpriteAnimator::TriggerClipFrameCallbacks()
+{
+    if (!playingClip || currentClipName.empty())
+    {
+        return;
+    }
+
+    auto clipIt = clipFrameCallbacks.find(currentClipName);
+    if (clipIt == clipFrameCallbacks.end())
+    {
+        return;
+    }
+
+    auto localIt = clipIt->second.find(clipFrameIndex);
+    if (localIt == clipIt->second.end())
+    {
+        return;
+    }
+
+    auto& callbacks = localIt->second;
+
+    for (auto iter = callbacks.begin(); iter != callbacks.end(); )
+    {
+        if (iter->callback)
+        {
+            iter->callback();
+        }
+
+        if (iter->once)
+        {
+            iter = callbacks.erase(iter);
+        }
+        else
+        {
+            ++iter;
+        }
+    }
+
+    if (callbacks.empty())
+    {
+        clipIt->second.erase(localIt);
+    }
+
+    if (clipIt->second.empty())
+    {
+        clipFrameCallbacks.erase(clipIt);
+    }
+}
+
+void SpriteAnimator::TriggerAllCallbacksForCurrentFrame()
+{
+    TriggerFrameCallbacks(currentFrame);
+    TriggerClipFrameCallbacks();
 }
