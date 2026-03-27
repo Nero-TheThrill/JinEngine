@@ -63,4 +63,4 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 [1.1.0]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.0.0...v_1.1.0
 [1.1.1]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.0...v_1.1.1
 [1.1.2]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.1...v_1.1.2
-[1.1.3]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.2...v_1.1.3
+[1.1.4]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.2...v_1.1.3
