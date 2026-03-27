@@ -81,4 +81,4 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 [1.1.1]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.0...v_1.1.1
 [1.1.2]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.1...v_1.1.2
 [1.1.3]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.2...v_1.1.3
-[1.1.3]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.3...v_1.1.4
+[1.1.4]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.3...v_1.1.4
