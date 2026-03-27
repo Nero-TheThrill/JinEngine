@@ -69,7 +69,7 @@ float AsyncResourceLoader::GetProgress() const
 
 bool AsyncResourceLoader::HasFinished() const
 {
-    return loadedCount.load() >= totalCount.load() && totalCount.load() > 0;
+    return loadedCount.load() >= totalCount.load();
 }
 
 std::vector<LoadResult> AsyncResourceLoader::FetchCompleted()

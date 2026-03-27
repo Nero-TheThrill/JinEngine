@@ -1,4 +1,4 @@
-#include "InstancedObject.h"
+ï»¿#include "InstancedObject.h"
 #include <cmath>
 #include <random>
 
@@ -10,8 +10,8 @@ static inline float TriWave(float theta)
 
 void LeafPosition(float t, const LeafParams& p, float& outX, float& outY)
 {
-    // ¹Ù´Ú µµ´Ş ½Ã°£
-    float tStop = (p.y0 + 230.0f) / p.vY; // y(t) = y0 - vY * t ±âÁØ
+    // ë°”ë‹¥ ë„ë‹¬ ì‹œê°„
+    float tStop = (p.y0 + 230.0f) / p.vY; // y(t) = y0 - vY * t ê¸°ì¤€
     float tt = std::min(t, tStop);
 
     float amp = p.A0 * std::exp(-p.beta * tt);
@@ -22,9 +22,9 @@ void LeafPosition(float t, const LeafParams& p, float& outX, float& outY)
 
     if (t > tStop)
     {
-        // ¸ØÃß´Â ±¸°£: y = -200¿¡¼­ Á¤Áö
+        // ë©ˆì¶”ëŠ” êµ¬ê°„: y = -200ì—ì„œ ì •ì§€
         outY = -230.0f;
-        // outX´Â outX(tStop) À¯Áö
+        // outXëŠ” outX(tStop) ìœ ì§€
     }
 }
 
@@ -40,7 +40,6 @@ void InstancedObject::Init(const EngineContext& engineContext)
     static std::uniform_real_distribution<float> betaDist(0.1f, 0.8f);
     static std::uniform_real_distribution<float> periodDist(1.1f, 2.0f);
 
-
     leafParams.x0 = x0Dist(gen);
     leafParams.y0 = y0Dist(gen);
     leafParams.vY = vYDist(gen);
@@ -51,17 +50,25 @@ void InstancedObject::Init(const EngineContext& engineContext)
     leafParams.phi = 0.0f;
 
     SetMaterial(engineContext, "[Material]Instancing");
- 
     SetMesh(engineContext, "[EngineMesh]default");
-    material->EnableInstancing(true, mesh);
+
+    auto materialPtr = material.lock();
+    auto meshPtr = mesh.lock();
+
+    if (materialPtr && meshPtr)
+    {
+        materialPtr->EnableInstancing(true, meshPtr);
+    }
+
     transform2D.SetScale({ 50,50 });
     SetRenderLayer("[Layer]UIText");
+
     float x = 0, y = 0;
     LeafPosition(timer, leafParams, x, y);
     transform2D.SetPosition({ x,y });
+
     SetColor({ 1,1,1,timer });
 }
-
 void InstancedObject::LateInit(const EngineContext& engineContext)
 {
 	GameObject::LateInit(engineContext);

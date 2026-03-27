@@ -2,7 +2,7 @@
 \hypertarget{struct_sprite_clip}{}\label{struct_sprite_clip}\index{SpriteClip@{SpriteClip}}
 
 
-Describes an animation clip as an ordered sequence of frame indices.  
+Describes a named sprite animation clip.  
 
 
 
@@ -21,16 +21,13 @@ bool \mbox{\hyperlink{struct_sprite_clip_a0f0f0cf07d19607cef868cbd1090dbaf}{loop
 
 
 \doxysubsection{Detailed Description}
-Describes an animation clip as an ordered sequence of frame indices. 
+Describes a named sprite animation clip. 
 
-\doxylink{struct_sprite_clip}{Sprite\+Clip} represents a named animation\+:
-\begin{DoxyItemize}
-\item frame\+Indices\+: the sequence of sprite sheet frame indices to play
-\item frame\+Duration\+: time per frame in seconds
-\item looping\+: whether the clip loops when reaching the end 
-\end{DoxyItemize}
+A \doxylink{struct_sprite_clip}{Sprite\+Clip} groups multiple frame indices into a reusable animation sequence. The animation advances through frame\+Indices in order using frame\+Duration as the time interval for each step.
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00034}{34}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+If looping is enabled, playback returns to the first local frame after reaching the end of the sequence. Otherwise, playback remains on the last frame and the animator marks the clip as finished. 
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00042}{42}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 
@@ -43,7 +40,7 @@ float Sprite\+Clip\+::frame\+Duration}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00037}{37}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00045}{45}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_clip_a64edc4b888946923170ee69fc00a75b3}\index{SpriteClip@{SpriteClip}!frameIndices@{frameIndices}}
 \index{frameIndices@{frameIndices}!SpriteClip@{SpriteClip}}
@@ -53,7 +50,7 @@ std\+::vector$<$int$>$ Sprite\+Clip\+::frame\+Indices}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00036}{36}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00044}{44}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_clip_a0f0f0cf07d19607cef868cbd1090dbaf}\index{SpriteClip@{SpriteClip}!looping@{looping}}
 \index{looping@{looping}!SpriteClip@{SpriteClip}}
@@ -63,7 +60,7 @@ bool Sprite\+Clip\+::looping}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00038}{38}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00046}{46}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 

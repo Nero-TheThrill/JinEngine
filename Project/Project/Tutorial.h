@@ -41,8 +41,8 @@ private:
     bool enableGlitch = false;
     bool enableWaterDrop = true;
 
-    ComputeMaterial* computeMat;
-    Material* glitchMat;
+    std::shared_ptr<ComputeMaterial> computeMat;
+    std::shared_ptr<Material> glitchMat;
     struct RippleCPU {
         glm::vec2 centerPx;
         float     startTime;

@@ -19,8 +19,6 @@ float CircleCollider::GetSize() const
 
 void CircleCollider::SetRadius(float r)
 {
-    baseRadius = r;
-
     if (!useTransformScale)
         scaledRadius = r;
 }
@@ -97,8 +95,6 @@ glm::vec2 AABBCollider::GetSize() const
 
 void AABBCollider::SetSize(const glm::vec2& size)
 {
-    baseHalfSize = size/glm::vec2(2);
-
     if (!useTransformScale)
         scaledHalfSize = size / glm::vec2(2);
 }

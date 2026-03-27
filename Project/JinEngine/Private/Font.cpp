@@ -1,6 +1,7 @@
 ﻿#include "Engine.h"
 
 #include <algorithm>
+#include <memory>
 #include <sstream>
 #include <unordered_set>
 
@@ -87,11 +88,11 @@ void Font::BakeAtlas(RenderManager& renderManager)
     GLint prevAlignment = 0;
     glGetIntegerv(GL_UNPACK_ALIGNMENT, &prevAlignment);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    atlasTexture = std::make_unique<Texture>(pixels.data(), texWidth, texHeight, 1);
+    atlasTexture = std::make_shared<Texture>(pixels.data(), texWidth, texHeight, 1);
 
-    Shader* textShader = renderManager.GetShaderByTag("[EngineShader]internal_text");
-    material = std::make_unique<Material>(textShader);
-    material->SetTexture("u_FontTexture", atlasTexture.get());
+    std::shared_ptr<Shader> textShader = renderManager.GetShaderByTag("[EngineShader]internal_text");
+    material = std::make_shared<Material>(textShader);
+    material->SetTexture("u_FontTexture", atlasTexture);
     material->SetUniform("u_Color", glm::vec4(1.0f));
 
     nextX = 0;
@@ -235,7 +236,7 @@ glm::vec2 Font::GetTextSize(const std::string& text) const
     return { maxWidth, totalHeight };
 }
 
-Mesh* Font::GenerateTextMesh(const std::string& text, TextAlignH alignH, TextAlignV alignV)
+std::shared_ptr<Mesh> Font::GenerateTextMesh(const std::string& text, TextAlignH alignH, TextAlignV alignV)
 {
     std::vector<Vertex> vertices;
     std::vector<uint32_t> indices;
@@ -328,7 +329,7 @@ Mesh* Font::GenerateTextMesh(const std::string& text, TextAlignH alignH, TextAli
         yCursor -= lineSpacing;
     }
 
-    return new Mesh(vertices, indices);
+    return std::make_shared<Mesh>(vertices, indices);
 }
 
 
@@ -341,8 +342,8 @@ void Font::ExpandAtlas()
     int newHeight = oldHeight * 2;
 
     std::vector<unsigned char> newPixels(newWidth * newHeight, 0);
-    std::unique_ptr<Texture> newAtlas = std::make_unique<Texture>(newPixels.data(), newWidth, newHeight, 1);
-    material->SetTexture("u_FontTexture", newAtlas.get());
+    std::shared_ptr<Texture> newAtlas = std::make_shared<Texture>(newPixels.data(), newWidth, newHeight, 1);
+    material->SetTexture("u_FontTexture", newAtlas);
     atlasTexture = std::move(newAtlas);
 
     nextX = 0;

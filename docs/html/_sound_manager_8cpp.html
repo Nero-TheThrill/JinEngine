@@ -111,6 +111,7 @@ $(function(){initNavTree('_sound_manager_8cpp.html',''); initResizable(true); })
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;queue&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &quot;miniaudio.h&quot;</code><br />
 </div>
 <p><a href="_sound_manager_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -145,7 +146,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00010">10</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00011">11</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -161,7 +162,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00011">11</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00012">12</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,18 +194,18 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00103">103</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    ma_format fmt{};</div>
-<div class="line"><span class="lineno">  106</span>    ma_uint32 ch{};</div>
-<div class="line"><span class="lineno">  107</span>    ma_uint32 sr{};</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">if</span> (ma_sound_get_data_format(snd, &amp;fmt, &amp;ch, &amp;sr, <span class="keyword">nullptr</span>, 0) == MA_SUCCESS &amp;&amp; sr &gt; 0)</div>
-<div class="line"><span class="lineno">  109</span>    {</div>
-<div class="line"><span class="lineno">  110</span>        outSR = sr;</div>
-<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  114</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00107">107</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
+<div class="line"><span class="lineno">  109</span>    ma_format fmt{};</div>
+<div class="line"><span class="lineno">  110</span>    ma_uint32 ch{};</div>
+<div class="line"><span class="lineno">  111</span>    ma_uint32 sr{};</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (ma_sound_get_data_format(snd, &amp;fmt, &amp;ch, &amp;sr, <span class="keyword">nullptr</span>, 0) == MA_SUCCESS &amp;&amp; sr &gt; 0)</div>
+<div class="line"><span class="lineno">  113</span>    {</div>
+<div class="line"><span class="lineno">  114</span>        outSR = sr;</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

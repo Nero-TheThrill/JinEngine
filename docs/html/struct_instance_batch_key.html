@@ -105,7 +105,7 @@ $(function(){initNavTree('struct_instance_batch_key.html',''); initResizable(tru
 </div><!--header-->
 <div class="contents">
 
-<p>Key structure used for grouping GameObjects into instanced rendering batches.  
+<p>Key type used to group objects into the same instanced rendering batch.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>&gt;</code></p>
@@ -113,31 +113,34 @@ $(function(){initNavTree('struct_instance_batch_key.html',''); initResizable(tru
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a982a5c97e6d6ccd7142064bdf4141043" id="r_a982a5c97e6d6ccd7142064bdf4141043"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a982a5c97e6d6ccd7142064bdf4141043">operator==</a> (const <a class="el" href="struct_instance_batch_key.html">InstanceBatchKey</a> &amp;other) const</td></tr>
-<tr class="memdesc:a982a5c97e6d6ccd7142064bdf4141043"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> objects for equality.  <br /></td></tr>
+<tr class="memdesc:a982a5c97e6d6ccd7142064bdf4141043"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether two batch keys represent the same instancing group.  <br /></td></tr>
 <tr class="separator:a982a5c97e6d6ccd7142064bdf4141043"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c62cfe4c5c9038f36c506d04be17b14" id="r_a2c62cfe4c5c9038f36c506d04be17b14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c62cfe4c5c9038f36c506d04be17b14">operator&lt;</a> (const <a class="el" href="struct_instance_batch_key.html">InstanceBatchKey</a> &amp;other) const</td></tr>
-<tr class="memdesc:a2c62cfe4c5c9038f36c506d04be17b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a strict weak ordering for <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a>.  <br /></td></tr>
+<tr class="memdesc:a2c62cfe4c5c9038f36c506d04be17b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a strict ordering between two batch keys.  <br /></td></tr>
 <tr class="separator:a2c62cfe4c5c9038f36c506d04be17b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab784a277d381b24fc2b40f30ecddce23" id="r_ab784a277d381b24fc2b40f30ecddce23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a></td></tr>
+<tr class="memdesc:ab784a277d381b24fc2b40f30ecddce23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the mesh resource used by the batch.  <br /></td></tr>
 <tr class="separator:ab784a277d381b24fc2b40f30ecddce23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae51910aa5faba8bc934d401509962b7a" id="r_ae51910aa5faba8bc934d401509962b7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_material.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae51910aa5faba8bc934d401509962b7a">material</a></td></tr>
+<tr class="memdesc:ae51910aa5faba8bc934d401509962b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the material resource used by the batch.  <br /></td></tr>
 <tr class="separator:ae51910aa5faba8bc934d401509962b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3d999ceb3d523ddca3a92b999f5134c" id="r_ac3d999ceb3d523ddca3a92b999f5134c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a></td></tr>
+<tr class="memdesc:ac3d999ceb3d523ddca3a92b999f5134c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the sprite sheet resource used by the batch.  <br /></td></tr>
 <tr class="separator:ac3d999ceb3d523ddca3a92b999f5134c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Key structure used for grouping GameObjects into instanced rendering batches. </p>
-<p><a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> represents a unique combination of rendering-relevant resources that must match in order for multiple GameObjects to be rendered together using instanced rendering.</p>
-<p>The key consists of:</p><ul>
-<li><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> pointer (geometry)</li>
-<li><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> pointer (shader + texture state)</li>
-<li><a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> pointer (optional sprite animation source)</li>
+<div class="textblock"><p>Key type used to group objects into the same instanced rendering batch. </p>
+<p><a class="el" href="struct_instance_batch_key.html" title="Key type used to group objects into the same instanced rendering batch.">InstanceBatchKey</a> identifies whether multiple objects can share the same draw batch during instanced rendering.</p>
+<p>The current key is composed of:</p><ul>
+<li>Mesh* : geometry resource</li>
+<li>Material* : material/shader/texture binding state</li>
+<li>SpriteSheet*: optional sprite animation source</li>
 </ul>
-<p>Two GameObjects can only be placed in the same instanced batch if all three pointers are identical.</p>
-<p>This structure is designed to be used as a key in associative containers such as std::unordered_map and std::map. </p>
+<p>Objects that share the same mesh, material, and sprite sheet pointer can be grouped together into one batch entry and rendered more efficiently through instancing.</p>
+<dl class="section note"><dt>Note</dt><dd>This key compares raw pointers only. It does not compare the contents of <a class="el" href="class_mesh.html" title="Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.">Mesh</a>, <a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a>, or <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00029">29</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -164,30 +167,30 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Provides a strict weak ordering for <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a>. </p>
-<p>This operator enables <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> to be used in ordered containers such as std::map or std::set.</p>
-<p>The comparison order is:</p><ol type="1">
-<li><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> pointer</li>
-<li><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> pointer</li>
-<li><a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> pointer</li>
+<p>Provides a strict ordering between two batch keys. </p>
+<p>Ordering is determined lexicographically by comparing:</p><ol type="1">
+<li>mesh pointer</li>
+<li>material pointer</li>
+<li>spriteSheet pointer</li>
 </ol>
+<p>This operator is useful when <a class="el" href="struct_instance_batch_key.html" title="Key type used to group objects into the same instanced rendering batch.">InstanceBatchKey</a> is used in ordered containers or when deterministic key ordering is desired.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The key to compare against. </td></tr>
+    <tr><td class="paramname">other</td><td>Key to compare against. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if this key is considered less than the other key. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this key should be ordered before the other key. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00068">68</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>    {</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> != other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a>) <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> &lt; other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a>;</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> != other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a>) <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> &lt; other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a>;</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a> &lt; other.<a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a>;</div>
-<div class="line"><span class="lineno">   73</span>    }</div>
-<div class="ttc" id="astruct_instance_batch_key_html_ab784a277d381b24fc2b40f30ecddce23"><div class="ttname"><a href="#ab784a277d381b24fc2b40f30ecddce23">InstanceBatchKey::mesh</a></div><div class="ttdeci">Mesh * mesh</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00031">InstanceBatchKey.h:31</a></div></div>
-<div class="ttc" id="astruct_instance_batch_key_html_ac3d999ceb3d523ddca3a92b999f5134c"><div class="ttname"><a href="#ac3d999ceb3d523ddca3a92b999f5134c">InstanceBatchKey::spriteSheet</a></div><div class="ttdeci">SpriteSheet * spriteSheet</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00033">InstanceBatchKey.h:33</a></div></div>
-<div class="ttc" id="astruct_instance_batch_key_html_ae51910aa5faba8bc934d401509962b7a"><div class="ttname"><a href="#ae51910aa5faba8bc934d401509962b7a">InstanceBatchKey::material</a></div><div class="ttdeci">Material * material</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00032">InstanceBatchKey.h:32</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00083">83</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> != other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a>) <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> &lt; other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a>;</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> != other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a>) <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> &lt; other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a>;</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a> &lt; other.<a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a>;</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="ttc" id="astruct_instance_batch_key_html_ab784a277d381b24fc2b40f30ecddce23"><div class="ttname"><a href="#ab784a277d381b24fc2b40f30ecddce23">InstanceBatchKey::mesh</a></div><div class="ttdeci">Mesh * mesh</div><div class="ttdoc">Pointer to the mesh resource used by the batch.</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00034">InstanceBatchKey.h:34</a></div></div>
+<div class="ttc" id="astruct_instance_batch_key_html_ac3d999ceb3d523ddca3a92b999f5134c"><div class="ttname"><a href="#ac3d999ceb3d523ddca3a92b999f5134c">InstanceBatchKey::spriteSheet</a></div><div class="ttdeci">SpriteSheet * spriteSheet</div><div class="ttdoc">Pointer to the sprite sheet resource used by the batch.</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00048">InstanceBatchKey.h:48</a></div></div>
+<div class="ttc" id="astruct_instance_batch_key_html_ae51910aa5faba8bc934d401509962b7a"><div class="ttname"><a href="#ae51910aa5faba8bc934d401509962b7a">InstanceBatchKey::material</a></div><div class="ttdeci">Material * material</div><div class="ttdoc">Pointer to the material resource used by the batch.</div><div class="ttdef"><b>Definition</b> <a href="_instance_batch_key_8h_source.html#l00039">InstanceBatchKey.h:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -214,21 +217,21 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Compares two <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> objects for equality. </p>
-<p>Returns true only if mesh, material, and spriteSheet pointers are exactly the same between the two keys.</p>
-<p>This operator is primarily used by hash-based containers such as std::unordered_map.</p>
+<p>Returns whether two batch keys represent the same instancing group. </p>
+<p>Two keys are considered equal only when all three stored pointers match exactly: mesh, material, and spriteSheet.</p>
+<p>This operator is primarily used by unordered associative containers together with the std::hash specialization below.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The key to compare against. </td></tr>
+    <tr><td class="paramname">other</td><td>Key to compare against. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if all pointer members match exactly. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if all pointer fields are identical. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00048">48</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>    {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> == other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> &amp;&amp; <a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> == other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> &amp;&amp; <a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a> == other.<a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a>;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00063">63</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>    {</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> == other.<a class="code hl_variable" href="#ab784a277d381b24fc2b40f30ecddce23">mesh</a> &amp;&amp; <a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> == other.<a class="code hl_variable" href="#ae51910aa5faba8bc934d401509962b7a">material</a> &amp;&amp; <a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a> == other.<a class="code hl_variable" href="#ac3d999ceb3d523ddca3a92b999f5134c">spriteSheet</a>;</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -245,7 +248,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00032">32</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<p>Pointer to the material resource used by the batch. </p>
+
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00039">39</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +266,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00031">31</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<p>Pointer to the mesh resource used by the batch. </p>
+
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00034">34</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +284,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00033">33</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<p>Pointer to the sprite sheet resource used by the batch. </p>
+<p>This may be nullptr for non-animated objects or objects that do not rely on a sprite-sheet based animation workflow. </p>
+
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00048">48</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
 
 </div>
 </div>

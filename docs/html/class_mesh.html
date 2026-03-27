@@ -106,7 +106,7 @@ $(function(){initNavTree('class_mesh.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.  
+<p>Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_mesh_8h_source.html">Mesh.h</a>&gt;</code></p>
@@ -114,37 +114,37 @@ $(function(){initNavTree('class_mesh.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fae383fefb7fe9f7c5fae8266e53e97" id="r_a2fae383fefb7fe9f7c5fae8266e53e97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fae383fefb7fe9f7c5fae8266e53e97">Mesh</a> (const std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; &amp;vertices, const std::vector&lt; unsigned int &gt; &amp;indices={}, <a class="el" href="_mesh_8h.html#a240c1924416689e5700ff0d9f30539d9">PrimitiveType</a> <a class="el" href="#a213090871212181b474b4a13d5b05d0d">primitiveType</a>=<a class="el" href="_mesh_8h.html#a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856">PrimitiveType::Triangles</a>)</td></tr>
-<tr class="memdesc:a2fae383fefb7fe9f7c5fae8266e53e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mesh and uploads vertex/index data to the GPU.  <br /></td></tr>
+<tr class="memdesc:a2fae383fefb7fe9f7c5fae8266e53e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mesh from vertex data, optional index data, and a primitive type.  <br /></td></tr>
 <tr class="separator:a2fae383fefb7fe9f7c5fae8266e53e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5efe4da1a4c0971cfb037bd70304c303" id="r_a5efe4da1a4c0971cfb037bd70304c303"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5efe4da1a4c0971cfb037bd70304c303">~Mesh</a> ()</td></tr>
-<tr class="memdesc:a5efe4da1a4c0971cfb037bd70304c303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys GPU buffers owned by this mesh.  <br /></td></tr>
+<tr class="memdesc:a5efe4da1a4c0971cfb037bd70304c303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all GPU resources owned by this mesh.  <br /></td></tr>
 <tr class="separator:a5efe4da1a4c0971cfb037bd70304c303"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a8b413a54afd1dcb83df7c5e2bbefc8" id="r_a4a8b413a54afd1dcb83df7c5e2bbefc8"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a8b413a54afd1dcb83df7c5e2bbefc8">GetLocalBoundsHalfSize</a> () const</td></tr>
-<tr class="memdesc:a4a8b413a54afd1dcb83df7c5e2bbefc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns half of the local-space axis-aligned bounds size.  <br /></td></tr>
+<tr class="memdesc:a4a8b413a54afd1dcb83df7c5e2bbefc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mesh's local half-size computed from the original vertex positions.  <br /></td></tr>
 <tr class="separator:a4a8b413a54afd1dcb83df7c5e2bbefc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a30bf909bfd35c62be92824b7d3317326" id="r_a30bf909bfd35c62be92824b7d3317326"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30bf909bfd35c62be92824b7d3317326">BindVAO</a> (bool instanced) const</td></tr>
-<tr class="memdesc:a30bf909bfd35c62be92824b7d3317326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the appropriate VAO for drawing.  <br /></td></tr>
+<tr class="memdesc:a30bf909bfd35c62be92824b7d3317326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the appropriate VAO for either regular or instanced rendering.  <br /></td></tr>
 <tr class="separator:a30bf909bfd35c62be92824b7d3317326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66fa02b2a66182031bb00a9aec134526" id="r_a66fa02b2a66182031bb00a9aec134526"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66fa02b2a66182031bb00a9aec134526">SetupInstanceAttributes</a> ()</td></tr>
-<tr class="memdesc:a66fa02b2a66182031bb00a9aec134526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures vertex attribute state for instance data.  <br /></td></tr>
+<tr class="memdesc:a66fa02b2a66182031bb00a9aec134526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and configures per-instance vertex attributes for instanced rendering.  <br /></td></tr>
 <tr class="separator:a66fa02b2a66182031bb00a9aec134526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf84fe4ef735490769268685087e0e32" id="r_abf84fe4ef735490769268685087e0e32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf84fe4ef735490769268685087e0e32">Draw</a> () const</td></tr>
-<tr class="memdesc:abf84fe4ef735490769268685087e0e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Issues a non-instanced draw call using this mesh's topology.  <br /></td></tr>
+<tr class="memdesc:abf84fe4ef735490769268685087e0e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the mesh once using its currently stored geometry buffers.  <br /></td></tr>
 <tr class="separator:abf84fe4ef735490769268685087e0e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2933e498cc249ab798bbf265dace77b" id="r_ae2933e498cc249ab798bbf265dace77b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2933e498cc249ab798bbf265dace77b">DrawInstanced</a> (<a class="el" href="_mesh_8h.html#a2d467e230729e9194068528ee1985327">GLsizei</a> instanceCount) const</td></tr>
-<tr class="memdesc:ae2933e498cc249ab798bbf265dace77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Issues an instanced draw call using this mesh's topology.  <br /></td></tr>
+<tr class="memdesc:ae2933e498cc249ab798bbf265dace77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the mesh multiple times in a single instanced draw call.  <br /></td></tr>
 <tr class="separator:ae2933e498cc249ab798bbf265dace77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f0136c650ed60f43587e3d8d0c121aa" id="r_a6f0136c650ed60f43587e3d8d0c121aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f0136c650ed60f43587e3d8d0c121aa">SetupMesh</a> (const std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; &amp;vertices, const std::vector&lt; unsigned int &gt; &amp;indices)</td></tr>
-<tr class="memdesc:a6f0136c650ed60f43587e3d8d0c121aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads vertex/index data and configures base vertex attributes.  <br /></td></tr>
+<tr class="memdesc:a6f0136c650ed60f43587e3d8d0c121aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads vertex and optional index data and configures the base VAO layout.  <br /></td></tr>
 <tr class="separator:a6f0136c650ed60f43587e3d8d0c121aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad097772f26af95c8f7070cbb0e8cbfef" id="r_ad097772f26af95c8f7070cbb0e8cbfef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad097772f26af95c8f7070cbb0e8cbfef">ComputeLocalBounds</a> (const std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; &amp;vertices)</td></tr>
-<tr class="memdesc:ad097772f26af95c8f7070cbb0e8cbfef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes an approximate local-space AABB half-size from vertex positions.  <br /></td></tr>
+<tr class="memdesc:ad097772f26af95c8f7070cbb0e8cbfef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a simple local-space bounding half-size from the input vertices.  <br /></td></tr>
 <tr class="separator:ad097772f26af95c8f7070cbb0e8cbfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45673d65011bf8f70c0f7de2a37d7f6c" id="r_a45673d65011bf8f70c0f7de2a37d7f6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45673d65011bf8f70c0f7de2a37d7f6c">UpdateInstanceBuffer</a> (const std::vector&lt; glm::mat4 &gt; &amp;transforms, const std::vector&lt; glm::vec4 &gt; &amp;colors, const std::vector&lt; glm::vec2 &gt; &amp;uvOffsets, const std::vector&lt; glm::vec2 &gt; &amp;uvScales) const</td></tr>
-<tr class="memdesc:a45673d65011bf8f70c0f7de2a37d7f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates GPU instance buffers used for instanced drawing.  <br /></td></tr>
+<tr class="memdesc:a45673d65011bf8f70c0f7de2a37d7f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads per-instance batch data into the mesh's instance buffers.  <br /></td></tr>
 <tr class="separator:a45673d65011bf8f70c0f7de2a37d7f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -173,25 +173,23 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ab9d13fdb38eedf8e33aefa9f61056e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers. </p>
-<p><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> encapsulates OpenGL buffer objects and draw routines. It supports:</p><ul>
-<li>Non-indexed and indexed rendering (useIndex + ebo + indexCount).</li>
-<li>A primitive topology (<a class="el" href="_mesh_8h.html#a240c1924416689e5700ff0d9f30539d9" title="Defines the primitive topology used when issuing draw calls for a Mesh.">PrimitiveType</a>) used for draw calls.</li>
-<li>A local-space bounds half-size (localHalfSize) computed from vertex positions for culling/placement.</li>
-<li>Instanced rendering via a dedicated instance VAO and multiple instance VBOs:<ul>
-<li>transforms (mat4)</li>
-<li>colors (vec4)</li>
-<li>uvOffsets (vec2)</li>
-<li>uvScales (vec2)</li>
+<div class="textblock"><p>Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering. </p>
+<p><a class="el" href="class_mesh.html" title="Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.">Mesh</a> is the engine's low-level geometry container. It creates and owns the OpenGL objects required to render a piece of geometry:</p><ul>
+<li>a standard VAO for regular drawing</li>
+<li>a VBO for vertex data</li>
+<li>an optional EBO for indexed rendering</li>
+<li>a dedicated instancing VAO and per-instance buffers for batched rendering</li>
 </ul>
-</li>
+<p>During construction, the mesh uploads the provided vertex/index data to GPU buffers and computes local bounds from the source vertices. Those bounds are later used by <a class="el" href="class_object.html#ac5adc371bfc7b4216ffbc85907830e25" title="Returns an approximate bounding radius used for visibility testing.">Object::GetBoundingRadius()</a> to estimate visibility and culling size.</p>
+<p>Instanced rendering support is not automatically enabled just because this class owns instance buffers. The mesh must first be prepared through <a class="el" href="class_material.html#aea9bb91a6549dadd72c68d17100dc388" title="Enables or disables instanced rendering support for this material.">Material::EnableInstancing()</a>, which internally calls <a class="el" href="#a66fa02b2a66182031bb00a9aec134526" title="Creates and configures per-instance vertex attributes for instanced rendering.">SetupInstanceAttributes()</a> after verifying that the bound shader supports instancing attributes. :contentReference[oaicite:5]{index=5}</p>
+<p>At runtime:</p><ul>
+<li>regular rendering uses <a class="el" href="#abf84fe4ef735490769268685087e0e32" title="Draws the mesh once using its currently stored geometry buffers.">Draw()</a></li>
+<li>batched rendering uploads per-instance data through <a class="el" href="#a45673d65011bf8f70c0f7de2a37d7f6c" title="Uploads per-instance batch data into the mesh&#39;s instance buffers.">UpdateInstanceBuffer()</a> and then calls <a class="el" href="#ae2933e498cc249ab798bbf265dace77b" title="Draws the mesh multiple times in a single instanced draw call.">DrawInstanced()</a></li>
 </ul>
-<p>Lifecycle and access:</p><ul>
-<li><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> is constructed from CPU vertex/index arrays, uploads them to GPU, and computes local bounds.</li>
-<li><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> are friends to allow them to bind and draw meshes efficiently. </li>
-</ul>
+<p>The <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> uses these paths when flushing draw commands. :contentReference[oaicite:6]{index=6}</p>
+<dl class="section note"><dt>Note</dt><dd>This class is intentionally tightly integrated with <a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a> and <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. Internal GPU setup and draw functions are kept private and are exposed only through friendship. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00058">58</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00089">89</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2fae383fefb7fe9f7c5fae8266e53e97" name="a2fae383fefb7fe9f7c5fae8266e53e97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2fae383fefb7fe9f7c5fae8266e53e97">&#9670;&#160;</a></span>Mesh()</h2>
@@ -217,22 +215,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a mesh and uploads vertex/index data to the GPU. </p>
-<p>The constructor:</p><ul>
-<li>Stores primitiveType.</li>
-<li>Creates and configures VAO/VBO (and EBO if indices are provided).</li>
-<li>Computes local bounds from the provided vertices (ComputeLocalBounds).</li>
-<li>Prepares instance buffers/attributes so <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> can draw instanced batches.</li>
-</ul>
-<p>If indices is empty, the mesh is treated as non-indexed (useIndex = false).</p>
+<p>Creates a mesh from vertex data, optional index data, and a primitive type. </p>
+<p>This constructor initializes all OpenGL object handles to safe default values, stores the selected primitive topology, uploads the provided geometry to GPU buffers by calling <a class="el" href="#a6f0136c650ed60f43587e3d8d0c121aa" title="Uploads vertex and optional index data and configures the base VAO layout.">SetupMesh()</a>, and computes the local bounding half-size by calling <a class="el" href="#ad097772f26af95c8f7070cbb0e8cbfef" title="Computes a simple local-space bounding half-size from the input vertices.">ComputeLocalBounds()</a>.</p>
+<p>If the index array is empty, the mesh is treated as a non-indexed mesh and will later be rendered with glDrawArrays-style calls. Otherwise, it will use indexed drawing with glDrawElements-style calls. :contentReference[oaicite:7]{index=7}</p>
+<p>The computed local bound is later used indirectly for approximate culling and bounding radius calculation through <a class="el" href="class_object.html#ac5adc371bfc7b4216ffbc85907830e25" title="Returns an approximate bounding radius used for visibility testing.">Object::GetBoundingRadius()</a>. :contentReference[oaicite:8]{index=8}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertices</td><td><a class="el" href="struct_vertex.html" title="Basic 2D vertex layout used by this engine&#39;s Mesh.">Vertex</a> array to upload. </td></tr>
-    <tr><td class="paramname">indices</td><td>Optional index array. If non-empty, indexed drawing is enabled. </td></tr>
-    <tr><td class="paramname">primitiveType</td><td>Primitive topology used for draw calls. </td></tr>
+    <tr><td class="paramname">vertices</td><td>Source vertex array to upload into the mesh vertex buffer. </td></tr>
+    <tr><td class="paramname">indices</td><td>Optional index array. If empty, the mesh will use non-indexed rendering. </td></tr>
+    <tr><td class="paramname">primitiveType</td><td>Primitive topology used when this mesh is drawn.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The constructor does not automatically configure instancing attributes. Instancing setup happens later only if a material explicitly enables it. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_mesh_8cpp_source.html#l00019">19</a> of file <a class="el" href="_mesh_8cpp_source.html">Mesh.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>                                                                                                                  :<a class="code hl_variable" href="#a101a39d88bc5c8d33f0ebd6e77a60129">vao</a>(0), <a class="code hl_variable" href="#ad8eff04c857fc1f1f42584af599f8267">vbo</a>(0), <a class="code hl_variable" href="#a17bb0f1901ce2f3bc62e7d6d2ca9e2f7">ebo</a>(0), <a class="code hl_variable" href="#ad41509844e200245ce71b4cc5441c504">instanceVAO</a>(0), <a class="code hl_variable" href="#ae89f95e85ae7fa157545324aa5f5db7d">indexCount</a>(0), <a class="code hl_variable" href="#a3153eeca2bbde0037c365662bbeb52f1">useIndex</a>(<span class="keyword">false</span>), <a class="code hl_variable" href="#a213090871212181b474b4a13d5b05d0d">primitiveType</a>(primitiveType_)</div>
@@ -241,16 +236,16 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   22</span>    <a class="code hl_function" href="#a6f0136c650ed60f43587e3d8d0c121aa">SetupMesh</a>(vertices, indices);</div>
 <div class="line"><span class="lineno">   23</span>    <a class="code hl_function" href="#ad097772f26af95c8f7070cbb0e8cbfef">ComputeLocalBounds</a>(vertices);</div>
 <div class="line"><span class="lineno">   24</span>}</div>
-<div class="ttc" id="aclass_mesh_html_a101a39d88bc5c8d33f0ebd6e77a60129"><div class="ttname"><a href="#a101a39d88bc5c8d33f0ebd6e77a60129">Mesh::vao</a></div><div class="ttdeci">GLuint vao</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00221">Mesh.h:221</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7"><div class="ttname"><a href="#a17bb0f1901ce2f3bc62e7d6d2ca9e2f7">Mesh::ebo</a></div><div class="ttdeci">GLuint ebo</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00223">Mesh.h:223</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a213090871212181b474b4a13d5b05d0d"><div class="ttname"><a href="#a213090871212181b474b4a13d5b05d0d">Mesh::primitiveType</a></div><div class="ttdeci">PrimitiveType primitiveType</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00231">Mesh.h:231</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a3153eeca2bbde0037c365662bbeb52f1"><div class="ttname"><a href="#a3153eeca2bbde0037c365662bbeb52f1">Mesh::useIndex</a></div><div class="ttdeci">bool useIndex</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00229">Mesh.h:229</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a33810b4cdfaae0d1eb1ada168cd3c1a5"><div class="ttname"><a href="#a33810b4cdfaae0d1eb1ada168cd3c1a5">Mesh::instanceVBO</a></div><div class="ttdeci">GLuint instanceVBO[4]</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00227">Mesh.h:227</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a6f0136c650ed60f43587e3d8d0c121aa"><div class="ttname"><a href="#a6f0136c650ed60f43587e3d8d0c121aa">Mesh::SetupMesh</a></div><div class="ttdeci">void SetupMesh(const std::vector&lt; Vertex &gt; &amp;vertices, const std::vector&lt; unsigned int &gt; &amp;indices)</div><div class="ttdoc">Uploads vertex/index data and configures base vertex attributes.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00124">Mesh.cpp:124</a></div></div>
-<div class="ttc" id="aclass_mesh_html_ad097772f26af95c8f7070cbb0e8cbfef"><div class="ttname"><a href="#ad097772f26af95c8f7070cbb0e8cbfef">Mesh::ComputeLocalBounds</a></div><div class="ttdeci">void ComputeLocalBounds(const std::vector&lt; Vertex &gt; &amp;vertices)</div><div class="ttdoc">Computes an approximate local-space AABB half-size from vertex positions.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00175">Mesh.h:175</a></div></div>
-<div class="ttc" id="aclass_mesh_html_ad41509844e200245ce71b4cc5441c504"><div class="ttname"><a href="#ad41509844e200245ce71b4cc5441c504">Mesh::instanceVAO</a></div><div class="ttdeci">GLuint instanceVAO</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00226">Mesh.h:226</a></div></div>
-<div class="ttc" id="aclass_mesh_html_ad8eff04c857fc1f1f42584af599f8267"><div class="ttname"><a href="#ad8eff04c857fc1f1f42584af599f8267">Mesh::vbo</a></div><div class="ttdeci">GLuint vbo</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00222">Mesh.h:222</a></div></div>
-<div class="ttc" id="aclass_mesh_html_ae89f95e85ae7fa157545324aa5f5db7d"><div class="ttname"><a href="#ae89f95e85ae7fa157545324aa5f5db7d">Mesh::indexCount</a></div><div class="ttdeci">GLsizei indexCount</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00224">Mesh.h:224</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a101a39d88bc5c8d33f0ebd6e77a60129"><div class="ttname"><a href="#a101a39d88bc5c8d33f0ebd6e77a60129">Mesh::vao</a></div><div class="ttdeci">GLuint vao</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00331">Mesh.h:331</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a17bb0f1901ce2f3bc62e7d6d2ca9e2f7"><div class="ttname"><a href="#a17bb0f1901ce2f3bc62e7d6d2ca9e2f7">Mesh::ebo</a></div><div class="ttdeci">GLuint ebo</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00333">Mesh.h:333</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a213090871212181b474b4a13d5b05d0d"><div class="ttname"><a href="#a213090871212181b474b4a13d5b05d0d">Mesh::primitiveType</a></div><div class="ttdeci">PrimitiveType primitiveType</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00341">Mesh.h:341</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a3153eeca2bbde0037c365662bbeb52f1"><div class="ttname"><a href="#a3153eeca2bbde0037c365662bbeb52f1">Mesh::useIndex</a></div><div class="ttdeci">bool useIndex</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00339">Mesh.h:339</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a33810b4cdfaae0d1eb1ada168cd3c1a5"><div class="ttname"><a href="#a33810b4cdfaae0d1eb1ada168cd3c1a5">Mesh::instanceVBO</a></div><div class="ttdeci">GLuint instanceVBO[4]</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00337">Mesh.h:337</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a6f0136c650ed60f43587e3d8d0c121aa"><div class="ttname"><a href="#a6f0136c650ed60f43587e3d8d0c121aa">Mesh::SetupMesh</a></div><div class="ttdeci">void SetupMesh(const std::vector&lt; Vertex &gt; &amp;vertices, const std::vector&lt; unsigned int &gt; &amp;indices)</div><div class="ttdoc">Uploads vertex and optional index data and configures the base VAO layout.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00124">Mesh.cpp:124</a></div></div>
+<div class="ttc" id="aclass_mesh_html_ad097772f26af95c8f7070cbb0e8cbfef"><div class="ttname"><a href="#ad097772f26af95c8f7070cbb0e8cbfef">Mesh::ComputeLocalBounds</a></div><div class="ttdeci">void ComputeLocalBounds(const std::vector&lt; Vertex &gt; &amp;vertices)</div><div class="ttdoc">Computes a simple local-space bounding half-size from the input vertices.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00281">Mesh.h:281</a></div></div>
+<div class="ttc" id="aclass_mesh_html_ad41509844e200245ce71b4cc5441c504"><div class="ttname"><a href="#ad41509844e200245ce71b4cc5441c504">Mesh::instanceVAO</a></div><div class="ttdeci">GLuint instanceVAO</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00336">Mesh.h:336</a></div></div>
+<div class="ttc" id="aclass_mesh_html_ad8eff04c857fc1f1f42584af599f8267"><div class="ttname"><a href="#ad8eff04c857fc1f1f42584af599f8267">Mesh::vbo</a></div><div class="ttdeci">GLuint vbo</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00332">Mesh.h:332</a></div></div>
+<div class="ttc" id="aclass_mesh_html_ae89f95e85ae7fa157545324aa5f5db7d"><div class="ttname"><a href="#ae89f95e85ae7fa157545324aa5f5db7d">Mesh::indexCount</a></div><div class="ttdeci">GLsizei indexCount</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00334">Mesh.h:334</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -269,8 +264,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destroys GPU buffers owned by this mesh. </p>
-<p>Deletes VAO/VBO/EBO and instance VAO/VBOs if they were created. The mesh must not be in use by the GPU when destroyed (standard OpenGL lifetime rules). </p>
+<p>Releases all GPU resources owned by this mesh. </p>
+<p>The destructor deletes:</p><ul>
+<li>the element buffer</li>
+<li>the vertex buffer</li>
+<li>the regular VAO</li>
+<li>all per-instance buffers</li>
+<li>the instancing VAO</li>
+</ul>
+<p>After deletion, the internal OpenGL handles are reset to zero to avoid accidental reuse of stale IDs in debug scenarios. :contentReference[oaicite:9]{index=9}</p>
+<dl class="section note"><dt>Note</dt><dd>This assumes the OpenGL context is still valid at destruction time. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_mesh_8cpp_source.html#l00057">57</a> of file <a class="el" href="_mesh_8cpp_source.html">Mesh.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
@@ -310,11 +313,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Binds the appropriate VAO for drawing. </p>
-<p>If instanced is true, binds instanceVAO (which includes base vertex attributes + instance attributes). Otherwise binds the non-instanced VAO (vao).</p>
+<p>Binds the appropriate VAO for either regular or instanced rendering. </p>
+<p>When instanced is false, this binds the standard VAO configured by <a class="el" href="#a6f0136c650ed60f43587e3d8d0c121aa" title="Uploads vertex and optional index data and configures the base VAO layout.">SetupMesh()</a>. When instanced is true, this binds the dedicated instancing VAO configured by <a class="el" href="#a66fa02b2a66182031bb00a9aec134526" title="Creates and configures per-instance vertex attributes for instanced rendering.">SetupInstanceAttributes()</a>.</p>
+<p>This function is used internally by <a class="el" href="#abf84fe4ef735490769268685087e0e32" title="Draws the mesh once using its currently stored geometry buffers.">Draw()</a> and <a class="el" href="#ae2933e498cc249ab798bbf265dace77b" title="Draws the mesh multiple times in a single instanced draw call.">DrawInstanced()</a> before issuing the final OpenGL draw call. :contentReference[oaicite:11]{index=11}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instanced</td><td>Whether the draw call will be instanced. </td></tr>
+    <tr><td class="paramname">instanced</td><td>True to bind the instancing VAO, false to bind the standard VAO. </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,47 +353,47 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Computes an approximate local-space AABB half-size from vertex positions. </p>
-<p>Behavior:</p><ul>
-<li>If vertices is empty: localHalfSize becomes (0.5, 0.5) as a conservative default.</li>
-<li>If vertices has one element: localHalfSize becomes (0.0001, 0.0001) to avoid a zero-size bound.</li>
-<li>Otherwise: computes min/max over XY from all vertices and sets localHalfSize = (max-min)*0.5.</li>
+<p>Computes a simple local-space bounding half-size from the input vertices. </p>
+<p>This helper scans the vertex positions, finds the local minimum and maximum XY extents, computes the size difference, and stores half of that size in localHalfSize.</p>
+<p>The value is later used by <a class="el" href="class_object.html#ac5adc371bfc7b4216ffbc85907830e25" title="Returns an approximate bounding radius used for visibility testing.">Object::GetBoundingRadius()</a> as part of the engine's approximate visibility and spatial checks.</p>
+<p>Special handling:</p><ul>
+<li>if the mesh has no vertices, the bound defaults to (0.5, 0.5)</li>
+<li>if the mesh has exactly one vertex, a tiny non-zero bound is used</li>
 </ul>
-<p>This function assumes mesh geometry is primarily 2D (XY plane), even though <a class="el" href="struct_vertex.html#a030819fdc241743bbd3e180a6b132ed3">Vertex::position</a> is vec3.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertices</td><td><a class="el" href="struct_vertex.html" title="Basic 2D vertex layout used by this engine&#39;s Mesh.">Vertex</a> array used to compute bounds. </td></tr>
+    <tr><td class="paramname">vertices</td><td>Source vertex array used to estimate the local bound. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00175">175</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>    {</div>
-<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (vertices.empty())</div>
-<div class="line"><span class="lineno">  178</span>        {</div>
-<div class="line"><span class="lineno">  179</span>            <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = glm::vec2(0.5f);</div>
-<div class="line"><span class="lineno">  180</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  181</span>        }</div>
-<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (vertices.size() == 1)</div>
-<div class="line"><span class="lineno">  183</span>        {</div>
-<div class="line"><span class="lineno">  184</span>            <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = glm::vec2(0.0001f);</div>
-<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  186</span>        }</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>        glm::vec2 minPos = vertices[0].position;</div>
-<div class="line"><span class="lineno">  189</span>        glm::vec2 maxPos = vertices[1].position;</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; v : vertices)</div>
-<div class="line"><span class="lineno">  192</span>        {</div>
-<div class="line"><span class="lineno">  193</span>            glm::vec2 pos = v.position;</div>
-<div class="line"><span class="lineno">  194</span>            minPos = glm::min(minPos, pos);</div>
-<div class="line"><span class="lineno">  195</span>            maxPos = glm::max(maxPos, pos);</div>
-<div class="line"><span class="lineno">  196</span>        }</div>
-<div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>        glm::vec2 size = maxPos - minPos;</div>
-<div class="line"><span class="lineno">  199</span>        <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = size * 0.5f;</div>
-<div class="line"><span class="lineno">  200</span>    }</div>
-<div class="ttc" id="aclass_mesh_html_ab9d13fdb38eedf8e33aefa9f61056e95"><div class="ttname"><a href="#ab9d13fdb38eedf8e33aefa9f61056e95">Mesh::localHalfSize</a></div><div class="ttdeci">glm::vec2 localHalfSize</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00232">Mesh.h:232</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00281">281</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>    {</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">if</span> (vertices.empty())</div>
+<div class="line"><span class="lineno">  284</span>        {</div>
+<div class="line"><span class="lineno">  285</span>            <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = glm::vec2(0.5f);</div>
+<div class="line"><span class="lineno">  286</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  287</span>        }</div>
+<div class="line"><span class="lineno">  288</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (vertices.size() == 1)</div>
+<div class="line"><span class="lineno">  289</span>        {</div>
+<div class="line"><span class="lineno">  290</span>            <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = glm::vec2(0.0001f);</div>
+<div class="line"><span class="lineno">  291</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  292</span>        }</div>
+<div class="line"><span class="lineno">  293</span> </div>
+<div class="line"><span class="lineno">  294</span>        glm::vec2 minPos = vertices[0].position;</div>
+<div class="line"><span class="lineno">  295</span>        glm::vec2 maxPos = vertices[1].position;</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; v : vertices)</div>
+<div class="line"><span class="lineno">  298</span>        {</div>
+<div class="line"><span class="lineno">  299</span>            glm::vec2 pos = v.position;</div>
+<div class="line"><span class="lineno">  300</span>            minPos = glm::min(minPos, pos);</div>
+<div class="line"><span class="lineno">  301</span>            maxPos = glm::max(maxPos, pos);</div>
+<div class="line"><span class="lineno">  302</span>        }</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>        glm::vec2 size = maxPos - minPos;</div>
+<div class="line"><span class="lineno">  305</span>        <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a> = size * 0.5f;</div>
+<div class="line"><span class="lineno">  306</span>    }</div>
+<div class="ttc" id="aclass_mesh_html_ab9d13fdb38eedf8e33aefa9f61056e95"><div class="ttname"><a href="#ab9d13fdb38eedf8e33aefa9f61056e95">Mesh::localHalfSize</a></div><div class="ttdeci">glm::vec2 localHalfSize</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00342">Mesh.h:342</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,8 +420,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Issues a non-instanced draw call using this mesh's topology. </p>
-<p>Uses either glDrawElements (if useIndex is true) or glDrawArrays (if useIndex is false), mapping primitiveType to the appropriate OpenGL primitive. </p>
+<p>Draws the mesh once using its currently stored geometry buffers. </p>
+<p>This function binds the regular VAO, converts the stored <a class="el" href="_mesh_8h.html#a240c1924416689e5700ff0d9f30539d9" title="Specifies the OpenGL primitive topology used when drawing a mesh.">PrimitiveType</a> into an OpenGL draw mode, and issues a single non-instanced draw call.</p>
+<p>The actual draw path depends on whether index data was provided at construction:</p><ul>
+<li>indexed mesh -&gt; glDrawElements</li>
+<li>non-indexed -&gt; glDrawArrays</li>
+</ul>
+<p>This function is used by the render manager for objects that are not currently rendered through the instancing path. </p>
 
 <p class="definition">Definition at line <a class="el" href="_mesh_8cpp_source.html#l00026">26</a> of file <a class="el" href="_mesh_8cpp_source.html">Mesh.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
@@ -434,8 +443,8 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>    }</div>
 <div class="line"><span class="lineno">   39</span>}</div>
 <div class="ttc" id="a_mesh_8cpp_html_ab39cc2afcd825e405cee2a083d83b416"><div class="ttname"><a href="_mesh_8cpp.html#ab39cc2afcd825e405cee2a083d83b416">ToGL</a></div><div class="ttdeci">GLenum ToGL(PrimitiveType type)</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00005">Mesh.cpp:5</a></div></div>
-<div class="ttc" id="a_shader_8h_html_aabcf3e059d4bfe03f96c378d2533c3ba"><div class="ttname"><a href="_shader_8h.html#aabcf3e059d4bfe03f96c378d2533c3ba">GLenum</a></div><div class="ttdeci">unsigned int GLenum</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00032">Shader.h:32</a></div></div>
-<div class="ttc" id="aclass_mesh_html_a30bf909bfd35c62be92824b7d3317326"><div class="ttname"><a href="#a30bf909bfd35c62be92824b7d3317326">Mesh::BindVAO</a></div><div class="ttdeci">void BindVAO(bool instanced) const</div><div class="ttdoc">Binds the appropriate VAO for drawing.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00052">Mesh.cpp:52</a></div></div>
+<div class="ttc" id="a_shader_8h_html_aabcf3e059d4bfe03f96c378d2533c3ba"><div class="ttname"><a href="_shader_8h.html#aabcf3e059d4bfe03f96c378d2533c3ba">GLenum</a></div><div class="ttdeci">unsigned int GLenum</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00036">Shader.h:36</a></div></div>
+<div class="ttc" id="aclass_mesh_html_a30bf909bfd35c62be92824b7d3317326"><div class="ttname"><a href="#a30bf909bfd35c62be92824b7d3317326">Mesh::BindVAO</a></div><div class="ttdeci">void BindVAO(bool instanced) const</div><div class="ttdoc">Binds the appropriate VAO for either regular or instanced rendering.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00052">Mesh.cpp:52</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -462,11 +471,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Issues an instanced draw call using this mesh's topology. </p>
-<p>Uses either glDrawElementsInstanced (if useIndex is true) or glDrawArraysInstanced (if useIndex is false). Instance attribute buffers must have been updated via <a class="el" href="#a45673d65011bf8f70c0f7de2a37d7f6c" title="Updates GPU instance buffers used for instanced drawing.">UpdateInstanceBuffer()</a> prior to calling.</p>
+<p>Draws the mesh multiple times in a single instanced draw call. </p>
+<p>This function binds the instancing VAO, converts the stored <a class="el" href="_mesh_8h.html#a240c1924416689e5700ff0d9f30539d9" title="Specifies the OpenGL primitive topology used when drawing a mesh.">PrimitiveType</a> into an OpenGL draw mode, and issues an instanced draw call using the current instance buffers previously updated through <a class="el" href="#a45673d65011bf8f70c0f7de2a37d7f6c" title="Uploads per-instance batch data into the mesh&#39;s instance buffers.">UpdateInstanceBuffer()</a>.</p>
+<p>The actual draw path depends on whether the mesh uses indices:</p><ul>
+<li>indexed mesh -&gt; glDrawElementsInstanced</li>
+<li>non-indexed -&gt; glDrawArraysInstanced</li>
+</ul>
+<p>This path is used by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> when a batch of objects shares a compatible mesh/material combination and the material supports instancing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instanceCount</td><td>Number of instances to draw. </td></tr>
+    <tr><td class="paramname">instanceCount</td><td>Number of instances to render in the batch. </td></tr>
   </table>
   </dd>
 </dl>
@@ -507,12 +521,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns half of the local-space axis-aligned bounds size. </p>
-<p>This value is computed from vertex positions by <a class="el" href="#ad097772f26af95c8f7070cbb0e8cbfef" title="Computes an approximate local-space AABB half-size from vertex positions.">ComputeLocalBounds()</a>. It is typically used as an approximate local-space size for visibility culling and debug bounds.</p>
-<dl class="section return"><dt>Returns</dt><dd>Local bounds half-size in mesh local space. </dd></dl>
+<p>Returns the mesh's local half-size computed from the original vertex positions. </p>
+<p>This value is calculated in <a class="el" href="#ad097772f26af95c8f7070cbb0e8cbfef" title="Computes a simple local-space bounding half-size from the input vertices.">ComputeLocalBounds()</a> from the minimum and maximum vertex positions in local space. It represents half of the mesh's width and height in local coordinates.</p>
+<p>The engine later uses this value to estimate an object's bounding radius by multiplying it with the object's scale and taking the vector length. This is used for view culling and related spatial checks.</p>
+<p>Special cases handled during bound computation:</p><ul>
+<li>empty vertex list -&gt; defaults to 0.5f, 0.5f</li>
+<li>single vertex mesh -&gt; uses a very small half-size to avoid a zero-area bound</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>Local-space half-size of the mesh as a 2D vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00099">99</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00157">157</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  157</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9d13fdb38eedf8e33aefa9f61056e95">localHalfSize</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -539,14 +558,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Configures vertex attribute state for instance data. </p>
-<p>Creates instance VAO/VBOs and sets up attribute pointers/divisors for:</p><ul>
-<li>mat4 transform (usually split across 4 vec4 attributes)</li>
-<li>vec4 color</li>
-<li>vec2 uv offset</li>
-<li>vec2 uv scale</li>
+<p>Creates and configures per-instance vertex attributes for instanced rendering. </p>
+<p>This function prepares the mesh for batched instanced draws by creating:</p><ul>
+<li>a dedicated instancing VAO</li>
+<li>four instance buffers used for per-instance data</li>
 </ul>
-<p>The exact attribute locations must match the shader convention used by this engine (e.g., attributes named "i_Model", etc.). </p>
+<p>The instanced layout contains:</p><ul>
+<li>location 2~5 : mat4 instance transform</li>
+<li>location 6 : vec4 instance color</li>
+<li>location 7 : vec2 instance UV offset</li>
+<li>location 8 : vec2 instance UV scale</li>
+</ul>
+<p>Divisors are configured so that these attributes advance once per instance rather than once per vertex. If the mesh uses an index buffer, the same EBO is also attached to the instancing VAO. :contentReference[oaicite:12]{index=12}</p>
+<p>This function is not part of the normal public API. It is typically called indirectly through <a class="el" href="class_material.html#aea9bb91a6549dadd72c68d17100dc388" title="Enables or disables instanced rendering support for this material.">Material::EnableInstancing()</a> after the material confirms that its shader exposes the required instancing attributes. :contentReference[oaicite:13]{index=13}</p>
+<dl class="section note"><dt>Note</dt><dd>Calling this repeatedly is safe with respect to object creation checks, since the implementation only creates the VAO/VBO objects when they do not already exist. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_mesh_8cpp_source.html#l00069">69</a> of file <a class="el" href="_mesh_8cpp_source.html">Mesh.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
@@ -602,7 +627,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  120</span>    glVertexArrayBindingDivisor(<a class="code hl_variable" href="#ad41509844e200245ce71b4cc5441c504">instanceVAO</a>, 4, 1);</div>
 <div class="line"><span class="lineno">  121</span>}</div>
 <div class="ttc" id="a_material_8h_html_a9b79d6d8dc8627e68412974748f1c08c"><div class="ttname"><a href="_material_8h.html#a9b79d6d8dc8627e68412974748f1c08c">GLuint</a></div><div class="ttdeci">unsigned int GLuint</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00014">Material.h:14</a></div></div>
-<div class="ttc" id="a_shader_8h_html_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6"><div class="ttname"><a href="_shader_8h.html#a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6">ShaderStage::Vertex</a></div><div class="ttdeci">@ Vertex</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00019">Shader.h:19</a></div></div>
+<div class="ttc" id="a_shader_8h_html_a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6"><div class="ttname"><a href="_shader_8h.html#a22fa67f5720e9bfbd075bd088285c531ab22b929ba52471a02d18bb3a4e4472e6">ShaderStage::Vertex</a></div><div class="ttdeci">@ Vertex</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00023">Shader.h:23</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -633,13 +658,24 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Uploads vertex/index data and configures base vertex attributes. </p>
-<p>Creates and binds vao/vbo and uploads the vertex array. If indices is non-empty, creates/binds ebo and uploads indices, enabling indexed rendering and setting indexCount.</p>
-<p>Also configures vertex attribute pointers for the <a class="el" href="struct_vertex.html" title="Basic 2D vertex layout used by this engine&#39;s Mesh.">Vertex</a> layout (position + uv).</p>
+<p>Uploads vertex and optional index data and configures the base VAO layout. </p>
+<p>This function is called during construction and performs the core GPU setup for the mesh:</p><ul>
+<li>determines whether indexed drawing will be used</li>
+<li>stores the effective draw count in indexCount</li>
+<li>creates the regular VAO</li>
+<li>creates and uploads the vertex buffer</li>
+<li>binds vertex attributes for position and UV</li>
+<li>optionally creates and attaches an element buffer</li>
+</ul>
+<p><a class="el" href="struct_vertex.html" title="Represents a single mesh vertex for the engine&#39;s default 2D/quad-style pipeline.">Vertex</a> attributes are configured as:</p><ul>
+<li>location 0 : vec3 position</li>
+<li>location 1 : vec2 uv</li>
+</ul>
+<p>When indices are provided, indexCount stores the number of indices. Otherwise, it stores the number of vertices, which becomes the draw count for glDrawArrays-based rendering. :contentReference[oaicite:16]{index=16}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertices</td><td><a class="el" href="struct_vertex.html" title="Basic 2D vertex layout used by this engine&#39;s Mesh.">Vertex</a> array to upload. </td></tr>
-    <tr><td class="paramname">indices</td><td>Index array to upload (may be empty). </td></tr>
+    <tr><td class="paramname">vertices</td><td><a class="el" href="struct_vertex.html" title="Represents a single mesh vertex for the engine&#39;s default 2D/quad-style pipeline.">Vertex</a> array to upload into the mesh VBO. </td></tr>
+    <tr><td class="paramname">indices</td><td>Optional index array to upload into the mesh EBO. </td></tr>
   </table>
   </dd>
 </dl>
@@ -712,19 +748,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates GPU instance buffers used for instanced drawing. </p>
-<p>Uploads per-instance arrays into instanceVBO buffers so <a class="el" href="#ae2933e498cc249ab798bbf265dace77b" title="Issues an instanced draw call using this mesh&#39;s topology.">DrawInstanced()</a> can be executed. All arrays are expected to have the same length and match instanceCount used in <a class="el" href="#ae2933e498cc249ab798bbf265dace77b" title="Issues an instanced draw call using this mesh&#39;s topology.">DrawInstanced()</a>.</p>
-<p>Typical contents:</p><ul>
-<li>transforms: model matrices for each instance.</li>
-<li>colors: per-instance color multiplier.</li>
-<li>uvOffsets / uvScales: per-instance sprite sheet UV transform.</li>
+<p>Uploads per-instance batch data into the mesh's instance buffers. </p>
+<p>This function refreshes all instance buffers used by the instanced rendering path:</p><ul>
+<li>transforms</li>
+<li>colors</li>
+<li>UV offsets</li>
+<li>UV scales</li>
 </ul>
+<p>The render manager calls this immediately before <a class="el" href="#ae2933e498cc249ab798bbf265dace77b" title="Draws the mesh multiple times in a single instanced draw call.">DrawInstanced()</a> so that the GPU-side instance data matches the current batch contents for the frame.</p>
+<p>All buffers are uploaded using GL_DYNAMIC_DRAW because the data changes per frame or per batch.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">transforms</td><td>Per-instance model matrices. </td></tr>
-    <tr><td class="paramname">colors</td><td>Per-instance colors. </td></tr>
-    <tr><td class="paramname">uvOffsets</td><td>Per-instance UV offsets. </td></tr>
-    <tr><td class="paramname">uvScales</td><td>Per-instance UV scales. </td></tr>
+    <tr><td class="paramname">colors</td><td>Per-instance tint colors. </td></tr>
+    <tr><td class="paramname">uvOffsets</td><td>Per-instance UV offsets, commonly used for sprite-sheet animation. </td></tr>
+    <tr><td class="paramname">uvScales</td><td>Per-instance UV scales, commonly used for sprite-sheet animation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -760,7 +798,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00223">223</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00333">333</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -784,7 +822,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00224">224</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00334">334</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -808,7 +846,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00226">226</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00336">336</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -832,7 +870,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00227">227</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00337">337</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -856,7 +894,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00232">232</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00342">342</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -880,7 +918,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00059">59</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00090">90</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -904,7 +942,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00231">231</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00341">341</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -928,7 +966,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00060">60</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00091">91</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -952,7 +990,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00229">229</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00339">339</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1014,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00221">221</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00331">331</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1038,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00222">222</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00332">332</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>

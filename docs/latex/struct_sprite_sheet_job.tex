@@ -2,7 +2,7 @@
 \hypertarget{struct_sprite_sheet_job}{}\label{struct_sprite_sheet_job}\index{SpriteSheetJob@{SpriteSheetJob}}
 
 
-Load request describing a sprite sheet resource to be created/registered.  
+Describes a sprite sheet creation request.  
 
 
 
@@ -23,13 +23,18 @@ int \mbox{\hyperlink{struct_sprite_sheet_job_acc5eef93d4265710a6ef7885e83e1443}{
 
 
 \doxysubsection{Detailed Description}
-Load request describing a sprite sheet resource to be created/registered. 
+Describes a sprite sheet creation request. 
 
-\doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job} references an existing texture by tag and specifies the sprite sheet grid division (frameW, frameH).
+\doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job} stores the tag of the sprite sheet to create, the texture tag to reference, and the frame dimensions used to interpret the texture as a grid.
 
-Note\+: This job type exists in \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request}, but there is no corresponding Sprite\+Sheet\+Result in \doxylink{_async_resource_loader_8h_a6a60ad85728d8591ed1f4246e5d3af21}{Load\+Result} in this header. It is expected that the worker/main-\/thread integration handles sprite sheet registration separately. 
+This type is already included in \doxylink{_async_resource_loader_8h_ae1b8cce382c5ee957e16be16b2cded39}{Load\+Request} so the loader interface can be extended to support asynchronous sprite sheet preparation. However, in the current worker implementation, \doxylink{struct_sprite_sheet_job}{Sprite\+Sheet\+Job} is not processed yet. \+:content\+Reference\mbox{[}oaicite\+:5\mbox{]}\{index=5\}
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00097}{97}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+\begin{DoxyNote}{Note}
+Because the current Worker() implementation does not handle this request type, enqueuing this job without adding handling logic would leave it unsupported. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00118}{118}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -42,7 +47,7 @@ int Sprite\+Sheet\+Job\+::frameH = 1}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00102}{102}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00123}{123}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a009c3b4741e0ecf50437be086cb09042}\index{SpriteSheetJob@{SpriteSheetJob}!frameW@{frameW}}
 \index{frameW@{frameW}!SpriteSheetJob@{SpriteSheetJob}}
@@ -52,7 +57,7 @@ int Sprite\+Sheet\+Job\+::frameW = 1}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00101}{101}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00122}{122}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a502f6543e3b8a083d9f23abb9f3ce240}\index{SpriteSheetJob@{SpriteSheetJob}!tag@{tag}}
 \index{tag@{tag}!SpriteSheetJob@{SpriteSheetJob}}
@@ -62,7 +67,7 @@ std\+::string Sprite\+Sheet\+Job\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00099}{99}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00120}{120}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sprite_sheet_job_a4e098012374b52a3f19481d3c9b7fc34}\index{SpriteSheetJob@{SpriteSheetJob}!textureTag@{textureTag}}
 \index{textureTag@{textureTag}!SpriteSheetJob@{SpriteSheetJob}}
@@ -72,7 +77,7 @@ std\+::string Sprite\+Sheet\+Job\+::texture\+Tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00100}{100}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00121}{121}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

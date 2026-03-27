@@ -104,7 +104,7 @@ $(function(){initNavTree('class_frustum_culler.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>Simple visibility culling utility based on a <a class="el" href="class_camera2_d.html" title="2D camera providing view transformation and visibility tests.">Camera2D</a> view test and object bounding radius.  
+<p>Performs visibility culling against a 2D camera view.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>&gt;</code></p>
@@ -112,19 +112,20 @@ $(function(){initNavTree('class_frustum_culler.html',''); initResizable(true); }
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a81c3d9c4516d7695b6988c64badf824d" id="r_a81c3d9c4516d7695b6988c64badf824d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81c3d9c4516d7695b6988c64badf824d">CullVisible</a> (const <a class="el" href="class_camera2_d.html">Camera2D</a> &amp;camera, const std::vector&lt; <a class="el" href="class_object.html">Object</a> * &gt; &amp;allObjects, std::vector&lt; <a class="el" href="class_object.html">Object</a> * &gt; &amp;outVisibleList, glm::vec2 viewportSize)</td></tr>
-<tr class="memdesc:a81c3d9c4516d7695b6988c64badf824d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a list of objects visible to the camera.  <br /></td></tr>
+<tr class="memdesc:a81c3d9c4516d7695b6988c64badf824d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters a source object list down to only visible objects for the given camera.  <br /></td></tr>
 <tr class="separator:a81c3d9c4516d7695b6988c64badf824d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Simple visibility culling utility based on a <a class="el" href="class_camera2_d.html" title="2D camera providing view transformation and visibility tests.">Camera2D</a> view test and object bounding radius. </p>
-<p><a class="el" href="#a81c3d9c4516d7695b6988c64badf824d" title="Builds a list of objects visible to the camera.">CullVisible()</a> filters objects using:</p><ul>
-<li>IsAlive() and IsVisible() checks</li>
-<li>ShouldIgnoreCamera(): such objects are always included</li>
-<li>Camera2D::IsInView(position, radius, viewportSize) for camera-relative objects</li>
+<div class="textblock"><p>Performs visibility culling against a 2D camera view. </p>
+<p><a class="el" href="class_frustum_culler.html" title="Performs visibility culling against a 2D camera view.">FrustumCuller</a> is a stateless helper used by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> before batching. The current implementation checks each object and:</p><ul>
+<li>skips objects that are not alive</li>
+<li>skips objects that are not visible</li>
+<li>always keeps objects that ignore the camera</li>
+<li>otherwise tests the object's world position and bounding radius through <a class="el" href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825" title="Tests whether a circular object is inside the visible region.">Camera2D::IsInView()</a></li>
 </ul>
-<p>The output list is cleared and rebuilt every call. </p>
+<p>The output list is cleared before results are appended. </p>
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00745">745</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00836">836</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a81c3d9c4516d7695b6988c64badf824d" name="a81c3d9c4516d7695b6988c64badf824d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81c3d9c4516d7695b6988c64badf824d">&#9670;&#160;</a></span>CullVisible()</h2>
@@ -163,37 +164,44 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Builds a list of objects visible to the camera. </p>
+<p>Filters a source object list down to only visible objects for the given camera. </p>
+<p>For each object:</p><ul>
+<li>dead objects are ignored</li>
+<li>invisible objects are ignored</li>
+<li>camera-ignoring objects are kept automatically</li>
+<li>all other objects are tested using camera.IsInView()</li>
+</ul>
+<p>The object's world position and approximate bounding radius are used for the visibility test.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">camera</td><td>Camera used for view test. </td></tr>
-    <tr><td class="paramname">allObjects</td><td>Input list of candidate objects. </td></tr>
-    <tr><td class="paramname">outVisibleList</td><td>Output list that will be cleared and filled with visible objects. </td></tr>
-    <tr><td class="paramname">viewportSize</td><td>Viewport size used by <a class="el" href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825" title="Tests whether a circular object is inside the camera view.">Camera2D::IsInView</a>. </td></tr>
+    <tr><td class="paramname">camera</td><td>Camera used for the visibility test. </td></tr>
+    <tr><td class="paramname">allObjects</td><td>Source object list. </td></tr>
+    <tr><td class="paramname">outVisibleList</td><td>Output list that receives visible objects. </td></tr>
+    <tr><td class="paramname">viewportSize</td><td>Viewport size used by the camera visibility check. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8cpp_source.html#l00130">130</a> of file <a class="el" href="_render_manager_8cpp_source.html">RenderManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
-<div class="line"><span class="lineno">  133</span>    outVisibleList.clear();</div>
-<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">for</span> (Object* obj : allObjects)</div>
-<div class="line"><span class="lineno">  135</span>    {</div>
-<div class="line"><span class="lineno">  136</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive() || !obj-&gt;IsVisible())</div>
-<div class="line"><span class="lineno">  137</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (obj-&gt;ShouldIgnoreCamera())</div>
-<div class="line"><span class="lineno">  139</span>        {</div>
-<div class="line"><span class="lineno">  140</span>            outVisibleList.push_back(obj);</div>
-<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keyword">const</span> glm::vec2&amp; pos = obj-&gt;GetWorldPosition();</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keywordtype">float</span> radius = obj-&gt;GetBoundingRadius();</div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (camera.<a class="code hl_function" href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825">IsInView</a>(pos, radius, viewportSize))</div>
-<div class="line"><span class="lineno">  147</span>            outVisibleList.push_back(obj);</div>
-<div class="line"><span class="lineno">  148</span>    }</div>
-<div class="line"><span class="lineno">  149</span>}</div>
-<div class="ttc" id="aclass_camera2_d_html_ac59db8b285e9e7c9646b6e369cfda825"><div class="ttname"><a href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825">Camera2D::IsInView</a></div><div class="ttdeci">bool IsInView(const glm::vec2 &amp;pos, float radius, glm::vec2 viewportSize) const</div><div class="ttdoc">Tests whether a circular object is inside the camera view.</div><div class="ttdef"><b>Definition</b> <a href="_camera2_d_8cpp_source.html#l00050">Camera2D.cpp:50</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8cpp_source.html#l00131">131</a> of file <a class="el" href="_render_manager_8cpp_source.html">RenderManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>{</div>
+<div class="line"><span class="lineno">  134</span>    outVisibleList.clear();</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">for</span> (Object* obj : allObjects)</div>
+<div class="line"><span class="lineno">  136</span>    {</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive() || !obj-&gt;IsVisible())</div>
+<div class="line"><span class="lineno">  138</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">if</span> (obj-&gt;ShouldIgnoreCamera())</div>
+<div class="line"><span class="lineno">  140</span>        {</div>
+<div class="line"><span class="lineno">  141</span>            outVisibleList.push_back(obj);</div>
+<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  143</span>        }</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keyword">const</span> glm::vec2&amp; pos = obj-&gt;GetWorldPosition();</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keywordtype">float</span> radius = obj-&gt;GetBoundingRadius();</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (camera.<a class="code hl_function" href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825">IsInView</a>(pos, radius, viewportSize))</div>
+<div class="line"><span class="lineno">  148</span>            outVisibleList.push_back(obj);</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="line"><span class="lineno">  150</span>}</div>
+<div class="ttc" id="aclass_camera2_d_html_ac59db8b285e9e7c9646b6e369cfda825"><div class="ttname"><a href="class_camera2_d.html#ac59db8b285e9e7c9646b6e369cfda825">Camera2D::IsInView</a></div><div class="ttdeci">bool IsInView(const glm::vec2 &amp;pos, float radius, glm::vec2 viewportSize) const</div><div class="ttdoc">Tests whether a circular object is inside the visible region.</div><div class="ttdef"><b>Definition</b> <a href="_camera2_d_8cpp_source.html#l00050">Camera2D.cpp:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

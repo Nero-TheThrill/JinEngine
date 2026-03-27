@@ -105,41 +105,41 @@ $(function(){initNavTree('class_sprite_sheet.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Utility class that maps a texture to a uniform grid of sprite frames.  
+<p>Represents a grid-based sprite sheet and stores named animation clips.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_animation_8h_source.html">Animation.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adc4338e1d81369932f37c8bb8e17f3f8" id="r_adc4338e1d81369932f37c8bb8e17f3f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc4338e1d81369932f37c8bb8e17f3f8">SpriteSheet</a> (<a class="el" href="class_texture.html">Texture</a> *texture_, int frameW, int frameH)</td></tr>
-<tr class="memdesc:adc4338e1d81369932f37c8bb8e17f3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a sprite sheet helper for a texture divided into a uniform grid.  <br /></td></tr>
-<tr class="separator:adc4338e1d81369932f37c8bb8e17f3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690a9faacc7a38ccf7508ce9940b344c" id="r_a690a9faacc7a38ccf7508ce9940b344c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a690a9faacc7a38ccf7508ce9940b344c">SpriteSheet</a> (std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; texture_, int frameW, int frameH)</td></tr>
+<tr class="memdesc:a690a9faacc7a38ccf7508ce9940b344c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sprite sheet from a texture and fixed frame dimensions.  <br /></td></tr>
+<tr class="separator:a690a9faacc7a38ccf7508ce9940b344c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2052999ec8fce40951d4df88118d908a" id="r_a2052999ec8fce40951d4df88118d908a"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2052999ec8fce40951d4df88118d908a">GetUVOffset</a> (int frameIndex) const</td></tr>
-<tr class="memdesc:a2052999ec8fce40951d4df88118d908a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV offset for the given frame index.  <br /></td></tr>
+<tr class="memdesc:a2052999ec8fce40951d4df88118d908a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV offset of the specified frame.  <br /></td></tr>
 <tr class="separator:a2052999ec8fce40951d4df88118d908a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ff75353185084b8624ee771d10a590a" id="r_a5ff75353185084b8624ee771d10a590a"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ff75353185084b8624ee771d10a590a">GetUVScale</a> () const</td></tr>
-<tr class="memdesc:a5ff75353185084b8624ee771d10a590a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the uniform UV scale for one frame cell.  <br /></td></tr>
+<tr class="memdesc:a5ff75353185084b8624ee771d10a590a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the normalized UV scale of a single frame.  <br /></td></tr>
 <tr class="separator:a5ff75353185084b8624ee771d10a590a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6895f8f4de5332b429bdb3bbc8774943" id="r_a6895f8f4de5332b429bdb3bbc8774943"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6895f8f4de5332b429bdb3bbc8774943">GetTexture</a> () const</td></tr>
-<tr class="memdesc:a6895f8f4de5332b429bdb3bbc8774943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the underlying texture used by this sprite sheet.  <br /></td></tr>
-<tr class="separator:a6895f8f4de5332b429bdb3bbc8774943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14aee10cf13f14e9046f988bd76ceb7a" id="r_a14aee10cf13f14e9046f988bd76ceb7a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14aee10cf13f14e9046f988bd76ceb7a">GetTexture</a> () const</td></tr>
+<tr class="memdesc:a14aee10cf13f14e9046f988bd76ceb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture used by this sprite sheet.  <br /></td></tr>
+<tr class="separator:a14aee10cf13f14e9046f988bd76ceb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc6bb35d4dc6fce692316cb745be99cf" id="r_acc6bb35d4dc6fce692316cb745be99cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc6bb35d4dc6fce692316cb745be99cf">GetFrameCount</a> () const</td></tr>
 <tr class="memdesc:acc6bb35d4dc6fce692316cb745be99cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of frames in the grid.  <br /></td></tr>
 <tr class="separator:acc6bb35d4dc6fce692316cb745be99cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0656d33c5b84e8b82abb34a7107ca823" id="r_a0656d33c5b84e8b82abb34a7107ca823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0656d33c5b84e8b82abb34a7107ca823">AddClip</a> (const std::string &amp;name, const std::vector&lt; int &gt; &amp;frames, float frameDuration, bool looping=true)</td></tr>
-<tr class="memdesc:a0656d33c5b84e8b82abb34a7107ca823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a named animation clip using explicit frame indices.  <br /></td></tr>
+<tr class="memdesc:a0656d33c5b84e8b82abb34a7107ca823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds or replaces a named animation clip.  <br /></td></tr>
 <tr class="separator:a0656d33c5b84e8b82abb34a7107ca823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa4e33b8d39dc2f9b714a1d4152e5271" id="r_aaa4e33b8d39dc2f9b714a1d4152e5271"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_sprite_clip.html">SpriteClip</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa4e33b8d39dc2f9b714a1d4152e5271">GetClip</a> (const std::string &amp;name) const</td></tr>
-<tr class="memdesc:aaa4e33b8d39dc2f9b714a1d4152e5271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a named animation clip if it exists.  <br /></td></tr>
+<tr class="memdesc:aaa4e33b8d39dc2f9b714a1d4152e5271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a named animation clip.  <br /></td></tr>
 <tr class="separator:aaa4e33b8d39dc2f9b714a1d4152e5271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:acffd1f788437a4d1be0c8606d0905b5d" id="r_acffd1f788437a4d1be0c8606d0905b5d"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="struct_sprite_clip.html">SpriteClip</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acffd1f788437a4d1be0c8606d0905b5d">animationClips</a></td></tr>
 <tr class="separator:acffd1f788437a4d1be0c8606d0905b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfc63d5429102f4267dea33179c3ba38" id="r_adfc63d5429102f4267dea33179c3ba38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfc63d5429102f4267dea33179c3ba38">texture</a></td></tr>
-<tr class="separator:adfc63d5429102f4267dea33179c3ba38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d3ed44836f16c0cc0d5a3bc0c77617a" id="r_a2d3ed44836f16c0cc0d5a3bc0c77617a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">texture</a></td></tr>
+<tr class="separator:a2d3ed44836f16c0cc0d5a3bc0c77617a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b5d96c0fc1d7d50d1098bda06e6e506" id="r_a3b5d96c0fc1d7d50d1098bda06e6e506"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b5d96c0fc1d7d50d1098bda06e6e506">frameWidth</a></td></tr>
 <tr class="separator:a3b5d96c0fc1d7d50d1098bda06e6e506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e1cd2d1df28243fd98a811c78a585f" id="r_a02e1cd2d1df28243fd98a811c78a585f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02e1cd2d1df28243fd98a811c78a585f">frameHeight</a></td></tr>
@@ -158,15 +158,20 @@ Private Attributes</h2></td></tr>
 <tr class="separator:add5883b0e807cabfa77edb84bcce8cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utility class that maps a texture to a uniform grid of sprite frames. </p>
-<p><a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> provides UV offset/scale data for a sprite sheet that is divided into frameW x frameH cells (in pixels).</p>
-<p>The sheet also supports named animation clips via AddClip/GetClip. Clips store sequences of frame indices and timing settings but do not advance time by themselves.</p>
-<p><a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> does not own the <a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> pointer; it assumes the texture lifetime is managed elsewhere (e.g., by RenderManager/resource registry). </p>
+<div class="textblock"><p>Represents a grid-based sprite sheet and stores named animation clips. </p>
+<p><a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a> interprets a texture as a regular grid of frames of equal size. The constructor calculates the number of columns and rows from the texture dimensions and the frame dimensions. If the calculated values become zero, the implementation clamps them to at least one so that frame lookup remains valid.</p>
+<p>This class is responsible for:</p><ul>
+<li>converting frame indices into UV offsets,</li>
+<li>returning normalized UV scale for one frame,</li>
+<li>storing named <a class="el" href="struct_sprite_clip.html" title="Describes a named sprite animation clip.">SpriteClip</a> entries for clip-based animation playback.</li>
+</ul>
+<p>The UV calculation flips the row index vertically so that sprite frame lookup matches the engine's texture coordinate convention. This behavior is implemented in <a class="el" href="#a2052999ec8fce40951d4df88118d908a" title="Returns the UV offset of the specified frame.">GetUVOffset()</a> rather than being handled externally. :contentReference[oaicite:1]{index=1}</p>
+<dl class="section note"><dt>Note</dt><dd>This class does not manage playback time or frame advancement. It only provides frame layout data and clip lookup. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00054">54</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00071">71</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="adc4338e1d81369932f37c8bb8e17f3f8" name="adc4338e1d81369932f37c8bb8e17f3f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc4338e1d81369932f37c8bb8e17f3f8">&#9670;&#160;</a></span>SpriteSheet()</h2>
+<a id="a690a9faacc7a38ccf7508ce9940b344c" name="a690a9faacc7a38ccf7508ce9940b344c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690a9faacc7a38ccf7508ce9940b344c">&#9670;&#160;</a></span>SpriteSheet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +179,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">SpriteSheet::SpriteSheet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>texture_</em></span>, </td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>texture_</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -189,14 +194,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a sprite sheet helper for a texture divided into a uniform grid. </p>
-<p>The implementation is expected to:</p><ul>
-<li>Cache texture dimensions (texWidth/texHeight)</li>
-<li>Compute grid columns/rows based on frameWidth/frameHeight</li>
-</ul>
+<p>Creates a sprite sheet from a texture and fixed frame dimensions. </p>
+<p>Stores the texture, reads its full width and height, and computes how many frames fit horizontally and vertically based on the given frame size.</p>
+<p>The constructor also guards against zero column or row counts by forcing them to at least one. This prevents invalid division or indexing behavior when the frame size is larger than the texture size. :contentReference[oaicite:2]{index=2}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">texture_</td><td><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> that contains the sprite sheet. </td></tr>
+    <tr><td class="paramname">texture_</td><td>Shared texture used as the source image for the sprite sheet. </td></tr>
     <tr><td class="paramname">frameW</td><td>Width of a single frame in pixels. </td></tr>
     <tr><td class="paramname">frameH</td><td>Height of a single frame in pixels. </td></tr>
   </table>
@@ -204,24 +207,22 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00003">3</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>    : <a class="code hl_variable" href="#adfc63d5429102f4267dea33179c3ba38">texture</a>(texture_), <a class="code hl_variable" href="#a3b5d96c0fc1d7d50d1098bda06e6e506">frameWidth</a>(frameW), <a class="code hl_variable" href="#a02e1cd2d1df28243fd98a811c78a585f">frameHeight</a>(frameH)</div>
+<div class="fragment"><div class="line"><span class="lineno">    4</span>    : <a class="code hl_variable" href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">texture</a>(std::move(texture_)), <a class="code hl_variable" href="#a3b5d96c0fc1d7d50d1098bda06e6e506">frameWidth</a>(frameW), <a class="code hl_variable" href="#a02e1cd2d1df28243fd98a811c78a585f">frameHeight</a>(frameH)</div>
 <div class="line"><span class="lineno">    5</span>{</div>
-<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="#a761c9a859e1095423a6c143d4ec13ca1">texWidth</a> = texture_-&gt;<a class="code hl_function" href="class_texture.html#a7f5ee18c7466f904fa371bd97399a944">GetWidth</a>();</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="#ac72c784429b5ef63acc06f181e8ced20">texHeight</a> = texture_-&gt;<a class="code hl_function" href="class_texture.html#a289701837e23c9272509f377524ee8f2">GetHeight</a>();</div>
+<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="#a761c9a859e1095423a6c143d4ec13ca1">texWidth</a> = <a class="code hl_variable" href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">texture</a>-&gt;GetWidth();</div>
+<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="#ac72c784429b5ef63acc06f181e8ced20">texHeight</a> = <a class="code hl_variable" href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">texture</a>-&gt;GetHeight();</div>
 <div class="line"><span class="lineno">    8</span>    <a class="code hl_variable" href="#a79d8b4d9cbeafaa3a12b37b6d3129553">columns</a> = <a class="code hl_variable" href="#a761c9a859e1095423a6c143d4ec13ca1">texWidth</a> / <a class="code hl_variable" href="#a3b5d96c0fc1d7d50d1098bda06e6e506">frameWidth</a>;</div>
 <div class="line"><span class="lineno">    9</span>    <a class="code hl_variable" href="#afdfca9f9fdf266b89cd7ec84f967996b">rows</a> = <a class="code hl_variable" href="#ac72c784429b5ef63acc06f181e8ced20">texHeight</a> / <a class="code hl_variable" href="#a02e1cd2d1df28243fd98a811c78a585f">frameHeight</a>;</div>
 <div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a79d8b4d9cbeafaa3a12b37b6d3129553">columns</a> == 0) <a class="code hl_variable" href="#a79d8b4d9cbeafaa3a12b37b6d3129553">columns</a> = 1;</div>
 <div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#afdfca9f9fdf266b89cd7ec84f967996b">rows</a> == 0) <a class="code hl_variable" href="#afdfca9f9fdf266b89cd7ec84f967996b">rows</a> = 1;</div>
 <div class="line"><span class="lineno">   12</span>}</div>
-<div class="ttc" id="aclass_sprite_sheet_html_a02e1cd2d1df28243fd98a811c78a585f"><div class="ttname"><a href="#a02e1cd2d1df28243fd98a811c78a585f">SpriteSheet::frameHeight</a></div><div class="ttdeci">int frameHeight</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00143">Animation.h:143</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_a3b5d96c0fc1d7d50d1098bda06e6e506"><div class="ttname"><a href="#a3b5d96c0fc1d7d50d1098bda06e6e506">SpriteSheet::frameWidth</a></div><div class="ttdeci">int frameWidth</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00143">Animation.h:143</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_a761c9a859e1095423a6c143d4ec13ca1"><div class="ttname"><a href="#a761c9a859e1095423a6c143d4ec13ca1">SpriteSheet::texWidth</a></div><div class="ttdeci">int texWidth</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00145">Animation.h:145</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_a79d8b4d9cbeafaa3a12b37b6d3129553"><div class="ttname"><a href="#a79d8b4d9cbeafaa3a12b37b6d3129553">SpriteSheet::columns</a></div><div class="ttdeci">int columns</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00144">Animation.h:144</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_ac72c784429b5ef63acc06f181e8ced20"><div class="ttname"><a href="#ac72c784429b5ef63acc06f181e8ced20">SpriteSheet::texHeight</a></div><div class="ttdeci">int texHeight</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00145">Animation.h:145</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_adfc63d5429102f4267dea33179c3ba38"><div class="ttname"><a href="#adfc63d5429102f4267dea33179c3ba38">SpriteSheet::texture</a></div><div class="ttdeci">Texture * texture</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00142">Animation.h:142</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_afdfca9f9fdf266b89cd7ec84f967996b"><div class="ttname"><a href="#afdfca9f9fdf266b89cd7ec84f967996b">SpriteSheet::rows</a></div><div class="ttdeci">int rows</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00144">Animation.h:144</a></div></div>
-<div class="ttc" id="aclass_texture_html_a289701837e23c9272509f377524ee8f2"><div class="ttname"><a href="class_texture.html#a289701837e23c9272509f377524ee8f2">Texture::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the texture height in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_texture_8h_source.html#l00166">Texture.h:166</a></div></div>
-<div class="ttc" id="aclass_texture_html_a7f5ee18c7466f904fa371bd97399a944"><div class="ttname"><a href="class_texture.html#a7f5ee18c7466f904fa371bd97399a944">Texture::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the texture width in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_texture_8h_source.html#l00161">Texture.h:161</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_a02e1cd2d1df28243fd98a811c78a585f"><div class="ttname"><a href="#a02e1cd2d1df28243fd98a811c78a585f">SpriteSheet::frameHeight</a></div><div class="ttdeci">int frameHeight</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00180">Animation.h:180</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_a2d3ed44836f16c0cc0d5a3bc0c77617a"><div class="ttname"><a href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">SpriteSheet::texture</a></div><div class="ttdeci">std::shared_ptr&lt; Texture &gt; texture</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00179">Animation.h:179</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_a3b5d96c0fc1d7d50d1098bda06e6e506"><div class="ttname"><a href="#a3b5d96c0fc1d7d50d1098bda06e6e506">SpriteSheet::frameWidth</a></div><div class="ttdeci">int frameWidth</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00180">Animation.h:180</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_a761c9a859e1095423a6c143d4ec13ca1"><div class="ttname"><a href="#a761c9a859e1095423a6c143d4ec13ca1">SpriteSheet::texWidth</a></div><div class="ttdeci">int texWidth</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00182">Animation.h:182</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_a79d8b4d9cbeafaa3a12b37b6d3129553"><div class="ttname"><a href="#a79d8b4d9cbeafaa3a12b37b6d3129553">SpriteSheet::columns</a></div><div class="ttdeci">int columns</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00181">Animation.h:181</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_ac72c784429b5ef63acc06f181e8ced20"><div class="ttname"><a href="#ac72c784429b5ef63acc06f181e8ced20">SpriteSheet::texHeight</a></div><div class="ttdeci">int texHeight</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00182">Animation.h:182</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_afdfca9f9fdf266b89cd7ec84f967996b"><div class="ttname"><a href="#afdfca9f9fdf266b89cd7ec84f967996b">SpriteSheet::rows</a></div><div class="ttdeci">int rows</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00181">Animation.h:181</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -255,22 +256,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a named animation clip using explicit frame indices. </p>
-<p>Stores a <a class="el" href="struct_sprite_clip.html" title="Describes an animation clip as an ordered sequence of frame indices.">SpriteClip</a> in animationClips under the provided name. If a clip with the same name already exists, it is replaced.</p>
+<p>Adds or replaces a named animation clip. </p>
+<p>Creates a <a class="el" href="struct_sprite_clip.html" title="Describes a named sprite animation clip.">SpriteClip</a> from the provided frame sequence, frame duration, and looping flag, then stores it in the internal clip map under the given name.</p>
+<p>If a clip with the same name already exists, the new clip replaces the old one. This makes it possible to redefine animation data without changing the public API. :contentReference[oaicite:3]{index=3}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>Clip identifier used for playback lookup. </td></tr>
-    <tr><td class="paramname">frames</td><td>Ordered list of frame indices. </td></tr>
-    <tr><td class="paramname">frameDuration</td><td>Duration of each frame in seconds. </td></tr>
-    <tr><td class="paramname">looping</td><td>Whether the clip loops (default: true).</td></tr>
+    <tr><td class="paramname">name</td><td>Name used to identify the clip. </td></tr>
+    <tr><td class="paramname">frames</td><td>Ordered frame indices used by the clip. </td></tr>
+    <tr><td class="paramname">frameDuration</td><td>Playback duration of one frame in seconds. </td></tr>
+    <tr><td class="paramname">looping</td><td>Whether the clip restarts after reaching the last local frame. </td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a class="code hl_function" href="#adc4338e1d81369932f37c8bb8e17f3f8">SpriteSheet</a>* sheet = ...;</div>
-<div class="line">sheet-&gt;<a class="code hl_function" href="#a0656d33c5b84e8b82abb34a7107ca823">AddClip</a>(<span class="stringliteral">&quot;Run&quot;</span>, { 0, 1, 2, 3, 4, 5 }, 0.08f, <span class="keyword">true</span>);</div>
-<div class="ttc" id="aclass_sprite_sheet_html_a0656d33c5b84e8b82abb34a7107ca823"><div class="ttname"><a href="#a0656d33c5b84e8b82abb34a7107ca823">SpriteSheet::AddClip</a></div><div class="ttdeci">void AddClip(const std::string &amp;name, const std::vector&lt; int &gt; &amp;frames, float frameDuration, bool looping=true)</div><div class="ttdoc">Adds a named animation clip using explicit frame indices.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00037">Animation.cpp:37</a></div></div>
-<div class="ttc" id="aclass_sprite_sheet_html_adc4338e1d81369932f37c8bb8e17f3f8"><div class="ttname"><a href="#adc4338e1d81369932f37c8bb8e17f3f8">SpriteSheet::SpriteSheet</a></div><div class="ttdeci">SpriteSheet(Texture *texture_, int frameW, int frameH)</div><div class="ttdoc">Constructs a sprite sheet helper for a texture divided into a uniform grid.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00003">Animation.cpp:3</a></div></div>
-</div><!-- fragment --> 
+
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00037">37</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
 <div class="line"><span class="lineno">   39</span>    SpriteClip clip;</div>
@@ -280,10 +278,10 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   43</span> </div>
 <div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="#acffd1f788437a4d1be0c8606d0905b5d">animationClips</a>[name] = clip;</div>
 <div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="aclass_sprite_sheet_html_acffd1f788437a4d1be0c8606d0905b5d"><div class="ttname"><a href="#acffd1f788437a4d1be0c8606d0905b5d">SpriteSheet::animationClips</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SpriteClip &gt; animationClips</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00141">Animation.h:141</a></div></div>
-<div class="ttc" id="astruct_sprite_clip_html_a0f0f0cf07d19607cef868cbd1090dbaf"><div class="ttname"><a href="struct_sprite_clip.html#a0f0f0cf07d19607cef868cbd1090dbaf">SpriteClip::looping</a></div><div class="ttdeci">bool looping</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00038">Animation.h:38</a></div></div>
-<div class="ttc" id="astruct_sprite_clip_html_a523b8e6b2ae91841db8d0a695af55728"><div class="ttname"><a href="struct_sprite_clip.html#a523b8e6b2ae91841db8d0a695af55728">SpriteClip::frameDuration</a></div><div class="ttdeci">float frameDuration</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00037">Animation.h:37</a></div></div>
-<div class="ttc" id="astruct_sprite_clip_html_a64edc4b888946923170ee69fc00a75b3"><div class="ttname"><a href="struct_sprite_clip.html#a64edc4b888946923170ee69fc00a75b3">SpriteClip::frameIndices</a></div><div class="ttdeci">std::vector&lt; int &gt; frameIndices</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00036">Animation.h:36</a></div></div>
+<div class="ttc" id="aclass_sprite_sheet_html_acffd1f788437a4d1be0c8606d0905b5d"><div class="ttname"><a href="#acffd1f788437a4d1be0c8606d0905b5d">SpriteSheet::animationClips</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SpriteClip &gt; animationClips</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00178">Animation.h:178</a></div></div>
+<div class="ttc" id="astruct_sprite_clip_html_a0f0f0cf07d19607cef868cbd1090dbaf"><div class="ttname"><a href="struct_sprite_clip.html#a0f0f0cf07d19607cef868cbd1090dbaf">SpriteClip::looping</a></div><div class="ttdeci">bool looping</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00046">Animation.h:46</a></div></div>
+<div class="ttc" id="astruct_sprite_clip_html_a523b8e6b2ae91841db8d0a695af55728"><div class="ttname"><a href="struct_sprite_clip.html#a523b8e6b2ae91841db8d0a695af55728">SpriteClip::frameDuration</a></div><div class="ttdeci">float frameDuration</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00045">Animation.h:45</a></div></div>
+<div class="ttc" id="astruct_sprite_clip_html_a64edc4b888946923170ee69fc00a75b3"><div class="ttname"><a href="struct_sprite_clip.html#a64edc4b888946923170ee69fc00a75b3">SpriteClip::frameIndices</a></div><div class="ttdeci">std::vector&lt; int &gt; frameIndices</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00044">Animation.h:44</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -310,14 +308,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieves a named animation clip if it exists. </p>
+<p>Returns a pointer to a named animation clip. </p>
+<p>Searches the internal clip map for the requested name. If found, returns a pointer to the stored clip. Otherwise returns nullptr.</p>
+<p>The returned pointer refers to internal storage owned by <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>. It remains valid as long as the corresponding entry is not replaced or removed. :contentReference[oaicite:4]{index=4}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>Clip identifier. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the clip to search for. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the stored <a class="el" href="struct_sprite_clip.html" title="Describes an animation clip as an ordered sequence of frame indices.">SpriteClip</a>, or nullptr if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the clip if found, otherwise nullptr. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00047">47</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
@@ -353,8 +353,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the total number of frames in the grid. </p>
-<p>Typically equals columns * rows.</p>
-<dl class="section return"><dt>Returns</dt><dd>Total frame count. </dd></dl>
+<p>The total frame count is computed as the product of the number of columns and rows derived from the texture and frame sizes.</p>
+<dl class="section return"><dt>Returns</dt><dd>Total number of addressable frames in this sprite sheet. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00032">32</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
@@ -363,8 +363,8 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6895f8f4de5332b429bdb3bbc8774943" name="a6895f8f4de5332b429bdb3bbc8774943"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6895f8f4de5332b429bdb3bbc8774943">&#9670;&#160;</a></span>GetTexture()</h2>
+<a id="a14aee10cf13f14e9046f988bd76ceb7a" name="a14aee10cf13f14e9046f988bd76ceb7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14aee10cf13f14e9046f988bd76ceb7a">&#9670;&#160;</a></span>GetTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +373,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_texture.html">Texture</a> * SpriteSheet::GetTexture </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; SpriteSheet::GetTexture </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -386,11 +386,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the underlying texture used by this sprite sheet. </p>
-<dl class="section return"><dt>Returns</dt><dd>Raw pointer to the texture (not owned). </dd></dl>
+<p>Returns the texture used by this sprite sheet. </p>
+<p>Provides access to the underlying texture so that animation and rendering systems can bind the correct resource during draw submission.</p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the source texture. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00101">101</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#adfc63d5429102f4267dea33179c3ba38">texture</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00132">132</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">texture</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -417,15 +418,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the UV offset for the given frame index. </p>
-<p>The returned value is typically the top-left UV coordinate of the frame cell. Combined with <a class="el" href="#a5ff75353185084b8624ee771d10a590a" title="Returns the uniform UV scale for one frame cell.">GetUVScale()</a>, this enables computing per-frame UVs in shaders: uv = baseUV * scale + offset.</p>
+<p>Returns the UV offset of the specified frame. </p>
+<p>Converts a zero-based frame index into a column and row position inside the sprite sheet grid. The row is then vertically flipped before converting the result into normalized UV coordinates.</p>
+<p>The returned value represents the UV origin of the frame region. The per-frame UV size is provided separately by <a class="el" href="#a5ff75353185084b8624ee771d10a590a" title="Returns the normalized UV scale of a single frame.">GetUVScale()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">frameIndex</td><td>Index of the frame in row-major order. </td></tr>
+    <tr><td class="paramname">frameIndex</td><td>Zero-based frame index within the sheet. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>UV offset for sampling this frame. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Top-left UV offset of the requested frame.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function does not validate whether the given frame index is within range. Callers are expected to use valid indices. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00014">14</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
@@ -462,9 +465,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the uniform UV scale for one frame cell. </p>
-<p>For a uniform grid, scale is typically: { frameWidth / texWidth, frameHeight / texHeight }.</p>
-<dl class="section return"><dt>Returns</dt><dd>UV scale for a single frame cell. </dd></dl>
+<p>Returns the normalized UV scale of a single frame. </p>
+<p>Computes the width and height of one frame in normalized texture space. The returned value can be combined with <a class="el" href="#a2052999ec8fce40951d4df88118d908a" title="Returns the UV offset of the specified frame.">GetUVOffset()</a> to sample the correct region of the sprite sheet texture.</p>
+<dl class="section return"><dt>Returns</dt><dd>UV scale where x is frameWidth / textureWidth and y is frameHeight / textureHeight. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00024">24</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
@@ -497,7 +500,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00141">141</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00178">178</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -521,7 +524,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00144">144</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00181">181</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -545,7 +548,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00147">147</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00184">184</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -569,7 +572,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00148">148</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00185">185</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -593,7 +596,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00143">143</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00180">180</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -617,7 +620,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00143">143</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00180">180</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -641,7 +644,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00144">144</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00181">181</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -665,12 +668,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00145">145</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00182">182</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
-<a id="adfc63d5429102f4267dea33179c3ba38" name="adfc63d5429102f4267dea33179c3ba38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfc63d5429102f4267dea33179c3ba38">&#9670;&#160;</a></span>texture</h2>
+<a id="a2d3ed44836f16c0cc0d5a3bc0c77617a" name="a2d3ed44836f16c0cc0d5a3bc0c77617a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3ed44836f16c0cc0d5a3bc0c77617a">&#9670;&#160;</a></span>texture</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -679,7 +682,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_texture.html">Texture</a>* SpriteSheet::texture</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_texture.html">Texture</a>&gt; SpriteSheet::texture</td>
         </tr>
       </table>
   </td>
@@ -689,7 +692,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00142">142</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00179">179</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -713,7 +716,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00145">145</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00182">182</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>

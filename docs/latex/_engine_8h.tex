@@ -1,5 +1,10 @@
 \doxysection{Project/\+Jin\+Engine/\+Public/\+Engine.h File Reference}
 \hypertarget{_engine_8h}{}\label{_engine_8h}\index{Project/JinEngine/Public/Engine.h@{Project/JinEngine/Public/Engine.h}}
+
+
+Master include header that exposes the main public engine interface.  
+
+
 {\ttfamily \#include "{}Jin\+Engine.\+h"{}}\newline
 {\ttfamily \#include "{}Game\+State.\+h"{}}\newline
 {\ttfamily \#include "{}Engine\+Context.\+h"{}}\newline
@@ -29,3 +34,24 @@
 {\ttfamily \#include "{}Debug.\+h"{}}\newline
 {\ttfamily \#include "{}glm.\+hpp"{}}\newline
 {\ttfamily \#include "{}gtc/matrix\+\_\+transform.\+hpp"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+Master include header that exposes the main public engine interface. 
+
+This header acts as a single entry point for the \doxylink{class_jin_engine}{Jin\+Engine} framework. It aggregates the engine core, state system, object system, rendering system, audio system, camera system, resource system, collision system, animation system, debugging utilities, and commonly used GLM math headers.
+
+Including this file allows engine code and gameplay-\/side code to access most of the engine\textquotesingle{}s public types without including each header individually.
+
+In the current engine structure, many implementation files include this header as a central dependency so they can access shared engine types and systems from one place.
+
+\begin{DoxyNote}{Note}
+This file is primarily an umbrella header for convenience and interface exposure. It does not define runtime behavior by itself, but it determines which engine modules become visible to translation units that include it.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Because this header includes many other headers, including it widely may increase compile times. For large-\/scale projects, prefer including only the specific headers that are actually required in each file when build time becomes important. 
+\end{DoxyWarning}
+
+
+Definition in file \mbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+

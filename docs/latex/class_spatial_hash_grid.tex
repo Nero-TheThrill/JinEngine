@@ -2,7 +2,7 @@
 \hypertarget{class_spatial_hash_grid}{}\label{class_spatial_hash_grid}\index{SpatialHashGrid@{SpatialHashGrid}}
 
 
-Broad-\/phase collision structure using spatial hashing.  
+Broad-\/phase collision structure based on a spatial hash grid.  
 
 
 
@@ -13,15 +13,15 @@ Broad-\/phase collision structure using spatial hashing.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a8d21ff387048e7157ab590150d6da4df}{Clear}} ()
-\begin{DoxyCompactList}\small\item\em Clears all stored objects and grid cell mappings. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Clears all stored cells and object lists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}{Insert}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj)
-\begin{DoxyCompactList}\small\item\em Inserts an object into the spatial hash grid. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Inserts an object into the broad-\/phase structure. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}{Compute\+Collisions}} (std\+::function$<$ void(\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*})$>$ on\+Collision)
-\begin{DoxyCompactList}\small\item\em Computes broad-\/phase collision candidate pairs and invokes a callback. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enumerates potential collision pairs produced by the grid. \end{DoxyCompactList}\item 
 glm\+::ivec2 \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{Get\+Cell}} (const glm\+::vec2 \&pos) const
-\begin{DoxyCompactList}\small\item\em Converts a world position into a grid cell coordinate. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts a world-\/space position to a grid cell coordinate. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{Insert\+To\+Cell}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}obj, const glm\+::ivec2 \&cell)
-\begin{DoxyCompactList}\small\item\em Inserts an object into a specific cell bucket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Inserts an object into a specific cell list. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,19 +38,18 @@ std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}
 
 
 \doxysubsection{Detailed Description}
-Broad-\/phase collision structure using spatial hashing. 
+Broad-\/phase collision structure based on a spatial hash grid. 
 
-\doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} divides world space into square cells (cell\+Size). Objects are inserted into one or more cells based on their positions.
+\doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} partitions world space into fixed-\/size cells and inserts objects according to the bounding radius of their colliders. During collision checking, \doxylink{class_object_manager}{Object\+Manager} clears the grid, inserts current objects, and asks the grid to emit candidate object pairs.
 
-During Compute\+Collisions\+:
-\begin{DoxyItemize}
-\item The grid enumerates objects per cell and generates candidate pairs.
-\item The on\+Collision callback is invoked for each candidate pair (typically leading to narrow-\/phase collider checks).
-\end{DoxyItemize}
+Objects that cover too many cells are treated as large objects and are stored separately. Those objects are compared against all inserted objects to avoid excessive cell insertion cost. \+:content\+Reference\mbox{[}oaicite\+:20\mbox{]}\{index=20\}
 
-Large objects that exceed cell-\/based assumptions may be tracked separately in large\+Objects, allowing the system to handle them without excessive multi-\/cell insertion. 
+\begin{DoxyNote}{Note}
+This class is intended for internal engine use through \doxylink{class_object_manager}{Object\+Manager}. 
+\end{DoxyNote}
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00407}{407}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00516}{516}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
@@ -63,19 +62,19 @@ void Spatial\+Hash\+Grid\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Clears all stored objects and grid cell mappings. 
+Clears all stored cells and object lists. 
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00174}{174}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00179\ \{}
-\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}.clear();}
-\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.clear();}
-\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.clear();}
-\DoxyCodeLine{00183\ \}}
+\DoxyCodeLine{00175\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}.clear();}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.clear();}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.clear();}
+\DoxyCodeLine{00179\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_spatial_hash_grid_a7cf87def6c3ae48e96b8569f8e58ff56}\index{SpatialHashGrid@{SpatialHashGrid}!ComputeCollisions@{ComputeCollisions}}
@@ -86,41 +85,41 @@ void Spatial\+Hash\+Grid\+::\+Compute\+Collisions (\begin{DoxyParamCaption}\item
 
 
 
-Computes broad-\/phase collision candidate pairs and invokes a callback. 
+Enumerates potential collision pairs produced by the grid. 
 
-The callback is responsible for deciding what to do with each candidate pair (e.\+g., performing narrow-\/phase collision checks, resolving responses, etc.).
+First compares large objects against all inserted objects, then enumerates unique pairs within each occupied cell. The callback is responsible for the narrow-\/phase collision test and any duplicate filtering beyond cell-\/local pairing. \+:content\+Reference\mbox{[}oaicite\+:22\mbox{]}\{index=22\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em on\+Collision} & Callback invoked with (Object\texorpdfstring{$\ast$}{*}, Object\texorpdfstring{$\ast$}{*}) candidate pair. \\
+{\em on\+Collision} & Callback receiving candidate object pairs. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00212}{212}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00213\ \{}
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ obj\ :\ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}})}
-\DoxyCodeLine{00215\ \ \ \ \ \{}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ other\ :\ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}})}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ !=\ other)\ onCollision(obj,\ other);}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00220\ \ \ \ \ \}}
-\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [cell,\ list]\ :\ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}})}
-\DoxyCodeLine{00222\ \ \ \ \ \{}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ list.size();}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ count;\ ++i)}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ i\ +\ 1;\ j\ <\ count;\ ++j)}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onCollision(list[i],\ list[j]);}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00231\ \ \ \ \ \}}
-\DoxyCodeLine{00232\ \}}
+\DoxyCodeLine{00209\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ obj\ :\ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}})}
+\DoxyCodeLine{00211\ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ other\ :\ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}})}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ !=\ other)\ onCollision(obj,\ other);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [cell,\ list]\ :\ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}})}
+\DoxyCodeLine{00218\ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ list.size();}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ count;\ ++i)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ i\ +\ 1;\ j\ <\ count;\ ++j)}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onCollision(list[i],\ list[j]);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}\index{SpatialHashGrid@{SpatialHashGrid}!GetCell@{GetCell}}
@@ -131,11 +130,11 @@ glm\+::ivec2 Spatial\+Hash\+Grid\+::\+Get\+Cell (\begin{DoxyParamCaption}\item[{
 
 
 
-Converts a world position into a grid cell coordinate. 
+Converts a world-\/space position to a grid cell coordinate. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & World position. \\
+{\em pos} & Position in world space. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -143,16 +142,16 @@ Integer cell coordinate.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00230}{230}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00235\ \{}
-\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::ivec2(}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.x\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}})),}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.y\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}}))}
-\DoxyCodeLine{00239\ \ \ \ \ );}
-\DoxyCodeLine{00240\ \}}
+\DoxyCodeLine{00231\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::ivec2(}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.x\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}})),}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::floor(pos.y\ /\ \mbox{\hyperlink{class_spatial_hash_grid_af3d8a474161e4f52e06fadd344cfe891}{cellSize}}))}
+\DoxyCodeLine{00235\ \ \ \ \ );}
+\DoxyCodeLine{00236\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_spatial_hash_grid_a3beecc4cb4fe0ba6ac6d99eca08f7fb9}\index{SpatialHashGrid@{SpatialHashGrid}!Insert@{Insert}}
@@ -163,9 +162,9 @@ void Spatial\+Hash\+Grid\+::\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hype
 
 
 
-Inserts an object into the spatial hash grid. 
+Inserts an object into the broad-\/phase structure. 
 
-This function computes which cell(s) an object belongs to and stores it. Objects that are considered large may be inserted into large\+Objects instead.
+The object is skipped if it is not alive or does not have a collider. Otherwise, the collider bounding radius is used to determine the covered grid range. Large objects are redirected into a dedicated list instead of being inserted into every cell. \+:content\+Reference\mbox{[}oaicite\+:21\mbox{]}\{index=21\}
 
 
 \begin{DoxyParams}{Parameters}
@@ -174,36 +173,36 @@ This function computes which cell(s) an object belongs to and stores it. Objects
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00186\ \{}
-\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>\mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{IsAlive}}()\ ||\ !obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}())}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.push\_back(obj);}
-\DoxyCodeLine{00190\ \ \ \ \ Collider*\ collider\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}();}
-\DoxyCodeLine{00191\ \ \ \ \ glm::vec2\ offset\ =\ collider?\ collider-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}():\ glm::vec2(0);}
-\DoxyCodeLine{00192\ \ \ \ \ glm::vec2\ pos\ =\ obj-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+\ offset;}
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{GetBoundingRadius}}();}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ glm::ivec2\ minCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ -\/\ glm::vec2(radius));}
-\DoxyCodeLine{00196\ \ \ \ \ glm::ivec2\ maxCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ +\ glm::vec2(radius));}
-\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{int}\ coveredCells\ =\ (maxCell.x\ -\/\ minCell.x\ +\ 1)\ *\ (maxCell.y\ -\/\ minCell.y\ +\ 1);}
-\DoxyCodeLine{00198\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coveredCells\ >\ \mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{LARGE\_OBJECT\_THRESHOLD}})}
-\DoxyCodeLine{00199\ \ \ \ \ \{}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.push\_back(obj);}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00202\ \ \ \ \ \}}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ minCell.y;\ y\ <=\ maxCell.y;\ ++y)}
-\DoxyCodeLine{00205\ \ \ \ \ \{}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ minCell.x;\ x\ <=\ maxCell.x;\ ++x)}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{InsertToCell}}(obj,\ \{\ x,\ y\ \});}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00210\ \ \ \ \ \}}
-\DoxyCodeLine{00211\ \}}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj-\/>\mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{IsAlive}}()\ ||\ !obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}())}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}{objects}}.push\_back(obj);}
+\DoxyCodeLine{00186\ \ \ \ \ Collider*\ collider\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}();}
+\DoxyCodeLine{00187\ \ \ \ \ glm::vec2\ offset\ =\ collider?\ collider-\/>\mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{GetOffset}}():\ glm::vec2(0);}
+\DoxyCodeLine{00188\ \ \ \ \ glm::vec2\ pos\ =\ obj-\/>\mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{GetWorldPosition}}()+\ offset;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ obj-\/>\mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{GetCollider}}()-\/>\mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{GetBoundingRadius}}();}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ glm::ivec2\ minCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ -\/\ glm::vec2(radius));}
+\DoxyCodeLine{00192\ \ \ \ \ glm::ivec2\ maxCell\ =\ \mbox{\hyperlink{class_spatial_hash_grid_a3e3dfa8216d3b5379bf3fda5ae962923}{GetCell}}(pos\ +\ glm::vec2(radius));}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{int}\ coveredCells\ =\ (maxCell.x\ -\/\ minCell.x\ +\ 1)\ *\ (maxCell.y\ -\/\ minCell.y\ +\ 1);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coveredCells\ >\ \mbox{\hyperlink{_collider_8cpp_ae08c3daaa3421d07594c2475a8eea28b}{LARGE\_OBJECT\_THRESHOLD}})}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}{largeObjects}}.push\_back(obj);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ minCell.y;\ y\ <=\ maxCell.y;\ ++y)}
+\DoxyCodeLine{00201\ \ \ \ \ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ minCell.x;\ x\ <=\ maxCell.x;\ ++x)}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}{InsertToCell}}(obj,\ \{\ x,\ y\ \});}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_spatial_hash_grid_a6303f1125394feeef151f935672eb2cf}\index{SpatialHashGrid@{SpatialHashGrid}!InsertToCell@{InsertToCell}}
@@ -214,24 +213,24 @@ void Spatial\+Hash\+Grid\+::\+Insert\+To\+Cell (\begin{DoxyParamCaption}\item[{\
 
 
 
-Inserts an object into a specific cell bucket. 
+Inserts an object into a specific cell list. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em obj} & \doxylink{class_object}{Object} to insert. \\
 \hline
-{\em cell} & Cell coordinate. \\
+{\em cell} & Target cell coordinate. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
+Definition at line \mbox{\hyperlink{_collider_8cpp_source_l00238}{238}} of file \mbox{\hyperlink{_collider_8cpp_source}{Collider.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00243\ \{}
-\DoxyCodeLine{00244\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}[cell].push\_back(obj);}
-\DoxyCodeLine{00245\ \}}
+\DoxyCodeLine{00239\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}{grid}}[cell].push\_back(obj);}
+\DoxyCodeLine{00241\ \}}
 
 \end{DoxyCode}
 
@@ -245,7 +244,7 @@ int Spatial\+Hash\+Grid\+::cell\+Size = 50\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00454}{454}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00564}{564}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_af796e0341b4f105ee2b500e38563901a}\index{SpatialHashGrid@{SpatialHashGrid}!grid@{grid}}
 \index{grid@{grid}!SpatialHashGrid@{SpatialHashGrid}}
@@ -255,7 +254,7 @@ std\+::unordered\+\_\+map$<$glm\+::ivec2, std\+::vector$<$\mbox{\hyperlink{class
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00455}{455}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00565}{565}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_aacf09b74d465e7bd6ccb39c65bf571c5}\index{SpatialHashGrid@{SpatialHashGrid}!largeObjects@{largeObjects}}
 \index{largeObjects@{largeObjects}!SpatialHashGrid@{SpatialHashGrid}}
@@ -265,7 +264,7 @@ std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00456}{456}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00566}{566}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_a3d562af33d1ca962af83cc51d27a162a}\index{SpatialHashGrid@{SpatialHashGrid}!ObjectManager@{ObjectManager}}
 \index{ObjectManager@{ObjectManager}!SpatialHashGrid@{SpatialHashGrid}}
@@ -275,7 +274,7 @@ friend Spatial\+Hash\+Grid\+::\+Object\+Manager\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00409}{409}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00518}{518}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_spatial_hash_grid_a380f66bcaef2e08fb8079e6929f152c5}\index{SpatialHashGrid@{SpatialHashGrid}!objects@{objects}}
 \index{objects@{objects}!SpatialHashGrid@{SpatialHashGrid}}
@@ -285,7 +284,7 @@ std\+::vector$<$\mbox{\hyperlink{class_object}{Object}}\texorpdfstring{$\ast$}{*
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00457}{457}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00567}{567}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 

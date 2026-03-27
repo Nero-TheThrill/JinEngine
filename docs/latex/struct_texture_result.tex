@@ -2,7 +2,7 @@
 \hypertarget{struct_texture_result}{}\label{struct_texture_result}\index{TextureResult@{TextureResult}}
 
 
-Result data produced by an asynchronous texture load.  
+Stores the completed result of an asynchronous texture load.  
 
 
 
@@ -29,13 +29,13 @@ bool \mbox{\hyperlink{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}{o
 
 
 \doxysubsection{Detailed Description}
-Result data produced by an asynchronous texture load. 
+Stores the completed result of an asynchronous texture load. 
 
-Contains decoded pixel data along with dimensions and channel count. The ok flag indicates whether loading/decoding succeeded.
+\doxylink{struct_texture_result}{Texture\+Result} contains decoded image information produced by the worker thread, including dimensions, channel count, pixel bytes, and the original texture settings.
 
-The main thread typically consumes this result to create a GPU texture. 
+If loading succeeds, ok is set to true and pixels contains the raw image data. If loading fails, ok is false and the pixel buffer may remain empty. \+:content\+Reference\mbox{[}oaicite\+:7\mbox{]}\{index=7\} 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00128}{128}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00146}{146}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -48,7 +48,7 @@ int Texture\+Result\+::channels = 0}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00134}{134}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00152}{152}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a5877e0a05889af4e8d1144bdaa679a5a}\index{TextureResult@{TextureResult}!height@{height}}
 \index{height@{height}!TextureResult@{TextureResult}}
@@ -58,7 +58,7 @@ int Texture\+Result\+::height = 0}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00133}{133}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00151}{151}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a57be086c1cb00a217e0796f6b4125216}\index{TextureResult@{TextureResult}!ok@{ok}}
 \index{ok@{ok}!TextureResult@{TextureResult}}
@@ -68,7 +68,7 @@ bool Texture\+Result\+::ok = false}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00136}{136}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00154}{154}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_ad4e992bbf408c38f8b9c247206d21c42}\index{TextureResult@{TextureResult}!pixels@{pixels}}
 \index{pixels@{pixels}!TextureResult@{TextureResult}}
@@ -78,7 +78,7 @@ std\+::vector$<$unsigned char$>$ Texture\+Result\+::pixels}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00135}{135}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00153}{153}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a36de397e8aaf253080b1569c15882e69}\index{TextureResult@{TextureResult}!settings@{settings}}
 \index{settings@{settings}!TextureResult@{TextureResult}}
@@ -88,11 +88,11 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00135}{135
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00131}{131}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00149}{149}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00131\ \{\};}
+\DoxyCodeLine{00149\ \{\};}
 
 \end{DoxyCode}
 \Hypertarget{struct_texture_result_a5c534874badcb5bf4d050a13b7539cae}\index{TextureResult@{TextureResult}!tag@{tag}}
@@ -103,7 +103,7 @@ std\+::string Texture\+Result\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00130}{130}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00148}{148}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_result_a6c696c4ace706cf1fb1cb3a352a41924}\index{TextureResult@{TextureResult}!width@{width}}
 \index{width@{width}!TextureResult@{TextureResult}}
@@ -113,7 +113,7 @@ int Texture\+Result\+::width = 0}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00132}{132}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00150}{150}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

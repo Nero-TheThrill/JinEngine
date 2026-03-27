@@ -2,7 +2,7 @@
 \hypertarget{class_input_manager}{}\label{class_input_manager}\index{InputManager@{InputManager}}
 
 
-Manages keyboard, mouse button, cursor position, and scroll input states.  
+Central input state manager for keyboard, mouse buttons, cursor position, and scroll input.  
 
 
 
@@ -13,113 +13,137 @@ Manages keyboard, mouse button, cursor position, and scroll input states.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_input_manager_a8be46886da639b26d67181c29dab6d6c}{Input\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_input_manager}{Input\+Manager} with default-\/initialized state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs the input manager with default empty state. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{Is\+Key\+Down}} (int key) const
-\begin{DoxyCompactList}\small\item\em Checks whether a key is currently held down. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a key is currently held down. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{Is\+Key\+Pressed}} (int key) const
-\begin{DoxyCompactList}\small\item\em Checks whether a key was pressed during the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a key was pressed during the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{Is\+Key\+Released}} (int key) const
-\begin{DoxyCompactList}\small\item\em Checks whether a key was released during the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a key was released during the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{Is\+Mouse\+Button\+Down}} (int button) const
-\begin{DoxyCompactList}\small\item\em Checks whether a mouse button is currently held down. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a mouse button is currently held down. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{Is\+Mouse\+Button\+Pressed}} (int button) const
-\begin{DoxyCompactList}\small\item\em Checks whether a mouse button was pressed during the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a mouse button was pressed during the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{Is\+Mouse\+Button\+Released}} (int button) const
-\begin{DoxyCompactList}\small\item\em Checks whether a mouse button was released during the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a mouse button was released during the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_afb908706c127374a1450c3a6400677f1}{Is\+Mouse\+Button\+Dragging}} (int button) const
-\begin{DoxyCompactList}\small\item\em Checks whether a mouse button is being held while the mouse is moving. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether a mouse button is being held continuously across frames. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a8f4ceefa11add4aacea601d3e14700b2}{Get\+MouseX}} () const
-\begin{DoxyCompactList}\small\item\em Returns the current mouse X position in screen space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current cursor x position in window space. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_ac5d47f48a3f8de45be9310e28fe926ec}{Get\+MouseY}} () const
-\begin{DoxyCompactList}\small\item\em Returns the current mouse Y position in screen space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current cursor y position in window space. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_input_manager_a67fc23629ffc128363f074a549f38ee4}{Get\+Mouse\+Pos}} () const
-\begin{DoxyCompactList}\small\item\em Returns the current mouse position in screen space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current cursor position in window space. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a507dcf0711e211639d929454177b9374}{Get\+Mouse\+WorldX}} (\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera) const
-\begin{DoxyCompactList}\small\item\em Returns the mouse X position in world space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts the current window-\/space cursor x coordinate into world-\/space x. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a3611627023a950f1efd20b9da37b499a}{Get\+Mouse\+WorldY}} (\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera) const
-\begin{DoxyCompactList}\small\item\em Returns the mouse Y position in world space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts the current window-\/space cursor y coordinate into world-\/space y. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_input_manager_a55e789665aa293ce52e768d959ff27c1}{Get\+Mouse\+World\+Pos}} (\mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera) const
-\begin{DoxyCompactList}\small\item\em Returns the mouse position in world space. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts the current cursor position into world-\/space using a camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{Add\+Scroll}} (double dx, double dy)
-\begin{DoxyCompactList}\small\item\em Accumulates scroll input delta values. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Accumulates scroll wheel input. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_input_manager_a76462a4bb8c97cfab4bc68035ec598d1}{Get\+Scroll\+Delta}} () const
-\begin{DoxyCompactList}\small\item\em Returns the scroll delta for the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the scroll delta accumulated for the current frame. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a6fd162bbac7bd828ae4b51eac22f9fe1}{Get\+Scroll\+XDelta}} () const
 \begin{DoxyCompactList}\small\item\em Returns the horizontal scroll delta for the current frame. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_ae1b4ac869cb097c4103dad139e6cfb3b}{Get\+Scroll\+YDelta}} () const
 \begin{DoxyCompactList}\small\item\em Returns the vertical scroll delta for the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_aae2e8d40fbd199038bc573245deedfc6}{Is\+Scrolled\+Up}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the scroll wheel was moved upward this frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the wheel moved upward during the current frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_a0847068dcd89e9ca0169be41186391ac}{Is\+Scrolled\+Down}} () const
-\begin{DoxyCompactList}\small\item\em Checks whether the scroll wheel was moved downward this frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the wheel moved downward during the current frame. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_manager_ae569ff5be56bca62b47a7bdfffe2c867}{On\+Key}} (int key, int, int action, int)
-\begin{DoxyCompactList}\small\item\em Receives keyboard input events from GLFW. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Receives a keyboard event from the window callback layer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_manager_a84f610e644a2de5cb64b55220d4a4c8e}{On\+Mouse\+Button}} (int button, int action, int)
-\begin{DoxyCompactList}\small\item\em Receives mouse button input events from GLFW. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Receives a mouse button event from the window callback layer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_manager_a92319ec0b9f5eff3fd9a2e22a434a3a1}{Reset}} ()
-\begin{DoxyCompactList}\small\item\em Resets per-\/frame transient input data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clears all stored input state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_input_manager_a222eea359d455ca0517bde4f74536754}{Init}} (GLFWwindow \texorpdfstring{$\ast$}{*}\+\_\+window)
-\begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_input_manager}{Input\+Manager} with a GLFW window. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds the input manager to a GLFW window. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update}} ()
-\begin{DoxyCompactList}\small\item\em Updates internal input state transitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Commits staged input into the current frame state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 friend \mbox{\hyperlink{class_input_manager_a98846b9e5b34f67967bca356e2e63a94}{Jin\+Engine}}
 \item 
 GLFWwindow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}}
-\item 
+\begin{DoxyCompactList}\small\item\em GLFW window handle used for cursor position queries. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e839c60}{MAX\+\_\+\+KEYS}} $>$ \mbox{\hyperlink{class_input_manager_aefae2af7e4cb8d8dca2b3e400cfd066b}{current\+Key\+State}}
-\item 
+\begin{DoxyCompactList}\small\item\em Current committed key state for the active frame. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e839c60}{MAX\+\_\+\+KEYS}} $>$ \mbox{\hyperlink{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}{previous\+Key\+State}}
-\item 
+\begin{DoxyCompactList}\small\item\em Previous frame\textquotesingle{}s committed key state. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f2010a13b}{MAX\+\_\+\+MOUSE\+\_\+\+BUTTONS}} $>$ \mbox{\hyperlink{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}{current\+Mouse\+State}}
-\item 
+\begin{DoxyCompactList}\small\item\em Current committed mouse button state for the active frame. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f2010a13b}{MAX\+\_\+\+MOUSE\+\_\+\+BUTTONS}} $>$ \mbox{\hyperlink{class_input_manager_a732a36a1572545c3c201c3742247f524}{previous\+Mouse\+State}}
-\item 
+\begin{DoxyCompactList}\small\item\em Previous frame\textquotesingle{}s committed mouse button state. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}}
-\item 
+\begin{DoxyCompactList}\small\item\em Current cursor x position in window coordinates. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}}
-\item 
+\begin{DoxyCompactList}\small\item\em Current cursor y position in window coordinates. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_af98f979b0c74d37efd4947fcc125fc77}{scroll\+AccumX}} = 0.\+0
-\item 
+\begin{DoxyCompactList}\small\item\em Accumulated horizontal scroll received since the last \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_abb09df427175cadf802e77f3e5087c4f}{scroll\+AccumY}} = 0.\+0
-\item 
+\begin{DoxyCompactList}\small\item\em Accumulated vertical scroll received since the last \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_a34bc0b94bf3d5a6087e5b25fdb71d808}{scroll\+DeltaX}} = 0.\+0
-\item 
+\begin{DoxyCompactList}\small\item\em Horizontal scroll delta exposed for the current frame. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}{scroll\+DeltaY}} = 0.\+0
-\item 
+\begin{DoxyCompactList}\small\item\em Vertical scroll delta exposed for the current frame. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e839c60}{MAX\+\_\+\+KEYS}} $>$ \mbox{\hyperlink{class_input_manager_a5812fd362771cda6edb94ff0106bde19}{staged\+Key\+State}}
-\item 
+\begin{DoxyCompactList}\small\item\em Staged key state written by callback events before frame commit. \end{DoxyCompactList}\item 
 std\+::bitset$<$ \mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f2010a13b}{MAX\+\_\+\+MOUSE\+\_\+\+BUTTONS}} $>$ \mbox{\hyperlink{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}{staged\+Mouse\+State}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Staged mouse button state written by callback events before frame commit. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr int \mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e839c60}{MAX\+\_\+\+KEYS}} = 349
-\item 
+\begin{DoxyCompactList}\small\item\em Maximum supported key index stored in the internal bitset. \end{DoxyCompactList}\item 
 static constexpr int \mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f2010a13b}{MAX\+\_\+\+MOUSE\+\_\+\+BUTTONS}} = 9
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maximum supported mouse button slot count stored in the internal bitset. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Manages keyboard, mouse button, cursor position, and scroll input states. 
+Central input state manager for keyboard, mouse buttons, cursor position, and scroll input. 
 
-\doxylink{class_input_manager}{Input\+Manager} provides a frame-\/based input querying system built on top of GLFW callbacks. It tracks both current and previous input states to allow detection of\+:
+\doxylink{class_input_manager}{Input\+Manager} collects raw input events from GLFW callbacks and converts them into frame-\/stable queryable states for gameplay and engine systems.
+
+The current implementation uses a staged input model\+:
 \begin{DoxyItemize}
-\item key/button down
-\item key/button pressed (down this frame)
-\item key/button released (released this frame)
+\item GLFW callbacks write into staged\+Key\+State and staged\+Mouse\+State through \doxylink{class_input_manager_ae569ff5be56bca62b47a7bdfffe2c867}{On\+Key()} and \doxylink{class_input_manager_a84f610e644a2de5cb64b55220d4a4c8e}{On\+Mouse\+Button()}.
+\item \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()} copies staged states into current states once per frame.
+\item previous states are preserved so pressed/released transitions can be queried.
 \end{DoxyItemize}
 
-Input events are first written into staged states via GLFW callbacks, then committed to current states during the engine update phase.
+This allows user code to call\+:
+\begin{DoxyItemize}
+\item \doxylink{class_input_manager_afd4bcb5fd69d6262fa79f64a4ae43b01}{Is\+Key\+Down()}
+\item \doxylink{class_input_manager_ac052ac0d0831d40848031aca922a00ef}{Is\+Key\+Pressed()}
+\item \doxylink{class_input_manager_ab0e1cd02dfbeea18402babfa3a2cc88e}{Is\+Key\+Released()}
+\item \doxylink{class_input_manager_adb20eaed0386dab5239202ea0022e313}{Is\+Mouse\+Button\+Down()}
+\item \doxylink{class_input_manager_a9d4212a5b4b4485a9e5934930ab4de2a}{Is\+Mouse\+Button\+Pressed()}
+\item \doxylink{class_input_manager_a1adf3a1c58a545d0721479bbbedf81c3}{Is\+Mouse\+Button\+Released()}
+\item \doxylink{class_input_manager_afb908706c127374a1450c3a6400677f1}{Is\+Mouse\+Button\+Dragging()}
+\end{DoxyItemize}
 
-Mouse position and scroll input are accumulated and processed separately. World-\/space mouse coordinates are calculated using a \doxylink{class_camera2_d}{Camera2D} projection. 
+Cursor position is sampled every frame from GLFW, and scroll input is accumulated asynchronously through \doxylink{class_input_manager_a9a7e6c988123d556523b698ae010cc5b}{Add\+Scroll()} before being exposed as per-\/frame deltas in \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}.
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00025}{25}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+\doxylink{class_input_manager}{Input\+Manager} is initialized and driven by \doxylink{class_jin_engine}{Jin\+Engine}\+:
+\begin{DoxyItemize}
+\item \doxylink{class_jin_engine}{Jin\+Engine} calls \doxylink{class_input_manager_a222eea359d455ca0517bde4f74536754}{Init()} with the GLFW window handle.
+\item \doxylink{class_jin_engine}{Jin\+Engine} calls \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()} once per frame before game-\/state update.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This class stores input state only. It does not own the window.
+
+World-\/space mouse queries require a valid \doxylink{class_camera2_d}{Camera2D} pointer. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00043}{43}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 
 
@@ -132,15 +156,15 @@ Input\+Manager\+::\+Input\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 
 
-Constructs an \doxylink{class_input_manager}{Input\+Manager} with default-\/initialized state. 
+Constructs the input manager with default empty state. 
 
-The window pointer is initialized to nullptr. Mouse position values are initialized to zero. 
+The current implementation initializes the stored GLFW window pointer to nullptr and cursor position to (0, 0). Bitsets and scroll values use their default zero state. 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00038}{38}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00055}{55}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00038\ :\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}}(\textcolor{keyword}{nullptr}),\ \mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}}(0.0),\ \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}}(0.0)\ \{\}}
+\DoxyCodeLine{00055\ :\mbox{\hyperlink{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}{window}}(\textcolor{keyword}{nullptr}),\ \mbox{\hyperlink{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}{mouseX}}(0.0),\ \mbox{\hyperlink{class_input_manager_a766a16e7ae54676804c08e80bb061233}{mouseY}}(0.0)\ \{\}}
 
 \end{DoxyCode}
 
@@ -154,15 +178,15 @@ void Input\+Manager\+::\+Add\+Scroll (\begin{DoxyParamCaption}\item[{double}]{dx
 
 
 
-Accumulates scroll input delta values. 
+Accumulates scroll wheel input. 
 
-This function is typically called from a GLFW scroll callback. The accumulated values are later converted into per-\/frame deltas.
+\doxylink{class_window_manager}{Window\+Manager}\textquotesingle{}s GLFW scroll callback forwards wheel movement into this function. The values are stored in accumulation variables and consumed on the next \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}, where they become the per-\/frame scroll deltas.
 
 
 \begin{DoxyParams}{Parameters}
-{\em dx} & Horizontal scroll delta. \\
+{\em dx} & Horizontal scroll delta from the callback. \\
 \hline
-{\em dy} & Vertical scroll delta. \\
+{\em dy} & Vertical scroll delta from the callback. \\
 \hline
 \end{DoxyParams}
 
@@ -185,8 +209,11 @@ glm\+::vec2 Input\+Manager\+::\+Get\+Mouse\+Pos (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Returns the current mouse position in screen space. 
+Returns the current cursor position in window space. 
 
+\begin{DoxyReturn}{Returns}
+Mouse position as a vec2 in window coordinates. \+:content\+Reference\mbox{[}oaicite\+:16\mbox{]}\{index=16\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -206,13 +233,16 @@ glm\+::vec2 Input\+Manager\+::\+Get\+Mouse\+World\+Pos (\begin{DoxyParamCaption}
 
 
 
-Returns the mouse position in world space. 
+Converts the current cursor position into world-\/space using a camera. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em camera} & Camera used to convert screen space to world space. \\
+{\em camera} & Camera used for the conversion. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+World-\/space mouse position. \+:content\+Reference\mbox{[}oaicite\+:19\mbox{]}\{index=19\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -232,13 +262,22 @@ double Input\+Manager\+::\+Get\+Mouse\+WorldX (\begin{DoxyParamCaption}\item[{\m
 
 
 
-Returns the mouse X position in world space. 
+Converts the current window-\/space cursor x coordinate into world-\/space x. 
+
+The current implementation uses the camera\textquotesingle{}s position, screen width, and zoom\+: \begin{DoxyVerb}(camera->GetPosition().x + mouseX - camera->GetScreenWidth() / 2.f) / camera->GetZoom()
+\end{DoxyVerb}
+
+
+This assumes a camera-\/centered screen-\/space convention consistent with \doxylink{class_camera2_d}{Camera2D} and the engine\textquotesingle{}s orthographic rendering flow.
 
 
 \begin{DoxyParams}{Parameters}
-{\em camera} & Camera used to convert screen space to world space. \\
+{\em camera} & Camera used for the conversion. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+World-\/space mouse x coordinate. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -258,13 +297,22 @@ double Input\+Manager\+::\+Get\+Mouse\+WorldY (\begin{DoxyParamCaption}\item[{\m
 
 
 
-Returns the mouse Y position in world space. 
+Converts the current window-\/space cursor y coordinate into world-\/space y. 
+
+The current implementation uses the camera\textquotesingle{}s position, screen height, and zoom\+: \begin{DoxyVerb}(camera->GetPosition().y + camera->GetScreenHeight() / 2.f - mouseY) / camera->GetZoom()
+\end{DoxyVerb}
+
+
+The subtraction from screen height reflects the engine\textquotesingle{}s world-\/space convention relative to top-\/left based cursor coordinates.
 
 
 \begin{DoxyParams}{Parameters}
-{\em camera} & Camera used to convert screen space to world space. \\
+{\em camera} & Camera used for the conversion. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+World-\/space mouse y coordinate. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -284,8 +332,13 @@ double Input\+Manager\+::\+Get\+MouseX (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Returns the current mouse X position in screen space. 
+Returns the current cursor x position in window space. 
 
+The value is refreshed in \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()} using glfw\+Get\+Cursor\+Pos(). \+:content\+Reference\mbox{[}oaicite\+:14\mbox{]}\{index=14\}
+
+\begin{DoxyReturn}{Returns}
+Mouse x coordinate in window space. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -305,8 +358,13 @@ double Input\+Manager\+::\+Get\+MouseY (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Returns the current mouse Y position in screen space. 
+Returns the current cursor y position in window space. 
 
+The value is refreshed in \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()} using glfw\+Get\+Cursor\+Pos(). \+:content\+Reference\mbox{[}oaicite\+:15\mbox{]}\{index=15\}
+
+\begin{DoxyReturn}{Returns}
+Mouse y coordinate in window space. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -326,8 +384,11 @@ glm\+::vec2 Input\+Manager\+::\+Get\+Scroll\+Delta (\begin{DoxyParamCaption}{}{}
 
 
 
-Returns the scroll delta for the current frame. 
+Returns the scroll delta accumulated for the current frame. 
 
+\begin{DoxyReturn}{Returns}
+Scroll delta as (x, y). \+:content\+Reference\mbox{[}oaicite\+:21\mbox{]}\{index=21\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -349,6 +410,9 @@ double Input\+Manager\+::\+Get\+Scroll\+XDelta (\begin{DoxyParamCaption}{}{}\end
 
 Returns the horizontal scroll delta for the current frame. 
 
+\begin{DoxyReturn}{Returns}
+Current frame\textquotesingle{}s horizontal scroll delta. \+:content\+Reference\mbox{[}oaicite\+:22\mbox{]}\{index=22\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -370,6 +434,9 @@ double Input\+Manager\+::\+Get\+Scroll\+YDelta (\begin{DoxyParamCaption}{}{}\end
 
 Returns the vertical scroll delta for the current frame. 
 
+\begin{DoxyReturn}{Returns}
+Current frame\textquotesingle{}s vertical scroll delta. \+:content\+Reference\mbox{[}oaicite\+:23\mbox{]}\{index=23\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -389,11 +456,13 @@ void Input\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{GLFWwindow \texorp
 
 
 
-Initializes the \doxylink{class_input_manager}{Input\+Manager} with a GLFW window. 
+Binds the input manager to a GLFW window. 
+
+\doxylink{class_jin_engine}{Jin\+Engine} calls this during initialization after the window has been created.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \+\_\+window} & GLFW window handle. \\
+{\em \+\_\+window} & GLFW window handle used for cursor sampling. \\
 \hline
 \end{DoxyParams}
 
@@ -415,15 +484,17 @@ bool Input\+Manager\+::\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{int}]{key
 
 
 
-Checks whether a key is currently held down. 
+Returns whether a key is currently held down. 
+
+This checks the current frame\textquotesingle{}s committed key state.
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & Key code to query. \\
+{\em key} & Key code, typically one of the \doxylink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9}{Input\+Key} values. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the key is currently pressed. 
+True if the key is currently down. \+:content\+Reference\mbox{[}oaicite\+:7\mbox{]}\{index=7\} 
 \end{DoxyReturn}
 
 
@@ -444,17 +515,17 @@ bool Input\+Manager\+::\+Is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{int}]{
 
 
 
-Checks whether a key was pressed during the current frame. 
+Returns whether a key was pressed during the current frame. 
 
-Returns true only if the key is down in the current state and was not down in the previous state.
+A key is considered pressed when it is down in current\+Key\+State and was not down in previous\+Key\+State. This makes it suitable for one-\/frame trigger actions. \+:content\+Reference\mbox{[}oaicite\+:8\mbox{]}\{index=8\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & Key code to query. \\
+{\em key} & Key code, typically one of the \doxylink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9}{Input\+Key} values. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the key was pressed this frame. 
+True only on the transition frame from up to down. 
 \end{DoxyReturn}
 
 
@@ -475,15 +546,17 @@ bool Input\+Manager\+::\+Is\+Key\+Released (\begin{DoxyParamCaption}\item[{int}]
 
 
 
-Checks whether a key was released during the current frame. 
+Returns whether a key was released during the current frame. 
+
+A key is considered released when it is not down in current\+Key\+State but was down in previous\+Key\+State. \+:content\+Reference\mbox{[}oaicite\+:9\mbox{]}\{index=9\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & Key code to query. \\
+{\em key} & Key code, typically one of the \doxylink{_input_manager_8h_a3a1ad9c72a28e97d9440d4cf7072b6d9}{Input\+Key} values. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the key was released this frame. 
+True only on the transition frame from down to up. 
 \end{DoxyReturn}
 
 
@@ -504,15 +577,15 @@ bool Input\+Manager\+::\+Is\+Mouse\+Button\+Down (\begin{DoxyParamCaption}\item[
 
 
 
-Checks whether a mouse button is currently held down. 
+Returns whether a mouse button is currently held down. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em button} & Mouse button index to query. \\
+{\em button} & Mouse button code, typically one of the \doxylink{_input_manager_8h_a9c815d6db08987254ee690c41c2a1ff8}{Input\+Mouse\+Button} values. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the mouse button is currently pressed. 
+True if the button is currently down. \+:content\+Reference\mbox{[}oaicite\+:10\mbox{]}\{index=10\} 
 \end{DoxyReturn}
 
 
@@ -533,17 +606,17 @@ bool Input\+Manager\+::\+Is\+Mouse\+Button\+Dragging (\begin{DoxyParamCaption}\i
 
 
 
-Checks whether a mouse button is being held while the mouse is moving. 
+Returns whether a mouse button is being held continuously across frames. 
 
-This is typically used for drag operations.
+The current implementation returns true when the button is down in both current\+Mouse\+State and previous\+Mouse\+State. It does not check cursor movement directly, so this represents continuous hold rather than geometric drag distance. \+:content\+Reference\mbox{[}oaicite\+:13\mbox{]}\{index=13\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em button} & Mouse button index to query. \\
+{\em button} & Mouse button code. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the button is down and the cursor is moving. 
+True if the button remained held from the previous frame into the current frame. 
 \end{DoxyReturn}
 
 
@@ -564,15 +637,17 @@ bool Input\+Manager\+::\+Is\+Mouse\+Button\+Pressed (\begin{DoxyParamCaption}\it
 
 
 
-Checks whether a mouse button was pressed during the current frame. 
+Returns whether a mouse button was pressed during the current frame. 
+
+A mouse button is considered pressed when it is down in current\+Mouse\+State and was not down in previous\+Mouse\+State. \+:content\+Reference\mbox{[}oaicite\+:11\mbox{]}\{index=11\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em button} & Mouse button index to query. \\
+{\em button} & Mouse button code. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the mouse button was pressed this frame. 
+True only on the transition frame from up to down. 
 \end{DoxyReturn}
 
 
@@ -593,15 +668,17 @@ bool Input\+Manager\+::\+Is\+Mouse\+Button\+Released (\begin{DoxyParamCaption}\i
 
 
 
-Checks whether a mouse button was released during the current frame. 
+Returns whether a mouse button was released during the current frame. 
+
+A mouse button is considered released when it is not down in current\+Mouse\+State but was down in previous\+Mouse\+State. \+:content\+Reference\mbox{[}oaicite\+:12\mbox{]}\{index=12\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em button} & Mouse button index to query. \\
+{\em button} & Mouse button code. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the mouse button was released this frame. 
+True only on the transition frame from down to up. 
 \end{DoxyReturn}
 
 
@@ -622,8 +699,11 @@ bool Input\+Manager\+::\+Is\+Scrolled\+Down (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Checks whether the scroll wheel was moved downward this frame. 
+Returns whether the wheel moved downward during the current frame. 
 
+\begin{DoxyReturn}{Returns}
+True when scroll\+DeltaY is less than zero. \+:content\+Reference\mbox{[}oaicite\+:25\mbox{]}\{index=25\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -643,8 +723,11 @@ bool Input\+Manager\+::\+Is\+Scrolled\+Up (\begin{DoxyParamCaption}{}{}\end{Doxy
 
 
 
-Checks whether the scroll wheel was moved upward this frame. 
+Returns whether the wheel moved upward during the current frame. 
 
+\begin{DoxyReturn}{Returns}
+True when scroll\+DeltaY is greater than zero. \+:content\+Reference\mbox{[}oaicite\+:24\mbox{]}\{index=24\} 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
@@ -664,9 +747,29 @@ void Input\+Manager\+::\+On\+Key (\begin{DoxyParamCaption}\item[{int}]{key}{, }\
 
 
 
-Receives keyboard input events from GLFW. 
+Receives a keyboard event from the window callback layer. 
 
-This function updates the staged key state and does not immediately affect the current input state. 
+The current implementation validates that the key is within GLFW\textquotesingle{}s valid range and updates staged\+Key\+State according to the action\+:
+\begin{DoxyItemize}
+\item GLFW\+\_\+\+PRESS sets the bit to true
+\item GLFW\+\_\+\+RELEASE sets the bit to false
+\item GLFW\+\_\+\+REPEAT keeps the key staged as down if it was not already staged \+:content\+Reference\mbox{[}oaicite\+:26\mbox{]}\{index=26\}
+\end{DoxyItemize}
+
+This function is intended to be called by the engine\textquotesingle{}s GLFW key callback bridge, not by typical gameplay code. \+:content\+Reference\mbox{[}oaicite\+:27\mbox{]}\{index=27\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & GLFW-\/style key code. \\
+\hline
+{\em Unused} & scan code parameter. \\
+\hline
+{\em action} & GLFW action code. \\
+\hline
+{\em Unused} & modifier flags parameter. \\
+\hline
+\end{DoxyParams}
+
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
 
@@ -696,9 +799,22 @@ void Input\+Manager\+::\+On\+Mouse\+Button (\begin{DoxyParamCaption}\item[{int}]
 
 
 
-Receives mouse button input events from GLFW. 
+Receives a mouse button event from the window callback layer. 
 
-This function updates the staged mouse state and does not immediately affect the current input state. 
+The current implementation validates that the button is within GLFW\textquotesingle{}s valid range and updates staged\+Mouse\+State according to press/release actions. \+:content\+Reference\mbox{[}oaicite\+:28\mbox{]}\{index=28\}
+
+This function is intended to be called by the engine\textquotesingle{}s GLFW mouse callback bridge, not by typical gameplay code. \+:content\+Reference\mbox{[}oaicite\+:29\mbox{]}\{index=29\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & GLFW-\/style mouse button code. \\
+\hline
+{\em action} & GLFW action code. \\
+\hline
+{\em Unused} & modifier flags parameter. \\
+\hline
+\end{DoxyParams}
+
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
 
@@ -723,9 +839,11 @@ void Input\+Manager\+::\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaptio
 
 
 
-Resets per-\/frame transient input data. 
+Clears all stored input state. 
 
-This function clears scroll deltas and updates previous input states. It is not intended to be called every frame manually. 
+The current implementation resets previous, current, and staged key/button states. This is used to prevent stale transition states from surviving unusual timing situations.
+
+In the current engine flow, \doxylink{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}{Engine\+Timer\+::\+Tick()} calls \doxylink{class_input_manager_a92319ec0b9f5eff3fd9a2e22a434a3a1}{Reset()} when a frame delta becomes larger than 0.\+05 seconds, then clamps dt to 0.\+0f. \+:content\+Reference\mbox{[}oaicite\+:31\mbox{]}\{index=31\} 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
 
@@ -749,9 +867,17 @@ void Input\+Manager\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Updates internal input state transitions. 
+Commits staged input into the current frame state. 
 
-Commits staged input states to current states and stores previous states. This function is called internally by the engine update loop. 
+The current implementation performs the following sequence once per frame\+:
+\begin{DoxyEnumerate}
+\item Copies current key/button state into previous state
+\item Moves accumulated scroll into per-\/frame deltas and clears accumulators
+\item Copies staged key/button state into current state
+\item Samples the cursor position from GLFW into mouseX and mouseY \+:content\+Reference\mbox{[}oaicite\+:33\mbox{]}\{index=33\}
+\end{DoxyEnumerate}
+
+\doxylink{class_jin_engine}{Jin\+Engine} calls this every frame before state update. 
 
 Definition at line \mbox{\hyperlink{_input_manager_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_input_manager_8cpp_source}{Input\+Manager.\+cpp}}.
 
@@ -782,7 +908,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00226}{226}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Current committed key state for the active frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00346}{346}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a9d9751f5b8375e4ca8322b4429fb624c}\index{InputManager@{InputManager}!currentMouseState@{currentMouseState}}
 \index{currentMouseState@{currentMouseState}!InputManager@{InputManager}}
@@ -792,7 +922,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f20
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00228}{228}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Current committed mouse button state for the active frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00356}{356}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a98846b9e5b34f67967bca356e2e63a94}\index{InputManager@{InputManager}!JinEngine@{JinEngine}}
 \index{JinEngine@{JinEngine}!InputManager@{InputManager}}
@@ -802,7 +936,7 @@ friend Input\+Manager\+::\+Jin\+Engine\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00045}{45}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a336069275a5424ae336b0f8d3e839c60}\index{InputManager@{InputManager}!MAX\_KEYS@{MAX\_KEYS}}
 \index{MAX\_KEYS@{MAX\_KEYS}!InputManager@{InputManager}}
@@ -812,7 +946,11 @@ int Input\+Manager\+::\+MAX\+\_\+\+KEYS = 349\hspace{0.3cm}{\ttfamily [static]},
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00223}{223}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Maximum supported key index stored in the internal bitset. 
+
+This matches the currently used GLFW key range up to KEY\+\_\+\+MENU (348). 
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00336}{336}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_ace3b1ab4e59c400c00b49a2f2010a13b}\index{InputManager@{InputManager}!MAX\_MOUSE\_BUTTONS@{MAX\_MOUSE\_BUTTONS}}
 \index{MAX\_MOUSE\_BUTTONS@{MAX\_MOUSE\_BUTTONS}!InputManager@{InputManager}}
@@ -822,7 +960,11 @@ int Input\+Manager\+::\+MAX\+\_\+\+MOUSE\+\_\+\+BUTTONS = 9\hspace{0.3cm}{\ttfam
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00224}{224}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Maximum supported mouse button slot count stored in the internal bitset. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00341}{341}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a7ee958ea909a395cddeff25f5ba9641d}\index{InputManager@{InputManager}!mouseX@{mouseX}}
 \index{mouseX@{mouseX}!InputManager@{InputManager}}
@@ -832,7 +974,11 @@ double Input\+Manager\+::mouseX\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00231}{231}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Current cursor x position in window coordinates. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00366}{366}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a766a16e7ae54676804c08e80bb061233}\index{InputManager@{InputManager}!mouseY@{mouseY}}
 \index{mouseY@{mouseY}!InputManager@{InputManager}}
@@ -842,7 +988,11 @@ double Input\+Manager\+::mouseY\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00232}{232}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Current cursor y position in window coordinates. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00371}{371}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a1d459d5b5115502ffd50c8d90a9e6514}\index{InputManager@{InputManager}!previousKeyState@{previousKeyState}}
 \index{previousKeyState@{previousKeyState}!InputManager@{InputManager}}
@@ -852,7 +1002,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00227}{227}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Previous frame\textquotesingle{}s committed key state. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00351}{351}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a732a36a1572545c3c201c3742247f524}\index{InputManager@{InputManager}!previousMouseState@{previousMouseState}}
 \index{previousMouseState@{previousMouseState}!InputManager@{InputManager}}
@@ -862,7 +1016,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f20
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00229}{229}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Previous frame\textquotesingle{}s committed mouse button state. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00361}{361}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_af98f979b0c74d37efd4947fcc125fc77}\index{InputManager@{InputManager}!scrollAccumX@{scrollAccumX}}
 \index{scrollAccumX@{scrollAccumX}!InputManager@{InputManager}}
@@ -872,7 +1030,11 @@ double Input\+Manager\+::scroll\+AccumX = 0.\+0\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00234}{234}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Accumulated horizontal scroll received since the last \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00376}{376}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_abb09df427175cadf802e77f3e5087c4f}\index{InputManager@{InputManager}!scrollAccumY@{scrollAccumY}}
 \index{scrollAccumY@{scrollAccumY}!InputManager@{InputManager}}
@@ -882,7 +1044,11 @@ double Input\+Manager\+::scroll\+AccumY = 0.\+0\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00235}{235}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Accumulated vertical scroll received since the last \doxylink{class_input_manager_aa5480931dba2720e7d80dd00a53adae0}{Update()}. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00381}{381}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a34bc0b94bf3d5a6087e5b25fdb71d808}\index{InputManager@{InputManager}!scrollDeltaX@{scrollDeltaX}}
 \index{scrollDeltaX@{scrollDeltaX}!InputManager@{InputManager}}
@@ -892,7 +1058,11 @@ double Input\+Manager\+::scroll\+DeltaX = 0.\+0\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00236}{236}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Horizontal scroll delta exposed for the current frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00386}{386}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_af6d1ff7196b64fde25c4f5005add4f57}\index{InputManager@{InputManager}!scrollDeltaY@{scrollDeltaY}}
 \index{scrollDeltaY@{scrollDeltaY}!InputManager@{InputManager}}
@@ -902,7 +1072,11 @@ double Input\+Manager\+::scroll\+DeltaY = 0.\+0\hspace{0.3cm}{\ttfamily [private
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00237}{237}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Vertical scroll delta exposed for the current frame. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00391}{391}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a5812fd362771cda6edb94ff0106bde19}\index{InputManager@{InputManager}!stagedKeyState@{stagedKeyState}}
 \index{stagedKeyState@{stagedKeyState}!InputManager@{InputManager}}
@@ -912,7 +1086,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_a336069275a5424ae336b0f8d3e
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00239}{239}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Staged key state written by callback events before frame commit. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00396}{396}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a14d8acf1c4e1059493b0274e1263dcf0}\index{InputManager@{InputManager}!stagedMouseState@{stagedMouseState}}
 \index{stagedMouseState@{stagedMouseState}!InputManager@{InputManager}}
@@ -922,7 +1100,11 @@ std\+::bitset$<$\mbox{\hyperlink{class_input_manager_ace3b1ab4e59c400c00b49a2f20
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00240}{240}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+Staged mouse button state written by callback events before frame commit. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00401}{401}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 \Hypertarget{class_input_manager_a77079cf480ee8e1eb232b9685a7c5431}\index{InputManager@{InputManager}!window@{window}}
 \index{window@{window}!InputManager@{InputManager}}
@@ -932,7 +1114,11 @@ GLFWwindow\texorpdfstring{$\ast$}{*} Input\+Manager\+::window\hspace{0.3cm}{\ttf
 
 
 
-Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00221}{221}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
+GLFW window handle used for cursor position queries. 
+
+
+
+Definition at line \mbox{\hyperlink{_input_manager_8h_source_l00328}{328}} of file \mbox{\hyperlink{_input_manager_8h_source}{Input\+Manager.\+h}}.
 
 
 

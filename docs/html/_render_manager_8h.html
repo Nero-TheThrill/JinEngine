@@ -128,16 +128,16 @@ $(function(){initNavTree('_render_manager_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_line_instance.html">LineInstance</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters describing a single debug line draw request.  <a href="struct_line_instance.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents one queued debug line draw request.  <a href="struct_line_instance.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_render_manager.html">RenderManager</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Central rendering system responsible for resource registration and batched object rendering.  <a href="class_render_manager.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Central rendering system responsible for resource registration, batching, culling integration, and frame submission.  <a href="class_render_manager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_render_manager_1_1_camera_and_width_hash.html">RenderManager::CameraAndWidthHash</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash functor for (Camera2D*, lineWidth) keys used in debugLineMap.  <a href="struct_render_manager_1_1_camera_and_width_hash.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash functor for grouping debug lines by camera pointer and line width.  <a href="struct_render_manager_1_1_camera_and_width_hash.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_frustum_culler.html">FrustumCuller</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple visibility culling utility based on a <a class="el" href="class_camera2_d.html" title="2D camera providing view transformation and visibility tests.">Camera2D</a> view test and object bounding radius.  <a href="class_frustum_culler.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs visibility culling against a 2D camera view.  <a href="class_frustum_culler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -151,10 +151,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ab1dda4d750e0cc5f202e4ebd8172bef6" id="r_ab1dda4d750e0cc5f202e4ebd8172bef6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1dda4d750e0cc5f202e4ebd8172bef6">RenderCommand</a> = std::function&lt;void()&gt;</td></tr>
 <tr class="separator:ab1dda4d750e0cc5f202e4ebd8172bef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dc798d95abd4b3fe7fe5051c9920759" id="r_a6dc798d95abd4b3fe7fe5051c9920759"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dc798d95abd4b3fe7fe5051c9920759">ShaderMap</a> = std::unordered_map&lt;<a class="el" href="class_shader.html">Shader</a>*, std::map&lt;<a class="el" href="struct_instance_batch_key.html">InstanceBatchKey</a>, std::vector&lt;<a class="el" href="class_object.html">Object</a>*&gt;&gt;&gt;</td></tr>
-<tr class="memdesc:a6dc798d95abd4b3fe7fe5051c9920759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> pointer to depth-sorted instance batches.  <br /></td></tr>
+<tr class="memdesc:a6dc798d95abd4b3fe7fe5051c9920759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Groups render batches first by shader, then by batch key, then by object list.  <br /></td></tr>
 <tr class="separator:a6dc798d95abd4b3fe7fe5051c9920759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac442dd962bc57bfa60125f977d6edea5" id="r_ac442dd962bc57bfa60125f977d6edea5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac442dd962bc57bfa60125f977d6edea5">RenderMap</a> = std::array&lt;std::map&lt;int, <a class="el" href="#a6dc798d95abd4b3fe7fe5051c9920759">ShaderMap</a>&gt;, <a class="el" href="class_render_layer_manager.html#a0fa4422181dc1af5f490062a8fe84e6d">RenderLayerManager::MAX_LAYERS</a>&gt;</td></tr>
-<tr class="memdesc:ac442dd962bc57bfa60125f977d6edea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layered render map used to batch and sort objects for rendering.  <br /></td></tr>
+<tr class="memdesc:ac442dd962bc57bfa60125f977d6edea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the full frame's render organization by render layer and depth bucket.  <br /></td></tr>
 <tr class="separator:ac442dd962bc57bfa60125f977d6edea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -202,13 +202,18 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Layered render map used to batch and sort objects for rendering. </p>
-<p><a class="el" href="#ac442dd962bc57bfa60125f977d6edea5" title="Layered render map used to batch and sort objects for rendering.">RenderMap</a> is an array with <a class="el" href="class_render_layer_manager.html#a0fa4422181dc1af5f490062a8fe84e6d" title="Maximum number of user-definable render layers.">RenderLayerManager::MAX_LAYERS</a> entries. Each layer contains a depth-sorted map:</p><ul>
-<li>std::map&lt;int, ShaderMap&gt; where the int key is a quantized depth bin derived from <a class="el" href="class_transform2_d.html#a8fc04cb417fb1169c2af9ba0b0539394" title="Returns the current depth value.">Transform2D::GetDepth()</a>.</li>
+<p>Stores the full frame's render organization by render layer and depth bucket. </p>
+<p><a class="el" href="#ac442dd962bc57bfa60125f977d6edea5" title="Stores the full frame&#39;s render organization by render layer and depth bucket.">RenderMap</a> is indexed by render layer first. Each layer stores a map keyed by quantized depth. Each depth entry then contains a <a class="el" href="#a6dc798d95abd4b3fe7fe5051c9920759" title="Groups render batches first by shader, then by batch key, then by object list.">ShaderMap</a>.</p>
+<p>This means the effective ordering is:</p><ul>
+<li>render layer</li>
+<li>quantized depth</li>
+<li>shader</li>
+<li>instance batch key</li>
+<li>object list</li>
 </ul>
-<p>The render pipeline order is: 1) layer (0..MAX_LAYERS-1) 2) depth bin (ascending int) 3) shader 4) <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> (mesh/material/spritesheet grouping) 5) objects in the batch </p>
+<p><a class="el" href="class_render_manager.html#a8e033cb685d2619f9b5dfec8a165e387" title="Builds the internal render map from a visible object list and the current camera.">RenderManager::BuildRenderMap()</a> fills this structure, and <a class="el" href="class_render_manager.html#a620231f7f4119dbf26ef416478578cde" title="Flushes the current frame&#39;s accumulated render batches and executes draw calls.">RenderManager::FlushDrawCommands()</a> consumes and clears it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00058">58</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00064">64</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
 
 </div>
 </div>
@@ -224,11 +229,15 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Maps a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> pointer to depth-sorted instance batches. </p>
-<p>The outer key is the <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> used for rendering. The value is a depth-ordered map (std::map) whose key is <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a>, and whose value is a list of Object*.</p>
-<p>This structure is produced by BuildRenderMap() and consumed by FlushDrawCommands(). </p>
+<p>Groups render batches first by shader, then by batch key, then by object list. </p>
+<p>The engine uses this structure while building the frame's render map. For a given depth bucket inside a given render layer, objects are grouped by:</p><ul>
+<li>Shader*</li>
+<li><a class="el" href="struct_instance_batch_key.html" title="Key type used to group objects into the same instanced rendering batch.">InstanceBatchKey</a></li>
+<li>std::vector&lt;Object*&gt;</li>
+</ul>
+<p>This grouping lets <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> later decide whether to draw objects one by one or through the instancing path. </p>
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00041">41</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00045">45</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
 
 </div>
 </div>

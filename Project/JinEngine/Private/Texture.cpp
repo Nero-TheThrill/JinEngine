@@ -176,7 +176,6 @@ void Texture::GenerateTexture(const unsigned char* data, const TextureSettings& 
 
 void Texture::ForceUpdateTexture(unsigned int id_, int width_, int height_, int channels_)
 {
-
     id = id_;
     width = width_;
     height = height_;

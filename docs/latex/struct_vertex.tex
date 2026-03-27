@@ -2,7 +2,7 @@
 \hypertarget{struct_vertex}{}\label{struct_vertex}\index{Vertex@{Vertex}}
 
 
-Basic 2D vertex layout used by this engine\textquotesingle{}s \doxylink{class_mesh}{Mesh}.  
+Represents a single mesh vertex for the engine\textquotesingle{}s default 2D/quad-\/style pipeline.  
 
 
 
@@ -19,15 +19,22 @@ glm\+::vec2 \mbox{\hyperlink{struct_vertex_a8d5cc8548016889746f251d98377ec8a}{uv
 
 
 \doxysubsection{Detailed Description}
-Basic 2D vertex layout used by this engine\textquotesingle{}s \doxylink{class_mesh}{Mesh}. 
+Represents a single mesh vertex for the engine\textquotesingle{}s default 2D/quad-\/style pipeline. 
 
-
+Each vertex currently stores\+:
 \begin{DoxyItemize}
-\item position\+: vec3 where XY are used for 2D placement and Z may be used for depth or left as 0.
-\item uv\+: texture coordinates. 
+\item a 3D position used by the mesh buffer and shader input
+\item a 2D UV coordinate used for texture sampling
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00034}{34}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Although this engine is primarily using the structure for 2D rendering at the moment, the position is stored as glm\+::vec3, which makes the mesh layout compatible with depth-\/aware rendering and future expansion.
+
+\begin{DoxyNote}{Note}
+The vertex layout is bound in \doxylink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{Mesh\+::\+Setup\+Mesh()} and \doxylink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{Mesh\+::\+Setup\+Instance\+Attributes()} using attribute location 0 for position and attribute location 1 for UV. \+:content\+Reference\mbox{[}oaicite\+:3\mbox{]}\{index=3\} 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00050}{50}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 
@@ -40,7 +47,7 @@ glm\+::vec3 Vertex\+::position}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00036}{36}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00052}{52}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{struct_vertex_a8d5cc8548016889746f251d98377ec8a}\index{Vertex@{Vertex}!uv@{uv}}
 \index{uv@{uv}!Vertex@{Vertex}}
@@ -50,7 +57,7 @@ glm\+::vec2 Vertex\+::uv}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00037}{37}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00053}{53}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 

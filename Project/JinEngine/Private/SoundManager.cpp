@@ -1,4 +1,4 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 
 #include <algorithm>
 #include <memory>
@@ -6,6 +6,7 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <functional>
 
 #define MA_NO_WASAPI
 #define MINIAUDIO_IMPLEMENTATION
@@ -20,7 +21,10 @@ struct SoundManager::SoundInstanceMA
 
     bool paused = false;
     ma_uint64 pausedCursor = 0;
+
+    std::function<void(SoundInstanceID, const std::string&)> onFinished;
 };
+
 SoundManager::SoundManager()
     : engine(nullptr)
     , nextInstanceID(1)
@@ -115,6 +119,14 @@ SoundInstanceID SoundManager::GenerateID()
 
 SoundInstanceID SoundManager::Play(const std::string& tag, float volume, float startTimeSec)
 {
+    return Play(tag, volume, startTimeSec, nullptr);
+}
+
+SoundInstanceID SoundManager::Play(const std::string& tag,
+    float volume,
+    float startTimeSec,
+    std::function<void(SoundInstanceID, const std::string&)> onFinished)
+{
     if (engine == nullptr)
         return 0;
 
@@ -128,6 +140,7 @@ SoundInstanceID SoundManager::Play(const std::string& tag, float volume, float s
     SoundInstanceMA* inst = new SoundInstanceMA();
     inst->tag = tag;
     inst->looping = looping;
+    inst->onFinished = std::move(onFinished);
 
     ma_result res = ma_sound_init_from_file(engine, path.c_str(), 0, nullptr, nullptr, &inst->sound);
     if (res != MA_SUCCESS)
@@ -200,7 +213,8 @@ void SoundManager::SetVolumeAll(float volume)
 void SoundManager::ControlByID(SoundControlType control, SoundInstanceID id)
 {
     auto it = instanceMap.find(id);
-    if (it == instanceMap.end() || it->second == nullptr) return;
+    if (it == instanceMap.end() || it->second == nullptr)
+        return;
 
     SoundInstanceMA* inst = it->second;
 
@@ -209,11 +223,12 @@ void SoundManager::ControlByID(SoundControlType control, SoundInstanceID id)
     case SoundControlType::Pause:
     {
         ma_uint64 cursor = 0;
-        ma_sound_get_cursor_in_pcm_frames(&inst->sound, &cursor); 
+        ma_sound_get_cursor_in_pcm_frames(&inst->sound, &cursor);
         inst->pausedCursor = cursor;
         ma_sound_stop(&inst->sound);
         inst->paused = true;
-    } break;
+    }
+    break;
 
     case SoundControlType::Resume:
     {
@@ -223,7 +238,8 @@ void SoundManager::ControlByID(SoundControlType control, SoundInstanceID id)
             ma_sound_start(&inst->sound);
             inst->paused = false;
         }
-    } break;
+    }
+    break;
 
     case SoundControlType::Stop:
     {
@@ -236,13 +252,14 @@ void SoundManager::ControlByID(SoundControlType control, SoundInstanceID id)
             auto& vec = acIt->second;
             vec.erase(std::remove(vec.begin(), vec.end(), inst), vec.end());
         }
+
         delete inst;
         instanceMap.erase(it);
         reusableIDs.push(id);
-    } break;
+    }
+    break;
     }
 }
-
 
 void SoundManager::ControlByTag(SoundControlType control, const std::string& tag)
 {
@@ -256,7 +273,9 @@ void SoundManager::ControlByTag(SoundControlType control, const std::string& tag
     {
         for (auto* inst : vec)
         {
-            if (!inst) continue;
+            if (!inst)
+                continue;
+
             ma_uint64 cursor = 0;
             ma_sound_get_cursor_in_pcm_frames(&inst->sound, &cursor);
             inst->pausedCursor = cursor;
@@ -265,11 +284,14 @@ void SoundManager::ControlByTag(SoundControlType control, const std::string& tag
         }
         return;
     }
+
     if (control == SoundControlType::Resume)
     {
         for (auto* inst : vec)
         {
-            if (!inst || !inst->paused) continue;
+            if (!inst || !inst->paused)
+                continue;
+
             ma_sound_seek_to_pcm_frame(&inst->sound, inst->pausedCursor);
             ma_sound_start(&inst->sound);
             inst->paused = false;
@@ -316,6 +338,7 @@ void SoundManager::ControlAll(SoundControlType control)
 {
     std::vector<std::string> tags;
     tags.reserve(activeChannels.size());
+
     for (const auto& kv : activeChannels)
     {
         tags.push_back(kv.first);
@@ -337,6 +360,9 @@ void SoundManager::Cleanup()
     std::vector<SoundInstanceID> finishedIDs;
     finishedIDs.reserve(instanceMap.size());
 
+    std::vector<std::function<void()>> pendingCallbacks;
+    pendingCallbacks.reserve(instanceMap.size());
+
     for (auto& [id, inst] : instanceMap)
     {
         if (inst == nullptr)
@@ -353,6 +379,16 @@ void SoundManager::Cleanup()
 
             if (ma_sound_at_end(&inst->sound))
             {
+                if (inst->onFinished)
+                {
+                    const std::string finishedTag = inst->tag;
+                    pendingCallbacks.push_back(
+                        [callback = inst->onFinished, id, finishedTag]()
+                        {
+                            callback(id, finishedTag);
+                        });
+                }
+
                 ma_sound_uninit(&inst->sound);
 
                 auto acIt = activeChannels.find(inst->tag);
@@ -380,11 +416,22 @@ void SoundManager::Cleanup()
             std::remove_if(vec.begin(), vec.end(),
                 [](SoundInstanceMA* inst)
                 {
-                    if (inst == nullptr) return true;
+                    if (inst == nullptr)
+                        return true;
+
                     if (!inst->looping && !ma_sound_is_playing(&inst->sound) && ma_sound_at_end(&inst->sound))
                         return true;
+
                     return false;
                 }),
             vec.end());
+    }
+
+    for (auto& callback : pendingCallbacks)
+    {
+        if (callback)
+        {
+            callback();
+        }
     }
 }

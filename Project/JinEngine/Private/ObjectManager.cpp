@@ -1,4 +1,4 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 
 #include <cassert>
 #include <algorithm>
@@ -51,7 +51,13 @@ void ObjectManager::AddAllPendingObjects(const EngineContext& engineContext)
         std::vector<std::unique_ptr<Object>> tmparr;
         std::swap(tmparr, pendingObjects);
         for (auto& obj : tmparr)
+        {
             obj->Init(engineContext);
+            if (obj->GetType() == ObjectType::TEXT)
+            {
+                static_cast<TextObject*>(obj.get())->CheckFontAtlasAndMeshUpdate();
+            }
+        }
         for (auto& obj : tmparr)
         {
             allPendingObjects.push_back(std::move(obj));
@@ -80,10 +86,38 @@ void ObjectManager::EraseDeadObjects(const EngineContext& engineContext)
     for (auto& obj : deadObjects)
         obj->Free(engineContext);
 
-    for (auto& obj : deadObjects)
+	for (auto& obj : deadObjects)
     {
         obj->LateFree(engineContext);
-        objectMap.erase(obj->GetTag());
+
+        const std::string tag = obj->GetTag();
+
+        auto it = objectMap.find(tag);
+        if (it != objectMap.end() && it->second == obj)
+        {
+            Object* replacement = nullptr;
+
+            for (Object* candidate : rawPtrObjects)
+            {
+                if (candidate == nullptr) continue;
+                if (candidate == obj) continue;
+                if (!candidate->IsAlive()) continue;
+                if (candidate->GetTag() != tag) continue;
+
+                replacement = candidate;
+                break;
+            }
+
+            if (replacement)
+            {
+                it->second = replacement;
+            }
+            else
+            {
+                objectMap.erase(it);
+            }
+        }
+
         rawPtrObjects.erase(std::remove(rawPtrObjects.begin(), rawPtrObjects.end(), obj), rawPtrObjects.end());
     }
 

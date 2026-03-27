@@ -9,72 +9,83 @@
 \DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <queue>}}
 \DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00009}00009\ \textcolor{keyword}{struct\ }ma\_engine;}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00010}00010\ \textcolor{keyword}{struct\ }ma\_sound;}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00012}00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jin_engine}{JinEngine}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00013}\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{00013}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ =\ uint64\_t;}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00014}00014\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00035}\mbox{\hyperlink{class_sound_manager}{00035}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00036}00036\ \{}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00037}\mbox{\hyperlink{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}{00037}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}{JinEngine}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00039}00039\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}{\string~SoundManager}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00058}\mbox{\hyperlink{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}{00058}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}{SoundManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00059}\mbox{\hyperlink{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}{00059}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&\ \mbox{\hyperlink{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8e52926369f4ff23599507c5e7cf7246}{LoadSound}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::string\&\ filepath,\ \textcolor{keywordtype}{bool}\ loop\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00074}00074\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00098}00098\ \ \ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play}}(\textcolor{keyword}{const}\ std::string\&\ tag,}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f,}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startTimeSec\ =\ 0.0f);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a66c578e6c2850d673ea035870871e6ab}{SetVolumeByID}}(\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{float}\ volume);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00112}00112\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8581621afa759742160371f27c31e6fa}{SetVolumeByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keywordtype}{float}\ volume);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a4447c313bba2cdfbac3053a094f66776}{SetVolumeAll}}(\textcolor{keywordtype}{float}\ volume);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00134}00134\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00143}\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f}{00143}}\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ \{\ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f}{Pause}},\ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325}{Resume}},\ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481}{Stop}}\ \};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00144}00144\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8d8a89dcb398e0e51b6853f5aa684280}{ControlByID}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control,\ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00167}00167\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00184}00184\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_aaa6392113f543f2bb32e6811bd010100}{ControlByTag}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control,\ \textcolor{keyword}{const}\ std::string\&\ tag);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ad78be412f57622826d4d7bf5f46378a8}{ControlAll}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control);}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00196}00196\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00197}00197\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00207}00207\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sound_manager_af1ee5e29fca894a8ac9aeeb56b81f21d}{Init}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00208}00208\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00216}00216\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_aaf241621221cdbefeba78e8b6bc29240}{Update}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00217}00217\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00230}00230\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}{Cleanup}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00231}00231\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_af25662c1d0237540686087a080001f9b}{Free}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00242}00242\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00252}00252\ \ \ \ \ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_a1e76b08631c0a87462dab75fb0d526ed}{GenerateID}}();}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00253}00253\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00254}00254\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00255}\mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{00255}}\ \ \ \ \ ma\_engine*\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00256}00256\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00260}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{00260}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{SoundInfo}}}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00261}00261\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00262}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info_a2a31577d3b4d038e21ef05ee7c729a71}{00262}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_manager_1_1_sound_info_a2a31577d3b4d038e21ef05ee7c729a71}{filepath}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00263}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info_af318299f9e1738394feb9f513d07255b}{00263}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_manager_1_1_sound_info_af318299f9e1738394feb9f513d07255b}{loop}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00264}00264\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00265}\mbox{\hyperlink{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}{00265}}\ \ \ \ \ std::unordered\_map<std::string,\ SoundInfo>\ \mbox{\hyperlink{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}{sounds}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00266}00266\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00267}00267\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{SoundInstanceMA}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00268}\mbox{\hyperlink{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}{00268}}\ \ \ \ \ std::unordered\_map<std::string,\ std::vector<SoundInstanceMA*>>\ \mbox{\hyperlink{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}{activeChannels}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00269}\mbox{\hyperlink{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}{00269}}\ \ \ \ \ std::unordered\_map<SoundInstanceID,\ SoundInstanceMA*>\ \mbox{\hyperlink{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}{instanceMap}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00270}00270\ }
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00271}\mbox{\hyperlink{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}{00271}}\ \ \ \ \ std::queue<SoundInstanceID>\ \mbox{\hyperlink{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}{reusableIDs}};}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00272}\mbox{\hyperlink{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}{00272}}\ \ \ \ \ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}{nextInstanceID}}\ =\ 1;}
-\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00273}00273\ \};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00010}00010\ \textcolor{keyword}{struct\ }ma\_engine;}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00011}00011\ \textcolor{keyword}{struct\ }ma\_sound;}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00013}00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jin_engine}{JinEngine}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00014}\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{00014}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ =\ uint64\_t;}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00051}\mbox{\hyperlink{class_sound_manager}{00051}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00053}\mbox{\hyperlink{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}{00053}}\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_sound_manager_a71aeb8bd4691d83f06f454cb6d52814c}{JinEngine}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00055}00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}{\string~SoundManager}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00085}\mbox{\hyperlink{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}{00085}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}{SoundManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00086}\mbox{\hyperlink{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}{00086}}\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&\ \mbox{\hyperlink{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8e52926369f4ff23599507c5e7cf7246}{LoadSound}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keyword}{const}\ std::string\&\ filepath,\ \textcolor{keywordtype}{bool}\ loop\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00127}00127\ \ \ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play}}(\textcolor{keyword}{const}\ std::string\&\ tag,}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f,}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startTimeSec\ =\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00156}00156\ \ \ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_acc7074efb4e8b5c71e85f556769d9b17}{Play}}(\textcolor{keyword}{const}\ std::string\&\ tag,}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ volume,}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startTimeSec,}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}},\ \textcolor{keyword}{const}\ std::string\&)>\ onFinished);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00173}00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a66c578e6c2850d673ea035870871e6ab}{SetVolumeByID}}(\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{float}\ volume);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00190}00190\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8581621afa759742160371f27c31e6fa}{SetVolumeByTag}}(\textcolor{keyword}{const}\ std::string\&\ tag,\ \textcolor{keywordtype}{float}\ volume);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00201}00201\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a4447c313bba2cdfbac3053a094f66776}{SetVolumeAll}}(\textcolor{keywordtype}{float}\ volume);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00217}\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{00217}}\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00218}00218\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00219}\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f}{00219}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f}{Pause}},}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00220}\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325}{00220}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325}{Resume}},}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00221}\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481}{00221}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481}{Stop}}}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00222}00222\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8d8a89dcb398e0e51b6853f5aa684280}{ControlByID}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control,\ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00276}00276\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_aaa6392113f543f2bb32e6811bd010100}{ControlByTag}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control,\ \textcolor{keyword}{const}\ std::string\&\ tag);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00290}00290\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ad78be412f57622826d4d7bf5f46378a8}{ControlAll}}(\mbox{\hyperlink{class_sound_manager_a3c4fde85dedc1019d025b016b60c81ed}{SoundControlType}}\ control);}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00292}00292\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sound_manager_af1ee5e29fca894a8ac9aeeb56b81f21d}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00322}00322\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_aaf241621221cdbefeba78e8b6bc29240}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00349}00349\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a4a77d91e2c8257d6c2d02ffffad671ff}{Cleanup}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00366}00366\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_af25662c1d0237540686087a080001f9b}{Free}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00380}00380\ \ \ \ \ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_a1e76b08631c0a87462dab75fb0d526ed}{GenerateID}}();}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00382}00382\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00383}\mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{00383}}\ \ \ \ \ ma\_engine*\ \mbox{\hyperlink{class_sound_manager_ac2e5b555ac4b752012ef3032184847f2}{engine}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00385}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{00385}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_manager_1_1_sound_info}{SoundInfo}}}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00386}00386\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00387}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info_a2a31577d3b4d038e21ef05ee7c729a71}{00387}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{struct_sound_manager_1_1_sound_info_a2a31577d3b4d038e21ef05ee7c729a71}{filepath}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00388}\mbox{\hyperlink{struct_sound_manager_1_1_sound_info_af318299f9e1738394feb9f513d07255b}{00388}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sound_manager_1_1_sound_info_af318299f9e1738394feb9f513d07255b}{loop}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00389}00389\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00390}\mbox{\hyperlink{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}{00390}}\ \ \ \ \ std::unordered\_map<std::string,\ SoundInfo>\ \mbox{\hyperlink{class_sound_manager_a5446e9c6a2625292765b740ff0a90649}{sounds}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00392}00392\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a}{SoundInstanceMA}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00393}\mbox{\hyperlink{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}{00393}}\ \ \ \ \ std::unordered\_map<std::string,\ std::vector<SoundInstanceMA*>>\ \mbox{\hyperlink{class_sound_manager_a75b7dcdccb8b231683bb0c21519f5c39}{activeChannels}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00394}\mbox{\hyperlink{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}{00394}}\ \ \ \ \ std::unordered\_map<SoundInstanceID,\ SoundInstanceMA*>\ \mbox{\hyperlink{class_sound_manager_af2c6998eead9b15cac317be3c26a03ef}{instanceMap}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00396}\mbox{\hyperlink{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}{00396}}\ \ \ \ \ std::queue<SoundInstanceID>\ \mbox{\hyperlink{class_sound_manager_a2790a08c6ebba08bba3ad5539834ca6b}{reusableIDs}};}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00397}\mbox{\hyperlink{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}{00397}}\ \ \ \ \ \mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{SoundInstanceID}}\ \mbox{\hyperlink{class_sound_manager_a910b1fd3f58c344c1b2185b031d188d0}{nextInstanceID}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_sound_manager_8h_source_l00398}00398\ \};}
 
 \end{DoxyCode}

@@ -2,28 +2,34 @@
 \hypertarget{struct_compute_material_1_1_image_bind}{}\label{struct_compute_material_1_1_image_bind}\index{ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}}
 
 
-Describes a single image binding for a compute shader.  
+Describes one image binding used by a compute shader.  
 
 
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}{tex}}
-\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{struct_compute_material_1_1_image_bind_af8a7140e3a74035040670d0df04eaacd}{tex}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_texture}{Texture} bound as an image. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{Image\+Access}} \mbox{\hyperlink{struct_compute_material_1_1_image_bind_ae79bc6e7fa54bdd075da9a5256cef43d}{access}}
-\item 
+\begin{DoxyCompactList}\small\item\em Access mode used when binding the image. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{Image\+Format}} \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}{format}}
-\item 
+\begin{DoxyCompactList}\small\item\em Image format declared for the binding. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}{level}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Mip level used for image access. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Describes a single image binding for a compute shader. 
+Describes one image binding used by a compute shader. 
 
-This packs the texture pointer and the required Open\+GL image binding parameters. 
+Each entry stores\+:
+\begin{DoxyItemize}
+\item the texture resource
+\item the image access mode
+\item the image format
+\item the mip level to bind 
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00264}{264}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Definition at line \mbox{\hyperlink{_material_8h_source_l00305}{305}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 
@@ -36,7 +42,11 @@ Definition at line \mbox{\hyperlink{_material_8h_source_l00264}{264}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00267}{267}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Access mode used when binding the image. 
+
+
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00315}{315}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{struct_compute_material_1_1_image_bind_a8bf46fe5ee6199e6fe7740903898c35a}\index{ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}!format@{format}}
 \index{format@{format}!ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}}
@@ -46,7 +56,11 @@ Definition at line \mbox{\hyperlink{_material_8h_source_l00267}{267}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00268}{268}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Image format declared for the binding. 
+
+
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00320}{320}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 \Hypertarget{struct_compute_material_1_1_image_bind_a5a83aa09857b96eb2437f9396152ea30}\index{ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}!level@{level}}
 \index{level@{level}!ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}}
@@ -56,17 +70,25 @@ int Compute\+Material\+::\+Image\+Bind\+::level}
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00269}{269}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+Mip level used for image access. 
 
-\Hypertarget{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee}\index{ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}!tex@{tex}}
+
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00325}{325}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_compute_material_1_1_image_bind_af8a7140e3a74035040670d0df04eaacd}\index{ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}!tex@{tex}}
 \index{tex@{tex}!ComputeMaterial::ImageBind@{ComputeMaterial::ImageBind}}
 \doxysubsubsection{\texorpdfstring{tex}{tex}}
-{\footnotesize\ttfamily \label{struct_compute_material_1_1_image_bind_a1740cdd4ca2dbe18ef6c66617b6739ee} 
-\mbox{\hyperlink{class_texture}{Texture}}\texorpdfstring{$\ast$}{*} Compute\+Material\+::\+Image\+Bind\+::tex}
+{\footnotesize\ttfamily \label{struct_compute_material_1_1_image_bind_af8a7140e3a74035040670d0df04eaacd} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_texture}{Texture}}$>$ Compute\+Material\+::\+Image\+Bind\+::tex}
 
 
 
-Definition at line \mbox{\hyperlink{_material_8h_source_l00266}{266}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+\doxylink{class_texture}{Texture} bound as an image. 
+
+
+
+Definition at line \mbox{\hyperlink{_material_8h_source_l00310}{310}} of file \mbox{\hyperlink{_material_8h_source}{Material.\+h}}.
 
 
 

@@ -19,7 +19,7 @@ void LoadingState::Init(const EngineContext& engineContext)
 {
     if (uiReady)
     {
-        auto* font = engineContext.renderManager->GetFontByTag(uiFontTag);
+        std::shared_ptr<Font> font = engineContext.renderManager->GetFontByTag(uiFontTag);
         if (font)
         {
             auto text = std::make_unique<TextObject>(font, "Loading... 0%");
@@ -139,7 +139,7 @@ void LoadingState::UploadToGPU(const LoadResult& r, const EngineContext& engineC
                 if (!res.ok)
                     return;
 
-                auto tex = std::make_unique<Texture>(res.pixels.data(), res.width, res.height, res.channels, res.settings);
+                auto tex = std::make_shared<Texture>(res.pixels.data(), res.width, res.height, res.channels, res.settings);
                 engineContext.renderManager->RegisterTexture(res.tag, std::move(tex));
             }
             else if constexpr (std::is_same_v<T, ShaderResult>)
@@ -147,7 +147,7 @@ void LoadingState::UploadToGPU(const LoadResult& r, const EngineContext& engineC
                 if (!res.ok)
                     return;
 
-                auto shader = std::make_unique<Shader>();
+                auto shader = std::make_shared<Shader>();
                 for (auto& s : res.sources)
                 {
                     shader->AttachFromSource(s.stage, s.source);

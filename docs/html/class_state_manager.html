@@ -106,7 +106,7 @@ $(function(){initNavTree('class_state_manager.html',''); initResizable(true); })
 </div><!--header-->
 <div class="contents">
 
-<p>Manages the lifetime and transition of <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> instances.  
+<p>Manages the active game state and performs deferred state transitions for the engine.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_state_manager_8h_source.html">StateManager.h</a>&gt;</code></p>
@@ -114,22 +114,22 @@ $(function(){initNavTree('class_state_manager.html',''); initResizable(true); })
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb24049cbe185fe0faec5c771e34c2bb" id="r_aeb24049cbe185fe0faec5c771e34c2bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_state.html">GameState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb24049cbe185fe0faec5c771e34c2bb">GetCurrentState</a> () const</td></tr>
-<tr class="memdesc:aeb24049cbe185fe0faec5c771e34c2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:aeb24049cbe185fe0faec5c771e34c2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently active game state.  <br /></td></tr>
 <tr class="separator:aeb24049cbe185fe0faec5c771e34c2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5337ecd1c035794817b1de05f961d352" id="r_a5337ecd1c035794817b1de05f961d352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5337ecd1c035794817b1de05f961d352">ChangeState</a> (std::unique_ptr&lt; <a class="el" href="class_game_state.html">GameState</a> &gt; newState)</td></tr>
-<tr class="memdesc:a5337ecd1c035794817b1de05f961d352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests a transition to a new <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:a5337ecd1c035794817b1de05f961d352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Schedules a transition to a new game state.  <br /></td></tr>
 <tr class="separator:a5337ecd1c035794817b1de05f961d352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ab4ebd3189a4623e805d95f768b314acb" id="r_ab4ebd3189a4623e805d95f768b314acb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4ebd3189a4623e805d95f768b314acb">Update</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:ab4ebd3189a4623e805d95f768b314acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:ab4ebd3189a4623e805d95f768b314acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes pending state transitions and updates the active state.  <br /></td></tr>
 <tr class="separator:ab4ebd3189a4623e805d95f768b314acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae161e57265af366c58b0e2b5d936553d" id="r_ae161e57265af366c58b0e2b5d936553d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae161e57265af366c58b0e2b5d936553d">Draw</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:ae161e57265af366c58b0e2b5d936553d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:ae161e57265af366c58b0e2b5d936553d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the current state and executes the engine's frame rendering sequence.  <br /></td></tr>
 <tr class="separator:ae161e57265af366c58b0e2b5d936553d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e5c183bf725b7132f7e4bc800deaab" id="r_aa8e5c183bf725b7132f7e4bc800deaab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8e5c183bf725b7132f7e4bc800deaab">Free</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:aa8e5c183bf725b7132f7e4bc800deaab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:aa8e5c183bf725b7132f7e4bc800deaab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees and unloads the current state, then clears ownership of it.  <br /></td></tr>
 <tr class="separator:aa8e5c183bf725b7132f7e4bc800deaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -144,12 +144,24 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a598a8e8b997a38333b28dbbe9c87cfe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages the lifetime and transition of <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> instances. </p>
-<p><a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> is responsible for owning the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> and safely transitioning to a new state when requested. State changes are not applied immediately; instead, the new state is stored temporarily and the actual transition occurs at a controlled point in the frame lifecycle.</p>
-<p>This deferred transition model ensures that state changes do not occur in the middle of Update or Draw execution, preventing invalid access and partial state updates.</p>
-<p>Update, Draw, and Free are driven exclusively by <a class="el" href="class_jin_engine.html" title="Top-level engine facade that owns core managers and drives the main game loop.">JinEngine</a> and are not intended to be called directly by user code. </p>
+<div class="textblock"><p>Manages the active game state and performs deferred state transitions for the engine. </p>
+<p><a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a> owns the currently active <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> and an optional pending <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> that has been requested through <a class="el" href="#a5337ecd1c035794817b1de05f961d352" title="Schedules a transition to a new game state.">ChangeState()</a>.</p>
+<p>State changes are not applied immediately when <a class="el" href="#a5337ecd1c035794817b1de05f961d352" title="Schedules a transition to a new game state.">ChangeState()</a> is called. Instead, the new state is stored in <code>nextState</code> and the actual transition is processed inside <a class="el" href="#ab4ebd3189a4623e805d95f768b314acb" title="Processes pending state transitions and updates the active state.">Update()</a>. This deferred design helps avoid replacing the active state in the middle of user logic or rendering code.</p>
+<p>During a state transition, <a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a> performs the following sequence:</p><ul>
+<li>calls SystemFree() on the old state,</li>
+<li>calls SystemUnload() on the old state,</li>
+<li>stops all active sounds through <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a>,</li>
+<li>moves the pending state into currentState,</li>
+<li>calls SystemLoad() on the new state,</li>
+<li>calls SystemInit() on the new state,</li>
+<li>updates all cameras in the new state's <a class="el" href="class_camera_manager.html" title="Manages multiple Camera2D instances using string tags.">CameraManager</a> to match the current window size.</li>
+</ul>
+<p>In addition to state switching, this class also drives the main per-frame update and draw flow for the current state.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a> owns states exclusively through std::unique_ptr.</dd>
+<dd>
+This class is intended to be controlled internally by the engine. <a class="el" href="class_jin_engine.html" title="Core engine class that manages initialization, main loop execution, and system lifecycle.">JinEngine</a> is declared as a friend so it can access lifecycle functions such as <a class="el" href="#ab4ebd3189a4623e805d95f768b314acb" title="Processes pending state transitions and updates the active state.">Update()</a>, <a class="el" href="#ae161e57265af366c58b0e2b5d936553d" title="Renders the current state and executes the engine&#39;s frame rendering sequence.">Draw()</a>, and <a class="el" href="#aa8e5c183bf725b7132f7e4bc800deaab" title="Frees and unloads the current state, then clears ownership of it.">Free()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00024">24</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00039">39</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5337ecd1c035794817b1de05f961d352" name="a5337ecd1c035794817b1de05f961d352"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5337ecd1c035794817b1de05f961d352">&#9670;&#160;</a></span>ChangeState()</h2>
@@ -166,21 +178,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Requests a transition to a new <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p>The provided <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> is stored internally as the next state and will replace the current state at a safe synchronization point, typically between frames.</p>
-<p>If a next state is already pending, it will be overwritten.</p>
+<p>Schedules a transition to a new game state. </p>
+<p>This function does not immediately replace the current state. Instead, it stores the provided state in nextState, and the actual transition is performed during the next <a class="el" href="#ab4ebd3189a4623e805d95f768b314acb" title="Processes pending state transitions and updates the active state.">Update()</a> call.</p>
+<p>If another pending state already exists, it is overwritten by the new one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newState</td><td>Unique ownership of the new <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> to activate. </td></tr>
+    <tr><td class="paramname">newState</td><td>New state to activate on the next update step.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The transition is deferred intentionally so that state replacement happens at a controlled point in the engine loop. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_state_manager_8cpp_source.html#l00008">8</a> of file <a class="el" href="_state_manager_8cpp_source.html">StateManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
 <div class="line"><span class="lineno">   10</span>    <a class="code hl_variable" href="#a598a8e8b997a38333b28dbbe9c87cfe6">nextState</a> = std::move(newState);</div>
 <div class="line"><span class="lineno">   11</span>}</div>
-<div class="ttc" id="aclass_state_manager_html_a598a8e8b997a38333b28dbbe9c87cfe6"><div class="ttname"><a href="#a598a8e8b997a38333b28dbbe9c87cfe6">StateManager::nextState</a></div><div class="ttdeci">std::unique_ptr&lt; GameState &gt; nextState</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8h_source.html#l00090">StateManager.h:90</a></div></div>
+<div class="ttc" id="aclass_state_manager_html_a598a8e8b997a38333b28dbbe9c87cfe6"><div class="ttname"><a href="#a598a8e8b997a38333b28dbbe9c87cfe6">StateManager::nextState</a></div><div class="ttdeci">std::unique_ptr&lt; GameState &gt; nextState</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8h_source.html#l00158">StateManager.h:158</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -207,14 +220,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p>Rendering is delegated to the active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. This function is expected to be called once per frame after <a class="el" href="#ab4ebd3189a4623e805d95f768b314acb" title="Updates the currently active GameState.">Update()</a>.</p>
+<p>Renders the current state and executes the engine's frame rendering sequence. </p>
+<p>If there is an active currentState, this function performs the following rendering flow:</p>
+<ol type="1">
+<li>BeginFrame() is called on <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>.</li>
+<li>currentState-&gt;Draw(engineContext) is executed.</li>
+<li>RenderManager::FlushDrawCommands(engineContext) is called.</li>
+<li>If debug rendering is enabled, RenderManager::FlushDebugLineDrawCommands(engineContext) is called.</li>
+<li>EndFrame() is called on <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>.</li>
+<li>currentState-&gt;PostProcessing(engineContext) is executed.</li>
+<li>RenderManager::FlushDrawCommands(engineContext) is called again for post-processing output.</li>
+</ol>
+<p>If there is no active state, this function does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine systems and managers used during rendering.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function does more than simply call the state's <a class="el" href="#ae161e57265af366c58b0e2b5d936553d" title="Renders the current state and executes the engine&#39;s frame rendering sequence.">Draw()</a>. It also controls the full render-manager frame lifecycle around that draw call.</dd>
+<dd>
+Debug draw flushing occurs only when engine-&gt;ShouldRenderDebugDraws() returns true. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_state_manager_8cpp_source.html#l00034">34</a> of file <a class="el" href="_state_manager_8cpp_source.html">StateManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
@@ -233,14 +259,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   48</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a620231f7f4119dbf26ef416478578cde">FlushDrawCommands</a>(engineContext);</div>
 <div class="line"><span class="lineno">   49</span>    }</div>
 <div class="line"><span class="lineno">   50</span>}</div>
-<div class="ttc" id="aclass_jin_engine_html_a35998b207827eaccd30459251853c9da"><div class="ttname"><a href="class_jin_engine.html#a35998b207827eaccd30459251853c9da">JinEngine::ShouldRenderDebugDraws</a></div><div class="ttdeci">bool ShouldRenderDebugDraws() const</div><div class="ttdoc">Returns whether debug visuals should be rendered.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00103">JinEngine.h:103</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a375da2d8afa977405cd3200f643b3e84"><div class="ttname"><a href="class_render_manager.html#a375da2d8afa977405cd3200f643b3e84">RenderManager::BeginFrame</a></div><div class="ttdeci">void BeginFrame(const EngineContext &amp;engineContext)</div><div class="ttdoc">Begins a new frame. Optionally binds and clears the offscreen render target.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00061">RenderManager.cpp:61</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a61a2ee6952f8da0aee3ac21cd8033d0b"><div class="ttname"><a href="class_render_manager.html#a61a2ee6952f8da0aee3ac21cd8033d0b">RenderManager::EndFrame</a></div><div class="ttdeci">void EndFrame(const EngineContext &amp;engineContext)</div><div class="ttdoc">Ends the frame by blitting the offscreen render target to the default framebuffer.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00081">RenderManager.cpp:81</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a620231f7f4119dbf26ef416478578cde"><div class="ttname"><a href="class_render_manager.html#a620231f7f4119dbf26ef416478578cde">RenderManager::FlushDrawCommands</a></div><div class="ttdeci">void FlushDrawCommands(const EngineContext &amp;engineContext)</div><div class="ttdoc">Executes the batched draw commands accumulated in renderMap, then clears the map.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00151">RenderManager.cpp:151</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a7c058729d4929a4295ebee1c6d324001"><div class="ttname"><a href="class_render_manager.html#a7c058729d4929a4295ebee1c6d324001">RenderManager::FlushDebugLineDrawCommands</a></div><div class="ttdeci">void FlushDebugLineDrawCommands(const EngineContext &amp;engineContext)</div><div class="ttdoc">Draws all queued debug lines and clears the queue.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00327">RenderManager.cpp:327</a></div></div>
-<div class="ttc" id="aclass_state_manager_html_a23b9db8ba856509ed476ed1144247b83"><div class="ttname"><a href="#a23b9db8ba856509ed476ed1144247b83">StateManager::currentState</a></div><div class="ttdeci">std::unique_ptr&lt; GameState &gt; currentState</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8h_source.html#l00089">StateManager.h:89</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the RenderManager responsible for rendering operations.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00053">EngineContext.h:53</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a9f2c2e2e2f267e5a86ecb50124cca61e"><div class="ttname"><a href="struct_engine_context.html#a9f2c2e2e2f267e5a86ecb50124cca61e">EngineContext::engine</a></div><div class="ttdeci">JinEngine * engine</div><div class="ttdoc">Pointer to the core JinEngine instance.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00067">EngineContext.h:67</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a35998b207827eaccd30459251853c9da"><div class="ttname"><a href="class_jin_engine.html#a35998b207827eaccd30459251853c9da">JinEngine::ShouldRenderDebugDraws</a></div><div class="ttdeci">bool ShouldRenderDebugDraws() const</div><div class="ttdoc">Checks whether debug drawing is enabled.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00119">JinEngine.h:119</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a375da2d8afa977405cd3200f643b3e84"><div class="ttname"><a href="class_render_manager.html#a375da2d8afa977405cd3200f643b3e84">RenderManager::BeginFrame</a></div><div class="ttdeci">void BeginFrame(const EngineContext &amp;engineContext)</div><div class="ttdoc">Prepares the frame&#39;s render target and clears it.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00061">RenderManager.cpp:61</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a61a2ee6952f8da0aee3ac21cd8033d0b"><div class="ttname"><a href="class_render_manager.html#a61a2ee6952f8da0aee3ac21cd8033d0b">RenderManager::EndFrame</a></div><div class="ttdeci">void EndFrame(const EngineContext &amp;engineContext)</div><div class="ttdoc">Presents the frame from the offscreen render target to the default framebuffer.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00081">RenderManager.cpp:81</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a620231f7f4119dbf26ef416478578cde"><div class="ttname"><a href="class_render_manager.html#a620231f7f4119dbf26ef416478578cde">RenderManager::FlushDrawCommands</a></div><div class="ttdeci">void FlushDrawCommands(const EngineContext &amp;engineContext)</div><div class="ttdoc">Flushes the current frame&#39;s accumulated render batches and executes draw calls.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00152">RenderManager.cpp:152</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a7c058729d4929a4295ebee1c6d324001"><div class="ttname"><a href="class_render_manager.html#a7c058729d4929a4295ebee1c6d324001">RenderManager::FlushDebugLineDrawCommands</a></div><div class="ttdeci">void FlushDebugLineDrawCommands(const EngineContext &amp;engineContext)</div><div class="ttdoc">Flushes all queued debug line draws.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00352">RenderManager.cpp:352</a></div></div>
+<div class="ttc" id="aclass_state_manager_html_a23b9db8ba856509ed476ed1144247b83"><div class="ttname"><a href="#a23b9db8ba856509ed476ed1144247b83">StateManager::currentState</a></div><div class="ttdeci">std::unique_ptr&lt; GameState &gt; currentState</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8h_source.html#l00157">StateManager.h:157</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the render manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00072">EngineContext.h:72</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a9f2c2e2e2f267e5a86ecb50124cca61e"><div class="ttname"><a href="struct_engine_context.html#a9f2c2e2e2f267e5a86ecb50124cca61e">EngineContext::engine</a></div><div class="ttdeci">JinEngine * engine</div><div class="ttdoc">Pointer to the main engine instance.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00088">EngineContext.h:88</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -267,14 +293,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Frees the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p>This calls the state's cleanup routines and releases ownership of the current state.</p>
+<p>Frees and unloads the current state, then clears ownership of it. </p>
+<p>If currentState exists, this function performs:</p><ul>
+<li>currentState-&gt;SystemFree(engineContext)</li>
+<li>currentState-&gt;SystemUnload(engineContext)</li>
+<li>currentState.reset()</li>
+</ul>
+<p>After this function finishes, no active state remains.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine systems and managers used by the state during shutdown.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function only releases the currently active state. It does not process nextState. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_state_manager_8cpp_source.html#l00052">52</a> of file <a class="el" href="_state_manager_8cpp_source.html">StateManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
@@ -311,9 +343,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p>The returned pointer is owned by <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> and remains valid until a state transition occurs.</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>, or nullptr if no state is active. </dd></dl>
+<p>Returns the currently active game state. </p>
+<p>This function returns the raw pointer stored in currentState. If no state is currently active, it returns nullptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the currently active <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a>. </dd>
+<dd>
+nullptr if no state is active.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The returned pointer is non-owning. State lifetime is still managed entirely by <a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_state_manager_8cpp_source.html#l00003">3</a> of file <a class="el" href="_state_manager_8cpp_source.html">StateManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    4</span>{</div>
@@ -349,15 +384,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the currently active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p>This function forwards the update call to the current <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> and also handles pending state transitions if a new state has been requested.</p>
+<p>Processes pending state transitions and updates the active state. </p>
+<p>This function first checks whether a pending state exists in nextState. If so, it performs a full state transition.</p>
+<p>Transition flow:</p><ul>
+<li>If currentState exists:<ul>
+<li>call currentState-&gt;SystemFree(engineContext)</li>
+<li>call currentState-&gt;SystemUnload(engineContext)</li>
+<li>stop all sounds through engineContext.soundManager-&gt;ControlAll(Stop)</li>
+</ul>
+</li>
+<li>move nextState into currentState</li>
+<li>call currentState-&gt;SystemLoad(engineContext)</li>
+<li>call currentState-&gt;SystemInit(engineContext)</li>
+<li>resize all cameras owned by the new state to the current window width and height</li>
+</ul>
+<p>After transition handling, if currentState exists, this function calls currentState-&gt;SystemUpdate(dt, engineContext).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">dt</td><td>Delta time for the current frame. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine systems and managers used by the state.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="#a5337ecd1c035794817b1de05f961d352" title="Schedules a transition to a new game state.">ChangeState()</a> only queues the transition. <a class="el" href="#ab4ebd3189a4623e805d95f768b314acb" title="Processes pending state transitions and updates the active state.">Update()</a> is where the actual swap happens.</dd>
+<dd>
+Sound playback is forcefully stopped when leaving the current state. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_state_manager_8cpp_source.html#l00013">13</a> of file <a class="el" href="_state_manager_8cpp_source.html">StateManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
@@ -379,12 +430,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   30</span>        <a class="code hl_variable" href="#a23b9db8ba856509ed476ed1144247b83">currentState</a>-&gt;SystemUpdate(dt, engineContext);</div>
 <div class="line"><span class="lineno">   31</span>    }</div>
 <div class="line"><span class="lineno">   32</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481"><div class="ttname"><a href="class_sound_manager.html#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundManager::SoundControlType::Stop</a></div><div class="ttdeci">@ Stop</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00143">SoundManager.h:143</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_ad78be412f57622826d4d7bf5f46378a8"><div class="ttname"><a href="class_sound_manager.html#ad78be412f57622826d4d7bf5f46378a8">SoundManager::ControlAll</a></div><div class="ttdeci">void ControlAll(SoundControlType control)</div><div class="ttdoc">Applies a control command to all active instances across all tags.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00315">SoundManager.cpp:315</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="class_window_manager.html#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the cached framebuffer height of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00068">WindowManager.h:68</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="class_window_manager.html#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the cached framebuffer width of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00060">WindowManager.h:60</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_aa5985216cfd74ab389769abc5a5fdfb6"><div class="ttname"><a href="struct_engine_context.html#aa5985216cfd74ab389769abc5a5fdfb6">EngineContext::soundManager</a></div><div class="ttdeci">SoundManager * soundManager</div><div class="ttdoc">Pointer to the SoundManager handling audio playback and control.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00058">EngineContext.h:58</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the WindowManager handling window creation and events.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00043">EngineContext.h:43</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481"><div class="ttname"><a href="class_sound_manager.html#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundManager::SoundControlType::Stop</a></div><div class="ttdeci">@ Stop</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00221">SoundManager.h:221</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_ad78be412f57622826d4d7bf5f46378a8"><div class="ttname"><a href="class_sound_manager.html#ad78be412f57622826d4d7bf5f46378a8">SoundManager::ControlAll</a></div><div class="ttdeci">void ControlAll(SoundControlType control)</div><div class="ttdoc">Applies a playback control command to all active sound instances in the manager.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00337">SoundManager.cpp:337</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="class_window_manager.html#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the current cached window height.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00065">WindowManager.h:65</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="class_window_manager.html#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the current cached window width.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00053">WindowManager.h:53</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_aa5985216cfd74ab389769abc5a5fdfb6"><div class="ttname"><a href="struct_engine_context.html#aa5985216cfd74ab389769abc5a5fdfb6">EngineContext::soundManager</a></div><div class="ttdeci">SoundManager * soundManager</div><div class="ttdoc">Pointer to the sound manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00080">EngineContext.h:80</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the window manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00056">EngineContext.h:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -409,7 +460,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00089">89</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00157">157</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
 
 </div>
 </div>
@@ -433,7 +484,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00026">26</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00041">41</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
 
 </div>
 </div>
@@ -457,7 +508,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00090">90</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00158">158</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +532,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00027">27</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_state_manager_8h_source.html#l00042">42</a> of file <a class="el" href="_state_manager_8h_source.html">StateManager.h</a>.</p>
 
 </div>
 </div>

@@ -2,7 +2,7 @@
 \hypertarget{struct_text_instance}{}\label{struct_text_instance}\index{TextInstance@{TextInstance}}
 
 
-Lightweight data container representing a text rendering request.  
+Stores the font reference and UTF-\/8 text content used by a \doxylink{class_text_object}{Text\+Object}.  
 
 
 
@@ -12,31 +12,37 @@ Lightweight data container representing a text rendering request.
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_font}{Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}{font}} = nullptr
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_font}{Font}} $>$ \mbox{\hyperlink{struct_text_instance_aa8d14df286ab02611473e5c9fce8d9fe}{font}}
 \item 
 std\+::string \mbox{\hyperlink{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}{text}} = "{}"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Lightweight data container representing a text rendering request. 
+Stores the font reference and UTF-\/8 text content used by a \doxylink{class_text_object}{Text\+Object}. 
 
-\doxylink{struct_text_instance}{Text\+Instance} holds a reference to a \doxylink{class_font}{Font} and the UTF-\/8 text string to be rendered. It does not own the \doxylink{class_font}{Font} resource and is intended to be used as a mutable payload that can trigger mesh regeneration when its contents change. 
+\doxylink{struct_text_instance}{Text\+Instance} is a lightweight data container that groups the minimum information required to generate and refresh a text mesh\+:
+\begin{DoxyItemize}
+\item the font resource used for glyph lookup and atlas access,
+\item the actual text string to render.
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00017}{17}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+The font is stored as a weak\+\_\+ptr so that \doxylink{class_text_object}{Text\+Object} does not force ownership of the font resource. Because of that, \doxylink{class_text_object}{Text\+Object} must lock the weak\+\_\+ptr before using it, and safely handles the case where the font has expired. 
+
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00022}{22}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f}\index{TextInstance@{TextInstance}!font@{font}}
+\Hypertarget{struct_text_instance_aa8d14df286ab02611473e5c9fce8d9fe}\index{TextInstance@{TextInstance}!font@{font}}
 \index{font@{font}!TextInstance@{TextInstance}}
 \doxysubsubsection{\texorpdfstring{font}{font}}
-{\footnotesize\ttfamily \label{struct_text_instance_a24aa49c4382cc386917dd5add02c0e8f} 
-\mbox{\hyperlink{class_font}{Font}}\texorpdfstring{$\ast$}{*} Text\+Instance\+::font = nullptr}
+{\footnotesize\ttfamily \label{struct_text_instance_aa8d14df286ab02611473e5c9fce8d9fe} 
+std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_font}{Font}}$>$ Text\+Instance\+::font}
 
 
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00019}{19}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00024}{24}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 \Hypertarget{struct_text_instance_a023baf061b0a91453e3c9abf64d1a230}\index{TextInstance@{TextInstance}!text@{text}}
 \index{text@{text}!TextInstance@{TextInstance}}
@@ -46,7 +52,7 @@ std\+::string Text\+Instance\+::text = "{}"{}}
 
 
 
-Definition at line \mbox{\hyperlink{_text_object_8h_source_l00020}{20}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
+Definition at line \mbox{\hyperlink{_text_object_8h_source_l00025}{25}} of file \mbox{\hyperlink{_text_object_8h_source}{Text\+Object.\+h}}.
 
 
 

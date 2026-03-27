@@ -2,7 +2,7 @@
 \hypertarget{struct_engine_timer}{}\label{struct_engine_timer}\index{EngineTimer@{EngineTimer}}
 
 
-Utility structure for frame timing and FPS calculation.  
+Frame timing utility used for delta time calculation and FPS measurement.  
 
 
 
@@ -13,32 +13,42 @@ Utility structure for frame timing and FPS calculation.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start}} ()
-\begin{DoxyCompactList}\small\item\em Initializes the timer state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initializes the timer. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}{Tick}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Advances the timer and computes delta time for the current frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Advances the timer by one frame and computes delta time. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{Should\+Update\+FPS}} (float \&out\+FPS)
-\begin{DoxyCompactList}\small\item\em Determines whether an updated FPS value should be reported. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Determines whether FPS should be updated and computes it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}{last\+Time}} = 0.\+0f
-\begin{DoxyCompactList}\small\item\em Time value recorded during the previous frame. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Time value from the previous frame. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{struct_engine_timer_ae752c69abc5d400019e704aeb49683c1}{fps\+Timer}} = 0.\+0f
-\begin{DoxyCompactList}\small\item\em Accumulated elapsed time used for FPS calculation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Accumulated time used for FPS calculation. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}{frame\+Count}} = 0
-\begin{DoxyCompactList}\small\item\em Number of frames accumulated since the last FPS update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of frames counted during the FPS accumulation period. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Utility structure for frame timing and FPS calculation. 
+Frame timing utility used for delta time calculation and FPS measurement. 
 
-\doxylink{struct_engine_timer}{Engine\+Timer} provides basic timing functionality used by the engine loop. It measures delta time between frames and optionally computes frames-\/per-\/second (FPS) over a fixed accumulation interval.
+\doxylink{struct_engine_timer}{Engine\+Timer} is responsible for tracking frame time progression and computing per-\/frame delta time (dt) as well as frames per second (FPS).
 
-The timer relies on time information provided through \doxylink{struct_engine_context}{Engine\+Context} (typically sourced from a high-\/resolution platform timer).
+It is typically used inside the main engine loop\+:
+\begin{DoxyItemize}
+\item \doxylink{struct_engine_timer_ad25e0e9f721178342c6f3c7b953befd9}{Start()} initializes the timer.
+\item \doxylink{struct_engine_timer_abe3aa7aae238367ee3d3cee3ce7678de}{Tick()} is called every frame to compute delta time.
+\item \doxylink{struct_engine_timer_aaf262d9972999ca9e988923b79c7c9eb}{Should\+Update\+FPS()} accumulates time and frame count to periodically update FPS.
+\end{DoxyItemize}
 
-This structure is intended to be owned and driven by the core engine loop. 
+The timer relies on the window system\textquotesingle{}s time source (e.\+g., glfw\+Get\+Time) accessed through \doxylink{struct_engine_context}{Engine\+Context}.
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00017}{17}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+\begin{DoxyNote}{Note}
+This struct does not own any system and depends on \doxylink{struct_engine_context}{Engine\+Context} for time queries. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00022}{22}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 
 
@@ -51,11 +61,13 @@ bool Engine\+Timer\+::\+Should\+Update\+FPS (\begin{DoxyParamCaption}\item[{floa
 
 
 
-Determines whether an updated FPS value should be reported. 
+Determines whether FPS should be updated and computes it. 
 
-This function accumulates frame count and elapsed time internally. When a predefined time interval has elapsed (commonly 1 second), it computes the average FPS, writes it to out\+FPS, resets the internal FPS counters, and returns true.
+Accumulates elapsed time (fps\+Timer) and frame count (frame\+Count). When the accumulated time exceeds a threshold (commonly \texorpdfstring{$\sim$}{\string~}1 second), FPS is calculated as\+: \begin{DoxyVerb}FPS = frameCount / fpsTimer
+\end{DoxyVerb}
 
-If the interval has not yet elapsed, the function returns false and out\+FPS remains unmodified.
+
+After computation, both counters are reset.
 
 
 \begin{DoxyParams}{Parameters}
@@ -63,8 +75,11 @@ If the interval has not yet elapsed, the function returns false and out\+FPS rem
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if a new FPS value was computed; false otherwise. 
+True if FPS was updated this frame, false otherwise.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is typically used to update UI or debug overlays at a lower frequency. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
@@ -91,9 +106,14 @@ void Engine\+Timer\+::\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Initializes the timer state. 
+Initializes the timer. 
 
-Resets internal time tracking values and prepares the timer for the first Tick call. 
+Captures the current time as the starting reference point. This should be called once before entering the main loop.
+
+\begin{DoxyNote}{Note}
+Resets internal state used for delta time calculation. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
 
@@ -114,20 +134,23 @@ float Engine\+Timer\+::\+Tick (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Advances the timer and computes delta time for the current frame. 
+Advances the timer by one frame and computes delta time. 
 
-This function retrieves the current time from \doxylink{struct_engine_context}{Engine\+Context}, computes the elapsed time since the previous frame, updates internal accumulators, and returns delta time in seconds.
+Retrieves the current time from the engine (via \doxylink{struct_engine_context}{Engine\+Context}), computes the difference from the previous frame (last\+Time), and updates last\+Time with the current value.
 
-The returned delta time is typically used to drive frame-\/based updates throughout the engine.
+This function is expected to be called once per frame.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine context providing the current time source. \\
+{\em engine\+Context} & Provides access to the engine\textquotesingle{}s time source. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Delta time (seconds) since the last Tick call. 
+Delta time in seconds since the last frame.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A stable delta time is essential for frame-\/independent movement and simulation. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_engine_timer_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_engine_timer_8cpp_source}{Engine\+Timer.\+cpp}}.
@@ -160,11 +183,11 @@ float Engine\+Timer\+::fps\+Timer = 0.\+0f}
 
 
 
-Accumulated elapsed time used for FPS calculation. 
+Accumulated time used for FPS calculation. 
 
+Increases every frame by delta time until it reaches a threshold (e.\+g., 1 second). 
 
-
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00072}{72}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00088}{88}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 \Hypertarget{struct_engine_timer_a760c4494a8697985fcaf45888ba21a47}\index{EngineTimer@{EngineTimer}!frameCount@{frameCount}}
 \index{frameCount@{frameCount}!EngineTimer@{EngineTimer}}
@@ -174,11 +197,11 @@ int Engine\+Timer\+::frame\+Count = 0}
 
 
 
-Number of frames accumulated since the last FPS update. 
+Number of frames counted during the FPS accumulation period. 
 
+Incremented every frame and used together with fps\+Timer to compute FPS. 
 
-
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00077}{77}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00096}{96}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 \Hypertarget{struct_engine_timer_a1dcbf3f19be8c727b6bcd254b3ef5726}\index{EngineTimer@{EngineTimer}!lastTime@{lastTime}}
 \index{lastTime@{lastTime}!EngineTimer@{EngineTimer}}
@@ -188,11 +211,11 @@ float Engine\+Timer\+::last\+Time = 0.\+0f}
 
 
 
-Time value recorded during the previous frame. 
+Time value from the previous frame. 
 
-Used to compute delta time in Tick. 
+Used to compute delta time by subtracting from the current time. 
 
-Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00067}{67}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
+Definition at line \mbox{\hyperlink{_engine_timer_8h_source_l00080}{80}} of file \mbox{\hyperlink{_engine_timer_8h_source}{Engine\+Timer.\+h}}.
 
 
 

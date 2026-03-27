@@ -1,4 +1,4 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 
 const bool& Object::IsAlive() const
 {
@@ -46,9 +46,9 @@ void Object::SetMaterial(const EngineContext& engineContext, const std::string& 
 }
 
 
-Material* Object::GetMaterial() const
+std::shared_ptr<Material> Object::GetMaterial() const
 {
-    return material;
+    return material.lock();
 }
 
 void Object::SetMesh(const EngineContext& engineContext, const std::string& tag)
@@ -56,18 +56,21 @@ void Object::SetMesh(const EngineContext& engineContext, const std::string& tag)
     mesh = engineContext.renderManager->GetMeshByTag(tag);
 }
 
-Mesh* Object::GetMesh() const
+std::shared_ptr<Mesh> Object::GetMesh() const
 {
-    return mesh;
+    return mesh.lock();
 }
 
 bool Object::CanBeInstanced() const
 {
-    if (!mesh || !material) return false;
-    if (!material->IsInstancingSupported()) return false;
+    auto meshPtr = mesh.lock();
+    auto materialPtr = material.lock();
+
+    if (!meshPtr || !materialPtr) return false;
+    if (!materialPtr->IsInstancingSupported()) return false;
+
     return true;
 }
-
 glm::mat4 Object::GetTransform2DMatrix()
 {
     return transform2D.GetMatrix();
@@ -148,7 +151,9 @@ glm::vec2 Object::GetUVFlipVector() const
 
 float Object::GetBoundingRadius() const
 {
-    glm::vec2 halfSize = mesh ? mesh->GetLocalBoundsHalfSize() : glm::vec2(0.5f);
+    auto meshPtr = mesh.lock();
+
+    glm::vec2 halfSize = meshPtr ? meshPtr->GetLocalBoundsHalfSize() : glm::vec2(0.5f);
     glm::vec2 scaled = halfSize * transform2D.GetScale();
     return glm::length(scaled);
 }

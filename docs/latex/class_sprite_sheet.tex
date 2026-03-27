@@ -2,7 +2,7 @@
 \hypertarget{class_sprite_sheet}{}\label{class_sprite_sheet}\index{SpriteSheet@{SpriteSheet}}
 
 
-Utility class that maps a texture to a uniform grid of sprite frames.  
+Represents a grid-\/based sprite sheet and stores named animation clips.  
 
 
 
@@ -12,26 +12,26 @@ Utility class that maps a texture to a uniform grid of sprite frames.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8}{Sprite\+Sheet}} (\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}texture\+\_\+, int frameW, int frameH)
-\begin{DoxyCompactList}\small\item\em Constructs a sprite sheet helper for a texture divided into a uniform grid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite_sheet_a690a9faacc7a38ccf7508ce9940b344c}{Sprite\+Sheet}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ texture\+\_\+, int frameW, int frameH)
+\begin{DoxyCompactList}\small\item\em Creates a sprite sheet from a texture and fixed frame dimensions. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}{Get\+UVOffset}} (int frame\+Index) const
-\begin{DoxyCompactList}\small\item\em Returns the UV offset for the given frame index. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the UV offset of the specified frame. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a}{Get\+UVScale}} () const
-\begin{DoxyCompactList}\small\item\em Returns the uniform UV scale for one frame cell. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943}{Get\+Texture}} () const
-\begin{DoxyCompactList}\small\item\em Returns the underlying texture used by this sprite sheet. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the normalized UV scale of a single frame. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{class_sprite_sheet_a14aee10cf13f14e9046f988bd76ceb7a}{Get\+Texture}} () const
+\begin{DoxyCompactList}\small\item\em Returns the texture used by this sprite sheet. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_sprite_sheet_acc6bb35d4dc6fce692316cb745be99cf}{Get\+Frame\+Count}} () const
 \begin{DoxyCompactList}\small\item\em Returns the total number of frames in the grid. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sprite_sheet_a0656d33c5b84e8b82abb34a7107ca823}{Add\+Clip}} (const std\+::string \&name, const std\+::vector$<$ int $>$ \&frames, float frame\+Duration, bool looping=true)
-\begin{DoxyCompactList}\small\item\em Adds a named animation clip using explicit frame indices. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds or replaces a named animation clip. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_aaa4e33b8d39dc2f9b714a1d4152e5271}{Get\+Clip}} (const std\+::string \&name) const
-\begin{DoxyCompactList}\small\item\em Retrieves a named animation clip if it exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a pointer to a named animation clip. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} $>$ \mbox{\hyperlink{class_sprite_sheet_acffd1f788437a4d1be0c8606d0905b5d}{animation\+Clips}}
 \item 
-\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}{texture}}
 \item 
 int \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frame\+Width}}
 \item 
@@ -52,38 +52,46 @@ bool \mbox{\hyperlink{class_sprite_sheet_add5883b0e807cabfa77edb84bcce8cf6}{flip
 
 
 \doxysubsection{Detailed Description}
-Utility class that maps a texture to a uniform grid of sprite frames. 
+Represents a grid-\/based sprite sheet and stores named animation clips. 
 
-\doxylink{class_sprite_sheet}{Sprite\+Sheet} provides UV offset/scale data for a sprite sheet that is divided into frameW x frameH cells (in pixels).
+\doxylink{class_sprite_sheet}{Sprite\+Sheet} interprets a texture as a regular grid of frames of equal size. The constructor calculates the number of columns and rows from the texture dimensions and the frame dimensions. If the calculated values become zero, the implementation clamps them to at least one so that frame lookup remains valid.
 
-The sheet also supports named animation clips via Add\+Clip/\+Get\+Clip. Clips store sequences of frame indices and timing settings but do not advance time by themselves.
+This class is responsible for\+:
+\begin{DoxyItemize}
+\item converting frame indices into UV offsets,
+\item returning normalized UV scale for one frame,
+\item storing named \doxylink{struct_sprite_clip}{Sprite\+Clip} entries for clip-\/based animation playback.
+\end{DoxyItemize}
 
-\doxylink{class_sprite_sheet}{Sprite\+Sheet} does not own the \doxylink{class_texture}{Texture} pointer; it assumes the texture lifetime is managed elsewhere (e.\+g., by Render\+Manager/resource registry). 
+The UV calculation flips the row index vertically so that sprite frame lookup matches the engine\textquotesingle{}s texture coordinate convention. This behavior is implemented in \doxylink{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}{Get\+UVOffset()} rather than being handled externally. \+:content\+Reference\mbox{[}oaicite\+:1\mbox{]}\{index=1\}
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00054}{54}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+\begin{DoxyNote}{Note}
+This class does not manage playback time or frame advancement. It only provides frame layout data and clip lookup. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00071}{71}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8}\index{SpriteSheet@{SpriteSheet}!SpriteSheet@{SpriteSheet}}
+\Hypertarget{class_sprite_sheet_a690a9faacc7a38ccf7508ce9940b344c}\index{SpriteSheet@{SpriteSheet}!SpriteSheet@{SpriteSheet}}
 \index{SpriteSheet@{SpriteSheet}!SpriteSheet@{SpriteSheet}}
 \doxysubsubsection{\texorpdfstring{SpriteSheet()}{SpriteSheet()}}
-{\footnotesize\ttfamily \label{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8} 
-Sprite\+Sheet\+::\+Sprite\+Sheet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture\+\_\+}{, }\item[{int}]{frameW}{, }\item[{int}]{frameH}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a690a9faacc7a38ccf7508ce9940b344c} 
+Sprite\+Sheet\+::\+Sprite\+Sheet (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$}]{texture\+\_\+}{, }\item[{int}]{frameW}{, }\item[{int}]{frameH}{}\end{DoxyParamCaption})}
 
 
 
-Constructs a sprite sheet helper for a texture divided into a uniform grid. 
+Creates a sprite sheet from a texture and fixed frame dimensions. 
 
-The implementation is expected to\+:
-\begin{DoxyItemize}
-\item Cache texture dimensions (tex\+Width/tex\+Height)
-\item Compute grid columns/rows based on frame\+Width/frame\+Height
-\end{DoxyItemize}
+Stores the texture, reads its full width and height, and computes how many frames fit horizontally and vertically based on the given frame size.
+
+The constructor also guards against zero column or row counts by forcing them to at least one. This prevents invalid division or indexing behavior when the frame size is larger than the texture size. \+:content\+Reference\mbox{[}oaicite\+:2\mbox{]}\{index=2\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em texture\+\_\+} & \doxylink{class_texture}{Texture} that contains the sprite sheet. \\
+{\em texture\+\_\+} & Shared texture used as the source image for the sprite sheet. \\
 \hline
 {\em frameW} & Width of a single frame in pixels. \\
 \hline
@@ -96,10 +104,10 @@ Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00003}{3}} of file \
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00004\ \ \ \ \ :\ \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}}(texture\_),\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}}(frameW),\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}}(frameH) }
+\DoxyCodeLine{00004\ \ \ \ \ :\ \mbox{\hyperlink{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}{texture}}(std::move(texture\_)),\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}}(frameW),\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}}(frameH) }
 \DoxyCodeLine{00005\ \{}
-\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}}\ =\ texture\_-\/>\mbox{\hyperlink{class_texture_a7f5ee18c7466f904fa371bd97399a944}{GetWidth}}();}
-\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}\ =\ texture\_-\/>\mbox{\hyperlink{class_texture_a289701837e23c9272509f377524ee8f2}{GetHeight}}();}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}}\ =\ \mbox{\hyperlink{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}{texture}}-\/>GetWidth();}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}\ =\ \mbox{\hyperlink{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}{texture}}-\/>GetHeight();}
 \DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ =\ \mbox{\hyperlink{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}{texWidth}}\ /\ \mbox{\hyperlink{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}{frameWidth}};}
 \DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}{rows}}\ =\ \mbox{\hyperlink{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}{texHeight}}\ /\ \mbox{\hyperlink{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}{frameHeight}};}
 \DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ ==\ 0)\ \mbox{\hyperlink{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}{columns}}\ =\ 1;}
@@ -118,28 +126,24 @@ void Sprite\+Sheet\+::\+Add\+Clip (\begin{DoxyParamCaption}\item[{const std\+::s
 
 
 
-Adds a named animation clip using explicit frame indices. 
+Adds or replaces a named animation clip. 
 
-Stores a \doxylink{struct_sprite_clip}{Sprite\+Clip} in animation\+Clips under the provided name. If a clip with the same name already exists, it is replaced.
+Creates a \doxylink{struct_sprite_clip}{Sprite\+Clip} from the provided frame sequence, frame duration, and looping flag, then stores it in the internal clip map under the given name.
+
+If a clip with the same name already exists, the new clip replaces the old one. This makes it possible to redefine animation data without changing the public API. \+:content\+Reference\mbox{[}oaicite\+:3\mbox{]}\{index=3\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Clip identifier used for playback lookup. \\
+{\em name} & Name used to identify the clip. \\
 \hline
-{\em frames} & Ordered list of frame indices. \\
+{\em frames} & Ordered frame indices used by the clip. \\
 \hline
-{\em frame\+Duration} & Duration of each frame in seconds. \\
+{\em frame\+Duration} & Playback duration of one frame in seconds. \\
 \hline
-{\em looping} & Whether the clip loops (default\+: true).\\
+{\em looping} & Whether the clip restarts after reaching the last local frame. \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{class_sprite_sheet_adc4338e1d81369932f37c8bb8e17f3f8}{SpriteSheet}}*\ sheet\ =\ ...;}
-\DoxyCodeLine{sheet-\/>\mbox{\hyperlink{class_sprite_sheet_a0656d33c5b84e8b82abb34a7107ca823}{AddClip}}(\textcolor{stringliteral}{"{}Run"{}},\ \{\ 0,\ 1,\ 2,\ 3,\ 4,\ 5\ \},\ 0.08f,\ \textcolor{keyword}{true});}
-
-\end{DoxyCode}
- 
 
 Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
 
@@ -163,15 +167,19 @@ const \mbox{\hyperlink{struct_sprite_clip}{Sprite\+Clip}} \texorpdfstring{$\ast$
 
 
 
-Retrieves a named animation clip if it exists. 
+Returns a pointer to a named animation clip. 
+
+Searches the internal clip map for the requested name. If found, returns a pointer to the stored clip. Otherwise returns nullptr.
+
+The returned pointer refers to internal storage owned by \doxylink{class_sprite_sheet}{Sprite\+Sheet}. It remains valid as long as the corresponding entry is not replaced or removed. \+:content\+Reference\mbox{[}oaicite\+:4\mbox{]}\{index=4\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Clip identifier. \\
+{\em name} & Name of the clip to search for. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to the stored \doxylink{struct_sprite_clip}{Sprite\+Clip}, or nullptr if not found. 
+Pointer to the clip if found, otherwise nullptr. 
 \end{DoxyReturn}
 
 
@@ -197,10 +205,10 @@ int Sprite\+Sheet\+::\+Get\+Frame\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyP
 
 Returns the total number of frames in the grid. 
 
-Typically equals columns \texorpdfstring{$\ast$}{*} rows.
+The total frame count is computed as the product of the number of columns and rows derived from the texture and frame sizes.
 
 \begin{DoxyReturn}{Returns}
-Total frame count. 
+Total number of addressable frames in this sprite sheet. 
 \end{DoxyReturn}
 
 
@@ -213,26 +221,28 @@ Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00032}{32}} of file 
 \DoxyCodeLine{00035\ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943}\index{SpriteSheet@{SpriteSheet}!GetTexture@{GetTexture}}
+\Hypertarget{class_sprite_sheet_a14aee10cf13f14e9046f988bd76ceb7a}\index{SpriteSheet@{SpriteSheet}!GetTexture@{GetTexture}}
 \index{GetTexture@{GetTexture}!SpriteSheet@{SpriteSheet}}
 \doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
-{\footnotesize\ttfamily \label{class_sprite_sheet_a6895f8f4de5332b429bdb3bbc8774943} 
-\mbox{\hyperlink{class_texture}{Texture}} \texorpdfstring{$\ast$}{*} Sprite\+Sheet\+::\+Get\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a14aee10cf13f14e9046f988bd76ceb7a} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ Sprite\+Sheet\+::\+Get\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
 
 
 
-Returns the underlying texture used by this sprite sheet. 
+Returns the texture used by this sprite sheet. 
+
+Provides access to the underlying texture so that animation and rendering systems can bind the correct resource during draw submission.
 
 \begin{DoxyReturn}{Returns}
-Raw pointer to the texture (not owned). 
+Shared pointer to the source texture. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00101}{101}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00132}{132}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00101\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}{texture}};\ \}}
+\DoxyCodeLine{00132\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}{texture}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}\index{SpriteSheet@{SpriteSheet}!GetUVOffset@{GetUVOffset}}
@@ -243,18 +253,23 @@ glm\+::vec2 Sprite\+Sheet\+::\+Get\+UVOffset (\begin{DoxyParamCaption}\item[{int
 
 
 
-Returns the UV offset for the given frame index. 
+Returns the UV offset of the specified frame. 
 
-The returned value is typically the top-\/left UV coordinate of the frame cell. Combined with \doxylink{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a}{Get\+UVScale()}, this enables computing per-\/frame UVs in shaders\+: uv = base\+UV \texorpdfstring{$\ast$}{*} scale + offset.
+Converts a zero-\/based frame index into a column and row position inside the sprite sheet grid. The row is then vertically flipped before converting the result into normalized UV coordinates.
+
+The returned value represents the UV origin of the frame region. The per-\/frame UV size is provided separately by \doxylink{class_sprite_sheet_a5ff75353185084b8624ee771d10a590a}{Get\+UVScale()}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em frame\+Index} & Index of the frame in row-\/major order. \\
+{\em frame\+Index} & Zero-\/based frame index within the sheet. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-UV offset for sampling this frame. 
+Top-\/left UV offset of the requested frame.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function does not validate whether the given frame index is within range. Callers are expected to use valid indices. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_animation_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_animation_8cpp_source}{Animation.\+cpp}}.
@@ -279,12 +294,12 @@ glm\+::vec2 Sprite\+Sheet\+::\+Get\+UVScale (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Returns the uniform UV scale for one frame cell. 
+Returns the normalized UV scale of a single frame. 
 
-For a uniform grid, scale is typically\+: \{ frame\+Width / tex\+Width, frame\+Height / tex\+Height \}.
+Computes the width and height of one frame in normalized texture space. The returned value can be combined with \doxylink{class_sprite_sheet_a2052999ec8fce40951d4df88118d908a}{Get\+UVOffset()} to sample the correct region of the sprite sheet texture.
 
 \begin{DoxyReturn}{Returns}
-UV scale for a single frame cell. 
+UV scale where x is frame\+Width / texture\+Width and y is frame\+Height / texture\+Height. 
 \end{DoxyReturn}
 
 
@@ -311,7 +326,7 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{struct_sprite_clip}{
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00141}{141}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00178}{178}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_a79d8b4d9cbeafaa3a12b37b6d3129553}\index{SpriteSheet@{SpriteSheet}!columns@{columns}}
 \index{columns@{columns}!SpriteSheet@{SpriteSheet}}
@@ -321,7 +336,7 @@ int Sprite\+Sheet\+::columns\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00144}{144}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00181}{181}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_a27ca8f909b155bc0c630ecba9927f704}\index{SpriteSheet@{SpriteSheet}!flipUV\_X@{flipUV\_X}}
 \index{flipUV\_X@{flipUV\_X}!SpriteSheet@{SpriteSheet}}
@@ -331,7 +346,7 @@ bool Sprite\+Sheet\+::flip\+UV\+\_\+X = false\hspace{0.3cm}{\ttfamily [private]}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00147}{147}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00184}{184}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_add5883b0e807cabfa77edb84bcce8cf6}\index{SpriteSheet@{SpriteSheet}!flipUV\_Y@{flipUV\_Y}}
 \index{flipUV\_Y@{flipUV\_Y}!SpriteSheet@{SpriteSheet}}
@@ -341,7 +356,7 @@ bool Sprite\+Sheet\+::flip\+UV\+\_\+Y = false\hspace{0.3cm}{\ttfamily [private]}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00148}{148}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00185}{185}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_a02e1cd2d1df28243fd98a811c78a585f}\index{SpriteSheet@{SpriteSheet}!frameHeight@{frameHeight}}
 \index{frameHeight@{frameHeight}!SpriteSheet@{SpriteSheet}}
@@ -351,7 +366,7 @@ int Sprite\+Sheet\+::frame\+Height\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00143}{143}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00180}{180}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_a3b5d96c0fc1d7d50d1098bda06e6e506}\index{SpriteSheet@{SpriteSheet}!frameWidth@{frameWidth}}
 \index{frameWidth@{frameWidth}!SpriteSheet@{SpriteSheet}}
@@ -361,7 +376,7 @@ int Sprite\+Sheet\+::frame\+Width\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00143}{143}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00180}{180}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_afdfca9f9fdf266b89cd7ec84f967996b}\index{SpriteSheet@{SpriteSheet}!rows@{rows}}
 \index{rows@{rows}!SpriteSheet@{SpriteSheet}}
@@ -371,7 +386,7 @@ int Sprite\+Sheet\+::rows\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00144}{144}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00181}{181}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_ac72c784429b5ef63acc06f181e8ced20}\index{SpriteSheet@{SpriteSheet}!texHeight@{texHeight}}
 \index{texHeight@{texHeight}!SpriteSheet@{SpriteSheet}}
@@ -381,17 +396,17 @@ int Sprite\+Sheet\+::tex\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00145}{145}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00182}{182}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
-\Hypertarget{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38}\index{SpriteSheet@{SpriteSheet}!texture@{texture}}
+\Hypertarget{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a}\index{SpriteSheet@{SpriteSheet}!texture@{texture}}
 \index{texture@{texture}!SpriteSheet@{SpriteSheet}}
 \doxysubsubsection{\texorpdfstring{texture}{texture}}
-{\footnotesize\ttfamily \label{class_sprite_sheet_adfc63d5429102f4267dea33179c3ba38} 
-\mbox{\hyperlink{class_texture}{Texture}}\texorpdfstring{$\ast$}{*} Sprite\+Sheet\+::texture\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{class_sprite_sheet_a2d3ed44836f16c0cc0d5a3bc0c77617a} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_texture}{Texture}}$>$ Sprite\+Sheet\+::texture\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00142}{142}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00179}{179}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{class_sprite_sheet_a761c9a859e1095423a6c143d4ec13ca1}\index{SpriteSheet@{SpriteSheet}!texWidth@{texWidth}}
 \index{texWidth@{texWidth}!SpriteSheet@{SpriteSheet}}
@@ -401,7 +416,7 @@ int Sprite\+Sheet\+::tex\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00145}{145}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00182}{182}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 

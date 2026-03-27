@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_line_instance.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>Parameters describing a single debug line draw request.  
+<p>Represents one queued debug line draw request.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>&gt;</code></p>
@@ -121,10 +121,14 @@ Public Attributes</h2></td></tr>
 <tr class="separator:afbfacbe7c80cdac4ef6da4e274169100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Parameters describing a single debug line draw request. </p>
-<p>Debug lines are accumulated via DrawDebugLine() into an internal map keyed by (Camera2D*, lineWidth), then emitted in a single flush pass by FlushDebugLineDrawCommands(). </p>
+<div class="textblock"><p>Represents one queued debug line draw request. </p>
+<p>Debug line requests are accumulated during the frame and later flushed in <a class="el" href="class_render_manager.html#a7c058729d4929a4295ebee1c6d324001" title="Flushes all queued debug line draws.">RenderManager::FlushDebugLineDrawCommands()</a>.</p>
+<p>Lines are grouped by:</p><ul>
+<li>the camera used to compute the view transform</li>
+<li>the requested line width </li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00067">67</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00077">77</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae499492ef256243e41402daadbca4a9c" name="ae499492ef256243e41402daadbca4a9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae499492ef256243e41402daadbca4a9c">&#9670;&#160;</a></span>color</h2>
@@ -138,8 +142,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00071">71</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{ 1,1,1,1 };</div>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00081">81</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{ 1,1,1,1 };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -155,8 +159,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00069">69</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{ 0,0 };</div>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00079">79</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{ 0,0 };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -172,7 +176,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00072">72</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00082">82</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
 
 </div>
 </div>
@@ -188,8 +192,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00070">70</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{ 0,0 };</div>
+<p class="definition">Definition at line <a class="el" href="_render_manager_8h_source.html#l00080">80</a> of file <a class="el" href="_render_manager_8h_source.html">RenderManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{ 0,0 };</div>
 </div><!-- fragment -->
 </div>
 </div>

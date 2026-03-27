@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_vertex.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Basic 2D vertex layout used by this engine's <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a>.  
+<p>Represents a single mesh vertex for the engine's default 2D/quad-style pipeline.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_mesh_8h_source.html">Mesh.h</a>&gt;</code></p>
@@ -117,13 +117,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a8d5cc8548016889746f251d98377ec8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Basic 2D vertex layout used by this engine's <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a>. </p>
-<ul>
-<li>position: vec3 where XY are used for 2D placement and Z may be used for depth or left as 0.</li>
-<li>uv: texture coordinates. </li>
+<div class="textblock"><p>Represents a single mesh vertex for the engine's default 2D/quad-style pipeline. </p>
+<p>Each vertex currently stores:</p><ul>
+<li>a 3D position used by the mesh buffer and shader input</li>
+<li>a 2D UV coordinate used for texture sampling</li>
 </ul>
+<p>Although this engine is primarily using the structure for 2D rendering at the moment, the position is stored as glm::vec3, which makes the mesh layout compatible with depth-aware rendering and future expansion.</p>
+<dl class="section note"><dt>Note</dt><dd>The vertex layout is bound in <a class="el" href="class_mesh.html#a6f0136c650ed60f43587e3d8d0c121aa" title="Uploads vertex and optional index data and configures the base VAO layout.">Mesh::SetupMesh()</a> and <a class="el" href="class_mesh.html#a66fa02b2a66182031bb00a9aec134526" title="Creates and configures per-instance vertex attributes for instanced rendering.">Mesh::SetupInstanceAttributes()</a> using attribute location 0 for position and attribute location 1 for UV. :contentReference[oaicite:3]{index=3} </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00034">34</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00050">50</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a030819fdc241743bbd3e180a6b132ed3" name="a030819fdc241743bbd3e180a6b132ed3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a030819fdc241743bbd3e180a6b132ed3">&#9670;&#160;</a></span>position</h2>
@@ -137,7 +139,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00036">36</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00052">52</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>
@@ -153,7 +155,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00037">37</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00053">53</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
 
 </div>
 </div>

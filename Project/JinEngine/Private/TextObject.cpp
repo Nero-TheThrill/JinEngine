@@ -1,6 +1,6 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 
-TextObject::TextObject(Font* font, const std::string& text, TextAlignH alignH_, TextAlignV alignV_) : Object(ObjectType::TEXT)
+TextObject::TextObject(std::shared_ptr<Font> font, const std::string& text, TextAlignH alignH_, TextAlignV alignV_) : Object(ObjectType::TEXT)
 {
     alignH = alignH_;
     alignV = alignV_;
@@ -8,7 +8,6 @@ TextObject::TextObject(Font* font, const std::string& text, TextAlignH alignH_, 
     textInstance.font = font;
     textInstance.text = text;
     material = font->GetMaterial();
-    mesh = nullptr;
 
     UpdateMesh();
 }
@@ -39,12 +38,17 @@ void TextObject::LateFree(const EngineContext& engineContext)
 
 float TextObject::GetBoundingRadius() const
 {
-    if (!mesh) return 0.0f;
-    glm::vec2 size = textInstance.font->GetTextSize(textInstance.text); 
-    glm::vec2 scaled = size * transform2D.GetScale();
-    return glm::length(scaled) ;
-}
+    auto meshPtr = mesh.lock();
+    if (!meshPtr) return 0.0f;
 
+    auto fontPtr = textInstance.font.lock();
+    if (!fontPtr) return 0.0f;
+
+    glm::vec2 size = fontPtr->GetTextSize(textInstance.text);
+    glm::vec2 scaled = size * transform2D.GetScale();
+
+    return glm::length(scaled);
+}
 
 void TextObject::SetText(const std::string& text)
 {
@@ -58,7 +62,10 @@ void TextObject::SetText(const std::string& text)
 
 void TextObject::SetTextInstance(const TextInstance& textInstance_)
 {
-    if (textInstance.text == textInstance_.text && textInstance.font == textInstance_.font)
+    auto currentFont = textInstance.font.lock();
+    auto newFont = textInstance_.font.lock();
+
+    if (textInstance.text == textInstance_.text && currentFont == newFont)
         return;
 
     textInstance = textInstance_;
@@ -96,9 +103,11 @@ glm::vec2 TextObject::GetWorldPosition() const
     glm::vec2 screenSpace = transform2D.GetPosition();
     glm::vec2 offset(0.0f);
 
-    if (!(alignH == TextAlignH::Center && alignV == TextAlignV::Middle))
+    auto fontPtr = textInstance.font.lock();
+
+    if (fontPtr && !(alignH == TextAlignH::Center && alignV == TextAlignV::Middle))
     {
-        glm::vec2 size = textInstance.font->GetTextSize(textInstance.text) / glm::vec2(2, 2);
+        glm::vec2 size = fontPtr->GetTextSize(textInstance.text) / glm::vec2(2, 2);
 
         if (alignH == TextAlignH::Left)
             offset.x = size.x;
@@ -127,27 +136,52 @@ glm::vec2 TextObject::GetWorldPosition() const
 
 glm::vec2 TextObject::GetWorldScale() const
 {
+    auto fontPtr = textInstance.font.lock();
+    if (!fontPtr)
+        return glm::vec2(0.0f);
+
+    glm::vec2 textSize = fontPtr->GetTextSize(textInstance.text);
+
     if (ShouldIgnoreCamera() && referenceCamera)
-        return transform2D.GetScale()* textInstance.font->GetTextSize(textInstance.text) / referenceCamera->GetZoom();
+        return transform2D.GetScale() * textSize / referenceCamera->GetZoom();
     else
-        return transform2D.GetScale()* textInstance.font->GetTextSize(textInstance.text);
+        return transform2D.GetScale() * textSize;
 }
 
 void TextObject::CheckFontAtlasAndMeshUpdate()
 {
-    if (textAtlasVersionTracker == textInstance.font->GetTextAtlasVersion())
+    auto fontPtr = textInstance.font.lock();
+    if (!fontPtr)
+    {
+        mesh.reset();
+        textMesh.reset();
+        textAtlasVersionTracker = 0;
+        return;
+    }
+
+    if (textAtlasVersionTracker == fontPtr->GetTextAtlasVersion())
         return;
 
-    textAtlasVersionTracker = textInstance.font->GetTextAtlasVersion();
-    std::unique_ptr<Mesh> newMesh(textInstance.font->GenerateTextMesh(textInstance.text, alignH, alignV));
-    mesh = newMesh.get();
+    textAtlasVersionTracker = fontPtr->GetTextAtlasVersion();
+
+    std::shared_ptr<Mesh> newMesh = fontPtr->GenerateTextMesh(textInstance.text, alignH, alignV);
+    mesh = newMesh;
     textMesh = std::move(newMesh);
 }
 
 void TextObject::UpdateMesh()
 {
+    auto fontPtr = textInstance.font.lock();
+    if (!fontPtr)
+    {
+        mesh.reset();
+        textMesh.reset();
+        textAtlasVersionTracker = 0;
+        return;
+    }
 
-    std::unique_ptr<Mesh> newMesh(textInstance.font->GenerateTextMesh(textInstance.text, alignH, alignV));
-    mesh = newMesh.get();
+    std::shared_ptr<Mesh> newMesh = fontPtr->GenerateTextMesh(textInstance.text, alignH, alignV);
+    mesh = newMesh;
     textMesh = std::move(newMesh);
+    textAtlasVersionTracker = fontPtr->GetTextAtlasVersion();
 }

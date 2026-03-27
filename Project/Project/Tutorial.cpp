@@ -43,6 +43,8 @@ namespace TutorialState
         loading->QueueFont(engineContext, "F_UI", "Fonts/font1.ttf", 32);
 
         loading->QueueSound("BGM_Main", "Sounds/test.mp3", true);
+        loading->QueueSound("Click", "Sounds/mouse.mp3", false);
+        loading->QueueSound("Beep", "Sounds/beep.mp3", false);
 
 
     }
@@ -276,7 +278,7 @@ void Tutorial::Init(const EngineContext& engineContext)
     cursor->SetRenderLayer("[Layer]Cursor");
     cursor->SetIgnoreCamera(true, cameraManager.GetActiveCamera());
 
-    computeMat = static_cast<ComputeMaterial*>(engineContext.renderManager->GetMaterialByTag("[Material]ComputeWaterDrop"));
+    computeMat = std::dynamic_pointer_cast<ComputeMaterial>(engineContext.renderManager->GetMaterialByTag("[Material]ComputeWaterDrop"));
     computeMat->SetImage("u_Src", engineContext.renderManager->GetTextureByTag("[EngineTexture]RenderTexture"), ImageAccess::ReadOnly, ImageFormat::RGBA16F, 0);
     computeMat->SetImage("u_Dst", engineContext.renderManager->GetTextureByTag("[PostProcessedTexture]WaterDrop"), ImageAccess::WriteOnly, ImageFormat::RGBA8, 0);
     computeMat->SetUniform("u_Resolution", glm::vec2(engineContext.windowManager->GetWidth(), engineContext.windowManager->GetHeight()));
@@ -389,6 +391,24 @@ void Tutorial::Update(float dt, const EngineContext& engineContext)
     if (engineContext.inputManager->IsKeyDown(KEY_LEFT))
     {
         cameraManager.GetActiveCamera()->AddPosition({ -500 * dt,0 });
+    }
+    if (engineContext.inputManager->IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+    {
+        engineContext.soundManager->Play("Click", 1.0f, 0.0,[](SoundInstanceID id, const std::string& tag)
+            {
+                JIN_LOG("Sound finished. ID: " << id << ", Tag: " << tag);
+            });
+    }
+    if (engineContext.inputManager->IsKeyPressed(KEY_B))
+    {
+        int x=55, y=66;
+        engineContext.soundManager->Play("Beep", 1.0f, 0.0, 
+            [x, y](SoundInstanceID id, const std::string& tag)
+            {
+                JIN_LOG("x: " << x);
+                JIN_LOG("y: " << y);
+                JIN_LOG("finished sound id: " << id << ", tag: " << tag);
+            });
     }
     if (engineContext.inputManager->IsKeyDown(KEY_RIGHT))
     {

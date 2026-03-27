@@ -2,7 +2,7 @@
 \hypertarget{struct_sound_result}{}\label{struct_sound_result}\index{SoundResult@{SoundResult}}
 
 
-Result data for a sound job.  
+Stores the completed result of a sound loading request.  
 
 
 
@@ -23,11 +23,13 @@ bool \mbox{\hyperlink{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}{ok}
 
 
 \doxysubsection{Detailed Description}
-Result data for a sound job. 
+Stores the completed result of a sound loading request. 
 
-This result carries the tag/path and loop flag into the main thread. ok indicates whether the job is considered valid. 
+\doxylink{struct_sound_result}{Sound\+Result} currently carries sound metadata forward to the main thread, including the resource tag, source file path, and looping setting.
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00186}{186}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+The current worker implementation does not decode the sound data itself, so ok defaults to true unless the logic is extended in the future. \+:content\+Reference\mbox{[}oaicite\+:10\mbox{]}\{index=10\} 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00217}{217}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -40,7 +42,7 @@ std\+::string Sound\+Result\+::file\+Path}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00189}{189}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00220}{220}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sound_result_a42a122883680aec5e340ad28da270dd0}\index{SoundResult@{SoundResult}!loop@{loop}}
 \index{loop@{loop}!SoundResult@{SoundResult}}
@@ -50,7 +52,7 @@ bool Sound\+Result\+::loop = false}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00190}{190}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00221}{221}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sound_result_a189cc25ced68b32db2557b1cef81f66e}\index{SoundResult@{SoundResult}!ok@{ok}}
 \index{ok@{ok}!SoundResult@{SoundResult}}
@@ -60,7 +62,7 @@ bool Sound\+Result\+::ok = true}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00191}{191}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00222}{222}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sound_result_a11177b9460d009b44e7b28209baa7622}\index{SoundResult@{SoundResult}!tag@{tag}}
 \index{tag@{tag}!SoundResult@{SoundResult}}
@@ -70,7 +72,7 @@ std\+::string Sound\+Result\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00188}{188}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00219}{219}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

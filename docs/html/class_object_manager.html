@@ -106,7 +106,7 @@ $(function(){initNavTree('class_object_manager.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>Owns and orchestrates the lifecycle, rendering submission, and collision checks of <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> instances in a <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  
+<p>Owns, initializes, updates, renders, and removes runtime objects for the active game state.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>&gt;</code></p>
@@ -114,52 +114,52 @@ $(function(){initNavTree('class_object_manager.html',''); initResizable(true); }
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae1f29824763903213d6044d463742db4" id="r_ae1f29824763903213d6044d463742db4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1f29824763903213d6044d463742db4">AddObject</a> (std::unique_ptr&lt; <a class="el" href="class_object.html">Object</a> &gt; obj, const std::string &amp;tag=&quot;&quot;)</td></tr>
-<tr class="memdesc:ae1f29824763903213d6044d463742db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an object to be added to the manager and assigns an optional tag.  <br /></td></tr>
+<tr class="memdesc:ae1f29824763903213d6044d463742db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a new object for later initialization and activation.  <br /></td></tr>
 <tr class="separator:ae1f29824763903213d6044d463742db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d870215c2f3033b6f2641e4c9dc8da" id="r_ad7d870215c2f3033b6f2641e4c9dc8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d870215c2f3033b6f2641e4c9dc8da">InitAll</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:ad7d870215c2f3033b6f2641e4c9dc8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes all currently pending objects.  <br /></td></tr>
+<tr class="memdesc:ad7d870215c2f3033b6f2641e4c9dc8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates all currently pending objects.  <br /></td></tr>
 <tr class="separator:ad7d870215c2f3033b6f2641e4c9dc8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00c892376f4874c2f033a69526e18111" id="r_a00c892376f4874c2f033a69526e18111"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00c892376f4874c2f033a69526e18111">UpdateAll</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a00c892376f4874c2f033a69526e18111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates all active objects and performs lifecycle maintenance.  <br /></td></tr>
+<tr class="memdesc:a00c892376f4874c2f033a69526e18111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates all active objects, removes dead ones, and activates newly queued ones.  <br /></td></tr>
 <tr class="separator:a00c892376f4874c2f033a69526e18111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad883ccf6dee940514c8c5fea7137ca9b" id="r_ad883ccf6dee940514c8c5fea7137ca9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad883ccf6dee940514c8c5fea7137ca9b">DrawAll</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:ad883ccf6dee940514c8c5fea7137ca9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submits all active objects to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering.  <br /></td></tr>
+<tr class="memdesc:ad883ccf6dee940514c8c5fea7137ca9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submits all currently tracked active object pointers to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>.  <br /></td></tr>
 <tr class="separator:ad883ccf6dee940514c8c5fea7137ca9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acea98a91604863db6b232b6e67582740" id="r_acea98a91604863db6b232b6e67582740"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acea98a91604863db6b232b6e67582740">DrawObjects</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::vector&lt; <a class="el" href="class_object.html">Object</a> * &gt; &amp;<a class="el" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</td></tr>
-<tr class="memdesc:acea98a91604863db6b232b6e67582740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submits a provided object list to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering.  <br /></td></tr>
+<tr class="memdesc:acea98a91604863db6b232b6e67582740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submits a caller-provided subset of objects to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>.  <br /></td></tr>
 <tr class="separator:acea98a91604863db6b232b6e67582740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfc58bcbcd4e0b4f988939b9b16296e5" id="r_abfc58bcbcd4e0b4f988939b9b16296e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfc58bcbcd4e0b4f988939b9b16296e5">DrawObjectsWithTag</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:abfc58bcbcd4e0b4f988939b9b16296e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds objects by tag and submits them to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering.  <br /></td></tr>
+<tr class="memdesc:abfc58bcbcd4e0b4f988939b9b16296e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds all alive objects with a matching tag and submits them for rendering.  <br /></td></tr>
 <tr class="separator:abfc58bcbcd4e0b4f988939b9b16296e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dcf63228b4ed4b45ae19304946f923f" id="r_a2dcf63228b4ed4b45ae19304946f923f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dcf63228b4ed4b45ae19304946f923f">FreeAll</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a2dcf63228b4ed4b45ae19304946f923f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees all objects currently owned by the manager and clears internal containers.  <br /></td></tr>
+<tr class="memdesc:a2dcf63228b4ed4b45ae19304946f923f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees and clears every active and pending object owned by the manager.  <br /></td></tr>
 <tr class="separator:a2dcf63228b4ed4b45ae19304946f923f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe47ccc9dd305eae5dda76a15c928e86" id="r_afe47ccc9dd305eae5dda76a15c928e86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe47ccc9dd305eae5dda76a15c928e86">FindByTag</a> (const std::string &amp;tag) const</td></tr>
-<tr class="memdesc:afe47ccc9dd305eae5dda76a15c928e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns one alive object for the given tag if present.  <br /></td></tr>
+<tr class="memdesc:afe47ccc9dd305eae5dda76a15c928e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds one alive object associated with the given tag.  <br /></td></tr>
 <tr class="separator:afe47ccc9dd305eae5dda76a15c928e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce4fd96dd58ad653e81f843c7f76604" id="r_a2ce4fd96dd58ad653e81f843c7f76604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ce4fd96dd58ad653e81f843c7f76604">FindByTag</a> (const std::string &amp;tag, std::vector&lt; <a class="el" href="class_object.html">Object</a> * &gt; &amp;result)</td></tr>
-<tr class="memdesc:a2ce4fd96dd58ad653e81f843c7f76604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends all alive objects that match a tag into an output vector.  <br /></td></tr>
+<tr class="memdesc:a2ce4fd96dd58ad653e81f843c7f76604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends all alive objects with the given tag into the provided output vector.  <br /></td></tr>
 <tr class="separator:a2ce4fd96dd58ad653e81f843c7f76604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e9cd42ad2252270965253ddf57763de" id="r_a1e9cd42ad2252270965253ddf57763de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9cd42ad2252270965253ddf57763de">CheckCollision</a> ()</td></tr>
-<tr class="memdesc:a1e9cd42ad2252270965253ddf57763de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs broad-phase + narrow-phase collision processing for active objects.  <br /></td></tr>
+<tr class="memdesc:a1e9cd42ad2252270965253ddf57763de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the engine's collision detection flow for all active collidable objects.  <br /></td></tr>
 <tr class="separator:a1e9cd42ad2252270965253ddf57763de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fc2a5eb9c5993c4ae3ee803e631699f" id="r_a3fc2a5eb9c5993c4ae3ee803e631699f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_collision_group_registry.html">CollisionGroupRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fc2a5eb9c5993c4ae3ee803e631699f">GetCollisionGroupRegistry</a> ()</td></tr>
-<tr class="memdesc:a3fc2a5eb9c5993c4ae3ee803e631699f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision group registry owned by this manager.  <br /></td></tr>
+<tr class="memdesc:a3fc2a5eb9c5993c4ae3ee803e631699f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision group registry used by objects to build category and mask bits.  <br /></td></tr>
 <tr class="separator:a3fc2a5eb9c5993c4ae3ee803e631699f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa134339dbf5ed4f2542e2fd28fa490f1" id="r_aa134339dbf5ed4f2542e2fd28fa490f1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_object.html">Object</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa134339dbf5ed4f2542e2fd28fa490f1">GetAllRawPtrObjects</a> ()</td></tr>
-<tr class="memdesc:aa134339dbf5ed4f2542e2fd28fa490f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a snapshot vector of raw pointers to all active objects.  <br /></td></tr>
+<tr class="memdesc:aa134339dbf5ed4f2542e2fd28fa490f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the manager's cached list of raw object pointers.  <br /></td></tr>
 <tr class="separator:aa134339dbf5ed4f2542e2fd28fa490f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:af5c6a21a87c2fa4204462cacbe07c439" id="r_af5c6a21a87c2fa4204462cacbe07c439"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439">AddAllPendingObjects</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:af5c6a21a87c2fa4204462cacbe07c439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes all pending objects and moves them into the active containers.  <br /></td></tr>
+<tr class="memdesc:af5c6a21a87c2fa4204462cacbe07c439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes and activates all currently pending objects.  <br /></td></tr>
 <tr class="separator:af5c6a21a87c2fa4204462cacbe07c439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6150e34acf9947f2d2e36040d472df5f" id="r_a6150e34acf9947f2d2e36040d472df5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6150e34acf9947f2d2e36040d472df5f">EraseDeadObjects</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a6150e34acf9947f2d2e36040d472df5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees and removes all objects that are no longer alive.  <br /></td></tr>
+<tr class="memdesc:a6150e34acf9947f2d2e36040d472df5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up and removes all dead objects from the active containers.  <br /></td></tr>
 <tr class="separator:a6150e34acf9947f2d2e36040d472df5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79459c25593a2ad3ccc8cfdb88cf10a9" id="r_a79459c25593a2ad3ccc8cfdb88cf10a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79459c25593a2ad3ccc8cfdb88cf10a9">DrawColliderDebug</a> (<a class="el" href="class_render_manager.html">RenderManager</a> *rm, <a class="el" href="class_camera2_d.html">Camera2D</a> *cam)</td></tr>
-<tr class="memdesc:a79459c25593a2ad3ccc8cfdb88cf10a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws collider debug shapes for visible, alive objects.  <br /></td></tr>
+<tr class="memdesc:a79459c25593a2ad3ccc8cfdb88cf10a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws collider debug geometry for every alive and visible object that has a collider.  <br /></td></tr>
 <tr class="separator:a79459c25593a2ad3ccc8cfdb88cf10a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -180,36 +180,22 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a697bf14420d66f3c4d88b68cf58bc6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Owns and orchestrates the lifecycle, rendering submission, and collision checks of <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> instances in a <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p><a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> is the central container for Objects inside a <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.</p>
-<p>Lifecycle model:</p><ul>
-<li><a class="el" href="#ae1f29824763903213d6044d463742db4" title="Enqueues an object to be added to the manager and assigns an optional tag.">AddObject()</a> does not immediately place the object into the active list. It assigns the tag and moves the object into pendingObjects.</li>
-<li>Pending objects are initialized in <a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439" title="Initializes all pending objects and moves them into the active containers.">AddAllPendingObjects()</a>: 1) Init(engineContext) is called first (for every pending object). 2) LateInit(engineContext) is called after all pending objects have completed Init(). 3) Objects are then moved into objects, registered into objectMap, and added to rawPtrObjects.</li>
+<div class="textblock"><p>Owns, initializes, updates, renders, and removes runtime objects for the active game state. </p>
+<p><a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> is the central container responsible for the lifetime flow of all state-owned <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> instances. It manages several parallel views of the same object set:</p>
+<ul>
+<li>objects: The main owning container for active objects.</li>
+<li>pendingObjects: Newly added objects that have not yet completed the manager's initialization flow.</li>
+<li>objectMap: A tag-to-object lookup table used for quick single-object queries.</li>
+<li>rawPtrObjects: A non-owning cache of raw pointers used by rendering, collision checks, and broad iteration.</li>
+<li>broadPhaseGrid: A spatial hash structure used to reduce the cost of collision pair generation.</li>
+<li>collisionGroupRegistry: A tag-to-bit registry used to build collision category and mask values.</li>
 </ul>
-<p>Per-frame flow:</p><ul>
-<li><a class="el" href="#a00c892376f4874c2f033a69526e18111" title="Updates all active objects and performs lifecycle maintenance.">UpdateAll()</a>:<ul>
-<li>Updates all alive objects.</li>
-<li>For TEXT objects, requests a font-atlas/mesh sync check before Update().</li>
-<li>Updates <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> if present, and keeps <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> scale synchronized to Transform scale.</li>
-<li>Frees and removes dead objects, then initializes any newly pending objects.</li>
-</ul>
-</li>
-<li><a class="el" href="#ad883ccf6dee940514c8c5fea7137ca9b" title="Submits all active objects to RenderManager for rendering.">DrawAll()</a> / <a class="el" href="#acea98a91604863db6b232b6e67582740" title="Submits a provided object list to RenderManager for rendering.">DrawObjects()</a> / <a class="el" href="#abfc58bcbcd4e0b4f988939b9b16296e5" title="Finds objects by tag and submits them to RenderManager for rendering.">DrawObjectsWithTag()</a>:<ul>
-<li>Submits object lists to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for batching and draw command generation.</li>
-</ul>
-</li>
-</ul>
-<p>Ownership and lookup:</p><ul>
-<li>objects and pendingObjects own <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> instances via std::unique_ptr.</li>
-<li>objectMap maps a tag string to the most recently registered Object* for that tag.</li>
-<li>rawPtrObjects stores raw pointers to all active objects for iteration and fast submission.</li>
-</ul>
-<p>Collision:</p><ul>
-<li><a class="el" href="#a1e9cd42ad2252270965253ddf57763de" title="Performs broad-phase + narrow-phase collision processing for active objects.">CheckCollision()</a> performs broad-phase collision candidate generation using <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure using spatial hashing.">SpatialHashGrid</a>, then filters pairs via collision masks.</li>
-<li>Actual narrow-phase collision test is delegated to <a class="el" href="class_collider.html#a41660505ae4b413d3d4b004162857426" title="Performs narrow-phase collision test against another collider.">Collider::CheckCollision()</a> and collision callbacks are invoked via <a class="el" href="class_object.html#a0230b42c88134134da384129e1a4d64d" title="Collision callback invoked when this object collides with another object.">Object::OnCollision()</a>. </li>
-</ul>
+<p>In the current implementation, <a class="el" href="#ae1f29824763903213d6044d463742db4" title="Queues a new object for later initialization and activation.">AddObject()</a> does not immediately place the object into the active owning list. Instead, it pushes the object into pendingObjects and returns its raw pointer. The actual Init()/LateInit() flow and insertion into objects, objectMap, and rawPtrObjects happen later through <a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439" title="Initializes and activates all currently pending objects.">AddAllPendingObjects()</a>.</p>
+<p><a class="el" href="#a00c892376f4874c2f033a69526e18111" title="Updates all active objects, removes dead ones, and activates newly queued ones.">UpdateAll()</a> is responsible for the main object tick flow. It updates alive objects, performs text-specific font/mesh refresh logic, advances attached sprite animators, synchronizes colliders with transform scale, removes dead objects, and finally integrates pending objects into the active list. :contentReference[oaicite:3]{index=3}</p>
+<p>Rendering is delegated to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> through Submit(), using either all active raw pointers or filtered subsets. Collision checks are handled separately through <a class="el" href="#a1e9cd42ad2252270965253ddf57763de" title="Runs the engine&#39;s collision detection flow for all active collidable objects.">CheckCollision()</a>, which first performs broad-phase pair generation with <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure based on a spatial hash grid.">SpatialHashGrid</a> and then applies collision mask/category filtering before calling collider narrow-phase checks and <a class="el" href="class_object.html#a0230b42c88134134da384129e1a4d64d" title="Receives a collision notification with another object.">Object::OnCollision()</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This class is closely tied to <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> and acts as one of its internal core systems. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00046">46</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00059">59</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af5c6a21a87c2fa4204462cacbe07c439" name="af5c6a21a87c2fa4204462cacbe07c439"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5c6a21a87c2fa4204462cacbe07c439">&#9670;&#160;</a></span>AddAllPendingObjects()</h2>
@@ -234,21 +220,24 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes all pending objects and moves them into the active containers. </p>
-<p>This function repeatedly drains pendingObjects to handle the case where object initialization spawns additional objects via <a class="el" href="#ae1f29824763903213d6044d463742db4" title="Enqueues an object to be added to the manager and assigns an optional tag.">AddObject()</a>.</p>
-<p>For each drained batch:</p><ul>
-<li>Calls Init(engineContext) on every object.</li>
-<li>Moves them into a temporary accumulation list.</li>
+<p>Initializes and activates all currently pending objects. </p>
+<p>This is the internal activation pipeline for newly queued objects.</p>
+<p>The current implementation repeatedly drains pendingObjects until it becomes empty. This allows object initialization code to enqueue additional objects without losing them.</p>
+<p>For each drained object:</p><ul>
+<li>Init(engineContext) is called first</li>
+<li>if the object type is TEXT, CheckFontAtlasAndMeshUpdate() is called immediately after Init()</li>
+<li>the object is collected into a temporary activation list</li>
 </ul>
-<p>After no pending objects remain:</p><ul>
-<li>Calls LateInit(engineContext) on each accumulated object.</li>
-<li>Registers the object into objectMap using its tag.</li>
-<li>Appends the object's raw pointer into rawPtrObjects.</li>
-<li>Moves ownership into objects.</li>
+<p>After all pending waves are collected:</p><ul>
+<li>LateInit(engineContext) is called</li>
+<li>objectMap[obj-&gt;GetTag()] is updated</li>
+<li>rawPtrObjects receives the raw pointer</li>
+<li>objects receives the unique_ptr ownership</li>
 </ul>
+<p>This delayed activation model keeps the main active list stable while new objects are being prepared.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used during initialization. </td></tr>
   </table>
   </dd>
 </dl>
@@ -262,26 +251,33 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   51</span>        std::vector&lt;std::unique_ptr&lt;Object&gt;&gt; tmparr;</div>
 <div class="line"><span class="lineno">   52</span>        std::swap(tmparr, <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>);</div>
 <div class="line"><span class="lineno">   53</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : tmparr)</div>
-<div class="line"><span class="lineno">   54</span>            obj-&gt;Init(engineContext);</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : tmparr)</div>
-<div class="line"><span class="lineno">   56</span>        {</div>
-<div class="line"><span class="lineno">   57</span>            allPendingObjects.push_back(std::move(obj));</div>
-<div class="line"><span class="lineno">   58</span>        }</div>
-<div class="line"><span class="lineno">   59</span>        tmparr.clear();</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : allPendingObjects)</div>
-<div class="line"><span class="lineno">   62</span>    {</div>
-<div class="line"><span class="lineno">   63</span>        obj-&gt;LateInit(engineContext);</div>
-<div class="line"><span class="lineno">   64</span>        Object* rawPointer = obj.get();</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>[obj-&gt;GetTag()] = rawPointer;</div>
-<div class="line"><span class="lineno">   66</span>        <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.push_back(rawPointer);</div>
-<div class="line"><span class="lineno">   67</span>        <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.push_back(std::move(obj));</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>}</div>
-<div class="ttc" id="aclass_object_manager_html_a169b4f236ff9f2d87091c7f33ec2e42c"><div class="ttname"><a href="#a169b4f236ff9f2d87091c7f33ec2e42c">ObjectManager::objectMap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Object * &gt; objectMap</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00266">ObjectManager.h:266</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_a7cfc43b48f822dcb9d91b580d4d1d874"><div class="ttname"><a href="#a7cfc43b48f822dcb9d91b580d4d1d874">ObjectManager::rawPtrObjects</a></div><div class="ttdeci">std::vector&lt; Object * &gt; rawPtrObjects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00267">ObjectManager.h:267</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_ab889c6da290efdd66daadc2e2296e25c"><div class="ttname"><a href="#ab889c6da290efdd66daadc2e2296e25c">ObjectManager::pendingObjects</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Object &gt; &gt; pendingObjects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00265">ObjectManager.h:265</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_ac0f18ac96a86c4aabe041642fdb8763b"><div class="ttname"><a href="#ac0f18ac96a86c4aabe041642fdb8763b">ObjectManager::objects</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Object &gt; &gt; objects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00264">ObjectManager.h:264</a></div></div>
+<div class="line"><span class="lineno">   54</span>        {</div>
+<div class="line"><span class="lineno">   55</span>            obj-&gt;Init(engineContext);</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">if</span> (obj-&gt;GetType() == <a class="code hl_enumvalue" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8">ObjectType::TEXT</a>)</div>
+<div class="line"><span class="lineno">   57</span>            {</div>
+<div class="line"><span class="lineno">   58</span>                <span class="keyword">static_cast&lt;</span>TextObject*<span class="keyword">&gt;</span>(obj.get())-&gt;CheckFontAtlasAndMeshUpdate();</div>
+<div class="line"><span class="lineno">   59</span>            }</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : tmparr)</div>
+<div class="line"><span class="lineno">   62</span>        {</div>
+<div class="line"><span class="lineno">   63</span>            allPendingObjects.push_back(std::move(obj));</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+<div class="line"><span class="lineno">   65</span>        tmparr.clear();</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : allPendingObjects)</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        obj-&gt;LateInit(engineContext);</div>
+<div class="line"><span class="lineno">   70</span>        Object* rawPointer = obj.get();</div>
+<div class="line"><span class="lineno">   71</span>        <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>[obj-&gt;GetTag()] = rawPointer;</div>
+<div class="line"><span class="lineno">   72</span>        <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.push_back(rawPointer);</div>
+<div class="line"><span class="lineno">   73</span>        <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.push_back(std::move(obj));</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="a_object_8h_html_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8"><div class="ttname"><a href="_object_8h.html#a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8">ObjectType::TEXT</a></div><div class="ttdeci">@ TEXT</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00024">Object.h:24</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_a169b4f236ff9f2d87091c7f33ec2e42c"><div class="ttname"><a href="#a169b4f236ff9f2d87091c7f33ec2e42c">ObjectManager::objectMap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Object * &gt; objectMap</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00345">ObjectManager.h:345</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_a7cfc43b48f822dcb9d91b580d4d1d874"><div class="ttname"><a href="#a7cfc43b48f822dcb9d91b580d4d1d874">ObjectManager::rawPtrObjects</a></div><div class="ttdeci">std::vector&lt; Object * &gt; rawPtrObjects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00346">ObjectManager.h:346</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_ab889c6da290efdd66daadc2e2296e25c"><div class="ttname"><a href="#ab889c6da290efdd66daadc2e2296e25c">ObjectManager::pendingObjects</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Object &gt; &gt; pendingObjects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00344">ObjectManager.h:344</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_ac0f18ac96a86c4aabe041642fdb8763b"><div class="ttname"><a href="#ac0f18ac96a86c4aabe041642fdb8763b">ObjectManager::objects</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Object &gt; &gt; objects</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00343">ObjectManager.h:343</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -304,21 +300,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an object to be added to the manager and assigns an optional tag. </p>
-<p>This function:</p><ul>
-<li>Asserts the object is not null.</li>
-<li>Calls obj-&gt;SetTag(tag).</li>
-<li>Moves the object into pendingObjects.</li>
+<p>Queues a new object for later initialization and activation. </p>
+<p>This function takes ownership of the supplied object and stores it in pendingObjects rather than directly placing it into the active object list. A raw pointer to the same object is returned immediately so caller code can continue configuring it before or after the next manager update phase.</p>
+<p>In the current implementation:</p><ul>
+<li>the input object must not be null</li>
+<li>the tag is assigned immediately through <a class="el" href="class_object.html#a5a8c0663fb3e668d16c8a045937a9c82" title="Assigns a user-defined object tag.">Object::SetTag()</a></li>
+<li>the object is pushed into pendingObjects</li>
+<li>actual Init()/LateInit() and active-list insertion happen later in <a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439" title="Initializes and activates all currently pending objects.">AddAllPendingObjects()</a></li>
 </ul>
-<p>The object will not be part of objects/rawPtrObjects/objectMap until <a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439" title="Initializes all pending objects and moves them into the active containers.">AddAllPendingObjects()</a> runs (triggered by <a class="el" href="#ad7d870215c2f3033b6f2641e4c9dc8da" title="Initializes all currently pending objects.">InitAll()</a> and on every <a class="el" href="#a00c892376f4874c2f033a69526e18111" title="Updates all active objects and performs lifecycle maintenance.">UpdateAll()</a>).</p>
+<p>Unlike some earlier versions of the system, rawPtrObjects and objectMap are not updated here. That work is deferred until the pending activation step.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">obj</td><td><a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> to add (ownership is transferred). </td></tr>
-    <tr><td class="paramname">tag</td><td>Tag string to assign; may be empty. </td></tr>
+    <tr><td class="paramname">obj</td><td>Unique ownership of the object to add. </td></tr>
+    <tr><td class="paramname">tag</td><td>Optional tag assigned to the object before activation. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Raw pointer to the enqueued object (owned by the manager after the move). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Raw pointer to the queued object.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The returned pointer is non-owning. Lifetime remains controlled by <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00007">7</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    8</span>{</div>
@@ -348,56 +347,65 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Performs broad-phase + narrow-phase collision processing for active objects. </p>
-<p>The collision pipeline is: 1) Clear broadPhaseGrid and insert every <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> that currently has a <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a>. 2) broadPhaseGrid.ComputeCollisions(...) enumerates candidate pairs. 3) For each candidate pair:</p><ul>
-<li>Applies collision mask/category filtering using: (a-&gt;GetCollisionMask() &amp; b-&gt;GetCollisionCategory()) and vice versa.</li>
-<li>Deduplicates pairs using a hash of the ordered Object* pointers.</li>
-<li>Performs narrow-phase by calling a-&gt;GetCollider()-&gt;CheckCollision(b-&gt;GetCollider()).</li>
-<li>If colliding, invokes callbacks a-&gt;OnCollision(b) and b-&gt;OnCollision(a).</li>
+<p>Runs the engine's collision detection flow for all active collidable objects. </p>
+<p>The current collision process works as follows:</p>
+<ol type="1">
+<li>Create a checkedPairs set to avoid duplicate pair processing.</li>
+<li>Clear the broadPhaseGrid.</li>
+<li>Insert every object that has a non-null collider into the spatial grid.</li>
+<li>Ask the grid to generate candidate pairs.</li>
+<li>For each pair:<ul>
+<li>reject it if collision mask/category bits do not match</li>
+<li>normalize pointer order for stable pair-key generation</li>
+<li>skip it if already processed</li>
+<li>run collider narrow-phase <a class="el" href="#a1e9cd42ad2252270965253ddf57763de" title="Runs the engine&#39;s collision detection flow for all active collidable objects.">CheckCollision()</a></li>
+<li>if colliding, call OnCollision() on both objects</li>
 </ul>
-<p>This function assumes rawPtrObjects contains active objects and that <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> pointers remain valid for the duration of the call. </p>
+</li>
+</ol>
+<p>The broad-phase grid itself uses a spatial hash and treats very large objects specially so they can still be paired against other objects without exploding per-cell insertion cost. </p>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00151">151</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
-<div class="line"><span class="lineno">  153</span>    std::unordered_set&lt;uint64_t&gt; checkedPairs;</div>
-<div class="line"><span class="lineno">  154</span>    checkedPairs.reserve(2000);</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.Clear();</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">for</span> (Object* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
-<div class="line"><span class="lineno">  159</span>    {</div>
-<div class="line"><span class="lineno">  160</span>        Collider* collider = obj-&gt;GetCollider();</div>
-<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">if</span> (collider)</div>
-<div class="line"><span class="lineno">  162</span>            <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.Insert(obj);</div>
-<div class="line"><span class="lineno">  163</span>    }</div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.ComputeCollisions([&amp;](Object* a, Object* b)</div>
-<div class="line"><span class="lineno">  166</span>        {</div>
-<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">if</span> ((a-&gt;<a class="code hl_function" href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a>() &amp; b-&gt;<a class="code hl_function" href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a>()) == 0 ||</div>
-<div class="line"><span class="lineno">  168</span>                (b-&gt;<a class="code hl_function" href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a>() &amp; a-&gt;<a class="code hl_function" href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a>()) == 0)</div>
-<div class="line"><span class="lineno">  169</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>            <span class="keywordflow">if</span> (a &gt; b) std::swap(a, b);</div>
-<div class="line"><span class="lineno">  172</span>            uint64_t key = std::hash&lt;Object*&gt;()(a) ^ (std::hash&lt;Object*&gt;()(b) &lt;&lt; 1);</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>            <span class="keywordflow">if</span> (checkedPairs.find(key) != checkedPairs.end())</div>
-<div class="line"><span class="lineno">  175</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>            checkedPairs.insert(key);</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">if</span> (a-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()-&gt;<a class="code hl_function" href="class_collider.html#a41660505ae4b413d3d4b004162857426">CheckCollision</a>(b-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()))</div>
-<div class="line"><span class="lineno">  180</span>            {</div>
-<div class="line"><span class="lineno">  181</span>                a-&gt;<a class="code hl_function" href="class_object.html#a0230b42c88134134da384129e1a4d64d">OnCollision</a>(b);</div>
-<div class="line"><span class="lineno">  182</span>                b-&gt;<a class="code hl_function" href="class_object.html#a0230b42c88134134da384129e1a4d64d">OnCollision</a>(a);</div>
-<div class="line"><span class="lineno">  183</span>            }</div>
-<div class="line"><span class="lineno">  184</span>        });</div>
-<div class="line"><span class="lineno">  185</span>}</div>
-<div class="ttc" id="aclass_collider_html_a41660505ae4b413d3d4b004162857426"><div class="ttname"><a href="class_collider.html#a41660505ae4b413d3d4b004162857426">Collider::CheckCollision</a></div><div class="ttdeci">virtual bool CheckCollision(const Collider *other) const =0</div><div class="ttdoc">Performs narrow-phase collision test against another collider.</div></div>
-<div class="ttc" id="aclass_object_html_a0230b42c88134134da384129e1a4d64d"><div class="ttname"><a href="class_object.html#a0230b42c88134134da384129e1a4d64d">Object::OnCollision</a></div><div class="ttdeci">virtual void OnCollision(Object *other)</div><div class="ttdoc">Collision callback invoked when this object collides with another object.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00137">Object.h:137</a></div></div>
-<div class="ttc" id="aclass_object_html_a431dc9b1eab4227c9c5d002fae5ec017"><div class="ttname"><a href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">Object::GetCollisionCategory</a></div><div class="ttdeci">uint32_t GetCollisionCategory() const</div><div class="ttdoc">Returns the collision category used for collision filtering.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00377">Object.h:377</a></div></div>
-<div class="ttc" id="aclass_object_html_a76b94bea7f5f5e6454cd2c134ddc6260"><div class="ttname"><a href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">Object::GetCollisionMask</a></div><div class="ttdeci">uint32_t GetCollisionMask() const</div><div class="ttdoc">Returns the collision mask used for collision filtering.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00372">Object.h:372</a></div></div>
-<div class="ttc" id="aclass_object_html_ad601234bc10ab7fbf84b1cf1e302f756"><div class="ttname"><a href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">Object::GetCollider</a></div><div class="ttdeci">Collider * GetCollider() const</div><div class="ttdoc">Returns the current collider pointer.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00353">Object.h:353</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_a783ce1f6edb5db32d5c7c9826179b8c5"><div class="ttname"><a href="#a783ce1f6edb5db32d5c7c9826179b8c5">ObjectManager::broadPhaseGrid</a></div><div class="ttdeci">SpatialHashGrid broadPhaseGrid</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00268">ObjectManager.h:268</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00185">185</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  186</span>{</div>
+<div class="line"><span class="lineno">  187</span>    std::unordered_set&lt;uint64_t&gt; checkedPairs;</div>
+<div class="line"><span class="lineno">  188</span>    checkedPairs.reserve(2000);</div>
+<div class="line"><span class="lineno">  189</span> </div>
+<div class="line"><span class="lineno">  190</span>    <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.Clear();</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">for</span> (Object* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
+<div class="line"><span class="lineno">  193</span>    {</div>
+<div class="line"><span class="lineno">  194</span>        Collider* collider = obj-&gt;GetCollider();</div>
+<div class="line"><span class="lineno">  195</span>        <span class="keywordflow">if</span> (collider)</div>
+<div class="line"><span class="lineno">  196</span>            <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.Insert(obj);</div>
+<div class="line"><span class="lineno">  197</span>    }</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <a class="code hl_variable" href="#a783ce1f6edb5db32d5c7c9826179b8c5">broadPhaseGrid</a>.ComputeCollisions([&amp;](Object* a, Object* b)</div>
+<div class="line"><span class="lineno">  200</span>        {</div>
+<div class="line"><span class="lineno">  201</span>            <span class="keywordflow">if</span> ((a-&gt;<a class="code hl_function" href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a>() &amp; b-&gt;<a class="code hl_function" href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a>()) == 0 ||</div>
+<div class="line"><span class="lineno">  202</span>                (b-&gt;<a class="code hl_function" href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a>() &amp; a-&gt;<a class="code hl_function" href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a>()) == 0)</div>
+<div class="line"><span class="lineno">  203</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>            <span class="keywordflow">if</span> (a &gt; b) std::swap(a, b);</div>
+<div class="line"><span class="lineno">  206</span>            uint64_t key = std::hash&lt;Object*&gt;()(a) ^ (std::hash&lt;Object*&gt;()(b) &lt;&lt; 1);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>            <span class="keywordflow">if</span> (checkedPairs.find(key) != checkedPairs.end())</div>
+<div class="line"><span class="lineno">  209</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>            checkedPairs.insert(key);</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>            <span class="keywordflow">if</span> (a-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()-&gt;<a class="code hl_function" href="class_collider.html#a41660505ae4b413d3d4b004162857426">CheckCollision</a>(b-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()))</div>
+<div class="line"><span class="lineno">  214</span>            {</div>
+<div class="line"><span class="lineno">  215</span>                a-&gt;<a class="code hl_function" href="class_object.html#a0230b42c88134134da384129e1a4d64d">OnCollision</a>(b);</div>
+<div class="line"><span class="lineno">  216</span>                b-&gt;<a class="code hl_function" href="class_object.html#a0230b42c88134134da384129e1a4d64d">OnCollision</a>(a);</div>
+<div class="line"><span class="lineno">  217</span>            }</div>
+<div class="line"><span class="lineno">  218</span>        });</div>
+<div class="line"><span class="lineno">  219</span>}</div>
+<div class="ttc" id="aclass_collider_html_a41660505ae4b413d3d4b004162857426"><div class="ttname"><a href="class_collider.html#a41660505ae4b413d3d4b004162857426">Collider::CheckCollision</a></div><div class="ttdeci">virtual bool CheckCollision(const Collider *other) const =0</div><div class="ttdoc">Performs a collision test against another collider.</div></div>
+<div class="ttc" id="aclass_object_html_a0230b42c88134134da384129e1a4d64d"><div class="ttname"><a href="class_object.html#a0230b42c88134134da384129e1a4d64d">Object::OnCollision</a></div><div class="ttdeci">virtual void OnCollision(Object *other)</div><div class="ttdoc">Receives a collision notification with another object.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00168">Object.h:168</a></div></div>
+<div class="ttc" id="aclass_object_html_a431dc9b1eab4227c9c5d002fae5ec017"><div class="ttname"><a href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">Object::GetCollisionCategory</a></div><div class="ttdeci">uint32_t GetCollisionCategory() const</div><div class="ttdoc">Returns the collision category bit for this object.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00455">Object.h:455</a></div></div>
+<div class="ttc" id="aclass_object_html_a76b94bea7f5f5e6454cd2c134ddc6260"><div class="ttname"><a href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">Object::GetCollisionMask</a></div><div class="ttdeci">uint32_t GetCollisionMask() const</div><div class="ttdoc">Returns the collision mask bits for this object.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00448">Object.h:448</a></div></div>
+<div class="ttc" id="aclass_object_html_ad601234bc10ab7fbf84b1cf1e302f756"><div class="ttname"><a href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">Object::GetCollider</a></div><div class="ttdeci">Collider * GetCollider() const</div><div class="ttdoc">Returns the currently attached collider.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00424">Object.h:424</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_a783ce1f6edb5db32d5c7c9826179b8c5"><div class="ttname"><a href="#a783ce1f6edb5db32d5c7c9826179b8c5">ObjectManager::broadPhaseGrid</a></div><div class="ttdeci">SpatialHashGrid broadPhaseGrid</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00347">ObjectManager.h:347</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,21 +424,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Submits all active objects to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering. </p>
-<p>Submits rawPtrObjects to engineContext.renderManager-&gt;Submit(...).</p>
+<p>Submits all currently tracked active object pointers to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </p>
+<p>This function forwards rawPtrObjects to <a class="el" href="class_render_manager.html#add99380d257141db9b2e939530311d2e" title="Performs frustum culling and submits visible objects into the render map.">RenderManager::Submit()</a>. The render manager then performs filtering, batching, and later flushes the accumulated draw commands from the state manager's draw flow.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context providing access to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00099">99</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>{</div>
-<div class="line"><span class="lineno">  101</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(<a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>, engineContext);</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_add99380d257141db9b2e939530311d2e"><div class="ttname"><a href="class_render_manager.html#add99380d257141db9b2e939530311d2e">RenderManager::Submit</a></div><div class="ttdeci">void Submit(const std::vector&lt; Object * &gt; &amp;objects, const EngineContext &amp;engineContext)</div><div class="ttdoc">Internal submission entry point used by engine systems to enqueue objects for rendering.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00007">RenderManager.cpp:7</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the RenderManager responsible for rendering operations.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00053">EngineContext.h:53</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00133">133</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
+<div class="line"><span class="lineno">  135</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(<a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>, engineContext);</div>
+<div class="line"><span class="lineno">  136</span>}</div>
+<div class="ttc" id="aclass_render_manager_html_add99380d257141db9b2e939530311d2e"><div class="ttname"><a href="class_render_manager.html#add99380d257141db9b2e939530311d2e">RenderManager::Submit</a></div><div class="ttdeci">void Submit(const std::vector&lt; Object * &gt; &amp;objects, const EngineContext &amp;engineContext)</div><div class="ttdoc">Performs frustum culling and submits visible objects into the render map.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00007">RenderManager.cpp:7</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the render manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00072">EngineContext.h:72</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -461,28 +469,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws collider debug shapes for visible, alive objects. </p>
-<p>Iterates rawPtrObjects, filters to alive+visible objects, and if an object has a <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a>, calls Collider::DrawDebug(rm, cam). The actual drawing is performed by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> debug-line submission APIs and is flushed by the renderer.</p>
+<p>Draws collider debug geometry for every alive and visible object that has a collider. </p>
+<p>This helper iterates over rawPtrObjects and skips objects that are not alive or not visible. For the remaining objects, if a collider exists, it forwards debug rendering to <a class="el" href="class_collider.html#a222e52491ae094943420952fd3182c90" title="Draws a debug visualization of the collider.">Collider::DrawDebug()</a>.</p>
+<p>This is an internal helper and is not part of the normal public rendering path. :contentReference[oaicite:17]{index=17}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rm</td><td><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> used for debug draw submission. </td></tr>
-    <tr><td class="paramname">cam</td><td>Camera used for debug draw projection; may be null depending on collider implementation. </td></tr>
+    <tr><td class="paramname">rm</td><td>Render manager used by collider debug draw routines. </td></tr>
+    <tr><td class="paramname">cam</td><td>Camera used when drawing debug collider shapes. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00187">187</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
-<div class="line"><span class="lineno">  190</span>    {</div>
-<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive() || !obj-&gt;IsVisible()) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  192</span> </div>
-<div class="line"><span class="lineno">  193</span>        <span class="keywordflow">if</span> (Collider* col = obj-&gt;GetCollider())</div>
-<div class="line"><span class="lineno">  194</span>        {</div>
-<div class="line"><span class="lineno">  195</span>            col-&gt;DrawDebug(rm, cam);</div>
-<div class="line"><span class="lineno">  196</span>        }</div>
-<div class="line"><span class="lineno">  197</span>    }</div>
-<div class="line"><span class="lineno">  198</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00221">221</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
+<div class="line"><span class="lineno">  224</span>    {</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive() || !obj-&gt;IsVisible()) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">if</span> (Collider* col = obj-&gt;GetCollider())</div>
+<div class="line"><span class="lineno">  228</span>        {</div>
+<div class="line"><span class="lineno">  229</span>            col-&gt;DrawDebug(rm, cam);</div>
+<div class="line"><span class="lineno">  230</span>        }</div>
+<div class="line"><span class="lineno">  231</span>    }</div>
+<div class="line"><span class="lineno">  232</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -505,20 +514,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Submits a provided object list to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering. </p>
-<p>This does not modify manager ownership or tracking; it only forwards the list to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.</p>
+<p>Submits a caller-provided subset of objects to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </p>
+<p>This is a convenience function for rendering a filtered object list without requiring the caller to interact with <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> directly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-    <tr><td class="paramname">objects</td><td><a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> pointers to submit. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </td></tr>
+    <tr><td class="paramname">objects</td><td>Non-owning list of object pointers to submit for rendering. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00104">104</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
-<div class="line"><span class="lineno">  106</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(<a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>, engineContext);</div>
-<div class="line"><span class="lineno">  107</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00138">138</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
+<div class="line"><span class="lineno">  140</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(<a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>, engineContext);</div>
+<div class="line"><span class="lineno">  141</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -541,24 +550,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finds objects by tag and submits them to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> for rendering. </p>
-<p>Builds a filtered list using FindByTag(tag, filteredObjects) and submits that list.</p>
-<p>Note that multiple objects may share the same tag; this function submits all alive matches from rawPtrObjects.</p>
+<p>Finds all alive objects with a matching tag and submits them for rendering. </p>
+<p>This function builds a temporary filtered list by calling the multi-result <a class="el" href="#afe47ccc9dd305eae5dda76a15c928e86" title="Finds one alive object associated with the given tag.">FindByTag()</a> overload and then submits that list to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>.</p>
+<p>Unlike the single-result <a class="el" href="#afe47ccc9dd305eae5dda76a15c928e86" title="Finds one alive object associated with the given tag.">FindByTag()</a> overload, this version is intended for rendering or processing all matching objects rather than only one representative. :contentReference[oaicite:9]{index=9}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-    <tr><td class="paramname">tag</td><td>Tag to filter by. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </td></tr>
+    <tr><td class="paramname">tag</td><td><a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> tag to filter by. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00109">109</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    std::vector&lt;Object*&gt; filteredObjects;</div>
-<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="#afe47ccc9dd305eae5dda76a15c928e86">FindByTag</a>(tag, filteredObjects);</div>
-<div class="line"><span class="lineno">  113</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(filteredObjects, engineContext);</div>
-<div class="line"><span class="lineno">  114</span>}</div>
-<div class="ttc" id="aclass_object_manager_html_afe47ccc9dd305eae5dda76a15c928e86"><div class="ttname"><a href="#afe47ccc9dd305eae5dda76a15c928e86">ObjectManager::FindByTag</a></div><div class="ttdeci">Object * FindByTag(const std::string &amp;tag) const</div><div class="ttdoc">Returns one alive object for the given tag if present.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00135">ObjectManager.cpp:135</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00143">143</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
+<div class="line"><span class="lineno">  145</span>    std::vector&lt;Object*&gt; filteredObjects;</div>
+<div class="line"><span class="lineno">  146</span>    <a class="code hl_function" href="#afe47ccc9dd305eae5dda76a15c928e86">FindByTag</a>(tag, filteredObjects);</div>
+<div class="line"><span class="lineno">  147</span>    engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#add99380d257141db9b2e939530311d2e">Submit</a>(filteredObjects, engineContext);</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+<div class="ttc" id="aclass_object_manager_html_afe47ccc9dd305eae5dda76a15c928e86"><div class="ttname"><a href="#afe47ccc9dd305eae5dda76a15c928e86">ObjectManager::FindByTag</a></div><div class="ttdeci">Object * FindByTag(const std::string &amp;tag) const</div><div class="ttdoc">Finds one alive object associated with the given tag.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00169">ObjectManager.cpp:169</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -585,48 +594,83 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Frees and removes all objects that are no longer alive. </p>
-<p>This function:</p><ul>
-<li>Collects dead Object* from objects (where IsAlive() is false).</li>
-<li>Calls Free(engineContext) on each dead object.</li>
-<li>Calls LateFree(engineContext) on each dead object.</li>
-<li>Removes each dead object from objectMap (by tag) and from rawPtrObjects.</li>
-<li>Erases the corresponding std::unique_ptr entries from objects.</li>
+<p>Cleans up and removes all dead objects from the active containers. </p>
+<p>This function first collects pointers to every object whose IsAlive() is false. It then performs removal in ordered phases:</p>
+<ol type="1">
+<li>Call Free(engineContext) on each dead object.</li>
+<li>Call LateFree(engineContext) on each dead object.</li>
+<li>Update objectMap:<ul>
+<li>if the tag entry points to the dead object, search rawPtrObjects for another alive object with the same tag</li>
+<li>replace the map entry if a surviving match exists</li>
+<li>otherwise erase the tag entry</li>
 </ul>
+</li>
+<li>Remove dead raw pointers from rawPtrObjects.</li>
+<li>Remove dead unique_ptr entries from objects.</li>
+</ol>
+<p>This replacement behavior matters when multiple objects share the same tag and the current mapped representative is the one being removed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used during cleanup. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00071">71</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    std::vector&lt;Object*&gt; deadObjects;</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
-<div class="line"><span class="lineno">   75</span>    {</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive())</div>
-<div class="line"><span class="lineno">   77</span>            deadObjects.push_back(obj.get());</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : deadObjects)</div>
-<div class="line"><span class="lineno">   81</span>        obj-&gt;Free(engineContext);</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : deadObjects)</div>
-<div class="line"><span class="lineno">   84</span>    {</div>
-<div class="line"><span class="lineno">   85</span>        obj-&gt;LateFree(engineContext);</div>
-<div class="line"><span class="lineno">   86</span>        <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.erase(obj-&gt;GetTag());</div>
-<div class="line"><span class="lineno">   87</span>        <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.erase(std::remove(<a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.begin(), <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.end(), obj), <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.end());</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span> </div>
-<div class="line"><span class="lineno">   90</span>    <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.erase(</div>
-<div class="line"><span class="lineno">   91</span>        std::remove_if(<a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.begin(), <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.end(),</div>
-<div class="line"><span class="lineno">   92</span>            [&amp;](<span class="keyword">const</span> std::unique_ptr&lt;Object&gt;&amp; obj)</div>
-<div class="line"><span class="lineno">   93</span>            {</div>
-<div class="line"><span class="lineno">   94</span>                return std::find(deadObjects.begin(), deadObjects.end(), obj.get()) != deadObjects.end();</div>
-<div class="line"><span class="lineno">   95</span>            }),</div>
-<div class="line"><span class="lineno">   96</span>        <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.end());</div>
-<div class="line"><span class="lineno">   97</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00077">77</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    std::vector&lt;Object*&gt; deadObjects;</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
+<div class="line"><span class="lineno">   81</span>    {</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">if</span> (!obj-&gt;IsAlive())</div>
+<div class="line"><span class="lineno">   83</span>            deadObjects.push_back(obj.get());</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : deadObjects)</div>
+<div class="line"><span class="lineno">   87</span>        obj-&gt;Free(engineContext);</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; obj : deadObjects)</div>
+<div class="line"><span class="lineno">   90</span>    {</div>
+<div class="line"><span class="lineno">   91</span>        obj-&gt;LateFree(engineContext);</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>        <span class="keyword">const</span> std::string tag = obj-&gt;GetTag();</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>        <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.find(tag);</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.end() &amp;&amp; it-&gt;second == obj)</div>
+<div class="line"><span class="lineno">   97</span>        {</div>
+<div class="line"><span class="lineno">   98</span>            Object* replacement = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">for</span> (Object* candidate : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
+<div class="line"><span class="lineno">  101</span>            {</div>
+<div class="line"><span class="lineno">  102</span>                <span class="keywordflow">if</span> (candidate == <span class="keyword">nullptr</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  103</span>                <span class="keywordflow">if</span> (candidate == obj) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  104</span>                <span class="keywordflow">if</span> (!candidate-&gt;IsAlive()) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">if</span> (candidate-&gt;GetTag() != tag) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>                replacement = candidate;</div>
+<div class="line"><span class="lineno">  108</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  109</span>            }</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>            <span class="keywordflow">if</span> (replacement)</div>
+<div class="line"><span class="lineno">  112</span>            {</div>
+<div class="line"><span class="lineno">  113</span>                it-&gt;second = replacement;</div>
+<div class="line"><span class="lineno">  114</span>            }</div>
+<div class="line"><span class="lineno">  115</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  116</span>            {</div>
+<div class="line"><span class="lineno">  117</span>                <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.erase(it);</div>
+<div class="line"><span class="lineno">  118</span>            }</div>
+<div class="line"><span class="lineno">  119</span>        }</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>        <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.erase(std::remove(<a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.begin(), <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.end(), obj), <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.end());</div>
+<div class="line"><span class="lineno">  122</span>    }</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.erase(</div>
+<div class="line"><span class="lineno">  125</span>        std::remove_if(<a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.begin(), <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.end(),</div>
+<div class="line"><span class="lineno">  126</span>            [&amp;](<span class="keyword">const</span> std::unique_ptr&lt;Object&gt;&amp; obj)</div>
+<div class="line"><span class="lineno">  127</span>            {</div>
+<div class="line"><span class="lineno">  128</span>                return std::find(deadObjects.begin(), deadObjects.end(), obj.get()) != deadObjects.end();</div>
+<div class="line"><span class="lineno">  129</span>            }),</div>
+<div class="line"><span class="lineno">  130</span>        <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.end());</div>
+<div class="line"><span class="lineno">  131</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -653,23 +697,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns one alive object for the given tag if present. </p>
-<p>This checks objectMap first and returns the stored pointer only if it is still alive. If multiple objects share the same tag, this returns whichever objectMap currently points to (typically the most recently activated object with that tag).</p>
+<p>Finds one alive object associated with the given tag. </p>
+<p>This function performs a fast lookup through objectMap. It returns the mapped object only if:</p><ul>
+<li>the tag exists in the map</li>
+<li>the mapped object is still alive</li>
+</ul>
+<p>In the current implementation, objectMap stores one representative pointer per tag. During dead-object removal, if the stored pointer dies and another alive object with the same tag exists, the map entry may be replaced with that surviving object instead of being erased immediately. :contentReference[oaicite:11]{index=11}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Tag to search. </td></tr>
+    <tr><td class="paramname">tag</td><td>Tag to search for. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Alive object pointer, or nullptr if not found or not alive. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to one alive matching object, or nullptr if none is available. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00135">135</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.find(tag);</div>
-<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.end() &amp;&amp; it-&gt;second-&gt;IsAlive())</div>
-<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  141</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00169">169</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.find(tag);</div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.end() &amp;&amp; it-&gt;second-&gt;IsAlive())</div>
+<div class="line"><span class="lineno">  173</span>        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  175</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -692,29 +740,29 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends all alive objects that match a tag into an output vector. </p>
-<p>Iterates rawPtrObjects and appends entries where:</p><ul>
-<li>obj is not null</li>
-<li>obj-&gt;IsAlive() is true</li>
-<li>obj-&gt;GetTag() equals the provided tag</li>
+<p>Appends all alive objects with the given tag into the provided output vector. </p>
+<p>This overload scans rawPtrObjects and appends every pointer that:</p><ul>
+<li>is non-null</li>
+<li>is alive</li>
+<li>has a matching <a class="el" href="class_object.html#a9744dc473026e6b7cba610d00f510e81" title="Returns the object&#39;s tag string.">Object::GetTag()</a> value</li>
 </ul>
-<p>The result vector is not cleared by this function; it only appends.</p>
+<p>It does not clear the destination vector before appending.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Tag to match. </td></tr>
-    <tr><td class="paramname">result</td><td>Output list that receives matching objects (appended). </td></tr>
+    <tr><td class="paramname">tag</td><td>Tag to search for. </td></tr>
+    <tr><td class="paramname">result</td><td>Output vector that receives matching object pointers. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00143">143</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">for</span> (Object* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
-<div class="line"><span class="lineno">  146</span>    {</div>
-<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (obj &amp;&amp; obj-&gt;IsAlive() &amp;&amp; obj-&gt;GetTag() == tag)</div>
-<div class="line"><span class="lineno">  148</span>            result.push_back(obj);</div>
-<div class="line"><span class="lineno">  149</span>    }</div>
-<div class="line"><span class="lineno">  150</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00177">177</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  178</span>{</div>
+<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">for</span> (Object* obj : <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>)</div>
+<div class="line"><span class="lineno">  180</span>    {</div>
+<div class="line"><span class="lineno">  181</span>        <span class="keywordflow">if</span> (obj &amp;&amp; obj-&gt;IsAlive() &amp;&amp; obj-&gt;GetTag() == tag)</div>
+<div class="line"><span class="lineno">  182</span>            result.push_back(obj);</div>
+<div class="line"><span class="lineno">  183</span>    }</div>
+<div class="line"><span class="lineno">  184</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -733,37 +781,46 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Frees all objects currently owned by the manager and clears internal containers. </p>
-<p>Calls Free(engineContext) then LateFree(engineContext) for:</p><ul>
-<li>all active objects</li>
-<li>all pending objects</li>
+<p>Frees and clears every active and pending object owned by the manager. </p>
+<p>In the current implementation, this function performs cleanup in two phases:</p>
+<ol type="1">
+<li>Calls Free(engineContext) for every object in:<ul>
+<li>objects</li>
+<li>pendingObjects</li>
 </ul>
-<p>Afterwards, clears objects, pendingObjects, objectMap, and rawPtrObjects.</p>
+</li>
+<li>Calls LateFree(engineContext) for every object in:<ul>
+<li>objects</li>
+<li>pendingObjects</li>
+</ul>
+</li>
+</ol>
+<p>After cleanup, all internal containers are cleared, including the active owning list, the pending list, the tag map, and the raw pointer cache. :contentReference[oaicite:10]{index=10}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used during cleanup. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00116">116</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
-<div class="line"><span class="lineno">  119</span>        obj-&gt;Free(engineContext);</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>)</div>
-<div class="line"><span class="lineno">  121</span>        obj-&gt;Free(engineContext);</div>
-<div class="line"><span class="lineno">  122</span>    </div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
-<div class="line"><span class="lineno">  124</span>        obj-&gt;LateFree(engineContext);</div>
-<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>)</div>
-<div class="line"><span class="lineno">  126</span>        obj-&gt;LateFree(engineContext);</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.clear();</div>
-<div class="line"><span class="lineno">  130</span>    <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.clear();</div>
-<div class="line"><span class="lineno">  131</span>    <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.clear();</div>
-<div class="line"><span class="lineno">  132</span>    <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>.clear();</div>
-<div class="line"><span class="lineno">  133</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8cpp_source.html#l00150">150</a> of file <a class="el" href="_object_manager_8cpp_source.html">ObjectManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
+<div class="line"><span class="lineno">  153</span>        obj-&gt;Free(engineContext);</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>)</div>
+<div class="line"><span class="lineno">  155</span>        obj-&gt;Free(engineContext);</div>
+<div class="line"><span class="lineno">  156</span>    </div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>)</div>
+<div class="line"><span class="lineno">  158</span>        obj-&gt;LateFree(engineContext);</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; obj : <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>)</div>
+<div class="line"><span class="lineno">  160</span>        obj-&gt;LateFree(engineContext);</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    <a class="code hl_variable" href="#ac0f18ac96a86c4aabe041642fdb8763b">objects</a>.clear();</div>
+<div class="line"><span class="lineno">  164</span>    <a class="code hl_variable" href="#a169b4f236ff9f2d87091c7f33ec2e42c">objectMap</a>.clear();</div>
+<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>.clear();</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_variable" href="#ab889c6da290efdd66daadc2e2296e25c">pendingObjects</a>.clear();</div>
+<div class="line"><span class="lineno">  167</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -790,12 +847,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns a snapshot vector of raw pointers to all active objects. </p>
-<p>The returned vector is the manager's internal list. Modifying it externally can break invariants.</p>
-<dl class="section return"><dt>Returns</dt><dd>Vector of Object* currently tracked as active. </dd></dl>
+<p>Returns the manager's cached list of raw object pointers. </p>
+<p>This is a convenience snapshot-like return of the current rawPtrObjects vector. It is used by other systems such as <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> when checking whether resources are still referenced by objects before allowing unregistration. :contentReference[oaicite:14]{index=14}</p>
+<dl class="section return"><dt>Returns</dt><dd>Copy of the current raw object pointer list. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00212">212</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00274">274</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  274</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7cfc43b48f822dcb9d91b580d4d1d874">rawPtrObjects</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -822,13 +879,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the collision group registry owned by this manager. </p>
-<p>This provides access to the group/category/mask configuration used by objects and colliders.</p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the internal <a class="el" href="class_collision_group_registry.html" title="Registry that assigns bit indices to collision group tags.">CollisionGroupRegistry</a>. </dd></dl>
+<p>Returns the collision group registry used by objects to build category and mask bits. </p>
+<p><a class="el" href="class_object.html#a7ce1a12c241c5a64ec03e67ee17e1260" title="Configures the object&#39;s collision category and collision mask.">Object::SetCollision()</a> uses this registry to convert string group names into unique bit values. New groups are assigned incrementally until the 32-bit limit is reached.</p>
+<dl class="section return"><dt>Returns</dt><dd>Mutable reference to the collision group registry. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00202">202</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  202</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a697bf14420d66f3c4d88b68cf58bc6e3">collisionGroupRegistry</a>; }</div>
-<div class="ttc" id="aclass_object_manager_html_a697bf14420d66f3c4d88b68cf58bc6e3"><div class="ttname"><a href="#a697bf14420d66f3c4d88b68cf58bc6e3">ObjectManager::collisionGroupRegistry</a></div><div class="ttdeci">CollisionGroupRegistry collisionGroupRegistry</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00269">ObjectManager.h:269</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00262">262</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  262</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a697bf14420d66f3c4d88b68cf58bc6e3">collisionGroupRegistry</a>; }</div>
+<div class="ttc" id="aclass_object_manager_html_a697bf14420d66f3c4d88b68cf58bc6e3"><div class="ttname"><a href="#a697bf14420d66f3c4d88b68cf58bc6e3">ObjectManager::collisionGroupRegistry</a></div><div class="ttdeci">CollisionGroupRegistry collisionGroupRegistry</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00348">ObjectManager.h:348</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -847,11 +904,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes all currently pending objects. </p>
-<p>Calls AddAllPendingObjects(engineContext) to run Init/LateInit and move pending objects into the active lists.</p>
+<p>Activates all currently pending objects. </p>
+<p>In the current implementation this function simply forwards to AddAllPendingObjects(engineContext), which processes every queued object by:</p><ul>
+<li>calling Init()</li>
+<li>performing text-specific atlas/mesh refresh if needed</li>
+<li>calling LateInit()</li>
+<li>inserting the object into objectMap, rawPtrObjects, and objects</li>
+</ul>
+<p>Because <a class="el" href="#af5c6a21a87c2fa4204462cacbe07c439" title="Initializes and activates all currently pending objects.">AddAllPendingObjects()</a> loops until pendingObjects becomes empty, it also supports the case where object initialization itself adds more objects.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context providing access to managers. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used during object initialization. </td></tr>
   </table>
   </dd>
 </dl>
@@ -860,7 +923,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
 <div class="line"><span class="lineno">   20</span>    <a class="code hl_function" href="#af5c6a21a87c2fa4204462cacbe07c439">AddAllPendingObjects</a>(engineContext);</div>
 <div class="line"><span class="lineno">   21</span>}</div>
-<div class="ttc" id="aclass_object_manager_html_af5c6a21a87c2fa4204462cacbe07c439"><div class="ttname"><a href="#af5c6a21a87c2fa4204462cacbe07c439">ObjectManager::AddAllPendingObjects</a></div><div class="ttdeci">void AddAllPendingObjects(const EngineContext &amp;engineContext)</div><div class="ttdoc">Initializes all pending objects and moves them into the active containers.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00045">ObjectManager.cpp:45</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_af5c6a21a87c2fa4204462cacbe07c439"><div class="ttname"><a href="#af5c6a21a87c2fa4204462cacbe07c439">ObjectManager::AddAllPendingObjects</a></div><div class="ttdeci">void AddAllPendingObjects(const EngineContext &amp;engineContext)</div><div class="ttdoc">Initializes and activates all currently pending objects.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00045">ObjectManager.cpp:45</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -883,21 +946,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates all active objects and performs lifecycle maintenance. </p>
-<p>For each alive object in objects:</p><ul>
-<li>If the object type is TEXT, calls <a class="el" href="class_text_object.html#a02f4f3ea69e456a0353031edd8bb9438" title="Validates font atlas state and updates the text mesh if required.">TextObject::CheckFontAtlasAndMeshUpdate()</a> before Update().</li>
-<li>Calls Object::Update(dt, engineContext).</li>
-<li>If the object has animation, calls SpriteAnimator::Update(dt).</li>
-<li>If the object has a collider, calls <a class="el" href="class_collider.html#a188380ff8ece20474e86a662f995887e" title="Updates internal scaled shape data based on the owner&#39;s transform scale.">Collider::SyncWithTransformScale()</a>.</li>
+<p>Updates all active objects, removes dead ones, and activates newly queued ones. </p>
+<p>This is the main per-frame management function for runtime objects.</p>
+<p>For each active object in objects:</p><ul>
+<li>only alive objects are processed</li>
+<li>if the object type is TEXT, CheckFontAtlasAndMeshUpdate() is called first</li>
+<li>Update(dt, engineContext) is called</li>
+<li>if a <a class="el" href="class_sprite_animator.html" title="Controls sprite animation playback using a SpriteSheet.">SpriteAnimator</a> is attached, it is advanced</li>
+<li>if a <a class="el" href="class_collider.html" title="Base interface for all collider shapes used by the engine.">Collider</a> is attached, SyncWithTransformScale() is called</li>
 </ul>
-<p>After updating:</p><ul>
-<li>EraseDeadObjects(engineContext) calls Free/LateFree for dead objects and removes them from tracking containers.</li>
-<li>AddAllPendingObjects(engineContext) initializes and activates any objects added during this frame.</li>
+<p>After the main loop:</p><ul>
+<li>EraseDeadObjects(engineContext) removes dead objects safely</li>
+<li>AddAllPendingObjects(engineContext) initializes and activates any newly queued objects</li>
 </ul>
+<p>This means object creation and object destruction are both resolved through controlled post-update stages rather than during the middle of the main loop. :contentReference[oaicite:7]{index=7}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">dt</td><td>Delta time for the current frame. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used during update. </td></tr>
   </table>
   </dd>
 </dl>
@@ -923,8 +989,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   41</span>    <a class="code hl_function" href="#a6150e34acf9947f2d2e36040d472df5f">EraseDeadObjects</a>(engineContext);</div>
 <div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="#af5c6a21a87c2fa4204462cacbe07c439">AddAllPendingObjects</a>(engineContext);</div>
 <div class="line"><span class="lineno">   43</span>}</div>
-<div class="ttc" id="a_object_8h_html_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8"><div class="ttname"><a href="_object_8h.html#a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8">ObjectType::TEXT</a></div><div class="ttdeci">@ TEXT</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00024">Object.h:24</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_a6150e34acf9947f2d2e36040d472df5f"><div class="ttname"><a href="#a6150e34acf9947f2d2e36040d472df5f">ObjectManager::EraseDeadObjects</a></div><div class="ttdeci">void EraseDeadObjects(const EngineContext &amp;engineContext)</div><div class="ttdoc">Frees and removes all objects that are no longer alive.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00071">ObjectManager.cpp:71</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_a6150e34acf9947f2d2e36040d472df5f"><div class="ttname"><a href="#a6150e34acf9947f2d2e36040d472df5f">ObjectManager::EraseDeadObjects</a></div><div class="ttdeci">void EraseDeadObjects(const EngineContext &amp;engineContext)</div><div class="ttdoc">Cleans up and removes all dead objects from the active containers.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00077">ObjectManager.cpp:77</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -949,7 +1014,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00268">268</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00347">347</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -973,7 +1038,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00269">269</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00348">348</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -997,7 +1062,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00048">48</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00061">61</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1086,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00266">266</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00345">345</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -1045,7 +1110,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00264">264</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00343">343</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1134,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00265">265</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00344">344</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1158,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00267">267</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_manager_8h_source.html#l00346">346</a> of file <a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a>.</p>
 
 </div>
 </div>

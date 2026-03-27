@@ -2,7 +2,7 @@
 \hypertarget{class_shader}{}\label{class_shader}\index{Shader@{Shader}}
 
 
-Wraps an Open\+GL shader program and provides module attachment, linking, and uniform updates.  
+Wraps an Open\+GL shader program and manages shader compilation, attachment, linking, and uniform submission.  
 
 
 
@@ -13,44 +13,44 @@ Wraps an Open\+GL shader program and provides module attachment, linking, and un
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_shader_a0d654ebaca4e0555197c0724c6d30610}{Shader}} ()
-\begin{DoxyCompactList}\small\item\em Creates an empty Open\+GL program object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates a new Open\+GL program object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_shader_aff01df87e8a102f270b5b135a295e59d}{\texorpdfstring{$\sim$}{\string~}\+Shader}} ()
-\begin{DoxyCompactList}\small\item\em Destroys the shader program and deletes any compiled modules tracked by this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the shader program and all tracked attached shader objects. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a4729e93872d7483b6d5ec1680ec5f35f}{Send\+Uniform}} (const std\+::string \&name, int value) const
-\begin{DoxyCompactList}\small\item\em Sends an integer uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends an integer uniform to the currently active shader program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a5e313d8c6ee5039a138ae516b8106dbe}{Send\+Uniform}} (const std\+::string \&name, float value) const
-\begin{DoxyCompactList}\small\item\em Sends a float uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends a float uniform to the currently active shader program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a26b79a3899a4b3f08c3f78e0796efe16}{Send\+Uniform}} (const std\+::string \&name, const glm\+::vec2 \&value) const
-\begin{DoxyCompactList}\small\item\em Sends a vec2 uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends a vec2 uniform to the currently active shader program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a75e51849838814fb7efadafe6e8aba6a}{Send\+Uniform}} (const std\+::string \&name, const glm\+::vec3 \&value) const
-\begin{DoxyCompactList}\small\item\em Sends a vec3 uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends a vec3 uniform to the currently active shader program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_acc025e03b7da3f25a6de6ecaa60521c8}{Send\+Uniform}} (const std\+::string \&name, const glm\+::vec4 \&value) const
-\begin{DoxyCompactList}\small\item\em Sends a vec4 uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends a vec4 uniform to the currently active shader program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_aad0fbcf845e4b83dfee88013dcef55a3}{Send\+Uniform}} (const std\+::string \&name, const glm\+::mat4 \&value) const
-\begin{DoxyCompactList}\small\item\em Sends a mat4 uniform to the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sends a mat4 uniform to the currently active shader program. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}} \mbox{\hyperlink{class_shader_a42e83255c9c5851bf48c0c207a0f086c}{Get\+Program\+ID}} () const
-\begin{DoxyCompactList}\small\item\em Returns the Open\+GL program ID owned by this \doxylink{class_shader}{Shader}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the Open\+GL program handle owned by this shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use}} () const
-\begin{DoxyCompactList}\small\item\em Binds this program for subsequent draw calls. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds this shader program for subsequent rendering or uniform submission. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a9429b4a4f790f9de8e5476ee65ed0dc9}{Unuse}} () const
-\begin{DoxyCompactList}\small\item\em Unbinds any program from the current Open\+GL context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unbinds the currently active shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_shader_a4b4b3ee126f9f81076917e0e7ec2d1c1}{Supports\+Instancing}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether the linked program supports instanced rendering conventions used by this engine. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the linked shader program supports instanced rendering. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link}} ()
-\begin{DoxyCompactList}\small\item\em Links the attached shader modules into a complete program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Links all attached shader stages into a final Open\+GL program. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_shader_acd40c71c775e000ad4fb2e2a4f741d5a}{Attach\+From\+File}} (\mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}} stage, const \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}} \&filepath)
-\begin{DoxyCompactList}\small\item\em Loads, compiles, and attaches a shader module from a file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Loads shader source from a file, compiles it, and attaches it to the program. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_shader_aa2b27fbbc321f7f1a81b5c183580baa7}{Attach\+From\+Source}} (\mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}} stage, const std\+::string \&source)
-\begin{DoxyCompactList}\small\item\em Compiles and attaches a shader module from an in-\/memory source string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Compiles shader code from a raw source string and attaches it to the program. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_shader_a315dc994889feb0bf3fc5a16d03d6b5c}{Load\+Shader\+Source}} (const \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}} \&filepath, \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} \&success)
-\begin{DoxyCompactList}\small\item\em Loads an entire shader file into a string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Reads the full contents of a shader source file into a string. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint}} \mbox{\hyperlink{class_shader_a002a4be9c74371c53fcd7a1610595400}{Compile\+Shader}} (\mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{Shader\+Stage}} stage, const std\+::string \&source, \mbox{\hyperlink{_shader_8h_ac64cb152838786587bfafa749c3f2018}{GLint}} \&success)
-\begin{DoxyCompactList}\small\item\em Compiles a shader module from a source string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Compiles a shader object for the specified stage from source code. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_shader_a146efb0490cd023c6e6f332317357393}{Check\+Supports\+Instancing}} ()
-\begin{DoxyCompactList}\small\item\em Detects whether the linked program contains the "{}i\+\_\+\+Model"{} attribute for instancing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Detects whether the linked shader supports instancing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -71,23 +71,24 @@ bool \mbox{\hyperlink{class_shader_a821763f22b88dfc27ef72c0eec1a8b8c}{is\+Suppor
 
 
 \doxysubsection{Detailed Description}
-Wraps an Open\+GL shader program and provides module attachment, linking, and uniform updates. 
+Wraps an Open\+GL shader program and manages shader compilation, attachment, linking, and uniform submission. 
 
-\doxylink{class_shader}{Shader} owns an Open\+GL program object created with gl\+Create\+Program() and is responsible for\+:
-\begin{DoxyItemize}
-\item Compiling shader modules from files or source strings.
-\item Attaching compiled modules to the program.
-\item Linking the program and validating stage combinations (tessellation must be provided as TCS+\+TES pairs).
-\item Detaching shader modules after a successful link (modules are still kept in attached\+Shaders and deleted on destruction).
-\item Binding/unbinding the program for rendering.
-\item Sending common uniform types by name.
-\end{DoxyItemize}
+\doxylink{class_shader}{Shader} owns a single Open\+GL program object created in the constructor. Individual shader stages can be attached either from files or from raw source strings, then linked into a final program with \doxylink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link()}.
 
-Instancing support is detected after linking by checking whether the attribute name "{}i\+\_\+\+Model"{} exists in the linked program (gl\+Get\+Attrib\+Location != -\/1). The result is cached in is\+Support\+Instancing and can be queried by friend systems via \doxylink{class_shader_a4b4b3ee126f9f81076917e0e7ec2d1c1}{Supports\+Instancing()}.
+The class also provides convenience overloads for sending commonly used uniform types. Uniform submission silently skips missing uniforms by returning early when the queried uniform location is -\/1.
 
-Program creation, attachment, linking, and instancing queries are restricted to friend classes (\doxylink{class_material}{Material} / \doxylink{class_render_manager}{Render\+Manager} / \doxylink{class_loading_state}{Loading\+State}) to keep program lifecycle controlled by the rendering system. 
+Internally, the class tracks which shader objects were attached so that they can be deleted in the destructor and detached after a successful link.
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00054}{54}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Instancing support is detected after program linking by checking whether the linked shader exposes an attribute named {\ttfamily i\+\_\+\+Model}. \doxylink{class_material}{Material} uses this information to decide whether instanced rendering can be enabled for a mesh.
+
+\begin{DoxyNote}{Note}
+This class does not automatically bind the shader before sending uniforms. The caller is expected to ensure the program is active when uniform values are submitted.
+
+This class is closely integrated with \doxylink{class_material}{Material}, \doxylink{class_render_manager}{Render\+Manager}, and \doxylink{class_loading_state}{Loading\+State}, which are declared as friends to access internal helper functions during resource setup. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00066}{66}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 
 
@@ -100,9 +101,14 @@ Shader\+::\+Shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
-Creates an empty Open\+GL program object. 
+Creates a new Open\+GL program object. 
 
-Constructs the \doxylink{class_shader}{Shader} and immediately creates an Open\+GL program via gl\+Create\+Program(). The program has no attached modules until Attach\+From\+File/\+Attach\+From\+Source is used. 
+The constructor initializes the program handle by calling gl\+Create\+Program() and marks instancing support as disabled until a successful link check is performed.
+
+\begin{DoxyNote}{Note}
+At this point, no shader stages are attached yet. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -122,9 +128,14 @@ Shader\+::\texorpdfstring{$\sim$}{\string~}\+Shader (\begin{DoxyParamCaption}{}{
 
 
 
-Destroys the shader program and deletes any compiled modules tracked by this object. 
+Destroys the shader program and all tracked attached shader objects. 
 
-Deletes all shader objects stored in attached\+Shaders and then deletes the Open\+GL program. This assumes the program will no longer be used by any pipeline when destruction occurs. 
+The destructor deletes every shader object stored in attached\+Shaders and then deletes the Open\+GL program object itself.
+
+\begin{DoxyNote}{Note}
+\doxylink{class_shader}{Shader} objects are detached from the program after a successful link, but they are still kept in attached\+Shaders so they can be properly deleted here. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -148,27 +159,25 @@ bool Shader\+::\+Attach\+From\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyper
 
 
 
-Loads, compiles, and attaches a shader module from a file. 
+Loads shader source from a file, compiles it, and attaches it to the program. 
 
-This performs\+:
-\begin{DoxyItemize}
-\item Load\+Shader\+Source(filepath)
-\item Compile\+Shader(stage, source)
-\item gl\+Attach\+Shader(program\+ID, shader)
-\end{DoxyItemize}
-
-On success, the created shader object and its stage are tracked in attached\+Shaders/attached\+Stages.
+This function first reads the shader file contents using \doxylink{class_shader_a315dc994889feb0bf3fc5a16d03d6b5c}{Load\+Shader\+Source()}. If file loading succeeds, it compiles the source with \doxylink{class_shader_a002a4be9c74371c53fcd7a1610595400}{Compile\+Shader()}. On successful compilation, the created shader object is attached to the program, and both the shader handle and its stage are tracked internally.
 
 
 \begin{DoxyParams}{Parameters}
-{\em stage} & Stage of the shader source. \\
+{\em stage} & \doxylink{class_shader}{Shader} stage to compile and attach. \\
 \hline
-{\em filepath} & Path to the shader file. \\
+{\em filepath} & Path to the shader source file.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the file loads and the shader compiles and attaches; false otherwise. 
+true if the file is loaded, compiled, and attached successfully. 
+
+false if file loading or compilation fails.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function only attaches the stage. The caller must still call \doxylink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link()} to create a usable shader program. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -211,26 +220,25 @@ bool Shader\+::\+Attach\+From\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyp
 
 
 
-Compiles and attaches a shader module from an in-\/memory source string. 
+Compiles shader code from a raw source string and attaches it to the program. 
 
-This performs\+:
-\begin{DoxyItemize}
-\item Compile\+Shader(stage, source)
-\item gl\+Attach\+Shader(program\+ID, shader)
-\end{DoxyItemize}
-
-On success, the created shader object and its stage are tracked in attached\+Shaders/attached\+Stages.
+This function compiles the provided source using \doxylink{class_shader_a002a4be9c74371c53fcd7a1610595400}{Compile\+Shader()}. On success, the compiled shader object is attached to the program and tracked internally for later detachment and destruction.
 
 
 \begin{DoxyParams}{Parameters}
-{\em stage} & Stage of the shader source. \\
+{\em stage} & \doxylink{class_shader}{Shader} stage to compile and attach. \\
 \hline
-{\em source} & GLSL source code. \\
+{\em source} & Raw GLSL shader source code.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the shader compiles and attaches; false otherwise. 
+true if compilation and attachment succeed. 
+
+false if compilation fails.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function only attaches the stage. The caller must still call \doxylink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link()} to create a usable shader program. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -263,9 +271,14 @@ void Shader\+::\+Check\+Supports\+Instancing (\begin{DoxyParamCaption}{}{}\end{D
 
 
 
-Detects whether the linked program contains the "{}i\+\_\+\+Model"{} attribute for instancing. 
+Detects whether the linked shader supports instancing. 
 
-Calls gl\+Get\+Attrib\+Location(program\+ID, "{}i\+\_\+\+Model"{}) and caches the result as a boolean. 
+Checks the linked program for the attribute named {\ttfamily i\+\_\+\+Model}. If the attribute exists, is\+Support\+Instancing is set to true. Otherwise, it remains false.
+
+\begin{DoxyNote}{Note}
+This function is called automatically from \doxylink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link()} after a successful program link. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -285,24 +298,25 @@ Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00221}{221}} of file \m
 
 
 
-Compiles a shader module from a source string. 
+Compiles a shader object for the specified stage from source code. 
 
-Creates an Open\+GL shader object for the specified stage, sets the source, and compiles it. On compilation failure, the stage name and info log are reported.
-
-The returned shader object is still returned even when compilation fails; the caller is expected to check the success flag before attaching it.
+Creates an Open\+GL shader object for the requested stage, uploads the source code, and compiles it. Compilation status is written to the success output parameter. If compilation fails, the Open\+GL info log is printed through the engine logger.
 
 
 \begin{DoxyParams}{Parameters}
-{\em stage} & \doxylink{class_shader}{Shader} stage to compile for. \\
+{\em stage} & \doxylink{class_shader}{Shader} stage to compile. \\
 \hline
-{\em source} & GLSL source code. \\
+{\em source} & GLSL source code for the shader. \\
 \hline
-{\em success} & Output flag set to GL\+\_\+\+TRUE on success or GL\+\_\+\+FALSE on failure. \\
+{\em success} & Output flag set to the compile result returned by Open\+GL.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Open\+GL shader object ID. 
+\doxylink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint} Handle of the created shader object.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The shader object is created regardless of compile success. The caller is responsible for checking the success flag before attaching it to the program. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -337,15 +351,21 @@ Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00242}{242}} of file \m
 
 
 
-Returns the Open\+GL program ID owned by this \doxylink{class_shader}{Shader}. 
+Returns the Open\+GL program handle owned by this shader. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}{GLuint} Open\+GL program object ID.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is typically used internally by engine systems that need low-\/level program access. 
+\end{DoxyNote}
 
 
-
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00154}{154}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00195}{195}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00154\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_shader_afce507f5013e82f7a62b47bbfb2fb048}{programID}};\ \}}
+\DoxyCodeLine{00195\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_shader_afce507f5013e82f7a62b47bbfb2fb048}{programID}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_shader_a4d19cc34a5294ae473d624bd86630cbf}\index{Shader@{Shader}!Link@{Link}}
@@ -356,22 +376,27 @@ bool Shader\+::\+Link (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspac
 
 
 
-Links the attached shader modules into a complete program. 
+Links all attached shader stages into a final Open\+GL program. 
 
-Validates that tessellation stages are provided as a pair\+:
+Before linking, this function validates tessellation usage and requires Tess\+Control and Tess\+Eval to be attached together as a pair.
+
+If linking succeeds\+:
 \begin{DoxyItemize}
-\item Tess\+Control must be present if and only if Tess\+Eval is present.
+\item the program link status is validated,
+\item instancing capability is detected,
+\item all attached shader objects are detached from the program.
 \end{DoxyItemize}
 
-On link failure, the Open\+GL program info log is printed and false is returned. On success\+:
-\begin{DoxyItemize}
-\item Instancing capability is detected via \doxylink{class_shader_a146efb0490cd023c6e6f332317357393}{Check\+Supports\+Instancing()}.
-\item All attached modules are detached from the program (gl\+Detach\+Shader) while still being tracked in attached\+Shaders for deletion during destruction.
-\end{DoxyItemize}
+If linking fails, an error is logged and the function returns false.
 
 \begin{DoxyReturn}{Returns}
-True if linking succeeds; false otherwise. 
+true if program linking succeeds. 
+
+false if validation or linking fails.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The shader objects are detached after a successful link, but they remain stored in attached\+Shaders so they can be deleted later by the destructor. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -423,19 +448,19 @@ std\+::string Shader\+::\+Load\+Shader\+Source (\begin{DoxyParamCaption}\item[{c
 
 
 
-Loads an entire shader file into a string. 
+Reads the full contents of a shader source file into a string. 
 
-Opens the file and streams its content into a string. If the file cannot be opened, success is set to GL\+\_\+\+FALSE and an empty string is returned.
+Opens the file at the given path and copies its contents into a string stream. If the file cannot be opened, an error is logged, success is set to GL\+\_\+\+FALSE, and an empty string is returned.
 
 
 \begin{DoxyParams}{Parameters}
-{\em filepath} & \doxylink{class_shader}{Shader} file path. \\
+{\em filepath} & Path to the shader source file. \\
 \hline
-{\em success} & Output flag set to GL\+\_\+\+TRUE on success or GL\+\_\+\+FALSE on failure. \\
+{\em success} & Output flag set to GL\+\_\+\+TRUE on success, GL\+\_\+\+FALSE on failure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\doxylink{class_shader}{Shader} source string (may be empty on failure). 
+The loaded shader source string, or an empty string if loading fails. 
 \end{DoxyReturn}
 
 
@@ -466,19 +491,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends a mat4 uniform to the program. 
+Sends a mat4 uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
-
-The matrix is uploaded using gl\+Uniform\+Matrix4fv with transpose set to GL\+\_\+\+FALSE.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error. The matrix is uploaded without transposition.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Matrix value to upload. \\
+{\em value} & 4x4 matrix value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -505,17 +531,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends a vec2 uniform to the program. 
+Sends a vec2 uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Vector value to upload. \\
+{\em value} & 2D vector value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -542,17 +571,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends a vec3 uniform to the program. 
+Sends a vec3 uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Vector value to upload. \\
+{\em value} & 3D vector value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -579,17 +611,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends a vec4 uniform to the program. 
+Sends a vec4 uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Vector value to upload. \\
+{\em value} & 4D vector value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00191}{191}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -616,17 +651,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends a float uniform to the program. 
+Sends a float uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Float value to upload. \\
+{\em value} & Float value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00156}{156}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -652,17 +690,20 @@ void Shader\+::\+Send\+Uniform (\begin{DoxyParamCaption}\item[{const std\+::stri
 
 
 
-Sends an integer uniform to the program. 
+Sends an integer uniform to the currently active shader program. 
 
-Looks up the uniform location with gl\+Get\+Uniform\+Location(). If the uniform is not found (location == -\/1), the call is ignored.
+Queries the uniform location from the linked program using the provided name. If the uniform does not exist or is optimized out, the function returns without error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & Uniform name as declared in GLSL. \\
+{\em name} & Uniform variable name declared in the shader. \\
 \hline
-{\em value} & Integer value to upload. \\
+{\em value} & Integer value to upload.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The shader program should already be bound with \doxylink{class_shader_a11a2de17d1d077ec34acd4f7cd57f6b1}{Use()} before calling this function. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
@@ -688,9 +729,19 @@ bool Shader\+::\+Supports\+Instancing (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 
 
 
-Returns whether the linked program supports instanced rendering conventions used by this engine. 
+Returns whether the linked shader program supports instanced rendering. 
 
-The engine considers a program "{}instancing-\/capable"{} when the attribute "{}i\+\_\+\+Model"{} is present in the linked program. This value is determined in \doxylink{class_shader_a146efb0490cd023c6e6f332317357393}{Check\+Supports\+Instancing()} after \doxylink{class_shader_a4d19cc34a5294ae473d624bd86630cbf}{Link()}. 
+The value is determined by \doxylink{class_shader_a146efb0490cd023c6e6f332317357393}{Check\+Supports\+Instancing()}, which checks whether the linked program exposes an attribute named {\ttfamily i\+\_\+\+Model}.
+
+\begin{DoxyReturn}{Returns}
+true if instancing is supported by the linked shader program. 
+
+false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is primarily used internally by \doxylink{class_material}{Material} when enabling instancing. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -709,9 +760,9 @@ void Shader\+::\+Unuse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) cons
 
 
 
-Unbinds any program from the current Open\+GL context. 
+Unbinds the currently active shader program. 
 
-Calls gl\+Use\+Program(0). 
+Calls gl\+Use\+Program(0), clearing the current program binding. 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -730,9 +781,9 @@ void Shader\+::\+Use (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
 
 
-Binds this program for subsequent draw calls. 
+Binds this shader program for subsequent rendering or uniform submission. 
 
-Calls gl\+Use\+Program(program\+ID). 
+Calls gl\+Use\+Program(program\+ID) so that future draw calls and uniform uploads use this program. 
 
 Definition at line \mbox{\hyperlink{_shader_8cpp_source_l00135}{135}} of file \mbox{\hyperlink{_shader_8cpp_source}{Shader.\+cpp}}.
 
@@ -754,7 +805,7 @@ std\+::vector$<$\mbox{\hyperlink{_material_8h_a9b79d6d8dc8627e68412974748f1c08c}
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00271}{271}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00342}{342}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_a200490ae8ee22f7b9cf8553cb78576d6}\index{Shader@{Shader}!attachedStages@{attachedStages}}
 \index{attachedStages@{attachedStages}!Shader@{Shader}}
@@ -764,7 +815,7 @@ std\+::vector$<$\mbox{\hyperlink{_shader_8h_a22fa67f5720e9bfbd075bd088285c531}{S
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00272}{272}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00343}{343}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_a821763f22b88dfc27ef72c0eec1a8b8c}\index{Shader@{Shader}!isSupportInstancing@{isSupportInstancing}}
 \index{isSupportInstancing@{isSupportInstancing}!Shader@{Shader}}
@@ -774,7 +825,7 @@ bool Shader\+::is\+Support\+Instancing\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00274}{274}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00345}{345}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_a718259d434fbde1b6f50e9915671acf0}\index{Shader@{Shader}!LoadingState@{LoadingState}}
 \index{LoadingState@{LoadingState}!Shader@{Shader}}
@@ -784,7 +835,7 @@ friend Shader\+::\+Loading\+State\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00057}{57}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00069}{69}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_abd90567f8b213f3bf1b40200a4257ae1}\index{Shader@{Shader}!Material@{Material}}
 \index{Material@{Material}!Shader@{Shader}}
@@ -794,7 +845,7 @@ friend Shader\+::\+Material\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00055}{55}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00067}{67}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_afce507f5013e82f7a62b47bbfb2fb048}\index{Shader@{Shader}!programID@{programID}}
 \index{programID@{programID}!Shader@{Shader}}
@@ -804,7 +855,7 @@ Definition at line \mbox{\hyperlink{_shader_8h_source_l00055}{55}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00270}{270}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00341}{341}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 \Hypertarget{class_shader_a2cbf5adc5d868219094df11bab36009b}\index{Shader@{Shader}!RenderManager@{RenderManager}}
 \index{RenderManager@{RenderManager}!Shader@{Shader}}
@@ -814,7 +865,7 @@ friend Shader\+::\+Render\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_shader_8h_source_l00056}{56}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
+Definition at line \mbox{\hyperlink{_shader_8h_source_l00068}{68}} of file \mbox{\hyperlink{_shader_8h_source}{Shader.\+h}}.
 
 
 

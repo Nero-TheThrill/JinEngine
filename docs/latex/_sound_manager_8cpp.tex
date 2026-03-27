@@ -7,6 +7,7 @@
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$queue$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include "{}miniaudio.\+h"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
@@ -36,7 +37,7 @@ static bool \mbox{\hyperlink{_sound_manager_8cpp_ac772bc1fd37c6da41f36dc2f1ee287
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 \Hypertarget{_sound_manager_8cpp_abf77f70dc931f91a9f09e7b54d8278f5}\index{SoundManager.cpp@{SoundManager.cpp}!MINIAUDIO\_IMPLEMENTATION@{MINIAUDIO\_IMPLEMENTATION}}
 \index{MINIAUDIO\_IMPLEMENTATION@{MINIAUDIO\_IMPLEMENTATION}!SoundManager.cpp@{SoundManager.cpp}}
@@ -46,7 +47,7 @@ Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00010}{10}} of f
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 
 
@@ -59,20 +60,20 @@ static bool MA\+\_\+\+Get\+Sound\+Sample\+Rate (\begin{DoxyParamCaption}\item[{m
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00104\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ ma\_format\ fmt\{\};}
-\DoxyCodeLine{00106\ \ \ \ \ ma\_uint32\ ch\{\};}
-\DoxyCodeLine{00107\ \ \ \ \ ma\_uint32\ sr\{\};}
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (ma\_sound\_get\_data\_format(snd,\ \&fmt,\ \&ch,\ \&sr,\ \textcolor{keyword}{nullptr},\ 0)\ ==\ MA\_SUCCESS\ \&\&\ sr\ >\ 0)}
-\DoxyCodeLine{00109\ \ \ \ \ \{}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ outSR\ =\ sr;}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00112\ \ \ \ \ \}}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00114\ \}}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ ma\_format\ fmt\{\};}
+\DoxyCodeLine{00110\ \ \ \ \ ma\_uint32\ ch\{\};}
+\DoxyCodeLine{00111\ \ \ \ \ ma\_uint32\ sr\{\};}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{if}\ (ma\_sound\_get\_data\_format(snd,\ \&fmt,\ \&ch,\ \&sr,\ \textcolor{keyword}{nullptr},\ 0)\ ==\ MA\_SUCCESS\ \&\&\ sr\ >\ 0)}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ outSR\ =\ sr;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00118\ \}}
 
 \end{DoxyCode}

@@ -4,7 +4,7 @@ void FlagObject::Init(const EngineContext& engineContext)
 {
 	SetMesh(engineContext, "[EngineMesh]default");
 	SetMaterial(engineContext, "[Material]Animation");
-	SpriteSheet* sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]Flag");
+	std::shared_ptr<SpriteSheet> sheet = engineContext.renderManager->GetSpriteSheetByTag("[SpriteSheet]Flag");
 	//sheet->AddClip("[Clip]Idle", { 0,1,2,3,4 }, 0.15f, true);
 	AttachAnimator(sheet, 0.2f);
 	GetSpriteAnimator()->PlayClip(0, 4);
@@ -16,7 +16,7 @@ void FlagObject::Init(const EngineContext& engineContext)
 	SetCollision(engineContext.stateManager->GetCurrentState()->GetObjectManager(), "[CollisionTag]flag", { "[CollisionTag]player" });
 
 	textObject = static_cast<TextObject*>( engineContext.stateManager->GetCurrentState()->GetObjectManager().AddObject(
-		std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]default"),guide,TextAlignH::Center,TextAlignV::Middle),
+		std::make_unique<TextObject>(engineContext.renderManager->GetFontByTag("[Font]defaultkr"),guide,TextAlignH::Center,TextAlignV::Middle),
 		"[Object]flagText"));
 	textObject->SetRenderLayer("[Layer]UIText");
 	textObject->GetTransform2D().SetPosition(GetWorldPosition()+glm::vec2{-20,150});

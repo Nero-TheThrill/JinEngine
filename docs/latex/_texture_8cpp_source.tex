@@ -180,25 +180,24 @@
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00176}00176\ }
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00177}\mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{00177}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Texture::ForceUpdateTexture}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ id\_,\ \textcolor{keywordtype}{int}\ width\_,\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{int}\ channels\_)}
 \DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00178}00178\ \{}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00179}00179\ }
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00181}00181\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00183}00183\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00184}00184\ \}}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00186}\mbox{\hyperlink{class_texture_aa34f9924e6c77003325a389907795677}{00186}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Texture::ForceUpdateTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{int}\ width\_,\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{int}\ channels\_,}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\&\ settings)}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00188}00188\ \{}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00190}00190\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&\textcolor{keywordtype}{id});}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00192}00192\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00193}00193\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00194}00194\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00195}00195\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00196}00196\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00197}00197\ }
-\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00180}00180\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00181}00181\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00185}\mbox{\hyperlink{class_texture_aa34f9924e6c77003325a389907795677}{00185}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Texture::ForceUpdateTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{int}\ width\_,\ \textcolor{keywordtype}{int}\ height\_,\ \textcolor{keywordtype}{int}\ channels\_,}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_texture_settings}{TextureSettings}}\&\ settings)}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00187}00187\ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00189}00189\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00192}00192\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00193}00193\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00194}00194\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00195}00195\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_texture_8cpp_source_l00197}00197\ \}}
 
 \end{DoxyCode}

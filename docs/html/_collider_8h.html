@@ -114,22 +114,22 @@ $(function(){initNavTree('_collider_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html">Collider</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base collider that supports broad-phase + narrow-phase collision checks.  <a href="class_collider.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base interface for all collider shapes used by the engine.  <a href="class_collider.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circle_collider.html">CircleCollider</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circle collider implementation.  <a href="class_circle_collider.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circle-shaped collider implementation.  <a href="class_circle_collider.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_a_b_b_collider.html">AABBCollider</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Axis-aligned bounding box (AABB) collider implementation.  <a href="class_a_a_b_b_collider.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Axis-aligned bounding box collider implementation.  <a href="class_a_a_b_b_collider.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vec2_hash.html">Vec2Hash</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for glm::ivec2 used as a key in unordered containers.  <a href="struct_vec2_hash.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash functor for glm::ivec2 keys.  <a href="struct_vec2_hash.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spatial_hash_grid.html">SpatialHashGrid</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broad-phase collision structure using spatial hashing.  <a href="class_spatial_hash_grid.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broad-phase collision structure based on a spatial hash grid.  <a href="class_spatial_hash_grid.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_group_registry.html">CollisionGroupRegistry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registry that assigns bit indices to collision group tags.  <a href="class_collision_group_registry.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registry that assigns collision group tags to bit masks.  <a href="class_collision_group_registry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -138,7 +138,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">Circle</a>
 , <a class="el" href="#a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99">AABB</a>
  }</td></tr>
-<tr class="memdesc:a7f138e75fc3cc79e825c39e040690395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the concrete collider shape type at runtime.  <a href="#a7f138e75fc3cc79e825c39e040690395">More...</a><br /></td></tr>
+<tr class="memdesc:a7f138e75fc3cc79e825c39e040690395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the runtime type of a collider.  <a href="#a7f138e75fc3cc79e825c39e040690395">More...</a><br /></td></tr>
 <tr class="separator:a7f138e75fc3cc79e825c39e040690395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -162,8 +162,8 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Identifies the concrete collider shape type at runtime. </p>
-<p>Used internally for type checks and debugging, and as a lightweight descriptor for collider behavior. The collision system itself uses double dispatch (DispatchAgainst) rather than switching solely on this enum. </p>
+<p>Identifies the runtime type of a collider. </p>
+<p>This enum is used internally to distinguish collider shapes. The current engine supports circle colliders and axis-aligned bounding box colliders. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754" name="a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3" name="a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3"></a>Circle&#160;</td><td class="fielddoc"></td></tr>

@@ -2,7 +2,7 @@
 \hypertarget{struct_texture_settings}{}\label{struct_texture_settings}\index{TextureSettings@{TextureSettings}}
 
 
-Describes configuration parameters used when creating or updating a texture.  
+Describes sampler-\/state options used when creating a texture object.  
 
 
 
@@ -25,11 +25,18 @@ bool \mbox{\hyperlink{struct_texture_settings_a7e4fe01f2ced85bd77fedc1ea9e36518}
 
 
 \doxysubsection{Detailed Description}
-Describes configuration parameters used when creating or updating a texture. 
+Describes sampler-\/state options used when creating a texture object. 
 
-\doxylink{struct_texture_settings}{Texture\+Settings} encapsulates common Open\+GL texture state such as filtering, wrapping, and mipmap generation. It is passed to texture creation and update routines to ensure consistent configuration. 
+This structure is consumed by \doxylink{class_texture}{Texture} constructors and by the internal texture regeneration path. It controls minification and magnification filters, wrap modes for the S and T axes, and whether mipmaps are generated after uploading the texture data.
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00059}{59}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+The implementation applies these values directly to the Open\+GL texture object after storage allocation and pixel upload. When generate\+Mipmap is enabled, the texture allocates enough mip levels for the full chain and generates them immediately after the base level upload.
+
+\begin{DoxyNote}{Note}
+These settings are only applied when a GPU texture is created or recreated. Updating a wrapper to reference an external Open\+GL texture ID does not reapply these settings automatically. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00049}{49}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 
@@ -42,7 +49,7 @@ bool Texture\+Settings\+::generate\+Mipmap = true}
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00065}{65}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00055}{55}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_ae47adc7174dcf5bde39e6f8bd1ffc7a0}\index{TextureSettings@{TextureSettings}!magFilter@{magFilter}}
 \index{magFilter@{magFilter}!TextureSettings@{TextureSettings}}
@@ -52,7 +59,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00065}{65}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00062}{62}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00052}{52}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a9d30e90e0b8346cad1e6c10a6c543087}\index{TextureSettings@{TextureSettings}!minFilter@{minFilter}}
 \index{minFilter@{minFilter}!TextureSettings@{TextureSettings}}
@@ -62,7 +69,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00062}{62}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00061}{61}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00051}{51}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a3b54cb18a7fd881b2f7e01d1dd29db3a}\index{TextureSettings@{TextureSettings}!wrapS@{wrapS}}
 \index{wrapS@{wrapS}!TextureSettings@{TextureSettings}}
@@ -72,7 +79,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00061}{61}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00063}{63}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00053}{53}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{struct_texture_settings_a89e689b4de2e7f2a7c856d091a19632c}\index{TextureSettings@{TextureSettings}!wrapT@{wrapT}}
 \index{wrapT@{wrapT}!TextureSettings@{TextureSettings}}
@@ -82,7 +89,7 @@ Definition at line \mbox{\hyperlink{_texture_8h_source_l00063}{63}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00064}{64}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00054}{54}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 

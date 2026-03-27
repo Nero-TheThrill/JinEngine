@@ -2,7 +2,7 @@
 \hypertarget{class_collider}{}\label{class_collider}\index{Collider@{Collider}}
 
 
-Abstract base collider that supports broad-\/phase + narrow-\/phase collision checks.  
+Base interface for all collider shapes used by the engine.  
 
 
 
@@ -19,40 +19,40 @@ Inheritance diagram for Collider\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_collider_a02af0adc54359eddcd786735e7d0ce5b}{Collider}} ()=delete
-\begin{DoxyCompactList}\small\item\em Deleted default constructor to enforce owner association. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{class_collider_a5a49c6e929279578b12e7d1c60c50c75}{Collider}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}owner\+\_\+)
-\begin{DoxyCompactList}\small\item\em Constructs a collider bound to an owner object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a collider and binds it to an owning object. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_collider_a7b43c72a6424d8c11dec965d166953d3}{\texorpdfstring{$\sim$}{\string~}\+Collider}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic deletion. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic collider deletion. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_abcbc7a880210f872f2704035940f243c}{Set\+Use\+Transform\+Scale}} (bool use)
-\begin{DoxyCompactList}\small\item\em Enables or disables using the owner\textquotesingle{}s transform scale to size the collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables automatic scaling from the owner\textquotesingle{}s transform. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_collider_a9f9dd44c772f34a84789018f59df905a}{Is\+Using\+Transform\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether this collider uses the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this collider currently follows the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collider_ad96c878cd28533c4ec6d3ad6b1decdae}{Set\+Offset}} (const glm\+::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em Sets the local-\/space offset of the collider relative to the owner\textquotesingle{}s origin. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets a local positional offset for the collider. \end{DoxyCompactList}\item 
 const glm\+::vec2 \& \mbox{\hyperlink{class_collider_a948b526d3829deb0418a4fb1db006474}{Get\+Offset}} () const
-\begin{DoxyCompactList}\small\item\em Returns the local-\/space offset of the collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collider\textquotesingle{}s local offset. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_collider_a96da52831351800d25be94893cfaddf0}{Check\+Point\+Collision}} (const glm\+::vec2 \&point) const =0
-\begin{DoxyCompactList}\small\item\em Tests whether a point lies within the collider shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks whether a world-\/space point overlaps this collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}{Get\+Owner}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object that owns this collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the owning object. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collider\+Type}} \mbox{\hyperlink{class_collider_a677c9e05fcee3ef2ed94998dc5f2458d}{Get\+Type}} () const =0
 \begin{DoxyCompactList}\small\item\em Returns the concrete collider type. \end{DoxyCompactList}\item 
 virtual float \mbox{\hyperlink{class_collider_a62c9c123b9a68da3b6eb13c718ccaa27}{Get\+Bounding\+Radius}} () const =0
-\begin{DoxyCompactList}\small\item\em Returns a radius that bounds the collider for broad-\/phase checks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns a broad-\/phase bounding radius for this collider. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_collider_a41660505ae4b413d3d4b004162857426}{Check\+Collision}} (const \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*}other) const =0
-\begin{DoxyCompactList}\small\item\em Performs narrow-\/phase collision test against another collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs a collision test against another collider. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Dispatch\+Against}} (const \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}} \&other) const =0
-\begin{DoxyCompactList}\small\item\em Double-\/dispatch entry for testing against a circle collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resolves collision against a circle collider. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_collider_ae6038e89a98d8b252f143ddbc960a484}{Dispatch\+Against}} (const \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}} \&other) const =0
-\begin{DoxyCompactList}\small\item\em Double-\/dispatch entry for testing against an AABB collider. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resolves collision against an axis-\/aligned bounding box collider. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_collider_a188380ff8ece20474e86a662f995887e}{Sync\+With\+Transform\+Scale}} ()=0
-\begin{DoxyCompactList}\small\item\em Updates internal scaled shape data based on the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Synchronizes the collider\textquotesingle{}s effective size with the owner\textquotesingle{}s transform scale. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_collider_a222e52491ae094943420952fd3182c90}{Draw\+Debug}} (\mbox{\hyperlink{class_render_manager}{Render\+Manager}} \texorpdfstring{$\ast$}{*}rm, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}cam, const glm\+::vec4 \&color=\{ 1, 0, 0, 1 \}) const =0
-\begin{DoxyCompactList}\small\item\em Draws the collider shape for debugging purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draws a debug visualization of the collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -76,24 +76,22 @@ friend \mbox{\hyperlink{class_collider_a1caafe48decccc01fc2b89fa84498938}{Spatia
 
 
 \doxysubsection{Detailed Description}
-Abstract base collider that supports broad-\/phase + narrow-\/phase collision checks. 
+Base interface for all collider shapes used by the engine. 
 
-\doxylink{class_collider}{Collider} represents a shape attached to an \doxylink{class_object}{Object} and provides the core interfaces used by \doxylink{class_object_manager}{Object\+Manager} and \doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid}\+:
-\begin{DoxyItemize}
-\item point containment test (Check\+Point\+Collision)
-\item shape-\/vs-\/shape collision test (Check\+Collision + Dispatch\+Against)
-\item broad-\/phase approximation (Get\+Bounding\+Radius)
-\item optional transform scale synchronization (Sync\+With\+Transform\+Scale)
-\item debug visualization (Draw\+Debug)
-\end{DoxyItemize}
+\doxylink{class_collider}{Collider} provides the common interface required by the collision system. Each collider is attached to an owning \doxylink{class_object}{Object} and may optionally follow the owner\textquotesingle{}s transform scale.
 
-Narrow-\/phase collision is implemented using double dispatch\+: Check\+Collision(other) calls other-\/\texorpdfstring{$>$}{>}Dispatch\+Against(\texorpdfstring{$\ast$}{*}this\+Concrete) or an equivalent path, allowing Circle-\/vs-\/\+AABB and AABB-\/vs-\/\+Circle to be resolved without RTTI/dynamic\+\_\+cast.
+The class exposes point collision checks publicly, while pairwise collision checks, bounding radius queries, transform synchronization, and debug drawing are kept protected because they are intended to be driven by engine systems such as \doxylink{class_object_manager}{Object\+Manager} and \doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid}.
 
-Offset is stored separately from the owner\textquotesingle{}s transform and is typically used to shift the collider relative to the owner\textquotesingle{}s origin.
+Collision dispatch is implemented using double dispatch. The generic \doxylink{class_collider_a41660505ae4b413d3d4b004162857426}{Check\+Collision()} entry point forwards the test to the other collider, which then resolves the exact shape-\/vs-\/shape routine through \doxylink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Dispatch\+Against()}.
 
-This class is not default-\/constructible; an owner must be provided. 
+\begin{DoxyNote}{Note}
+\doxylink{class_collider}{Collider} does not own the \doxylink{class_object}{Object} pointer. The owner must outlive the collider.
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00053}{53}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+When use\+Transform\+Scale is enabled, the collider shape is updated from the owner\textquotesingle{}s world scale during engine update. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00052}{52}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
@@ -104,10 +102,6 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00053}{53}} of file \mb
 {\footnotesize\ttfamily \label{class_collider_a02af0adc54359eddcd786735e7d0ce5b} 
 Collider\+::\+Collider (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-
-
-Deleted default constructor to enforce owner association. 
-
 \Hypertarget{class_collider_a5a49c6e929279578b12e7d1c60c50c75}\index{Collider@{Collider}!Collider@{Collider}}
 \index{Collider@{Collider}!Collider@{Collider}}
 \doxysubsubsection{\texorpdfstring{Collider()}{Collider()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -116,20 +110,23 @@ Collider\+::\+Collider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ob
 
 
 
-Constructs a collider bound to an owner object. 
+Constructs a collider and binds it to an owning object. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em owner\+\_\+} & \doxylink{class_object}{Object} that owns this collider. \\
+{\em owner\+\_\+} & Pointer to the object that owns this collider.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The offset is initialized to zero. 
+\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00070}{70}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00069}{69}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00070\ :\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}(owner\_),\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}()\ \{\}}
+\DoxyCodeLine{00069\ :\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}}(owner\_),\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}()\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_collider_a7b43c72a6424d8c11dec965d166953d3}\index{Collider@{Collider}!````~Collider@{\texorpdfstring{$\sim$}{\string~}Collider}}
@@ -140,7 +137,7 @@ virtual Collider\+::\texorpdfstring{$\sim$}{\string~}\+Collider (\begin{DoxyPara
 
 
 
-Virtual destructor for safe polymorphic deletion. 
+Virtual destructor for polymorphic collider deletion. 
 
 
 
@@ -153,17 +150,17 @@ virtual bool Collider\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{cons
 
 
 
-Performs narrow-\/phase collision test against another collider. 
+Performs a collision test against another collider. 
 
-Implementations typically use double dispatch by calling Dispatch\+Against with the appropriate concrete type.
+This is the generic entry point used by the collision system. Implementations forward the call to the other collider\textquotesingle{}s \doxylink{class_collider_a6b1071065ccb7ddfc1ff8340a89246d7}{Dispatch\+Against()} overload to resolve the exact shape combination. \+:content\+Reference\mbox{[}oaicite\+:2\mbox{]}\{index=2\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & Other collider to test against. \\
+{\em other} & Pointer to the other collider. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if colliding; false otherwise. 
+True if the two colliders overlap. 
 \end{DoxyReturn}
 
 
@@ -177,15 +174,15 @@ virtual bool Collider\+::\+Check\+Point\+Collision (\begin{DoxyParamCaption}\ite
 
 
 
-Tests whether a point lies within the collider shape. 
+Checks whether a world-\/space point overlaps this collider. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em point} & Point to test, typically in world space. \\
+{\em point} & Point in world space. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the point is inside or on the collider; false otherwise. 
+True if the point lies inside or on the collider. 
 \end{DoxyReturn}
 
 
@@ -199,15 +196,15 @@ virtual bool Collider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{con
 
 
 
-Double-\/dispatch entry for testing against an AABB collider. 
+Resolves collision against an axis-\/aligned bounding box collider. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & Other collider as \doxylink{class_a_a_b_b_collider}{AABBCollider}. \\
+{\em other} & The AABB collider on the other side of the test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if colliding; false otherwise. 
+True if the colliders overlap. 
 \end{DoxyReturn}
 
 
@@ -221,15 +218,15 @@ virtual bool Collider\+::\+Dispatch\+Against (\begin{DoxyParamCaption}\item[{con
 
 
 
-Double-\/dispatch entry for testing against a circle collider. 
+Resolves collision against a circle collider. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & Other collider as \doxylink{class_circle_collider}{Circle\+Collider}. \\
+{\em other} & The circle collider on the other side of the test. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if colliding; false otherwise. 
+True if the colliders overlap. 
 \end{DoxyReturn}
 
 
@@ -243,17 +240,17 @@ virtual void Collider\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hy
 
 
 
-Draws the collider shape for debugging purposes. 
+Draws a debug visualization of the collider. 
 
-Derived types should issue debug draw commands through the \doxylink{class_render_manager}{Render\+Manager} and transform into camera space using the provided \doxylink{class_camera2_d}{Camera2D}.
+The current implementation uses \doxylink{class_render_manager}{Render\+Manager} debug line commands. Circle colliders are drawn as segmented line loops. AABB colliders are drawn as four line edges.
 
 
 \begin{DoxyParams}{Parameters}
-{\em rm} & Render manager used for debug draw submission. \\
+{\em rm} & Render manager used to queue debug lines. \\
 \hline
-{\em cam} & Camera used for world-\/to-\/screen/view transform. \\
+{\em cam} & Camera used for debug line rendering. \\
 \hline
-{\em color} & Debug draw color (default\+: red). \\
+{\em color} & Debug draw color. \\
 \hline
 \end{DoxyParams}
 
@@ -268,9 +265,14 @@ virtual float Collider\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\
 
 
 
-Returns a radius that bounds the collider for broad-\/phase checks. 
+Returns a broad-\/phase bounding radius for this collider. 
 
-\doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} may use this to classify large objects and/or to estimate which cells should contain an object. 
+This value is used by \doxylink{class_spatial_hash_grid}{Spatial\+Hash\+Grid} to estimate cell coverage and insertion area.
+
+\begin{DoxyReturn}{Returns}
+Bounding radius in world scale. 
+\end{DoxyReturn}
+
 
 Implemented in \mbox{\hyperlink{class_a_a_b_b_collider_a0a0f0dcd7d52ac0ef8d11953424a752a}{AABBCollider}}, and \mbox{\hyperlink{class_circle_collider_afc46297adb83cfaab9487e89d7a25298}{Circle\+Collider}}.
 
@@ -282,15 +284,18 @@ const glm\+::vec2 \& Collider\+::\+Get\+Offset (\begin{DoxyParamCaption}{}{}\end
 
 
 
-Returns the local-\/space offset of the collider. 
+Returns the collider\textquotesingle{}s local offset. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the current local offset. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00103}{103}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00110}{110}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00103\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}};\ \}}
+\DoxyCodeLine{00110\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_collider_a1a1c25108da499b666799d7e8d4c2d5b}\index{Collider@{Collider}!GetOwner@{GetOwner}}
@@ -301,18 +306,18 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00103}{103}} of file \m
 
 
 
-Returns the object that owns this collider. 
+Returns the owning object. 
 
 \begin{DoxyReturn}{Returns}
 Pointer to the owner object. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00119}{119}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00126}{126}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00119\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}};\ \}}
+\DoxyCodeLine{00126\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_ae661027024ee407d042b8672625da377}{owner}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_collider_a677c9e05fcee3ef2ed94998dc5f2458d}\index{Collider@{Collider}!GetType@{GetType}}
@@ -325,6 +330,9 @@ virtual \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Collide
 
 Returns the concrete collider type. 
 
+\begin{DoxyReturn}{Returns}
+Runtime collider type. 
+\end{DoxyReturn}
 
 
 Implemented in \mbox{\hyperlink{class_a_a_b_b_collider_a02a5aef8ae047a6e77dea4d9ee3bdc91}{AABBCollider}}, and \mbox{\hyperlink{class_circle_collider_ac2513ad483f0fc9789afe8e25f4797c1}{Circle\+Collider}}.
@@ -337,15 +345,18 @@ bool Collider\+::\+Is\+Using\+Transform\+Scale (\begin{DoxyParamCaption}{}{}\end
 
 
 
-Returns whether this collider uses the owner\textquotesingle{}s transform scale. 
+Returns whether this collider currently follows the owner\textquotesingle{}s transform scale. 
+
+\begin{DoxyReturn}{Returns}
+True if transform scale synchronization is enabled. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00091}{91}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00093}{93}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00091\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}};\ \}}
+\DoxyCodeLine{00093\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_collider_a10c23d55e50b048078cddb0f806d5731}{useTransformScale}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_collider_ad96c878cd28533c4ec6d3ad6b1decdae}\index{Collider@{Collider}!SetOffset@{SetOffset}}
@@ -356,20 +367,22 @@ void Collider\+::\+Set\+Offset (\begin{DoxyParamCaption}\item[{const glm\+::vec2
 
 
 
-Sets the local-\/space offset of the collider relative to the owner\textquotesingle{}s origin. 
+Sets a local positional offset for the collider. 
+
+The offset is added to the owner\textquotesingle{}s world position during collision checks and debug rendering.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & Offset in the same coordinate space as the owner\textquotesingle{}s transform. \\
+{\em pos} & Local offset from the owner\textquotesingle{}s origin. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00098}{98}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00103}{103}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00098\ \{\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}\ =\ pos;\ \}}
+\DoxyCodeLine{00103\ \{\ \mbox{\hyperlink{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}{offset}}\ =\ pos;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_collider_abcbc7a880210f872f2704035940f243c}\index{Collider@{Collider}!SetUseTransformScale@{SetUseTransformScale}}
@@ -380,13 +393,13 @@ void Collider\+::\+Set\+Use\+Transform\+Scale (\begin{DoxyParamCaption}\item[{bo
 
 
 
-Enables or disables using the owner\textquotesingle{}s transform scale to size the collider. 
+Enables or disables automatic scaling from the owner\textquotesingle{}s transform. 
 
-When enabled, derived colliders are expected to update their scaled shape in Sync\+With\+Transform\+Scale.
+When enabled, the collider shape is recalculated from the owner\textquotesingle{}s world scale through \doxylink{class_collider_a188380ff8ece20474e86a662f995887e}{Sync\+With\+Transform\+Scale()}. For \doxylink{class_circle_collider}{Circle\+Collider}, the largest absolute scale axis is used. For \doxylink{class_a_a_b_b_collider}{AABBCollider}, each axis is scaled independently. \+:content\+Reference\mbox{[}oaicite\+:1\mbox{]}\{index=1\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em use} & True to apply transform scale to the collider shape. \\
+{\em use} & True to follow transform scale, false to use manually assigned shape values. \\
 \hline
 \end{DoxyParams}
 
@@ -406,9 +419,9 @@ virtual void Collider\+::\+Sync\+With\+Transform\+Scale (\begin{DoxyParamCaption
 
 
 
-Updates internal scaled shape data based on the owner\textquotesingle{}s transform scale. 
+Synchronizes the collider\textquotesingle{}s effective size with the owner\textquotesingle{}s transform scale. 
 
-Called when use\+Transform\+Scale is enabled and the owner\textquotesingle{}s scale is expected to affect collider dimensions (e.\+g., radius / half-\/extents). 
+This is called by \doxylink{class_object_manager}{Object\+Manager} during the update loop for alive objects that own a collider. 
 
 Implemented in \mbox{\hyperlink{class_a_a_b_b_collider_a66dc8ecf507a6f3de51fb56f7cd0aa67}{AABBCollider}}, and \mbox{\hyperlink{class_circle_collider_a8f00aeea30fb3ffb45ebbcaab0d96fdd}{Circle\+Collider}}.
 
@@ -423,7 +436,7 @@ friend Collider\+::\+AABBCollider\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00057}{57}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00056}{56}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_a12cf416c51b48e672ffdfe63e6118f22}\index{Collider@{Collider}!CircleCollider@{CircleCollider}}
 \index{CircleCollider@{CircleCollider}!Collider@{Collider}}
@@ -433,7 +446,7 @@ friend Collider\+::\+Circle\+Collider\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00056}{56}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00055}{55}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_a936a6c821ef2a9ec2ecbf5f77cd8b0cc}\index{Collider@{Collider}!ObjectManager@{ObjectManager}}
 \index{ObjectManager@{ObjectManager}!Collider@{Collider}}
@@ -443,7 +456,7 @@ friend Collider\+::\+Object\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00055}{55}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00054}{54}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_a7a84eff1697e0c8d54ef0df6427a8235}\index{Collider@{Collider}!offset@{offset}}
 \index{offset@{offset}!Collider@{Collider}}
@@ -453,7 +466,7 @@ glm\+::vec2 Collider\+::offset\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00187}{187}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00198}{198}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_ae661027024ee407d042b8672625da377}\index{Collider@{Collider}!owner@{owner}}
 \index{owner@{owner}!Collider@{Collider}}
@@ -463,7 +476,7 @@ Definition at line \mbox{\hyperlink{_collider_8h_source_l00187}{187}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00185}{185}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00196}{196}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_a1caafe48decccc01fc2b89fa84498938}\index{Collider@{Collider}!SpatialHashGrid@{SpatialHashGrid}}
 \index{SpatialHashGrid@{SpatialHashGrid}!Collider@{Collider}}
@@ -473,7 +486,7 @@ friend Collider\+::\+Spatial\+Hash\+Grid\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00058}{58}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00057}{57}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 \Hypertarget{class_collider_a10c23d55e50b048078cddb0f806d5731}\index{Collider@{Collider}!useTransformScale@{useTransformScale}}
 \index{useTransformScale@{useTransformScale}!Collider@{Collider}}
@@ -483,7 +496,7 @@ bool Collider\+::use\+Transform\+Scale = true\hspace{0.3cm}{\ttfamily [protected
 
 
 
-Definition at line \mbox{\hyperlink{_collider_8h_source_l00186}{186}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
+Definition at line \mbox{\hyperlink{_collider_8h_source_l00197}{197}} of file \mbox{\hyperlink{_collider_8h_source}{Collider.\+h}}.
 
 
 
