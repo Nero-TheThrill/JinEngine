@@ -26,7 +26,15 @@ A lightweight C++ game engine (sample framework) that bundles 2D rendering, inpu
 * **Debug draw:** Line-drawing API (with camera/projection) to visualize colliders, etc.
 * **Built-in logger:** Unified `Log`, `Warn`, `Error` system with configurable log levels.
 * **Resource registry:** Tag-based register/lookup/release for Shader/Texture/Mesh/Material/Font/SpriteSheet.
-
+* **Window interaction handling:** Update loop is automatically paused while dragging or resizing the window to prevent unstable behavior.
+* **Stable timing:** Delta time is internally clamped to avoid spikes, and input states are reset when large frame delays occur.
+* **Dynamic text mesh update:** TextObjects automatically rebuild their mesh when the font atlas changes (runtime glyph baking).
+* **Collision system:** Double-dispatch based collision handling with spatial hash grid broad phase and large-object optimization.
+* **Offscreen rendering:** Built-in framebuffer rendering pipeline with post-processing support.
+* **Deterministic object lifecycle:** Objects added during `Init()` are guaranteed to be initialized within the same frame (Init → LateInit pipeline).
+* **Advanced sound system:** Supports instance ID reuse and completion callbacks for sound playback.
+* **Frame-consistent input system:** Uses staged input buffering to ensure correct key/mouse transitions per frame.
+* **Safe resource release:** Resources cannot be unregistered while still in use (reference-count protected).
 ---
 
 ## Engine Architecture Overview
@@ -46,12 +54,13 @@ JinEngine
           ├─ TextObject: Font + text mesh generation
           └─ Collider  : Circle/AABB + SpatialHashGrid
 ```
+→ Rendering is batched, layer-sorted, and optionally instanced before submission.
 
 ---
 
 ## Requirements
 
-* C++20 or later
+* C++17 or later
 * OpenGL 4.6 driver
 * Platform libraries: **GLFW**, **GLAD**, **GLM**, **stb_image**, **FreeType**, **miniaudio**
 
@@ -91,6 +100,7 @@ objects.AddObject(std::move(text), "title");
 ```
 
 * Text bakes only the needed glyphs into the atlas at runtime, and supports alignment/multi-line.
+* Text meshes are automatically rebuilt when new glyphs are baked into the atlas at runtime.
 
 ### 3) Animation (Sprite Sheets)
 
@@ -132,7 +142,8 @@ obj->SetCollision(engineContext.stateManager->GetCurrentState()->GetObjectManage
                   "button", { "player" });
 ```
 
-* Supports circle/box colliders, point tests, collision groups/masks, and debug rendering.
+* Supports circle/box colliders, point tests, collision groups/masks,
+  double-dispatch collision handling, and spatial hash grid broad phase optimization.
 
 ### 7) Sound
 
@@ -174,6 +185,7 @@ engineContext.renderManager->DrawDebugLine({-50,-50}, {50,50}, GetActiveCamera()
 * Use **instancing** whenever possible.
 * For large maps, **spatial hashing** and **frustum culling** provide significant gains in collision/visibility.
 * Unload unused textures/shaders/materials via `Unregister*` to free GPU memory.
+* Offscreen rendering is used internally, so resolution changes may trigger framebuffer reallocation.
 
 ---
 
@@ -182,6 +194,7 @@ engineContext.renderManager->DrawDebugLine({-50,-50}, {50,50}, GetActiveCamera()
 * Seeing a black/yellow checker texture? Your material doesn’t have a texture bound.
 * Garbled fonts? Check the TTF path/pixel size range (4–64) and logs to ensure the atlas expands dynamically.
 * State transition stops BGM? Engine automatically stops all sounds when switching states.
+* Sudden input loss after window drag? → Engine resets input to prevent invalid states (expected behavior).
 
 ---
 
