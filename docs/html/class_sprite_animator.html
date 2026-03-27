@@ -98,58 +98,114 @@ $(function(){initNavTree('class_sprite_animator.html',''); initResizable(true); 
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_sprite_animator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SpriteAnimator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Time-based sprite sheet animation player.  
+<p>Controls sprite animation playback using a <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_animation_8h_source.html">Animation.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sprite_animator_1_1_callback_entry.html">CallbackEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores one callback entry and its one-shot behavior flag.  <a href="struct_sprite_animator_1_1_callback_entry.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a67de66a8bb6d95c356e1384c87cf359f" id="r_a67de66a8bb6d95c356e1384c87cf359f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67de66a8bb6d95c356e1384c87cf359f">SpriteAnimator</a> (<a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *sheet_, float frameTime_, bool loop_=true)</td></tr>
-<tr class="memdesc:a67de66a8bb6d95c356e1384c87cf359f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an animator bound to a sprite sheet.  <br /></td></tr>
-<tr class="separator:a67de66a8bb6d95c356e1384c87cf359f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1babe2a462a7ee2c9500dd91c4158988" id="r_a1babe2a462a7ee2c9500dd91c4158988"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1babe2a462a7ee2c9500dd91c4158988">SpriteAnimator</a> (std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt; sheet_, float frameTime_, bool loop_=true)</td></tr>
+<tr class="memdesc:a1babe2a462a7ee2c9500dd91c4158988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sprite animator bound to a sprite sheet.  <br /></td></tr>
+<tr class="separator:a1babe2a462a7ee2c9500dd91c4158988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2935db4720fc2387d34796559412404" id="r_af2935db4720fc2387d34796559412404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2935db4720fc2387d34796559412404">PlayClip</a> (int start, int end, bool loop_=true)</td></tr>
-<tr class="memdesc:af2935db4720fc2387d34796559412404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a frame range animation [start, end].  <br /></td></tr>
+<tr class="memdesc:af2935db4720fc2387d34796559412404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback using an inclusive raw frame range.  <br /></td></tr>
 <tr class="separator:af2935db4720fc2387d34796559412404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac8752dcb1e73427d97e4f3126ec841a" id="r_aac8752dcb1e73427d97e4f3126ec841a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac8752dcb1e73427d97e4f3126ec841a">PlayClip</a> (const std::string &amp;clipName)</td></tr>
-<tr class="memdesc:aac8752dcb1e73427d97e4f3126ec841a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a named animation clip from the bound <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a>.  <br /></td></tr>
+<tr class="memdesc:aac8752dcb1e73427d97e4f3126ec841a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback using a named sprite clip.  <br /></td></tr>
 <tr class="separator:aac8752dcb1e73427d97e4f3126ec841a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23f9880b2fdbbd23fe48f25526cafb07" id="r_a23f9880b2fdbbd23fe48f25526cafb07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07">Update</a> (float dt)</td></tr>
-<tr class="memdesc:a23f9880b2fdbbd23fe48f25526cafb07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances the animation state by delta time.  <br /></td></tr>
+<tr class="memdesc:a23f9880b2fdbbd23fe48f25526cafb07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances animation playback using delta time.  <br /></td></tr>
 <tr class="separator:a23f9880b2fdbbd23fe48f25526cafb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8128f7ba56f5127ee553411395eb3256" id="r_a8128f7ba56f5127ee553411395eb3256"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8128f7ba56f5127ee553411395eb3256">GetUVOffset</a> () const</td></tr>
-<tr class="memdesc:a8128f7ba56f5127ee553411395eb3256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV offset for the current frame.  <br /></td></tr>
+<tr class="memdesc:a8128f7ba56f5127ee553411395eb3256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV offset of the current frame.  <br /></td></tr>
 <tr class="separator:a8128f7ba56f5127ee553411395eb3256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc0ec5b983de02c99eaf51b4fefc3b5" id="r_aabc0ec5b983de02c99eaf51b4fefc3b5"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabc0ec5b983de02c99eaf51b4fefc3b5">GetUVScale</a> () const</td></tr>
-<tr class="memdesc:aabc0ec5b983de02c99eaf51b4fefc3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV scale for a single frame cell.  <br /></td></tr>
+<tr class="memdesc:aabc0ec5b983de02c99eaf51b4fefc3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV scale of the active sprite sheet.  <br /></td></tr>
 <tr class="separator:aabc0ec5b983de02c99eaf51b4fefc3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b81f72271d4317d88ba9e235cca8f1c" id="r_a0b81f72271d4317d88ba9e235cca8f1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b81f72271d4317d88ba9e235cca8f1c">GetTexture</a> ()</td></tr>
-<tr class="memdesc:a0b81f72271d4317d88ba9e235cca8f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture used by the bound sprite sheet.  <br /></td></tr>
-<tr class="separator:a0b81f72271d4317d88ba9e235cca8f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf7d3715bcf6a4991156a09cc3a7aa5" id="r_aeaf7d3715bcf6a4991156a09cc3a7aa5"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaf7d3715bcf6a4991156a09cc3a7aa5">GetTexture</a> ()</td></tr>
+<tr class="memdesc:aeaf7d3715bcf6a4991156a09cc3a7aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture currently associated with the animator.  <br /></td></tr>
+<tr class="separator:aeaf7d3715bcf6a4991156a09cc3a7aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f67603f393000a573dff1308e1245f" id="r_ac1f67603f393000a573dff1308e1245f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1f67603f393000a573dff1308e1245f">SetFrame</a> (int frame)</td></tr>
-<tr class="memdesc:ac1f67603f393000a573dff1308e1245f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the current frame index.  <br /></td></tr>
+<tr class="memdesc:ac1f67603f393000a573dff1308e1245f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current absolute frame directly.  <br /></td></tr>
 <tr class="separator:ac1f67603f393000a573dff1308e1245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb6d3704d6333f420d16bb2e2e7b5855" id="r_adb6d3704d6333f420d16bb2e2e7b5855"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb6d3704d6333f420d16bb2e2e7b5855">GetCurrentFrame</a> () const</td></tr>
-<tr class="memdesc:adb6d3704d6333f420d16bb2e2e7b5855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current frame index.  <br /></td></tr>
+<tr class="memdesc:adb6d3704d6333f420d16bb2e2e7b5855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current absolute frame index.  <br /></td></tr>
 <tr class="separator:adb6d3704d6333f420d16bb2e2e7b5855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75066ecd65e5bf5c3a683b91420cfdf9" id="r_a75066ecd65e5bf5c3a683b91420cfdf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75066ecd65e5bf5c3a683b91420cfdf9">GetSpriteSheet</a> () const</td></tr>
-<tr class="memdesc:a75066ecd65e5bf5c3a683b91420cfdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sprite sheet currently bound to this animator.  <br /></td></tr>
-<tr class="separator:a75066ecd65e5bf5c3a683b91420cfdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925a6be3fb0520968e2a5f7611860ef6" id="r_a925a6be3fb0520968e2a5f7611860ef6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a925a6be3fb0520968e2a5f7611860ef6">GetSpriteSheet</a> () const</td></tr>
+<tr class="memdesc:a925a6be3fb0520968e2a5f7611860ef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sprite sheet used by this animator.  <br /></td></tr>
+<tr class="separator:a925a6be3fb0520968e2a5f7611860ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8039ef8f1a6974c9edb591656a328454" id="r_a8039ef8f1a6974c9edb591656a328454"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8039ef8f1a6974c9edb591656a328454">IsClipFinished</a> () const</td></tr>
-<tr class="memdesc:a8039ef8f1a6974c9edb591656a328454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the current non-looping animation has finished.  <br /></td></tr>
+<tr class="memdesc:a8039ef8f1a6974c9edb591656a328454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the current non-looping playback has finished.  <br /></td></tr>
 <tr class="separator:a8039ef8f1a6974c9edb591656a328454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c67180a7b2a51c58f6e12fd3fcb6e51" id="r_a5c67180a7b2a51c58f6e12fd3fcb6e51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c67180a7b2a51c58f6e12fd3fcb6e51">SetPlaybackSpeed</a> (float speed)</td></tr>
+<tr class="memdesc:a5c67180a7b2a51c58f6e12fd3fcb6e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the global playback speed multiplier.  <br /></td></tr>
+<tr class="separator:a5c67180a7b2a51c58f6e12fd3fcb6e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a62c66acce562e75ca75e0689075ef8" id="r_a0a62c66acce562e75ca75e0689075ef8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a62c66acce562e75ca75e0689075ef8">GetPlaybackSpeed</a> () const</td></tr>
+<tr class="memdesc:a0a62c66acce562e75ca75e0689075ef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the global playback speed multiplier.  <br /></td></tr>
+<tr class="separator:a0a62c66acce562e75ca75e0689075ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3639b8522022c94998eeb46be47bd1" id="r_aab3639b8522022c94998eeb46be47bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab3639b8522022c94998eeb46be47bd1">SetClipPlaybackSpeed</a> (const std::string &amp;clipName, float speed)</td></tr>
+<tr class="memdesc:aab3639b8522022c94998eeb46be47bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a playback speed override for a specific named clip.  <br /></td></tr>
+<tr class="separator:aab3639b8522022c94998eeb46be47bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac432a5ab6e2b50fe85416f3a6fb51570" id="r_ac432a5ab6e2b50fe85416f3a6fb51570"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac432a5ab6e2b50fe85416f3a6fb51570">GetClipPlaybackSpeed</a> (const std::string &amp;clipName) const</td></tr>
+<tr class="memdesc:ac432a5ab6e2b50fe85416f3a6fb51570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the playback speed override of a specific clip.  <br /></td></tr>
+<tr class="separator:ac432a5ab6e2b50fe85416f3a6fb51570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b6999fafc2481d0b8df595608adf385" id="r_a4b6999fafc2481d0b8df595608adf385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b6999fafc2481d0b8df595608adf385">ClearClipPlaybackSpeed</a> (const std::string &amp;clipName)</td></tr>
+<tr class="memdesc:a4b6999fafc2481d0b8df595608adf385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the playback speed override of a specific clip.  <br /></td></tr>
+<tr class="separator:a4b6999fafc2481d0b8df595608adf385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af821538b840b4e7f4b38c656b78e961d" id="r_af821538b840b4e7f4b38c656b78e961d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af821538b840b4e7f4b38c656b78e961d">AddFrameCallback</a> (int frame, std::function&lt; void()&gt; callback)</td></tr>
+<tr class="memdesc:af821538b840b4e7f4b38c656b78e961d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a persistent callback for an absolute frame.  <br /></td></tr>
+<tr class="separator:af821538b840b4e7f4b38c656b78e961d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf97a22235fea32aae5026700d21b08a" id="r_acf97a22235fea32aae5026700d21b08a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf97a22235fea32aae5026700d21b08a">AddFrameCallbackOnce</a> (int frame, std::function&lt; void()&gt; callback)</td></tr>
+<tr class="memdesc:acf97a22235fea32aae5026700d21b08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a one-shot callback for an absolute frame.  <br /></td></tr>
+<tr class="separator:acf97a22235fea32aae5026700d21b08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7efedb901f808340c483ca0d0a197b63" id="r_a7efedb901f808340c483ca0d0a197b63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7efedb901f808340c483ca0d0a197b63">AddClipFrameCallback</a> (const std::string &amp;clipName, int localFrameIndex, std::function&lt; void()&gt; callback)</td></tr>
+<tr class="memdesc:a7efedb901f808340c483ca0d0a197b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a persistent callback for a clip-local frame index.  <br /></td></tr>
+<tr class="separator:a7efedb901f808340c483ca0d0a197b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62056ee50fc211a62978e307550013db" id="r_a62056ee50fc211a62978e307550013db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62056ee50fc211a62978e307550013db">AddClipFrameCallbackOnce</a> (const std::string &amp;clipName, int localFrameIndex, std::function&lt; void()&gt; callback)</td></tr>
+<tr class="memdesc:a62056ee50fc211a62978e307550013db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a one-shot callback for a clip-local frame index.  <br /></td></tr>
+<tr class="separator:a62056ee50fc211a62978e307550013db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1e4aafbf8aa3edc8248f1d448cb0d4" id="r_afd1e4aafbf8aa3edc8248f1d448cb0d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd1e4aafbf8aa3edc8248f1d448cb0d4">ClearFrameCallbacks</a> (int frame)</td></tr>
+<tr class="memdesc:afd1e4aafbf8aa3edc8248f1d448cb0d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all absolute-frame callbacks registered for a frame.  <br /></td></tr>
+<tr class="separator:afd1e4aafbf8aa3edc8248f1d448cb0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed279f2e16bad84210e3ac6edb24eef" id="r_a9ed279f2e16bad84210e3ac6edb24eef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ed279f2e16bad84210e3ac6edb24eef">ClearClipFrameCallbacks</a> (const std::string &amp;clipName, int localFrameIndex)</td></tr>
+<tr class="memdesc:a9ed279f2e16bad84210e3ac6edb24eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all clip-local callbacks registered for a specific clip frame.  <br /></td></tr>
+<tr class="separator:a9ed279f2e16bad84210e3ac6edb24eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf20cb8190ec0c152ddfe7c25d9024a" id="r_addf20cb8190ec0c152ddfe7c25d9024a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf20cb8190ec0c152ddfe7c25d9024a">ClearAllCallbacks</a> ()</td></tr>
+<tr class="memdesc:addf20cb8190ec0c152ddfe7c25d9024a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all registered absolute-frame and clip-frame callbacks.  <br /></td></tr>
+<tr class="separator:addf20cb8190ec0c152ddfe7c25d9024a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:adb4a56ed158c085113fbed3b1eba4f2b" id="r_adb4a56ed158c085113fbed3b1eba4f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb4a56ed158c085113fbed3b1eba4f2b">TriggerFrameCallbacks</a> (int frame)</td></tr>
+<tr class="memdesc:adb4a56ed158c085113fbed3b1eba4f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers callbacks registered for the given absolute frame.  <br /></td></tr>
+<tr class="separator:adb4a56ed158c085113fbed3b1eba4f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad5c4dd6b82598dd8d138a7f8fd9715" id="r_a9ad5c4dd6b82598dd8d138a7f8fd9715"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ad5c4dd6b82598dd8d138a7f8fd9715">TriggerClipFrameCallbacks</a> ()</td></tr>
+<tr class="memdesc:a9ad5c4dd6b82598dd8d138a7f8fd9715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers callbacks registered for the current clip-local frame.  <br /></td></tr>
+<tr class="separator:a9ad5c4dd6b82598dd8d138a7f8fd9715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f7f42e12a48d1bbb44fff195979774" id="r_aa8f7f42e12a48d1bbb44fff195979774"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8f7f42e12a48d1bbb44fff195979774">TriggerAllCallbacksForCurrentFrame</a> ()</td></tr>
+<tr class="memdesc:aa8f7f42e12a48d1bbb44fff195979774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggers all callbacks relevant to the current playback position.  <br /></td></tr>
+<tr class="separator:aa8f7f42e12a48d1bbb44fff195979774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ac69e0d3cdfccaaf0952a68cc67501ed7" id="r_ac69e0d3cdfccaaf0952a68cc67501ed7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a></td></tr>
-<tr class="separator:ac69e0d3cdfccaaf0952a68cc67501ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cee96386544deb0521b48b900387fc8" id="r_a8cee96386544deb0521b48b900387fc8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cee96386544deb0521b48b900387fc8">sheet</a></td></tr>
+<tr class="separator:a8cee96386544deb0521b48b900387fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c488dd70434014d2d203482e188a93" id="r_ad6c488dd70434014d2d203482e188a93"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a></td></tr>
 <tr class="separator:ad6c488dd70434014d2d203482e188a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc34368dd943697e8657a68c554329fe" id="r_abc34368dd943697e8657a68c554329fe"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> = 0.0f</td></tr>
@@ -168,20 +224,38 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae4b7c71c1e14cb5fb6b430ed58ae5bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401e9176bb78855cf879768843e033f4" id="r_a401e9176bb78855cf879768843e033f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a></td></tr>
 <tr class="separator:a401e9176bb78855cf879768843e033f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa4d996d7fbf7b80c8379345a43d648f" id="r_aaa4d996d7fbf7b80c8379345a43d648f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa4d996d7fbf7b80c8379345a43d648f">playbackSpeed</a> = 1.0f</td></tr>
+<tr class="separator:aaa4d996d7fbf7b80c8379345a43d648f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34676f54d18d69bf75a2baff1bcea852" id="r_a34676f54d18d69bf75a2baff1bcea852"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a></td></tr>
+<tr class="separator:a34676f54d18d69bf75a2baff1bcea852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac43feb92d614424fa50d9221087488d" id="r_aac43feb92d614424fa50d9221087488d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a></td></tr>
+<tr class="separator:aac43feb92d614424fa50d9221087488d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d6c4e18a4d3a8ae133bf7f9a1d4053" id="r_ad6d6c4e18a4d3a8ae133bf7f9a1d4053"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; int, std::vector&lt; <a class="el" href="struct_sprite_animator_1_1_callback_entry.html">CallbackEntry</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a></td></tr>
+<tr class="separator:ad6d6c4e18a4d3a8ae133bf7f9a1d4053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9666ff89d8a1e562494e47a91b43c5" id="r_acd9666ff89d8a1e562494e47a91b43c5"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; <a class="el" href="struct_sprite_animator_1_1_callback_entry.html">CallbackEntry</a> &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a></td></tr>
+<tr class="separator:acd9666ff89d8a1e562494e47a91b43c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Time-based sprite sheet animation player. </p>
-<p><a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> advances a current frame over time and exposes per-frame UV data.</p>
-<p>Two playback modes are supported:</p><ul>
-<li>Range-based playback via PlayClip(start, end)</li>
-<li>Named clip playback via PlayClip(clipName), using <a class="el" href="class_sprite_sheet.html#aaa4e33b8d39dc2f9b714a1d4152e5271" title="Retrieves a named animation clip if it exists.">SpriteSheet::GetClip</a></li>
+<div class="textblock"><p>Controls sprite animation playback using a <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>. </p>
+<p><a class="el" href="class_sprite_animator.html" title="Controls sprite animation playback using a SpriteSheet.">SpriteAnimator</a> supports two playback modes:</p><ol type="1">
+<li>raw frame range playback using <a class="el" href="#af2935db4720fc2387d34796559412404" title="Starts playback using an inclusive raw frame range.">PlayClip(int start, int end, bool loop_)</a>,</li>
+<li>named clip playback using <a class="el" href="#aac8752dcb1e73427d97e4f3126ec841a" title="Starts playback using a named sprite clip.">PlayClip(const std::string&amp; clipName)</a>.</li>
+</ol>
+<p>During <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances animation playback using delta time.">Update()</a>, the animator advances elapsed time and changes frames when the accumulated time reaches the current frame duration. For named clips, the duration comes from <a class="el" href="struct_sprite_clip.html#a523b8e6b2ae91841db8d0a695af55728">SpriteClip::frameDuration</a>. For raw frame range playback, the duration comes from frameTime.</p>
+<p>This class also supports:</p><ul>
+<li>global playback speed control,</li>
+<li>per-clip playback speed overrides,</li>
+<li>frame callbacks by absolute frame index,</li>
+<li>frame callbacks by clip-local frame index,</li>
+<li>one-shot callbacks that remove themselves after execution.</li>
 </ul>
-<p>The animator does not own the <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> pointer. It is expected that calling code pushes the returned UV offset/scale into a Material/Shader uniform each frame (e.g., for atlas sampling). </p>
+<p>A key behavior of this implementation is that <a class="el" href="#af2935db4720fc2387d34796559412404" title="Starts playback using an inclusive raw frame range.">PlayClip()</a> immediately triggers callbacks for the current starting frame instead of waiting for the next <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances animation playback using delta time.">Update()</a>. This means callbacks registered for the initial frame can fire as soon as playback begins. :contentReference[oaicite:5]{index=5}</p>
+<dl class="section note"><dt>Note</dt><dd>The animator does not own the texture directly. It queries the current <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a> when UV scale, UV offset, or texture access is needed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00165">165</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00217">217</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a67de66a8bb6d95c356e1384c87cf359f" name="a67de66a8bb6d95c356e1384c87cf359f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67de66a8bb6d95c356e1384c87cf359f">&#9670;&#160;</a></span>SpriteAnimator()</h2>
+<a id="a1babe2a462a7ee2c9500dd91c4158988" name="a1babe2a462a7ee2c9500dd91c4158988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1babe2a462a7ee2c9500dd91c4158988">&#9670;&#160;</a></span>SpriteAnimator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +263,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">SpriteAnimator::SpriteAnimator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *</td>          <td class="paramname"><span class="paramname"><em>sheet_</em></span>, </td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sheet_</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -204,29 +278,361 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs an animator bound to a sprite sheet. </p>
+<p>Creates a sprite animator bound to a sprite sheet. </p>
+<p>Stores the sprite sheet and initializes default playback settings. If the provided frame time is zero, the implementation replaces it with a very small positive value to prevent division-like timing issues during playback. :contentReference[oaicite:6]{index=6}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sheet_</td><td>Sprite sheet providing UV mapping. </td></tr>
-    <tr><td class="paramname">frameTime_</td><td>Default time per frame (seconds) for range-based playback. </td></tr>
-    <tr><td class="paramname">loop_</td><td>Whether range-based playback loops by default. </td></tr>
+    <tr><td class="paramname">sheet_</td><td>Sprite sheet used to resolve frames and texture data. </td></tr>
+    <tr><td class="paramname">frameTime_</td><td>Default playback time per frame for raw frame-range playback. </td></tr>
+    <tr><td class="paramname">loop_</td><td>Whether raw frame-range playback loops by default. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00056">56</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>    : <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>(sheet_), <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a>(frameTime_), <a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a>(loop_), <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a>(<span class="keyword">false</span>) {</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00055">55</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>    : <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>(std::move(sheet_)), <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a>(frameTime_), <a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a>(loop_), <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a>(<span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   57</span>{</div>
 <div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> == 0.f) <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> = 0.001f;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>}</div>
-<div class="ttc" id="aclass_sprite_animator_html_a0de89a6edb4094e019640ee24e21d626"><div class="ttname"><a href="#a0de89a6edb4094e019640ee24e21d626">SpriteAnimator::loop</a></div><div class="ttdeci">bool loop</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00265">Animation.h:265</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_a401e9176bb78855cf879768843e033f4"><div class="ttname"><a href="#a401e9176bb78855cf879768843e033f4">SpriteAnimator::isClipFinished</a></div><div class="ttdeci">bool isClipFinished</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00268">Animation.h:268</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_ac69e0d3cdfccaaf0952a68cc67501ed7"><div class="ttname"><a href="#ac69e0d3cdfccaaf0952a68cc67501ed7">SpriteAnimator::sheet</a></div><div class="ttdeci">SpriteSheet * sheet</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00259">Animation.h:259</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_ad6c488dd70434014d2d203482e188a93"><div class="ttname"><a href="#ad6c488dd70434014d2d203482e188a93">SpriteAnimator::frameTime</a></div><div class="ttdeci">float frameTime</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00260">Animation.h:260</a></div></div>
+<div class="line"><span class="lineno">   59</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_a0de89a6edb4094e019640ee24e21d626"><div class="ttname"><a href="#a0de89a6edb4094e019640ee24e21d626">SpriteAnimator::loop</a></div><div class="ttdeci">bool loop</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00563">Animation.h:563</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_a401e9176bb78855cf879768843e033f4"><div class="ttname"><a href="#a401e9176bb78855cf879768843e033f4">SpriteAnimator::isClipFinished</a></div><div class="ttdeci">bool isClipFinished</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00566">Animation.h:566</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_a8cee96386544deb0521b48b900387fc8"><div class="ttname"><a href="#a8cee96386544deb0521b48b900387fc8">SpriteAnimator::sheet</a></div><div class="ttdeci">std::shared_ptr&lt; SpriteSheet &gt; sheet</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00557">Animation.h:557</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_ad6c488dd70434014d2d203482e188a93"><div class="ttname"><a href="#ad6c488dd70434014d2d203482e188a93">SpriteAnimator::frameTime</a></div><div class="ttdeci">float frameTime</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00558">Animation.h:558</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7efedb901f808340c483ca0d0a197b63" name="a7efedb901f808340c483ca0d0a197b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7efedb901f808340c483ca0d0a197b63">&#9670;&#160;</a></span>AddClipFrameCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::AddClipFrameCallback </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>localFrameIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a persistent callback for a clip-local frame index. </p>
+<p>This callback is only meaningful when a named clip is being played. The localFrameIndex refers to the position inside the clip's frameIndices array, not the absolute frame number in the sprite sheet.</p>
+<p>For example, localFrameIndex == 0 means the first frame of the named clip, regardless of which absolute frame number that entry maps to. :contentReference[oaicite:12]{index=12}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip that owns the callback. </td></tr>
+    <tr><td class="paramname">localFrameIndex</td><td>Zero-based local frame index inside the clip. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function to execute when that local clip frame becomes active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00227">227</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  228</span>{</div>
+<div class="line"><span class="lineno">  229</span>    <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>[clipName][localFrameIndex].push_back({ std::move(callback), <span class="keyword">false</span> });</div>
+<div class="line"><span class="lineno">  230</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_acd9666ff89d8a1e562494e47a91b43c5"><div class="ttname"><a href="#acd9666ff89d8a1e562494e47a91b43c5">SpriteAnimator::clipFrameCallbacks</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; CallbackEntry &gt; &gt; &gt; clipFrameCallbacks</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00572">Animation.h:572</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a62056ee50fc211a62978e307550013db" name="a62056ee50fc211a62978e307550013db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62056ee50fc211a62978e307550013db">&#9670;&#160;</a></span>AddClipFrameCallbackOnce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::AddClipFrameCallbackOnce </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>localFrameIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a one-shot callback for a clip-local frame index. </p>
+<p>Behaves like <a class="el" href="#a7efedb901f808340c483ca0d0a197b63" title="Registers a persistent callback for a clip-local frame index.">AddClipFrameCallback()</a>, but removes itself after the first execution.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip that owns the callback. </td></tr>
+    <tr><td class="paramname">localFrameIndex</td><td>Zero-based local frame index inside the clip. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function to execute once when that local clip frame becomes active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00232">232</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
+<div class="line"><span class="lineno">  234</span>    <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>[clipName][localFrameIndex].push_back({ std::move(callback), <span class="keyword">true</span> });</div>
+<div class="line"><span class="lineno">  235</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af821538b840b4e7f4b38c656b78e961d" name="af821538b840b4e7f4b38c656b78e961d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af821538b840b4e7f4b38c656b78e961d">&#9670;&#160;</a></span>AddFrameCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::AddFrameCallback </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a persistent callback for an absolute frame. </p>
+<p>The callback is stored in frameCallbacks and is triggered whenever the animator enters the specified absolute frame index. Persistent callbacks remain registered until explicitly cleared.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Absolute frame index that should trigger the callback. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function to execute when that frame becomes active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00217">217</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>    <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>[frame].push_back({ std::move(callback), <span class="keyword">false</span> });</div>
+<div class="line"><span class="lineno">  220</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_ad6d6c4e18a4d3a8ae133bf7f9a1d4053"><div class="ttname"><a href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">SpriteAnimator::frameCallbacks</a></div><div class="ttdeci">std::unordered_map&lt; int, std::vector&lt; CallbackEntry &gt; &gt; frameCallbacks</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00571">Animation.h:571</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acf97a22235fea32aae5026700d21b08a" name="acf97a22235fea32aae5026700d21b08a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf97a22235fea32aae5026700d21b08a">&#9670;&#160;</a></span>AddFrameCallbackOnce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::AddFrameCallbackOnce </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a one-shot callback for an absolute frame. </p>
+<p>This callback behaves like <a class="el" href="#af821538b840b4e7f4b38c656b78e961d" title="Registers a persistent callback for an absolute frame.">AddFrameCallback()</a>, but removes itself immediately after its first successful execution.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Absolute frame index that should trigger the callback. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function to execute once when that frame becomes active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00222">222</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  223</span>{</div>
+<div class="line"><span class="lineno">  224</span>    <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>[frame].push_back({ std::move(callback), <span class="keyword">true</span> });</div>
+<div class="line"><span class="lineno">  225</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="addf20cb8190ec0c152ddfe7c25d9024a" name="addf20cb8190ec0c152ddfe7c25d9024a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf20cb8190ec0c152ddfe7c25d9024a">&#9670;&#160;</a></span>ClearAllCallbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::ClearAllCallbacks </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all registered absolute-frame and clip-frame callbacks. </p>
+<p>Clears both callback storage maps completely. </p>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00258">258</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>{</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>.clear();</div>
+<div class="line"><span class="lineno">  261</span>    <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.clear();</div>
+<div class="line"><span class="lineno">  262</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9ed279f2e16bad84210e3ac6edb24eef" name="a9ed279f2e16bad84210e3ac6edb24eef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed279f2e16bad84210e3ac6edb24eef">&#9670;&#160;</a></span>ClearClipFrameCallbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::ClearClipFrameCallbacks </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>localFrameIndex</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all clip-local callbacks registered for a specific clip frame. </p>
+<p>Erases the callback list for the given local frame inside the given clip. If the clip no longer has any remaining callback entries afterward, the implementation also removes the clip entry from the callback map. :contentReference[oaicite:13]{index=13}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip whose callback entry should be removed. </td></tr>
+    <tr><td class="paramname">localFrameIndex</td><td>Zero-based local frame index inside the clip. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00242">242</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
+<div class="line"><span class="lineno">  244</span>    <span class="keyword">auto</span> clipIt = <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.find(clipName);</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (clipIt == <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.end())</div>
+<div class="line"><span class="lineno">  246</span>    {</div>
+<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  248</span>    }</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    clipIt-&gt;second.erase(localFrameIndex);</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (clipIt-&gt;second.empty())</div>
+<div class="line"><span class="lineno">  253</span>    {</div>
+<div class="line"><span class="lineno">  254</span>        <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.erase(clipIt);</div>
+<div class="line"><span class="lineno">  255</span>    }</div>
+<div class="line"><span class="lineno">  256</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4b6999fafc2481d0b8df595608adf385" name="a4b6999fafc2481d0b8df595608adf385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b6999fafc2481d0b8df595608adf385">&#9670;&#160;</a></span>ClearClipPlaybackSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::ClearClipPlaybackSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the playback speed override of a specific clip. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip whose override should be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00212">212</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  213</span>{</div>
+<div class="line"><span class="lineno">  214</span>    <a class="code hl_variable" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a>.erase(clipName);</div>
+<div class="line"><span class="lineno">  215</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_a34676f54d18d69bf75a2baff1bcea852"><div class="ttname"><a href="#a34676f54d18d69bf75a2baff1bcea852">SpriteAnimator::clipPlaybackSpeeds</a></div><div class="ttdeci">std::unordered_map&lt; std::string, float &gt; clipPlaybackSpeeds</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00568">Animation.h:568</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afd1e4aafbf8aa3edc8248f1d448cb0d4" name="afd1e4aafbf8aa3edc8248f1d448cb0d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd1e4aafbf8aa3edc8248f1d448cb0d4">&#9670;&#160;</a></span>ClearFrameCallbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::ClearFrameCallbacks </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all absolute-frame callbacks registered for a frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Absolute frame index whose callbacks should be erased. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00237">237</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  238</span>{</div>
+<div class="line"><span class="lineno">  239</span>    <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>.erase(frame);</div>
+<div class="line"><span class="lineno">  240</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac432a5ab6e2b50fe85416f3a6fb51570" name="ac432a5ab6e2b50fe85416f3a6fb51570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac432a5ab6e2b50fe85416f3a6fb51570">&#9670;&#160;</a></span>GetClipPlaybackSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SpriteAnimator::GetClipPlaybackSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the playback speed override of a specific clip. </p>
+<p>If no override has been assigned, the function returns 1.0f.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Clip-specific playback speed multiplier, or 1.0f if no override exists. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00201">201</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a>.find(clipName);</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a>.end())</div>
+<div class="line"><span class="lineno">  205</span>    {</div>
+<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  207</span>    }</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">return</span> 1.0f;</div>
+<div class="line"><span class="lineno">  210</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="adb6d3704d6333f420d16bb2e2e7b5855" name="adb6d3704d6333f420d16bb2e2e7b5855"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb6d3704d6333f420d16bb2e2e7b5855">&#9670;&#160;</a></span>GetCurrentFrame()</h2>
 
@@ -250,16 +656,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current frame index. </p>
+<p>Returns the current absolute frame index. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current frame index used for UV lookup. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00243">243</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  243</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>; }</div>
-<div class="ttc" id="aclass_sprite_animator_html_add19e00a74d70def2375d6fa40605b8e"><div class="ttname"><a href="#add19e00a74d70def2375d6fa40605b8e">SpriteAnimator::currentFrame</a></div><div class="ttdeci">int currentFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00262">Animation.h:262</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00350">350</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  350</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>; }</div>
+<div class="ttc" id="aclass_sprite_animator_html_add19e00a74d70def2375d6fa40605b8e"><div class="ttname"><a href="#add19e00a74d70def2375d6fa40605b8e">SpriteAnimator::currentFrame</a></div><div class="ttdeci">int currentFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00560">Animation.h:560</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a75066ecd65e5bf5c3a683b91420cfdf9" name="a75066ecd65e5bf5c3a683b91420cfdf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75066ecd65e5bf5c3a683b91420cfdf9">&#9670;&#160;</a></span>GetSpriteSheet()</h2>
+<a id="a0a62c66acce562e75ca75e0689075ef8" name="a0a62c66acce562e75ca75e0689075ef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a62c66acce562e75ca75e0689075ef8">&#9670;&#160;</a></span>GetPlaybackSpeed()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +675,39 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> * SpriteAnimator::GetSpriteSheet </td>
+          <td class="memname">float SpriteAnimator::GetPlaybackSpeed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the global playback speed multiplier. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current global playback speed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00387">387</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aaa4d996d7fbf7b80c8379345a43d648f">playbackSpeed</a>; }</div>
+<div class="ttc" id="aclass_sprite_animator_html_aaa4d996d7fbf7b80c8379345a43d648f"><div class="ttname"><a href="#aaa4d996d7fbf7b80c8379345a43d648f">SpriteAnimator::playbackSpeed</a></div><div class="ttdeci">float playbackSpeed</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00567">Animation.h:567</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a925a6be3fb0520968e2a5f7611860ef6" name="a925a6be3fb0520968e2a5f7611860ef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925a6be3fb0520968e2a5f7611860ef6">&#9670;&#160;</a></span>GetSpriteSheet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt; SpriteAnimator::GetSpriteSheet </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -281,15 +720,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the sprite sheet currently bound to this animator. </p>
+<p>Returns the sprite sheet used by this animator. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the bound sprite sheet. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00248">248</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00357">357</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  357</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a0b81f72271d4317d88ba9e235cca8f1c" name="a0b81f72271d4317d88ba9e235cca8f1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b81f72271d4317d88ba9e235cca8f1c">&#9670;&#160;</a></span>GetTexture()</h2>
+<a id="aeaf7d3715bcf6a4991156a09cc3a7aa5" name="aeaf7d3715bcf6a4991156a09cc3a7aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf7d3715bcf6a4991156a09cc3a7aa5">&#9670;&#160;</a></span>GetTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +738,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_texture.html">Texture</a> * SpriteAnimator::GetTexture </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; SpriteAnimator::GetTexture </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -311,11 +751,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the texture used by the bound sprite sheet. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> pointer if sheet is valid; otherwise nullptr. </dd></dl>
+<p>Returns the texture currently associated with the animator. </p>
+<p>This is a convenience accessor that forwards the request to the bound <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a> if one exists.</p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the sprite texture, or nullptr if no sheet exists. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00231">231</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  231</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a> ? <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>-&gt;GetTexture() : <span class="keyword">nullptr</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00329">329</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  329</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a> ? <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>-&gt;GetTexture() : <span class="keyword">nullptr</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -342,13 +783,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the UV offset for the current frame. </p>
-<dl class="section return"><dt>Returns</dt><dd>UV offset for the currently playing frame. </dd></dl>
+<p>Returns the UV offset of the current frame. </p>
+<p>Delegates the lookup to the bound <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a> using currentFrame. If no sprite sheet is assigned, returns a zero vector.</p>
+<dl class="section return"><dt>Returns</dt><dd>UV offset of the current frame, or (0, 0) if no sheet exists. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00148">148</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
-<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a> ? <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>-&gt;GetUVOffset(<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>) : glm::vec2(0.0f);</div>
-<div class="line"><span class="lineno">  151</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00169">169</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a> ? <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>-&gt;GetUVOffset(<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>) : glm::vec2(0.0f);</div>
+<div class="line"><span class="lineno">  172</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -375,13 +817,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the UV scale for a single frame cell. </p>
-<dl class="section return"><dt>Returns</dt><dd>UV scale for a single frame. </dd></dl>
+<p>Returns the UV scale of the active sprite sheet. </p>
+<p>Delegates the lookup to the bound <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>. If no sprite sheet is assigned, returns a unit vector.</p>
+<dl class="section return"><dt>Returns</dt><dd>UV scale of one frame, or (1, 1) if no sheet exists. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00153">153</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  154</span>{</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a> ? <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>-&gt;GetUVScale() : glm::vec2(1.0f);</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00174">174</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>{</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a> ? <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>-&gt;GetUVScale() : glm::vec2(1.0f);</div>
+<div class="line"><span class="lineno">  177</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -408,11 +851,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether the current non-looping animation has finished. </p>
-<p>This flag is expected to be updated by <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances the animation state by delta time.">Update()</a> when the playback reaches the end and looping is disabled. </p>
+<p>Returns whether the current non-looping playback has finished. </p>
+<p>This flag becomes true when a non-looping clip or raw frame range reaches its last frame and can no longer advance.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the current playback has finished, otherwise false. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00257">257</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  257</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00368">368</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  368</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -431,37 +875,46 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Plays a named animation clip from the bound <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a>. </p>
-<p>This function looks up the clip using <a class="el" href="class_sprite_sheet.html#aaa4e33b8d39dc2f9b714a1d4152e5271" title="Retrieves a named animation clip if it exists.">SpriteSheet::GetClip</a> and, if found, switches the animator into named-clip playback mode.</p>
+<p>Starts playback using a named sprite clip. </p>
+<p>Looks up the requested clip from the bound <a class="el" href="class_sprite_sheet.html" title="Represents a grid-based sprite sheet and stores named animation clips.">SpriteSheet</a>. If the sheet is null, or if the clip does not exist or contains no frames, playback is not started and the function returns early.</p>
+<p>On success, the animator stores the clip pointer, resets local clip playback state, sets currentFrame to the first frame in the clip, clears elapsed time, and immediately triggers callbacks for that starting frame. :contentReference[oaicite:8]{index=8}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clipName</td><td>Name of the clip previously registered in <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a>. </td></tr>
+    <tr><td class="paramname">clipName</td><td>Name of the clip to play.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Clip-local callbacks use the clip-local frame index, not the absolute frame number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00072">72</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>)</div>
-<div class="line"><span class="lineno">   75</span>    {</div>
-<div class="line"><span class="lineno">   76</span>        JIN_ERR(<span class="stringliteral">&quot;Can&#39;t play clip: Sprite sheet is nullptr&quot;</span>);</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keyword">const</span> <span class="keyword">auto</span>* clip = <a class="code hl_variable" href="#ac69e0d3cdfccaaf0952a68cc67501ed7">sheet</a>-&gt;GetClip(clipName);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span> (!clip || clip-&gt;frameIndices.empty())</div>
-<div class="line"><span class="lineno">   81</span>    {</div>
-<div class="line"><span class="lineno">   82</span>        JIN_WRN(<span class="stringliteral">&quot;Can&#39;t play clip: There is no clip named \&quot;&quot;</span> &lt;&lt;clipName&lt;&lt; <span class="stringliteral">&quot;\&quot;.&quot;</span>);</div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> = clip;</div>
-<div class="line"><span class="lineno">   86</span>    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = 0;</div>
-<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> = 0.0f;</div>
-<div class="line"><span class="lineno">   88</span>    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = clip-&gt;frameIndices[<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>];</div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="aclass_sprite_animator_html_a3b0b375da67fba82d5767da746200ba2"><div class="ttname"><a href="#a3b0b375da67fba82d5767da746200ba2">SpriteAnimator::playingClip</a></div><div class="ttdeci">const SpriteClip * playingClip</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00266">Animation.h:266</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_abc34368dd943697e8657a68c554329fe"><div class="ttname"><a href="#abc34368dd943697e8657a68c554329fe">SpriteAnimator::elapsed</a></div><div class="ttdeci">float elapsed</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00261">Animation.h:261</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_ae4b7c71c1e14cb5fb6b430ed58ae5bfd"><div class="ttname"><a href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">SpriteAnimator::clipFrameIndex</a></div><div class="ttdeci">int clipFrameIndex</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00267">Animation.h:267</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00077">77</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>)</div>
+<div class="line"><span class="lineno">   80</span>    {</div>
+<div class="line"><span class="lineno">   81</span>        JIN_ERR(<span class="stringliteral">&quot;Can&#39;t play clip: Sprite sheet is nullptr&quot;</span>);</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   83</span>    }</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span>* clip = <a class="code hl_variable" href="#a8cee96386544deb0521b48b900387fc8">sheet</a>-&gt;GetClip(clipName);</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (!clip || clip-&gt;frameIndices.empty())</div>
+<div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        JIN_WRN(<span class="stringliteral">&quot;Can&#39;t play clip: There is no clip named \&quot;&quot;</span> &lt;&lt; clipName &lt;&lt; <span class="stringliteral">&quot;\&quot;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a> = clipName;</div>
+<div class="line"><span class="lineno">   93</span>    <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> = clip;</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = 0;</div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> = 0.0f;</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = clip-&gt;frameIndices[<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>];</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_function" href="#aa8f7f42e12a48d1bbb44fff195979774">TriggerAllCallbacksForCurrentFrame</a>();</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_a3b0b375da67fba82d5767da746200ba2"><div class="ttname"><a href="#a3b0b375da67fba82d5767da746200ba2">SpriteAnimator::playingClip</a></div><div class="ttdeci">const SpriteClip * playingClip</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00564">Animation.h:564</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_aa8f7f42e12a48d1bbb44fff195979774"><div class="ttname"><a href="#aa8f7f42e12a48d1bbb44fff195979774">SpriteAnimator::TriggerAllCallbacksForCurrentFrame</a></div><div class="ttdeci">void TriggerAllCallbacksForCurrentFrame()</div><div class="ttdoc">Triggers all callbacks relevant to the current playback position.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00346">Animation.cpp:346</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_aac43feb92d614424fa50d9221087488d"><div class="ttname"><a href="#aac43feb92d614424fa50d9221087488d">SpriteAnimator::currentClipName</a></div><div class="ttdeci">std::string currentClipName</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00569">Animation.h:569</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_abc34368dd943697e8657a68c554329fe"><div class="ttname"><a href="#abc34368dd943697e8657a68c554329fe">SpriteAnimator::elapsed</a></div><div class="ttdeci">float elapsed</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00559">Animation.h:559</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_ae4b7c71c1e14cb5fb6b430ed58ae5bfd"><div class="ttname"><a href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">SpriteAnimator::clipFrameIndex</a></div><div class="ttdeci">int clipFrameIndex</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00565">Animation.h:565</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -489,29 +942,78 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Plays a frame range animation [start, end]. </p>
-<p>This configures range-based playback and clears any named clip playback state.</p>
+<p>Starts playback using an inclusive raw frame range. </p>
+<p>Disables named clip playback, clears the current clip name, resets playback state, and begins animating from the start frame toward the end frame.</p>
+<p>The animator immediately sets currentFrame to start, clears elapsed time, resets the clip-local index, and marks the clip as not finished. After the state is reset, callbacks for the current frame are triggered immediately. :contentReference[oaicite:7]{index=7}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">start</td><td>Start frame index (inclusive). </td></tr>
-    <tr><td class="paramname">end</td><td>End frame index (inclusive). </td></tr>
-    <tr><td class="paramname">loop_</td><td>Whether to loop when reaching the end. </td></tr>
+    <tr><td class="paramname">start</td><td>First frame index of the playback range. </td></tr>
+    <tr><td class="paramname">end</td><td>Last frame index of the playback range. </td></tr>
+    <tr><td class="paramname">loop_</td><td>Whether playback should wrap back to start after reaching end. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00062">62</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   65</span>    this-&gt;<a class="code hl_variable" href="#af0127d4a6d5804580ed0bdc749e48fe6">startFrame</a> = start;</div>
-<div class="line"><span class="lineno">   66</span>    this-&gt;<a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a> = end;</div>
-<div class="line"><span class="lineno">   67</span>    this-&gt;<a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a> = loop_;</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = start;</div>
-<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> = 0.0f;</div>
-<div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   71</span>}</div>
-<div class="ttc" id="aclass_sprite_animator_html_ac7766936f67b1e7bd0d031d3d53c087c"><div class="ttname"><a href="#ac7766936f67b1e7bd0d031d3d53c087c">SpriteAnimator::endFrame</a></div><div class="ttdeci">int endFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00264">Animation.h:264</a></div></div>
-<div class="ttc" id="aclass_sprite_animator_html_af0127d4a6d5804580ed0bdc749e48fe6"><div class="ttname"><a href="#af0127d4a6d5804580ed0bdc749e48fe6">SpriteAnimator::startFrame</a></div><div class="ttdeci">int startFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00263">Animation.h:263</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00061">61</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a>.clear();</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    this-&gt;<a class="code hl_variable" href="#af0127d4a6d5804580ed0bdc749e48fe6">startFrame</a> = start;</div>
+<div class="line"><span class="lineno">   67</span>    this-&gt;<a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a> = end;</div>
+<div class="line"><span class="lineno">   68</span>    this-&gt;<a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a> = loop_;</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = start;</div>
+<div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = 0;</div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> = 0.0f;</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_function" href="#aa8f7f42e12a48d1bbb44fff195979774">TriggerAllCallbacksForCurrentFrame</a>();</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_ac7766936f67b1e7bd0d031d3d53c087c"><div class="ttname"><a href="#ac7766936f67b1e7bd0d031d3d53c087c">SpriteAnimator::endFrame</a></div><div class="ttdeci">int endFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00562">Animation.h:562</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_af0127d4a6d5804580ed0bdc749e48fe6"><div class="ttname"><a href="#af0127d4a6d5804580ed0bdc749e48fe6">SpriteAnimator::startFrame</a></div><div class="ttdeci">int startFrame</div><div class="ttdef"><b>Definition</b> <a href="_animation_8h_source.html#l00561">Animation.h:561</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aab3639b8522022c94998eeb46be47bd1" name="aab3639b8522022c94998eeb46be47bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab3639b8522022c94998eeb46be47bd1">&#9670;&#160;</a></span>SetClipPlaybackSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::SetClipPlaybackSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>clipName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assigns a playback speed override for a specific named clip. </p>
+<p>When the animator is currently playing a named clip, <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances animation playback using delta time.">Update()</a> checks whether that clip has an override speed in clipPlaybackSpeeds. If one exists, it is multiplied into the final playback speed.</p>
+<p>Values less than or equal to a very small threshold are clamped upward to avoid invalid or frozen timing behavior. :contentReference[oaicite:11]{index=11}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clipName</td><td>Name of the clip to modify. </td></tr>
+    <tr><td class="paramname">speed</td><td>Playback speed multiplier for that clip. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00190">190</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">if</span> (speed &lt;= 0.001f)</div>
+<div class="line"><span class="lineno">  193</span>    {</div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_variable" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a>[clipName] = 0.001f;</div>
+<div class="line"><span class="lineno">  195</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  196</span>    }</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="#a34676f54d18d69bf75a2baff1bcea852">clipPlaybackSpeeds</a>[clipName] = speed;</div>
+<div class="line"><span class="lineno">  199</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -538,16 +1040,236 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Forces the current frame index. </p>
+<p>Sets the current absolute frame directly. </p>
+<p>This function directly overwrites currentFrame without validating the range and without changing clip playback state, elapsed time, or callback state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">frame</td><td>New current frame index. </td></tr>
+    <tr><td class="paramname">frame</td><td>Absolute frame index to assign.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This is a direct state override. It does not automatically fire callbacks. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00343">343</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  343</span>{ <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = frame; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5c67180a7b2a51c58f6e12fd3fcb6e51" name="a5c67180a7b2a51c58f6e12fd3fcb6e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c67180a7b2a51c58f6e12fd3fcb6e51">&#9670;&#160;</a></span>SetPlaybackSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::SetPlaybackSpeed </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>speed</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the global playback speed multiplier. </p>
+<p>The given speed affects all playback modes. If the value is less than or equal to zero, the implementation clamps it to a very small positive value instead of allowing zero or negative playback speed. :contentReference[oaicite:10]{index=10}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">speed</td><td>Global playback speed multiplier. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00238">238</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  238</span>{ <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = frame; }</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00179">179</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  180</span>{</div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (speed &lt;= 0.0f)</div>
+<div class="line"><span class="lineno">  182</span>    {</div>
+<div class="line"><span class="lineno">  183</span>        <a class="code hl_variable" href="#aaa4d996d7fbf7b80c8379345a43d648f">playbackSpeed</a> = 0.001f;</div>
+<div class="line"><span class="lineno">  184</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  185</span>    }</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <a class="code hl_variable" href="#aaa4d996d7fbf7b80c8379345a43d648f">playbackSpeed</a> = speed;</div>
+<div class="line"><span class="lineno">  188</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa8f7f42e12a48d1bbb44fff195979774" name="aa8f7f42e12a48d1bbb44fff195979774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f7f42e12a48d1bbb44fff195979774">&#9670;&#160;</a></span>TriggerAllCallbacksForCurrentFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::TriggerAllCallbacksForCurrentFrame </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triggers all callbacks relevant to the current playback position. </p>
+<p>Calls TriggerFrameCallbacks(currentFrame) first, then calls <a class="el" href="#a9ad5c4dd6b82598dd8d138a7f8fd9715" title="Triggers callbacks registered for the current clip-local frame.">TriggerClipFrameCallbacks()</a>. This allows both absolute-frame callbacks and clip-local callbacks to react when the current frame changes. :contentReference[oaicite:15]{index=15} </p>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00346">346</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  347</span>{</div>
+<div class="line"><span class="lineno">  348</span>    <a class="code hl_function" href="#adb4a56ed158c085113fbed3b1eba4f2b">TriggerFrameCallbacks</a>(<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>);</div>
+<div class="line"><span class="lineno">  349</span>    <a class="code hl_function" href="#a9ad5c4dd6b82598dd8d138a7f8fd9715">TriggerClipFrameCallbacks</a>();</div>
+<div class="line"><span class="lineno">  350</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_a9ad5c4dd6b82598dd8d138a7f8fd9715"><div class="ttname"><a href="#a9ad5c4dd6b82598dd8d138a7f8fd9715">SpriteAnimator::TriggerClipFrameCallbacks</a></div><div class="ttdeci">void TriggerClipFrameCallbacks()</div><div class="ttdoc">Triggers callbacks registered for the current clip-local frame.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00297">Animation.cpp:297</a></div></div>
+<div class="ttc" id="aclass_sprite_animator_html_adb4a56ed158c085113fbed3b1eba4f2b"><div class="ttname"><a href="#adb4a56ed158c085113fbed3b1eba4f2b">SpriteAnimator::TriggerFrameCallbacks</a></div><div class="ttdeci">void TriggerFrameCallbacks(int frame)</div><div class="ttdoc">Triggers callbacks registered for the given absolute frame.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00264">Animation.cpp:264</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9ad5c4dd6b82598dd8d138a7f8fd9715" name="a9ad5c4dd6b82598dd8d138a7f8fd9715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad5c4dd6b82598dd8d138a7f8fd9715">&#9670;&#160;</a></span>TriggerClipFrameCallbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::TriggerClipFrameCallbacks </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triggers callbacks registered for the current clip-local frame. </p>
+<p>This function only works when a named clip is currently active. It looks up callback storage by currentClipName and clipFrameIndex, executes all valid callbacks, removes one-shot entries, and erases empty containers after execution.</p>
+<dl class="section note"><dt>Note</dt><dd>This function does nothing when raw frame-range playback is active. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00297">297</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  298</span>{</div>
+<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> || <a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a>.empty())</div>
+<div class="line"><span class="lineno">  300</span>    {</div>
+<div class="line"><span class="lineno">  301</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  302</span>    }</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>    <span class="keyword">auto</span> clipIt = <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.find(<a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a>);</div>
+<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">if</span> (clipIt == <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.end())</div>
+<div class="line"><span class="lineno">  306</span>    {</div>
+<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  308</span>    }</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>    <span class="keyword">auto</span> localIt = clipIt-&gt;second.find(<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>);</div>
+<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">if</span> (localIt == clipIt-&gt;second.end())</div>
+<div class="line"><span class="lineno">  312</span>    {</div>
+<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  314</span>    }</div>
+<div class="line"><span class="lineno">  315</span> </div>
+<div class="line"><span class="lineno">  316</span>    <span class="keyword">auto</span>&amp; callbacks = localIt-&gt;second;</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = callbacks.begin(); iter != callbacks.end(); )</div>
+<div class="line"><span class="lineno">  319</span>    {</div>
+<div class="line"><span class="lineno">  320</span>        <span class="keywordflow">if</span> (iter-&gt;callback)</div>
+<div class="line"><span class="lineno">  321</span>        {</div>
+<div class="line"><span class="lineno">  322</span>            iter-&gt;callback();</div>
+<div class="line"><span class="lineno">  323</span>        }</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">if</span> (iter-&gt;once)</div>
+<div class="line"><span class="lineno">  326</span>        {</div>
+<div class="line"><span class="lineno">  327</span>            iter = callbacks.erase(iter);</div>
+<div class="line"><span class="lineno">  328</span>        }</div>
+<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  330</span>        {</div>
+<div class="line"><span class="lineno">  331</span>            ++iter;</div>
+<div class="line"><span class="lineno">  332</span>        }</div>
+<div class="line"><span class="lineno">  333</span>    }</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>    <span class="keywordflow">if</span> (callbacks.empty())</div>
+<div class="line"><span class="lineno">  336</span>    {</div>
+<div class="line"><span class="lineno">  337</span>        clipIt-&gt;second.erase(localIt);</div>
+<div class="line"><span class="lineno">  338</span>    }</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (clipIt-&gt;second.empty())</div>
+<div class="line"><span class="lineno">  341</span>    {</div>
+<div class="line"><span class="lineno">  342</span>        <a class="code hl_variable" href="#acd9666ff89d8a1e562494e47a91b43c5">clipFrameCallbacks</a>.erase(clipIt);</div>
+<div class="line"><span class="lineno">  343</span>    }</div>
+<div class="line"><span class="lineno">  344</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adb4a56ed158c085113fbed3b1eba4f2b" name="adb4a56ed158c085113fbed3b1eba4f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4a56ed158c085113fbed3b1eba4f2b">&#9670;&#160;</a></span>TriggerFrameCallbacks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpriteAnimator::TriggerFrameCallbacks </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triggers callbacks registered for the given absolute frame. </p>
+<p>Looks up the callback list for the specified absolute frame index, executes every valid callback, and removes entries marked as one-shot. If the callback list becomes empty after processing, the frame entry itself is erased from the callback map. :contentReference[oaicite:14]{index=14}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Absolute frame index to trigger. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00264">264</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  265</span>{</div>
+<div class="line"><span class="lineno">  266</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>.find(frame);</div>
+<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>.end())</div>
+<div class="line"><span class="lineno">  268</span>    {</div>
+<div class="line"><span class="lineno">  269</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  270</span>    }</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <span class="keyword">auto</span>&amp; callbacks = it-&gt;second;</div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = callbacks.begin(); iter != callbacks.end(); )</div>
+<div class="line"><span class="lineno">  275</span>    {</div>
+<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">if</span> (iter-&gt;callback)</div>
+<div class="line"><span class="lineno">  277</span>        {</div>
+<div class="line"><span class="lineno">  278</span>            iter-&gt;callback();</div>
+<div class="line"><span class="lineno">  279</span>        }</div>
+<div class="line"><span class="lineno">  280</span> </div>
+<div class="line"><span class="lineno">  281</span>        <span class="keywordflow">if</span> (iter-&gt;once)</div>
+<div class="line"><span class="lineno">  282</span>        {</div>
+<div class="line"><span class="lineno">  283</span>            iter = callbacks.erase(iter);</div>
+<div class="line"><span class="lineno">  284</span>        }</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  286</span>        {</div>
+<div class="line"><span class="lineno">  287</span>            ++iter;</div>
+<div class="line"><span class="lineno">  288</span>        }</div>
+<div class="line"><span class="lineno">  289</span>    }</div>
+<div class="line"><span class="lineno">  290</span> </div>
+<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">if</span> (callbacks.empty())</div>
+<div class="line"><span class="lineno">  292</span>    {</div>
+<div class="line"><span class="lineno">  293</span>        <a class="code hl_variable" href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">frameCallbacks</a>.erase(it);</div>
+<div class="line"><span class="lineno">  294</span>    }</div>
+<div class="line"><span class="lineno">  295</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -566,8 +1288,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Advances the animation state by delta time. </p>
-<p>Accumulates elapsed time and advances frames when enough time has passed. When looping is disabled and the animation reaches the end, <a class="el" href="#a8039ef8f1a6974c9edb591656a328454" title="Returns whether the current non-looping animation has finished.">IsClipFinished()</a> can be used to detect completion.</p>
+<p>Advances animation playback using delta time. </p>
+<p>Accumulates elapsed time and advances frames whenever the active frame duration has been exceeded.</p>
+<p>Behavior differs depending on playback mode:</p><ul>
+<li>If a named clip is active, <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances animation playback using delta time.">Update()</a> advances clipFrameIndex through the clip's frameIndices vector using the clip's frameDuration.</li>
+<li>If no named clip is active, <a class="el" href="#a23f9880b2fdbbd23fe48f25526cafb07" title="Advances animation playback using delta time.">Update()</a> advances currentFrame from startFrame to endFrame using the animator's default frameTime.</li>
+</ul>
+<p>Playback speed is affected by:</p><ul>
+<li>the global playbackSpeed,</li>
+<li>the per-clip playback speed override if a named clip is active.</li>
+</ul>
+<p>When playback reaches the end:</p><ul>
+<li>looping playback wraps to the first frame,</li>
+<li>non-looping playback stays on the last frame and sets isClipFinished to true.</li>
+</ul>
+<p>Whenever a new current frame becomes active, the animator triggers the relevant callbacks for that frame. :contentReference[oaicite:9]{index=9}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
@@ -575,63 +1310,101 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00092">92</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> += dt;</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>)</div>
-<div class="line"><span class="lineno">   97</span>    {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> dur = <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameDuration &gt; 0.f ? <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameDuration : 0.0001f;</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> &gt;= dur)</div>
-<div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> -= dur;</div>
-<div class="line"><span class="lineno">  102</span>            ++<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>;</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> &gt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices.size()))</div>
-<div class="line"><span class="lineno">  105</span>            {</div>
-<div class="line"><span class="lineno">  106</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;looping)</div>
-<div class="line"><span class="lineno">  107</span>                {</div>
-<div class="line"><span class="lineno">  108</span>                    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = 0;</div>
-<div class="line"><span class="lineno">  109</span>                }</div>
-<div class="line"><span class="lineno">  110</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  111</span>                {</div>
-<div class="line"><span class="lineno">  112</span>                    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  113</span>                    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices.size()) - 1;</div>
-<div class="line"><span class="lineno">  114</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  115</span>                }</div>
-<div class="line"><span class="lineno">  116</span>            }</div>
-<div class="line"><span class="lineno">  117</span>        }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>        <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices[<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>];</div>
-<div class="line"><span class="lineno">  120</span>    }</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  122</span>    {</div>
-<div class="line"><span class="lineno">  123</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> dur = <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> &gt; 0.f ? <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> : 0.0001f;</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> &gt;= dur)</div>
-<div class="line"><span class="lineno">  125</span>        {</div>
-<div class="line"><span class="lineno">  126</span>            <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> -= dur;</div>
-<div class="line"><span class="lineno">  127</span>            ++<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>;</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> &gt; <a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a>)</div>
-<div class="line"><span class="lineno">  130</span>            {</div>
-<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a>)</div>
-<div class="line"><span class="lineno">  132</span>                {</div>
-<div class="line"><span class="lineno">  133</span>                    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#af0127d4a6d5804580ed0bdc749e48fe6">startFrame</a>;</div>
+<p class="definition">Definition at line <a class="el" href="_animation_8cpp_source.html#l00102">102</a> of file <a class="el" href="_animation_8cpp_source.html">Animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordtype">float</span> speedMultiplier = 1.0f;</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a> &amp;&amp; !<a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a>.empty())</div>
+<div class="line"><span class="lineno">  107</span>    {</div>
+<div class="line"><span class="lineno">  108</span>        speedMultiplier = <a class="code hl_function" href="#ac432a5ab6e2b50fe85416f3a6fb51570">GetClipPlaybackSpeed</a>(<a class="code hl_variable" href="#aac43feb92d614424fa50d9221087488d">currentClipName</a>);</div>
+<div class="line"><span class="lineno">  109</span>    }</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> += dt * speedMultiplier * <a class="code hl_variable" href="#aaa4d996d7fbf7b80c8379345a43d648f">playbackSpeed</a>;</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>)</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> dur = <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameDuration &gt; 0.f ? <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameDuration : 0.0001f;</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> &gt;= dur)</div>
+<div class="line"><span class="lineno">  118</span>        {</div>
+<div class="line"><span class="lineno">  119</span>            <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> -= dur;</div>
+<div class="line"><span class="lineno">  120</span>            ++<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>;</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> &gt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices.size()))</div>
+<div class="line"><span class="lineno">  123</span>            {</div>
+<div class="line"><span class="lineno">  124</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;looping)</div>
+<div class="line"><span class="lineno">  125</span>                {</div>
+<div class="line"><span class="lineno">  126</span>                    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = 0;</div>
+<div class="line"><span class="lineno">  127</span>                }</div>
+<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  129</span>                {</div>
+<div class="line"><span class="lineno">  130</span>                    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  131</span>                    <a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices.size()) - 1;</div>
+<div class="line"><span class="lineno">  132</span>                    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices[<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>];</div>
+<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  134</span>                }</div>
-<div class="line"><span class="lineno">  135</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  136</span>                {</div>
-<div class="line"><span class="lineno">  137</span>                    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  138</span>                    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a>;</div>
-<div class="line"><span class="lineno">  139</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  140</span>                }</div>
-<div class="line"><span class="lineno">  141</span>            }</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
-<div class="line"><span class="lineno">  143</span>    }</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<div class="line"><span class="lineno">  135</span>            }</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>            <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#a3b0b375da67fba82d5767da746200ba2">playingClip</a>-&gt;frameIndices[<a class="code hl_variable" href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">clipFrameIndex</a>];</div>
+<div class="line"><span class="lineno">  138</span>            <a class="code hl_function" href="#aa8f7f42e12a48d1bbb44fff195979774">TriggerAllCallbacksForCurrentFrame</a>();</div>
+<div class="line"><span class="lineno">  139</span>        }</div>
+<div class="line"><span class="lineno">  140</span>    }</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  142</span>    {</div>
+<div class="line"><span class="lineno">  143</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> dur = <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> &gt; 0.f ? <a class="code hl_variable" href="#ad6c488dd70434014d2d203482e188a93">frameTime</a> : 0.0001f;</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> &gt;= dur)</div>
+<div class="line"><span class="lineno">  146</span>        {</div>
+<div class="line"><span class="lineno">  147</span>            <a class="code hl_variable" href="#abc34368dd943697e8657a68c554329fe">elapsed</a> -= dur;</div>
+<div class="line"><span class="lineno">  148</span>            ++<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a>;</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> &gt; <a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a>)</div>
+<div class="line"><span class="lineno">  151</span>            {</div>
+<div class="line"><span class="lineno">  152</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a0de89a6edb4094e019640ee24e21d626">loop</a>)</div>
+<div class="line"><span class="lineno">  153</span>                {</div>
+<div class="line"><span class="lineno">  154</span>                    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#af0127d4a6d5804580ed0bdc749e48fe6">startFrame</a>;</div>
+<div class="line"><span class="lineno">  155</span>                }</div>
+<div class="line"><span class="lineno">  156</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  157</span>                {</div>
+<div class="line"><span class="lineno">  158</span>                    <a class="code hl_variable" href="#a401e9176bb78855cf879768843e033f4">isClipFinished</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  159</span>                    <a class="code hl_variable" href="#add19e00a74d70def2375d6fa40605b8e">currentFrame</a> = <a class="code hl_variable" href="#ac7766936f67b1e7bd0d031d3d53c087c">endFrame</a>;</div>
+<div class="line"><span class="lineno">  160</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  161</span>                }</div>
+<div class="line"><span class="lineno">  162</span>            }</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>            <a class="code hl_function" href="#aa8f7f42e12a48d1bbb44fff195979774">TriggerAllCallbacksForCurrentFrame</a>();</div>
+<div class="line"><span class="lineno">  165</span>        }</div>
+<div class="line"><span class="lineno">  166</span>    }</div>
+<div class="line"><span class="lineno">  167</span>}</div>
+<div class="ttc" id="aclass_sprite_animator_html_ac432a5ab6e2b50fe85416f3a6fb51570"><div class="ttname"><a href="#ac432a5ab6e2b50fe85416f3a6fb51570">SpriteAnimator::GetClipPlaybackSpeed</a></div><div class="ttdeci">float GetClipPlaybackSpeed(const std::string &amp;clipName) const</div><div class="ttdoc">Returns the playback speed override of a specific clip.</div><div class="ttdef"><b>Definition</b> <a href="_animation_8cpp_source.html#l00201">Animation.cpp:201</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="acd9666ff89d8a1e562494e47a91b43c5" name="acd9666ff89d8a1e562494e47a91b43c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd9666ff89d8a1e562494e47a91b43c5">&#9670;&#160;</a></span>clipFrameCallbacks</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, std::unordered_map&lt;int, std::vector&lt;<a class="el" href="struct_sprite_animator_1_1_callback_entry.html">CallbackEntry</a>&gt; &gt; &gt; SpriteAnimator::clipFrameCallbacks</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00572">572</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+
+</div>
+</div>
 <a id="ae4b7c71c1e14cb5fb6b430ed58ae5bfd" name="ae4b7c71c1e14cb5fb6b430ed58ae5bfd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae4b7c71c1e14cb5fb6b430ed58ae5bfd">&#9670;&#160;</a></span>clipFrameIndex</h2>
 
@@ -652,7 +1425,55 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00267">267</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00565">565</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+
+</div>
+</div>
+<a id="a34676f54d18d69bf75a2baff1bcea852" name="a34676f54d18d69bf75a2baff1bcea852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34676f54d18d69bf75a2baff1bcea852">&#9670;&#160;</a></span>clipPlaybackSpeeds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, float&gt; SpriteAnimator::clipPlaybackSpeeds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00568">568</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+
+</div>
+</div>
+<a id="aac43feb92d614424fa50d9221087488d" name="aac43feb92d614424fa50d9221087488d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac43feb92d614424fa50d9221087488d">&#9670;&#160;</a></span>currentClipName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string SpriteAnimator::currentClipName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00569">569</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -676,7 +1497,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00262">262</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00560">560</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -700,7 +1521,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00261">261</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00559">559</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -724,7 +1545,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00264">264</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00562">562</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+
+</div>
+</div>
+<a id="ad6d6c4e18a4d3a8ae133bf7f9a1d4053" name="ad6d6c4e18a4d3a8ae133bf7f9a1d4053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d6c4e18a4d3a8ae133bf7f9a1d4053">&#9670;&#160;</a></span>frameCallbacks</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;int, std::vector&lt;<a class="el" href="struct_sprite_animator_1_1_callback_entry.html">CallbackEntry</a>&gt; &gt; SpriteAnimator::frameCallbacks</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00571">571</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -748,7 +1593,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00260">260</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00558">558</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -772,7 +1617,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00268">268</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00566">566</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -796,7 +1641,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00265">265</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00563">563</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+
+</div>
+</div>
+<a id="aaa4d996d7fbf7b80c8379345a43d648f" name="aaa4d996d7fbf7b80c8379345a43d648f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa4d996d7fbf7b80c8379345a43d648f">&#9670;&#160;</a></span>playbackSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SpriteAnimator::playbackSpeed = 1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00567">567</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -820,12 +1689,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00266">266</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00564">564</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
-<a id="ac69e0d3cdfccaaf0952a68cc67501ed7" name="ac69e0d3cdfccaaf0952a68cc67501ed7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac69e0d3cdfccaaf0952a68cc67501ed7">&#9670;&#160;</a></span>sheet</h2>
+<a id="a8cee96386544deb0521b48b900387fc8" name="a8cee96386544deb0521b48b900387fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cee96386544deb0521b48b900387fc8">&#9670;&#160;</a></span>sheet</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -834,7 +1703,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a>* SpriteAnimator::sheet</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_sprite_sheet.html">SpriteSheet</a>&gt; SpriteAnimator::sheet</td>
         </tr>
       </table>
   </td>
@@ -844,7 +1713,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00259">259</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00557">557</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +1737,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00263">263</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animation_8h_source.html#l00561">561</a> of file <a class="el" href="_animation_8h_source.html">Animation.h</a>.</p>
 
 </div>
 </div>

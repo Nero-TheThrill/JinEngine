@@ -2,7 +2,7 @@
 \hypertarget{struct_font_job}{}\label{struct_font_job}\index{FontJob@{FontJob}}
 
 
-Load request describing a font resource to be registered.  
+Describes a font loading request.  
 
 
 
@@ -21,11 +21,13 @@ uint32\+\_\+t \mbox{\hyperlink{struct_font_job_a44f98fce3f8eacfa18fab030db632acd
 
 
 \doxysubsection{Detailed Description}
-Load request describing a font resource to be registered. 
+Describes a font loading request. 
 
-In this loader design, the worker thread may validate the font path or prepare metadata, while the actual GPU-\/facing atlas/material setup typically occurs on the main thread. 
+\doxylink{struct_font_job}{Font\+Job} stores the data needed to register a font later, including the font tag, the TTF file path, and the target pixel size.
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00065}{65}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+In the current implementation, the worker thread does not parse or rasterize the font file. It only forwards the metadata into a \doxylink{struct_font_result}{Font\+Result} so the actual font creation can occur in a later stage on the main thread. \+:content\+Reference\mbox{[}oaicite\+:3\mbox{]}\{index=3\} 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00078}{78}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -38,7 +40,7 @@ uint32\+\_\+t Font\+Job\+::pixel\+Size = 32}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00069}{69}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00082}{82}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_font_job_a4ccf351fbc68d0167113ec8593415514}\index{FontJob@{FontJob}!tag@{tag}}
 \index{tag@{tag}!FontJob@{FontJob}}
@@ -48,7 +50,7 @@ std\+::string Font\+Job\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00067}{67}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00080}{80}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_font_job_a8b2444439d7af005fdb0e09248bb95a5}\index{FontJob@{FontJob}!ttfPath@{ttfPath}}
 \index{ttfPath@{ttfPath}!FontJob@{FontJob}}
@@ -58,7 +60,7 @@ std\+::string Font\+Job\+::ttf\+Path}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00068}{68}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00081}{81}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

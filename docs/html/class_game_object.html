@@ -104,7 +104,7 @@ $(function(){initNavTree('class_game_object.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for all in-game objects with gameplay behavior.  
+<p>Convenience base class for gameplay-oriented objects.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_game_object_8h_source.html">GameObject.h</a>&gt;</code></p>
@@ -114,168 +114,169 @@ Inheritance diagram for GameObject:</div>
  <div class="center">
   <img src="class_game_object.png" usemap="#GameObject_map" alt=""/>
   <map id="GameObject_map" name="GameObject_map">
-<area href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager." alt="Object" shape="rect" coords="0,0,81,24"/>
+<area href="class_object.html" title="Base abstract object class for all engine-managed runtime objects." alt="Object" shape="rect" coords="0,0,81,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0348e3ee2e83d56eafca7a3547f432c4" id="r_a0348e3ee2e83d56eafca7a3547f432c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0348e3ee2e83d56eafca7a3547f432c4">GameObject</a> ()</td></tr>
-<tr class="memdesc:a0348e3ee2e83d56eafca7a3547f432c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a> with GAME object type.  <br /></td></tr>
+<tr class="memdesc:a0348e3ee2e83d56eafca7a3547f432c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a gameplay object.  <br /></td></tr>
 <tr class="separator:a0348e3ee2e83d56eafca7a3547f432c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf01e9889fbc277c44594322abf9683b" id="r_acf01e9889fbc277c44594322abf9683b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf01e9889fbc277c44594322abf9683b">~GameObject</a> () override=default</td></tr>
-<tr class="memdesc:acf01e9889fbc277c44594322abf9683b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a>.  <br /></td></tr>
+<tr class="memdesc:acf01e9889fbc277c44594322abf9683b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
 <tr class="separator:acf01e9889fbc277c44594322abf9683b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34ba812ec949058ea5ab184618e91590" id="r_a34ba812ec949058ea5ab184618e91590"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34ba812ec949058ea5ab184618e91590">Init</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a34ba812ec949058ea5ab184618e91590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the game object.  <br /></td></tr>
+<tr class="memdesc:a34ba812ec949058ea5ab184618e91590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the object is first initialized.  <br /></td></tr>
 <tr class="separator:a34ba812ec949058ea5ab184618e91590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafea6dd6a08d29078cc430ddf5a4f18e" id="r_aafea6dd6a08d29078cc430ddf5a4f18e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafea6dd6a08d29078cc430ddf5a4f18e">LateInit</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:aafea6dd6a08d29078cc430ddf5a4f18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs post-initialization logic for the game object.  <br /></td></tr>
+<tr class="memdesc:aafea6dd6a08d29078cc430ddf5a4f18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after the initial Init phase has completed.  <br /></td></tr>
 <tr class="separator:aafea6dd6a08d29078cc430ddf5a4f18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2af113da2569ef4e651ad8cfb3be50d8" id="r_a2af113da2569ef4e651ad8cfb3be50d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2af113da2569ef4e651ad8cfb3be50d8">Update</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a2af113da2569ef4e651ad8cfb3be50d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the game object every frame.  <br /></td></tr>
+<tr class="memdesc:a2af113da2569ef4e651ad8cfb3be50d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the object once per frame.  <br /></td></tr>
 <tr class="separator:a2af113da2569ef4e651ad8cfb3be50d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64fa4b69133f89e55fd4a51b468ce410" id="r_a64fa4b69133f89e55fd4a51b468ce410"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64fa4b69133f89e55fd4a51b468ce410">Draw</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a64fa4b69133f89e55fd4a51b468ce410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the game object.  <br /></td></tr>
+<tr class="memdesc:a64fa4b69133f89e55fd4a51b468ce410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows the object to prepare rendering-related state before submission.  <br /></td></tr>
 <tr class="separator:a64fa4b69133f89e55fd4a51b468ce410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae104cfd85a1a55b46a1c47570d408dd3" id="r_ae104cfd85a1a55b46a1c47570d408dd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3">Free</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:ae104cfd85a1a55b46a1c47570d408dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees runtime resources owned by the game object.  <br /></td></tr>
+<tr class="memdesc:ae104cfd85a1a55b46a1c47570d408dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the object begins its destruction or removal phase.  <br /></td></tr>
 <tr class="separator:ae104cfd85a1a55b46a1c47570d408dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0386fbb9307311825bf4be78e61d21ca" id="r_a0386fbb9307311825bf4be78e61d21ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0386fbb9307311825bf4be78e61d21ca">LateFree</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a0386fbb9307311825bf4be78e61d21ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs late cleanup logic for the game object.  <br /></td></tr>
+<tr class="memdesc:a0386fbb9307311825bf4be78e61d21ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after <a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3" title="Called when the object begins its destruction or removal phase.">Free()</a> during the final cleanup stage.  <br /></td></tr>
 <tr class="separator:a0386fbb9307311825bf4be78e61d21ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_object.html">Object</a></td></tr>
 <tr class="memitem:a218968689a0b4e855c4de92eb6242bcb inherit pub_methods_class_object" id="r_a218968689a0b4e855c4de92eb6242bcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a218968689a0b4e855c4de92eb6242bcb">Object</a> ()=delete</td></tr>
+<tr class="memdesc:a218968689a0b4e855c4de92eb6242bcb inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor.  <br /></td></tr>
 <tr class="separator:a218968689a0b4e855c4de92eb6242bcb inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226f2ae2af766b77d83c09a4d766b725 inherit pub_methods_class_object" id="r_a226f2ae2af766b77d83c09a4d766b725"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a226f2ae2af766b77d83c09a4d766b725">~Object</a> ()=default</td></tr>
-<tr class="memdesc:a226f2ae2af766b77d83c09a4d766b725 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic deletion.  <br /></td></tr>
+<tr class="memdesc:a226f2ae2af766b77d83c09a4d766b725 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for safe polymorphic deletion.  <br /></td></tr>
 <tr class="separator:a226f2ae2af766b77d83c09a4d766b725 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0230b42c88134134da384129e1a4d64d inherit pub_methods_class_object" id="r_a0230b42c88134134da384129e1a4d64d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a0230b42c88134134da384129e1a4d64d">OnCollision</a> (<a class="el" href="class_object.html">Object</a> *other)</td></tr>
-<tr class="memdesc:a0230b42c88134134da384129e1a4d64d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision callback invoked when this object collides with another object.  <br /></td></tr>
+<tr class="memdesc:a0230b42c88134134da384129e1a4d64d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a collision notification with another object.  <br /></td></tr>
 <tr class="separator:a0230b42c88134134da384129e1a4d64d inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af92e9a809354c281d464011a1f009d02 inherit pub_methods_class_object" id="r_af92e9a809354c281d464011a1f009d02"><td class="memItemLeft" align="right" valign="top">const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#af92e9a809354c281d464011a1f009d02">IsAlive</a> () const</td></tr>
-<tr class="memdesc:af92e9a809354c281d464011a1f009d02 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is alive.  <br /></td></tr>
+<tr class="memdesc:af92e9a809354c281d464011a1f009d02 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is currently alive.  <br /></td></tr>
 <tr class="separator:af92e9a809354c281d464011a1f009d02 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77092a4fc48339007ed32e7d48f6140a inherit pub_methods_class_object" id="r_a77092a4fc48339007ed32e7d48f6140a"><td class="memItemLeft" align="right" valign="top">const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a77092a4fc48339007ed32e7d48f6140a">IsVisible</a> () const</td></tr>
-<tr class="memdesc:a77092a4fc48339007ed32e7d48f6140a inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is visible.  <br /></td></tr>
+<tr class="memdesc:a77092a4fc48339007ed32e7d48f6140a inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is currently visible.  <br /></td></tr>
 <tr class="separator:a77092a4fc48339007ed32e7d48f6140a inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1905fc7497de984a176acdcf8ecb81be inherit pub_methods_class_object" id="r_a1905fc7497de984a176acdcf8ecb81be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a1905fc7497de984a176acdcf8ecb81be">SetVisibility</a> (bool _isVisible)</td></tr>
-<tr class="memdesc:a1905fc7497de984a176acdcf8ecb81be inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the visibility state.  <br /></td></tr>
+<tr class="memdesc:a1905fc7497de984a176acdcf8ecb81be inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the object should be considered visible by the renderer.  <br /></td></tr>
 <tr class="separator:a1905fc7497de984a176acdcf8ecb81be inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abed008ac27116fcd520eed806751ed34 inherit pub_methods_class_object" id="r_abed008ac27116fcd520eed806751ed34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#abed008ac27116fcd520eed806751ed34">Kill</a> ()</td></tr>
-<tr class="memdesc:abed008ac27116fcd520eed806751ed34 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the object as dead.  <br /></td></tr>
+<tr class="memdesc:abed008ac27116fcd520eed806751ed34 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the object as no longer alive.  <br /></td></tr>
 <tr class="separator:abed008ac27116fcd520eed806751ed34 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a8c0663fb3e668d16c8a045937a9c82 inherit pub_methods_class_object" id="r_a5a8c0663fb3e668d16c8a045937a9c82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a5a8c0663fb3e668d16c8a045937a9c82">SetTag</a> (const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a5a8c0663fb3e668d16c8a045937a9c82 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object tag used for lookup/grouping.  <br /></td></tr>
+<tr class="memdesc:a5a8c0663fb3e668d16c8a045937a9c82 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a user-defined object tag.  <br /></td></tr>
 <tr class="separator:a5a8c0663fb3e668d16c8a045937a9c82 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9744dc473026e6b7cba610d00f510e81 inherit pub_methods_class_object" id="r_a9744dc473026e6b7cba610d00f510e81"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a9744dc473026e6b7cba610d00f510e81">GetTag</a> () const</td></tr>
-<tr class="memdesc:a9744dc473026e6b7cba610d00f510e81 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object tag.  <br /></td></tr>
+<tr class="memdesc:a9744dc473026e6b7cba610d00f510e81 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's tag string.  <br /></td></tr>
 <tr class="separator:a9744dc473026e6b7cba610d00f510e81 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeca329acbcb4de9843012537efd02cc inherit pub_methods_class_object" id="r_aeeca329acbcb4de9843012537efd02cc"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#aeeca329acbcb4de9843012537efd02cc">GetRenderLayerTag</a> () const</td></tr>
-<tr class="memdesc:aeeca329acbcb4de9843012537efd02cc inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the render-layer tag used for <a class="el" href="class_render_layer_manager.html" title="Maintains a bidirectional mapping between human-readable render-layer names and numeric layer IDs.">RenderLayerManager</a> mapping.  <br /></td></tr>
+<tr class="memdesc:aeeca329acbcb4de9843012537efd02cc inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the render layer tag assigned to this object.  <br /></td></tr>
 <tr class="separator:aeeca329acbcb4de9843012537efd02cc inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae14fd11d21f05d538d10813e53566152 inherit pub_methods_class_object" id="r_ae14fd11d21f05d538d10813e53566152"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ae14fd11d21f05d538d10813e53566152">SetRenderLayer</a> (const std::string &amp;tag)</td></tr>
-<tr class="memdesc:ae14fd11d21f05d538d10813e53566152 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render-layer tag.  <br /></td></tr>
+<tr class="memdesc:ae14fd11d21f05d538d10813e53566152 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the render layer tag used during render batch construction.  <br /></td></tr>
 <tr class="separator:ae14fd11d21f05d538d10813e53566152 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ae391764eac5e3d62e52bf7441ceec inherit pub_methods_class_object" id="r_a53ae391764eac5e3d62e52bf7441ceec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a53ae391764eac5e3d62e52bf7441ceec">SetMaterial</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a53ae391764eac5e3d62e52bf7441ceec inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the material by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag.  <br /></td></tr>
+<tr class="memdesc:a53ae391764eac5e3d62e52bf7441ceec inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves and assigns a material from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag.  <br /></td></tr>
 <tr class="separator:a53ae391764eac5e3d62e52bf7441ceec inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab1e520477fbd67aef665b8c8207a35d inherit pub_methods_class_object" id="r_aab1e520477fbd67aef665b8c8207a35d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#aab1e520477fbd67aef665b8c8207a35d">SetMaterial</a> (<a class="el" href="class_material.html">Material</a> *material_)</td></tr>
-<tr class="memdesc:aab1e520477fbd67aef665b8c8207a35d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the material pointer directly.  <br /></td></tr>
-<tr class="separator:aab1e520477fbd67aef665b8c8207a35d inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab521a1333884f821312dac04d176656d inherit pub_methods_class_object" id="r_ab521a1333884f821312dac04d176656d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_material.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ab521a1333884f821312dac04d176656d">GetMaterial</a> () const</td></tr>
-<tr class="memdesc:ab521a1333884f821312dac04d176656d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the assigned material pointer.  <br /></td></tr>
-<tr class="separator:ab521a1333884f821312dac04d176656d inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59c5aa50483153339d2bcdfe500f5550 inherit pub_methods_class_object" id="r_a59c5aa50483153339d2bcdfe500f5550"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a59c5aa50483153339d2bcdfe500f5550">SetMaterial</a> (std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt; material_)</td></tr>
+<tr class="memdesc:a59c5aa50483153339d2bcdfe500f5550 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a material directly.  <br /></td></tr>
+<tr class="separator:a59c5aa50483153339d2bcdfe500f5550 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad7172879f1b2fd092561827aa2bbb1 inherit pub_methods_class_object" id="r_a7ad7172879f1b2fd092561827aa2bbb1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a7ad7172879f1b2fd092561827aa2bbb1">GetMaterial</a> () const</td></tr>
+<tr class="memdesc:a7ad7172879f1b2fd092561827aa2bbb1 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently assigned material resource.  <br /></td></tr>
+<tr class="separator:a7ad7172879f1b2fd092561827aa2bbb1 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a469da1fde04db75a05aad5cd30c6e4b2 inherit pub_methods_class_object" id="r_a469da1fde04db75a05aad5cd30c6e4b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a469da1fde04db75a05aad5cd30c6e4b2">SetMesh</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a469da1fde04db75a05aad5cd30c6e4b2 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mesh by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag.  <br /></td></tr>
+<tr class="memdesc:a469da1fde04db75a05aad5cd30c6e4b2 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves and assigns a mesh from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag.  <br /></td></tr>
 <tr class="separator:a469da1fde04db75a05aad5cd30c6e4b2 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae94b6c3d2c0bdc27eff25f07390fdb58 inherit pub_methods_class_object" id="r_ae94b6c3d2c0bdc27eff25f07390fdb58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ae94b6c3d2c0bdc27eff25f07390fdb58">SetMesh</a> (<a class="el" href="class_mesh.html">Mesh</a> *mesh_)</td></tr>
-<tr class="memdesc:ae94b6c3d2c0bdc27eff25f07390fdb58 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mesh pointer directly.  <br /></td></tr>
-<tr class="separator:ae94b6c3d2c0bdc27eff25f07390fdb58 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1325c6fcdb74f68110b0518bd7beb05 inherit pub_methods_class_object" id="r_ad1325c6fcdb74f68110b0518bd7beb05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ad1325c6fcdb74f68110b0518bd7beb05">GetMesh</a> () const</td></tr>
-<tr class="memdesc:ad1325c6fcdb74f68110b0518bd7beb05 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the assigned mesh pointer.  <br /></td></tr>
-<tr class="separator:ad1325c6fcdb74f68110b0518bd7beb05 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd73cf89491ef2986923815ed7c5219 inherit pub_methods_class_object" id="r_a7bd73cf89491ef2986923815ed7c5219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a7bd73cf89491ef2986923815ed7c5219">SetMesh</a> (std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; mesh_)</td></tr>
+<tr class="memdesc:a7bd73cf89491ef2986923815ed7c5219 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a mesh directly.  <br /></td></tr>
+<tr class="separator:a7bd73cf89491ef2986923815ed7c5219 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54dba19ad0f92b77cb9f0ae61608b75d inherit pub_methods_class_object" id="r_a54dba19ad0f92b77cb9f0ae61608b75d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a54dba19ad0f92b77cb9f0ae61608b75d">GetMesh</a> () const</td></tr>
+<tr class="memdesc:a54dba19ad0f92b77cb9f0ae61608b75d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently assigned mesh resource.  <br /></td></tr>
+<tr class="separator:a54dba19ad0f92b77cb9f0ae61608b75d inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db79de87d0743178af0c8817ada974f inherit pub_methods_class_object" id="r_a2db79de87d0743178af0c8817ada974f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2db79de87d0743178af0c8817ada974f">CanBeInstanced</a> () const</td></tr>
-<tr class="memdesc:a2db79de87d0743178af0c8817ada974f inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object is eligible for instanced rendering.  <br /></td></tr>
+<tr class="memdesc:a2db79de87d0743178af0c8817ada974f inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object can participate in instanced rendering.  <br /></td></tr>
 <tr class="separator:a2db79de87d0743178af0c8817ada974f inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee07a084c7a7e462fe09a74a91f1bb45 inherit pub_methods_class_object" id="r_aee07a084c7a7e462fe09a74a91f1bb45"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#aee07a084c7a7e462fe09a74a91f1bb45">GetTransform2DMatrix</a> ()</td></tr>
-<tr class="memdesc:aee07a084c7a7e462fe09a74a91f1bb45 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cached <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> matrix, updating it if necessary.  <br /></td></tr>
+<tr class="memdesc:aee07a084c7a7e462fe09a74a91f1bb45 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current 2D transform matrix.  <br /></td></tr>
 <tr class="separator:aee07a084c7a7e462fe09a74a91f1bb45 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a453aea9866458ef777bbe908ac71b938 inherit pub_methods_class_object" id="r_a453aea9866458ef777bbe908ac71b938"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform2_d.html">Transform2D</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a453aea9866458ef777bbe908ac71b938">GetTransform2D</a> ()</td></tr>
-<tr class="memdesc:a453aea9866458ef777bbe908ac71b938 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mutable reference to the <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> component.  <br /></td></tr>
+<tr class="memdesc:a453aea9866458ef777bbe908ac71b938 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns mutable access to the internal <a class="el" href="class_transform2_d.html">Transform2D</a>.  <br /></td></tr>
 <tr class="separator:a453aea9866458ef777bbe908ac71b938 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d5b80a21f9fdb4e46f81936ae1d2b78 inherit pub_methods_class_object" id="r_a8d5b80a21f9fdb4e46f81936ae1d2b78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a8d5b80a21f9fdb4e46f81936ae1d2b78">SetColor</a> (const glm::vec4 &amp;color_)</td></tr>
-<tr class="memdesc:a8d5b80a21f9fdb4e46f81936ae1d2b78 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the per-object color used by the renderer.  <br /></td></tr>
+<tr class="memdesc:a8d5b80a21f9fdb4e46f81936ae1d2b78 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object's tint color.  <br /></td></tr>
 <tr class="separator:a8d5b80a21f9fdb4e46f81936ae1d2b78 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbcd6fb6a64f9921341d212558f23318 inherit pub_methods_class_object" id="r_adbcd6fb6a64f9921341d212558f23318"><td class="memItemLeft" align="right" valign="top">const glm::vec4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#adbcd6fb6a64f9921341d212558f23318">GetColor</a> ()</td></tr>
-<tr class="memdesc:adbcd6fb6a64f9921341d212558f23318 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current per-object color.  <br /></td></tr>
+<tr class="memdesc:adbcd6fb6a64f9921341d212558f23318 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's tint color.  <br /></td></tr>
 <tr class="separator:adbcd6fb6a64f9921341d212558f23318 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b8c8aca393668f11cef22b19b7070a inherit pub_methods_class_object" id="r_a73b8c8aca393668f11cef22b19b7070a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a73b8c8aca393668f11cef22b19b7070a">HasAnimation</a> () const</td></tr>
-<tr class="memdesc:a73b8c8aca393668f11cef22b19b7070a inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object currently has an animator attached.  <br /></td></tr>
+<tr class="memdesc:a73b8c8aca393668f11cef22b19b7070a inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object currently has a sprite animator attached.  <br /></td></tr>
 <tr class="separator:a73b8c8aca393668f11cef22b19b7070a inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5037bc2d36bcecdb601fa135a8fc6bfc inherit pub_methods_class_object" id="r_a5037bc2d36bcecdb601fa135a8fc6bfc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a5037bc2d36bcecdb601fa135a8fc6bfc">GetSpriteAnimator</a> () const</td></tr>
-<tr class="memdesc:a5037bc2d36bcecdb601fa135a8fc6bfc inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the active <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> pointer, if any.  <br /></td></tr>
+<tr class="memdesc:a5037bc2d36bcecdb601fa135a8fc6bfc inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the attached sprite animator.  <br /></td></tr>
 <tr class="separator:a5037bc2d36bcecdb601fa135a8fc6bfc inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af39935a92d3881c1a0f2ca0a3c4ba027 inherit pub_methods_class_object" id="r_af39935a92d3881c1a0f2ca0a3c4ba027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#af39935a92d3881c1a0f2ca0a3c4ba027">AttachAnimator</a> (std::unique_ptr&lt; <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> &gt; anim)</td></tr>
-<tr class="memdesc:af39935a92d3881c1a0f2ca0a3c4ba027 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an animator by transferring ownership.  <br /></td></tr>
+<tr class="memdesc:af39935a92d3881c1a0f2ca0a3c4ba027 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an already-created sprite animator.  <br /></td></tr>
 <tr class="separator:af39935a92d3881c1a0f2ca0a3c4ba027 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc6709946b43992d8dbb44c229adc0b inherit pub_methods_class_object" id="r_afdc6709946b43992d8dbb44c229adc0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#afdc6709946b43992d8dbb44c229adc0b">AttachAnimator</a> (<a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *sheet, float frameTime, bool loop=true)</td></tr>
-<tr class="memdesc:afdc6709946b43992d8dbb44c229adc0b inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and attaches a <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> from a <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> and playback settings.  <br /></td></tr>
-<tr class="separator:afdc6709946b43992d8dbb44c229adc0b inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7456f113bb930054b7937278b6a317d inherit pub_methods_class_object" id="r_af7456f113bb930054b7937278b6a317d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#af7456f113bb930054b7937278b6a317d">AttachAnimator</a> (std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt; sheet, float frameTime, bool loop=true)</td></tr>
+<tr class="memdesc:af7456f113bb930054b7937278b6a317d inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and attaches a sprite animator from a sprite sheet.  <br /></td></tr>
+<tr class="separator:af7456f113bb930054b7937278b6a317d inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3c65d98ad8b1c3fdae221a5390cc757 inherit pub_methods_class_object" id="r_ae3c65d98ad8b1c3fdae221a5390cc757"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ae3c65d98ad8b1c3fdae221a5390cc757">DetachAnimator</a> ()</td></tr>
-<tr class="memdesc:ae3c65d98ad8b1c3fdae221a5390cc757 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches and destroys the current animator, if any.  <br /></td></tr>
+<tr class="memdesc:ae3c65d98ad8b1c3fdae221a5390cc757 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches and destroys the currently attached sprite animator.  <br /></td></tr>
 <tr class="separator:ae3c65d98ad8b1c3fdae221a5390cc757 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ba9c8096492c37bf3db474b5c5f31a0 inherit pub_methods_class_object" id="r_a4ba9c8096492c37bf3db474b5c5f31a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a4ba9c8096492c37bf3db474b5c5f31a0">SetCollider</a> (std::unique_ptr&lt; <a class="el" href="class_collider.html">Collider</a> &gt; c)</td></tr>
-<tr class="memdesc:a4ba9c8096492c37bf3db474b5c5f31a0 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the collider by transferring ownership.  <br /></td></tr>
+<tr class="memdesc:a4ba9c8096492c37bf3db474b5c5f31a0 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a collider to this object.  <br /></td></tr>
 <tr class="separator:a4ba9c8096492c37bf3db474b5c5f31a0 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad601234bc10ab7fbf84b1cf1e302f756 inherit pub_methods_class_object" id="r_ad601234bc10ab7fbf84b1cf1e302f756"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_collider.html">Collider</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a> () const</td></tr>
-<tr class="memdesc:ad601234bc10ab7fbf84b1cf1e302f756 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current collider pointer.  <br /></td></tr>
+<tr class="memdesc:ad601234bc10ab7fbf84b1cf1e302f756 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently attached collider.  <br /></td></tr>
 <tr class="separator:ad601234bc10ab7fbf84b1cf1e302f756 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce1a12c241c5a64ec03e67ee17e1260 inherit pub_methods_class_object" id="r_a7ce1a12c241c5a64ec03e67ee17e1260"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a7ce1a12c241c5a64ec03e67ee17e1260">SetCollision</a> (<a class="el" href="class_object_manager.html">ObjectManager</a> &amp;objectManager, const std::string &amp;tag, const std::vector&lt; std::string &gt; &amp;checkCollisionList)</td></tr>
-<tr class="memdesc:a7ce1a12c241c5a64ec03e67ee17e1260 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures collision category and mask using <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>'s collision registry.  <br /></td></tr>
+<tr class="memdesc:a7ce1a12c241c5a64ec03e67ee17e1260 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the object's collision category and collision mask.  <br /></td></tr>
 <tr class="separator:a7ce1a12c241c5a64ec03e67ee17e1260 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76b94bea7f5f5e6454cd2c134ddc6260 inherit pub_methods_class_object" id="r_a76b94bea7f5f5e6454cd2c134ddc6260"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a> () const</td></tr>
-<tr class="memdesc:a76b94bea7f5f5e6454cd2c134ddc6260 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision mask used for collision filtering.  <br /></td></tr>
+<tr class="memdesc:a76b94bea7f5f5e6454cd2c134ddc6260 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision mask bits for this object.  <br /></td></tr>
 <tr class="separator:a76b94bea7f5f5e6454cd2c134ddc6260 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a431dc9b1eab4227c9c5d002fae5ec017 inherit pub_methods_class_object" id="r_a431dc9b1eab4227c9c5d002fae5ec017"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a> () const</td></tr>
-<tr class="memdesc:a431dc9b1eab4227c9c5d002fae5ec017 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision category used for collision filtering.  <br /></td></tr>
+<tr class="memdesc:a431dc9b1eab4227c9c5d002fae5ec017 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision category bit for this object.  <br /></td></tr>
 <tr class="separator:a431dc9b1eab4227c9c5d002fae5ec017 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe474c804f6bab83b89958356e1857af inherit pub_methods_class_object" id="r_afe474c804f6bab83b89958356e1857af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a> () const</td></tr>
-<tr class="memdesc:afe474c804f6bab83b89958356e1857af inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object should ignore the active camera.  <br /></td></tr>
+<tr class="memdesc:afe474c804f6bab83b89958356e1857af inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object should ignore the active render camera.  <br /></td></tr>
 <tr class="separator:afe474c804f6bab83b89958356e1857af inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93406d31ceabece6e7fb08814ac188c5 inherit pub_methods_class_object" id="r_a93406d31ceabece6e7fb08814ac188c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a93406d31ceabece6e7fb08814ac188c5">SetIgnoreCamera</a> (bool shouldIgnoreCamera, <a class="el" href="class_camera2_d.html">Camera2D</a> *cameraForTransformCalc=nullptr)</td></tr>
-<tr class="memdesc:a93406d31ceabece6e7fb08814ac188c5 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the object should ignore the active camera and optionally stores a reference camera.  <br /></td></tr>
+<tr class="memdesc:a93406d31ceabece6e7fb08814ac188c5 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables camera-ignoring behavior.  <br /></td></tr>
 <tr class="separator:a93406d31ceabece6e7fb08814ac188c5 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce43cdb7eae414e94b4285dbe01a85c inherit pub_methods_class_object" id="r_a2ce43cdb7eae414e94b4285dbe01a85c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980">ObjectType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2ce43cdb7eae414e94b4285dbe01a85c">GetType</a> () const</td></tr>
-<tr class="memdesc:a2ce43cdb7eae414e94b4285dbe01a85c inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object type.  <br /></td></tr>
+<tr class="memdesc:a2ce43cdb7eae414e94b4285dbe01a85c inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns this object's runtime type.  <br /></td></tr>
 <tr class="separator:a2ce43cdb7eae414e94b4285dbe01a85c inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94edf37fadeb8c59420d35730d14464e inherit pub_methods_class_object" id="r_a94edf37fadeb8c59420d35730d14464e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera2_d.html">Camera2D</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a94edf37fadeb8c59420d35730d14464e">GetReferenceCamera</a> () const</td></tr>
-<tr class="memdesc:a94edf37fadeb8c59420d35730d14464e inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the reference camera used when ignoreCamera is enabled.  <br /></td></tr>
+<tr class="memdesc:a94edf37fadeb8c59420d35730d14464e inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the camera reference used for camera-ignore correction.  <br /></td></tr>
 <tr class="separator:a94edf37fadeb8c59420d35730d14464e inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c708099448203abe3182c8b0ae340ce inherit pub_methods_class_object" id="r_a4c708099448203abe3182c8b0ae340ce"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a4c708099448203abe3182c8b0ae340ce">GetWorldPosition</a> () const</td></tr>
-<tr class="memdesc:a4c708099448203abe3182c8b0ae340ce inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's world-space position used by systems like culling and debug drawing.  <br /></td></tr>
+<tr class="memdesc:a4c708099448203abe3182c8b0ae340ce inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current world position.  <br /></td></tr>
 <tr class="separator:a4c708099448203abe3182c8b0ae340ce inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c2784b2a928fa1050d8a036091754c4 inherit pub_methods_class_object" id="r_a8c2784b2a928fa1050d8a036091754c4"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a8c2784b2a928fa1050d8a036091754c4">GetWorldScale</a> () const</td></tr>
-<tr class="memdesc:a8c2784b2a928fa1050d8a036091754c4 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's world-space scale used by systems like culling and collision sync.  <br /></td></tr>
+<tr class="memdesc:a8c2784b2a928fa1050d8a036091754c4 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current world scale.  <br /></td></tr>
 <tr class="separator:a8c2784b2a928fa1050d8a036091754c4 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb3716809623d005e893452f2973b604 inherit pub_methods_class_object" id="r_acb3716809623d005e893452f2973b604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#acb3716809623d005e893452f2973b604">SetFlipUV_X</a> (bool shouldFlip)</td></tr>
-<tr class="memdesc:acb3716809623d005e893452f2973b604 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables horizontal UV flipping for this object.  <br /></td></tr>
+<tr class="memdesc:acb3716809623d005e893452f2973b604 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables horizontal UV flipping.  <br /></td></tr>
 <tr class="separator:acb3716809623d005e893452f2973b604 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20a8c5f662aa6b8f7cc2e1da304c12f inherit pub_methods_class_object" id="r_ac20a8c5f662aa6b8f7cc2e1da304c12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ac20a8c5f662aa6b8f7cc2e1da304c12f">SetFlipUV_Y</a> (bool shouldFlip)</td></tr>
-<tr class="memdesc:ac20a8c5f662aa6b8f7cc2e1da304c12f inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables vertical UV flipping for this object.  <br /></td></tr>
+<tr class="memdesc:ac20a8c5f662aa6b8f7cc2e1da304c12f inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables vertical UV flipping.  <br /></td></tr>
 <tr class="separator:ac20a8c5f662aa6b8f7cc2e1da304c12f inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c9dd596d37ae4ab88ce7a33b725ba68 inherit pub_methods_class_object" id="r_a9c9dd596d37ae4ab88ce7a33b725ba68"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a9c9dd596d37ae4ab88ce7a33b725ba68">GetUVFlipVector</a> () const</td></tr>
-<tr class="memdesc:a9c9dd596d37ae4ab88ce7a33b725ba68 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a vector encoding UV flip multipliers used by the renderer.  <br /></td></tr>
+<tr class="memdesc:a9c9dd596d37ae4ab88ce7a33b725ba68 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV flip multiplier vector used by the renderer.  <br /></td></tr>
 <tr class="separator:a9c9dd596d37ae4ab88ce7a33b725ba68 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_object.html">Object</a></td></tr>
 <tr class="memitem:ac31ad8e33d6fd852422f4605f287b2da inherit pro_methods_class_object" id="r_ac31ad8e33d6fd852422f4605f287b2da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ac31ad8e33d6fd852422f4605f287b2da">Object</a> (<a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980">ObjectType</a> objectType)</td></tr>
-<tr class="memdesc:ac31ad8e33d6fd852422f4605f287b2da inherit pro_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> with a concrete type.  <br /></td></tr>
+<tr class="memdesc:ac31ad8e33d6fd852422f4605f287b2da inherit pro_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an object with an explicit runtime type.  <br /></td></tr>
 <tr class="separator:ac31ad8e33d6fd852422f4605f287b2da inherit pro_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5adc371bfc7b4216ffbc85907830e25 inherit pro_methods_class_object" id="r_ac5adc371bfc7b4216ffbc85907830e25"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ac5adc371bfc7b4216ffbc85907830e25">GetBoundingRadius</a> () const</td></tr>
-<tr class="memdesc:ac5adc371bfc7b4216ffbc85907830e25 inherit pro_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an approximate bounding radius used for camera visibility tests.  <br /></td></tr>
+<tr class="memdesc:ac5adc371bfc7b4216ffbc85907830e25 inherit pro_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an approximate bounding radius used for visibility testing.  <br /></td></tr>
 <tr class="separator:ac5adc371bfc7b4216ffbc85907830e25 inherit pro_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_object')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_object.html">Object</a></td></tr>
 <tr class="memitem:a0075dcd793d09d14f5ff0b20ce4db4f7 inherit pro_attribs_class_object" id="r_a0075dcd793d09d14f5ff0b20ce4db4f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980">ObjectType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a0075dcd793d09d14f5ff0b20ce4db4f7">type</a></td></tr>
@@ -294,10 +295,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aa00855f8cc3dc0f7fd06e2a76d523458 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9fcb18ac9136f0354dfc053967fe892 inherit pro_attribs_class_object" id="r_ab9fcb18ac9136f0354dfc053967fe892"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform2_d.html">Transform2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a></td></tr>
 <tr class="separator:ab9fcb18ac9136f0354dfc053967fe892 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af475bd962d08ec97add4497e92436076 inherit pro_attribs_class_object" id="r_af475bd962d08ec97add4497e92436076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_material.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#af475bd962d08ec97add4497e92436076">material</a> = nullptr</td></tr>
-<tr class="separator:af475bd962d08ec97add4497e92436076 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad755772f4633cd0ef94a05738ffb5e84 inherit pro_attribs_class_object" id="r_ad755772f4633cd0ef94a05738ffb5e84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> = nullptr</td></tr>
-<tr class="separator:ad755772f4633cd0ef94a05738ffb5e84 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af822711fb15809283931d0bfaa213b52 inherit pro_attribs_class_object" id="r_af822711fb15809283931d0bfaa213b52"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#af822711fb15809283931d0bfaa213b52">material</a></td></tr>
+<tr class="separator:af822711fb15809283931d0bfaa213b52 inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9197072c0174782f6999b02540f345bd inherit pro_attribs_class_object" id="r_a9197072c0174782f6999b02540f345bd"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a9197072c0174782f6999b02540f345bd">mesh</a></td></tr>
+<tr class="separator:a9197072c0174782f6999b02540f345bd inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d1a20796927cc278a924836c14cf48a inherit pro_attribs_class_object" id="r_a3d1a20796927cc278a924836c14cf48a"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a3d1a20796927cc278a924836c14cf48a">color</a> = glm::vec4(1)</td></tr>
 <tr class="separator:a3d1a20796927cc278a924836c14cf48a inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab373c4205c0460c9590f473b6c0c8304 inherit pro_attribs_class_object" id="r_ab373c4205c0460c9590f473b6c0c8304"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a></td></tr>
@@ -314,12 +315,21 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ac04012c6fb3b26b867320bdc9ab1ed3f inherit pro_attribs_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for all in-game objects with gameplay behavior. </p>
-<p><a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a> is a concrete specialization of <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> that represents entities participating in gameplay logic.</p>
-<p>It is constructed with <a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a> and is intended to be managed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> within a <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.</p>
-<p>All lifecycle functions are provided as overridable hooks and are empty by default, allowing derived classes to implement only the behavior they require. </p>
+<div class="textblock"><p>Convenience base class for gameplay-oriented objects. </p>
+<p><a class="el" href="class_game_object.html" title="Convenience base class for gameplay-oriented objects.">GameObject</a> is a lightweight derived class of <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> that represents a standard gameplay object type. Its constructor initializes the base <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> with <a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a>, and it provides empty default implementations for the full object lifecycle:</p>
+<ul>
+<li><a class="el" href="#a34ba812ec949058ea5ab184618e91590" title="Called when the object is first initialized.">Init()</a></li>
+<li><a class="el" href="#aafea6dd6a08d29078cc430ddf5a4f18e" title="Called after the initial Init phase has completed.">LateInit()</a></li>
+<li><a class="el" href="#a2af113da2569ef4e651ad8cfb3be50d8" title="Updates the object once per frame.">Update()</a></li>
+<li><a class="el" href="#a64fa4b69133f89e55fd4a51b468ce410" title="Allows the object to prepare rendering-related state before submission.">Draw()</a></li>
+<li><a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3" title="Called when the object begins its destruction or removal phase.">Free()</a></li>
+<li><a class="el" href="#a0386fbb9307311825bf4be78e61d21ca" title="Called after Free() during the final cleanup stage.">LateFree()</a></li>
+</ul>
+<p>This allows users to derive from <a class="el" href="class_game_object.html" title="Convenience base class for gameplay-oriented objects.">GameObject</a> and override only the callbacks they actually need, without being forced to implement every pure virtual function from <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> manually.</p>
+<p>In the engine update flow, these lifecycle functions are called by <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> as objects are added, updated, drawn, and removed.</p>
+<dl class="section note"><dt>Note</dt><dd>This class does not add new state of its own. It mainly exists as a user-facing convenience layer above <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00018">18</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00031">31</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0348e3ee2e83d56eafca7a3547f432c4" name="a0348e3ee2e83d56eafca7a3547f432c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0348e3ee2e83d56eafca7a3547f432c4">&#9670;&#160;</a></span>GameObject()</h2>
@@ -344,12 +354,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a> with GAME object type. </p>
+<p>Constructs a gameplay object. </p>
+<p>Initializes the base <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> with <a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a> so the engine can classify this instance as a standard gameplay object. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00024">24</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>: <a class="code hl_function" href="class_object.html#a218968689a0b4e855c4de92eb6242bcb">Object</a>(<a class="code hl_enumvalue" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a>) {}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00041">41</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>: <a class="code hl_function" href="class_object.html#a218968689a0b4e855c4de92eb6242bcb">Object</a>(<a class="code hl_enumvalue" href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a>) {}</div>
 <div class="ttc" id="a_object_8h_html_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13"><div class="ttname"><a href="_object_8h.html#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">ObjectType::GAME</a></div><div class="ttdeci">@ GAME</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00023">Object.h:23</a></div></div>
-<div class="ttc" id="aclass_object_html_a218968689a0b4e855c4de92eb6242bcb"><div class="ttname"><a href="class_object.html#a218968689a0b4e855c4de92eb6242bcb">Object::Object</a></div><div class="ttdeci">Object()=delete</div></div>
+<div class="ttc" id="aclass_object_html_a218968689a0b4e855c4de92eb6242bcb"><div class="ttname"><a href="class_object.html#a218968689a0b4e855c4de92eb6242bcb">Object::Object</a></div><div class="ttdeci">Object()=delete</div><div class="ttdoc">Deleted default constructor.</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -376,7 +387,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for <a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a>. </p>
+<p>Virtual destructor. </p>
+<p>Uses the default implementation because <a class="el" href="class_game_object.html" title="Convenience base class for gameplay-oriented objects.">GameObject</a> itself does not own additional resources beyond those managed by its base class and derived classes. </p>
 
 </div>
 </div>
@@ -404,13 +416,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the game object. </p>
-<p>This function is called during the rendering phase of the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
+<p>Allows the object to prepare rendering-related state before submission. </p>
+<p>This default implementation does nothing. Override this function when the object needs to modify rendering parameters immediately before draw submission, such as material uniforms, animation-driven data, or custom visual behavior.</p>
+<p>Actual rendering submission is handled through <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> and <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>, but this callback gives each object a chance to participate in that flow.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#a8d36cf36a47b76a005590557116814e6">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00062">62</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00115">115</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -437,13 +456,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Frees runtime resources owned by the game object. </p>
-<p>This function is called when the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> is being freed or when the object is explicitly destroyed. </p>
+<p>Called when the object begins its destruction or removal phase. </p>
+<p>This default implementation does nothing. Override this function to release gameplay-side resources, detach state, stop sounds, or perform cleanup logic before <a class="el" href="#a0386fbb9307311825bf4be78e61d21ca" title="Called after Free() during the final cleanup stage.">LateFree()</a> is called.</p>
+<p><a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> calls <a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3" title="Called when the object begins its destruction or removal phase.">Free()</a> for dead objects before performing their final removal from internal storage. :contentReference[oaicite:6]{index=6}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#aceba19437c716d229fc247463c381da5">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00071">71</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00130">130</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  130</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -470,13 +496,24 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes the game object. </p>
-<p>This function is called during the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> initialization phase, after the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> Init function and before LateInit. </p>
+<p>Called when the object is first initialized. </p>
+<p>This default implementation does nothing. Override this function in derived classes to perform one-time setup such as:</p><ul>
+<li>binding meshes or materials</li>
+<li>initializing gameplay state</li>
+<li>attaching colliders or animation data</li>
+</ul>
+<p>This function is invoked by <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> when pending objects are promoted into the active object lifecycle. :contentReference[oaicite:2]{index=2}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#a97dc6d6a1c56efaa682b8eef6dd4384b">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00038">38</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00067">67</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -503,13 +540,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Performs late cleanup logic for the game object. </p>
-<p>This function is called after Free and is intended for dependency-safe cleanup. </p>
+<p>Called after <a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3" title="Called when the object begins its destruction or removal phase.">Free()</a> during the final cleanup stage. </p>
+<p>This default implementation does nothing. Override this function for cleanup work that should happen after the main <a class="el" href="#ae104cfd85a1a55b46a1c47570d408dd3" title="Called when the object begins its destruction or removal phase.">Free()</a> stage, especially when destruction order relative to other objects matters.</p>
+<p>This is the last lifecycle callback before the object is removed from <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a>'s internal containers. :contentReference[oaicite:7]{index=7}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#acbc48ef4fd5b14b01a681e8fef4aaa20">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00080">80</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00145">145</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -536,13 +580,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Performs post-initialization logic for the game object. </p>
-<p>This function is called after all GameObjects have completed Init. </p>
+<p>Called after the initial Init phase has completed. </p>
+<p>This default implementation does nothing. Override this when the object needs post-initialization logic that should run after all pending objects in the current batch have completed <a class="el" href="#a34ba812ec949058ea5ab184618e91590" title="Called when the object is first initialized.">Init()</a>.</p>
+<p>This is useful when initialization depends on other objects already being present in the manager. :contentReference[oaicite:3]{index=3}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#af71fa9147e1a1f17ca5e93cc599d8eef">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00046">46</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00082">82</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -573,13 +624,21 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the game object every frame. </p>
-<p>This function is called once per frame during the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> update phase. </p>
+<p>Updates the object once per frame. </p>
+<p>This default implementation does nothing. Override this function to implement gameplay logic, movement, state transitions, input-driven behavior, timers, AI, or other per-frame processing.</p>
+<p>During the engine update loop, <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> calls <a class="el" href="#a2af113da2569ef4e651ad8cfb3be50d8" title="Updates the object once per frame.">Update()</a> for alive objects. Additional systems such as animation updates and collider scale synchronization may also be performed around this stage by the engine.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time in seconds for the current frame. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Provides access to core engine systems. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_object.html#a6184ab2516fed16398670b75a2360859">Object</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00054">54</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_game_object_8h_source.html#l00099">99</a> of file <a class="el" href="_game_object_8h_source.html">GameObject.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>

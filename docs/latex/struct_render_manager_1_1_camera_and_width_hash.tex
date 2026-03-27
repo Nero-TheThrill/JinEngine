@@ -2,7 +2,7 @@
 \hypertarget{struct_render_manager_1_1_camera_and_width_hash}{}\label{struct_render_manager_1_1_camera_and_width_hash}\index{RenderManager::CameraAndWidthHash@{RenderManager::CameraAndWidthHash}}
 
 
-Hash functor for (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width) keys used in debug\+Line\+Map.  
+Hash functor for grouping debug lines by camera pointer and line width.  
 
 
 \doxysubsubsection*{Public Member Functions}
@@ -13,9 +13,11 @@ std\+::size\+\_\+t \mbox{\hyperlink{struct_render_manager_1_1_camera_and_width_h
 
 
 \doxysubsection{Detailed Description}
-Hash functor for (Camera2\+D\texorpdfstring{$\ast$}{*}, line\+Width) keys used in debug\+Line\+Map. 
+Hash functor for grouping debug lines by camera pointer and line width. 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00678}{678}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+This is used as the hash function for debug\+Line\+Map. 
+
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00768}{768}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 
@@ -28,13 +30,13 @@ std\+::size\+\_\+t Render\+Manager\+::\+Camera\+And\+Width\+Hash\+::operator() (
 
 
 
-Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00680}{680}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_render_manager_8h_source_l00770}{770}} of file \mbox{\hyperlink{_render_manager_8h_source}{Render\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<Camera2D*>()(key.first)\ \string^\ std::hash<float>()(key.second);}
-\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<Camera2D*>()(key.first)\ \string^\ std::hash<float>()(key.second);}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 

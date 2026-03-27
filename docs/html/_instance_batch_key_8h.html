@@ -115,10 +115,10 @@ $(function(){initNavTree('_instance_batch_key_8h.html',''); initResizable(true);
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_instance_batch_key.html">InstanceBatchKey</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key structure used for grouping GameObjects into instanced rendering batches.  <a href="struct_instance_batch_key.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key type used to group objects into the same instanced rendering batch.  <a href="struct_instance_batch_key.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1hash_3_01_instance_batch_key_01_4.html">std::hash&lt; InstanceBatchKey &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash specialization for <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a>.  <a href="structstd_1_1hash_3_01_instance_batch_key_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash specialization for <a class="el" href="struct_instance_batch_key.html" title="Key type used to group objects into the same instanced rendering batch.">InstanceBatchKey</a>.  <a href="structstd_1_1hash_3_01_instance_batch_key_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -129,7 +129,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a89183dea2a482689b325a6fa102a641a" id="r_a89183dea2a482689b325a6fa102a641a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89183dea2a482689b325a6fa102a641a">InstancedBatchMap</a> = std::unordered_map&lt;int, std::unordered_map&lt;<a class="el" href="struct_instance_batch_key.html">InstanceBatchKey</a>, std::vector&lt;<a class="el" href="class_game_object.html">GameObject</a>*&gt;&gt;&gt;</td></tr>
-<tr class="memdesc:a89183dea2a482689b325a6fa102a641a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map structure used for organizing instanced rendering batches per render layer.  <br /></td></tr>
+<tr class="memdesc:a89183dea2a482689b325a6fa102a641a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nested unordered map type used to store instanced rendering batches by depth and batch key.  <br /></td></tr>
 <tr class="separator:a89183dea2a482689b325a6fa102a641a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -145,19 +145,18 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Map structure used for organizing instanced rendering batches per render layer. </p>
-<p>The outer map key (int) typically represents a render layer or render order.</p>
-<p>Each layer contains an unordered_map where:</p><ul>
-<li>The key is <a class="el" href="struct_instance_batch_key.html" title="Key structure used for grouping GameObjects into instanced rendering batches.">InstanceBatchKey</a> (shared render state)</li>
-<li>The value is a list of <a class="el" href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior.">GameObject</a> pointers that can be rendered together using instanced rendering.</li>
+<p>Nested unordered map type used to store instanced rendering batches by depth and batch key. </p>
+<p>The outer int key typically represents a depth bucket, z-order bucket, or another integer-based grouping level chosen by the render pipeline.</p>
+<p>The inner unordered_map groups objects by <a class="el" href="struct_instance_batch_key.html" title="Key type used to group objects into the same instanced rendering batch.">InstanceBatchKey</a>, meaning objects that share the same mesh, material, and sprite sheet are collected into the same vector.</p>
+<p>In other words, this structure can be interpreted as:</p>
+<ul>
+<li>first level: integer grouping (such as depth)</li>
+<li>second level: shared instancing resource key</li>
+<li>value: list of <a class="el" href="class_game_object.html" title="Convenience base class for gameplay-oriented objects.">GameObject</a> pointers belonging to that batch</li>
 </ul>
-<p>This structure allows the renderer to:</p><ul>
-<li>Group objects by layer</li>
-<li>Further batch objects by identical render resources</li>
-<li>Minimize draw calls during rendering </li>
-</ul>
+<p>This type is intended to make instanced draw submission easier by pre-grouping objects that can be rendered together. </p>
 
-<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00123">123</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_instance_batch_key_8h_source.html#l00145">145</a> of file <a class="el" href="_instance_batch_key_8h_source.html">InstanceBatchKey.h</a>.</p>
 
 </div>
 </div>

@@ -108,7 +108,7 @@ $(function(){initNavTree('class_sound_manager.html',''); initResizable(true); })
 </div><!--header-->
 <div class="contents">
 
-<p>Manages sound asset registration and runtime playback instances using miniaudio.  
+<p>Manages sound resource registration, runtime playback instances, and global sound control for the engine.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>&gt;</code></p>
@@ -116,7 +116,6 @@ $(function(){initNavTree('class_sound_manager.html',''); initResizable(true); })
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sound_manager_1_1_sound_info.html">SoundInfo</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered sound metadata for tag-based playback.  <a href="struct_sound_manager_1_1_sound_info.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,62 +126,65 @@ Public Types</h2></td></tr>
 , <a class="el" href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">Resume</a>
 , <a class="el" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">Stop</a>
  }</td></tr>
-<tr class="memdesc:a3c4fde85dedc1019d025b016b60c81ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control command type used by ControlByID/ControlByTag/ControlAll.  <a href="#a3c4fde85dedc1019d025b016b60c81ed">More...</a><br /></td></tr>
+<tr class="memdesc:a3c4fde85dedc1019d025b016b60c81ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the supported runtime control operations for sound playback instances.  <a href="#a3c4fde85dedc1019d025b016b60c81ed">More...</a><br /></td></tr>
 <tr class="separator:a3c4fde85dedc1019d025b016b60c81ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abcc1fbf3488be5788a42c9a4fe56df35" id="r_abcc1fbf3488be5788a42c9a4fe56df35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcc1fbf3488be5788a42c9a4fe56df35">SoundManager</a> ()</td></tr>
-<tr class="memdesc:abcc1fbf3488be5788a42c9a4fe56df35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> with no initialized audio engine.  <br /></td></tr>
+<tr class="memdesc:abcc1fbf3488be5788a42c9a4fe56df35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a>.  <br /></td></tr>
 <tr class="separator:abcc1fbf3488be5788a42c9a4fe56df35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5dbf8eab22db48ff8f3db51b02f8938" id="r_ad5dbf8eab22db48ff8f3db51b02f8938"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5dbf8eab22db48ff8f3db51b02f8938">~SoundManager</a> ()</td></tr>
-<tr class="memdesc:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> and releases all audio resources.  <br /></td></tr>
+<tr class="memdesc:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a> and releases all audio resources.  <br /></td></tr>
 <tr class="separator:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac4b48cfc4d394c547f5efec7d451165" id="r_aac4b48cfc4d394c547f5efec7d451165"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac4b48cfc4d394c547f5efec7d451165">SoundManager</a> (const <a class="el" href="class_sound_manager.html">SoundManager</a> &amp;)=delete</td></tr>
 <tr class="separator:aac4b48cfc4d394c547f5efec7d451165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5792dd09a6293846f738e7f9418d9085" id="r_a5792dd09a6293846f738e7f9418d9085"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sound_manager.html">SoundManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5792dd09a6293846f738e7f9418d9085">operator=</a> (const <a class="el" href="class_sound_manager.html">SoundManager</a> &amp;)=delete</td></tr>
 <tr class="separator:a5792dd09a6293846f738e7f9418d9085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e52926369f4ff23599507c5e7cf7246" id="r_a8e52926369f4ff23599507c5e7cf7246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e52926369f4ff23599507c5e7cf7246">LoadSound</a> (const std::string &amp;tag, const std::string &amp;filepath, bool loop=false)</td></tr>
-<tr class="memdesc:a8e52926369f4ff23599507c5e7cf7246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a sound asset under a tag.  <br /></td></tr>
+<tr class="memdesc:a8e52926369f4ff23599507c5e7cf7246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a sound resource under a tag.  <br /></td></tr>
 <tr class="separator:a8e52926369f4ff23599507c5e7cf7246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc7074efb4e8b5c71e85f556769d9b17" id="r_acc7074efb4e8b5c71e85f556769d9b17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17">Play</a> (const std::string &amp;tag, float volume=1.0f, float startTimeSec=0.0f)</td></tr>
-<tr class="memdesc:acc7074efb4e8b5c71e85f556769d9b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a new instance of a previously registered sound.  <br /></td></tr>
+<tr class="memdesc:acc7074efb4e8b5c71e85f556769d9b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a registered sound using its tag.  <br /></td></tr>
 <tr class="separator:acc7074efb4e8b5c71e85f556769d9b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f9b8035bc8c346790806036aa0e708" id="r_a27f9b8035bc8c346790806036aa0e708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27f9b8035bc8c346790806036aa0e708">Play</a> (const std::string &amp;tag, float volume, float startTimeSec, std::function&lt; void(<a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, const std::string &amp;)&gt; onFinished)</td></tr>
+<tr class="memdesc:a27f9b8035bc8c346790806036aa0e708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a registered sound using its tag and registers a callback for one-shot completion.  <br /></td></tr>
+<tr class="separator:a27f9b8035bc8c346790806036aa0e708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66c578e6c2850d673ea035870871e6ab" id="r_a66c578e6c2850d673ea035870871e6ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66c578e6c2850d673ea035870871e6ab">SetVolumeByID</a> (<a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> id, float volume)</td></tr>
-<tr class="memdesc:a66c578e6c2850d673ea035870871e6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the volume of a specific playback instance by ID.  <br /></td></tr>
+<tr class="memdesc:a66c578e6c2850d673ea035870871e6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the playback volume of a specific active sound instance.  <br /></td></tr>
 <tr class="separator:a66c578e6c2850d673ea035870871e6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8581621afa759742160371f27c31e6fa" id="r_a8581621afa759742160371f27c31e6fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8581621afa759742160371f27c31e6fa">SetVolumeByTag</a> (const std::string &amp;tag, float volume)</td></tr>
-<tr class="memdesc:a8581621afa759742160371f27c31e6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the volume of all active instances associated with a tag.  <br /></td></tr>
+<tr class="memdesc:a8581621afa759742160371f27c31e6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the playback volume for all active instances created from the same sound tag.  <br /></td></tr>
 <tr class="separator:a8581621afa759742160371f27c31e6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4447c313bba2cdfbac3053a094f66776" id="r_a4447c313bba2cdfbac3053a094f66776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4447c313bba2cdfbac3053a094f66776">SetVolumeAll</a> (float volume)</td></tr>
-<tr class="memdesc:a4447c313bba2cdfbac3053a094f66776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the volume of all active instances across all tags.  <br /></td></tr>
+<tr class="memdesc:a4447c313bba2cdfbac3053a094f66776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the playback volume for all active sound instances.  <br /></td></tr>
 <tr class="separator:a4447c313bba2cdfbac3053a094f66776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d8a89dcb398e0e51b6853f5aa684280" id="r_a8d8a89dcb398e0e51b6853f5aa684280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d8a89dcb398e0e51b6853f5aa684280">ControlByID</a> (<a class="el" href="#a3c4fde85dedc1019d025b016b60c81ed">SoundControlType</a> control, <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> id)</td></tr>
-<tr class="memdesc:a8d8a89dcb398e0e51b6853f5aa684280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a control command to a specific playback instance by ID.  <br /></td></tr>
+<tr class="memdesc:a8d8a89dcb398e0e51b6853f5aa684280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a playback control command to one active sound instance.  <br /></td></tr>
 <tr class="separator:a8d8a89dcb398e0e51b6853f5aa684280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa6392113f543f2bb32e6811bd010100" id="r_aaa6392113f543f2bb32e6811bd010100"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6392113f543f2bb32e6811bd010100">ControlByTag</a> (<a class="el" href="#a3c4fde85dedc1019d025b016b60c81ed">SoundControlType</a> control, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:aaa6392113f543f2bb32e6811bd010100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a control command to all active instances associated with a tag.  <br /></td></tr>
+<tr class="memdesc:aaa6392113f543f2bb32e6811bd010100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a playback control command to all active sound instances associated with a tag.  <br /></td></tr>
 <tr class="separator:aaa6392113f543f2bb32e6811bd010100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad78be412f57622826d4d7bf5f46378a8" id="r_ad78be412f57622826d4d7bf5f46378a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78be412f57622826d4d7bf5f46378a8">ControlAll</a> (<a class="el" href="#a3c4fde85dedc1019d025b016b60c81ed">SoundControlType</a> control)</td></tr>
-<tr class="memdesc:ad78be412f57622826d4d7bf5f46378a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a control command to all active instances across all tags.  <br /></td></tr>
+<tr class="memdesc:ad78be412f57622826d4d7bf5f46378a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a playback control command to all active sound instances in the manager.  <br /></td></tr>
 <tr class="separator:ad78be412f57622826d4d7bf5f46378a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:af1ee5e29fca894a8ac9aeeb56b81f21d" id="r_af1ee5e29fca894a8ac9aeeb56b81f21d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1ee5e29fca894a8ac9aeeb56b81f21d">Init</a> ()</td></tr>
-<tr class="memdesc:af1ee5e29fca894a8ac9aeeb56b81f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes the miniaudio engine.  <br /></td></tr>
+<tr class="memdesc:af1ee5e29fca894a8ac9aeeb56b81f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the underlying miniaudio engine.  <br /></td></tr>
 <tr class="separator:af1ee5e29fca894a8ac9aeeb56b81f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf241621221cdbefeba78e8b6bc29240" id="r_aaf241621221cdbefeba78e8b6bc29240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf241621221cdbefeba78e8b6bc29240">Update</a> ()</td></tr>
-<tr class="memdesc:aaf241621221cdbefeba78e8b6bc29240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs per-frame maintenance of sound instances.  <br /></td></tr>
+<tr class="memdesc:aaf241621221cdbefeba78e8b6bc29240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the sound system for the current frame.  <br /></td></tr>
 <tr class="separator:aaf241621221cdbefeba78e8b6bc29240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a77d91e2c8257d6c2d02ffffad671ff" id="r_a4a77d91e2c8257d6c2d02ffffad671ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff">Cleanup</a> ()</td></tr>
-<tr class="memdesc:a4a77d91e2c8257d6c2d02ffffad671ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes finished playback instances and recycles their IDs.  <br /></td></tr>
+<tr class="memdesc:a4a77d91e2c8257d6c2d02ffffad671ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up finished non-looping sound instances and executes pending completion callbacks.  <br /></td></tr>
 <tr class="separator:a4a77d91e2c8257d6c2d02ffffad671ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af25662c1d0237540686087a080001f9b" id="r_af25662c1d0237540686087a080001f9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af25662c1d0237540686087a080001f9b">Free</a> ()</td></tr>
-<tr class="memdesc:af25662c1d0237540686087a080001f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops all instances and destroys the miniaudio engine.  <br /></td></tr>
+<tr class="memdesc:af25662c1d0237540686087a080001f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases every internal audio resource and resets the manager to its initial empty state.  <br /></td></tr>
 <tr class="separator:af25662c1d0237540686087a080001f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e76b08631c0a87462dab75fb0d526ed" id="r_a1e76b08631c0a87462dab75fb0d526ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e76b08631c0a87462dab75fb0d526ed">GenerateID</a> ()</td></tr>
-<tr class="memdesc:a1e76b08631c0a87462dab75fb0d526ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a new <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, reusing IDs when available.  <br /></td></tr>
+<tr class="memdesc:a1e76b08631c0a87462dab75fb0d526ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a runtime ID for a new playback instance.  <br /></td></tr>
 <tr class="separator:a1e76b08631c0a87462dab75fb0d526ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -203,21 +205,24 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a910b1fd3f58c344c1b2185b031d188d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages sound asset registration and runtime playback instances using miniaudio. </p>
-<p><a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> owns a miniaudio engine (ma_engine) and provides a tag-based interface for:</p><ul>
-<li>Registering sound assets (tag -&gt; filepath + loop setting).</li>
-<li>Spawning playback instances (each Play call creates a new ma_sound instance).</li>
-<li>Controlling active instances (pause/resume/stop) by instance ID, by tag, or globally.</li>
-<li>Cleaning up finished non-looping instances and recycling their IDs.</li>
+<div class="textblock"><p>Manages sound resource registration, runtime playback instances, and global sound control for the engine. </p>
+<p><a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a> is the engine-level audio system built on top of miniaudio. It stores lightweight sound metadata through <a class="el" href="#a8e52926369f4ff23599507c5e7cf7246" title="Registers a sound resource under a tag.">LoadSound()</a>, and creates an actual playback instance only when <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a registered sound using its tag.">Play()</a> is called.</p>
+<p>Each <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a registered sound using its tag.">Play()</a> call creates a new runtime sound instance, assigns it a unique <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, stores it in an internal instance map, and also groups it by tag so that sounds can be controlled either individually or in batches.</p>
+<p>The manager supports:</p><ul>
+<li>loading sound metadata by tag,</li>
+<li>starting multiple simultaneous instances from the same sound tag,</li>
+<li>per-instance, per-tag, or global volume control,</li>
+<li>per-instance, per-tag, or global pause/resume/stop control,</li>
+<li>automatic cleanup of finished non-looping sounds,</li>
+<li>optional completion callbacks for one-shot playback.</li>
 </ul>
-<p>Each <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a new instance of a previously registered sound.">Play()</a> call loads the file and creates a dedicated playback instance. Active instances are tracked in two ways:</p><ul>
-<li>instanceMap: <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> -&gt; instance pointer</li>
-<li>activeChannels: tag -&gt; list of active instance pointers</li>
-</ul>
-<p>IDs are recycled using a queue (reusableIDs) to avoid unbounded growth of <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>.</p>
-<p>The miniaudio engine is created and initialized in <a class="el" href="#af1ee5e29fca894a8ac9aeeb56b81f21d" title="Creates and initializes the miniaudio engine.">Init()</a>, and destroyed in <a class="el" href="#af25662c1d0237540686087a080001f9b" title="Stops all instances and destroys the miniaudio engine.">Free()</a>. <a class="el" href="#aaf241621221cdbefeba78e8b6bc29240" title="Performs per-frame maintenance of sound instances.">Update()</a> performs maintenance by calling <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Removes finished playback instances and recycles their IDs.">Cleanup()</a> to remove finished instances. </p>
+<p>Pause and resume are implemented by saving the current PCM cursor position, stopping playback, and later seeking back to the saved frame before restarting.</p>
+<p>Finished non-looping sounds are not removed immediately at the exact moment playback ends. They are collected and released during <a class="el" href="#aaf241621221cdbefeba78e8b6bc29240" title="Updates the sound system for the current frame.">Update()</a>, which internally calls <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a>. Because of that, the engine must call <a class="el" href="#aaf241621221cdbefeba78e8b6bc29240" title="Updates the sound system for the current frame.">Update()</a> regularly every frame for proper sound lifecycle management.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="#a8e52926369f4ff23599507c5e7cf7246" title="Registers a sound resource under a tag.">LoadSound()</a> only registers file path and loop information. Actual miniaudio sound objects are created per playback instance inside <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a registered sound using its tag.">Play()</a>.</dd>
+<dd>
+This class is owned and driven by the engine. <a class="el" href="class_jin_engine.html" title="Core engine class that manages initialization, main loop execution, and system lifecycle.">JinEngine</a> is declared as a friend so it can access initialization, update, and shutdown functions. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00035">35</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00051">51</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a3c4fde85dedc1019d025b016b60c81ed" name="a3c4fde85dedc1019d025b016b60c81ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c4fde85dedc1019d025b016b60c81ed">&#9670;&#160;</a></span>SoundControlType</h2>
@@ -239,20 +244,22 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Control command type used by ControlByID/ControlByTag/ControlAll. </p>
-<ul>
-<li>Pause: stores playback cursor, stops the sound, and marks the instance as paused.</li>
-<li>Resume: seeks to stored cursor and restarts if the instance is marked paused.</li>
-<li>Stop: stops, uninitializes, destroys the instance, removes tracking entries, and recycles its ID. </li>
-</ul>
+<p>Defines the supported runtime control operations for sound playback instances. </p>
+<p>Pause: Saves the current PCM cursor, stops playback, and marks the instance as paused.</p>
+<p>Resume: Seeks back to the saved PCM cursor and restarts playback only if the instance is currently paused.</p>
+<p>Stop: Immediately stops playback, uninitializes the sound object, removes the instance from tracking containers, deletes the runtime instance, and recycles its <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> for future reuse. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f" name="a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f"></a>Pause&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325" name="a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325"></a>Resume&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481" name="a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481"></a>Stop&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00143">143</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>{ Pause, Resume, Stop };</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00217">217</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>    {</div>
+<div class="line"><span class="lineno">  219</span>        Pause,</div>
+<div class="line"><span class="lineno">  220</span>        Resume,</div>
+<div class="line"><span class="lineno">  221</span>        Stop</div>
+<div class="line"><span class="lineno">  222</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -272,16 +279,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs an empty <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> with no initialized audio engine. </p>
-<p>The underlying miniaudio engine is created/initialized by <a class="el" href="#af1ee5e29fca894a8ac9aeeb56b81f21d" title="Creates and initializes the miniaudio engine.">Init()</a>, which is expected to be called by <a class="el" href="class_jin_engine.html" title="Top-level engine facade that owns core managers and drives the main game loop.">JinEngine</a> during engine startup. </p>
+<p>Constructs an empty <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a>. </p>
+<p>The constructor initializes internal state only. It does not initialize the underlying miniaudio engine automatically. Actual audio backend initialization is performed by <a class="el" href="#af1ee5e29fca894a8ac9aeeb56b81f21d" title="Initializes the underlying miniaudio engine.">Init()</a>.</p>
+<p>The reusable ID queue starts empty, and the next generated sound instance ID starts from 1. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00024">24</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>    : <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   26</span>    , <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a>(1)</div>
-<div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a910b1fd3f58c344c1b2185b031d188d0"><div class="ttname"><a href="#a910b1fd3f58c344c1b2185b031d188d0">SoundManager::nextInstanceID</a></div><div class="ttdeci">SoundInstanceID nextInstanceID</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00272">SoundManager.h:272</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_ac2e5b555ac4b752012ef3032184847f2"><div class="ttname"><a href="#ac2e5b555ac4b752012ef3032184847f2">SoundManager::engine</a></div><div class="ttdeci">ma_engine * engine</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00255">SoundManager.h:255</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00028">28</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>    : <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>(<span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   30</span>    , <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a>(1)</div>
+<div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_a910b1fd3f58c344c1b2185b031d188d0"><div class="ttname"><a href="#a910b1fd3f58c344c1b2185b031d188d0">SoundManager::nextInstanceID</a></div><div class="ttdeci">SoundInstanceID nextInstanceID</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00397">SoundManager.h:397</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_ac2e5b555ac4b752012ef3032184847f2"><div class="ttname"><a href="#ac2e5b555ac4b752012ef3032184847f2">SoundManager::engine</a></div><div class="ttdeci">ma_engine * engine</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00383">SoundManager.h:383</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,14 +308,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destroys the <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> and releases all audio resources. </p>
-<p>Calls <a class="el" href="#af25662c1d0237540686087a080001f9b" title="Stops all instances and destroys the miniaudio engine.">Free()</a> to stop and destroy all active instances and to uninitialize/destroy the underlying miniaudio engine. </p>
+<p>Destroys the <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a> and releases all audio resources. </p>
+<p>The destructor calls <a class="el" href="#af25662c1d0237540686087a080001f9b" title="Releases every internal audio resource and resets the manager to its initial empty state.">Free()</a>, which:</p><ul>
+<li>stops and uninitializes all active sound instances,</li>
+<li>deletes all runtime sound instance objects,</li>
+<li>clears the instance map and tag-grouped channel lists,</li>
+<li>clears registered sound metadata,</li>
+<li>resets reusable ID storage,</li>
+<li>uninitializes and deletes the miniaudio engine.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>After destruction, all previously returned <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> values become invalid. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00030">30</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_function" href="#af25662c1d0237540686087a080001f9b">Free</a>();</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_af25662c1d0237540686087a080001f9b"><div class="ttname"><a href="#af25662c1d0237540686087a080001f9b">SoundManager::Free</a></div><div class="ttdeci">void Free()</div><div class="ttdoc">Stops all instances and destroys the miniaudio engine.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00053">SoundManager.cpp:53</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00034">34</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_function" href="#af25662c1d0237540686087a080001f9b">Free</a>();</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_af25662c1d0237540686087a080001f9b"><div class="ttname"><a href="#af25662c1d0237540686087a080001f9b">SoundManager::Free</a></div><div class="ttdeci">void Free()</div><div class="ttdoc">Releases every internal audio resource and resets the manager to its initial empty state.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00057">SoundManager.cpp:57</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -360,74 +376,109 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Removes finished playback instances and recycles their IDs. </p>
-<p>For each tracked instance:</p><ul>
-<li>Looping instances are kept even if not currently playing.</li>
-<li>Non-looping instances that reached the end are uninitialized, removed from activeChannels, deleted, removed from instanceMap, and their IDs are queued for reuse.</li>
+<p>Cleans up finished non-looping sound instances and executes pending completion callbacks. </p>
+<p>This function scans all tracked runtime instances and identifies sound instances that:</p><ul>
+<li>are not currently playing,</li>
+<li>are not looping,</li>
+<li>and have reached the end of the sound stream.</li>
 </ul>
-<p>After the main pass, activeChannels vectors are also pruned to remove nullptr entries and entries that correspond to finished non-looping sounds. </p>
+<p>For each such instance, <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a>:</p><ul>
+<li>queues its completion callback if one exists,</li>
+<li>uninitializes the miniaudio sound object,</li>
+<li>removes the instance pointer from its tag-based active channel list,</li>
+<li>deletes the runtime object,</li>
+<li>erases the ID from instanceMap,</li>
+<li>pushes the released ID into the reusable ID queue.</li>
+</ul>
+<p>After that, it also performs an additional pass over active channel vectors to remove stale pointers that correspond to naturally finished non-looping instances.</p>
+<p>Finally, it executes queued callbacks after internal cleanup preparation is complete.</p>
+<dl class="section note"><dt>Note</dt><dd>Looping sounds are intentionally skipped here and remain active until explicitly stopped. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00335">335</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  336</span>{</div>
-<div class="line"><span class="lineno">  337</span>    std::vector&lt;SoundInstanceID&gt; finishedIDs;</div>
-<div class="line"><span class="lineno">  338</span>    finishedIDs.reserve(<a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.size());</div>
-<div class="line"><span class="lineno">  339</span> </div>
-<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, inst] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
-<div class="line"><span class="lineno">  341</span>    {</div>
-<div class="line"><span class="lineno">  342</span>        <span class="keywordflow">if</span> (inst == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  343</span>        {</div>
-<div class="line"><span class="lineno">  344</span>            finishedIDs.push_back(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  345</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  346</span>        }</div>
-<div class="line"><span class="lineno">  347</span> </div>
-<div class="line"><span class="lineno">  348</span>        <span class="keyword">const</span> ma_bool32 playing = ma_sound_is_playing(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  349</span>        <span class="keywordflow">if</span> (!playing)</div>
-<div class="line"><span class="lineno">  350</span>        {</div>
-<div class="line"><span class="lineno">  351</span>            <span class="keywordflow">if</span> (inst-&gt;looping)</div>
-<div class="line"><span class="lineno">  352</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  353</span> </div>
-<div class="line"><span class="lineno">  354</span>            <span class="keywordflow">if</span> (ma_sound_at_end(&amp;inst-&gt;sound))</div>
-<div class="line"><span class="lineno">  355</span>            {</div>
-<div class="line"><span class="lineno">  356</span>                ma_sound_uninit(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  357</span> </div>
-<div class="line"><span class="lineno">  358</span>                <span class="keyword">auto</span> acIt = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(inst-&gt;tag);</div>
-<div class="line"><span class="lineno">  359</span>                <span class="keywordflow">if</span> (acIt != <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
-<div class="line"><span class="lineno">  360</span>                {</div>
-<div class="line"><span class="lineno">  361</span>                    <span class="keyword">auto</span>&amp; vec = acIt-&gt;second;</div>
-<div class="line"><span class="lineno">  362</span>                    vec.erase(std::remove(vec.begin(), vec.end(), inst), vec.end());</div>
-<div class="line"><span class="lineno">  363</span>                }</div>
-<div class="line"><span class="lineno">  364</span> </div>
-<div class="line"><span class="lineno">  365</span>                <span class="keyword">delete</span> inst;</div>
-<div class="line"><span class="lineno">  366</span>                finishedIDs.push_back(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  367</span>            }</div>
-<div class="line"><span class="lineno">  368</span>        }</div>
-<div class="line"><span class="lineno">  369</span>    }</div>
-<div class="line"><span class="lineno">  370</span> </div>
-<div class="line"><span class="lineno">  371</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> : finishedIDs)</div>
-<div class="line"><span class="lineno">  372</span>    {</div>
-<div class="line"><span class="lineno">  373</span>        <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  374</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  375</span>    }</div>
-<div class="line"><span class="lineno">  376</span> </div>
-<div class="line"><span class="lineno">  377</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [tag, vec] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
-<div class="line"><span class="lineno">  378</span>    {</div>
-<div class="line"><span class="lineno">  379</span>        vec.erase(</div>
-<div class="line"><span class="lineno">  380</span>            std::remove_if(vec.begin(), vec.end(),</div>
-<div class="line"><span class="lineno">  381</span>                [](<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst)</div>
-<div class="line"><span class="lineno">  382</span>                {</div>
-<div class="line"><span class="lineno">  383</span>                    if (inst == nullptr) return true;</div>
-<div class="line"><span class="lineno">  384</span>                    if (!inst-&gt;looping &amp;&amp; !ma_sound_is_playing(&amp;inst-&gt;sound) &amp;&amp; ma_sound_at_end(&amp;inst-&gt;sound))</div>
-<div class="line"><span class="lineno">  385</span>                        return true;</div>
-<div class="line"><span class="lineno">  386</span>                    return false;</div>
-<div class="line"><span class="lineno">  387</span>                }),</div>
-<div class="line"><span class="lineno">  388</span>            vec.end());</div>
-<div class="line"><span class="lineno">  389</span>    }</div>
-<div class="line"><span class="lineno">  390</span>}</div>
-<div class="ttc" id="a_sound_manager_8h_html_a7675718ce8055fa8280410c0d32ad4f3"><div class="ttname"><a href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a></div><div class="ttdeci">uint64_t SoundInstanceID</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00013">SoundManager.h:13</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a2790a08c6ebba08bba3ad5539834ca6b"><div class="ttname"><a href="#a2790a08c6ebba08bba3ad5539834ca6b">SoundManager::reusableIDs</a></div><div class="ttdeci">std::queue&lt; SoundInstanceID &gt; reusableIDs</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00271">SoundManager.h:271</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a75b7dcdccb8b231683bb0c21519f5c39"><div class="ttname"><a href="#a75b7dcdccb8b231683bb0c21519f5c39">SoundManager::activeChannels</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; SoundInstanceMA * &gt; &gt; activeChannels</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00268">SoundManager.h:268</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_af2c6998eead9b15cac317be3c26a03ef"><div class="ttname"><a href="#af2c6998eead9b15cac317be3c26a03ef">SoundManager::instanceMap</a></div><div class="ttdeci">std::unordered_map&lt; SoundInstanceID, SoundInstanceMA * &gt; instanceMap</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00269">SoundManager.h:269</a></div></div>
-<div class="ttc" id="astruct_sound_manager_1_1_sound_instance_m_a_html"><div class="ttname"><a href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundManager::SoundInstanceMA</a></div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00015">SoundManager.cpp:16</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00358">358</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  359</span>{</div>
+<div class="line"><span class="lineno">  360</span>    std::vector&lt;SoundInstanceID&gt; finishedIDs;</div>
+<div class="line"><span class="lineno">  361</span>    finishedIDs.reserve(<a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.size());</div>
+<div class="line"><span class="lineno">  362</span> </div>
+<div class="line"><span class="lineno">  363</span>    std::vector&lt;std::function&lt;void()&gt;&gt; pendingCallbacks;</div>
+<div class="line"><span class="lineno">  364</span>    pendingCallbacks.reserve(<a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.size());</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, inst] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
+<div class="line"><span class="lineno">  367</span>    {</div>
+<div class="line"><span class="lineno">  368</span>        <span class="keywordflow">if</span> (inst == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  369</span>        {</div>
+<div class="line"><span class="lineno">  370</span>            finishedIDs.push_back(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  371</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  372</span>        }</div>
+<div class="line"><span class="lineno">  373</span> </div>
+<div class="line"><span class="lineno">  374</span>        <span class="keyword">const</span> ma_bool32 playing = ma_sound_is_playing(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  375</span>        <span class="keywordflow">if</span> (!playing)</div>
+<div class="line"><span class="lineno">  376</span>        {</div>
+<div class="line"><span class="lineno">  377</span>            <span class="keywordflow">if</span> (inst-&gt;looping)</div>
+<div class="line"><span class="lineno">  378</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  379</span> </div>
+<div class="line"><span class="lineno">  380</span>            <span class="keywordflow">if</span> (ma_sound_at_end(&amp;inst-&gt;sound))</div>
+<div class="line"><span class="lineno">  381</span>            {</div>
+<div class="line"><span class="lineno">  382</span>                <span class="keywordflow">if</span> (inst-&gt;onFinished)</div>
+<div class="line"><span class="lineno">  383</span>                {</div>
+<div class="line"><span class="lineno">  384</span>                    <span class="keyword">const</span> std::string finishedTag = inst-&gt;tag;</div>
+<div class="line"><span class="lineno">  385</span>                    pendingCallbacks.push_back(</div>
+<div class="line"><span class="lineno">  386</span>                        [callback = inst-&gt;onFinished, <span class="keywordtype">id</span>, finishedTag]()</div>
+<div class="line"><span class="lineno">  387</span>                        {</div>
+<div class="line"><span class="lineno">  388</span>                            callback(id, finishedTag);</div>
+<div class="line"><span class="lineno">  389</span>                        });</div>
+<div class="line"><span class="lineno">  390</span>                }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>                ma_sound_uninit(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  393</span> </div>
+<div class="line"><span class="lineno">  394</span>                <span class="keyword">auto</span> acIt = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(inst-&gt;tag);</div>
+<div class="line"><span class="lineno">  395</span>                <span class="keywordflow">if</span> (acIt != <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
+<div class="line"><span class="lineno">  396</span>                {</div>
+<div class="line"><span class="lineno">  397</span>                    <span class="keyword">auto</span>&amp; vec = acIt-&gt;second;</div>
+<div class="line"><span class="lineno">  398</span>                    vec.erase(std::remove(vec.begin(), vec.end(), inst), vec.end());</div>
+<div class="line"><span class="lineno">  399</span>                }</div>
+<div class="line"><span class="lineno">  400</span> </div>
+<div class="line"><span class="lineno">  401</span>                <span class="keyword">delete</span> inst;</div>
+<div class="line"><span class="lineno">  402</span>                finishedIDs.push_back(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  403</span>            }</div>
+<div class="line"><span class="lineno">  404</span>        }</div>
+<div class="line"><span class="lineno">  405</span>    }</div>
+<div class="line"><span class="lineno">  406</span> </div>
+<div class="line"><span class="lineno">  407</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> : finishedIDs)</div>
+<div class="line"><span class="lineno">  408</span>    {</div>
+<div class="line"><span class="lineno">  409</span>        <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  410</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  411</span>    }</div>
+<div class="line"><span class="lineno">  412</span> </div>
+<div class="line"><span class="lineno">  413</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [tag, vec] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
+<div class="line"><span class="lineno">  414</span>    {</div>
+<div class="line"><span class="lineno">  415</span>        vec.erase(</div>
+<div class="line"><span class="lineno">  416</span>            std::remove_if(vec.begin(), vec.end(),</div>
+<div class="line"><span class="lineno">  417</span>                [](<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst)</div>
+<div class="line"><span class="lineno">  418</span>                {</div>
+<div class="line"><span class="lineno">  419</span>                    if (inst == nullptr)</div>
+<div class="line"><span class="lineno">  420</span>                        return true;</div>
+<div class="line"><span class="lineno">  421</span> </div>
+<div class="line"><span class="lineno">  422</span>                    if (!inst-&gt;looping &amp;&amp; !ma_sound_is_playing(&amp;inst-&gt;sound) &amp;&amp; ma_sound_at_end(&amp;inst-&gt;sound))</div>
+<div class="line"><span class="lineno">  423</span>                        return true;</div>
+<div class="line"><span class="lineno">  424</span> </div>
+<div class="line"><span class="lineno">  425</span>                    return false;</div>
+<div class="line"><span class="lineno">  426</span>                }),</div>
+<div class="line"><span class="lineno">  427</span>            vec.end());</div>
+<div class="line"><span class="lineno">  428</span>    }</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; callback : pendingCallbacks)</div>
+<div class="line"><span class="lineno">  431</span>    {</div>
+<div class="line"><span class="lineno">  432</span>        <span class="keywordflow">if</span> (callback)</div>
+<div class="line"><span class="lineno">  433</span>        {</div>
+<div class="line"><span class="lineno">  434</span>            callback();</div>
+<div class="line"><span class="lineno">  435</span>        }</div>
+<div class="line"><span class="lineno">  436</span>    }</div>
+<div class="line"><span class="lineno">  437</span>}</div>
+<div class="ttc" id="a_sound_manager_8h_html_a7675718ce8055fa8280410c0d32ad4f3"><div class="ttname"><a href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a></div><div class="ttdeci">uint64_t SoundInstanceID</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00014">SoundManager.h:14</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a2790a08c6ebba08bba3ad5539834ca6b"><div class="ttname"><a href="#a2790a08c6ebba08bba3ad5539834ca6b">SoundManager::reusableIDs</a></div><div class="ttdeci">std::queue&lt; SoundInstanceID &gt; reusableIDs</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00396">SoundManager.h:396</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a75b7dcdccb8b231683bb0c21519f5c39"><div class="ttname"><a href="#a75b7dcdccb8b231683bb0c21519f5c39">SoundManager::activeChannels</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; SoundInstanceMA * &gt; &gt; activeChannels</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00393">SoundManager.h:393</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_af2c6998eead9b15cac317be3c26a03ef"><div class="ttname"><a href="#af2c6998eead9b15cac317be3c26a03ef">SoundManager::instanceMap</a></div><div class="ttdeci">std::unordered_map&lt; SoundInstanceID, SoundInstanceMA * &gt; instanceMap</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00394">SoundManager.h:394</a></div></div>
+<div class="ttc" id="astruct_sound_manager_1_1_sound_instance_m_a_html"><div class="ttname"><a href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundManager::SoundInstanceMA</a></div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00016">SoundManager.cpp:17</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -446,30 +497,32 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies a control command to all active instances across all tags. </p>
-<p>This collects a snapshot list of tags from activeChannels and calls <a class="el" href="#aaa6392113f543f2bb32e6811bd010100" title="Applies a control command to all active instances associated with a tag.">ControlByTag()</a> for each tag, which avoids iterator invalidation while modifying activeChannels.</p>
+<p>Applies a playback control command to all active sound instances in the manager. </p>
+<p>This function first copies all currently known active tags into a temporary list, then calls <a class="el" href="#aaa6392113f543f2bb32e6811bd010100" title="Applies a playback control command to all active sound instances associated with a tag.">ControlByTag()</a> for each tag.</p>
+<p>Copying the tag list first avoids invalidation issues while ControlByTag(Stop, ...) modifies internal tracking containers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">control</td><td>Control command. </td></tr>
+    <tr><td class="paramname">control</td><td>Runtime control command to apply globally. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00315">315</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  316</span>{</div>
-<div class="line"><span class="lineno">  317</span>    std::vector&lt;std::string&gt; tags;</div>
-<div class="line"><span class="lineno">  318</span>    tags.reserve(<a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.size());</div>
-<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; kv : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
-<div class="line"><span class="lineno">  320</span>    {</div>
-<div class="line"><span class="lineno">  321</span>        tags.push_back(kv.first);</div>
-<div class="line"><span class="lineno">  322</span>    }</div>
-<div class="line"><span class="lineno">  323</span> </div>
-<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; t : tags)</div>
-<div class="line"><span class="lineno">  325</span>    {</div>
-<div class="line"><span class="lineno">  326</span>        <a class="code hl_function" href="#aaa6392113f543f2bb32e6811bd010100">ControlByTag</a>(control, t);</div>
-<div class="line"><span class="lineno">  327</span>    }</div>
-<div class="line"><span class="lineno">  328</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_aaa6392113f543f2bb32e6811bd010100"><div class="ttname"><a href="#aaa6392113f543f2bb32e6811bd010100">SoundManager::ControlByTag</a></div><div class="ttdeci">void ControlByTag(SoundControlType control, const std::string &amp;tag)</div><div class="ttdoc">Applies a control command to all active instances associated with a tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00247">SoundManager.cpp:247</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00337">337</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  338</span>{</div>
+<div class="line"><span class="lineno">  339</span>    std::vector&lt;std::string&gt; tags;</div>
+<div class="line"><span class="lineno">  340</span>    tags.reserve(<a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.size());</div>
+<div class="line"><span class="lineno">  341</span> </div>
+<div class="line"><span class="lineno">  342</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; kv : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
+<div class="line"><span class="lineno">  343</span>    {</div>
+<div class="line"><span class="lineno">  344</span>        tags.push_back(kv.first);</div>
+<div class="line"><span class="lineno">  345</span>    }</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; t : tags)</div>
+<div class="line"><span class="lineno">  348</span>    {</div>
+<div class="line"><span class="lineno">  349</span>        <a class="code hl_function" href="#aaa6392113f543f2bb32e6811bd010100">ControlByTag</a>(control, t);</div>
+<div class="line"><span class="lineno">  350</span>    }</div>
+<div class="line"><span class="lineno">  351</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_aaa6392113f543f2bb32e6811bd010100"><div class="ttname"><a href="#aaa6392113f543f2bb32e6811bd010100">SoundManager::ControlByTag</a></div><div class="ttdeci">void ControlByTag(SoundControlType control, const std::string &amp;tag)</div><div class="ttdoc">Applies a playback control command to all active sound instances associated with a tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00264">SoundManager.cpp:264</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -492,76 +545,76 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies a control command to a specific playback instance by ID. </p>
-<p>Pause:</p><ul>
-<li>Reads the cursor position in PCM frames and stores it.</li>
-<li>Stops the sound and marks the instance paused.</li>
+<p>Applies a playback control command to one active sound instance. </p>
+<p>The behavior depends on the control type:</p>
+<ul>
+<li>Pause: Saves the current playback cursor in PCM frames, stops the sound, and marks it as paused.</li>
+<li>Resume: If the instance was previously paused, seeks back to the stored cursor and restarts playback.</li>
+<li>Stop: Stops the sound immediately, uninitializes the miniaudio object, removes the instance from tag-based tracking, deletes the runtime object, erases the ID mapping, and recycles the ID.</li>
 </ul>
-<p>Resume:</p><ul>
-<li>If the instance is paused, seeks to the stored cursor and starts playback.</li>
-</ul>
-<p>Stop:</p><ul>
-<li>Stops and uninitializes the ma_sound.</li>
-<li>Removes the instance pointer from activeChannels[inst-&gt;tag].</li>
-<li>Deletes the instance, erases it from instanceMap, and recycles the ID.</li>
-</ul>
-<p>If the ID does not exist, this function does nothing.</p>
+<p>If the given ID does not exist, the function does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">control</td><td>Control command. </td></tr>
-    <tr><td class="paramname">id</td><td>Playback instance ID. </td></tr>
+    <tr><td class="paramname">control</td><td>Runtime control command to apply. </td></tr>
+    <tr><td class="paramname">id</td><td>Runtime ID of the target playback instance.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Stop performs immediate destruction of the runtime sound instance. After Stop, the ID is no longer valid. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00200">200</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
-<div class="line"><span class="lineno">  202</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.find(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.end() || it-&gt;second == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  204</span> </div>
-<div class="line"><span class="lineno">  205</span>    <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst = it-&gt;second;</div>
-<div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">switch</span> (control)</div>
-<div class="line"><span class="lineno">  208</span>    {</div>
-<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundControlType::Pause</a>:</div>
-<div class="line"><span class="lineno">  210</span>    {</div>
-<div class="line"><span class="lineno">  211</span>        ma_uint64 cursor = 0;</div>
-<div class="line"><span class="lineno">  212</span>        ma_sound_get_cursor_in_pcm_frames(&amp;inst-&gt;sound, &amp;cursor); </div>
-<div class="line"><span class="lineno">  213</span>        inst-&gt;pausedCursor = cursor;</div>
-<div class="line"><span class="lineno">  214</span>        ma_sound_stop(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  215</span>        inst-&gt;paused = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  216</span>    } <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  217</span> </div>
-<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundControlType::Resume</a>:</div>
-<div class="line"><span class="lineno">  219</span>    {</div>
-<div class="line"><span class="lineno">  220</span>        <span class="keywordflow">if</span> (inst-&gt;paused)</div>
-<div class="line"><span class="lineno">  221</span>        {</div>
-<div class="line"><span class="lineno">  222</span>            ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, inst-&gt;pausedCursor);</div>
-<div class="line"><span class="lineno">  223</span>            ma_sound_start(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  224</span>            inst-&gt;paused = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  225</span>        }</div>
-<div class="line"><span class="lineno">  226</span>    } <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundControlType::Stop</a>:</div>
-<div class="line"><span class="lineno">  229</span>    {</div>
-<div class="line"><span class="lineno">  230</span>        ma_sound_stop(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  231</span>        ma_sound_uninit(&amp;inst-&gt;sound);</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00213">213</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  214</span>{</div>
+<div class="line"><span class="lineno">  215</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.find(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.end() || it-&gt;second == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  217</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>    <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst = it-&gt;second;</div>
+<div class="line"><span class="lineno">  220</span> </div>
+<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">switch</span> (control)</div>
+<div class="line"><span class="lineno">  222</span>    {</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundControlType::Pause</a>:</div>
+<div class="line"><span class="lineno">  224</span>    {</div>
+<div class="line"><span class="lineno">  225</span>        ma_uint64 cursor = 0;</div>
+<div class="line"><span class="lineno">  226</span>        ma_sound_get_cursor_in_pcm_frames(&amp;inst-&gt;sound, &amp;cursor);</div>
+<div class="line"><span class="lineno">  227</span>        inst-&gt;pausedCursor = cursor;</div>
+<div class="line"><span class="lineno">  228</span>        ma_sound_stop(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  229</span>        inst-&gt;paused = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  230</span>    }</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  232</span> </div>
-<div class="line"><span class="lineno">  233</span>        <span class="keyword">auto</span> acIt = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(inst-&gt;tag);</div>
-<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">if</span> (acIt != <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
-<div class="line"><span class="lineno">  235</span>        {</div>
-<div class="line"><span class="lineno">  236</span>            <span class="keyword">auto</span>&amp; vec = acIt-&gt;second;</div>
-<div class="line"><span class="lineno">  237</span>            vec.erase(std::remove(vec.begin(), vec.end(), inst), vec.end());</div>
-<div class="line"><span class="lineno">  238</span>        }</div>
-<div class="line"><span class="lineno">  239</span>        <span class="keyword">delete</span> inst;</div>
-<div class="line"><span class="lineno">  240</span>        <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(it);</div>
-<div class="line"><span class="lineno">  241</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  242</span>    } <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  243</span>    }</div>
-<div class="line"><span class="lineno">  244</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundManager::SoundControlType::Pause</a></div><div class="ttdeci">@ Pause</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00143">SoundManager.h:143</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundManager::SoundControlType::Stop</a></div><div class="ttdeci">@ Stop</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00143">SoundManager.h:143</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundManager::SoundControlType::Resume</a></div><div class="ttdeci">@ Resume</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00143">SoundManager.h:143</a></div></div>
+<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundControlType::Resume</a>:</div>
+<div class="line"><span class="lineno">  234</span>    {</div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">if</span> (inst-&gt;paused)</div>
+<div class="line"><span class="lineno">  236</span>        {</div>
+<div class="line"><span class="lineno">  237</span>            ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, inst-&gt;pausedCursor);</div>
+<div class="line"><span class="lineno">  238</span>            ma_sound_start(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  239</span>            inst-&gt;paused = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  240</span>        }</div>
+<div class="line"><span class="lineno">  241</span>    }</div>
+<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundControlType::Stop</a>:</div>
+<div class="line"><span class="lineno">  245</span>    {</div>
+<div class="line"><span class="lineno">  246</span>        ma_sound_stop(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  247</span>        ma_sound_uninit(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  248</span> </div>
+<div class="line"><span class="lineno">  249</span>        <span class="keyword">auto</span> acIt = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(inst-&gt;tag);</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">if</span> (acIt != <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
+<div class="line"><span class="lineno">  251</span>        {</div>
+<div class="line"><span class="lineno">  252</span>            <span class="keyword">auto</span>&amp; vec = acIt-&gt;second;</div>
+<div class="line"><span class="lineno">  253</span>            vec.erase(std::remove(vec.begin(), vec.end(), inst), vec.end());</div>
+<div class="line"><span class="lineno">  254</span>        }</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span>        <span class="keyword">delete</span> inst;</div>
+<div class="line"><span class="lineno">  257</span>        <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(it);</div>
+<div class="line"><span class="lineno">  258</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  259</span>    }</div>
+<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  261</span>    }</div>
+<div class="line"><span class="lineno">  262</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundManager::SoundControlType::Pause</a></div><div class="ttdeci">@ Pause</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00219">SoundManager.h:219</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundManager::SoundControlType::Stop</a></div><div class="ttdeci">@ Stop</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00221">SoundManager.h:221</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325"><div class="ttname"><a href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundManager::SoundControlType::Resume</a></div><div class="ttdeci">@ Resume</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00220">SoundManager.h:220</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -584,89 +637,95 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies a control command to all active instances associated with a tag. </p>
-<p>Pause/Resume:</p><ul>
-<li>Iterates activeChannels[tag] and pauses/resumes each instance using cursor tracking.</li>
+<p>Applies a playback control command to all active sound instances associated with a tag. </p>
+<p>The behavior depends on the control type:</p>
+<ul>
+<li>Pause: Saves each instance's current playback cursor, stops playback, and marks the instance as paused.</li>
+<li>Resume: Restarts only the instances currently marked as paused by seeking back to their saved cursor positions.</li>
+<li>Stop: Immediately stops and uninitializes every instance under the tag, removes their IDs from instance tracking, recycles those IDs, deletes the runtime objects, and clears the tag's active channel list.</li>
 </ul>
-<p>Stop:</p><ul>
-<li>Stops and uninitializes each instance in activeChannels[tag], deletes them, removes corresponding entries from instanceMap, recycles IDs, and clears the vector.</li>
-</ul>
-<p>If the tag has no active instances, this function does nothing.</p>
+<p>If the tag has no active instances, the function does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">control</td><td>Control command. </td></tr>
-    <tr><td class="paramname">tag</td><td>Sound tag whose active instances should be controlled. </td></tr>
+    <tr><td class="paramname">control</td><td>Runtime control command to apply. </td></tr>
+    <tr><td class="paramname">tag</td><td>Tag whose currently active instances should be controlled.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Stop removes only currently active instances for that tag. The registered sound metadata itself remains in the sounds registry. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00247">247</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>{</div>
-<div class="line"><span class="lineno">  249</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(tag);</div>
-<div class="line"><span class="lineno">  250</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
-<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  252</span> </div>
-<div class="line"><span class="lineno">  253</span>    <span class="keyword">auto</span>&amp; vec = it-&gt;second;</div>
-<div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundControlType::Pause</a>)</div>
-<div class="line"><span class="lineno">  256</span>    {</div>
-<div class="line"><span class="lineno">  257</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>* inst : vec)</div>
-<div class="line"><span class="lineno">  258</span>        {</div>
-<div class="line"><span class="lineno">  259</span>            <span class="keywordflow">if</span> (!inst) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  260</span>            ma_uint64 cursor = 0;</div>
-<div class="line"><span class="lineno">  261</span>            ma_sound_get_cursor_in_pcm_frames(&amp;inst-&gt;sound, &amp;cursor);</div>
-<div class="line"><span class="lineno">  262</span>            inst-&gt;pausedCursor = cursor;</div>
-<div class="line"><span class="lineno">  263</span>            ma_sound_stop(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  264</span>            inst-&gt;paused = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  265</span>        }</div>
-<div class="line"><span class="lineno">  266</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  267</span>    }</div>
-<div class="line"><span class="lineno">  268</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundControlType::Resume</a>)</div>
-<div class="line"><span class="lineno">  269</span>    {</div>
-<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>* inst : vec)</div>
-<div class="line"><span class="lineno">  271</span>        {</div>
-<div class="line"><span class="lineno">  272</span>            <span class="keywordflow">if</span> (!inst || !inst-&gt;paused) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  273</span>            ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, inst-&gt;pausedCursor);</div>
-<div class="line"><span class="lineno">  274</span>            ma_sound_start(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  275</span>            inst-&gt;paused = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  276</span>        }</div>
-<div class="line"><span class="lineno">  277</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  278</span>    }</div>
-<div class="line"><span class="lineno">  279</span> </div>
-<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundControlType::Stop</a>)</div>
-<div class="line"><span class="lineno">  281</span>    {</div>
-<div class="line"><span class="lineno">  282</span>        std::vector&lt;SoundInstanceID&gt; toRecycle;</div>
-<div class="line"><span class="lineno">  283</span>        toRecycle.reserve(<a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.size());</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">for</span> (<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst : vec)</div>
-<div class="line"><span class="lineno">  286</span>        {</div>
-<div class="line"><span class="lineno">  287</span>            <span class="keywordflow">if</span> (inst == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  288</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>            ma_sound_stop(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  291</span>            ma_sound_uninit(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  292</span> </div>
-<div class="line"><span class="lineno">  293</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, uptr] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
-<div class="line"><span class="lineno">  294</span>            {</div>
-<div class="line"><span class="lineno">  295</span>                <span class="keywordflow">if</span> (uptr == inst)</div>
-<div class="line"><span class="lineno">  296</span>                {</div>
-<div class="line"><span class="lineno">  297</span>                    toRecycle.push_back(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  298</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  299</span>                }</div>
-<div class="line"><span class="lineno">  300</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00264">264</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  265</span>{</div>
+<div class="line"><span class="lineno">  266</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(tag);</div>
+<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
+<div class="line"><span class="lineno">  268</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>    <span class="keyword">auto</span>&amp; vec = it-&gt;second;</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda105b296a83f9c105355403f3332af50f">SoundControlType::Pause</a>)</div>
+<div class="line"><span class="lineno">  273</span>    {</div>
+<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>* inst : vec)</div>
+<div class="line"><span class="lineno">  275</span>        {</div>
+<div class="line"><span class="lineno">  276</span>            <span class="keywordflow">if</span> (!inst)</div>
+<div class="line"><span class="lineno">  277</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  278</span> </div>
+<div class="line"><span class="lineno">  279</span>            ma_uint64 cursor = 0;</div>
+<div class="line"><span class="lineno">  280</span>            ma_sound_get_cursor_in_pcm_frames(&amp;inst-&gt;sound, &amp;cursor);</div>
+<div class="line"><span class="lineno">  281</span>            inst-&gt;pausedCursor = cursor;</div>
+<div class="line"><span class="lineno">  282</span>            ma_sound_stop(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  283</span>            inst-&gt;paused = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  284</span>        }</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  286</span>    }</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81edaf1cefec9e2196c672a622347f1fbc325">SoundControlType::Resume</a>)</div>
+<div class="line"><span class="lineno">  289</span>    {</div>
+<div class="line"><span class="lineno">  290</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>* inst : vec)</div>
+<div class="line"><span class="lineno">  291</span>        {</div>
+<div class="line"><span class="lineno">  292</span>            <span class="keywordflow">if</span> (!inst || !inst-&gt;paused)</div>
+<div class="line"><span class="lineno">  293</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>            ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, inst-&gt;pausedCursor);</div>
+<div class="line"><span class="lineno">  296</span>            ma_sound_start(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  297</span>            inst-&gt;paused = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  298</span>        }</div>
+<div class="line"><span class="lineno">  299</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  300</span>    }</div>
 <div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>            <span class="keyword">delete</span> inst;</div>
-<div class="line"><span class="lineno">  303</span>        }</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> : toRecycle)</div>
-<div class="line"><span class="lineno">  306</span>        {</div>
-<div class="line"><span class="lineno">  307</span>            <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  308</span>            <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  309</span>        }</div>
-<div class="line"><span class="lineno">  310</span> </div>
-<div class="line"><span class="lineno">  311</span>        vec.clear();</div>
-<div class="line"><span class="lineno">  312</span>    }</div>
-<div class="line"><span class="lineno">  313</span>}</div>
+<div class="line"><span class="lineno">  302</span>    <span class="keywordflow">if</span> (control == <a class="code hl_enumvalue" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">SoundControlType::Stop</a>)</div>
+<div class="line"><span class="lineno">  303</span>    {</div>
+<div class="line"><span class="lineno">  304</span>        std::vector&lt;SoundInstanceID&gt; toRecycle;</div>
+<div class="line"><span class="lineno">  305</span>        toRecycle.reserve(<a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.size());</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">for</span> (<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst : vec)</div>
+<div class="line"><span class="lineno">  308</span>        {</div>
+<div class="line"><span class="lineno">  309</span>            <span class="keywordflow">if</span> (inst == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  310</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>            ma_sound_stop(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  313</span>            ma_sound_uninit(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, uptr] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
+<div class="line"><span class="lineno">  316</span>            {</div>
+<div class="line"><span class="lineno">  317</span>                <span class="keywordflow">if</span> (uptr == inst)</div>
+<div class="line"><span class="lineno">  318</span>                {</div>
+<div class="line"><span class="lineno">  319</span>                    toRecycle.push_back(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  320</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  321</span>                }</div>
+<div class="line"><span class="lineno">  322</span>            }</div>
+<div class="line"><span class="lineno">  323</span> </div>
+<div class="line"><span class="lineno">  324</span>            <span class="keyword">delete</span> inst;</div>
+<div class="line"><span class="lineno">  325</span>        }</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> : toRecycle)</div>
+<div class="line"><span class="lineno">  328</span>        {</div>
+<div class="line"><span class="lineno">  329</span>            <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.erase(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  330</span>            <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.push(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  331</span>        }</div>
+<div class="line"><span class="lineno">  332</span> </div>
+<div class="line"><span class="lineno">  333</span>        vec.clear();</div>
+<div class="line"><span class="lineno">  334</span>    }</div>
+<div class="line"><span class="lineno">  335</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -693,48 +752,51 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stops all instances and destroys the miniaudio engine. </p>
-<ul>
-<li>Uninitializes and deletes all <a class="el" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a> objects tracked by instanceMap.</li>
-<li>Clears instanceMap, activeChannels, and the registered sound table.</li>
-<li>Clears the reusable ID queue and resets nextInstanceID.</li>
-<li>Uninitializes and deletes the ma_engine instance. </li>
+<p>Releases every internal audio resource and resets the manager to its initial empty state. </p>
+<p>This function:</p><ul>
+<li>uninitializes and deletes all currently tracked sound instances,</li>
+<li>clears active channel groups,</li>
+<li>clears the registered sound metadata map,</li>
+<li>empties the reusable ID queue,</li>
+<li>resets the next instance ID counter back to 1,</li>
+<li>uninitializes and destroys the miniaudio engine.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>This is called by the destructor and is intended for full system shutdown / full reset. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00053">53</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, instPtr] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
-<div class="line"><span class="lineno">   56</span>    {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (instPtr != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   58</span>        {</div>
-<div class="line"><span class="lineno">   59</span>            ma_sound_uninit(&amp;instPtr-&gt;sound);</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keyword">delete</span> instPtr;</div>
-<div class="line"><span class="lineno">   61</span>        }</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.clear();</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [tag, vec] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
-<div class="line"><span class="lineno">   66</span>    {</div>
-<div class="line"><span class="lineno">   67</span>        vec.clear();</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.clear();</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.clear();</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.empty())</div>
-<div class="line"><span class="lineno">   74</span>    {</div>
-<div class="line"><span class="lineno">   75</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.pop();</div>
-<div class="line"><span class="lineno">   76</span>    }</div>
-<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a> = 1;</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   80</span>    {</div>
-<div class="line"><span class="lineno">   81</span>        ma_engine_uninit(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>;</div>
-<div class="line"><span class="lineno">   83</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a5446e9c6a2625292765b740ff0a90649"><div class="ttname"><a href="#a5446e9c6a2625292765b740ff0a90649">SoundManager::sounds</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SoundInfo &gt; sounds</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00265">SoundManager.h:265</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00057">57</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, instPtr] : <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>)</div>
+<div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (instPtr != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   62</span>        {</div>
+<div class="line"><span class="lineno">   63</span>            ma_sound_uninit(&amp;instPtr-&gt;sound);</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keyword">delete</span> instPtr;</div>
+<div class="line"><span class="lineno">   65</span>        }</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.clear();</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [tag, vec] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
+<div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>        vec.clear();</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.clear();</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.clear();</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.empty())</div>
+<div class="line"><span class="lineno">   78</span>    {</div>
+<div class="line"><span class="lineno">   79</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.pop();</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a> = 1;</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        ma_engine_uninit(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>;</div>
+<div class="line"><span class="lineno">   87</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_a5446e9c6a2625292765b740ff0a90649"><div class="ttname"><a href="#a5446e9c6a2625292765b740ff0a90649">SoundManager::sounds</a></div><div class="ttdeci">std::unordered_map&lt; std::string, SoundInfo &gt; sounds</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00390">SoundManager.h:390</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -761,20 +823,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Produces a new <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, reusing IDs when available. </p>
-<p>If reusableIDs contains any previously freed IDs, one is popped and returned. Otherwise, nextInstanceID is returned and incremented.</p>
-<dl class="section return"><dt>Returns</dt><dd>A non-zero <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>. </dd></dl>
+<p>Generates a runtime ID for a new playback instance. </p>
+<p>If there is an ID available in the reusable ID queue, that ID is returned first. Otherwise, the manager returns the current nextInstanceID and then increments it.</p>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> to be assigned to a newly created playback instance.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>IDs released by <a class="el" href="#a3c4fde85dedc1019d025b016b60c81eda11a755d598c0c417f9a36758c3da7481">Stop()</a> or <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a> may later be reused by newly played sound instances. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00092">92</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.empty())</div>
-<div class="line"><span class="lineno">   95</span>    {</div>
-<div class="line"><span class="lineno">   96</span>        <a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> = <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.front();</div>
-<div class="line"><span class="lineno">   97</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.pop();</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> id;</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a>++;</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00096">96</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.empty())</div>
+<div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> = <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.front();</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="#a2790a08c6ebba08bba3ad5539834ca6b">reusableIDs</a>.pop();</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> id;</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a910b1fd3f58c344c1b2185b031d188d0">nextInstanceID</a>++;</div>
+<div class="line"><span class="lineno">  105</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -801,27 +864,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates and initializes the miniaudio engine. </p>
-<p>Allocates ma_engine if needed and calls ma_engine_init(). On failure, the engine is deleted and the pointer is reset to nullptr.</p>
-<dl class="section return"><dt>Returns</dt><dd>True on success; false on failure. </dd></dl>
+<p>Initializes the underlying miniaudio engine. </p>
+<p>If the engine pointer is null, this function allocates a new ma_engine object and then initializes it with ma_engine_init().</p>
+<p>On initialization failure, the engine object is deleted, the pointer is reset to null, and the function returns false.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the audio engine was initialized successfully. </dd>
+<dd>
+false if initialization failed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Playback functions return 0 immediately if <a class="el" href="#af1ee5e29fca894a8ac9aeeb56b81f21d" title="Initializes the underlying miniaudio engine.">Init()</a> has not completed successfully. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00035">35</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   38</span>    {</div>
-<div class="line"><span class="lineno">   39</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">new</span> ma_engine();</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>    ma_result res = ma_engine_init(<span class="keyword">nullptr</span>, <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
-<div class="line"><span class="lineno">   44</span>    {</div>
-<div class="line"><span class="lineno">   45</span>        JIN_ERR(<span class="stringliteral">&quot;miniaudio engine init failed: &quot;</span> &lt;&lt; (<span class="keywordtype">int</span>)res);</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>;</div>
-<div class="line"><span class="lineno">   47</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   51</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00039">39</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   42</span>    {</div>
+<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">new</span> ma_engine();</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    ma_result res = ma_engine_init(<span class="keyword">nullptr</span>, <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
+<div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>        JIN_ERR(<span class="stringliteral">&quot;miniaudio engine init failed: &quot;</span> &lt;&lt; (<span class="keywordtype">int</span>)res);</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>;</div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   55</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -849,22 +916,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Registers a sound asset under a tag. </p>
-<p>This function records the filepath and default looping flag for the given tag. It does not load audio data immediately; loading occurs when <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a new instance of a previously registered sound.">Play()</a> is called. If the tag already exists, the entry is overwritten.</p>
+<p>Registers a sound resource under a tag. </p>
+<p>This function stores only the file path and loop flag in the internal sound registry. It does not create or preload a miniaudio playback object at registration time.</p>
+<p>If the same tag already exists, its metadata is overwritten with the new file path and loop flag.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Tag name used to reference the sound later. </td></tr>
-    <tr><td class="paramname">filepath</td><td>Path to the audio file to be loaded by miniaudio. </td></tr>
-    <tr><td class="paramname">loop</td><td>Default looping behavior applied to instances created via <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a new instance of a previously registered sound.">Play()</a>. </td></tr>
+    <tr><td class="paramname">tag</td><td>User-defined lookup tag for the sound resource. </td></tr>
+    <tr><td class="paramname">filepath</td><td>Path to the sound file to be used when playback instances are created. </td></tr>
+    <tr><td class="paramname">loop</td><td>Whether instances created from this tag should loop automatically.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function only prepares metadata for future playback. Real sound instances are created later by <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a registered sound using its tag.">Play()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00087">87</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>[tag] = <a class="code hl_struct" href="struct_sound_manager_1_1_sound_info.html">SoundInfo</a>{ filepath, loop };</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="astruct_sound_manager_1_1_sound_info_html"><div class="ttname"><a href="struct_sound_manager_1_1_sound_info.html">SoundManager::SoundInfo</a></div><div class="ttdoc">Registered sound metadata for tag-based playback.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00260">SoundManager.h:261</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00091">91</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
+<div class="line"><span class="lineno">   93</span>    <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>[tag] = <a class="code hl_struct" href="struct_sound_manager_1_1_sound_info.html">SoundInfo</a>{ filepath, loop };</div>
+<div class="line"><span class="lineno">   94</span>}</div>
+<div class="ttc" id="astruct_sound_manager_1_1_sound_info_html"><div class="ttname"><a href="struct_sound_manager_1_1_sound_info.html">SoundManager::SoundInfo</a></div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8h_source.html#l00385">SoundManager.h:386</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -893,8 +962,112 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a27f9b8035bc8c346790806036aa0e708" name="a27f9b8035bc8c346790806036aa0e708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f9b8035bc8c346790806036aa0e708">&#9670;&#160;</a></span>Play() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> SoundManager::Play </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>tag</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>startTimeSec</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, const std::string &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>onFinished</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plays a registered sound using its tag and registers a callback for one-shot completion. </p>
+<p>This overload behaves the same as the simpler <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a registered sound using its tag.">Play()</a> overload, but also stores an optional completion callback inside the runtime sound instance.</p>
+<p>When a non-looping sound reaches the end of playback, <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a> collects the callback and executes it after internal cleanup has been prepared. The callback receives the finished <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> and the original sound tag.</p>
+<p>Looping sounds are not considered finished during normal playback, so their callback is not triggered automatically unless the sound is allowed to reach a natural end as a non-looping instance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>Tag of the sound registered with <a class="el" href="#a8e52926369f4ff23599507c5e7cf7246" title="Registers a sound resource under a tag.">LoadSound()</a>. </td></tr>
+    <tr><td class="paramname">volume</td><td>Initial playback volume. </td></tr>
+    <tr><td class="paramname">startTimeSec</td><td>Start position in seconds. If greater than zero, playback seeks to that position before starting. </td></tr>
+    <tr><td class="paramname">onFinished</td><td>Callback invoked after a non-looping playback instance naturally reaches the end.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A valid <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> if playback starts successfully. </dd>
+<dd>
+0 if the audio engine is not initialized, the tag is missing, the file cannot be loaded, or playback start fails.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The callback is executed during <a class="el" href="#aaf241621221cdbefeba78e8b6bc29240" title="Updates the sound system for the current frame.">Update()</a> -&gt; <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a>, not at the exact low-level audio completion moment. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00125">125</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.find(tag);</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.end())</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <span class="keyword">const</span> std::string&amp; path = it-&gt;second.filepath;</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> looping = it-&gt;second.loop;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst = <span class="keyword">new</span> <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>();</div>
+<div class="line"><span class="lineno">  141</span>    inst-&gt;tag = tag;</div>
+<div class="line"><span class="lineno">  142</span>    inst-&gt;looping = looping;</div>
+<div class="line"><span class="lineno">  143</span>    inst-&gt;onFinished = std::move(onFinished);</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    ma_result res = ma_sound_init_from_file(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>, path.c_str(), 0, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, &amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
+<div class="line"><span class="lineno">  147</span>    {</div>
+<div class="line"><span class="lineno">  148</span>        JIN_ERR(<span class="stringliteral">&quot;Failed to load sound: &quot;</span> &lt;&lt; path);</div>
+<div class="line"><span class="lineno">  149</span>        <span class="keyword">delete</span> inst;</div>
+<div class="line"><span class="lineno">  150</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  151</span>    }</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    ma_sound_set_volume(&amp;inst-&gt;sound, volume);</div>
+<div class="line"><span class="lineno">  154</span>    ma_sound_set_looping(&amp;inst-&gt;sound, looping ? MA_TRUE : MA_FALSE);</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (startTimeSec &gt; 0.0f)</div>
+<div class="line"><span class="lineno">  157</span>    {</div>
+<div class="line"><span class="lineno">  158</span>        ma_uint32 sr = 0;</div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="_sound_manager_8cpp.html#ac772bc1fd37c6da41f36dc2f1ee2874d">MA_GetSoundSampleRate</a>(&amp;inst-&gt;sound, sr))</div>
+<div class="line"><span class="lineno">  160</span>        {</div>
+<div class="line"><span class="lineno">  161</span>            sr = ma_engine_get_sample_rate(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
+<div class="line"><span class="lineno">  162</span>        }</div>
+<div class="line"><span class="lineno">  163</span>        <span class="keyword">const</span> ma_uint64 frame = (ma_uint64)(startTimeSec * (<span class="keywordtype">double</span>)sr);</div>
+<div class="line"><span class="lineno">  164</span>        ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, frame);</div>
+<div class="line"><span class="lineno">  165</span>    }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>    res = ma_sound_start(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
+<div class="line"><span class="lineno">  169</span>    {</div>
+<div class="line"><span class="lineno">  170</span>        ma_sound_uninit(&amp;inst-&gt;sound);</div>
+<div class="line"><span class="lineno">  171</span>        <span class="keyword">delete</span> inst;</div>
+<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  173</span>    }</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    <a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> = <a class="code hl_function" href="#a1e76b08631c0a87462dab75fb0d526ed">GenerateID</a>();</div>
+<div class="line"><span class="lineno">  176</span>    <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>[id] = inst;</div>
+<div class="line"><span class="lineno">  177</span>    <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>[tag].push_back(inst);</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">return</span> id;</div>
+<div class="line"><span class="lineno">  179</span>}</div>
+<div class="ttc" id="a_sound_manager_8cpp_html_ac772bc1fd37c6da41f36dc2f1ee2874d"><div class="ttname"><a href="_sound_manager_8cpp.html#ac772bc1fd37c6da41f36dc2f1ee2874d">MA_GetSoundSampleRate</a></div><div class="ttdeci">static bool MA_GetSoundSampleRate(ma_sound *snd, ma_uint32 &amp;outSR)</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00107">SoundManager.cpp:107</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a1e76b08631c0a87462dab75fb0d526ed"><div class="ttname"><a href="#a1e76b08631c0a87462dab75fb0d526ed">SoundManager::GenerateID</a></div><div class="ttdeci">SoundInstanceID GenerateID()</div><div class="ttdoc">Generates a runtime ID for a new playback instance.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00096">SoundManager.cpp:96</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="acc7074efb4e8b5c71e85f556769d9b17" name="acc7074efb4e8b5c71e85f556769d9b17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc7074efb4e8b5c71e85f556769d9b17">&#9670;&#160;</a></span>Play()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7074efb4e8b5c71e85f556769d9b17">&#9670;&#160;</a></span>Play() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -917,80 +1090,27 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Plays a new instance of a previously registered sound. </p>
-<p>If the engine is not initialized or the tag is not registered, this returns 0.</p>
-<p>A successful call:</p><ul>
-<li>Creates a new <a class="el" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>.</li>
-<li>Initializes a ma_sound from the file path recorded for the tag.</li>
-<li>Applies volume and looping state.</li>
-<li>Optionally seeks to startTimeSec (converted to PCM frame using the sound's sample rate if available, otherwise the engine sample rate).</li>
-<li>Starts playback and assigns a <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>.</li>
-<li>Tracks the instance in instanceMap and activeChannels[tag].</li>
-</ul>
-<p>The returned ID can be used with <a class="el" href="#a8d8a89dcb398e0e51b6853f5aa684280" title="Applies a control command to a specific playback instance by ID.">ControlByID()</a> / <a class="el" href="#a66c578e6c2850d673ea035870871e6ab" title="Sets the volume of a specific playback instance by ID.">SetVolumeByID()</a>. IDs are recycled after instances are destroyed.</p>
+<p>Plays a registered sound using its tag. </p>
+<p>This overload creates a new runtime sound instance from the registered file path, applies the requested volume, optionally seeks to the given start time, starts playback, assigns a <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a>, and tracks the instance internally.</p>
+<p>Multiple calls with the same tag create multiple simultaneous playback instances.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Registered sound tag. </td></tr>
-    <tr><td class="paramname">volume</td><td>Initial volume applied to this instance. </td></tr>
-    <tr><td class="paramname">startTimeSec</td><td>Optional start offset in seconds. </td></tr>
+    <tr><td class="paramname">tag</td><td>Tag of the sound registered with <a class="el" href="#a8e52926369f4ff23599507c5e7cf7246" title="Registers a sound resource under a tag.">LoadSound()</a>. </td></tr>
+    <tr><td class="paramname">volume</td><td>Initial playback volume. </td></tr>
+    <tr><td class="paramname">startTimeSec</td><td>Start position in seconds. If greater than zero, playback seeks to that position before starting.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Non-zero <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> on success; 0 on failure. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A valid <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> if playback starts successfully. </dd>
+<dd>
+0 if the audio engine is not initialized, the tag is missing, the file cannot be loaded, or playback start fails.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This overload does not register a completion callback. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00116">116</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a> == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.find(tag);</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a5446e9c6a2625292765b740ff0a90649">sounds</a>.end())</div>
-<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span>    <span class="keyword">const</span> std::string&amp; path = it-&gt;second.filepath;</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> looping = it-&gt;second.loop;</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>    <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst = <span class="keyword">new</span> <a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>();</div>
-<div class="line"><span class="lineno">  129</span>    inst-&gt;tag = tag;</div>
-<div class="line"><span class="lineno">  130</span>    inst-&gt;looping = looping;</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    ma_result res = ma_sound_init_from_file(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>, path.c_str(), 0, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, &amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
-<div class="line"><span class="lineno">  134</span>    {</div>
-<div class="line"><span class="lineno">  135</span>        JIN_ERR(<span class="stringliteral">&quot;Failed to load sound: &quot;</span> &lt;&lt; path);</div>
-<div class="line"><span class="lineno">  136</span>        <span class="keyword">delete</span> inst;</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  138</span>    }</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>    ma_sound_set_volume(&amp;inst-&gt;sound, volume);</div>
-<div class="line"><span class="lineno">  141</span>    ma_sound_set_looping(&amp;inst-&gt;sound, looping ? MA_TRUE : MA_FALSE);</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">if</span> (startTimeSec &gt; 0.0f)</div>
-<div class="line"><span class="lineno">  144</span>    {</div>
-<div class="line"><span class="lineno">  145</span>        ma_uint32 sr = 0;</div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="_sound_manager_8cpp.html#ac772bc1fd37c6da41f36dc2f1ee2874d">MA_GetSoundSampleRate</a>(&amp;inst-&gt;sound, sr))</div>
-<div class="line"><span class="lineno">  147</span>        {</div>
-<div class="line"><span class="lineno">  148</span>            sr = ma_engine_get_sample_rate(<a class="code hl_variable" href="#ac2e5b555ac4b752012ef3032184847f2">engine</a>);</div>
-<div class="line"><span class="lineno">  149</span>        }</div>
-<div class="line"><span class="lineno">  150</span>        <span class="keyword">const</span> ma_uint64 frame = (ma_uint64)(startTimeSec * (<span class="keywordtype">double</span>)sr);</div>
-<div class="line"><span class="lineno">  151</span>        ma_sound_seek_to_pcm_frame(&amp;inst-&gt;sound, frame);</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>    res = ma_sound_start(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (res != MA_SUCCESS)</div>
-<div class="line"><span class="lineno">  156</span>    {</div>
-<div class="line"><span class="lineno">  157</span>        ma_sound_uninit(&amp;inst-&gt;sound);</div>
-<div class="line"><span class="lineno">  158</span>        <span class="keyword">delete</span> inst;</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  160</span>    }</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>    <a class="code hl_typedef" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> <span class="keywordtype">id</span> = <a class="code hl_function" href="#a1e76b08631c0a87462dab75fb0d526ed">GenerateID</a>();</div>
-<div class="line"><span class="lineno">  163</span>    <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>[id] = inst;</div>
-<div class="line"><span class="lineno">  164</span>    <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>[tag].push_back(inst);</div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> id;</div>
-<div class="line"><span class="lineno">  166</span>}</div>
-<div class="ttc" id="a_sound_manager_8cpp_html_ac772bc1fd37c6da41f36dc2f1ee2874d"><div class="ttname"><a href="_sound_manager_8cpp.html#ac772bc1fd37c6da41f36dc2f1ee2874d">MA_GetSoundSampleRate</a></div><div class="ttdeci">static bool MA_GetSoundSampleRate(ma_sound *snd, ma_uint32 &amp;outSR)</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00103">SoundManager.cpp:103</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a1e76b08631c0a87462dab75fb0d526ed"><div class="ttname"><a href="#a1e76b08631c0a87462dab75fb0d526ed">SoundManager::GenerateID</a></div><div class="ttdeci">SoundInstanceID GenerateID()</div><div class="ttdoc">Produces a new SoundInstanceID, reusing IDs when available.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00092">SoundManager.cpp:92</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00120">120</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>{</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#acc7074efb4e8b5c71e85f556769d9b17">Play</a>(tag, volume, startTimeSec, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  123</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_acc7074efb4e8b5c71e85f556769d9b17"><div class="ttname"><a href="#acc7074efb4e8b5c71e85f556769d9b17">SoundManager::Play</a></div><div class="ttdeci">SoundInstanceID Play(const std::string &amp;tag, float volume=1.0f, float startTimeSec=0.0f)</div><div class="ttdoc">Plays a registered sound using its tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00120">SoundManager.cpp:120</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1009,23 +1129,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the volume of all active instances across all tags. </p>
-<p>Iterates all tags currently present in activeChannels and applies <a class="el" href="#a8581621afa759742160371f27c31e6fa" title="Sets the volume of all active instances associated with a tag.">SetVolumeByTag()</a>.</p>
+<p>Sets the playback volume for all active sound instances. </p>
+<p>This function iterates over every active tag group and applies the given volume to every currently active runtime sound instance.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">volume</td><td>New volume value to apply globally. </td></tr>
+    <tr><td class="paramname">volume</td><td>New volume value to apply globally to all active sounds. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00192">192</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
-<div class="line"><span class="lineno">  194</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [tag, _] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
-<div class="line"><span class="lineno">  195</span>    {</div>
-<div class="line"><span class="lineno">  196</span>        <a class="code hl_function" href="#a8581621afa759742160371f27c31e6fa">SetVolumeByTag</a>(tag, volume);</div>
-<div class="line"><span class="lineno">  197</span>    }</div>
-<div class="line"><span class="lineno">  198</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a8581621afa759742160371f27c31e6fa"><div class="ttname"><a href="#a8581621afa759742160371f27c31e6fa">SoundManager::SetVolumeByTag</a></div><div class="ttdeci">void SetVolumeByTag(const std::string &amp;tag, float volume)</div><div class="ttdoc">Sets the volume of all active instances associated with a tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00177">SoundManager.cpp:177</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00205">205</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>{</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [tag, _] : <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>)</div>
+<div class="line"><span class="lineno">  208</span>    {</div>
+<div class="line"><span class="lineno">  209</span>        <a class="code hl_function" href="#a8581621afa759742160371f27c31e6fa">SetVolumeByTag</a>(tag, volume);</div>
+<div class="line"><span class="lineno">  210</span>    }</div>
+<div class="line"><span class="lineno">  211</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_a8581621afa759742160371f27c31e6fa"><div class="ttname"><a href="#a8581621afa759742160371f27c31e6fa">SoundManager::SetVolumeByTag</a></div><div class="ttdeci">void SetVolumeByTag(const std::string &amp;tag, float volume)</div><div class="ttdoc">Sets the playback volume for all active instances created from the same sound tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00190">SoundManager.cpp:190</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1048,24 +1168,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the volume of a specific playback instance by ID. </p>
-<p>If the ID is not found, this function does nothing.</p>
+<p>Sets the playback volume of a specific active sound instance. </p>
+<p>Looks up the runtime instance by <a class="el" href="_sound_manager_8h.html#a7675718ce8055fa8280410c0d32ad4f3">SoundInstanceID</a> and applies the new volume directly to the underlying miniaudio sound object.</p>
+<p>If the ID does not exist or the instance is already gone, the function does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Playback instance ID returned by <a class="el" href="#acc7074efb4e8b5c71e85f556769d9b17" title="Plays a new instance of a previously registered sound.">Play()</a>. </td></tr>
+    <tr><td class="paramname">id</td><td>Runtime ID of the active playback instance. </td></tr>
     <tr><td class="paramname">volume</td><td>New volume value to apply. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00168">168</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>{</div>
-<div class="line"><span class="lineno">  170</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.find(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.end() &amp;&amp; it-&gt;second != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  172</span>    {</div>
-<div class="line"><span class="lineno">  173</span>        ma_sound_set_volume(&amp;it-&gt;second-&gt;sound, volume);</div>
-<div class="line"><span class="lineno">  174</span>    }</div>
-<div class="line"><span class="lineno">  175</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00181">181</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>{</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.find(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="#af2c6998eead9b15cac317be3c26a03ef">instanceMap</a>.end() &amp;&amp; it-&gt;second != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  185</span>    {</div>
+<div class="line"><span class="lineno">  186</span>        ma_sound_set_volume(&amp;it-&gt;second-&gt;sound, volume);</div>
+<div class="line"><span class="lineno">  187</span>    }</div>
+<div class="line"><span class="lineno">  188</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1088,30 +1209,32 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the volume of all active instances associated with a tag. </p>
-<p>Only instances currently tracked in activeChannels[tag] are affected. If the tag has no active instances, this function does nothing.</p>
+<p>Sets the playback volume for all active instances created from the same sound tag. </p>
+<p>This function iterates over all currently active runtime instances grouped under the given tag and applies the new volume to each one.</p>
+<p>If no active instance exists for the tag, the function does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Sound tag whose active instances should be updated. </td></tr>
-    <tr><td class="paramname">volume</td><td>New volume value to apply. </td></tr>
+    <tr><td class="paramname">tag</td><td>Tag used when the sound was registered and played. </td></tr>
+    <tr><td class="paramname">volume</td><td>New volume value to apply to all active instances for that tag.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This affects only currently active instances. It does not change the default metadata stored by <a class="el" href="#a8e52926369f4ff23599507c5e7cf7246" title="Registers a sound resource under a tag.">LoadSound()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00177">177</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  178</span>{</div>
-<div class="line"><span class="lineno">  179</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(tag);</div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
-<div class="line"><span class="lineno">  181</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  182</span> </div>
-<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst : it-&gt;second)</div>
-<div class="line"><span class="lineno">  184</span>    {</div>
-<div class="line"><span class="lineno">  185</span>        <span class="keywordflow">if</span> (inst != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  186</span>        {</div>
-<div class="line"><span class="lineno">  187</span>            ma_sound_set_volume(&amp;inst-&gt;sound, volume);</div>
-<div class="line"><span class="lineno">  188</span>        }</div>
-<div class="line"><span class="lineno">  189</span>    }</div>
-<div class="line"><span class="lineno">  190</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00190">190</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.find(tag);</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="#a75b7dcdccb8b231683bb0c21519f5c39">activeChannels</a>.end())</div>
+<div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="struct_sound_manager_1_1_sound_instance_m_a.html">SoundInstanceMA</a>* inst : it-&gt;second)</div>
+<div class="line"><span class="lineno">  197</span>    {</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">if</span> (inst != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  199</span>        {</div>
+<div class="line"><span class="lineno">  200</span>            ma_sound_set_volume(&amp;inst-&gt;sound, volume);</div>
+<div class="line"><span class="lineno">  201</span>        }</div>
+<div class="line"><span class="lineno">  202</span>    }</div>
+<div class="line"><span class="lineno">  203</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1138,14 +1261,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Performs per-frame maintenance of sound instances. </p>
-<p>Currently delegates to <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Removes finished playback instances and recycles their IDs.">Cleanup()</a> to remove finished non-looping instances and to keep internal tracking containers consistent. </p>
+<p>Updates the sound system for the current frame. </p>
+<p>This function currently forwards to <a class="el" href="#a4a77d91e2c8257d6c2d02ffffad671ff" title="Cleans up finished non-looping sound instances and executes pending completion callbacks.">Cleanup()</a>. It should be called regularly by the engine so that finished non-looping sounds are released, stale tracking entries are removed, reusable IDs are recycled, and pending completion callbacks are executed.</p>
+<dl class="section note"><dt>Note</dt><dd>If <a class="el" href="#aaf241621221cdbefeba78e8b6bc29240" title="Updates the sound system for the current frame.">Update()</a> is not called regularly, finished one-shot sounds may remain in tracking containers longer than intended. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00330">330</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  331</span>{</div>
-<div class="line"><span class="lineno">  332</span>    <a class="code hl_function" href="#a4a77d91e2c8257d6c2d02ffffad671ff">Cleanup</a>();</div>
-<div class="line"><span class="lineno">  333</span>}</div>
-<div class="ttc" id="aclass_sound_manager_html_a4a77d91e2c8257d6c2d02ffffad671ff"><div class="ttname"><a href="#a4a77d91e2c8257d6c2d02ffffad671ff">SoundManager::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdoc">Removes finished playback instances and recycles their IDs.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00335">SoundManager.cpp:335</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8cpp_source.html#l00353">353</a> of file <a class="el" href="_sound_manager_8cpp_source.html">SoundManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  354</span>{</div>
+<div class="line"><span class="lineno">  355</span>    <a class="code hl_function" href="#a4a77d91e2c8257d6c2d02ffffad671ff">Cleanup</a>();</div>
+<div class="line"><span class="lineno">  356</span>}</div>
+<div class="ttc" id="aclass_sound_manager_html_a4a77d91e2c8257d6c2d02ffffad671ff"><div class="ttname"><a href="#a4a77d91e2c8257d6c2d02ffffad671ff">SoundManager::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdoc">Cleans up finished non-looping sound instances and executes pending completion callbacks.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00358">SoundManager.cpp:358</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1170,7 +1294,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00268">268</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00393">393</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1318,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00255">255</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00383">383</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1342,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00269">269</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00394">394</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1366,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00037">37</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00053">53</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1266,7 +1390,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00272">272</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00397">397</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1290,7 +1414,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00271">271</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00396">396</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1438,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00265">265</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sound_manager_8h_source.html#l00390">390</a> of file <a class="el" href="_sound_manager_8h_source.html">SoundManager.h</a>.</p>
 
 </div>
 </div>

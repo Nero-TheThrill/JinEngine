@@ -100,6 +100,9 @@ $(function(){initNavTree('_engine_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Engine.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Master include header that exposes the main public engine interface.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_game_state_8h_source.html">GameState.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_engine_context_8h_source.html">EngineContext.h</a>&quot;</code><br />
@@ -131,7 +134,16 @@ $(function(){initNavTree('_engine_8h.html',''); initResizable(true); });
 <code>#include &quot;gtc/matrix_transform.hpp&quot;</code><br />
 </div>
 <p><a href="_engine_8h_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Master include header that exposes the main public engine interface. </p>
+<p>This header acts as a single entry point for the <a class="el" href="class_jin_engine.html" title="Core engine class that manages initialization, main loop execution, and system lifecycle.">JinEngine</a> framework. It aggregates the engine core, state system, object system, rendering system, audio system, camera system, resource system, collision system, animation system, debugging utilities, and commonly used GLM math headers.</p>
+<p>Including this file allows engine code and gameplay-side code to access most of the engine's public types without including each header individually.</p>
+<p>In the current engine structure, many implementation files include this header as a central dependency so they can access shared engine types and systems from one place.</p>
+<dl class="section note"><dt>Note</dt><dd>This file is primarily an umbrella header for convenience and interface exposure. It does not define runtime behavior by itself, but it determines which engine modules become visible to translation units that include it.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Because this header includes many other headers, including it widely may increase compile times. For large-scale projects, prefer including only the specific headers that are actually required in each file when build time becomes important. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_engine_8h_source.html">Engine.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

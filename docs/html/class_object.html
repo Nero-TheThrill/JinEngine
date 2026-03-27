@@ -107,7 +107,7 @@ $(function(){initNavTree('class_object.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Base interface for all runtime entities managed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> and rendered by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.  
+<p>Base abstract object class for all engine-managed runtime objects.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_object_8h_source.html">Object.h</a>&gt;</code></p>
@@ -117,161 +117,162 @@ Inheritance diagram for Object:</div>
  <div class="center">
   <img src="class_object.png" usemap="#Object_map" alt=""/>
   <map id="Object_map" name="Object_map">
-<area href="class_game_object.html" title="Base class for all in-game objects with gameplay behavior." alt="GameObject" shape="rect" coords="0,56,81,80"/>
-<area href="class_text_object.html" title="Scene object responsible for rendering text within the standard Object pipeline." alt="TextObject" shape="rect" coords="91,56,172,80"/>
+<area href="class_game_object.html" title="Convenience base class for gameplay-oriented objects." alt="GameObject" shape="rect" coords="0,56,81,80"/>
+<area href="class_text_object.html" title="Represents a renderable text object whose mesh is generated from a Font at runtime." alt="TextObject" shape="rect" coords="91,56,172,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a218968689a0b4e855c4de92eb6242bcb" id="r_a218968689a0b4e855c4de92eb6242bcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a218968689a0b4e855c4de92eb6242bcb">Object</a> ()=delete</td></tr>
+<tr class="memdesc:a218968689a0b4e855c4de92eb6242bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor.  <br /></td></tr>
 <tr class="separator:a218968689a0b4e855c4de92eb6242bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97dc6d6a1c56efaa682b8eef6dd4384b" id="r_a97dc6d6a1c56efaa682b8eef6dd4384b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b">Init</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:a97dc6d6a1c56efaa682b8eef6dd4384b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the object.  <br /></td></tr>
+<tr class="memdesc:a97dc6d6a1c56efaa682b8eef6dd4384b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the object's initial setup phase.  <br /></td></tr>
 <tr class="separator:a97dc6d6a1c56efaa682b8eef6dd4384b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af71fa9147e1a1f17ca5e93cc599d8eef" id="r_af71fa9147e1a1f17ca5e93cc599d8eef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71fa9147e1a1f17ca5e93cc599d8eef">LateInit</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:af71fa9147e1a1f17ca5e93cc599d8eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Second-phase initialization after all pending objects have completed <a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b" title="Initializes the object.">Init()</a>.  <br /></td></tr>
+<tr class="memdesc:af71fa9147e1a1f17ca5e93cc599d8eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a secondary initialization phase after <a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b" title="Performs the object&#39;s initial setup phase.">Init()</a>.  <br /></td></tr>
 <tr class="separator:af71fa9147e1a1f17ca5e93cc599d8eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6184ab2516fed16398670b75a2360859" id="r_a6184ab2516fed16398670b75a2360859"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6184ab2516fed16398670b75a2360859">Update</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:a6184ab2516fed16398670b75a2360859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-frame update.  <br /></td></tr>
+<tr class="memdesc:a6184ab2516fed16398670b75a2360859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the object's main per-frame logic.  <br /></td></tr>
 <tr class="separator:a6184ab2516fed16398670b75a2360859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d36cf36a47b76a005590557116814e6" id="r_a8d36cf36a47b76a005590557116814e6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d36cf36a47b76a005590557116814e6">Draw</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:a8d36cf36a47b76a005590557116814e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-frame draw hook.  <br /></td></tr>
+<tr class="memdesc:a8d36cf36a47b76a005590557116814e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes object-specific draw preparation logic before the renderer submits data.  <br /></td></tr>
 <tr class="separator:a8d36cf36a47b76a005590557116814e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceba19437c716d229fc247463c381da5" id="r_aceba19437c716d229fc247463c381da5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aceba19437c716d229fc247463c381da5">Free</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:aceba19437c716d229fc247463c381da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases runtime resources owned by this object.  <br /></td></tr>
+<tr class="memdesc:aceba19437c716d229fc247463c381da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the object's primary cleanup phase.  <br /></td></tr>
 <tr class="separator:aceba19437c716d229fc247463c381da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbc48ef4fd5b14b01a681e8fef4aaa20" id="r_acbc48ef4fd5b14b01a681e8fef4aaa20"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbc48ef4fd5b14b01a681e8fef4aaa20">LateFree</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)=0</td></tr>
-<tr class="memdesc:acbc48ef4fd5b14b01a681e8fef4aaa20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Second-phase free after all objects have completed <a class="el" href="#aceba19437c716d229fc247463c381da5" title="Releases runtime resources owned by this object.">Free()</a>.  <br /></td></tr>
+<tr class="memdesc:acbc48ef4fd5b14b01a681e8fef4aaa20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a late cleanup phase after <a class="el" href="#aceba19437c716d229fc247463c381da5" title="Performs the object&#39;s primary cleanup phase.">Free()</a>.  <br /></td></tr>
 <tr class="separator:acbc48ef4fd5b14b01a681e8fef4aaa20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226f2ae2af766b77d83c09a4d766b725" id="r_a226f2ae2af766b77d83c09a4d766b725"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a226f2ae2af766b77d83c09a4d766b725">~Object</a> ()=default</td></tr>
-<tr class="memdesc:a226f2ae2af766b77d83c09a4d766b725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic deletion.  <br /></td></tr>
+<tr class="memdesc:a226f2ae2af766b77d83c09a4d766b725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for safe polymorphic deletion.  <br /></td></tr>
 <tr class="separator:a226f2ae2af766b77d83c09a4d766b725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0230b42c88134134da384129e1a4d64d" id="r_a0230b42c88134134da384129e1a4d64d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0230b42c88134134da384129e1a4d64d">OnCollision</a> (<a class="el" href="class_object.html">Object</a> *other)</td></tr>
-<tr class="memdesc:a0230b42c88134134da384129e1a4d64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision callback invoked when this object collides with another object.  <br /></td></tr>
+<tr class="memdesc:a0230b42c88134134da384129e1a4d64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a collision notification with another object.  <br /></td></tr>
 <tr class="separator:a0230b42c88134134da384129e1a4d64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af92e9a809354c281d464011a1f009d02" id="r_af92e9a809354c281d464011a1f009d02"><td class="memItemLeft" align="right" valign="top">const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af92e9a809354c281d464011a1f009d02">IsAlive</a> () const</td></tr>
-<tr class="memdesc:af92e9a809354c281d464011a1f009d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is alive.  <br /></td></tr>
+<tr class="memdesc:af92e9a809354c281d464011a1f009d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is currently alive.  <br /></td></tr>
 <tr class="separator:af92e9a809354c281d464011a1f009d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77092a4fc48339007ed32e7d48f6140a" id="r_a77092a4fc48339007ed32e7d48f6140a"><td class="memItemLeft" align="right" valign="top">const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77092a4fc48339007ed32e7d48f6140a">IsVisible</a> () const</td></tr>
-<tr class="memdesc:a77092a4fc48339007ed32e7d48f6140a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is visible.  <br /></td></tr>
+<tr class="memdesc:a77092a4fc48339007ed32e7d48f6140a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object is currently visible.  <br /></td></tr>
 <tr class="separator:a77092a4fc48339007ed32e7d48f6140a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1905fc7497de984a176acdcf8ecb81be" id="r_a1905fc7497de984a176acdcf8ecb81be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1905fc7497de984a176acdcf8ecb81be">SetVisibility</a> (bool _isVisible)</td></tr>
-<tr class="memdesc:a1905fc7497de984a176acdcf8ecb81be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the visibility state.  <br /></td></tr>
+<tr class="memdesc:a1905fc7497de984a176acdcf8ecb81be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the object should be considered visible by the renderer.  <br /></td></tr>
 <tr class="separator:a1905fc7497de984a176acdcf8ecb81be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abed008ac27116fcd520eed806751ed34" id="r_abed008ac27116fcd520eed806751ed34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abed008ac27116fcd520eed806751ed34">Kill</a> ()</td></tr>
-<tr class="memdesc:abed008ac27116fcd520eed806751ed34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the object as dead.  <br /></td></tr>
+<tr class="memdesc:abed008ac27116fcd520eed806751ed34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the object as no longer alive.  <br /></td></tr>
 <tr class="separator:abed008ac27116fcd520eed806751ed34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a8c0663fb3e668d16c8a045937a9c82" id="r_a5a8c0663fb3e668d16c8a045937a9c82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8c0663fb3e668d16c8a045937a9c82">SetTag</a> (const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a5a8c0663fb3e668d16c8a045937a9c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object tag used for lookup/grouping.  <br /></td></tr>
+<tr class="memdesc:a5a8c0663fb3e668d16c8a045937a9c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a user-defined object tag.  <br /></td></tr>
 <tr class="separator:a5a8c0663fb3e668d16c8a045937a9c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9744dc473026e6b7cba610d00f510e81" id="r_a9744dc473026e6b7cba610d00f510e81"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9744dc473026e6b7cba610d00f510e81">GetTag</a> () const</td></tr>
-<tr class="memdesc:a9744dc473026e6b7cba610d00f510e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object tag.  <br /></td></tr>
+<tr class="memdesc:a9744dc473026e6b7cba610d00f510e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's tag string.  <br /></td></tr>
 <tr class="separator:a9744dc473026e6b7cba610d00f510e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeca329acbcb4de9843012537efd02cc" id="r_aeeca329acbcb4de9843012537efd02cc"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeca329acbcb4de9843012537efd02cc">GetRenderLayerTag</a> () const</td></tr>
-<tr class="memdesc:aeeca329acbcb4de9843012537efd02cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the render-layer tag used for <a class="el" href="class_render_layer_manager.html" title="Maintains a bidirectional mapping between human-readable render-layer names and numeric layer IDs.">RenderLayerManager</a> mapping.  <br /></td></tr>
+<tr class="memdesc:aeeca329acbcb4de9843012537efd02cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the render layer tag assigned to this object.  <br /></td></tr>
 <tr class="separator:aeeca329acbcb4de9843012537efd02cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae14fd11d21f05d538d10813e53566152" id="r_ae14fd11d21f05d538d10813e53566152"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14fd11d21f05d538d10813e53566152">SetRenderLayer</a> (const std::string &amp;tag)</td></tr>
-<tr class="memdesc:ae14fd11d21f05d538d10813e53566152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render-layer tag.  <br /></td></tr>
+<tr class="memdesc:ae14fd11d21f05d538d10813e53566152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the render layer tag used during render batch construction.  <br /></td></tr>
 <tr class="separator:ae14fd11d21f05d538d10813e53566152"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ae391764eac5e3d62e52bf7441ceec" id="r_a53ae391764eac5e3d62e52bf7441ceec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53ae391764eac5e3d62e52bf7441ceec">SetMaterial</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a53ae391764eac5e3d62e52bf7441ceec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the material by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag.  <br /></td></tr>
+<tr class="memdesc:a53ae391764eac5e3d62e52bf7441ceec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves and assigns a material from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag.  <br /></td></tr>
 <tr class="separator:a53ae391764eac5e3d62e52bf7441ceec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab1e520477fbd67aef665b8c8207a35d" id="r_aab1e520477fbd67aef665b8c8207a35d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab1e520477fbd67aef665b8c8207a35d">SetMaterial</a> (<a class="el" href="class_material.html">Material</a> *material_)</td></tr>
-<tr class="memdesc:aab1e520477fbd67aef665b8c8207a35d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the material pointer directly.  <br /></td></tr>
-<tr class="separator:aab1e520477fbd67aef665b8c8207a35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab521a1333884f821312dac04d176656d" id="r_ab521a1333884f821312dac04d176656d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_material.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab521a1333884f821312dac04d176656d">GetMaterial</a> () const</td></tr>
-<tr class="memdesc:ab521a1333884f821312dac04d176656d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the assigned material pointer.  <br /></td></tr>
-<tr class="separator:ab521a1333884f821312dac04d176656d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59c5aa50483153339d2bcdfe500f5550" id="r_a59c5aa50483153339d2bcdfe500f5550"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59c5aa50483153339d2bcdfe500f5550">SetMaterial</a> (std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt; material_)</td></tr>
+<tr class="memdesc:a59c5aa50483153339d2bcdfe500f5550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a material directly.  <br /></td></tr>
+<tr class="separator:a59c5aa50483153339d2bcdfe500f5550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad7172879f1b2fd092561827aa2bbb1" id="r_a7ad7172879f1b2fd092561827aa2bbb1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ad7172879f1b2fd092561827aa2bbb1">GetMaterial</a> () const</td></tr>
+<tr class="memdesc:a7ad7172879f1b2fd092561827aa2bbb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently assigned material resource.  <br /></td></tr>
+<tr class="separator:a7ad7172879f1b2fd092561827aa2bbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a469da1fde04db75a05aad5cd30c6e4b2" id="r_a469da1fde04db75a05aad5cd30c6e4b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a469da1fde04db75a05aad5cd30c6e4b2">SetMesh</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag)</td></tr>
-<tr class="memdesc:a469da1fde04db75a05aad5cd30c6e4b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mesh by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag.  <br /></td></tr>
+<tr class="memdesc:a469da1fde04db75a05aad5cd30c6e4b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves and assigns a mesh from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag.  <br /></td></tr>
 <tr class="separator:a469da1fde04db75a05aad5cd30c6e4b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae94b6c3d2c0bdc27eff25f07390fdb58" id="r_ae94b6c3d2c0bdc27eff25f07390fdb58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae94b6c3d2c0bdc27eff25f07390fdb58">SetMesh</a> (<a class="el" href="class_mesh.html">Mesh</a> *mesh_)</td></tr>
-<tr class="memdesc:ae94b6c3d2c0bdc27eff25f07390fdb58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mesh pointer directly.  <br /></td></tr>
-<tr class="separator:ae94b6c3d2c0bdc27eff25f07390fdb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1325c6fcdb74f68110b0518bd7beb05" id="r_ad1325c6fcdb74f68110b0518bd7beb05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1325c6fcdb74f68110b0518bd7beb05">GetMesh</a> () const</td></tr>
-<tr class="memdesc:ad1325c6fcdb74f68110b0518bd7beb05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the assigned mesh pointer.  <br /></td></tr>
-<tr class="separator:ad1325c6fcdb74f68110b0518bd7beb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd73cf89491ef2986923815ed7c5219" id="r_a7bd73cf89491ef2986923815ed7c5219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd73cf89491ef2986923815ed7c5219">SetMesh</a> (std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; mesh_)</td></tr>
+<tr class="memdesc:a7bd73cf89491ef2986923815ed7c5219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a mesh directly.  <br /></td></tr>
+<tr class="separator:a7bd73cf89491ef2986923815ed7c5219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54dba19ad0f92b77cb9f0ae61608b75d" id="r_a54dba19ad0f92b77cb9f0ae61608b75d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54dba19ad0f92b77cb9f0ae61608b75d">GetMesh</a> () const</td></tr>
+<tr class="memdesc:a54dba19ad0f92b77cb9f0ae61608b75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently assigned mesh resource.  <br /></td></tr>
+<tr class="separator:a54dba19ad0f92b77cb9f0ae61608b75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db79de87d0743178af0c8817ada974f" id="r_a2db79de87d0743178af0c8817ada974f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2db79de87d0743178af0c8817ada974f">CanBeInstanced</a> () const</td></tr>
-<tr class="memdesc:a2db79de87d0743178af0c8817ada974f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object is eligible for instanced rendering.  <br /></td></tr>
+<tr class="memdesc:a2db79de87d0743178af0c8817ada974f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object can participate in instanced rendering.  <br /></td></tr>
 <tr class="separator:a2db79de87d0743178af0c8817ada974f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee07a084c7a7e462fe09a74a91f1bb45" id="r_aee07a084c7a7e462fe09a74a91f1bb45"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee07a084c7a7e462fe09a74a91f1bb45">GetTransform2DMatrix</a> ()</td></tr>
-<tr class="memdesc:aee07a084c7a7e462fe09a74a91f1bb45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cached <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> matrix, updating it if necessary.  <br /></td></tr>
+<tr class="memdesc:aee07a084c7a7e462fe09a74a91f1bb45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current 2D transform matrix.  <br /></td></tr>
 <tr class="separator:aee07a084c7a7e462fe09a74a91f1bb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a453aea9866458ef777bbe908ac71b938" id="r_a453aea9866458ef777bbe908ac71b938"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform2_d.html">Transform2D</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a453aea9866458ef777bbe908ac71b938">GetTransform2D</a> ()</td></tr>
-<tr class="memdesc:a453aea9866458ef777bbe908ac71b938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mutable reference to the <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> component.  <br /></td></tr>
+<tr class="memdesc:a453aea9866458ef777bbe908ac71b938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns mutable access to the internal <a class="el" href="class_transform2_d.html">Transform2D</a>.  <br /></td></tr>
 <tr class="separator:a453aea9866458ef777bbe908ac71b938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d5b80a21f9fdb4e46f81936ae1d2b78" id="r_a8d5b80a21f9fdb4e46f81936ae1d2b78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d5b80a21f9fdb4e46f81936ae1d2b78">SetColor</a> (const glm::vec4 &amp;color_)</td></tr>
-<tr class="memdesc:a8d5b80a21f9fdb4e46f81936ae1d2b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the per-object color used by the renderer.  <br /></td></tr>
+<tr class="memdesc:a8d5b80a21f9fdb4e46f81936ae1d2b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object's tint color.  <br /></td></tr>
 <tr class="separator:a8d5b80a21f9fdb4e46f81936ae1d2b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbcd6fb6a64f9921341d212558f23318" id="r_adbcd6fb6a64f9921341d212558f23318"><td class="memItemLeft" align="right" valign="top">const glm::vec4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbcd6fb6a64f9921341d212558f23318">GetColor</a> ()</td></tr>
-<tr class="memdesc:adbcd6fb6a64f9921341d212558f23318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current per-object color.  <br /></td></tr>
+<tr class="memdesc:adbcd6fb6a64f9921341d212558f23318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's tint color.  <br /></td></tr>
 <tr class="separator:adbcd6fb6a64f9921341d212558f23318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b8c8aca393668f11cef22b19b7070a" id="r_a73b8c8aca393668f11cef22b19b7070a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73b8c8aca393668f11cef22b19b7070a">HasAnimation</a> () const</td></tr>
-<tr class="memdesc:a73b8c8aca393668f11cef22b19b7070a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object currently has an animator attached.  <br /></td></tr>
+<tr class="memdesc:a73b8c8aca393668f11cef22b19b7070a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object currently has a sprite animator attached.  <br /></td></tr>
 <tr class="separator:a73b8c8aca393668f11cef22b19b7070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5037bc2d36bcecdb601fa135a8fc6bfc" id="r_a5037bc2d36bcecdb601fa135a8fc6bfc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5037bc2d36bcecdb601fa135a8fc6bfc">GetSpriteAnimator</a> () const</td></tr>
-<tr class="memdesc:a5037bc2d36bcecdb601fa135a8fc6bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the active <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> pointer, if any.  <br /></td></tr>
+<tr class="memdesc:a5037bc2d36bcecdb601fa135a8fc6bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the attached sprite animator.  <br /></td></tr>
 <tr class="separator:a5037bc2d36bcecdb601fa135a8fc6bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af39935a92d3881c1a0f2ca0a3c4ba027" id="r_af39935a92d3881c1a0f2ca0a3c4ba027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af39935a92d3881c1a0f2ca0a3c4ba027">AttachAnimator</a> (std::unique_ptr&lt; <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> &gt; anim)</td></tr>
-<tr class="memdesc:af39935a92d3881c1a0f2ca0a3c4ba027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an animator by transferring ownership.  <br /></td></tr>
+<tr class="memdesc:af39935a92d3881c1a0f2ca0a3c4ba027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an already-created sprite animator.  <br /></td></tr>
 <tr class="separator:af39935a92d3881c1a0f2ca0a3c4ba027"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc6709946b43992d8dbb44c229adc0b" id="r_afdc6709946b43992d8dbb44c229adc0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc6709946b43992d8dbb44c229adc0b">AttachAnimator</a> (<a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *sheet, float frameTime, bool loop=true)</td></tr>
-<tr class="memdesc:afdc6709946b43992d8dbb44c229adc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and attaches a <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> from a <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> and playback settings.  <br /></td></tr>
-<tr class="separator:afdc6709946b43992d8dbb44c229adc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7456f113bb930054b7937278b6a317d" id="r_af7456f113bb930054b7937278b6a317d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7456f113bb930054b7937278b6a317d">AttachAnimator</a> (std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt; sheet, float frameTime, bool loop=true)</td></tr>
+<tr class="memdesc:af7456f113bb930054b7937278b6a317d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and attaches a sprite animator from a sprite sheet.  <br /></td></tr>
+<tr class="separator:af7456f113bb930054b7937278b6a317d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3c65d98ad8b1c3fdae221a5390cc757" id="r_ae3c65d98ad8b1c3fdae221a5390cc757"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3c65d98ad8b1c3fdae221a5390cc757">DetachAnimator</a> ()</td></tr>
-<tr class="memdesc:ae3c65d98ad8b1c3fdae221a5390cc757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches and destroys the current animator, if any.  <br /></td></tr>
+<tr class="memdesc:ae3c65d98ad8b1c3fdae221a5390cc757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches and destroys the currently attached sprite animator.  <br /></td></tr>
 <tr class="separator:ae3c65d98ad8b1c3fdae221a5390cc757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ba9c8096492c37bf3db474b5c5f31a0" id="r_a4ba9c8096492c37bf3db474b5c5f31a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ba9c8096492c37bf3db474b5c5f31a0">SetCollider</a> (std::unique_ptr&lt; <a class="el" href="class_collider.html">Collider</a> &gt; c)</td></tr>
-<tr class="memdesc:a4ba9c8096492c37bf3db474b5c5f31a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the collider by transferring ownership.  <br /></td></tr>
+<tr class="memdesc:a4ba9c8096492c37bf3db474b5c5f31a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a collider to this object.  <br /></td></tr>
 <tr class="separator:a4ba9c8096492c37bf3db474b5c5f31a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad601234bc10ab7fbf84b1cf1e302f756" id="r_ad601234bc10ab7fbf84b1cf1e302f756"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_collider.html">Collider</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a> () const</td></tr>
-<tr class="memdesc:ad601234bc10ab7fbf84b1cf1e302f756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current collider pointer.  <br /></td></tr>
+<tr class="memdesc:ad601234bc10ab7fbf84b1cf1e302f756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently attached collider.  <br /></td></tr>
 <tr class="separator:ad601234bc10ab7fbf84b1cf1e302f756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce1a12c241c5a64ec03e67ee17e1260" id="r_a7ce1a12c241c5a64ec03e67ee17e1260"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ce1a12c241c5a64ec03e67ee17e1260">SetCollision</a> (<a class="el" href="class_object_manager.html">ObjectManager</a> &amp;objectManager, const std::string &amp;tag, const std::vector&lt; std::string &gt; &amp;checkCollisionList)</td></tr>
-<tr class="memdesc:a7ce1a12c241c5a64ec03e67ee17e1260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures collision category and mask using <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>'s collision registry.  <br /></td></tr>
+<tr class="memdesc:a7ce1a12c241c5a64ec03e67ee17e1260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the object's collision category and collision mask.  <br /></td></tr>
 <tr class="separator:a7ce1a12c241c5a64ec03e67ee17e1260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76b94bea7f5f5e6454cd2c134ddc6260" id="r_a76b94bea7f5f5e6454cd2c134ddc6260"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76b94bea7f5f5e6454cd2c134ddc6260">GetCollisionMask</a> () const</td></tr>
-<tr class="memdesc:a76b94bea7f5f5e6454cd2c134ddc6260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision mask used for collision filtering.  <br /></td></tr>
+<tr class="memdesc:a76b94bea7f5f5e6454cd2c134ddc6260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision mask bits for this object.  <br /></td></tr>
 <tr class="separator:a76b94bea7f5f5e6454cd2c134ddc6260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a431dc9b1eab4227c9c5d002fae5ec017" id="r_a431dc9b1eab4227c9c5d002fae5ec017"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a431dc9b1eab4227c9c5d002fae5ec017">GetCollisionCategory</a> () const</td></tr>
-<tr class="memdesc:a431dc9b1eab4227c9c5d002fae5ec017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision category used for collision filtering.  <br /></td></tr>
+<tr class="memdesc:a431dc9b1eab4227c9c5d002fae5ec017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collision category bit for this object.  <br /></td></tr>
 <tr class="separator:a431dc9b1eab4227c9c5d002fae5ec017"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe474c804f6bab83b89958356e1857af" id="r_afe474c804f6bab83b89958356e1857af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a> () const</td></tr>
-<tr class="memdesc:afe474c804f6bab83b89958356e1857af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this object should ignore the active camera.  <br /></td></tr>
+<tr class="memdesc:afe474c804f6bab83b89958356e1857af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the object should ignore the active render camera.  <br /></td></tr>
 <tr class="separator:afe474c804f6bab83b89958356e1857af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93406d31ceabece6e7fb08814ac188c5" id="r_a93406d31ceabece6e7fb08814ac188c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93406d31ceabece6e7fb08814ac188c5">SetIgnoreCamera</a> (bool shouldIgnoreCamera, <a class="el" href="class_camera2_d.html">Camera2D</a> *cameraForTransformCalc=nullptr)</td></tr>
-<tr class="memdesc:a93406d31ceabece6e7fb08814ac188c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the object should ignore the active camera and optionally stores a reference camera.  <br /></td></tr>
+<tr class="memdesc:a93406d31ceabece6e7fb08814ac188c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables camera-ignoring behavior.  <br /></td></tr>
 <tr class="separator:a93406d31ceabece6e7fb08814ac188c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce43cdb7eae414e94b4285dbe01a85c" id="r_a2ce43cdb7eae414e94b4285dbe01a85c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980">ObjectType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ce43cdb7eae414e94b4285dbe01a85c">GetType</a> () const</td></tr>
-<tr class="memdesc:a2ce43cdb7eae414e94b4285dbe01a85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object type.  <br /></td></tr>
+<tr class="memdesc:a2ce43cdb7eae414e94b4285dbe01a85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns this object's runtime type.  <br /></td></tr>
 <tr class="separator:a2ce43cdb7eae414e94b4285dbe01a85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94edf37fadeb8c59420d35730d14464e" id="r_a94edf37fadeb8c59420d35730d14464e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera2_d.html">Camera2D</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94edf37fadeb8c59420d35730d14464e">GetReferenceCamera</a> () const</td></tr>
-<tr class="memdesc:a94edf37fadeb8c59420d35730d14464e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the reference camera used when ignoreCamera is enabled.  <br /></td></tr>
+<tr class="memdesc:a94edf37fadeb8c59420d35730d14464e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the camera reference used for camera-ignore correction.  <br /></td></tr>
 <tr class="separator:a94edf37fadeb8c59420d35730d14464e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c708099448203abe3182c8b0ae340ce" id="r_a4c708099448203abe3182c8b0ae340ce"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c708099448203abe3182c8b0ae340ce">GetWorldPosition</a> () const</td></tr>
-<tr class="memdesc:a4c708099448203abe3182c8b0ae340ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's world-space position used by systems like culling and debug drawing.  <br /></td></tr>
+<tr class="memdesc:a4c708099448203abe3182c8b0ae340ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current world position.  <br /></td></tr>
 <tr class="separator:a4c708099448203abe3182c8b0ae340ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c2784b2a928fa1050d8a036091754c4" id="r_a8c2784b2a928fa1050d8a036091754c4"><td class="memItemLeft" align="right" valign="top">virtual glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c2784b2a928fa1050d8a036091754c4">GetWorldScale</a> () const</td></tr>
-<tr class="memdesc:a8c2784b2a928fa1050d8a036091754c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's world-space scale used by systems like culling and collision sync.  <br /></td></tr>
+<tr class="memdesc:a8c2784b2a928fa1050d8a036091754c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object's current world scale.  <br /></td></tr>
 <tr class="separator:a8c2784b2a928fa1050d8a036091754c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb3716809623d005e893452f2973b604" id="r_acb3716809623d005e893452f2973b604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb3716809623d005e893452f2973b604">SetFlipUV_X</a> (bool shouldFlip)</td></tr>
-<tr class="memdesc:acb3716809623d005e893452f2973b604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables horizontal UV flipping for this object.  <br /></td></tr>
+<tr class="memdesc:acb3716809623d005e893452f2973b604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables horizontal UV flipping.  <br /></td></tr>
 <tr class="separator:acb3716809623d005e893452f2973b604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20a8c5f662aa6b8f7cc2e1da304c12f" id="r_ac20a8c5f662aa6b8f7cc2e1da304c12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac20a8c5f662aa6b8f7cc2e1da304c12f">SetFlipUV_Y</a> (bool shouldFlip)</td></tr>
-<tr class="memdesc:ac20a8c5f662aa6b8f7cc2e1da304c12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables vertical UV flipping for this object.  <br /></td></tr>
+<tr class="memdesc:ac20a8c5f662aa6b8f7cc2e1da304c12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables vertical UV flipping.  <br /></td></tr>
 <tr class="separator:ac20a8c5f662aa6b8f7cc2e1da304c12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c9dd596d37ae4ab88ce7a33b725ba68" id="r_a9c9dd596d37ae4ab88ce7a33b725ba68"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c9dd596d37ae4ab88ce7a33b725ba68">GetUVFlipVector</a> () const</td></tr>
-<tr class="memdesc:a9c9dd596d37ae4ab88ce7a33b725ba68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a vector encoding UV flip multipliers used by the renderer.  <br /></td></tr>
+<tr class="memdesc:a9c9dd596d37ae4ab88ce7a33b725ba68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UV flip multiplier vector used by the renderer.  <br /></td></tr>
 <tr class="separator:a9c9dd596d37ae4ab88ce7a33b725ba68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac31ad8e33d6fd852422f4605f287b2da" id="r_ac31ad8e33d6fd852422f4605f287b2da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac31ad8e33d6fd852422f4605f287b2da">Object</a> (<a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980">ObjectType</a> objectType)</td></tr>
-<tr class="memdesc:ac31ad8e33d6fd852422f4605f287b2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> with a concrete type.  <br /></td></tr>
+<tr class="memdesc:ac31ad8e33d6fd852422f4605f287b2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an object with an explicit runtime type.  <br /></td></tr>
 <tr class="separator:ac31ad8e33d6fd852422f4605f287b2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5adc371bfc7b4216ffbc85907830e25" id="r_ac5adc371bfc7b4216ffbc85907830e25"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5adc371bfc7b4216ffbc85907830e25">GetBoundingRadius</a> () const</td></tr>
-<tr class="memdesc:ac5adc371bfc7b4216ffbc85907830e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an approximate bounding radius used for camera visibility tests.  <br /></td></tr>
+<tr class="memdesc:ac5adc371bfc7b4216ffbc85907830e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an approximate bounding radius used for visibility testing.  <br /></td></tr>
 <tr class="separator:ac5adc371bfc7b4216ffbc85907830e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -292,10 +293,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aa00855f8cc3dc0f7fd06e2a76d523458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9fcb18ac9136f0354dfc053967fe892" id="r_ab9fcb18ac9136f0354dfc053967fe892"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform2_d.html">Transform2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a></td></tr>
 <tr class="separator:ab9fcb18ac9136f0354dfc053967fe892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af475bd962d08ec97add4497e92436076" id="r_af475bd962d08ec97add4497e92436076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_material.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af475bd962d08ec97add4497e92436076">material</a> = nullptr</td></tr>
-<tr class="separator:af475bd962d08ec97add4497e92436076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad755772f4633cd0ef94a05738ffb5e84" id="r_ad755772f4633cd0ef94a05738ffb5e84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> = nullptr</td></tr>
-<tr class="separator:ad755772f4633cd0ef94a05738ffb5e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af822711fb15809283931d0bfaa213b52" id="r_af822711fb15809283931d0bfaa213b52"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af822711fb15809283931d0bfaa213b52">material</a></td></tr>
+<tr class="separator:af822711fb15809283931d0bfaa213b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9197072c0174782f6999b02540f345bd" id="r_a9197072c0174782f6999b02540f345bd"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9197072c0174782f6999b02540f345bd">mesh</a></td></tr>
+<tr class="separator:a9197072c0174782f6999b02540f345bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d1a20796927cc278a924836c14cf48a" id="r_a3d1a20796927cc278a924836c14cf48a"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d1a20796927cc278a924836c14cf48a">color</a> = glm::vec4(1)</td></tr>
 <tr class="separator:a3d1a20796927cc278a924836c14cf48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab373c4205c0460c9590f473b6c0c8304" id="r_ab373c4205c0460c9590f473b6c0c8304"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_sprite_animator.html">SpriteAnimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a></td></tr>
@@ -317,27 +318,28 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a43cde657fec110a5fd0c24050d68065b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base interface for all runtime entities managed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> and rendered by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>. </p>
-<p><a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> defines the engine-level lifecycle and the common component set used by the renderer and collision system:</p><ul>
-<li>Lifecycle: Init -&gt; LateInit -&gt; Update -&gt; Draw -&gt; Free -&gt; LateFree</li>
-<li>Rendering: <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a>, Material*, Mesh*, render layer tag, per-object color, optional <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a></li>
-<li>Collision: optional <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> and collision category/mask filtering</li>
+<div class="textblock"><p>Base abstract object class for all engine-managed runtime objects. </p>
+<p><a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> is the common polymorphic foundation used by the engine to manage scene entities such as gameplay objects and text objects.</p>
+<p>This class stores and exposes the core shared state needed by multiple systems:</p><ul>
+<li>lifecycle state (alive / visible)</li>
+<li>transform data</li>
+<li>material and mesh references</li>
+<li>render layer tag</li>
+<li>tint color</li>
+<li>optional sprite animation</li>
+<li>optional collider</li>
+<li>collision category / mask bits</li>
+<li>camera-ignore behavior for HUD or screen-space style objects</li>
+<li>UV flip settings for mirrored rendering</li>
 </ul>
-<p>Ownership notes:</p><ul>
-<li><a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> owns <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> instances via std::unique_ptr&lt;Object&gt;.</li>
-<li><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> and <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> are referenced as raw pointers and are owned/managed by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.</li>
-<li><a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> and <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> are owned by the <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> via std::unique_ptr.</li>
+<p>The renderer uses this class heavily during culling and draw submission. For example:</p><ul>
+<li><a class="el" href="class_frustum_culler.html" title="Performs visibility culling against a 2D camera view.">FrustumCuller</a> checks <a class="el" href="#af92e9a809354c281d464011a1f009d02" title="Returns whether the object is currently alive.">IsAlive()</a>, <a class="el" href="#a77092a4fc48339007ed32e7d48f6140a" title="Returns whether the object is currently visible.">IsVisible()</a>, <a class="el" href="#afe474c804f6bab83b89958356e1857af" title="Returns whether the object should ignore the active render camera.">ShouldIgnoreCamera()</a>, <a class="el" href="#a4c708099448203abe3182c8b0ae340ce" title="Returns the object&#39;s current world position.">GetWorldPosition()</a>, and <a class="el" href="#ac5adc371bfc7b4216ffbc85907830e25" title="Returns an approximate bounding radius used for visibility testing.">GetBoundingRadius()</a></li>
+<li><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> reads material, mesh, animation, color, transform, layer tag, and UV flip state when building render batches and issuing draws</li>
 </ul>
-<p>Camera-space behavior:</p><ul>
-<li>Objects can be configured to ignore the active camera and render in screen space.</li>
-<li>When ignoring the camera, a referenceCamera may be used to compute world transforms consistently.</li>
-</ul>
-<p>Visibility and lifetime:</p><ul>
-<li>isAlive controls whether the object is considered active; killed objects are freed and removed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>.</li>
-<li>isVisible controls whether the object participates in rendering and (typically) debug visualization. </li>
-</ul>
+<p>Derived classes must implement the full lifecycle interface and may override world-space queries when their positioning logic differs from the default transform-based behavior.</p>
+<dl class="section note"><dt>Note</dt><dd>This class is abstract and cannot be instantiated directly. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00050">50</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00060">60</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a218968689a0b4e855c4de92eb6242bcb" name="a218968689a0b4e855c4de92eb6242bcb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a218968689a0b4e855c4de92eb6242bcb">&#9670;&#160;</a></span>Object() <span class="overload">[1/2]</span></h2>
@@ -361,6 +363,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deleted default constructor. </p>
+<p>Every <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> must be created with an explicit <a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980" title="Identifies the runtime category of an engine object.">ObjectType</a> through the protected constructor so the engine can distinguish its runtime category. </p>
 
 </div>
 </div>
@@ -387,7 +392,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for polymorphic deletion. </p>
+<p>Virtual destructor for safe polymorphic deletion. </p>
 
 </div>
 </div>
@@ -414,24 +419,23 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> with a concrete type. </p>
-<p>Derived classes must call this constructor to set the object type.</p>
+<p>Constructs an object with an explicit runtime type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">objectType</td><td>Concrete object type. </td></tr>
+    <tr><td class="paramname">objectType</td><td>Runtime type assigned to this object. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00467">467</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  467</span>: <a class="code hl_variable" href="#a0075dcd793d09d14f5ff0b20ce4db4f7">type</a>(objectType) {}</div>
-<div class="ttc" id="aclass_object_html_a0075dcd793d09d14f5ff0b20ce4db4f7"><div class="ttname"><a href="#a0075dcd793d09d14f5ff0b20ce4db4f7">Object::type</a></div><div class="ttdeci">ObjectType type</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00468">Object.h:468</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00562">562</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  562</span>: <a class="code hl_variable" href="#a0075dcd793d09d14f5ff0b20ce4db4f7">type</a>(objectType) {}</div>
+<div class="ttc" id="aclass_object_html_a0075dcd793d09d14f5ff0b20ce4db4f7"><div class="ttname"><a href="#a0075dcd793d09d14f5ff0b20ce4db4f7">Object::type</a></div><div class="ttdeci">ObjectType type</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00564">Object.h:564</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afdc6709946b43992d8dbb44c229adc0b" name="afdc6709946b43992d8dbb44c229adc0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdc6709946b43992d8dbb44c229adc0b">&#9670;&#160;</a></span>AttachAnimator() <span class="overload">[1/2]</span></h2>
+<a id="af7456f113bb930054b7937278b6a317d" name="af7456f113bb930054b7937278b6a317d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7456f113bb930054b7937278b6a317d">&#9670;&#160;</a></span>AttachAnimator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -442,7 +446,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Object::AttachAnimator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_sprite_sheet.html">SpriteSheet</a> *</td>          <td class="paramname"><span class="paramname"><em>sheet</em></span>, </td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_sprite_sheet.html">SpriteSheet</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sheet</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -462,19 +466,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates and attaches a <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> from a <a class="el" href="class_sprite_sheet.html" title="Utility class that maps a texture to a uniform grid of sprite frames.">SpriteSheet</a> and playback settings. </p>
+<p>Creates and attaches a sprite animator from a sprite sheet. </p>
+<p>This helper constructs a <a class="el" href="class_sprite_animator.html" title="Controls sprite animation playback using a SpriteSheet.">SpriteAnimator</a> in place using the given sprite sheet, frame duration, and looping policy.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sheet</td><td>Sprite sheet to use. </td></tr>
-    <tr><td class="paramname">frameTime</td><td>Seconds per frame. </td></tr>
-    <tr><td class="paramname">loop</td><td>Whether to loop playback. </td></tr>
+    <tr><td class="paramname">sheet</td><td>Sprite sheet used by the animator. </td></tr>
+    <tr><td class="paramname">frameTime</td><td>Duration of each frame. </td></tr>
+    <tr><td class="paramname">loop</td><td>Whether the animation should loop. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00334">334</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  334</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = std::make_unique&lt;SpriteAnimator&gt;(sheet, frameTime, loop); }</div>
-<div class="ttc" id="aclass_object_html_ab373c4205c0460c9590f473b6c0c8304"><div class="ttname"><a href="#ab373c4205c0460c9590f473b6c0c8304">Object::spriteAnimator</a></div><div class="ttdeci">std::unique_ptr&lt; SpriteAnimator &gt; spriteAnimator</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00496">Object.h:496</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00402">402</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  402</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = std::make_unique&lt;SpriteAnimator&gt;(sheet, frameTime, loop); }</div>
+<div class="ttc" id="aclass_object_html_ab373c4205c0460c9590f473b6c0c8304"><div class="ttname"><a href="#ab373c4205c0460c9590f473b6c0c8304">Object::spriteAnimator</a></div><div class="ttdeci">std::unique_ptr&lt; SpriteAnimator &gt; spriteAnimator</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00600">Object.h:600</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -501,16 +506,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Attaches an animator by transferring ownership. </p>
+<p>Attaches an already-created sprite animator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">anim</td><td>Animator instance (ownership transferred). </td></tr>
+    <tr><td class="paramname">anim</td><td>Unique ownership of the animator to attach. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00325">325</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  325</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = std::move(anim); }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00389">389</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  389</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = std::move(anim); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -537,22 +542,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether this object is eligible for instanced rendering. </p>
-<p>Typical requirements in this engine:</p><ul>
-<li>A valid <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> and <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> exist.</li>
-<li>The material's shader supports the instancing attribute layout (e.g., "i_Model").</li>
-<li>The object is not using per-object features that break batching.</li>
+<p>Returns whether this object can participate in instanced rendering. </p>
+<p>This function checks:</p><ul>
+<li>that the mesh weak_ptr can be locked</li>
+<li>that the material weak_ptr can be locked</li>
+<li>that the material reports instancing support</li>
 </ul>
-<dl class="section return"><dt>Returns</dt><dd>True if the object can be included in an instanced batch. </dd></dl>
+<p>It does not guarantee that the object will always be rendered through an instanced batch, but it is used by the renderer as a quick eligibility test.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if both mesh/material exist and the material supports instancing. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00064">64</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> || !<a class="code hl_variable" href="#af475bd962d08ec97add4497e92436076">material</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#af475bd962d08ec97add4497e92436076">material</a>-&gt;IsInstancingSupported()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   69</span>}</div>
-<div class="ttc" id="aclass_object_html_ad755772f4633cd0ef94a05738ffb5e84"><div class="ttname"><a href="#ad755772f4633cd0ef94a05738ffb5e84">Object::mesh</a></div><div class="ttdeci">Mesh * mesh</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00492">Object.h:492</a></div></div>
-<div class="ttc" id="aclass_object_html_af475bd962d08ec97add4497e92436076"><div class="ttname"><a href="#af475bd962d08ec97add4497e92436076">Object::material</a></div><div class="ttdeci">Material * material</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00491">Object.h:491</a></div></div>
+<div class="line"><span class="lineno">   66</span>    <span class="keyword">auto</span> meshPtr = <a class="code hl_variable" href="#a9197072c0174782f6999b02540f345bd">mesh</a>.lock();</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keyword">auto</span> materialPtr = <a class="code hl_variable" href="#af822711fb15809283931d0bfaa213b52">material</a>.lock();</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!meshPtr || !materialPtr) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (!materialPtr-&gt;IsInstancingSupported()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+<div class="ttc" id="aclass_object_html_a9197072c0174782f6999b02540f345bd"><div class="ttname"><a href="#a9197072c0174782f6999b02540f345bd">Object::mesh</a></div><div class="ttdeci">std::weak_ptr&lt; Mesh &gt; mesh</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00596">Object.h:596</a></div></div>
+<div class="ttc" id="aclass_object_html_af822711fb15809283931d0bfaa213b52"><div class="ttname"><a href="#af822711fb15809283931d0bfaa213b52">Object::material</a></div><div class="ttdeci">std::weak_ptr&lt; Material &gt; material</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00595">Object.h:595</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -579,10 +589,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Detaches and destroys the current animator, if any. </p>
+<p>Detaches and destroys the currently attached sprite animator. </p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00339">339</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  339</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = <span class="keyword">nullptr</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00407">407</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  407</span>{ <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> = <span class="keyword">nullptr</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -609,11 +619,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Per-frame draw hook. </p>
-<p>In this engine architecture, draw submission is typically handled by ObjectManager/RenderManager using the object's Material/Mesh/Transform. This function exists for objects that need explicit draw-time behavior or debug submission.</p>
+<p>Executes object-specific draw preparation logic before the renderer submits data. </p>
+<p>This function is called from the rendering path and is intended for object-specific draw-time preparation. In the current engine flow, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> may call <a class="el" href="#a8d36cf36a47b76a005590557116814e6" title="Executes object-specific draw preparation logic before the renderer submits data.">Draw()</a> before sending material data and issuing the final mesh draw call, so derived classes can use this hook to update uniforms or perform other per-object render setup.</p>
+<p>Objects should not assume this function alone performs the full OpenGL draw. The renderer still controls actual batch submission and mesh rendering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during drawing. </td></tr>
   </table>
   </dd>
 </dl>
@@ -645,11 +656,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Releases runtime resources owned by this object. </p>
-<p>Called when the object is removed (killed) or when the owning <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> is being freed. Use this to release or unregister external references and to clear owned data.</p>
+<p>Performs the object's primary cleanup phase. </p>
+<p>Derived classes should release or detach runtime resources that are no longer needed before the object is fully removed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during cleanup. </td></tr>
   </table>
   </dd>
 </dl>
@@ -681,19 +692,28 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns an approximate bounding radius used for camera visibility tests. </p>
-<p><a class="el" href="class_frustum_culler.html" title="Simple visibility culling utility based on a Camera2D view test and object bounding radius.">FrustumCuller</a> uses this radius with <a class="el" href="#a4c708099448203abe3182c8b0ae340ce" title="Returns the object&#39;s world-space position used by systems like culling and debug drawing.">GetWorldPosition()</a> to decide whether the object is in view. Derived classes can override to provide tighter bounds.</p>
-<dl class="section return"><dt>Returns</dt><dd>Bounding radius in world units. </dd></dl>
+<p>Returns an approximate bounding radius used for visibility testing. </p>
+<p>The default implementation:</p><ul>
+<li>reads the mesh's local half-size if a mesh exists</li>
+<li>falls back to a default half-size of (0.5, 0.5) otherwise</li>
+<li>multiplies the half-size by the current transform scale</li>
+<li>returns the vector length as an approximate world-space radius</li>
+</ul>
+<p><a class="el" href="class_frustum_culler.html" title="Performs visibility culling against a 2D camera view.">FrustumCuller</a> uses this value together with <a class="el" href="#a4c708099448203abe3182c8b0ae340ce" title="Returns the object&#39;s current world position.">GetWorldPosition()</a> when deciding whether an object is inside the current camera view.</p>
+<p>Derived classes may override this if they need a more accurate bound.</p>
+<dl class="section return"><dt>Returns</dt><dd>Approximate world-space bounding radius. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_text_object.html#a76097945db69268cb1970762ad1d4f23">TextObject</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00149">149</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
-<div class="line"><span class="lineno">  151</span>    glm::vec2 halfSize = <a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> ? <a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a>-&gt;GetLocalBoundsHalfSize() : glm::vec2(0.5f);</div>
-<div class="line"><span class="lineno">  152</span>    glm::vec2 scaled = halfSize * <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale();</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> glm::length(scaled);</div>
-<div class="line"><span class="lineno">  154</span>}</div>
-<div class="ttc" id="aclass_object_html_ab9fcb18ac9136f0354dfc053967fe892"><div class="ttname"><a href="#ab9fcb18ac9136f0354dfc053967fe892">Object::transform2D</a></div><div class="ttdeci">Transform2D transform2D</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00490">Object.h:490</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00152">152</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  153</span>{</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">auto</span> meshPtr = <a class="code hl_variable" href="#a9197072c0174782f6999b02540f345bd">mesh</a>.lock();</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    glm::vec2 halfSize = meshPtr ? meshPtr-&gt;GetLocalBoundsHalfSize() : glm::vec2(0.5f);</div>
+<div class="line"><span class="lineno">  157</span>    glm::vec2 scaled = halfSize * <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale();</div>
+<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> glm::length(scaled);</div>
+<div class="line"><span class="lineno">  159</span>}</div>
+<div class="ttc" id="aclass_object_html_ab9fcb18ac9136f0354dfc053967fe892"><div class="ttname"><a href="#ab9fcb18ac9136f0354dfc053967fe892">Object::transform2D</a></div><div class="ttdeci">Transform2D transform2D</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00594">Object.h:594</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -720,12 +740,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current collider pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> pointer or nullptr. </dd></dl>
+<p>Returns the currently attached collider. </p>
+<dl class="section return"><dt>Returns</dt><dd>Raw pointer to the collider, or nullptr if none is attached. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00353">353</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  353</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">collider</a>.get(); }</div>
-<div class="ttc" id="aclass_object_html_a4b6e56f7a8f6d8dae69cb029cb6e5bd7"><div class="ttname"><a href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">Object::collider</a></div><div class="ttdeci">std::unique_ptr&lt; Collider &gt; collider</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00497">Object.h:497</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00424">424</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  424</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">collider</a>.get(); }</div>
+<div class="ttc" id="aclass_object_html_a4b6e56f7a8f6d8dae69cb029cb6e5bd7"><div class="ttname"><a href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">Object::collider</a></div><div class="ttdeci">std::unique_ptr&lt; Collider &gt; collider</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00601">Object.h:601</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -752,11 +772,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the collision category used for collision filtering. </p>
+<p>Returns the collision category bit for this object. </p>
+<dl class="section return"><dt>Returns</dt><dd>Bit representing this object's collision category. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00377">377</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  377</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aca82263c28421c17cb204ae27492d3e2">collisionCategory</a>; }</div>
-<div class="ttc" id="aclass_object_html_aca82263c28421c17cb204ae27492d3e2"><div class="ttname"><a href="#aca82263c28421c17cb204ae27492d3e2">Object::collisionCategory</a></div><div class="ttdeci">uint32_t collisionCategory</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00499">Object.h:499</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00455">455</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  455</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aca82263c28421c17cb204ae27492d3e2">collisionCategory</a>; }</div>
+<div class="ttc" id="aclass_object_html_aca82263c28421c17cb204ae27492d3e2"><div class="ttname"><a href="#aca82263c28421c17cb204ae27492d3e2">Object::collisionCategory</a></div><div class="ttdeci">uint32_t collisionCategory</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00603">Object.h:603</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -783,11 +804,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the collision mask used for collision filtering. </p>
+<p>Returns the collision mask bits for this object. </p>
+<dl class="section return"><dt>Returns</dt><dd>Bitmask describing which categories this object can collide with. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00372">372</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  372</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a>; }</div>
-<div class="ttc" id="aclass_object_html_a8b9f93c681a4d64d8ad30ea03b85c9a0"><div class="ttname"><a href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">Object::collisionMask</a></div><div class="ttdeci">uint32_t collisionMask</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00500">Object.h:500</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00448">448</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  448</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a>; }</div>
+<div class="ttc" id="aclass_object_html_a8b9f93c681a4d64d8ad30ea03b85c9a0"><div class="ttname"><a href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">Object::collisionMask</a></div><div class="ttdeci">uint32_t collisionMask</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00604">Object.h:604</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -814,18 +836,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current per-object color. </p>
+<p>Returns the object's tint color. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the stored RGBA tint color. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00086">86</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a3d1a20796927cc278a924836c14cf48a">color</a>;</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-<div class="ttc" id="aclass_object_html_a3d1a20796927cc278a924836c14cf48a"><div class="ttname"><a href="#a3d1a20796927cc278a924836c14cf48a">Object::color</a></div><div class="ttdeci">glm::vec4 color</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00494">Object.h:494</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00089">89</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>{</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a3d1a20796927cc278a924836c14cf48a">color</a>;</div>
+<div class="line"><span class="lineno">   92</span>}</div>
+<div class="ttc" id="aclass_object_html_a3d1a20796927cc278a924836c14cf48a"><div class="ttname"><a href="#a3d1a20796927cc278a924836c14cf48a">Object::color</a></div><div class="ttdeci">glm::vec4 color</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00598">Object.h:598</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab521a1333884f821312dac04d176656d" name="ab521a1333884f821312dac04d176656d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab521a1333884f821312dac04d176656d">&#9670;&#160;</a></span>GetMaterial()</h2>
+<a id="a7ad7172879f1b2fd092561827aa2bbb1" name="a7ad7172879f1b2fd092561827aa2bbb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad7172879f1b2fd092561827aa2bbb1">&#9670;&#160;</a></span>GetMaterial()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -834,7 +857,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_material.html">Material</a> * Object::GetMaterial </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt; Object::GetMaterial </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -847,18 +870,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the assigned material pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> pointer (may be nullptr if not assigned). </dd></dl>
+<p>Returns the currently assigned material resource. </p>
+<p>The internally stored weak_ptr is locked before being returned. If the resource has already expired, this returns nullptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the assigned material, or nullptr if expired. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00049">49</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#af475bd962d08ec97add4497e92436076">material</a>;</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#af822711fb15809283931d0bfaa213b52">material</a>.lock();</div>
 <div class="line"><span class="lineno">   52</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ad1325c6fcdb74f68110b0518bd7beb05" name="ad1325c6fcdb74f68110b0518bd7beb05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1325c6fcdb74f68110b0518bd7beb05">&#9670;&#160;</a></span>GetMesh()</h2>
+<a id="a54dba19ad0f92b77cb9f0ae61608b75d" name="a54dba19ad0f92b77cb9f0ae61608b75d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54dba19ad0f92b77cb9f0ae61608b75d">&#9670;&#160;</a></span>GetMesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -867,7 +891,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_mesh.html">Mesh</a> * Object::GetMesh </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; Object::GetMesh </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -880,12 +904,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the assigned mesh pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> pointer (may be nullptr if not assigned). </dd></dl>
+<p>Returns the currently assigned mesh resource. </p>
+<p>The internally stored weak_ptr is locked before being returned. If the resource has already expired, this returns nullptr.</p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the assigned mesh, or nullptr if expired. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00059">59</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a>;</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a9197072c0174782f6999b02540f345bd">mesh</a>.lock();</div>
 <div class="line"><span class="lineno">   62</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -913,12 +938,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the reference camera used when ignoreCamera is enabled. </p>
-<dl class="section return"><dt>Returns</dt><dd>Camera pointer or nullptr. </dd></dl>
+<p>Returns the camera reference used for camera-ignore correction. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the reference camera, or nullptr if none is assigned. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00410">410</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  410</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>; }</div>
-<div class="ttc" id="aclass_object_html_a45123ac0f3f66f1de94530810f52f61b"><div class="ttname"><a href="#a45123ac0f3f66f1de94530810f52f61b">Object::referenceCamera</a></div><div class="ttdeci">Camera2D * referenceCamera</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00485">Object.h:485</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00495">495</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  495</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>; }</div>
+<div class="ttc" id="aclass_object_html_a45123ac0f3f66f1de94530810f52f61b"><div class="ttname"><a href="#a45123ac0f3f66f1de94530810f52f61b">Object::referenceCamera</a></div><div class="ttdeci">Camera2D * referenceCamera</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00589">Object.h:589</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -945,14 +970,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the render-layer tag used for <a class="el" href="class_render_layer_manager.html" title="Maintains a bidirectional mapping between human-readable render-layer names and numeric layer IDs.">RenderLayerManager</a> mapping. </p>
-<p><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> resolves this string into a numeric layer ID and uses it as the top-level ordering key. </p>
+<p>Returns the render layer tag assigned to this object. </p>
+<p><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> uses this tag to resolve a layer ID through the render layer manager when building render batches.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the render layer tag. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00033">33</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
 <div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#aa00855f8cc3dc0f7fd06e2a76d523458">renderLayerTag</a>;</div>
 <div class="line"><span class="lineno">   36</span>}</div>
-<div class="ttc" id="aclass_object_html_aa00855f8cc3dc0f7fd06e2a76d523458"><div class="ttname"><a href="#aa00855f8cc3dc0f7fd06e2a76d523458">Object::renderLayerTag</a></div><div class="ttdeci">std::string renderLayerTag</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00488">Object.h:488</a></div></div>
+<div class="ttc" id="aclass_object_html_aa00855f8cc3dc0f7fd06e2a76d523458"><div class="ttname"><a href="#aa00855f8cc3dc0f7fd06e2a76d523458">Object::renderLayerTag</a></div><div class="ttdeci">std::string renderLayerTag</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00592">Object.h:592</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -979,13 +1005,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the active <a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> pointer, if any. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_sprite_animator.html" title="Time-based sprite sheet animation player.">SpriteAnimator</a> pointer or nullptr. </dd></dl>
+<p>Returns the attached sprite animator. </p>
+<dl class="section return"><dt>Returns</dt><dd>Raw pointer to the attached <a class="el" href="class_sprite_animator.html" title="Controls sprite animation playback using a SpriteSheet.">SpriteAnimator</a>, or nullptr if none is attached. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_text_object.html#a35bec9d96e5bf82770bef2fa3a93c657">TextObject</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00318">318</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  318</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a>.get(); }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00382">382</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  382</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a>.get(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1012,13 +1038,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the object tag. </p>
+<p>Returns the object's tag string. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the stored object tag. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00028">28</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
 <div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a884feb6d3b893651c612a1a3254f73e6">objectTag</a>;</div>
 <div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="aclass_object_html_a884feb6d3b893651c612a1a3254f73e6"><div class="ttname"><a href="#a884feb6d3b893651c612a1a3254f73e6">Object::objectTag</a></div><div class="ttdeci">std::string objectTag</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00487">Object.h:487</a></div></div>
+<div class="ttc" id="aclass_object_html_a884feb6d3b893651c612a1a3254f73e6"><div class="ttname"><a href="#a884feb6d3b893651c612a1a3254f73e6">Object::objectTag</a></div><div class="ttdeci">std::string objectTag</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00591">Object.h:591</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1045,12 +1072,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns a mutable reference to the <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> component. </p>
+<p>Returns mutable access to the internal <a class="el" href="class_transform2_d.html">Transform2D</a>. </p>
+<p>This allows derived classes or engine-side code to modify position, scale, rotation, depth, and other transform data directly.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the internal <a class="el" href="class_transform2_d.html">Transform2D</a> instance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00076">76</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>;</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00079">79</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>;</div>
+<div class="line"><span class="lineno">   82</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1077,14 +1106,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the cached <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> matrix, updating it if necessary. </p>
-<p>Uses <a class="el" href="class_transform2_d.html#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the transformation matrix for this transform.">Transform2D::GetMatrix()</a> internally. When ignoreCamera is enabled, the returned matrix may be computed relative to referenceCamera depending on SetIgnoreCamera configuration.</p>
-<dl class="section return"><dt>Returns</dt><dd>Model matrix for this object. </dd></dl>
+<p>Returns the object's current 2D transform matrix. </p>
+<p>This is typically used by the renderer when preparing the model matrix for normal or instanced rendering.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current transform matrix generated from <a class="el" href="class_transform2_d.html">Transform2D</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00071">71</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetMatrix();</div>
-<div class="line"><span class="lineno">   74</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00074">74</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetMatrix();</div>
+<div class="line"><span class="lineno">   77</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1111,10 +1140,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the object type. </p>
+<p>Returns this object's runtime type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="_object_8h.html#a842c5e2e69277690b064bf363c017980" title="Identifies the runtime category of an engine object.">ObjectType</a> assigned at construction. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00403">403</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  403</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a0075dcd793d09d14f5ff0b20ce4db4f7">type</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00488">488</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  488</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a0075dcd793d09d14f5ff0b20ce4db4f7">type</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1141,21 +1171,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns a vector encoding UV flip multipliers used by the renderer. </p>
-<p>Common convention is:</p><ul>
-<li>(1, 1) when not flipped</li>
-<li>(-1, 1) for X flip</li>
-<li>(1, -1) for Y flip</li>
-<li>(-1, -1) for both</li>
-</ul>
+<p>Returns the UV flip multiplier vector used by the renderer. </p>
+<p>The returned vector is typically either (1,1), (-1,1), (1,-1), or (-1,-1). <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> multiplies the model matrix by a scale derived from this value before drawing.</p>
 <dl class="section return"><dt>Returns</dt><dd>UV flip multiplier vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00143">143</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">return</span> { <a class="code hl_variable" href="#ad1e8846f2fcce8b11cf4e950379a7ba6">flipUV_X</a> ? -1.0f : 1.0f, <a class="code hl_variable" href="#ac04012c6fb3b26b867320bdc9ab1ed3f">flipUV_Y</a> ? -1.0f : 1.0f };</div>
-<div class="line"><span class="lineno">  146</span>}</div>
-<div class="ttc" id="aclass_object_html_ac04012c6fb3b26b867320bdc9ab1ed3f"><div class="ttname"><a href="#ac04012c6fb3b26b867320bdc9ab1ed3f">Object::flipUV_Y</a></div><div class="ttdeci">bool flipUV_Y</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00503">Object.h:503</a></div></div>
-<div class="ttc" id="aclass_object_html_ad1e8846f2fcce8b11cf4e950379a7ba6"><div class="ttname"><a href="#ad1e8846f2fcce8b11cf4e950379a7ba6">Object::flipUV_X</a></div><div class="ttdeci">bool flipUV_X</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00502">Object.h:502</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00146">146</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> { <a class="code hl_variable" href="#ad1e8846f2fcce8b11cf4e950379a7ba6">flipUV_X</a> ? -1.0f : 1.0f, <a class="code hl_variable" href="#ac04012c6fb3b26b867320bdc9ab1ed3f">flipUV_Y</a> ? -1.0f : 1.0f };</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+<div class="ttc" id="aclass_object_html_ac04012c6fb3b26b867320bdc9ab1ed3f"><div class="ttname"><a href="#ac04012c6fb3b26b867320bdc9ab1ed3f">Object::flipUV_Y</a></div><div class="ttdeci">bool flipUV_Y</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00607">Object.h:607</a></div></div>
+<div class="ttc" id="aclass_object_html_ad1e8846f2fcce8b11cf4e950379a7ba6"><div class="ttname"><a href="#ad1e8846f2fcce8b11cf4e950379a7ba6">Object::flipUV_X</a></div><div class="ttdeci">bool flipUV_X</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00606">Object.h:606</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1182,30 +1207,33 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the object's world-space position used by systems like culling and debug drawing. </p>
-<p>Default implementation reads <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> position and may adjust based on ignoreCamera/referenceCamera depending on engine conventions. </p>
+<p>Returns the object's current world position. </p>
+<p>By default, this returns <a class="el" href="class_transform2_d.html#aa4c38c37820eaa6a4c61ee09f57d5053" title="Returns the current position.">Transform2D::GetPosition()</a>.</p>
+<p>If camera-ignore mode is enabled and a reference camera exists, the current implementation applies a correction using the camera position and zoom so that screen-space style objects can still participate in rendering and culling in a consistent way.</p>
+<p>Derived classes may override this if they define world position differently.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current world position used by engine systems. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_text_object.html#ae46387856cc2195661fd838ad862e516">TextObject</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00115">115</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  116</span>{</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a>() &amp;&amp; <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>)</div>
-<div class="line"><span class="lineno">  118</span>    {</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordtype">float</span> zoom = <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetZoom();</div>
-<div class="line"><span class="lineno">  120</span>        glm::vec2 camPos = <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetPosition();</div>
-<div class="line"><span class="lineno">  121</span>        glm::vec2 screenSpace = <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetPosition();</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>        glm::vec2 offset = glm::vec2(1.0f / zoom);</div>
-<div class="line"><span class="lineno">  124</span>        glm::vec2 corrected = (camPos+ screenSpace) * offset;</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00118">118</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a>() &amp;&amp; <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>)</div>
+<div class="line"><span class="lineno">  121</span>    {</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordtype">float</span> zoom = <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetZoom();</div>
+<div class="line"><span class="lineno">  123</span>        glm::vec2 camPos = <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetPosition();</div>
+<div class="line"><span class="lineno">  124</span>        glm::vec2 screenSpace = <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetPosition();</div>
 <div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">return</span> corrected;</div>
-<div class="line"><span class="lineno">  127</span>    }</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  129</span>    {</div>
-<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetPosition();</div>
-<div class="line"><span class="lineno">  131</span>    }</div>
-<div class="line"><span class="lineno">  132</span>}</div>
-<div class="ttc" id="aclass_object_html_afe474c804f6bab83b89958356e1857af"><div class="ttname"><a href="#afe474c804f6bab83b89958356e1857af">Object::ShouldIgnoreCamera</a></div><div class="ttdeci">bool ShouldIgnoreCamera() const</div><div class="ttdoc">Returns whether this object should ignore the active camera.</div><div class="ttdef"><b>Definition</b> <a href="_object_8cpp_source.html#l00101">Object.cpp:101</a></div></div>
+<div class="line"><span class="lineno">  126</span>        glm::vec2 offset = glm::vec2(1.0f / zoom);</div>
+<div class="line"><span class="lineno">  127</span>        glm::vec2 corrected = (camPos+ screenSpace) * offset;</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">return</span> corrected;</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  132</span>    {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetPosition();</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span>}</div>
+<div class="ttc" id="aclass_object_html_afe474c804f6bab83b89958356e1857af"><div class="ttname"><a href="#afe474c804f6bab83b89958356e1857af">Object::ShouldIgnoreCamera</a></div><div class="ttdeci">bool ShouldIgnoreCamera() const</div><div class="ttdoc">Returns whether the object should ignore the active render camera.</div><div class="ttdef"><b>Definition</b> <a href="_object_8cpp_source.html#l00104">Object.cpp:104</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1232,18 +1260,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the object's world-space scale used by systems like culling and collision sync. </p>
-<p>Default implementation reads <a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> scale and may adjust based on ignoreCamera/referenceCamera depending on engine conventions. </p>
+<p>Returns the object's current world scale. </p>
+<p>By default, this returns <a class="el" href="class_transform2_d.html#a132b1deed4b9b9224325dd7e6dd36476" title="Returns the current scale.">Transform2D::GetScale()</a>.</p>
+<p>If camera-ignore mode is enabled and a reference camera exists, the current implementation divides the transform scale by camera zoom so the effective screen-space size remains stable relative to the view.</p>
+<p>Derived classes may override this if they define scale differently.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current world scale used by engine systems. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_text_object.html#aaa922c3c1925bcd634fd80a56f5a9e03">TextObject</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00135">135</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a>() &amp;&amp; <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>)</div>
-<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale() / <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetZoom();</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale();</div>
-<div class="line"><span class="lineno">  141</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00138">138</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#afe474c804f6bab83b89958356e1857af">ShouldIgnoreCamera</a>() &amp;&amp; <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>)</div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale() / <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a>-&gt;GetZoom();</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab9fcb18ac9136f0354dfc053967fe892">transform2D</a>.GetScale();</div>
+<div class="line"><span class="lineno">  144</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1270,13 +1301,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether the object currently has an animator attached. </p>
-<p>Default implementation reports true when spriteAnimator is non-null. <a class="el" href="class_text_object.html" title="Scene object responsible for rendering text within the standard Object pipeline.">TextObject</a> overrides this to always return false. </p>
+<p>Returns whether the object currently has a sprite animator attached. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if a <a class="el" href="class_sprite_animator.html" title="Controls sprite animation playback using a SpriteSheet.">SpriteAnimator</a> exists; otherwise false. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_text_object.html#aa9c94b7ea10661860492032d94c1c08e">TextObject</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00311">311</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  311</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> != <span class="keyword">nullptr</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00375">375</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  375</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab373c4205c0460c9590f473b6c0c8304">spriteAnimator</a> != <span class="keyword">nullptr</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1303,11 +1334,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes the object. </p>
-<p>Called once when the object is activated from the pending list. Use this to request engine resources (materials, meshes, spritesheets) and initialize runtime state.</p>
+<p>Performs the object's initial setup phase. </p>
+<p>This function is intended for the first initialization stage after the object is created and inserted into the engine flow. Derived classes should allocate or bind resources, initialize state, and prepare anything needed before the object begins normal updates.</p>
+<p>The exact call timing depends on the object/state management flow used by the engine.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during initialization. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1339,15 +1371,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether the object is alive. </p>
-<p>When false, <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> will call Free/LateFree and remove the object from active lists.</p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the alive flag. </dd></dl>
+<p>Returns whether the object is currently alive. </p>
+<p>An object marked as not alive is skipped by systems such as visibility/culling and collision insertion logic.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the object is alive; otherwise false. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00003">3</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    4</span>{</div>
 <div class="line"><span class="lineno">    5</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a6cad8db6361d0ab0b95ec578fdf0d1b7">isAlive</a>;</div>
 <div class="line"><span class="lineno">    6</span>}</div>
-<div class="ttc" id="aclass_object_html_a6cad8db6361d0ab0b95ec578fdf0d1b7"><div class="ttname"><a href="#a6cad8db6361d0ab0b95ec578fdf0d1b7">Object::isAlive</a></div><div class="ttdeci">bool isAlive</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00481">Object.h:481</a></div></div>
+<div class="ttc" id="aclass_object_html_a6cad8db6361d0ab0b95ec578fdf0d1b7"><div class="ttname"><a href="#a6cad8db6361d0ab0b95ec578fdf0d1b7">Object::isAlive</a></div><div class="ttdeci">bool isAlive</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00585">Object.h:585</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1374,15 +1406,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether the object is visible. </p>
-<p>Invisible objects are typically skipped during render submission and debug drawing.</p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the visibility flag. </dd></dl>
+<p>Returns whether the object is currently visible. </p>
+<p>Invisible objects are skipped by rendering-related systems even if they otherwise remain alive in the engine.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the object is visible; otherwise false. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00008">8</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
 <div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a418eac6726dcadd9710d94a041446f28">isVisible</a>;</div>
 <div class="line"><span class="lineno">   11</span>}</div>
-<div class="ttc" id="aclass_object_html_a418eac6726dcadd9710d94a041446f28"><div class="ttname"><a href="#a418eac6726dcadd9710d94a041446f28">Object::isVisible</a></div><div class="ttdeci">bool isVisible</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00482">Object.h:482</a></div></div>
+<div class="ttc" id="aclass_object_html_a418eac6726dcadd9710d94a041446f28"><div class="ttname"><a href="#a418eac6726dcadd9710d94a041446f28">Object::isVisible</a></div><div class="ttdeci">bool isVisible</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00586">Object.h:586</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1401,8 +1433,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Marks the object as dead. </p>
-<p>Equivalent to setting isAlive to false. The object is not immediately destroyed; it will be freed and removed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> at the appropriate point in the frame. </p>
+<p>Marks the object as no longer alive. </p>
+<p>This does not directly delete the object. It only changes the alive flag, allowing engine systems to ignore the object and later remove it safely through their own lifecycle management flow. </p>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00018">18</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
@@ -1434,11 +1466,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Second-phase free after all objects have completed <a class="el" href="#aceba19437c716d229fc247463c381da5" title="Releases runtime resources owned by this object.">Free()</a>. </p>
-<p>Mirrors <a class="el" href="#af71fa9147e1a1f17ca5e93cc599d8eef" title="Second-phase initialization after all pending objects have completed Init().">LateInit()</a>. Use this for teardown that depends on other objects still existing during <a class="el" href="#aceba19437c716d229fc247463c381da5" title="Releases runtime resources owned by this object.">Free()</a>.</p>
+<p>Performs a late cleanup phase after <a class="el" href="#aceba19437c716d229fc247463c381da5" title="Performs the object&#39;s primary cleanup phase.">Free()</a>. </p>
+<p>This hook exists for cases where destruction work should happen after the main cleanup phase, such as deferred dependency release or cleanup ordering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during late cleanup. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1470,11 +1502,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Second-phase initialization after all pending objects have completed <a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b" title="Initializes the object.">Init()</a>. </p>
-<p>This phase is intended for logic that depends on other objects existing and being initialized (e.g., acquiring pointers from <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> queries, registering callbacks, resolving references).</p>
+<p>Performs a secondary initialization phase after <a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b" title="Performs the object&#39;s initial setup phase.">Init()</a>. </p>
+<p>This hook exists for objects that need a follow-up initialization step after the main <a class="el" href="#a97dc6d6a1c56efaa682b8eef6dd4384b" title="Performs the object&#39;s initial setup phase.">Init()</a> phase has completed, such as resolving dependencies on other objects or resources that are expected to exist by then.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during late initialization. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1506,17 +1538,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Collision callback invoked when this object collides with another object. </p>
-<p>Called by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>'s collision pipeline after broad-phase and mask/category filtering, and after the <a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> narrow-phase test reports intersection.</p>
+<p>Receives a collision notification with another object. </p>
+<p>The default implementation does nothing. Derived classes may override this to react to collision events after the collision system determines that a contact has occurred.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The other colliding object. </td></tr>
+    <tr><td class="paramname">other</td><td>The other object involved in the collision event. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00137">137</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  137</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00168">168</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1543,16 +1575,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the collider by transferring ownership. </p>
+<p>Assigns a collider to this object. </p>
+<p>The collider becomes owned by the object through unique_ptr.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td><a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> instance (ownership transferred). </td></tr>
+    <tr><td class="paramname">c</td><td><a class="el" href="class_collider.html" title="Base interface for all collider shapes used by the engine.">Collider</a> instance to attach. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00346">346</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  346</span>{ <a class="code hl_variable" href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">collider</a> = std::move(c); }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00417">417</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  417</span>{ <a class="code hl_variable" href="#a4b6e56f7a8f6d8dae69cb029cb6e5bd7">collider</a> = std::move(c); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1580,27 +1613,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Configures collision category and mask using <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>'s collision registry. </p>
-<p>Resolves the object's collision group (category) using the provided tag, then builds a mask from checkCollisionList. The resulting category/mask are used by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> to filter collision candidate pairs before running narrow-phase checks.</p>
+<p>Configures the object's collision category and collision mask. </p>
+<p>This function queries the collision group registry from <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a>, converts the supplied group tags into bit values, stores the object's own category bit, and builds a collision mask by OR-combining all target groups.</p>
+<p>The resulting values are later used by the collision system to decide which object pairs should be tested.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">objectManager</td><td><a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> providing the <a class="el" href="class_collision_group_registry.html" title="Registry that assigns bit indices to collision group tags.">CollisionGroupRegistry</a>. </td></tr>
-    <tr><td class="paramname">tag</td><td>Collision group tag to assign to this object. </td></tr>
-    <tr><td class="paramname">checkCollisionList</td><td>List of collision group tags this object should test against. </td></tr>
+    <tr><td class="paramname">objectManager</td><td><a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> manager that owns the collision group registry. </td></tr>
+    <tr><td class="paramname">tag</td><td>Collision group tag representing this object's category. </td></tr>
+    <tr><td class="paramname">checkCollisionList</td><td>List of collision group tags this object wants to check against. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00091">91</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keyword">auto</span>&amp; reg = objectManager.<a class="code hl_function" href="class_object_manager.html#a3fc2a5eb9c5993c4ae3ee803e631699f">GetCollisionGroupRegistry</a>();</div>
-<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="#aca82263c28421c17cb204ae27492d3e2">collisionCategory</a> = reg.GetGroupBit(tag);</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a> = 0;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; c : checkCollisionList)</div>
-<div class="line"><span class="lineno">   98</span>        <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a> |= reg.GetGroupBit(c);</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-<div class="ttc" id="aclass_object_manager_html_a3fc2a5eb9c5993c4ae3ee803e631699f"><div class="ttname"><a href="class_object_manager.html#a3fc2a5eb9c5993c4ae3ee803e631699f">ObjectManager::GetCollisionGroupRegistry</a></div><div class="ttdeci">CollisionGroupRegistry &amp; GetCollisionGroupRegistry()</div><div class="ttdoc">Returns the collision group registry owned by this manager.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00202">ObjectManager.h:202</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00094">94</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keyword">auto</span>&amp; reg = objectManager.<a class="code hl_function" href="class_object_manager.html#a3fc2a5eb9c5993c4ae3ee803e631699f">GetCollisionGroupRegistry</a>();</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="#aca82263c28421c17cb204ae27492d3e2">collisionCategory</a> = reg.GetGroupBit(tag);</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a> = 0;</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; c : checkCollisionList)</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="#a8b9f93c681a4d64d8ad30ea03b85c9a0">collisionMask</a> |= reg.GetGroupBit(c);</div>
+<div class="line"><span class="lineno">  102</span>}</div>
+<div class="ttc" id="aclass_object_manager_html_a3fc2a5eb9c5993c4ae3ee803e631699f"><div class="ttname"><a href="class_object_manager.html#a3fc2a5eb9c5993c4ae3ee803e631699f">ObjectManager::GetCollisionGroupRegistry</a></div><div class="ttdeci">CollisionGroupRegistry &amp; GetCollisionGroupRegistry()</div><div class="ttdoc">Returns the collision group registry used by objects to build category and mask bits.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8h_source.html#l00262">ObjectManager.h:262</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1619,18 +1653,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the per-object color used by the renderer. </p>
+<p>Sets the object's tint color. </p>
+<p>The renderer reads this value and forwards it into material uniform data during rendering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color_</td><td>New RGBA color. </td></tr>
+    <tr><td class="paramname">color_</td><td>New RGBA tint color. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00081">81</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="#a3d1a20796927cc278a924836c14cf48a">color</a> = color_;</div>
-<div class="line"><span class="lineno">   84</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00084">84</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_variable" href="#a3d1a20796927cc278a924836c14cf48a">color</a> = color_;</div>
+<div class="line"><span class="lineno">   87</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1657,16 +1692,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enables or disables horizontal UV flipping for this object. </p>
+<p>Enables or disables horizontal UV flipping. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shouldFlip</td><td>True to flip horizontally. </td></tr>
+    <tr><td class="paramname">shouldFlip</td><td>True to flip along the X axis. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00435">435</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  435</span>{ <a class="code hl_variable" href="#ad1e8846f2fcce8b11cf4e950379a7ba6">flipUV_X</a> = shouldFlip; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00535">535</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  535</span>{ <a class="code hl_variable" href="#ad1e8846f2fcce8b11cf4e950379a7ba6">flipUV_X</a> = shouldFlip; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1693,16 +1728,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enables or disables vertical UV flipping for this object. </p>
+<p>Enables or disables vertical UV flipping. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shouldFlip</td><td>True to flip vertically. </td></tr>
+    <tr><td class="paramname">shouldFlip</td><td>True to flip along the Y axis. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00442">442</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  442</span>{ <a class="code hl_variable" href="#ac04012c6fb3b26b867320bdc9ab1ed3f">flipUV_Y</a> = shouldFlip; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00542">542</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  542</span>{ <a class="code hl_variable" href="#ac04012c6fb3b26b867320bdc9ab1ed3f">flipUV_Y</a> = shouldFlip; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1725,25 +1760,26 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets whether the object should ignore the active camera and optionally stores a reference camera. </p>
-<p>When enabling ignoreCamera, referenceCamera can be provided so that world position/scale queries remain consistent with a chosen camera basis (implementation-defined).</p>
+<p>Enables or disables camera-ignoring behavior. </p>
+<p>When enabled, the object stores an optional reference camera used to compute corrected world position and scale for rendering/culling.</p>
+<p>In the current implementation, the reference camera pointer is assigned only when enabling camera-ignore mode.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shouldIgnoreCamera</td><td>New ignore-camera setting. </td></tr>
-    <tr><td class="paramname">cameraForTransformCalc</td><td>Optional reference camera for transform calculations. </td></tr>
+    <tr><td class="paramname">shouldIgnoreCamera</td><td>True to ignore the active camera during rendering logic. </td></tr>
+    <tr><td class="paramname">cameraForTransformCalc</td><td>Optional reference camera used for world-space correction. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00106">106</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>{</div>
-<div class="line"><span class="lineno">  108</span>    <a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a> = shouldIgnoreCamera;</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a>)</div>
-<div class="line"><span class="lineno">  110</span>    {</div>
-<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a> = cameraForTransformCalc;</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-<div class="ttc" id="aclass_object_html_ab4177081168011726b6dc63ab4e2b046"><div class="ttname"><a href="#ab4177081168011726b6dc63ab4e2b046">Object::ignoreCamera</a></div><div class="ttdeci">bool ignoreCamera</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00484">Object.h:484</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00109">109</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a> = shouldIgnoreCamera;</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a>)</div>
+<div class="line"><span class="lineno">  113</span>    {</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_variable" href="#a45123ac0f3f66f1de94530810f52f61b">referenceCamera</a> = cameraForTransformCalc;</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+<div class="line"><span class="lineno">  116</span>}</div>
+<div class="ttc" id="aclass_object_html_ab4177081168011726b6dc63ab4e2b046"><div class="ttname"><a href="#ab4177081168011726b6dc63ab4e2b046">Object::ignoreCamera</a></div><div class="ttdeci">bool ignoreCamera</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00588">Object.h:588</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1766,27 +1802,27 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the material by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag. </p>
-<p>Uses engineContext to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and resolves the material pointer by tag. If the tag is missing, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> typically provides a fallback default/error material.</p>
+<p>Resolves and assigns a material from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag. </p>
+<p>This function looks up a registered material through engineContext.renderManager and stores the returned shared resource as a weak reference inside the object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-    <tr><td class="paramname">tag</td><td>Registered material tag. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </td></tr>
+    <tr><td class="paramname">tag</td><td><a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a> resource tag registered in the renderer. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00043">43</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
-<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="#af475bd962d08ec97add4497e92436076">material</a> = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a529409768d03b2cf0638f07eadefaa5e">GetMaterialByTag</a>(tag);</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="#af822711fb15809283931d0bfaa213b52">material</a> = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a5d09603de8d8e668d0df7bf335324e24">GetMaterialByTag</a>(tag);</div>
 <div class="line"><span class="lineno">   46</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a529409768d03b2cf0638f07eadefaa5e"><div class="ttname"><a href="class_render_manager.html#a529409768d03b2cf0638f07eadefaa5e">RenderManager::GetMaterialByTag</a></div><div class="ttdeci">Material * GetMaterialByTag(const std::string &amp;tag)</div><div class="ttdoc">Returns the Material registered under the given tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01082">RenderManager.cpp:1082</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the RenderManager responsible for rendering operations.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00053">EngineContext.h:53</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a5d09603de8d8e668d0df7bf335324e24"><div class="ttname"><a href="class_render_manager.html#a5d09603de8d8e668d0df7bf335324e24">RenderManager::GetMaterialByTag</a></div><div class="ttdeci">std::shared_ptr&lt; Material &gt; GetMaterialByTag(const std::string &amp;tag)</div><div class="ttdoc">Resolves a material by tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01075">RenderManager.cpp:1075</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the render manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00072">EngineContext.h:72</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aab1e520477fbd67aef665b8c8207a35d" name="aab1e520477fbd67aef665b8c8207a35d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab1e520477fbd67aef665b8c8207a35d">&#9670;&#160;</a></span>SetMaterial() <span class="overload">[2/2]</span></h2>
+<a id="a59c5aa50483153339d2bcdfe500f5550" name="a59c5aa50483153339d2bcdfe500f5550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59c5aa50483153339d2bcdfe500f5550">&#9670;&#160;</a></span>SetMaterial() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1797,7 +1833,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Object::SetMaterial </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_material.html">Material</a> *</td>          <td class="paramname"><span class="paramname"><em>material_</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_material.html">Material</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>material_</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1808,17 +1844,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the material pointer directly. </p>
-<p>The pointer is not owned by <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a>. It must remain valid for as long as the object uses it.</p>
+<p>Assigns a material directly. </p>
+<p>The material is stored internally as a weak_ptr. The object does not own the resource lifetime.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">material_</td><td><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> pointer. </td></tr>
+    <tr><td class="paramname">material_</td><td>Shared material resource to reference. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00225">225</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  225</span>{ <a class="code hl_variable" href="#af475bd962d08ec97add4497e92436076">material</a> = material_; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00267">267</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  267</span>{ <a class="code hl_variable" href="#af822711fb15809283931d0bfaa213b52">material</a> = material_; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1841,26 +1877,26 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the mesh by requesting it from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> using a tag. </p>
-<p>Uses engineContext to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and resolves the mesh pointer by tag. If the tag is missing, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> typically provides a fallback default mesh.</p>
+<p>Resolves and assigns a mesh from <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> using a resource tag. </p>
+<p>This function looks up a registered mesh through engineContext.renderManager and stores the returned shared resource as a weak reference inside the object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-    <tr><td class="paramname">tag</td><td>Registered mesh tag. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services used to access <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a>. </td></tr>
+    <tr><td class="paramname">tag</td><td><a class="el" href="class_mesh.html" title="Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.">Mesh</a> resource tag registered in the renderer. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00054">54</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a499160c2c55c9da2db17bb372e8159b7">GetMeshByTag</a>(tag);</div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#a9197072c0174782f6999b02540f345bd">mesh</a> = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a88e146303b2d71d26d1e9aa274f237ee">GetMeshByTag</a>(tag);</div>
 <div class="line"><span class="lineno">   57</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a499160c2c55c9da2db17bb372e8159b7"><div class="ttname"><a href="class_render_manager.html#a499160c2c55c9da2db17bb372e8159b7">RenderManager::GetMeshByTag</a></div><div class="ttdeci">Mesh * GetMeshByTag(const std::string &amp;tag)</div><div class="ttdoc">Returns the Mesh registered under the given tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01070">RenderManager.cpp:1070</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a88e146303b2d71d26d1e9aa274f237ee"><div class="ttname"><a href="class_render_manager.html#a88e146303b2d71d26d1e9aa274f237ee">RenderManager::GetMeshByTag</a></div><div class="ttdeci">std::shared_ptr&lt; Mesh &gt; GetMeshByTag(const std::string &amp;tag)</div><div class="ttdoc">Resolves a mesh by tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01065">RenderManager.cpp:1065</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae94b6c3d2c0bdc27eff25f07390fdb58" name="ae94b6c3d2c0bdc27eff25f07390fdb58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae94b6c3d2c0bdc27eff25f07390fdb58">&#9670;&#160;</a></span>SetMesh() <span class="overload">[2/2]</span></h2>
+<a id="a7bd73cf89491ef2986923815ed7c5219" name="a7bd73cf89491ef2986923815ed7c5219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bd73cf89491ef2986923815ed7c5219">&#9670;&#160;</a></span>SetMesh() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1871,7 +1907,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Object::SetMesh </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_mesh.html">Mesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh_</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>mesh_</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1882,17 +1918,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the mesh pointer directly. </p>
-<p>The pointer is not owned by <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a>. It must remain valid for as long as the object uses it.</p>
+<p>Assigns a mesh directly. </p>
+<p>The mesh is stored internally as a weak_ptr. The object does not own the resource lifetime.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mesh_</td><td><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> pointer. </td></tr>
+    <tr><td class="paramname">mesh_</td><td>Shared mesh resource to reference. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00254">254</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  254</span>{ <a class="code hl_variable" href="#ad755772f4633cd0ef94a05738ffb5e84">mesh</a> = mesh_; }</div>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00301">301</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  301</span>{ <a class="code hl_variable" href="#a9197072c0174782f6999b02540f345bd">mesh</a> = mesh_; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1911,10 +1947,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the render-layer tag. </p>
+<p>Assigns the render layer tag used during render batch construction. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Render-layer name/tag. </td></tr>
+    <tr><td class="paramname">tag</td><td>Render layer tag to assign. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1941,11 +1977,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the object tag used for lookup/grouping. </p>
-<p>Tags are used by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> queries and can be used to draw or find subsets of objects.</p>
+<p>Assigns a user-defined object tag. </p>
+<p>This tag can be used by gameplay logic or object management code to identify the object semantically.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>New tag string. </td></tr>
+    <tr><td class="paramname">tag</td><td>New object tag string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1972,7 +2008,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the visibility state. </p>
+<p>Sets whether the object should be considered visible by the renderer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_isVisible</td><td>New visibility state. </td></tr>
@@ -2010,13 +2046,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether this object should ignore the active camera. </p>
-<p>When true, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> treats the object as screen-space (view = identity) for rendering, and <a class="el" href="class_frustum_culler.html" title="Simple visibility culling utility based on a Camera2D view test and object bounding radius.">FrustumCuller</a> typically includes it without camera view tests. </p>
+<p>Returns whether the object should ignore the active render camera. </p>
+<p>Objects that ignore the camera are treated specially by rendering and culling logic, which is useful for HUD-like elements or screen-space objects.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the object should ignore camera transforms. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00101">101</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a>;</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_object_8cpp_source.html#l00104">104</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#ab4177081168011726b6dc63ab4e2b046">ignoreCamera</a>;</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2047,12 +2084,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Per-frame update. </p>
-<p>Called every frame while the object is alive. <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> may perform additional engine-side maintenance before/after this call (e.g., animator updates, collider scale sync).</p>
+<p>Updates the object's main per-frame logic. </p>
+<p>Derived classes should implement gameplay logic, animation progression, movement, internal timers, and other frame-based behavior here.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">dt</td><td>Delta time for the current frame. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Shared engine services and managers available during update. </td></tr>
   </table>
   </dd>
 </dl>
@@ -2082,7 +2119,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00497">497</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00601">601</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2106,7 +2143,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00499">499</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00603">603</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2130,7 +2167,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00500">500</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00604">604</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2154,7 +2191,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00494">494</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00598">598</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2178,7 +2215,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00502">502</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00606">606</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2202,7 +2239,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00503">503</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00607">607</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2226,7 +2263,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00052">52</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00062">62</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2250,7 +2287,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00484">484</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00588">588</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2274,7 +2311,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00481">481</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00585">585</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2298,12 +2335,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00482">482</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00586">586</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
-<a id="af475bd962d08ec97add4497e92436076" name="af475bd962d08ec97add4497e92436076"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af475bd962d08ec97add4497e92436076">&#9670;&#160;</a></span>material</h2>
+<a id="af822711fb15809283931d0bfaa213b52" name="af822711fb15809283931d0bfaa213b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af822711fb15809283931d0bfaa213b52">&#9670;&#160;</a></span>material</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2312,7 +2349,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_material.html">Material</a>* Object::material = nullptr</td>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_material.html">Material</a>&gt; Object::material</td>
         </tr>
       </table>
   </td>
@@ -2322,12 +2359,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00491">491</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00595">595</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
-<a id="ad755772f4633cd0ef94a05738ffb5e84" name="ad755772f4633cd0ef94a05738ffb5e84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad755772f4633cd0ef94a05738ffb5e84">&#9670;&#160;</a></span>mesh</h2>
+<a id="a9197072c0174782f6999b02540f345bd" name="a9197072c0174782f6999b02540f345bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9197072c0174782f6999b02540f345bd">&#9670;&#160;</a></span>mesh</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2336,7 +2373,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_mesh.html">Mesh</a>* Object::mesh = nullptr</td>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_mesh.html">Mesh</a>&gt; Object::mesh</td>
         </tr>
       </table>
   </td>
@@ -2346,7 +2383,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00492">492</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00596">596</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2370,7 +2407,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00487">487</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00591">591</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2394,7 +2431,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00485">485</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00589">589</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2418,7 +2455,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00488">488</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00592">592</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2442,7 +2479,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00496">496</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00600">600</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2466,7 +2503,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00490">490</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00594">594</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>
@@ -2490,7 +2527,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00468">468</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_object_8h_source.html#l00564">564</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
 
 </div>
 </div>

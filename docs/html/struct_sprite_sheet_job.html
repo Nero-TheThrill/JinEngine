@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_sprite_sheet_job.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
-<p>Load request describing a sprite sheet resource to be created/registered.  
+<p>Describes a sprite sheet creation request.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>&gt;</code></p>
@@ -121,11 +121,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:acc5eef93d4265710a6ef7885e83e1443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Load request describing a sprite sheet resource to be created/registered. </p>
-<p><a class="el" href="struct_sprite_sheet_job.html" title="Load request describing a sprite sheet resource to be created/registered.">SpriteSheetJob</a> references an existing texture by tag and specifies the sprite sheet grid division (frameW, frameH).</p>
-<p>Note: This job type exists in <a class="el" href="_async_resource_loader_8h.html#ae1b8cce382c5ee957e16be16b2cded39" title="Variant type representing any supported asynchronous load request.">LoadRequest</a>, but there is no corresponding SpriteSheetResult in <a class="el" href="_async_resource_loader_8h.html#a6a60ad85728d8591ed1f4246e5d3af21" title="Variant type representing any supported completed load result.">LoadResult</a> in this header. It is expected that the worker/main-thread integration handles sprite sheet registration separately. </p>
+<div class="textblock"><p>Describes a sprite sheet creation request. </p>
+<p><a class="el" href="struct_sprite_sheet_job.html" title="Describes a sprite sheet creation request.">SpriteSheetJob</a> stores the tag of the sprite sheet to create, the texture tag to reference, and the frame dimensions used to interpret the texture as a grid.</p>
+<p>This type is already included in <a class="el" href="_async_resource_loader_8h.html#ae1b8cce382c5ee957e16be16b2cded39" title="Represents a single queued asynchronous load request.">LoadRequest</a> so the loader interface can be extended to support asynchronous sprite sheet preparation. However, in the current worker implementation, <a class="el" href="struct_sprite_sheet_job.html" title="Describes a sprite sheet creation request.">SpriteSheetJob</a> is not processed yet. :contentReference[oaicite:5]{index=5}</p>
+<dl class="section note"><dt>Note</dt><dd>Because the current Worker() implementation does not handle this request type, enqueuing this job without adding handling logic would leave it unsupported. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00097">97</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00118">118</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="acc5eef93d4265710a6ef7885e83e1443" name="acc5eef93d4265710a6ef7885e83e1443"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc5eef93d4265710a6ef7885e83e1443">&#9670;&#160;</a></span>frameH</h2>
@@ -139,7 +140,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00102">102</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00123">123</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -155,7 +156,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00101">101</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00122">122</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -171,7 +172,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00099">99</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00120">120</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -187,7 +188,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00100">100</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00121">121</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>

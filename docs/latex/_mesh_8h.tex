@@ -6,9 +6,9 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_vertex}{Vertex}}
-\begin{DoxyCompactList}\small\item\em Basic 2D vertex layout used by this engine\textquotesingle{}s \doxylink{class_mesh}{Mesh}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Represents a single mesh vertex for the engine\textquotesingle{}s default 2D/quad-\/style pipeline. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_mesh}{Mesh}}
-\begin{DoxyCompactList}\small\item\em GPU mesh wrapper that owns VAO/\+VBO/\+EBO and supports optional instanced rendering buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Owns GPU-\/side mesh buffers and provides draw operations for normal and instanced rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,7 +26,7 @@ enum class \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitiv
 \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c}{Triangle\+Strip}}
 , \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{Line\+Strip}}
  \}
-\begin{DoxyCompactList}\small\item\em Defines the primitive topology used when issuing draw calls for a \doxylink{class_mesh}{Mesh}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Specifies the Open\+GL primitive topology used when drawing a mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Typedef Documentation}
@@ -51,9 +51,16 @@ enum class \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitiv
 
 
 
-Defines the primitive topology used when issuing draw calls for a \doxylink{class_mesh}{Mesh}. 
+Specifies the Open\+GL primitive topology used when drawing a mesh. 
 
-\doxylink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type} selects how the vertex/index data is interpreted by the GPU draw call. Render\+Manager/\+Mesh map this enum to the corresponding Open\+GL primitive (e.\+g., Triangles -\/\texorpdfstring{$>$}{>} GL\+\_\+\+TRIANGLES). \begin{DoxyEnumFields}[2]{Enumerator}
+This enum is converted to the corresponding Open\+GL draw mode inside the mesh implementation. The selected value determines how the vertex/index data is interpreted when \doxylink{class_mesh_abf84fe4ef735490769268685087e0e32}{Mesh\+::\+Draw()} or \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Mesh\+::\+Draw\+Instanced()} is executed.
+
+The mapping is handled internally by the renderer-\/side implementation and is used by both indexed and non-\/indexed mesh draws.
+
+\begin{DoxyNote}{Note}
+The actual Open\+GL enum conversion is performed in \doxylink{_mesh_8cpp}{Mesh.\+cpp}. 
+\end{DoxyNote}
+\begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Triangles@{Triangles}!Mesh.h@{Mesh.h}}\index{Mesh.h@{Mesh.h}!Triangles@{Triangles}}}\Hypertarget{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}\label{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856} 
 Triangles&\\
 \hline
@@ -81,17 +88,17 @@ Line\+Strip&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00017}{17}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00024}{24}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00018\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{Triangles}},}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819}{Lines}},}
-\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3}{Points}},}
-\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047}{TriangleFan}},}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c}{TriangleStrip}},}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{LineStrip}}}
-\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{Triangles}},}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819}{Lines}},}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3}{Points}},}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047}{TriangleFan}},}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c}{TriangleStrip}},}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2}{LineStrip}}}
+\DoxyCodeLine{00032\ \};}
 
 \end{DoxyCode}

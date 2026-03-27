@@ -112,10 +112,10 @@ $(function(){initNavTree('_mesh_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vertex.html">Vertex</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic 2D vertex layout used by this engine's <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a>.  <a href="struct_vertex.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single mesh vertex for the engine's default 2D/quad-style pipeline.  <a href="struct_vertex.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html">Mesh</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.  <a href="class_mesh.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.  <a href="class_mesh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -135,7 +135,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">LineStrip</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a240c1924416689e5700ff0d9f30539d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the primitive topology used when issuing draw calls for a <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a>.  <a href="#a240c1924416689e5700ff0d9f30539d9">More...</a><br /></td></tr>
+<tr class="memdesc:a240c1924416689e5700ff0d9f30539d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the OpenGL primitive topology used when drawing a mesh.  <a href="#a240c1924416689e5700ff0d9f30539d9">More...</a><br /></td></tr>
 <tr class="separator:a240c1924416689e5700ff0d9f30539d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -176,8 +176,10 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Defines the primitive topology used when issuing draw calls for a <a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a>. </p>
-<p><a class="el" href="#a240c1924416689e5700ff0d9f30539d9" title="Defines the primitive topology used when issuing draw calls for a Mesh.">PrimitiveType</a> selects how the vertex/index data is interpreted by the GPU draw call. RenderManager/Mesh map this enum to the corresponding OpenGL primitive (e.g., Triangles -&gt; GL_TRIANGLES). </p>
+<p>Specifies the OpenGL primitive topology used when drawing a mesh. </p>
+<p>This enum is converted to the corresponding OpenGL draw mode inside the mesh implementation. The selected value determines how the vertex/index data is interpreted when <a class="el" href="class_mesh.html#abf84fe4ef735490769268685087e0e32" title="Draws the mesh once using its currently stored geometry buffers.">Mesh::Draw()</a> or <a class="el" href="class_mesh.html#ae2933e498cc249ab798bbf265dace77b" title="Draws the mesh multiple times in a single instanced draw call.">Mesh::DrawInstanced()</a> is executed.</p>
+<p>The mapping is handled internally by the renderer-side implementation and is used by both indexed and non-indexed mesh draws.</p>
+<dl class="section note"><dt>Note</dt><dd>The actual OpenGL enum conversion is performed in <a class="el" href="_mesh_8cpp.html">Mesh.cpp</a>. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856" name="a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856"></a>Triangles&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819" name="a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819"></a>Lines&#160;</td><td class="fielddoc"></td></tr>
@@ -187,21 +189,21 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2" name="a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2"></a>LineStrip&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00017">17</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856">Triangles</a>,</div>
-<div class="line"><span class="lineno">   20</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819">Lines</a>,</div>
-<div class="line"><span class="lineno">   21</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3">Points</a>,</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">TriangleFan</a>,</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">TriangleStrip</a>,</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">LineStrip</a></div>
-<div class="line"><span class="lineno">   25</span>};</div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">PrimitiveType::TriangleFan</a></div><div class="ttdeci">@ TriangleFan</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00022">Mesh.h:22</a></div></div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">PrimitiveType::TriangleStrip</a></div><div class="ttdeci">@ TriangleStrip</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00023">Mesh.h:23</a></div></div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3">PrimitiveType::Points</a></div><div class="ttdeci">@ Points</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00021">Mesh.h:21</a></div></div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856">PrimitiveType::Triangles</a></div><div class="ttdeci">@ Triangles</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00019">Mesh.h:19</a></div></div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819">PrimitiveType::Lines</a></div><div class="ttdeci">@ Lines</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00020">Mesh.h:20</a></div></div>
-<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">PrimitiveType::LineStrip</a></div><div class="ttdeci">@ LineStrip</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00024">Mesh.h:24</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_mesh_8h_source.html#l00024">24</a> of file <a class="el" href="_mesh_8h_source.html">Mesh.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856">Triangles</a>,</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819">Lines</a>,</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3">Points</a>,</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">TriangleFan</a>,</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">TriangleStrip</a>,</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_enumvalue" href="#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">LineStrip</a></div>
+<div class="line"><span class="lineno">   32</span>};</div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a18d58fde618e4a30e2dfdc122e693047">PrimitiveType::TriangleFan</a></div><div class="ttdeci">@ TriangleFan</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00029">Mesh.h:29</a></div></div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a1da0b9ead8b051940a89214bae22831c">PrimitiveType::TriangleStrip</a></div><div class="ttdeci">@ TriangleStrip</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00030">Mesh.h:30</a></div></div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a75dd5f1160a3f02b6fae89c54361a1b3">PrimitiveType::Points</a></div><div class="ttdeci">@ Points</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00028">Mesh.h:28</a></div></div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856">PrimitiveType::Triangles</a></div><div class="ttdeci">@ Triangles</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00026">Mesh.h:26</a></div></div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9aa0b0293a2db49f5f93c15a62e095c819">PrimitiveType::Lines</a></div><div class="ttdeci">@ Lines</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00027">Mesh.h:27</a></div></div>
+<div class="ttc" id="a_mesh_8h_html_a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2"><div class="ttname"><a href="#a240c1924416689e5700ff0d9f30539d9ae7f9e73b8edd21f420a63b3ace5768a2">PrimitiveType::LineStrip</a></div><div class="ttdeci">@ LineStrip</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00031">Mesh.h:31</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

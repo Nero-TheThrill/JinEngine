@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
+## [1.1.4] - 2026-03-27
+
+### Added
+- Added sound callback function triggered after playback ends.
+- Added transform offset (for texture offset) and animation playback speed control.
+- Added per-animation clip playback speed setting.
+- Added animation clip callback function support.
+- Added example usage for custom loading state.
+
+### Changed
+- Changed material, shader, texture, and spritesheet ownership from `unique_ptr` to `shared_ptr`.
+- Window size is now set only once during initialization.
+
+### Fixed
+- Fixed issue where loading nothing caused CPU usage to spike to 100% and prevented transition to next level.
+- Fixed issue where animation callbacks were not properly updated.
+
 ## [1.1.3] - 2025-12-22
 
 ### Added
@@ -59,8 +76,9 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 ## [1.0.0] - 2025-07-17
 
 
-[1.0.0]: https://github.com/Nero-TheThrill/SNAKE_ENGINE/compare/v_1.0.0...v_1.0.0
-[1.1.0]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.0.0...v_1.1.0
-[1.1.1]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.0...v_1.1.1
-[1.1.2]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.1...v_1.1.2
-[1.1.3]: https://github.com/Nero-TheThrill/SNAKE_Engine/compare/v_1.1.2...v_1.1.3
+[1.0.0]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.0.0...v_1.0.0
+[1.1.0]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.0.0...v_1.1.0
+[1.1.1]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.0...v_1.1.1
+[1.1.2]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.1...v_1.1.2
+[1.1.3]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.2...v_1.1.3
+[1.1.3]: https://github.com/Nero-TheThrill/JinEngine/compare/v_1.1.3...v_1.1.4

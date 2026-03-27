@@ -1,5 +1,5 @@
 var struct_text_instance =
 [
-    [ "font", "struct_text_instance.html#a24aa49c4382cc386917dd5add02c0e8f", null ],
+    [ "font", "struct_text_instance.html#aa8d14df286ab02611473e5c9fce8d9fe", null ],
     [ "text", "struct_text_instance.html#a023baf061b0a91453e3c9abf64d1a230", null ]
 ];

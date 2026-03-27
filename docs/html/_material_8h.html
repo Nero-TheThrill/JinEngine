@@ -114,13 +114,13 @@ $(function(){initNavTree('_material_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_material.html">Material</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render-time binding object that combines a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> with textures and uniform parameters.  <a href="class_material.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rendering material that stores a shader, uniform values, and texture bindings.  <a href="class_material.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_compute_material.html">ComputeMaterial</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute-only material that binds textures as images for compute shader dispatch.  <a href="class_compute_material.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialized material type used for compute shader dispatch.  <a href="class_compute_material.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_compute_material_1_1_image_bind.html">ComputeMaterial::ImageBind</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes a single image binding for a compute shader.  <a href="struct_compute_material_1_1_image_bind.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes one image binding used by a compute shader.  <a href="struct_compute_material_1_1_image_bind.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -128,7 +128,7 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a9b79d6d8dc8627e68412974748f1c08c" id="r_a9b79d6d8dc8627e68412974748f1c08c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b79d6d8dc8627e68412974748f1c08c">GLuint</a> = unsigned int</td></tr>
 <tr class="separator:a9b79d6d8dc8627e68412974748f1c08c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06229a425f27fcb99ce02ae045b56e0d" id="r_a06229a425f27fcb99ce02ae045b56e0d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06229a425f27fcb99ce02ae045b56e0d">UniformValue</a></td></tr>
-<tr class="memdesc:a06229a425f27fcb99ce02ae045b56e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type used to store strongly-typed uniform values for a <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a>.  <br /></td></tr>
+<tr class="memdesc:a06229a425f27fcb99ce02ae045b56e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type used to store material uniform values in a type-safe way.  <br /></td></tr>
 <tr class="separator:a06229a425f27fcb99ce02ae045b56e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -168,11 +168,18 @@ Typedefs</h2></td></tr>
 <div class="line">    glm::mat4</div>
 <div class="line">&gt;</div>
 </div><!-- fragment -->
-<p>Variant type used to store strongly-typed uniform values for a <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a>. </p>
-<p><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> stores per-uniform data in a map of (uniform name -&gt; <a class="el" href="#a06229a425f27fcb99ce02ae045b56e0d" title="Variant type used to store strongly-typed uniform values for a Material.">UniformValue</a>). When binding, <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> serializes these values and forwards them to Shader::SendUniform(...) using the correct overload based on the active variant type.</p>
-<p>Supported types are limited to the most common scalar/vector/matrix uniform types used by the engine. </p>
+<p>Variant type used to store material uniform values in a type-safe way. </p>
+<p><a class="el" href="#a06229a425f27fcb99ce02ae045b56e0d" title="Variant type used to store material uniform values in a type-safe way.">UniformValue</a> represents the set of uniform data types currently supported by <a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a>. The current implementation supports:</p><ul>
+<li>int</li>
+<li>float</li>
+<li>glm::vec2</li>
+<li>glm::vec3</li>
+<li>glm::vec4</li>
+<li>glm::mat4</li>
+</ul>
+<p><a class="el" href="class_material.html#a39001e95de2408283f42efa7e8657a05" title="Sends all cached uniform values to the shader.">Material::SendUniforms()</a> visits this variant and forwards each stored value to <a class="el" href="class_shader.html#a4729e93872d7483b6d5ec1680ec5f35f" title="Sends an integer uniform to the currently active shader program.">Shader::SendUniform()</a> using the matching overload. </p>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00026">26</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00032">32</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>

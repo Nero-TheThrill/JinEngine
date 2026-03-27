@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_vec2_hash.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Hash function for glm::ivec2 used as a key in unordered containers.  
+<p>Hash functor for glm::ivec2 keys.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_collider_8h_source.html">Collider.h</a>&gt;</code></p>
@@ -116,10 +116,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a25ef08f20bd5a5d76a22d33941f9852b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Hash function for glm::ivec2 used as a key in unordered containers. </p>
-<p>Designed for <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure using spatial hashing.">SpatialHashGrid</a> cell hashing. Uses integer mixing with large primes to reduce collisions. </p>
+<div class="textblock"><p>Hash functor for glm::ivec2 keys. </p>
+<p>Used by <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure based on a spatial hash grid.">SpatialHashGrid</a> to store per-cell object lists in an unordered_map. The implementation mixes x and y using large prime multipliers. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00377">377</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00488">488</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a25ef08f20bd5a5d76a22d33941f9852b" name="a25ef08f20bd5a5d76a22d33941f9852b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25ef08f20bd5a5d76a22d33941f9852b">&#9670;&#160;</a></span>operator()()</h2>
@@ -147,16 +147,16 @@ Public Member Functions</h2></td></tr>
 <p>Computes a hash value for a grid cell coordinate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">v</td><td>Cell coordinate as an integer vector. </td></tr>
+    <tr><td class="paramname">v</td><td>Integer 2D grid coordinate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Hash value for the coordinate. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Hash value for unordered_map lookup. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00385">385</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  386</span>    {</div>
-<div class="line"><span class="lineno">  387</span>        <span class="keywordflow">return</span> std::hash&lt;int&gt;()(v.x * 73856093 ^ v.y * 19349663);</div>
-<div class="line"><span class="lineno">  388</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00496">496</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  497</span>    {</div>
+<div class="line"><span class="lineno">  498</span>        <span class="keywordflow">return</span> std::hash&lt;int&gt;()(v.x * 73856093 ^ v.y * 19349663);</div>
+<div class="line"><span class="lineno">  499</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

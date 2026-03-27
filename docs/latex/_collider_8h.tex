@@ -9,17 +9,17 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_collider}{Collider}}
-\begin{DoxyCompactList}\small\item\em Abstract base collider that supports broad-\/phase + narrow-\/phase collision checks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Base interface for all collider shapes used by the engine. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_circle_collider}{Circle\+Collider}}
-\begin{DoxyCompactList}\small\item\em Circle collider implementation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Circle-\/shaped collider implementation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_a_a_b_b_collider}{AABBCollider}}
-\begin{DoxyCompactList}\small\item\em Axis-\/aligned bounding box (AABB) collider implementation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Axis-\/aligned bounding box collider implementation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_vec2_hash}{Vec2\+Hash}}
-\begin{DoxyCompactList}\small\item\em Hash function for glm\+::ivec2 used as a key in unordered containers. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hash functor for glm\+::ivec2 keys. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_spatial_hash_grid}{Spatial\+Hash\+Grid}}
-\begin{DoxyCompactList}\small\item\em Broad-\/phase collision structure using spatial hashing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Broad-\/phase collision structure based on a spatial hash grid. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_collision_group_registry}{Collision\+Group\+Registry}}
-\begin{DoxyCompactList}\small\item\em Registry that assigns bit indices to collision group tags. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Registry that assigns collision group tags to bit masks. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,7 +27,7 @@ enum class \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Coll
 , \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3}{Circle}}
 , \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395a4276d50f05d2cac4c98c17337ac30c99}{AABB}}
  \}
-\begin{DoxyCompactList}\small\item\em Identifies the concrete collider shape type at runtime. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Identifies the runtime type of a collider. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -39,9 +39,9 @@ enum class \mbox{\hyperlink{_collider_8h_a7f138e75fc3cc79e825c39e040690395}{Coll
 
 
 
-Identifies the concrete collider shape type at runtime. 
+Identifies the runtime type of a collider. 
 
-Used internally for type checks and debugging, and as a lightweight descriptor for collider behavior. The collision system itself uses double dispatch (Dispatch\+Against) rather than switching solely on this enum. \begin{DoxyEnumFields}[2]{Enumerator}
+This enum is used internally to distinguish collider shapes. The current engine supports circle colliders and axis-\/aligned bounding box colliders. \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!Collider.h@{Collider.h}}\index{Collider.h@{Collider.h}!None@{None}}}\Hypertarget{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754}\label{_collider_8h_a7f138e75fc3cc79e825c39e040690395a6adf97f83acf6453d4a6a4b1070f3754} 
 None&\\
 \hline

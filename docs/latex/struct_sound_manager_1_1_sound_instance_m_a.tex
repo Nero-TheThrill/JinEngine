@@ -12,13 +12,15 @@ bool \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a_a315a9ba966548
 bool \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a_a146d87d26f14180c144cc351cd6f4a55}{paused}} = false
 \item 
 ma\+\_\+uint64 \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a_a420921391d2f70e94e7efee4cc3a3cee}{paused\+Cursor}} = 0
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}}, const std\+::string \&)$>$ \mbox{\hyperlink{struct_sound_manager_1_1_sound_instance_m_a_a6cb6f6572c6970cd354934443576742d}{on\+Finished}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 
 
@@ -31,7 +33,17 @@ bool Sound\+Manager\+::\+Sound\+Instance\+MA\+::looping = false}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+
+\Hypertarget{struct_sound_manager_1_1_sound_instance_m_a_a6cb6f6572c6970cd354934443576742d}\index{SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}!onFinished@{onFinished}}
+\index{onFinished@{onFinished}!SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}}
+\doxysubsubsection{\texorpdfstring{onFinished}{onFinished}}
+{\footnotesize\ttfamily \label{struct_sound_manager_1_1_sound_instance_m_a_a6cb6f6572c6970cd354934443576742d} 
+std\+::function$<$void(\mbox{\hyperlink{_sound_manager_8h_a7675718ce8055fa8280410c0d32ad4f3}{Sound\+Instance\+ID}}, const std\+::string\&)$>$ Sound\+Manager\+::\+Sound\+Instance\+MA\+::on\+Finished}
+
+
+
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 \Hypertarget{struct_sound_manager_1_1_sound_instance_m_a_a146d87d26f14180c144cc351cd6f4a55}\index{SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}!paused@{paused}}
 \index{paused@{paused}!SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}}
@@ -41,7 +53,7 @@ bool Sound\+Manager\+::\+Sound\+Instance\+MA\+::paused = false}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 \Hypertarget{struct_sound_manager_1_1_sound_instance_m_a_a420921391d2f70e94e7efee4cc3a3cee}\index{SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}!pausedCursor@{pausedCursor}}
 \index{pausedCursor@{pausedCursor}!SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}}
@@ -51,7 +63,7 @@ ma\+\_\+uint64 Sound\+Manager\+::\+Sound\+Instance\+MA\+::paused\+Cursor = 0}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 \Hypertarget{struct_sound_manager_1_1_sound_instance_m_a_ab863cac5d7f4d6695ebc7e85c2b8a0b1}\index{SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}!sound@{sound}}
 \index{sound@{sound}!SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}}
@@ -61,11 +73,11 @@ ma\+\_\+sound Sound\+Manager\+::\+Sound\+Instance\+MA\+::sound \{\}}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00017\ \{\};}
+\DoxyCodeLine{00018\ \{\};}
 
 \end{DoxyCode}
 \Hypertarget{struct_sound_manager_1_1_sound_instance_m_a_a7f635ffd387bb02da7bd63a48388447e}\index{SoundManager::SoundInstanceMA@{SoundManager::SoundInstanceMA}!tag@{tag}}
@@ -76,7 +88,7 @@ std\+::string Sound\+Manager\+::\+Sound\+Instance\+MA\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
+Definition at line \mbox{\hyperlink{_sound_manager_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_sound_manager_8cpp_source}{Sound\+Manager.\+cpp}}.
 
 
 

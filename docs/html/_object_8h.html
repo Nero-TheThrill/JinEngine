@@ -115,7 +115,7 @@ $(function(){initNavTree('_object_8h.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html">Object</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base interface for all runtime entities managed by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> and rendered by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.  <a href="class_object.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base abstract object class for all engine-managed runtime objects.  <a href="class_object.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -123,7 +123,7 @@ Enumerations</h2></td></tr>
 <tr class="memitem:a842c5e2e69277690b064bf363c017980" id="r_a842c5e2e69277690b064bf363c017980"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a842c5e2e69277690b064bf363c017980">ObjectType</a> { <a class="el" href="#a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13">GAME</a>
 , <a class="el" href="#a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8">TEXT</a>
  }</td></tr>
-<tr class="memdesc:a842c5e2e69277690b064bf363c017980"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the runtime category of an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a>.  <a href="#a842c5e2e69277690b064bf363c017980">More...</a><br /></td></tr>
+<tr class="memdesc:a842c5e2e69277690b064bf363c017980"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the runtime category of an engine object.  <a href="#a842c5e2e69277690b064bf363c017980">More...</a><br /></td></tr>
 <tr class="separator:a842c5e2e69277690b064bf363c017980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -147,8 +147,8 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Identifies the runtime category of an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a>. </p>
-<p>The engine uses <a class="el" href="#a842c5e2e69277690b064bf363c017980" title="Identifies the runtime category of an Object.">ObjectType</a> to distinguish between gameplay objects and text objects. Some systems (render submission, resource validation, font/mesh sync, etc.) may branch behavior based on this type. </p>
+<p>Identifies the runtime category of an engine object. </p>
+<p>This value is used to distinguish between general scene/renderable objects and text-specific objects. Some engine systems, such as resource validation or specialized rendering paths, may branch their behavior based on this type. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13" name="a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13"></a>GAME&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8" name="a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8"></a>TEXT&#160;</td><td class="fielddoc"></td></tr>

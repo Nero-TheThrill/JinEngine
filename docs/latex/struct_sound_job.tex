@@ -2,7 +2,7 @@
 \hypertarget{struct_sound_job}{}\label{struct_sound_job}\index{SoundJob@{SoundJob}}
 
 
-Load request describing a sound asset to be loaded asynchronously.  
+Describes a sound loading request.  
 
 
 
@@ -21,11 +21,13 @@ bool \mbox{\hyperlink{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}{loop}}
 
 
 \doxysubsection{Detailed Description}
-Load request describing a sound asset to be loaded asynchronously. 
+Describes a sound loading request. 
 
-The worker thread can load/validate audio file data or metadata. The loop flag is carried through to the final \doxylink{struct_sound_result}{Sound\+Result}. 
+\doxylink{struct_sound_job}{Sound\+Job} stores the information required to register a sound resource later, including its tag, source file path, and looping default.
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00079}{79}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+In the current implementation, the worker thread does not decode or initialize the sound resource itself. It simply packages this information into a \doxylink{struct_sound_result}{Sound\+Result} for later processing on the main thread. \+:content\+Reference\mbox{[}oaicite\+:4\mbox{]}\{index=4\} 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00096}{96}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -38,7 +40,7 @@ std\+::string Sound\+Job\+::file\+Path}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00082}{82}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00099}{99}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sound_job_a6f887145dbe50b8bd8a28cff875f9987}\index{SoundJob@{SoundJob}!loop@{loop}}
 \index{loop@{loop}!SoundJob@{SoundJob}}
@@ -48,7 +50,7 @@ bool Sound\+Job\+::loop = false}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00083}{83}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00100}{100}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_sound_job_a7871a6b228a3a56fd7dd4fceacf76984}\index{SoundJob@{SoundJob}!tag@{tag}}
 \index{tag@{tag}!SoundJob@{SoundJob}}
@@ -58,7 +60,7 @@ std\+::string Sound\+Job\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00081}{81}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00098}{98}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

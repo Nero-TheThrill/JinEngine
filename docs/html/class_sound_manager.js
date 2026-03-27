@@ -19,6 +19,7 @@ var class_sound_manager =
     [ "Init", "class_sound_manager.html#af1ee5e29fca894a8ac9aeeb56b81f21d", null ],
     [ "LoadSound", "class_sound_manager.html#a8e52926369f4ff23599507c5e7cf7246", null ],
     [ "operator=", "class_sound_manager.html#a5792dd09a6293846f738e7f9418d9085", null ],
+    [ "Play", "class_sound_manager.html#a27f9b8035bc8c346790806036aa0e708", null ],
     [ "Play", "class_sound_manager.html#acc7074efb4e8b5c71e85f556769d9b17", null ],
     [ "SetVolumeAll", "class_sound_manager.html#a4447c313bba2cdfbac3053a094f66776", null ],
     [ "SetVolumeByID", "class_sound_manager.html#a66c578e6c2850d673ea035870871e6ab", null ],

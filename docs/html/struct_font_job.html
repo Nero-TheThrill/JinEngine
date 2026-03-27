@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_font_job.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Load request describing a font resource to be registered.  
+<p>Describes a font loading request.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>&gt;</code></p>
@@ -119,10 +119,11 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a44f98fce3f8eacfa18fab030db632acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Load request describing a font resource to be registered. </p>
-<p>In this loader design, the worker thread may validate the font path or prepare metadata, while the actual GPU-facing atlas/material setup typically occurs on the main thread. </p>
+<div class="textblock"><p>Describes a font loading request. </p>
+<p><a class="el" href="struct_font_job.html" title="Describes a font loading request.">FontJob</a> stores the data needed to register a font later, including the font tag, the TTF file path, and the target pixel size.</p>
+<p>In the current implementation, the worker thread does not parse or rasterize the font file. It only forwards the metadata into a <a class="el" href="struct_font_result.html" title="Stores the completed result of a font loading request.">FontResult</a> so the actual font creation can occur in a later stage on the main thread. :contentReference[oaicite:3]{index=3} </p>
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00065">65</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00078">78</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a44f98fce3f8eacfa18fab030db632acd" name="a44f98fce3f8eacfa18fab030db632acd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44f98fce3f8eacfa18fab030db632acd">&#9670;&#160;</a></span>pixelSize</h2>
@@ -136,7 +137,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00069">69</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00082">82</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -152,7 +153,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00067">67</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00080">80</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -168,7 +169,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00068">68</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00081">81</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>

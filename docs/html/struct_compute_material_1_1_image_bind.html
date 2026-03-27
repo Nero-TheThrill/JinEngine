@@ -104,25 +104,34 @@ $(function(){initNavTree('struct_compute_material_1_1_image_bind.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Describes a single image binding for a compute shader.  
+<p>Describes one image binding used by a compute shader.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1740cdd4ca2dbe18ef6c66617b6739ee" id="r_a1740cdd4ca2dbe18ef6c66617b6739ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1740cdd4ca2dbe18ef6c66617b6739ee">tex</a></td></tr>
-<tr class="separator:a1740cdd4ca2dbe18ef6c66617b6739ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a7140e3a74035040670d0df04eaacd" id="r_af8a7140e3a74035040670d0df04eaacd"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8a7140e3a74035040670d0df04eaacd">tex</a></td></tr>
+<tr class="memdesc:af8a7140e3a74035040670d0df04eaacd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_texture.html">Texture</a> bound as an image.  <br /></td></tr>
+<tr class="separator:af8a7140e3a74035040670d0df04eaacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae79bc6e7fa54bdd075da9a5256cef43d" id="r_ae79bc6e7fa54bdd075da9a5256cef43d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_texture_8h.html#aaede91d69828dab884499c661d95b53f">ImageAccess</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae79bc6e7fa54bdd075da9a5256cef43d">access</a></td></tr>
+<tr class="memdesc:ae79bc6e7fa54bdd075da9a5256cef43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access mode used when binding the image.  <br /></td></tr>
 <tr class="separator:ae79bc6e7fa54bdd075da9a5256cef43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bf46fe5ee6199e6fe7740903898c35a" id="r_a8bf46fe5ee6199e6fe7740903898c35a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_texture_8h.html#a22f6b18e781e3c412e7d243f7de6aa5c">ImageFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bf46fe5ee6199e6fe7740903898c35a">format</a></td></tr>
+<tr class="memdesc:a8bf46fe5ee6199e6fe7740903898c35a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image format declared for the binding.  <br /></td></tr>
 <tr class="separator:a8bf46fe5ee6199e6fe7740903898c35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a83aa09857b96eb2437f9396152ea30" id="r_a5a83aa09857b96eb2437f9396152ea30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a83aa09857b96eb2437f9396152ea30">level</a></td></tr>
+<tr class="memdesc:a5a83aa09857b96eb2437f9396152ea30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mip level used for image access.  <br /></td></tr>
 <tr class="separator:a5a83aa09857b96eb2437f9396152ea30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Describes a single image binding for a compute shader. </p>
-<p>This packs the texture pointer and the required OpenGL image binding parameters. </p>
+<div class="textblock"><p>Describes one image binding used by a compute shader. </p>
+<p>Each entry stores:</p><ul>
+<li>the texture resource</li>
+<li>the image access mode</li>
+<li>the image format</li>
+<li>the mip level to bind </li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00264">264</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00305">305</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae79bc6e7fa54bdd075da9a5256cef43d" name="ae79bc6e7fa54bdd075da9a5256cef43d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae79bc6e7fa54bdd075da9a5256cef43d">&#9670;&#160;</a></span>access</h2>
@@ -136,7 +145,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00267">267</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p>Access mode used when binding the image. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00315">315</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
@@ -152,7 +163,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00268">268</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p>Image format declared for the binding. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00320">320</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
@@ -168,23 +181,27 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00269">269</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p>Mip level used for image access. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00325">325</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
-<a id="a1740cdd4ca2dbe18ef6c66617b6739ee" name="a1740cdd4ca2dbe18ef6c66617b6739ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1740cdd4ca2dbe18ef6c66617b6739ee">&#9670;&#160;</a></span>tex</h2>
+<a id="af8a7140e3a74035040670d0df04eaacd" name="af8a7140e3a74035040670d0df04eaacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8a7140e3a74035040670d0df04eaacd">&#9670;&#160;</a></span>tex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_texture.html">Texture</a>* ComputeMaterial::ImageBind::tex</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_texture.html">Texture</a>&gt; ComputeMaterial::ImageBind::tex</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00266">266</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p><a class="el" href="class_texture.html">Texture</a> bound as an image. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00310">310</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>

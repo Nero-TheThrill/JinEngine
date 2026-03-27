@@ -2,7 +2,7 @@
 \hypertarget{class_state_manager}{}\label{class_state_manager}\index{StateManager@{StateManager}}
 
 
-Manages the lifetime and transition of \doxylink{class_game_state}{Game\+State} instances.  
+Manages the active game state and performs deferred state transitions for the engine.  
 
 
 
@@ -13,18 +13,18 @@ Manages the lifetime and transition of \doxylink{class_game_state}{Game\+State} 
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_game_state}{Game\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_state_manager_aeb24049cbe185fe0faec5c771e34c2bb}{Get\+Current\+State}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently active \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the currently active game state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{Change\+State}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_game_state}{Game\+State}} $>$ new\+State)
-\begin{DoxyCompactList}\small\item\em Requests a transition to a new \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Schedules a transition to a new game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Updates the currently active \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Processes pending state transitions and updates the active state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Draws the currently active \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Renders the current state and executes the engine\textquotesingle{}s frame rendering sequence. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)
-\begin{DoxyCompactList}\small\item\em Frees the currently active \doxylink{class_game_state}{Game\+State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Frees and unloads the current state, then clears ownership of it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,15 +39,33 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_game_state}{Game\+State}} $>$ \
 
 
 \doxysubsection{Detailed Description}
-Manages the lifetime and transition of \doxylink{class_game_state}{Game\+State} instances. 
+Manages the active game state and performs deferred state transitions for the engine. 
 
-\doxylink{class_state_manager}{State\+Manager} is responsible for owning the currently active \doxylink{class_game_state}{Game\+State} and safely transitioning to a new state when requested. State changes are not applied immediately; instead, the new state is stored temporarily and the actual transition occurs at a controlled point in the frame lifecycle.
+\doxylink{class_state_manager}{State\+Manager} owns the currently active \doxylink{class_game_state}{Game\+State} and an optional pending \doxylink{class_game_state}{Game\+State} that has been requested through \doxylink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{Change\+State()}.
 
-This deferred transition model ensures that state changes do not occur in the middle of Update or Draw execution, preventing invalid access and partial state updates.
+State changes are not applied immediately when \doxylink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{Change\+State()} is called. Instead, the new state is stored in {\ttfamily next\+State} and the actual transition is processed inside \doxylink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update()}. This deferred design helps avoid replacing the active state in the middle of user logic or rendering code.
 
-Update, Draw, and Free are driven exclusively by \doxylink{class_jin_engine}{Jin\+Engine} and are not intended to be called directly by user code. 
+During a state transition, \doxylink{class_state_manager}{State\+Manager} performs the following sequence\+:
+\begin{DoxyItemize}
+\item calls System\+Free() on the old state,
+\item calls System\+Unload() on the old state,
+\item stops all active sounds through \doxylink{class_sound_manager}{Sound\+Manager},
+\item moves the pending state into current\+State,
+\item calls System\+Load() on the new state,
+\item calls System\+Init() on the new state,
+\item updates all cameras in the new state\textquotesingle{}s \doxylink{class_camera_manager}{Camera\+Manager} to match the current window size.
+\end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00024}{24}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+In addition to state switching, this class also drives the main per-\/frame update and draw flow for the current state.
+
+\begin{DoxyNote}{Note}
+\doxylink{class_state_manager}{State\+Manager} owns states exclusively through std\+::unique\+\_\+ptr.
+
+This class is intended to be controlled internally by the engine. \doxylink{class_jin_engine}{Jin\+Engine} is declared as a friend so it can access lifecycle functions such as \doxylink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update()}, \doxylink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{Draw()}, and \doxylink{class_state_manager_aa8e5c183bf725b7132f7e4bc800deaab}{Free()}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00039}{39}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
 
 
 
@@ -60,17 +78,20 @@ void State\+Manager\+::\+Change\+State (\begin{DoxyParamCaption}\item[{std\+::un
 
 
 
-Requests a transition to a new \doxylink{class_game_state}{Game\+State}. 
+Schedules a transition to a new game state. 
 
-The provided \doxylink{class_game_state}{Game\+State} is stored internally as the next state and will replace the current state at a safe synchronization point, typically between frames.
+This function does not immediately replace the current state. Instead, it stores the provided state in next\+State, and the actual transition is performed during the next \doxylink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update()} call.
 
-If a next state is already pending, it will be overwritten.
+If another pending state already exists, it is overwritten by the new one.
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\+State} & Unique ownership of the new \doxylink{class_game_state}{Game\+State} to activate. \\
+{\em new\+State} & New state to activate on the next update step.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The transition is deferred intentionally so that state replacement happens at a controlled point in the engine loop. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
@@ -90,15 +111,33 @@ void State\+Manager\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Draws the currently active \doxylink{class_game_state}{Game\+State}. 
+Renders the current state and executes the engine\textquotesingle{}s frame rendering sequence. 
 
-Rendering is delegated to the active \doxylink{class_game_state}{Game\+State}. This function is expected to be called once per frame after \doxylink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update()}.
+If there is an active current\+State, this function performs the following rendering flow\+:
+
+
+\begin{DoxyEnumerate}
+\item Begin\+Frame() is called on \doxylink{class_render_manager}{Render\+Manager}.
+\item current\+State-\/\texorpdfstring{$>$}{>}Draw(engine\+Context) is executed.
+\item Render\+Manager\+::\+Flush\+Draw\+Commands(engine\+Context) is called.
+\item If debug rendering is enabled, Render\+Manager\+::\+Flush\+Debug\+Line\+Draw\+Commands(engine\+Context) is called.
+\item End\+Frame() is called on \doxylink{class_render_manager}{Render\+Manager}.
+\item current\+State-\/\texorpdfstring{$>$}{>}Post\+Processing(engine\+Context) is executed.
+\item Render\+Manager\+::\+Flush\+Draw\+Commands(engine\+Context) is called again for post-\/processing output.
+\end{DoxyEnumerate}
+
+If there is no active state, this function does nothing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine systems and managers used during rendering.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function does more than simply call the state\textquotesingle{}s \doxylink{class_state_manager_ae161e57265af366c58b0e2b5d936553d}{Draw()}. It also controls the full render-\/manager frame lifecycle around that draw call.
+
+Debug draw flushing occurs only when engine-\/\texorpdfstring{$>$}{>}Should\+Render\+Debug\+Draws() returns true. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
@@ -131,15 +170,25 @@ void State\+Manager\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Frees the currently active \doxylink{class_game_state}{Game\+State}. 
+Frees and unloads the current state, then clears ownership of it. 
 
-This calls the state\textquotesingle{}s cleanup routines and releases ownership of the current state.
+If current\+State exists, this function performs\+:
+\begin{DoxyItemize}
+\item current\+State-\/\texorpdfstring{$>$}{>}System\+Free(engine\+Context)
+\item current\+State-\/\texorpdfstring{$>$}{>}System\+Unload(engine\+Context)
+\item current\+State.\+reset()
+\end{DoxyItemize}
+
+After this function finishes, no active state remains.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine systems and managers used by the state during shutdown.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function only releases the currently active state. It does not process next\+State. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
@@ -164,13 +213,18 @@ Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00052}{52}} of f
 
 
 
-Returns the currently active \doxylink{class_game_state}{Game\+State}. 
+Returns the currently active game state. 
 
-The returned pointer is owned by \doxylink{class_state_manager}{State\+Manager} and remains valid until a state transition occurs.
+This function returns the raw pointer stored in current\+State. If no state is currently active, it returns nullptr.
 
 \begin{DoxyReturn}{Returns}
-Pointer to the active \doxylink{class_game_state}{Game\+State}, or nullptr if no state is active. 
+Pointer to the currently active \doxylink{class_game_state}{Game\+State}. 
+
+nullptr if no state is active.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned pointer is non-\/owning. State lifetime is still managed entirely by \doxylink{class_state_manager}{State\+Manager}. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
@@ -190,17 +244,38 @@ void State\+Manager\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\
 
 
 
-Updates the currently active \doxylink{class_game_state}{Game\+State}. 
+Processes pending state transitions and updates the active state. 
 
-This function forwards the update call to the current \doxylink{class_game_state}{Game\+State} and also handles pending state transitions if a new state has been requested.
+This function first checks whether a pending state exists in next\+State. If so, it performs a full state transition.
+
+Transition flow\+:
+\begin{DoxyItemize}
+\item If current\+State exists\+:
+\begin{DoxyItemize}
+\item call current\+State-\/\texorpdfstring{$>$}{>}System\+Free(engine\+Context)
+\item call current\+State-\/\texorpdfstring{$>$}{>}System\+Unload(engine\+Context)
+\item stop all sounds through engine\+Context.\+sound\+Manager-\/\texorpdfstring{$>$}{>}Control\+All(\+Stop)
+\end{DoxyItemize}
+\item move next\+State into current\+State
+\item call current\+State-\/\texorpdfstring{$>$}{>}System\+Load(engine\+Context)
+\item call current\+State-\/\texorpdfstring{$>$}{>}System\+Init(engine\+Context)
+\item resize all cameras owned by the new state to the current window width and height
+\end{DoxyItemize}
+
+After transition handling, if current\+State exists, this function calls current\+State-\/\texorpdfstring{$>$}{>}System\+Update(dt, engine\+Context).
 
 
 \begin{DoxyParams}{Parameters}
-{\em dt} & Delta time in seconds. \\
+{\em dt} & Delta time for the current frame. \\
 \hline
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine systems and managers used by the state.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+\doxylink{class_state_manager_a5337ecd1c035794817b1de05f961d352}{Change\+State()} only queues the transition. \doxylink{class_state_manager_ab4ebd3189a4623e805d95f768b314acb}{Update()} is where the actual swap happens.
+
+Sound playback is forcefully stopped when leaving the current state. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
@@ -239,7 +314,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_game_state}{Game\+State}}$>$ Sta
 
 
 
-Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00089}{89}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00157}{157}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
 
 \Hypertarget{class_state_manager_aa3b875e78c4f22428efa559f000ba4b0}\index{StateManager@{StateManager}!JinEngine@{JinEngine}}
 \index{JinEngine@{JinEngine}!StateManager@{StateManager}}
@@ -249,7 +324,7 @@ friend State\+Manager\+::\+Jin\+Engine\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00026}{26}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00041}{41}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
 
 \Hypertarget{class_state_manager_a598a8e8b997a38333b28dbbe9c87cfe6}\index{StateManager@{StateManager}!nextState@{nextState}}
 \index{nextState@{nextState}!StateManager@{StateManager}}
@@ -259,7 +334,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_game_state}{Game\+State}}$>$ Sta
 
 
 
-Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00090}{90}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00158}{158}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
 
 \Hypertarget{class_state_manager_a5bcbfbe259357f1cbc07f404fec9d18c}\index{StateManager@{StateManager}!WindowManager@{WindowManager}}
 \index{WindowManager@{WindowManager}!StateManager@{StateManager}}
@@ -269,7 +344,7 @@ friend State\+Manager\+::\+Window\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00042}{42}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
 
 
 

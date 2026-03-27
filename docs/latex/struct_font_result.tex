@@ -2,7 +2,7 @@
 \hypertarget{struct_font_result}{}\label{struct_font_result}\index{FontResult@{FontResult}}
 
 
-Result data for a font job.  
+Stores the completed result of a font loading request.  
 
 
 
@@ -23,11 +23,13 @@ bool \mbox{\hyperlink{struct_font_result_a84de4479914a7d00a43df15d10e9e153}{ok}}
 
 
 \doxysubsection{Detailed Description}
-Result data for a font job. 
+Stores the completed result of a font loading request. 
 
-This result primarily carries registration metadata (tag/path/pixel\+Size). ok indicates whether the job is considered valid. 
+\doxylink{struct_font_result}{Font\+Result} currently acts as a metadata pass-\/through object. It contains the font tag, TTF path, and target pixel size so that the main thread can later register or construct the actual font resource.
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00171}{171}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+In the current implementation, this result is produced without parsing the font file, so ok defaults to true unless future logic changes that behavior. \+:content\+Reference\mbox{[}oaicite\+:9\mbox{]}\{index=9\} 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00199}{199}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -40,7 +42,7 @@ bool Font\+Result\+::ok = true}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00176}{176}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00204}{204}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_font_result_ac8599d01b34faa8c2aa68e956178268d}\index{FontResult@{FontResult}!pixelSize@{pixelSize}}
 \index{pixelSize@{pixelSize}!FontResult@{FontResult}}
@@ -50,7 +52,7 @@ uint32\+\_\+t Font\+Result\+::pixel\+Size = 32}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00175}{175}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00203}{203}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_font_result_a582ecfa3c687f9020ad6bc502a4579fb}\index{FontResult@{FontResult}!tag@{tag}}
 \index{tag@{tag}!FontResult@{FontResult}}
@@ -60,7 +62,7 @@ std\+::string Font\+Result\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00173}{173}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00201}{201}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_font_result_ad0f66f36c5cc01044788f09330a7d427}\index{FontResult@{FontResult}!ttfPath@{ttfPath}}
 \index{ttfPath@{ttfPath}!FontResult@{FontResult}}
@@ -70,7 +72,7 @@ std\+::string Font\+Result\+::ttf\+Path}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00174}{174}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00202}{202}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

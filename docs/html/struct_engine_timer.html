@@ -105,7 +105,7 @@ $(function(){initNavTree('struct_engine_timer.html',''); initResizable(true); })
 </div><!--header-->
 <div class="contents">
 
-<p>Utility structure for frame timing and FPS calculation.  
+<p>Frame timing utility used for delta time calculation and FPS measurement.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>&gt;</code></p>
@@ -113,34 +113,39 @@ $(function(){initNavTree('struct_engine_timer.html',''); initResizable(true); })
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad25e0e9f721178342c6f3c7b953befd9" id="r_ad25e0e9f721178342c6f3c7b953befd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad25e0e9f721178342c6f3c7b953befd9">Start</a> ()</td></tr>
-<tr class="memdesc:ad25e0e9f721178342c6f3c7b953befd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the timer state.  <br /></td></tr>
+<tr class="memdesc:ad25e0e9f721178342c6f3c7b953befd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the timer.  <br /></td></tr>
 <tr class="separator:ad25e0e9f721178342c6f3c7b953befd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe3aa7aae238367ee3d3cee3ce7678de" id="r_abe3aa7aae238367ee3d3cee3ce7678de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe3aa7aae238367ee3d3cee3ce7678de">Tick</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:abe3aa7aae238367ee3d3cee3ce7678de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances the timer and computes delta time for the current frame.  <br /></td></tr>
+<tr class="memdesc:abe3aa7aae238367ee3d3cee3ce7678de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances the timer by one frame and computes delta time.  <br /></td></tr>
 <tr class="separator:abe3aa7aae238367ee3d3cee3ce7678de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf262d9972999ca9e988923b79c7c9eb" id="r_aaf262d9972999ca9e988923b79c7c9eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf262d9972999ca9e988923b79c7c9eb">ShouldUpdateFPS</a> (float &amp;outFPS)</td></tr>
-<tr class="memdesc:aaf262d9972999ca9e988923b79c7c9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether an updated FPS value should be reported.  <br /></td></tr>
+<tr class="memdesc:aaf262d9972999ca9e988923b79c7c9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether FPS should be updated and computes it.  <br /></td></tr>
 <tr class="separator:aaf262d9972999ca9e988923b79c7c9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a1dcbf3f19be8c727b6bcd254b3ef5726" id="r_a1dcbf3f19be8c727b6bcd254b3ef5726"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dcbf3f19be8c727b6bcd254b3ef5726">lastTime</a> = 0.0f</td></tr>
-<tr class="memdesc:a1dcbf3f19be8c727b6bcd254b3ef5726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time value recorded during the previous frame.  <br /></td></tr>
+<tr class="memdesc:a1dcbf3f19be8c727b6bcd254b3ef5726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time value from the previous frame.  <br /></td></tr>
 <tr class="separator:a1dcbf3f19be8c727b6bcd254b3ef5726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae752c69abc5d400019e704aeb49683c1" id="r_ae752c69abc5d400019e704aeb49683c1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae752c69abc5d400019e704aeb49683c1">fpsTimer</a> = 0.0f</td></tr>
-<tr class="memdesc:ae752c69abc5d400019e704aeb49683c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accumulated elapsed time used for FPS calculation.  <br /></td></tr>
+<tr class="memdesc:ae752c69abc5d400019e704aeb49683c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accumulated time used for FPS calculation.  <br /></td></tr>
 <tr class="separator:ae752c69abc5d400019e704aeb49683c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a760c4494a8697985fcaf45888ba21a47" id="r_a760c4494a8697985fcaf45888ba21a47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a760c4494a8697985fcaf45888ba21a47">frameCount</a> = 0</td></tr>
-<tr class="memdesc:a760c4494a8697985fcaf45888ba21a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of frames accumulated since the last FPS update.  <br /></td></tr>
+<tr class="memdesc:a760c4494a8697985fcaf45888ba21a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of frames counted during the FPS accumulation period.  <br /></td></tr>
 <tr class="separator:a760c4494a8697985fcaf45888ba21a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utility structure for frame timing and FPS calculation. </p>
-<p><a class="el" href="struct_engine_timer.html" title="Utility structure for frame timing and FPS calculation.">EngineTimer</a> provides basic timing functionality used by the engine loop. It measures delta time between frames and optionally computes frames-per-second (FPS) over a fixed accumulation interval.</p>
-<p>The timer relies on time information provided through <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> (typically sourced from a high-resolution platform timer).</p>
-<p>This structure is intended to be owned and driven by the core engine loop. </p>
+<div class="textblock"><p>Frame timing utility used for delta time calculation and FPS measurement. </p>
+<p><a class="el" href="struct_engine_timer.html" title="Frame timing utility used for delta time calculation and FPS measurement.">EngineTimer</a> is responsible for tracking frame time progression and computing per-frame delta time (dt) as well as frames per second (FPS).</p>
+<p>It is typically used inside the main engine loop:</p><ul>
+<li><a class="el" href="#ad25e0e9f721178342c6f3c7b953befd9" title="Initializes the timer.">Start()</a> initializes the timer.</li>
+<li><a class="el" href="#abe3aa7aae238367ee3d3cee3ce7678de" title="Advances the timer by one frame and computes delta time.">Tick()</a> is called every frame to compute delta time.</li>
+<li><a class="el" href="#aaf262d9972999ca9e988923b79c7c9eb" title="Determines whether FPS should be updated and computes it.">ShouldUpdateFPS()</a> accumulates time and frame count to periodically update FPS.</li>
+</ul>
+<p>The timer relies on the window system's time source (e.g., glfwGetTime) accessed through <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This struct does not own any system and depends on <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> for time queries. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00017">17</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00022">22</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aaf262d9972999ca9e988923b79c7c9eb" name="aaf262d9972999ca9e988923b79c7c9eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf262d9972999ca9e988923b79c7c9eb">&#9670;&#160;</a></span>ShouldUpdateFPS()</h2>
@@ -165,16 +170,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines whether an updated FPS value should be reported. </p>
-<p>This function accumulates frame count and elapsed time internally. When a predefined time interval has elapsed (commonly 1 second), it computes the average FPS, writes it to outFPS, resets the internal FPS counters, and returns true.</p>
-<p>If the interval has not yet elapsed, the function returns false and outFPS remains unmodified.</p>
+<p>Determines whether FPS should be updated and computes it. </p>
+<p>Accumulates elapsed time (fpsTimer) and frame count (frameCount). When the accumulated time exceeds a threshold (commonly ~1 second), FPS is calculated as: </p><pre class="fragment">FPS = frameCount / fpsTimer
+</pre><p>After computation, both counters are reset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">outFPS</td><td>Output parameter that receives the calculated FPS value. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if a new FPS value was computed; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if FPS was updated this frame, false otherwise.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is typically used to update UI or debug overlays at a lower frequency. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_engine_timer_8cpp_source.html#l00028">28</a> of file <a class="el" href="_engine_timer_8cpp_source.html">EngineTimer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
@@ -187,8 +193,8 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   36</span>    }</div>
 <div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   38</span>}</div>
-<div class="ttc" id="astruct_engine_timer_html_a760c4494a8697985fcaf45888ba21a47"><div class="ttname"><a href="#a760c4494a8697985fcaf45888ba21a47">EngineTimer::frameCount</a></div><div class="ttdeci">int frameCount</div><div class="ttdoc">Number of frames accumulated since the last FPS update.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00077">EngineTimer.h:77</a></div></div>
-<div class="ttc" id="astruct_engine_timer_html_ae752c69abc5d400019e704aeb49683c1"><div class="ttname"><a href="#ae752c69abc5d400019e704aeb49683c1">EngineTimer::fpsTimer</a></div><div class="ttdeci">float fpsTimer</div><div class="ttdoc">Accumulated elapsed time used for FPS calculation.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00072">EngineTimer.h:72</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_a760c4494a8697985fcaf45888ba21a47"><div class="ttname"><a href="#a760c4494a8697985fcaf45888ba21a47">EngineTimer::frameCount</a></div><div class="ttdeci">int frameCount</div><div class="ttdoc">Number of frames counted during the FPS accumulation period.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00096">EngineTimer.h:96</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_ae752c69abc5d400019e704aeb49683c1"><div class="ttname"><a href="#ae752c69abc5d400019e704aeb49683c1">EngineTimer::fpsTimer</a></div><div class="ttdeci">float fpsTimer</div><div class="ttdoc">Accumulated time used for FPS calculation.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00088">EngineTimer.h:88</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -207,8 +213,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the timer state. </p>
-<p>Resets internal time tracking values and prepares the timer for the first Tick call. </p>
+<p>Initializes the timer. </p>
+<p>Captures the current time as the starting reference point. This should be called once before entering the main loop.</p>
+<dl class="section note"><dt>Note</dt><dd>Resets internal state used for delta time calculation. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_engine_timer_8cpp_source.html#l00006">6</a> of file <a class="el" href="_engine_timer_8cpp_source.html">EngineTimer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    7</span>{</div>
@@ -216,7 +223,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">    9</span>    <a class="code hl_variable" href="#ae752c69abc5d400019e704aeb49683c1">fpsTimer</a> = 0.0f;</div>
 <div class="line"><span class="lineno">   10</span>    <a class="code hl_variable" href="#a760c4494a8697985fcaf45888ba21a47">frameCount</a> = 0;</div>
 <div class="line"><span class="lineno">   11</span>}</div>
-<div class="ttc" id="astruct_engine_timer_html_a1dcbf3f19be8c727b6bcd254b3ef5726"><div class="ttname"><a href="#a1dcbf3f19be8c727b6bcd254b3ef5726">EngineTimer::lastTime</a></div><div class="ttdeci">float lastTime</div><div class="ttdoc">Time value recorded during the previous frame.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00067">EngineTimer.h:67</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_a1dcbf3f19be8c727b6bcd254b3ef5726"><div class="ttname"><a href="#a1dcbf3f19be8c727b6bcd254b3ef5726">EngineTimer::lastTime</a></div><div class="ttdeci">float lastTime</div><div class="ttdoc">Time value from the previous frame.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8h_source.html#l00080">EngineTimer.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,16 +250,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Advances the timer and computes delta time for the current frame. </p>
-<p>This function retrieves the current time from <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a>, computes the elapsed time since the previous frame, updates internal accumulators, and returns delta time in seconds.</p>
-<p>The returned delta time is typically used to drive frame-based updates throughout the engine.</p>
+<p>Advances the timer by one frame and computes delta time. </p>
+<p>Retrieves the current time from the engine (via <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a>), computes the difference from the previous frame (lastTime), and updates lastTime with the current value.</p>
+<p>This function is expected to be called once per frame.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine context providing the current time source. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Provides access to the engine's time source. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Delta time (seconds) since the last Tick call. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Delta time in seconds since the last frame.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>A stable delta time is essential for frame-independent movement and simulation. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_engine_timer_8cpp_source.html#l00013">13</a> of file <a class="el" href="_engine_timer_8cpp_source.html">EngineTimer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
@@ -268,8 +276,8 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="#a760c4494a8697985fcaf45888ba21a47">frameCount</a>++;</div>
 <div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> dt;</div>
 <div class="line"><span class="lineno">   26</span>}</div>
-<div class="ttc" id="aclass_input_manager_html_a92319ec0b9f5eff3fd9a2e22a434a3a1"><div class="ttname"><a href="class_input_manager.html#a92319ec0b9f5eff3fd9a2e22a434a3a1">InputManager::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">Resets per-frame transient input data.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00024">InputManager.cpp:24</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a9c8f61ef311c6f84a93d342eaaa1864a"><div class="ttname"><a href="struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a">EngineContext::inputManager</a></div><div class="ttdeci">InputManager * inputManager</div><div class="ttdoc">Pointer to the InputManager handling keyboard and mouse input.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00048">EngineContext.h:48</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_a92319ec0b9f5eff3fd9a2e22a434a3a1"><div class="ttname"><a href="class_input_manager.html#a92319ec0b9f5eff3fd9a2e22a434a3a1">InputManager::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">Clears all stored input state.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00024">InputManager.cpp:24</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a9c8f61ef311c6f84a93d342eaaa1864a"><div class="ttname"><a href="struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a">EngineContext::inputManager</a></div><div class="ttdeci">InputManager * inputManager</div><div class="ttdoc">Pointer to the input manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00064">EngineContext.h:64</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -286,9 +294,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Accumulated elapsed time used for FPS calculation. </p>
+<p>Accumulated time used for FPS calculation. </p>
+<p>Increases every frame by delta time until it reaches a threshold (e.g., 1 second). </p>
 
-<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00072">72</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00088">88</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
 
 </div>
 </div>
@@ -304,9 +313,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of frames accumulated since the last FPS update. </p>
+<p>Number of frames counted during the FPS accumulation period. </p>
+<p>Incremented every frame and used together with fpsTimer to compute FPS. </p>
 
-<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00077">77</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00096">96</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
 
 </div>
 </div>
@@ -322,10 +332,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Time value recorded during the previous frame. </p>
-<p>Used to compute delta time in Tick. </p>
+<p>Time value from the previous frame. </p>
+<p>Used to compute delta time by subtracting from the current time. </p>
 
-<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00067">67</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_engine_timer_8h_source.html#l00080">80</a> of file <a class="el" href="_engine_timer_8h_source.html">EngineTimer.h</a>.</p>
 
 </div>
 </div>

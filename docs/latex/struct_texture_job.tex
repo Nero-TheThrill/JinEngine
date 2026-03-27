@@ -2,7 +2,7 @@
 \hypertarget{struct_texture_job}{}\label{struct_texture_job}\index{TextureJob@{TextureJob}}
 
 
-Load request describing a texture to be loaded asynchronously.  
+Describes a texture loading request for the asynchronous resource loader.  
 
 
 
@@ -21,13 +21,18 @@ std\+::string \mbox{\hyperlink{struct_texture_job_a03882f684a0f026bf62c66b235cd2
 
 
 \doxysubsection{Detailed Description}
-Load request describing a texture to be loaded asynchronously. 
+Describes a texture loading request for the asynchronous resource loader. 
 
-\doxylink{struct_texture_job}{Texture\+Job} contains all parameters needed by the worker thread to load raw pixel data from disk and prepare a \doxylink{struct_texture_result}{Texture\+Result}.
+\doxylink{struct_texture_job}{Texture\+Job} stores all information required for the worker thread to load an image file from disk and prepare raw pixel data for later GPU upload.
 
-The tag is used by the main thread to register the loaded texture into the engine\textquotesingle{}s resource registry. 
+The asynchronous loader reads the file using stb\+\_\+image on the worker thread, fills a \doxylink{struct_texture_result}{Texture\+Result} with decoded pixel data, and pushes that result into the completed result list for consumption on the main thread. \+:content\+Reference\mbox{[}oaicite\+:1\mbox{]}\{index=1\}
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00023}{23}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+\begin{DoxyNote}{Note}
+This job does not create a GPU texture object directly. It only carries the information required to decode the source image. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00028}{28}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -40,7 +45,7 @@ std\+::string Texture\+Job\+::file\+Path}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00026}{26}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00031}{31}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_texture_job_aa1d5dd11a257cc26ffbb0839f07d39c7}\index{TextureJob@{TextureJob}!settings@{settings}}
 \index{settings@{settings}!TextureJob@{TextureJob}}
@@ -50,11 +55,11 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00026}{26}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00027}{27}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00032}{32}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00027\ \{\};}
+\DoxyCodeLine{00032\ \{\};}
 
 \end{DoxyCode}
 \Hypertarget{struct_texture_job_a8ae4dec0cf3a3eb77dac31badc6844a9}\index{TextureJob@{TextureJob}!tag@{tag}}
@@ -65,7 +70,7 @@ std\+::string Texture\+Job\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00025}{25}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00030}{30}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
