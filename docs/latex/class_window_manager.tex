@@ -2,68 +2,67 @@
 \hypertarget{class_window_manager}{}\label{class_window_manager}\index{WindowManager@{WindowManager}}
 
 
-Manages the application\textquotesingle{}s primary GLFW window and related OS-\/facing behaviors.  
-
-
-
-
 {\ttfamily \#include $<$Window\+Manager.\+h$>$}
 
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{class_window_manager_a576b3252a0c57544b78e227330ebd945}{Resize\+Callback}} = std\+::function$<$void(int , int )$>$
-\begin{DoxyCompactList}\small\item\em Callback signature for resize notifications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_window_manager_a3a283b34c19aaa20296befaabad4d29b}{Window\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Constructs the manager with a null window handle and default window settings. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_window_manager}{Window\+Manager} with default window state. \end{DoxyCompactList}\item 
 GLFWwindow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_window_manager_ac706fd9adb665063dbb9cc72006369a1}{Get\+Handle}} () const
-\begin{DoxyCompactList}\small\item\em Returns the underlying GLFWwindow handle. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the raw GLFW window handle. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{Get\+Width}} () const
-\begin{DoxyCompactList}\small\item\em Returns the cached framebuffer width of the window in pixels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current cached window width. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{Get\+Height}} () const
-\begin{DoxyCompactList}\small\item\em Returns the cached framebuffer height of the window in pixels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the current cached window height. \end{DoxyCompactList}\item 
+glm\+::ivec2 \mbox{\hyperlink{class_window_manager_aa24d38fa5a052f50bd7e42bbde4c32b3}{Get\+Window\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current cached window size as a 2D integer vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{Resize}} (int width, int height)
-\begin{DoxyCompactList}\small\item\em Requests the window be resized to the given width/height. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Requests a window size change. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}{Set\+Title}} (const std\+::string \&title) const
-\begin{DoxyCompactList}\small\item\em Sets the OS window title text. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the native window title text. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a07f70a67fdcabe9945f227589aba35ce}{Set\+Background\+Color}} (glm\+::vec4 color)
-\begin{DoxyCompactList}\small\item\em Sets the background clear color used by \doxylink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{Clear\+Screen()}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the background clear color used when clearing the frame. \end{DoxyCompactList}\item 
 glm\+::vec4 \mbox{\hyperlink{class_window_manager_a59013354581a7c02e9755ae1624bd3dc}{Get\+Background\+Color}} () const
-\begin{DoxyCompactList}\small\item\em Returns the currently configured background clear color. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the currently stored background clear color. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ace8ed5c7b820428fc835bbe33a732d4c}{Set\+Full\+Screen}} (bool enable)
-\begin{DoxyCompactList}\small\item\em Toggles fullscreen mode using the primary monitor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Switches the window between windowed mode and fullscreen mode. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_window_manager_ae1f28e7be82fb12644c7737316d4b21c}{Is\+Full\+Screen}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether the window is currently in fullscreen mode. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the manager is currently in fullscreen mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a7de28f37875508720696225cbee9c54d}{Restrict\+Resizing}} (bool should\+Restrict)
-\begin{DoxyCompactList}\small\item\em Enables or disables user resizing of the window. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables user-\/driven window resizing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}{Set\+Cursor\+Visible}} (bool visible)
-\begin{DoxyCompactList}\small\item\em Shows or hides the OS cursor while the window is focused. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Shows or hides the mouse cursor for this window. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ad62fde3811107d11f0444abf3195707b}{Add\+Resize\+Callback}} (const std\+::string \&key, \mbox{\hyperlink{class_window_manager_a576b3252a0c57544b78e227330ebd945}{Resize\+Callback}} cb)
-\begin{DoxyCompactList}\small\item\em Registers or replaces a resize callback identified by a string key. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Registers or replaces a resize callback under a string key. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a19bcb4b81402b8627227a4e3d9752469}{Remove\+Resize\+Callback}} (const std\+::string \&key)
-\begin{DoxyCompactList}\small\item\em Removes a previously registered resize callback by key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Removes a previously registered resize callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{Init}} (int \+\_\+window\+Width, int \+\_\+window\+Height, \mbox{\hyperlink{class_jin_engine}{Jin\+Engine}} \&engine)
-\begin{DoxyCompactList}\small\item\em Initializes GLFW, creates the window, and installs engine-\/level callbacks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates the GLFW window and initializes the window subsystem. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ac822306fe0eb51630f31874ec6c469a4}{Set\+Width}} (int width)
-\begin{DoxyCompactList}\small\item\em Updates the cached window width without calling GLFW APIs. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the cached width value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_a1224bd8fbce3dac6125e053422c02380}{Set\+Height}} (int height)
-\begin{DoxyCompactList}\small\item\em Updates the cached window height without calling GLFW APIs. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the cached height value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_window_manager_a92ad411afe26567e222240842364e84b}{Set\+Window\+Size}} (glm\+::ivec2 size)
+\begin{DoxyCompactList}\small\item\em Updates the cached window size using a 2D vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_aef8b4e018e5210b06095779adb68203b}{Swap\+Buffers}} () const
-\begin{DoxyCompactList}\small\item\em Swaps the front/back buffers of the window. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Swaps the front and back buffers of the window. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{Clear\+Screen}} () const
-\begin{DoxyCompactList}\small\item\em Clears the color buffer using the current background\+Color. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Clears the current framebuffer using the stored background color. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_aac8852f37e8b30eb90e4ece0279284e6}{Poll\+Events}} () const
-\begin{DoxyCompactList}\small\item\em Polls GLFW events. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Polls and dispatches pending window/input events. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ad476b2084cbbde321623094d616f9427}{Free}} () const
-\begin{DoxyCompactList}\small\item\em Releases the GLFW window and unregisters callbacks. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the window and unregisters installed GLFW callbacks. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{Notify\+Resize}} (int width, int height)
-\begin{DoxyCompactList}\small\item\em Invokes all registered resize callbacks with the new size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Invokes all registered resize callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -99,15 +98,9 @@ void \mbox{\hyperlink{class_window_manager_a5180f7bf2b71421af837035824a8c8ac}{fr
 
 
 \doxysubsection{Detailed Description}
-Manages the application\textquotesingle{}s primary GLFW window and related OS-\/facing behaviors. 
 
-\doxylink{class_window_manager}{Window\+Manager} owns the GLFWwindow handle and tracks the current window size and presentation state (windowed vs fullscreen). It also stores a background clear color used by the engine\textquotesingle{}s per-\/frame clear routine.
 
-Resize handling is driven by the GLFW framebuffer size callback (framebuffer\+\_\+size\+\_\+callback), which updates this manager\textquotesingle{}s cached width/height, updates all cameras\textquotesingle{} screen sizes through the active \doxylink{class_game_state}{Game\+State}\textquotesingle{}s \doxylink{class_camera_manager}{Camera\+Manager}, notifies the \doxylink{class_render_manager}{Render\+Manager} about the resize, and finally invokes any user-\/registered resize callbacks via \doxylink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{Notify\+Resize()}.
-
-Most lifecycle and per-\/frame operations (Init/\+Swap\+Buffers/\+Clear\+Screen/\+Poll\+Events/\+Free) are private and are intended to be orchestrated by \doxylink{class_jin_engine}{Jin\+Engine}. 
-
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00024}{24}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00008}{8}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 
@@ -120,11 +113,7 @@ using \mbox{\hyperlink{class_window_manager_a576b3252a0c57544b78e227330ebd945}{W
 
 
 
-Callback signature for resize notifications. 
-
-The callback receives the new framebuffer width/height in pixels, matching the values reported by GLFW\textquotesingle{}s framebuffer size callback. 
-
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00036}{36}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00013}{13}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 
@@ -137,15 +126,20 @@ Window\+Manager\+::\+Window\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 
 
 
-Constructs the manager with a null window handle and default window settings. 
+Constructs a \doxylink{class_window_manager}{Window\+Manager} with default window state. 
 
-The default size is 800x600 and the default background clear color is (0.\+4, 0.\+4, 0.\+4, 1). The actual window is created during \doxylink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{Init()}. 
+Initializes the internal window handle to nullptr and sets the default window size to 800x600. The default clear color is initialized to (0.\+4, 0.\+4, 0.\+4, 1.\+0). This constructor only prepares the manager state; it does not create a GLFW window or initialize Open\+GL.
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00045}{45}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+\begin{DoxyNote}{Note}
+Actual window creation happens later through \doxylink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{Init()}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00045\ :\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}(\textcolor{keyword}{nullptr}),\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}(800),\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}(600),\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}(0.4,\ 0.4,\ 0.4,\ 1)\ \{\}}
+\DoxyCodeLine{00027\ :\mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}}(\textcolor{keyword}{nullptr}),\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}(800),\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}(600),\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}(0.4,\ 0.4,\ 0.4,\ 1)\ \{\}}
 
 \end{DoxyCode}
 
@@ -159,17 +153,15 @@ void Window\+Manager\+::\+Add\+Resize\+Callback (\begin{DoxyParamCaption}\item[{
 
 
 
-Registers or replaces a resize callback identified by a string key. 
+Registers or replaces a resize callback under a string key. 
 
-The callback is stored in an internal map. If the key already exists, the previous callback is replaced.
-
-Callbacks are invoked from \doxylink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{Notify\+Resize()}, which is called by the GLFW framebuffer size callback.
+Stores the callback in an internal unordered\+\_\+map using the given key. If the same key already exists, the previous callback is overwritten. Registered callbacks are invoked from \doxylink{class_window_manager_ac494c42b664babdcd3871974eae6fb52}{Notify\+Resize()}, which is triggered by the framebuffer size callback after engine-\/side resize handling has already updated the window size, active state camera sizes, and render target sizes.
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & Unique identifier for the callback entry. \\
+{\em key} & Unique identifier for the callback entry.\\
 \hline
-{\em cb} & Callable to execute when the framebuffer size changes. \\
+{\em cb} & Callback to invoke with the new width and height. \\
 \hline
 \end{DoxyParams}
 
@@ -191,9 +183,14 @@ void Window\+Manager\+::\+Clear\+Screen (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Clears the color buffer using the current background\+Color. 
+Clears the current framebuffer using the stored background color. 
 
-This calls gl\+Clear\+Color(background\+Color) followed by gl\+Clear(\+GL\+\_\+\+COLOR\+\_\+\+BUFFER\+\_\+\+BIT). 
+Calls gl\+Clear\+Color() with the color configured through \doxylink{class_window_manager_a07f70a67fdcabe9945f227589aba35ce}{Set\+Background\+Color()}, then clears the color buffer bit.
+
+\begin{DoxyNote}{Note}
+In the current engine loop this is called before state update and draw. If \doxylink{class_render_manager}{Render\+Manager} offscreen rendering is enabled, Begin\+Frame() performs its own clear on the offscreen target as well. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
 
@@ -213,11 +210,14 @@ void Window\+Manager\+::\+Free (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaptio
 
 
 
-Releases the GLFW window and unregisters callbacks. 
+Destroys the window and unregisters installed GLFW callbacks. 
 
-This clears installed GLFW callbacks, clears the window user pointer, destroys the GLFW window, and leaves the \doxylink{class_window_manager}{Window\+Manager}\textquotesingle{}s raw window handle in its current state.
+Clears the framebuffer, scroll, key, mouse button, and close callbacks, removes the user pointer, and destroys the GLFW window. This is part of the engine shutdown sequence executed after state, render, and sound systems have been freed.
 
-This function does not call glfw\+Terminate(). 
+\begin{DoxyNote}{Note}
+The current implementation destroys the GLFW window but does not null out the stored pointer afterward. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
 
@@ -245,15 +245,20 @@ glm\+::vec4 Window\+Manager\+::\+Get\+Background\+Color (\begin{DoxyParamCaption
 
 
 
-Returns the currently configured background clear color. 
+Returns the currently stored background clear color. 
+
+The returned color is used by both \doxylink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{Window\+Manager\+::\+Clear\+Screen()} and the \doxylink{class_render_manager}{Render\+Manager} offscreen frame begin path when clearing the current frame.
+
+\begin{DoxyReturn}{Returns}
+The currently stored RGBA clear color. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00102}{102}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00135}{135}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00102\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}};\ \}}
+\DoxyCodeLine{00135\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_ac706fd9adb665063dbb9cc72006369a1}\index{WindowManager@{WindowManager}!GetHandle@{GetHandle}}
@@ -264,18 +269,20 @@ GLFWwindow \texorpdfstring{$\ast$}{*} Window\+Manager\+::\+Get\+Handle (\begin{D
 
 
 
-Returns the underlying GLFWwindow handle. 
+Returns the raw GLFW window handle. 
+
+Provides direct access to the internally managed GLFWwindow pointer. This is mainly used by engine systems that need to call GLFW APIs directly, such as input initialization or low-\/level window operations.
 
 \begin{DoxyReturn}{Returns}
-A raw GLFWwindow pointer, or nullptr if \doxylink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{Init()} has not created the window yet. 
+The internal GLFWwindow pointer, or nullptr if the window has not been created yet. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00052}{52}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00041}{41}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00052\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}};\ \}}
+\DoxyCodeLine{00041\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a6e43767214a47577fb721a6407fccf83}{window}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}\index{WindowManager@{WindowManager}!GetHeight@{GetHeight}}
@@ -286,15 +293,20 @@ int Window\+Manager\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 
 
 
-Returns the cached framebuffer height of the window in pixels. 
+Returns the current cached window height. 
 
-This value is updated when \doxylink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{Resize()} is called and also when GLFW reports a framebuffer size change. 
+This value is updated during initialization, explicit \doxylink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{Resize()} calls, fullscreen transitions, and framebuffer resize callbacks.
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00068}{68}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+\begin{DoxyReturn}{Returns}
+The current window height in pixels. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00065}{65}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00068\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}};\ \}}
+\DoxyCodeLine{00065\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}\index{WindowManager@{WindowManager}!GetWidth@{GetWidth}}
@@ -305,15 +317,44 @@ int Window\+Manager\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Returns the cached framebuffer width of the window in pixels. 
+Returns the current cached window width. 
 
-This value is updated when \doxylink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{Resize()} is called and also when GLFW reports a framebuffer size change. 
+This value is updated during initialization, explicit \doxylink{class_window_manager_a231381ad1948955f29a6702b4a0e2111}{Resize()} calls, fullscreen transitions, and framebuffer resize callbacks.
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00060}{60}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+\begin{DoxyReturn}{Returns}
+The current window width in pixels. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00053}{53}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00060\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}};\ \}}
+\DoxyCodeLine{00053\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_window_manager_aa24d38fa5a052f50bd7e42bbde4c32b3}\index{WindowManager@{WindowManager}!GetWindowSize@{GetWindowSize}}
+\index{GetWindowSize@{GetWindowSize}!WindowManager@{WindowManager}}
+\doxysubsubsection{\texorpdfstring{GetWindowSize()}{GetWindowSize()}}
+{\footnotesize\ttfamily \label{class_window_manager_aa24d38fa5a052f50bd7e42bbde4c32b3} 
+glm\+::ivec2 Window\+Manager\+::\+Get\+Window\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the current cached window size as a 2D integer vector. 
+
+Combines the internally stored width and height into a single glm\+::ivec2 value. This is a convenience wrapper around \doxylink{class_window_manager_ad8e16ad88c8eb3e3889d5c3dbe7891cb}{Get\+Width()} and \doxylink{class_window_manager_a50c9f12a67f69e822b4e70077773c9ca}{Get\+Height()}.
+
+\begin{DoxyReturn}{Returns}
+A glm\+::ivec2 containing \{window\+Width, window\+Height\}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00078}{78}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{\ \textcolor{keywordflow}{return}\ glm::ivec2(\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}},\ \mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}});\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_a5b4ee360c72b19e135eeac7267074964}\index{WindowManager@{WindowManager}!Init@{Init}}
@@ -324,32 +365,34 @@ bool Window\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{int}]{\+\_\+windo
 
 
 
-Initializes GLFW, creates the window, and installs engine-\/level callbacks. 
+Creates the GLFW window and initializes the window subsystem. 
 
-\doxylink{class_window_manager_a5b4ee360c72b19e135eeac7267074964}{Init()} performs the following\+:
+This is the core startup routine used by \doxylink{class_jin_engine_af2b70669383ccdbbc05309c7e4eb50db}{Jin\+Engine\+::\+Init()}. It initializes GLFW, configures the Open\+GL context version and profile, creates the native window, makes the context current, loads GLAD, enables Open\+GL debug output, sets the initial viewport, stores the engine pointer as the GLFW user pointer, and installs the engine\textquotesingle{}s window/input callbacks.
+
+Installed callbacks include\+:
 \begin{DoxyItemize}
-\item Initializes GLFW and configures an Open\+GL core profile context (4.\+6).
-\item Creates a GLFW window and makes its context current.
-\item Initializes GLAD for Open\+GL function loading.
-\item Enables Open\+GL debug output and installs a debug message callback (non-\/notification severities).
-\item Sets the GLFW user pointer to the provided \doxylink{class_jin_engine}{Jin\+Engine} instance.
-\item Registers callbacks for framebuffer resize, scroll, key input, mouse buttons, and window close.
+\item framebuffer size callback for resize propagation
+\item scroll callback for \doxylink{class_input_manager}{Input\+Manager} scroll accumulation
+\item key callback for staged keyboard input
+\item mouse button callback for staged mouse input
+\item window close callback to request engine shutdown
 \end{DoxyItemize}
-
-The framebuffer resize callback updates \doxylink{class_window_manager}{Window\+Manager} dimensions, updates cameras, notifies the \doxylink{class_render_manager}{Render\+Manager}, and then broadcasts to user resize callbacks.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \+\_\+window\+Width} & Initial window width. \\
+{\em \+\_\+window\+Width} & Initial window width in pixels.\\
 \hline
-{\em \+\_\+window\+Height} & Initial window height. \\
+{\em \+\_\+window\+Height} & Initial window height in pixels.\\
 \hline
-{\em engine} & Engine instance stored into GLFW\textquotesingle{}s window user pointer. \\
+{\em engine} & Owning engine instance used as the GLFW user pointer so callbacks can reach \doxylink{struct_engine_context}{Engine\+Context} and related managers.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if initialization succeeds and the window is created; false otherwise. 
+True if initialization succeeds, otherwise false.
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is intentionally private because the engine controls the full lifecycle of the window. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
@@ -449,15 +492,18 @@ bool Window\+Manager\+::\+Is\+Full\+Screen (\begin{DoxyParamCaption}{}{}\end{Dox
 
 
 
-Returns whether the window is currently in fullscreen mode. 
+Returns whether the manager is currently in fullscreen mode. 
+
+\begin{DoxyReturn}{Returns}
+True if fullscreen mode is enabled, otherwise false. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00121}{121}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00167}{167}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00121\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}};\ \}}
+\DoxyCodeLine{00167\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}{isFullscreen}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_ac494c42b664babdcd3871974eae6fb52}\index{WindowManager@{WindowManager}!NotifyResize@{NotifyResize}}
@@ -468,15 +514,15 @@ void Window\+Manager\+::\+Notify\+Resize (\begin{DoxyParamCaption}\item[{int}]{w
 
 
 
-Invokes all registered resize callbacks with the new size. 
+Invokes all registered resize callbacks. 
 
-Each stored callback is checked for validity before invocation.
+Iterates through every stored callback and passes the new width and height values to each valid entry. This is called from the framebuffer resize callback after core engine resize propagation has already run.
 
 
 \begin{DoxyParams}{Parameters}
-{\em width} & New framebuffer width in pixels. \\
+{\em width} & Updated framebuffer width.\\
 \hline
-{\em height} & New framebuffer height in pixels. \\
+{\em height} & Updated framebuffer height. \\
 \hline
 \end{DoxyParams}
 
@@ -502,9 +548,9 @@ void Window\+Manager\+::\+Poll\+Events (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Polls GLFW events. 
+Polls and dispatches pending window/input events. 
 
-This wraps glfw\+Poll\+Events() and is intended to be called once per frame by the engine. 
+Wraps glfw\+Poll\+Events() and is called once per frame in the main engine loop before input state promotion and game-\/state update. 
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
 
@@ -523,11 +569,13 @@ void Window\+Manager\+::\+Remove\+Resize\+Callback (\begin{DoxyParamCaption}\ite
 
 
 
-Removes a previously registered resize callback by key. 
+Removes a previously registered resize callback. 
+
+Erases the callback associated with the given key from the internal callback map. If the key does not exist, nothing happens.
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & Key used when the callback was registered. \\
+{\em key} & Identifier of the callback to remove. \\
 \hline
 \end{DoxyParams}
 
@@ -549,15 +597,17 @@ void Window\+Manager\+::\+Resize (\begin{DoxyParamCaption}\item[{int}]{width}{, 
 
 
 
-Requests the window be resized to the given width/height. 
+Requests a window size change. 
 
-This calls glfw\+Set\+Window\+Size() and updates the cached width/height immediately. Note that GLFW may also trigger the framebuffer size callback depending on platform and DPI scaling.
+Calls glfw\+Set\+Window\+Size() on the managed window and immediately updates the cached width and height values stored in this manager. This function only performs the resize request when a valid window exists.
+
+Unlike the framebuffer resize callback path, this function itself does not directly update camera sizes, render targets, or registered resize callbacks. Those follow-\/up reactions occur through the GLFW resize callback when the underlying windowing system reports the size change.
 
 
 \begin{DoxyParams}{Parameters}
-{\em width} & Target width in pixels. \\
+{\em width} & The new requested window width in pixels.\\
 \hline
-{\em height} & Target height in pixels. \\
+{\em height} & The new requested window height in pixels. \\
 \hline
 \end{DoxyParams}
 
@@ -584,13 +634,13 @@ void Window\+Manager\+::\+Restrict\+Resizing (\begin{DoxyParamCaption}\item[{boo
 
 
 
-Enables or disables user resizing of the window. 
+Enables or disables user-\/driven window resizing. 
 
-Internally this sets the GLFW\+\_\+\+RESIZABLE window attribute. When should\+Restrict is true, the window becomes non-\/resizable.
+Internally calls glfw\+Set\+Window\+Attrib() with GLFW\+\_\+\+RESIZABLE. Passing true restricts resizing by making the window non-\/resizable, while passing false allows the user to resize the window.
 
 
 \begin{DoxyParams}{Parameters}
-{\em should\+Restrict} & True to prevent resizing, false to allow resizing. \\
+{\em should\+Restrict} & True to prevent manual resizing, false to allow it. \\
 \hline
 \end{DoxyParams}
 
@@ -612,22 +662,22 @@ void Window\+Manager\+::\+Set\+Background\+Color (\begin{DoxyParamCaption}\item[
 
 
 
-Sets the background clear color used by \doxylink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{Clear\+Screen()}. 
+Sets the background clear color used when clearing the frame. 
 
-The color is stored and later applied through gl\+Clear\+Color() when the engine clears the frame.
+Stores the color that will later be used by \doxylink{class_window_manager_ac1f44592045972fb10bf4cf991266cb2}{Clear\+Screen()}. The actual Open\+GL clear call does not happen here.
 
 
 \begin{DoxyParams}{Parameters}
-{\em color} & RGBA color in linear float components. \\
+{\em color} & RGBA color used as the frame clear color. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00097}{97}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00123}{123}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00097\ \{\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}\ =\ color;\ \}}
+\DoxyCodeLine{00123\ \{\ \mbox{\hyperlink{class_window_manager_ae6a6e3845a54918d3c1ebb90b511ada3}{backgroundColor}}\ =\ color;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_a8ba845debdc3cfc8111ff74a8c03918f}\index{WindowManager@{WindowManager}!SetCursorVisible@{SetCursorVisible}}
@@ -638,15 +688,18 @@ void Window\+Manager\+::\+Set\+Cursor\+Visible (\begin{DoxyParamCaption}\item[{b
 
 
 
-Shows or hides the OS cursor while the window is focused. 
+Shows or hides the mouse cursor for this window. 
 
-This maps to GLFW cursor input modes (GLFW\+\_\+\+CURSOR\+\_\+\+NORMAL vs GLFW\+\_\+\+CURSOR\+\_\+\+HIDDEN). Note that this function does not update the cached is\+Cursor\+Visible flag.
+Uses glfw\+Set\+Input\+Mode() with GLFW\+\_\+\+CURSOR. When visible is true, the cursor is restored to normal display mode. When false, the cursor is hidden. This function only changes GLFW cursor mode and does not update the is\+Cursor\+Visible member variable in the current implementation.
 
 
 \begin{DoxyParams}{Parameters}
-{\em visible} & True to show the cursor, false to hide it. \\
+{\em visible} & True to show the cursor, false to hide it.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The current implementation changes the actual GLFW cursor state, but the cached is\+Cursor\+Visible flag is not synchronized here. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
@@ -669,17 +722,20 @@ void Window\+Manager\+::\+Set\+Full\+Screen (\begin{DoxyParamCaption}\item[{bool
 
 
 
-Toggles fullscreen mode using the primary monitor. 
+Switches the window between windowed mode and fullscreen mode. 
 
-When enabling fullscreen, the current windowed position and size are saved and the window is switched to the primary monitor\textquotesingle{}s current video mode. When disabling, the saved windowed position/size are restored.
+When entering fullscreen, the current windowed position and size are saved so that they can be restored later. The function then attaches the window to the primary monitor using that monitor\textquotesingle{}s current video mode. When leaving fullscreen, the saved windowed position and size are restored.
 
-If the window is null or the requested state matches the current state, this function does nothing.
+The internal cached width and height are updated immediately after the mode switch. This function returns early if no window exists or if the requested fullscreen state already matches the current state.
 
 
 \begin{DoxyParams}{Parameters}
-{\em enable} & True to enter fullscreen, false to return to windowed mode. \\
+{\em enable} & True to switch to fullscreen mode, false to restore windowed mode.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function updates the cached size values directly, but any framebuffer-\/dependent systems should still rely on the actual resize callback path for full synchronization. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
@@ -721,22 +777,22 @@ void Window\+Manager\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{int}]{heig
 
 
 
-Updates the cached window height without calling GLFW APIs. 
+Updates the cached height value. 
 
-This is primarily used by the GLFW framebuffer size callback to keep the cached dimensions in sync.
+This helper is primarily used by the framebuffer resize callback after GLFW reports the actual framebuffer size.
 
 
 \begin{DoxyParams}{Parameters}
-{\em height} & New cached height in pixels. \\
+{\em height} & New cached height. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00207}{207}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00291}{291}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00207\ \{\ this-\/>\mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ height;\ \}}
+\DoxyCodeLine{00291\ \{\ this-\/>\mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ height;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_a29f286d83dbec6ce3ec1b0b6fd11f80d}\index{WindowManager@{WindowManager}!SetTitle@{SetTitle}}
@@ -747,11 +803,13 @@ void Window\+Manager\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{const std\+
 
 
 
-Sets the OS window title text. 
+Sets the native window title text. 
+
+Forwards the given string to glfw\+Set\+Window\+Title(). The engine uses this during the main loop to display the current FPS in the title bar.
 
 
 \begin{DoxyParams}{Parameters}
-{\em title} & New title string to pass to GLFW. \\
+{\em title} & The title string to display on the window. \\
 \hline
 \end{DoxyParams}
 
@@ -773,22 +831,46 @@ void Window\+Manager\+::\+Set\+Width (\begin{DoxyParamCaption}\item[{int}]{width
 
 
 
-Updates the cached window width without calling GLFW APIs. 
+Updates the cached width value. 
 
-This is primarily used by the GLFW framebuffer size callback to keep the cached dimensions in sync.
+This helper is primarily used by the framebuffer resize callback after GLFW reports the actual framebuffer size.
 
 
 \begin{DoxyParams}{Parameters}
-{\em width} & New cached width in pixels. \\
+{\em width} & New cached width. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00197}{197}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00279}{279}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00197\ \{\ this-\/>\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ width;\ \}}
+\DoxyCodeLine{00279\ \{\ this-\/>\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ width;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_window_manager_a92ad411afe26567e222240842364e84b}\index{WindowManager@{WindowManager}!SetWindowSize@{SetWindowSize}}
+\index{SetWindowSize@{SetWindowSize}!WindowManager@{WindowManager}}
+\doxysubsubsection{\texorpdfstring{SetWindowSize()}{SetWindowSize()}}
+{\footnotesize\ttfamily \label{class_window_manager_a92ad411afe26567e222240842364e84b} 
+void Window\+Manager\+::\+Set\+Window\+Size (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Updates the cached window size using a 2D vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & New cached size expressed as \{width, height\}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00299}{299}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00299\ \{\ this-\/>\mbox{\hyperlink{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}{windowWidth}}\ =\ size.x;\ this-\/>\mbox{\hyperlink{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}{windowHeight}}\ =\ size.y;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_window_manager_aef8b4e018e5210b06095779adb68203b}\index{WindowManager@{WindowManager}!SwapBuffers@{SwapBuffers}}
@@ -799,9 +881,9 @@ void Window\+Manager\+::\+Swap\+Buffers (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Swaps the front/back buffers of the window. 
+Swaps the front and back buffers of the window. 
 
-This wraps glfw\+Swap\+Buffers(window) and is intended to be called once per frame by the engine. 
+Called once per frame near the end of \doxylink{class_jin_engine_ad8355b55406f0be0b2f39b910ff7913e}{Jin\+Engine\+::\+Run()} after update, draw, and audio processing are complete. 
 
 Definition at line \mbox{\hyperlink{_window_manager_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_window_manager_8cpp_source}{Window\+Manager.\+cpp}}.
 
@@ -858,7 +940,7 @@ glm\+::vec4 Window\+Manager\+::background\+Color\hspace{0.3cm}{\ttfamily [privat
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00258}{258}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00367}{367}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a7a12b135fea8aff358e281232b0b3ce1}\index{WindowManager@{WindowManager}!isCursorVisible@{isCursorVisible}}
 \index{isCursorVisible@{isCursorVisible}!WindowManager@{WindowManager}}
@@ -868,7 +950,7 @@ bool Window\+Manager\+::is\+Cursor\+Visible = false\hspace{0.3cm}{\ttfamily [pri
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00261}{261}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00370}{370}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a33c7b7c623763a5336fa5b2b835fbd74}\index{WindowManager@{WindowManager}!isFullscreen@{isFullscreen}}
 \index{isFullscreen@{isFullscreen}!WindowManager@{WindowManager}}
@@ -878,7 +960,7 @@ bool Window\+Manager\+::is\+Fullscreen = false\hspace{0.3cm}{\ttfamily [private]
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00260}{260}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00369}{369}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_af2a43e83e4ce9b3bdd9cb8703c8c8cea}\index{WindowManager@{WindowManager}!JinEngine@{JinEngine}}
 \index{JinEngine@{JinEngine}!WindowManager@{WindowManager}}
@@ -888,7 +970,7 @@ friend Window\+Manager\+::\+Jin\+Engine\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00026}{26}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00010}{10}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_aa7c4930ec65bec72c75b1e20b22096ff}\index{WindowManager@{WindowManager}!resizeCallbacks@{resizeCallbacks}}
 \index{resizeCallbacks@{resizeCallbacks}!WindowManager@{WindowManager}}
@@ -898,7 +980,7 @@ std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{class_window_manager
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00265}{265}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00374}{374}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a6e43767214a47577fb721a6407fccf83}\index{WindowManager@{WindowManager}!window@{window}}
 \index{window@{window}!WindowManager@{WindowManager}}
@@ -908,7 +990,7 @@ GLFWwindow\texorpdfstring{$\ast$}{*} Window\+Manager\+::window\hspace{0.3cm}{\tt
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00255}{255}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00364}{364}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_acb28e5ac0d82147063513465e0ebde25}\index{WindowManager@{WindowManager}!windowedHeight@{windowedHeight}}
 \index{windowedHeight@{windowedHeight}!WindowManager@{WindowManager}}
@@ -918,7 +1000,7 @@ int Window\+Manager\+::windowed\+Height = 600\hspace{0.3cm}{\ttfamily [private]}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00263}{263}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00372}{372}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a20538b93498f90a58eee5caeda18adf2}\index{WindowManager@{WindowManager}!windowedPosX@{windowedPosX}}
 \index{windowedPosX@{windowedPosX}!WindowManager@{WindowManager}}
@@ -928,7 +1010,7 @@ int Window\+Manager\+::windowed\+PosX = 100\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00262}{262}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00371}{371}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_ab1f2a4f9b7cf006e0a16b6013e7c6761}\index{WindowManager@{WindowManager}!windowedPosY@{windowedPosY}}
 \index{windowedPosY@{windowedPosY}!WindowManager@{WindowManager}}
@@ -938,7 +1020,7 @@ int Window\+Manager\+::windowed\+PosY = 100\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00262}{262}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00371}{371}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_ae11cf9d376af70a8a246bcb1f9496780}\index{WindowManager@{WindowManager}!windowedWidth@{windowedWidth}}
 \index{windowedWidth@{windowedWidth}!WindowManager@{WindowManager}}
@@ -948,7 +1030,7 @@ int Window\+Manager\+::windowed\+Width = 800\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00263}{263}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00372}{372}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a4c7712cdc2f3ac47f02d0e3cbdf63d70}\index{WindowManager@{WindowManager}!windowHeight@{windowHeight}}
 \index{windowHeight@{windowHeight}!WindowManager@{WindowManager}}
@@ -958,7 +1040,7 @@ int Window\+Manager\+::window\+Height\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00257}{257}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00366}{366}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 \Hypertarget{class_window_manager_a42b88c6c3ab344ca4cb29d7e79892af5}\index{WindowManager@{WindowManager}!windowWidth@{windowWidth}}
 \index{windowWidth@{windowWidth}!WindowManager@{WindowManager}}
@@ -968,7 +1050,7 @@ int Window\+Manager\+::window\+Width\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00256}{256}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_window_manager_8h_source_l00365}{365}} of file \mbox{\hyperlink{_window_manager_8h_source}{Window\+Manager.\+h}}.
 
 
 

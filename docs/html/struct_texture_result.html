@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_texture_result.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 
-<p>Result data produced by an asynchronous texture load.  
+<p>Stores the completed result of an asynchronous texture load.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>&gt;</code></p>
@@ -127,11 +127,11 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a57be086c1cb00a217e0796f6b4125216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Result data produced by an asynchronous texture load. </p>
-<p>Contains decoded pixel data along with dimensions and channel count. The ok flag indicates whether loading/decoding succeeded.</p>
-<p>The main thread typically consumes this result to create a GPU texture. </p>
+<div class="textblock"><p>Stores the completed result of an asynchronous texture load. </p>
+<p><a class="el" href="struct_texture_result.html" title="Stores the completed result of an asynchronous texture load.">TextureResult</a> contains decoded image information produced by the worker thread, including dimensions, channel count, pixel bytes, and the original texture settings.</p>
+<p>If loading succeeds, ok is set to true and pixels contains the raw image data. If loading fails, ok is false and the pixel buffer may remain empty. :contentReference[oaicite:7]{index=7} </p>
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00128">128</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00146">146</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae713abf848cf45f4e6fe03062b723f5a" name="ae713abf848cf45f4e6fe03062b723f5a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae713abf848cf45f4e6fe03062b723f5a">&#9670;&#160;</a></span>channels</h2>
@@ -145,7 +145,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00134">134</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00152">152</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -161,7 +161,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00133">133</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00151">151</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +177,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00136">136</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00154">154</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -193,7 +193,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00135">135</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00153">153</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -209,8 +209,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00131">131</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  131</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00149">149</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,7 +226,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00130">130</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00148">148</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +242,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00132">132</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_async_resource_loader_8h_source.html#l00150">150</a> of file <a class="el" href="_async_resource_loader_8h_source.html">AsyncResourceLoader.h</a>.</p>
 
 </div>
 </div>

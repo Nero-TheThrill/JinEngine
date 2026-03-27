@@ -2,45 +2,40 @@
 \hypertarget{class_texture}{}\label{class_texture}\index{Texture@{Texture}}
 
 
-Encapsulates an Open\+GL texture object and its associated metadata.  
-
-
-
-
 {\ttfamily \#include $<$Texture.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_texture_a2336a244d109639fc499e5bea5e4ed23}{Texture}} (unsigned int id\+\_\+, int width\+\_\+, int height\+\_\+, int channels\+\_\+)
-\begin{DoxyCompactList}\small\item\em Wraps an existing Open\+GL texture ID without generating a new texture. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Wraps an already existing Open\+GL texture object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_texture_aa475e60a29a6cadbe10a3e8e96bdf6f5}{Texture}} (const \mbox{\hyperlink{_render_manager_8h_a1db05f4e4bd57f5e7db00f908dab03be}{File\+Path}} \&path, const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&settings=\{\})
-\begin{DoxyCompactList}\small\item\em Creates a texture from an image file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Loads an image file from disk and creates a GPU texture from it. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_texture_a68a881bb461e4ad7c399c484cbffd82e}{Texture}} (const unsigned char \texorpdfstring{$\ast$}{*}data, int width\+\_\+, int height\+\_\+, int channels\+\_\+, const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&settings=\{\})
-\begin{DoxyCompactList}\small\item\em Creates a texture from raw pixel data in memory. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates a GPU texture directly from raw pixel data in memory. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\texorpdfstring{$\sim$}{\string~}\+Texture}} ()
-\begin{DoxyCompactList}\small\item\em Destroys the texture and releases the Open\+GL resource. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Releases the owned Open\+GL texture object. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_texture_a7f5ee18c7466f904fa371bd97399a944}{Get\+Width}} () const
-\begin{DoxyCompactList}\small\item\em Returns the texture width in pixels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the stored texture width. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_texture_a289701837e23c9272509f377524ee8f2}{Get\+Height}} () const
-\begin{DoxyCompactList}\small\item\em Returns the texture height in pixels. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the stored texture height. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_texture_a407a62eb84bc65d2a7b2ff8ca71f050f}{Get\+ID}} () const
-\begin{DoxyCompactList}\small\item\em Returns the underlying Open\+GL texture ID. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the underlying Open\+GL texture object ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_texture_a6e1092f212113f38bf84b245b982943c}{Bind\+To\+Unit}} (unsigned int unit) const
-\begin{DoxyCompactList}\small\item\em Binds the texture to a texture unit for sampling. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds this texture to a texture sampling unit. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_texture_a28b89a5f6f78de411c85fc83c04963b9}{Bind\+As\+Image}} (unsigned int unit, \mbox{\hyperlink{_texture_8h_aaede91d69828dab884499c661d95b53f}{Image\+Access}} access, \mbox{\hyperlink{_texture_8h_a22f6b18e781e3c412e7d243f7de6aa5c}{Image\+Format}} format, int level=0) const
-\begin{DoxyCompactList}\small\item\em Binds the texture as an image for shader image load/store operations. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds this texture as an image unit for shader image access. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_texture_a62d394297d5965ea6085378c94b00b0d}{Un\+Bind}} (unsigned int unit) const
-\begin{DoxyCompactList}\small\item\em Unbinds the texture from a texture unit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unbinds any texture currently bound to the given texture unit. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{Generate\+Texture}} (const unsigned char \texorpdfstring{$\ast$}{*}data, const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&settings)
-\begin{DoxyCompactList}\small\item\em Generates and configures an Open\+GL texture from raw data. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Allocates GPU storage and uploads pixel data according to the given settings. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}{Force\+Update\+Texture}} (unsigned int id\+\_\+, int width\+\_\+, int height\+\_\+, int channels\+\_\+)
-\begin{DoxyCompactList}\small\item\em Forcibly updates the internal texture metadata to match an existing ID. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Replaces this wrapper with an already existing Open\+GL texture object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_texture_aa34f9924e6c77003325a389907795677}{Force\+Update\+Texture}} (const unsigned char \texorpdfstring{$\ast$}{*}data, int width\+\_\+, int height\+\_\+, int channels\+\_\+, const \mbox{\hyperlink{struct_texture_settings}{Texture\+Settings}} \&settings=\{\})
-\begin{DoxyCompactList}\small\item\em Forcibly replaces the texture contents and configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Recreates the texture from raw pixel data and replaces the current GPU object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -62,13 +57,9 @@ class \mbox{\hyperlink{class_texture_ac2f8d8a30258c4e46c827c1a7ebb5db9}{Render\+
 
 
 \doxysubsection{Detailed Description}
-Encapsulates an Open\+GL texture object and its associated metadata. 
 
-\doxylink{class_texture}{Texture} manages the lifetime of an Open\+GL texture ID along with its width, height, and channel count. It provides interfaces for binding the texture for sampling or image load/store operations.
 
-\doxylink{class_texture}{Texture} creation can be driven from a file path, raw pixel data, or an externally supplied Open\+GL texture ID. Low-\/level update and generation functions are restricted to friend classes such as \doxylink{class_material}{Material} and \doxylink{class_render_manager}{Render\+Manager}. 
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00111}{111}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00074}{74}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 
@@ -81,26 +72,33 @@ Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+\_\+}{, 
 
 
 
-Wraps an existing Open\+GL texture ID without generating a new texture. 
+Wraps an already existing Open\+GL texture object. 
+
+This constructor does not allocate GPU storage or upload any pixel data. It simply stores an existing Open\+GL texture ID together with metadata such as width, height, and channel count so the engine can treat the external texture like a regular \doxylink{class_texture}{Texture} resource.
+
+This is mainly used by internal engine systems that create textures through other Open\+GL paths, such as render targets or externally managed resources.
 
 
 \begin{DoxyParams}{Parameters}
-{\em id\+\_\+} & Existing Open\+GL texture ID. \\
+{\em id\+\_\+} & Existing Open\+GL texture object ID. \\
 \hline
-{\em width\+\_\+} & \doxylink{class_texture}{Texture} width in pixels. \\
+{\em width\+\_\+} & Width of the texture in pixels. \\
 \hline
-{\em height\+\_\+} & \doxylink{class_texture}{Texture} height in pixels. \\
+{\em height\+\_\+} & Height of the texture in pixels. \\
 \hline
-{\em channels\+\_\+} & Number of color channels. \\
+{\em channels\+\_\+} & Number of color channels represented by the texture data.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+Since this object takes ownership of the texture ID at the wrapper level, the destructor will delete the Open\+GL texture if the stored ID is non-\/zero. 
+\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00124}{124}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00101}{101}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00124\ :\mbox{\hyperlink{class_texture_aed42161a5c00b6020c85833401da6da6}{id}}(id\_),\ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}(width\_),\ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}(height\_),\ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}(channels\_)\ \{\}}
+\DoxyCodeLine{00101\ :\mbox{\hyperlink{class_texture_aed42161a5c00b6020c85833401da6da6}{id}}(id\_),\ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}(width\_),\ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}(height\_),\ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}(channels\_)\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_aa475e60a29a6cadbe10a3e8e96bdf6f5}\index{Texture@{Texture}!Texture@{Texture}}
@@ -111,17 +109,24 @@ Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_ren
 
 
 
-Creates a texture from an image file. 
+Loads an image file from disk and creates a GPU texture from it. 
 
-The image is loaded from disk and uploaded to the GPU using the provided texture settings.
+The implementation uses stb\+\_\+image to load the file contents. Vertical flip on load is enabled before reading, so image data is imported in a form that matches the engine\textquotesingle{}s texture coordinate convention.
+
+After loading succeeds, the constructor forwards the pixel buffer and the requested \doxylink{struct_texture_settings}{Texture\+Settings} to \doxylink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{Generate\+Texture()}, which allocates immutable texture storage, uploads the base image, applies filter and wrap state, and optionally generates mipmaps.
+
+If loading fails, the texture remains with an invalid or empty state and an error is logged.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & File path to the image resource. \\
+{\em path} & Path to the image file to load. \\
 \hline
-{\em settings} & \doxylink{class_texture}{Texture} creation settings. \\
+{\em settings} & \doxylink{class_texture}{Texture} creation settings such as filtering, wrapping, and mipmap generation.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The loaded CPU-\/side image buffer is released immediately after the GPU texture has been created. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
@@ -150,21 +155,23 @@ Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const unsigned char \texorp
 
 
 
-Creates a texture from raw pixel data in memory. 
+Creates a GPU texture directly from raw pixel data in memory. 
 
-The pixel data is uploaded to the GPU and configured according to the provided texture settings.
+This constructor is used when image bytes are already available in memory, such as asynchronously loaded textures, generated images, font atlases, or procedural content. The provided width, height, and channel count are stored first, then \doxylink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{Generate\+Texture()} creates the Open\+GL texture and uploads the supplied data.
+
+Supported channel counts in the implementation are 1, 3, and 4, which map to red, RGB, and RGBA texture formats respectively.
 
 
 \begin{DoxyParams}{Parameters}
-{\em data} & Pointer to raw pixel data. \\
+{\em data} & Pointer to raw pixel data to upload. Passing nullptr creates an allocated texture with cleared contents. \\
 \hline
-{\em width\+\_\+} & \doxylink{class_texture}{Texture} width in pixels. \\
+{\em width\+\_\+} & Width of the texture in pixels. \\
 \hline
-{\em height\+\_\+} & \doxylink{class_texture}{Texture} height in pixels. \\
+{\em height\+\_\+} & Height of the texture in pixels. \\
 \hline
-{\em channels\+\_\+} & Number of color channels. \\
+{\em channels\+\_\+} & Number of channels in the source pixel data. \\
 \hline
-{\em settings} & \doxylink{class_texture}{Texture} creation settings. \\
+{\em settings} & \doxylink{class_texture}{Texture} creation settings such as filtering, wrapping, and mipmap generation. \\
 \hline
 \end{DoxyParams}
 
@@ -190,8 +197,13 @@ Texture\+::\texorpdfstring{$\sim$}{\string~}\+Texture (\begin{DoxyParamCaption}{
 
 
 
-Destroys the texture and releases the Open\+GL resource. 
+Releases the owned Open\+GL texture object. 
 
+If the stored texture ID is non-\/zero, the implementation deletes the underlying Open\+GL texture object during destruction.
+
+\begin{DoxyNote}{Note}
+This assumes the \doxylink{class_texture}{Texture} instance owns the currently stored texture ID. Be careful when replacing the internal ID through force-\/update paths. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
@@ -217,17 +229,19 @@ void Texture\+::\+Bind\+As\+Image (\begin{DoxyParamCaption}\item[{unsigned int}]
 
 
 
-Binds the texture as an image for shader image load/store operations. 
+Binds this texture as an image unit for shader image access. 
+
+This path is intended for compute shaders or other shader stages that use image load/store operations rather than sampler-\/based reads. The access mode and image format are converted to the corresponding Open\+GL enums and bound through gl\+Bind\+Image\+Texture().
 
 
 \begin{DoxyParams}{Parameters}
-{\em unit} & Image unit index. \\
+{\em unit} & Image unit index to bind to. \\
 \hline
-{\em access} & Access permissions for the image. \\
+{\em access} & Requested read/write access mode for the shader. \\
 \hline
-{\em format} & Internal image format. \\
+{\em format} & Declared image format exposed to the shader. \\
 \hline
-{\em level} & Mipmap level to bind. \\
+{\em level} & Mipmap level to bind. Defaults to the base level. \\
 \hline
 \end{DoxyParams}
 
@@ -249,11 +263,13 @@ void Texture\+::\+Bind\+To\+Unit (\begin{DoxyParamCaption}\item[{unsigned int}]{
 
 
 
-Binds the texture to a texture unit for sampling. 
+Binds this texture to a texture sampling unit. 
+
+This is the standard binding path used by materials when sending sampler uniforms to shaders. The method binds the texture object to the specified texture unit using direct state access style Open\+GL calls.
 
 
 \begin{DoxyParams}{Parameters}
-{\em unit} & \doxylink{class_texture}{Texture} unit index. \\
+{\em unit} & \doxylink{class_texture}{Texture} unit index to bind to. \\
 \hline
 \end{DoxyParams}
 
@@ -275,38 +291,42 @@ void Texture\+::\+Force\+Update\+Texture (\begin{DoxyParamCaption}\item[{const u
 
 
 
-Forcibly replaces the texture contents and configuration. 
+Recreates the texture from raw pixel data and replaces the current GPU object. 
+
+If this \doxylink{class_texture}{Texture} already owns a valid Open\+GL texture object, the old object is deleted first. The stored metadata is then updated and \doxylink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{Generate\+Texture()} is called to allocate and upload the new texture contents.
+
+This is used when the engine wants to refresh an existing registered texture entry with new image data while preserving the same resource handle in the resource map.
 
 
 \begin{DoxyParams}{Parameters}
-{\em data} & Pointer to new pixel data. \\
+{\em data} & Pointer to the new pixel buffer. \\
 \hline
-{\em width\+\_\+} & \doxylink{class_texture}{Texture} width. \\
+{\em width\+\_\+} & Width of the new texture in pixels. \\
 \hline
-{\em height\+\_\+} & \doxylink{class_texture}{Texture} height. \\
+{\em height\+\_\+} & Height of the new texture in pixels. \\
 \hline
-{\em channels\+\_\+} & Number of channels. \\
+{\em channels\+\_\+} & Number of channels in the new pixel data. \\
 \hline
-{\em settings} & \doxylink{class_texture}{Texture} configuration settings. \\
+{\em settings} & \doxylink{class_texture}{Texture} creation settings for the recreated texture. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00188\ \{}
-\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
-\DoxyCodeLine{00190\ \ \ \ \ \{}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00192\ \ \ \ \ \}}
-\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
-\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
-\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
-\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
-\DoxyCodeLine{00197\ }
-\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00187\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}{GenerateTexture}}(data,\ settings);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_ad8edd3321be6b88b4f98d39ee5ebabc0}\index{Texture@{Texture}!ForceUpdateTexture@{ForceUpdateTexture}}
@@ -317,19 +337,24 @@ void Texture\+::\+Force\+Update\+Texture (\begin{DoxyParamCaption}\item[{unsigne
 
 
 
-Forcibly updates the internal texture metadata to match an existing ID. 
+Replaces this wrapper with an already existing Open\+GL texture object. 
+
+This internal function updates the stored texture ID and metadata without creating a new texture. It is used by engine systems that generate textures elsewhere and then want the \doxylink{class_texture}{Texture} resource table to reference that object.
 
 
 \begin{DoxyParams}{Parameters}
-{\em id\+\_\+} & Open\+GL texture ID. \\
+{\em id\+\_\+} & Existing Open\+GL texture object ID. \\
 \hline
-{\em width\+\_\+} & \doxylink{class_texture}{Texture} width. \\
+{\em width\+\_\+} & Width of the texture in pixels. \\
 \hline
-{\em height\+\_\+} & \doxylink{class_texture}{Texture} height. \\
+{\em height\+\_\+} & Height of the texture in pixels. \\
 \hline
-{\em channels\+\_\+} & Number of channels. \\
+{\em channels\+\_\+} & Number of channels represented by the texture.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function does not delete the previously stored texture ID before replacing it. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
@@ -337,12 +362,11 @@ Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00177}{177}} of file \
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00178\ \{}
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_;}
-\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
-\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
-\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
-\DoxyCodeLine{00184\ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_;}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}}\ =\ width\_;}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}}\ =\ height\_;}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{class_texture_a69c58068e4b82a86d24e8c797705d515}{channels}}\ =\ channels\_;}
+\DoxyCodeLine{00183\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_a5b7154fd70c6f1d7eacc68c04e31ea92}\index{Texture@{Texture}!GenerateTexture@{GenerateTexture}}
@@ -353,15 +377,22 @@ void Texture\+::\+Generate\+Texture (\begin{DoxyParamCaption}\item[{const unsign
 
 
 
-Generates and configures an Open\+GL texture from raw data. 
+Allocates GPU storage and uploads pixel data according to the given settings. 
+
+This internal helper chooses the Open\+GL internal format and upload format from the stored channel count, creates the texture object, allocates immutable storage, uploads the base image if data is present, applies sampler parameters, and optionally generates mipmaps.
+
+When data is nullptr, the implementation still creates the texture and clears its contents so the texture can be used as an empty resource or destination surface.
 
 
 \begin{DoxyParams}{Parameters}
-{\em data} & Pointer to pixel data. \\
+{\em data} & Pixel buffer to upload. May be nullptr. \\
 \hline
-{\em settings} & \doxylink{class_texture}{Texture} configuration settings. \\
+{\em settings} & \doxylink{class_texture}{Texture} creation settings applied to the new Open\+GL texture.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The implementation temporarily forces GL\+\_\+\+UNPACK\+\_\+\+ALIGNMENT to 1 so tightly packed image data uploads correctly regardless of row alignment. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_texture_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
@@ -429,15 +460,18 @@ int Texture\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Returns the texture height in pixels. 
+Returns the stored texture height. 
+
+\begin{DoxyReturn}{Returns}
+Height in pixels. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00166}{166}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00174}{174}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00166\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}};\ \}}
+\DoxyCodeLine{00174\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_ad37c395c65ff8bde86230908027a6fcd}{height}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_a407a62eb84bc65d2a7b2ff8ca71f050f}\index{Texture@{Texture}!GetID@{GetID}}
@@ -448,15 +482,18 @@ unsigned int Texture\+::\+Get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 
 
-Returns the underlying Open\+GL texture ID. 
+Returns the underlying Open\+GL texture object ID. 
+
+\begin{DoxyReturn}{Returns}
+Open\+GL texture ID. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00171}{171}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00181}{181}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00171\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_aed42161a5c00b6020c85833401da6da6}{id}};\ \}}
+\DoxyCodeLine{00181\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_aed42161a5c00b6020c85833401da6da6}{id}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_a7f5ee18c7466f904fa371bd97399a944}\index{Texture@{Texture}!GetWidth@{GetWidth}}
@@ -467,15 +504,18 @@ int Texture\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})
 
 
 
-Returns the texture width in pixels. 
+Returns the stored texture width. 
+
+\begin{DoxyReturn}{Returns}
+Width in pixels. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00161}{161}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00167}{167}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00161\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}};\ \}}
+\DoxyCodeLine{00167\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_texture_a06a0246cb31343557c3441c5733349cd}{width}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_texture_a62d394297d5965ea6085378c94b00b0d}\index{Texture@{Texture}!UnBind@{UnBind}}
@@ -486,11 +526,13 @@ void Texture\+::\+Un\+Bind (\begin{DoxyParamCaption}\item[{unsigned int}]{unit}{
 
 
 
-Unbinds the texture from a texture unit. 
+Unbinds any texture currently bound to the given texture unit. 
+
+This clears the binding for the specified sampling unit by binding texture ID 0 to that unit. It is used when a material is being unbound so that the next draw call starts from a clean texture-\/unit state.
 
 
 \begin{DoxyParams}{Parameters}
-{\em unit} & \doxylink{class_texture}{Texture} unit index. \\
+{\em unit} & \doxylink{class_texture}{Texture} unit index to clear. \\
 \hline
 \end{DoxyParams}
 
@@ -515,7 +557,7 @@ friend class \mbox{\hyperlink{class_material}{Material}}\hspace{0.3cm}{\ttfamily
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00113}{113}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00076}{76}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{class_texture_ac2f8d8a30258c4e46c827c1a7ebb5db9}\index{Texture@{Texture}!RenderManager@{RenderManager}}
 \index{RenderManager@{RenderManager}!Texture@{Texture}}
@@ -525,7 +567,7 @@ friend class \mbox{\hyperlink{class_render_manager}{Render\+Manager}}\hspace{0.3
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00114}{114}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00077}{77}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 
@@ -538,7 +580,7 @@ int Texture\+::channels\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00228}{228}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00286}{286}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{class_texture_ad37c395c65ff8bde86230908027a6fcd}\index{Texture@{Texture}!height@{height}}
 \index{height@{height}!Texture@{Texture}}
@@ -548,7 +590,7 @@ int Texture\+::height\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00228}{228}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00286}{286}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{class_texture_aed42161a5c00b6020c85833401da6da6}\index{Texture@{Texture}!id@{id}}
 \index{id@{id}!Texture@{Texture}}
@@ -558,7 +600,7 @@ unsigned int Texture\+::id\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00227}{227}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00285}{285}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 \Hypertarget{class_texture_a06a0246cb31343557c3441c5733349cd}\index{Texture@{Texture}!width@{width}}
 \index{width@{width}!Texture@{Texture}}
@@ -568,7 +610,7 @@ int Texture\+::width\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_texture_8h_source_l00228}{228}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+Definition at line \mbox{\hyperlink{_texture_8h_source_l00286}{286}} of file \mbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
 
 
 

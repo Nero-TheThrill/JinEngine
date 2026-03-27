@@ -108,7 +108,7 @@ $(function(){initNavTree('class_material.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Render-time binding object that combines a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> with textures and uniform parameters.  
+<p>Rendering material that stores a shader, uniform values, and texture bindings.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_material_8h_source.html">Material.h</a>&gt;</code></p>
@@ -118,111 +118,114 @@ Inheritance diagram for Material:</div>
  <div class="center">
   <img src="class_material.png" usemap="#Material_map" alt=""/>
   <map id="Material_map" name="Material_map">
-<area href="class_compute_material.html" title="Compute-only material that binds textures as images for compute shader dispatch." alt="ComputeMaterial" shape="rect" coords="0,56,107,80"/>
+<area href="class_compute_material.html" title="Specialized material type used for compute shader dispatch." alt="ComputeMaterial" shape="rect" coords="0,56,107,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a60bb6242b4556b0823fd96bd5bf7436a" id="r_a60bb6242b4556b0823fd96bd5bf7436a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60bb6242b4556b0823fd96bd5bf7436a">Material</a> (<a class="el" href="class_shader.html">Shader</a> *_shader)</td></tr>
-<tr class="memdesc:a60bb6242b4556b0823fd96bd5bf7436a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a material using a specific shader.  <br /></td></tr>
-<tr class="separator:a60bb6242b4556b0823fd96bd5bf7436a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48aca58f697a2366f68943ac81897a0d" id="r_a48aca58f697a2366f68943ac81897a0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48aca58f697a2366f68943ac81897a0d">Material</a> (std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt; _shader)</td></tr>
+<tr class="memdesc:a48aca58f697a2366f68943ac81897a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a material bound to a shader.  <br /></td></tr>
+<tr class="separator:a48aca58f697a2366f68943ac81897a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a255ba20d0325e6b78ff68ac739df40de" id="r_a255ba20d0325e6b78ff68ac739df40de"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a255ba20d0325e6b78ff68ac739df40de">~Material</a> ()=default</td></tr>
-<tr class="memdesc:a255ba20d0325e6b78ff68ac739df40de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic cleanup.  <br /></td></tr>
+<tr class="memdesc:a255ba20d0325e6b78ff68ac739df40de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
 <tr class="separator:a255ba20d0325e6b78ff68ac739df40de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf5018873649fa4149f4780fa1d4145d" id="r_aaf5018873649fa4149f4780fa1d4145d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf5018873649fa4149f4780fa1d4145d">IsCompute</a> () const</td></tr>
-<tr class="memdesc:aaf5018873649fa4149f4780fa1d4145d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether this material is intended for compute dispatch.  <br /></td></tr>
+<tr class="memdesc:aaf5018873649fa4149f4780fa1d4145d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this material is intended for compute dispatch.  <br /></td></tr>
 <tr class="separator:aaf5018873649fa4149f4780fa1d4145d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af587d5938f543479d1d2955cb4da1f48" id="r_af587d5938f543479d1d2955cb4da1f48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af587d5938f543479d1d2955cb4da1f48">SetTexture</a> (const std::string &amp;uniformName, <a class="el" href="class_texture.html">Texture</a> *texture)</td></tr>
-<tr class="memdesc:af587d5938f543479d1d2955cb4da1f48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds a texture to a sampler uniform name.  <br /></td></tr>
-<tr class="separator:af587d5938f543479d1d2955cb4da1f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac70c0b1844f28c61d51cc5afc5f35897" id="r_ac70c0b1844f28c61d51cc5afc5f35897"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac70c0b1844f28c61d51cc5afc5f35897">SetTexture</a> (const std::string &amp;uniformName, std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; texture)</td></tr>
+<tr class="memdesc:ac70c0b1844f28c61d51cc5afc5f35897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds a texture to a named sampler uniform entry.  <br /></td></tr>
+<tr class="separator:ac70c0b1844f28c61d51cc5afc5f35897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c49cb3082a29e0d412577dad3cfde5f" id="r_a6c49cb3082a29e0d412577dad3cfde5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c49cb3082a29e0d412577dad3cfde5f">SetUniform</a> (const std::string &amp;name, <a class="el" href="_material_8h.html#a06229a425f27fcb99ce02ae045b56e0d">UniformValue</a> value)</td></tr>
-<tr class="memdesc:a6c49cb3082a29e0d412577dad3cfde5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a typed uniform value to be sent during binding.  <br /></td></tr>
+<tr class="memdesc:a6c49cb3082a29e0d412577dad3cfde5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores or updates a named uniform value.  <br /></td></tr>
 <tr class="separator:a6c49cb3082a29e0d412577dad3cfde5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a9c710b2d7a286c1349315b6fd6ab7a" id="r_a7a9c710b2d7a286c1349315b6fd6ab7a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a9c710b2d7a286c1349315b6fd6ab7a">IsInstancingSupported</a> () const</td></tr>
-<tr class="memdesc:a7a9c710b2d7a286c1349315b6fd6ab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether instanced rendering is supported for this material.  <br /></td></tr>
+<tr class="memdesc:a7a9c710b2d7a286c1349315b6fd6ab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this material can currently be used for instanced rendering.  <br /></td></tr>
 <tr class="separator:a7a9c710b2d7a286c1349315b6fd6ab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae790a5b6e8836e871f6e01f4431350dd" id="r_ae790a5b6e8836e871f6e01f4431350dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae790a5b6e8836e871f6e01f4431350dd">EnableInstancing</a> (bool enable, <a class="el" href="class_mesh.html">Mesh</a> *mesh)</td></tr>
-<tr class="memdesc:ae790a5b6e8836e871f6e01f4431350dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables instancing for this material and prepares the mesh for instanced draws.  <br /></td></tr>
-<tr class="separator:ae790a5b6e8836e871f6e01f4431350dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9bb91a6549dadd72c68d17100dc388" id="r_aea9bb91a6549dadd72c68d17100dc388"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea9bb91a6549dadd72c68d17100dc388">EnableInstancing</a> (bool enable, std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; mesh)</td></tr>
+<tr class="memdesc:aea9bb91a6549dadd72c68d17100dc388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables instanced rendering support for this material.  <br /></td></tr>
+<tr class="separator:aea9bb91a6549dadd72c68d17100dc388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1fd6c6c16d1f04e747470a2cc0c52fa1" id="r_a1fd6c6c16d1f04e747470a2cc0c52fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fd6c6c16d1f04e747470a2cc0c52fa1">Bind</a> () const</td></tr>
-<tr class="memdesc:a1fd6c6c16d1f04e747470a2cc0c52fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds this material for rendering.  <br /></td></tr>
+<tr class="memdesc:a1fd6c6c16d1f04e747470a2cc0c52fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the shader associated with this material.  <br /></td></tr>
 <tr class="separator:a1fd6c6c16d1f04e747470a2cc0c52fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe3526386e44d6a10fec0e6859dd564a" id="r_abe3526386e44d6a10fec0e6859dd564a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe3526386e44d6a10fec0e6859dd564a">UnBind</a> () const</td></tr>
-<tr class="memdesc:abe3526386e44d6a10fec0e6859dd564a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbinds this material after rendering.  <br /></td></tr>
+<tr class="memdesc:abe3526386e44d6a10fec0e6859dd564a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbinds textures previously bound by this material and then disables the shader.  <br /></td></tr>
 <tr class="separator:abe3526386e44d6a10fec0e6859dd564a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4ad039257d5695090655fbd89ef179b" id="r_ae4ad039257d5695090655fbd89ef179b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4ad039257d5695090655fbd89ef179b">SendData</a> ()</td></tr>
-<tr class="memdesc:ae4ad039257d5695090655fbd89ef179b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends material-specific data beyond the standard textures and uniforms.  <br /></td></tr>
+<tr class="memdesc:ae4ad039257d5695090655fbd89ef179b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends all material data required before drawing.  <br /></td></tr>
 <tr class="separator:ae4ad039257d5695090655fbd89ef179b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39001e95de2408283f42efa7e8657a05" id="r_a39001e95de2408283f42efa7e8657a05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39001e95de2408283f42efa7e8657a05">SendUniforms</a> ()</td></tr>
-<tr class="memdesc:a39001e95de2408283f42efa7e8657a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends all typed uniform values stored in the uniform table to the shader.  <br /></td></tr>
+<tr class="memdesc:a39001e95de2408283f42efa7e8657a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends all cached uniform values to the shader.  <br /></td></tr>
 <tr class="separator:a39001e95de2408283f42efa7e8657a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:abaac6082ee6cf042b2d4da4f6e6fe403" id="r_abaac6082ee6cf042b2d4da4f6e6fe403"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shader.html">Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a></td></tr>
-<tr class="separator:abaac6082ee6cf042b2d4da4f6e6fe403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2528e7055a949798de91d54c259faf1e" id="r_a2528e7055a949798de91d54c259faf1e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2528e7055a949798de91d54c259faf1e">shader</a></td></tr>
+<tr class="memdesc:a2528e7055a949798de91d54c259faf1e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a> used by this material.  <br /></td></tr>
+<tr class="separator:a2528e7055a949798de91d54c259faf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac18d1c428804aef46a8ec751989e0677" id="r_ac18d1c428804aef46a8ec751989e0677"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="_material_8h.html#a06229a425f27fcb99ce02ae045b56e0d">UniformValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac18d1c428804aef46a8ec751989e0677">uniforms</a></td></tr>
+<tr class="memdesc:ac18d1c428804aef46a8ec751989e0677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached uniform values indexed by shader uniform name.  <br /></td></tr>
 <tr class="separator:ac18d1c428804aef46a8ec751989e0677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88e57329587a1d1d2852d926890e2c4f" id="r_a88e57329587a1d1d2852d926890e2c4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a></td></tr>
+<tr class="memdesc:a88e57329587a1d1d2852d926890e2c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether instancing has been explicitly enabled for this material.  <br /></td></tr>
 <tr class="separator:a88e57329587a1d1d2852d926890e2c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:aa3a56da50b75b341743552348b587611" id="r_aa3a56da50b75b341743552348b587611"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3a56da50b75b341743552348b587611">SendTextures</a> ()</td></tr>
-<tr class="memdesc:aa3a56da50b75b341743552348b587611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds all textures stored in the texture table to texture units and assigns sampler uniforms.  <br /></td></tr>
+<tr class="memdesc:aa3a56da50b75b341743552348b587611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends all stored texture bindings to the GPU.  <br /></td></tr>
 <tr class="separator:aa3a56da50b75b341743552348b587611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ffdffe60d4298c93aa14f0913c5b3cb" id="r_a6ffdffe60d4298c93aa14f0913c5b3cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ffdffe60d4298c93aa14f0913c5b3cb">HasTexture</a> () const</td></tr>
-<tr class="memdesc:a6ffdffe60d4298c93aa14f0913c5b3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this material has at least one texture binding.  <br /></td></tr>
+<tr class="memdesc:a6ffdffe60d4298c93aa14f0913c5b3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this material currently has at least one bound texture entry.  <br /></td></tr>
 <tr class="separator:a6ffdffe60d4298c93aa14f0913c5b3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7af8f16fc44c4a9dbf02d598b17597ae" id="r_a7af8f16fc44c4a9dbf02d598b17597ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7af8f16fc44c4a9dbf02d598b17597ae">HasTexture</a> (<a class="el" href="class_texture.html">Texture</a> *texture) const</td></tr>
-<tr class="memdesc:a7af8f16fc44c4a9dbf02d598b17597ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the provided texture pointer is currently bound by this material.  <br /></td></tr>
-<tr class="separator:a7af8f16fc44c4a9dbf02d598b17597ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6324af47ca232b9af228180e11705588" id="r_a6324af47ca232b9af228180e11705588"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6324af47ca232b9af228180e11705588">HasShader</a> (<a class="el" href="class_shader.html">Shader</a> *shader_) const</td></tr>
-<tr class="memdesc:a6324af47ca232b9af228180e11705588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether this material uses the given shader pointer.  <br /></td></tr>
-<tr class="separator:a6324af47ca232b9af228180e11705588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b5cb52b3d21fc071a614b6051e816f7" id="r_a7b5cb52b3d21fc071a614b6051e816f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shader.html">Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b5cb52b3d21fc071a614b6051e816f7">GetShader</a> () const</td></tr>
-<tr class="memdesc:a7b5cb52b3d21fc071a614b6051e816f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shader used by this material.  <br /></td></tr>
-<tr class="separator:a7b5cb52b3d21fc071a614b6051e816f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86935963c17d46ee375405b2001b7b7e" id="r_a86935963c17d46ee375405b2001b7b7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86935963c17d46ee375405b2001b7b7e">HasTexture</a> (std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; texture) const</td></tr>
+<tr class="memdesc:a86935963c17d46ee375405b2001b7b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the specified texture is already referenced by this material.  <br /></td></tr>
+<tr class="separator:a86935963c17d46ee375405b2001b7b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9499c23d18b7708ba83fd0fca55f9c" id="r_aff9499c23d18b7708ba83fd0fca55f9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff9499c23d18b7708ba83fd0fca55f9c">HasShader</a> (std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt; shader_) const</td></tr>
+<tr class="memdesc:aff9499c23d18b7708ba83fd0fca55f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this material uses the specified shader.  <br /></td></tr>
+<tr class="separator:aff9499c23d18b7708ba83fd0fca55f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f561871e45d9bcbfca8577e1b9cbd0a" id="r_a0f561871e45d9bcbfca8577e1b9cbd0a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f561871e45d9bcbfca8577e1b9cbd0a">GetShader</a> () const</td></tr>
+<tr class="memdesc:a0f561871e45d9bcbfca8577e1b9cbd0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shader associated with this material.  <br /></td></tr>
+<tr class="separator:a0f561871e45d9bcbfca8577e1b9cbd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac45dc348bf7022593d789b6bf7b407cb" id="r_ac45dc348bf7022593d789b6bf7b407cb"><td class="memItemLeft" align="right" valign="top">friend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac45dc348bf7022593d789b6bf7b407cb">RenderManager</a></td></tr>
 <tr class="separator:ac45dc348bf7022593d789b6bf7b407cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73c44b66bc920571726bfd6dbdeeec26" id="r_a73c44b66bc920571726bfd6dbdeeec26"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="class_texture.html">Texture</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a></td></tr>
-<tr class="separator:a73c44b66bc920571726bfd6dbdeeec26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd86ec1b500bf510092d32ad68c6513" id="r_a0dd86ec1b500bf510092d32ad68c6513"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a></td></tr>
+<tr class="memdesc:a0dd86ec1b500bf510092d32ad68c6513"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_texture.html">Texture</a> bindings indexed by sampler uniform name.  <br /></td></tr>
+<tr class="separator:a0dd86ec1b500bf510092d32ad68c6513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Render-time binding object that combines a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> with textures and uniform parameters. </p>
-<p><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> acts as a lightweight state bundle that <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> uses to drive drawing:</p><ul>
-<li>shader: the GPU program used for the draw.</li>
-<li>textures: a mapping of uniform sampler names to Texture* pointers.</li>
-<li>uniforms: a mapping of uniform names to typed values (<a class="el" href="_material_8h.html#a06229a425f27fcb99ce02ae045b56e0d" title="Variant type used to store strongly-typed uniform values for a Material.">UniformValue</a>).</li>
+<div class="textblock"><p>Rendering material that stores a shader, uniform values, and texture bindings. </p>
+<p><a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a> represents the CPU-side binding state required before drawing a mesh. It owns:</p><ul>
+<li>a shared <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a></li>
+<li>a set of named uniform values</li>
+<li>a set of named texture bindings</li>
+<li>an instancing enabled flag</li>
 </ul>
-<p>Ownership model:</p><ul>
-<li><a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> does not own Shader/Texture/Mesh. It only stores raw pointers that must remain valid.</li>
-<li><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> typically owns the registered Shaders/Textures/Materials and ensures lifetime safety.</li>
+<p>During rendering, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> binds the material, updates view/projection/model and other runtime uniforms, calls <a class="el" href="#ae4ad039257d5695090655fbd89ef179b" title="Sends all material data required before drawing.">SendData()</a>, and then issues the draw call.</p>
+<p>The current implementation works as follows:</p><ul>
+<li><a class="el" href="#a1fd6c6c16d1f04e747470a2cc0c52fa1" title="Activates the shader associated with this material.">Bind()</a> activates the shader.</li>
+<li><a class="el" href="#ae4ad039257d5695090655fbd89ef179b" title="Sends all material data required before drawing.">SendData()</a> sends bound textures first, then sends stored uniform values.</li>
+<li><a class="el" href="#abe3526386e44d6a10fec0e6859dd564a" title="Unbinds textures previously bound by this material and then disables the shader.">UnBind()</a> unbinds all textures that were bound by this material and then disables the shader. :contentReference[oaicite:3]{index=3}</li>
 </ul>
-<p>Binding workflow:</p><ul>
-<li><a class="el" href="#a1fd6c6c16d1f04e747470a2cc0c52fa1" title="Binds this material for rendering.">Bind()</a> activates the <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> (Use) and sends all textures/uniforms required for the draw.</li>
-<li><a class="el" href="#abe3526386e44d6a10fec0e6859dd564a" title="Unbinds this material after rendering.">UnBind()</a> deactivates the <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> (Unuse) and unbinds texture units if needed.</li>
+<p><a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a> also supports instancing when:</p><ul>
+<li>instancing has been explicitly enabled on the material</li>
+<li>the shader reports support for instancing</li>
 </ul>
-<p>Instancing:</p><ul>
-<li><a class="el" href="#a7a9c710b2d7a286c1349315b6fd6ab7a" title="Returns whether instanced rendering is supported for this material.">IsInstancingSupported()</a> checks whether the underlying <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> is compatible with the engine's instancing path.</li>
-<li>EnableInstancing(enable, mesh) toggles the instancing flag and may configure the Mesh-side instance attributes.</li>
-</ul>
-<p>Compute:</p><ul>
-<li><a class="el" href="#aaf5018873649fa4149f4780fa1d4145d" title="Indicates whether this material is intended for compute dispatch.">IsCompute()</a> identifies whether a <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> is a compute dispatch material. Regular materials return false.</li>
-<li><a class="el" href="class_compute_material.html" title="Compute-only material that binds textures as images for compute shader dispatch.">ComputeMaterial</a> overrides <a class="el" href="#aaf5018873649fa4149f4780fa1d4145d" title="Indicates whether this material is intended for compute dispatch.">IsCompute()</a> and <a class="el" href="#ae4ad039257d5695090655fbd89ef179b" title="Sends material-specific data beyond the standard textures and uniforms.">SendData()</a> and uses image bindings instead of sampler textures. </li>
-</ul>
+<p>The shader support check is ultimately based on whether the linked shader contains an attribute named "i_Model".</p>
+<dl class="section note"><dt>Note</dt><dd>This class stores rendering state only. It does not perform draw calls directly.</dd>
+<dd>
+The texture and uniform maps are keyed by uniform name strings, so the caller must ensure the names match the shader source. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00060">60</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00074">74</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a60bb6242b4556b0823fd96bd5bf7436a" name="a60bb6242b4556b0823fd96bd5bf7436a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60bb6242b4556b0823fd96bd5bf7436a">&#9670;&#160;</a></span>Material()</h2>
+<a id="a48aca58f697a2366f68943ac81897a0d" name="a48aca58f697a2366f68943ac81897a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48aca58f697a2366f68943ac81897a0d">&#9670;&#160;</a></span>Material()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +236,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">Material::Material </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> *</td>          <td class="paramname"><span class="paramname"><em>_shader</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>_shader</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -244,19 +247,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a material using a specific shader. </p>
-<p>Instancing is disabled by default. Textures and uniforms can be assigned after construction.</p>
+<p>Constructs a material bound to a shader. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_shader</td><td><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> program to be used for this material. </td></tr>
+    <tr><td class="paramname">_shader</td><td>Shared shader used by this material.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Instancing is disabled by default. </p>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00072">72</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>: <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>(_shader), <a class="code hl_variable" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a>(<span class="keyword">false</span>) {}</div>
-<div class="ttc" id="aclass_material_html_a88e57329587a1d1d2852d926890e2c4f"><div class="ttname"><a href="#a88e57329587a1d1d2852d926890e2c4f">Material::isInstancingEnabled</a></div><div class="ttdeci">bool isInstancingEnabled</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00192">Material.h:192</a></div></div>
-<div class="ttc" id="aclass_material_html_abaac6082ee6cf042b2d4da4f6e6fe403"><div class="ttname"><a href="#abaac6082ee6cf042b2d4da4f6e6fe403">Material::shader</a></div><div class="ttdeci">Shader * shader</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00190">Material.h:190</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00086">86</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>: <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>(std::move(_shader)), <a class="code hl_variable" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a>(<span class="keyword">false</span>) {}</div>
+<div class="ttc" id="aclass_material_html_a2528e7055a949798de91d54c259faf1e"><div class="ttname"><a href="#a2528e7055a949798de91d54c259faf1e">Material::shader</a></div><div class="ttdeci">std::shared_ptr&lt; Shader &gt; shader</div><div class="ttdoc">Shader used by this material.</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00217">Material.h:217</a></div></div>
+<div class="ttc" id="aclass_material_html_a88e57329587a1d1d2852d926890e2c4f"><div class="ttname"><a href="#a88e57329587a1d1d2852d926890e2c4f">Material::isInstancingEnabled</a></div><div class="ttdeci">bool isInstancingEnabled</div><div class="ttdoc">Whether instancing has been explicitly enabled for this material.</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00227">Material.h:227</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -283,7 +286,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for polymorphic cleanup. </p>
+<p>Virtual destructor. </p>
 
 </div>
 </div>
@@ -311,24 +314,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Binds this material for rendering. </p>
-<p>Expected responsibilities:</p><ul>
-<li>Activates the shader program.</li>
-<li>Sends textures (<a class="el" href="#aa3a56da50b75b341743552348b587611" title="Binds all textures stored in the texture table to texture units and assigns sampler uniforms.">SendTextures()</a>).</li>
-<li>Sends uniform values (<a class="el" href="#a39001e95de2408283f42efa7e8657a05" title="Sends all typed uniform values stored in the uniform table to the shader.">SendUniforms()</a>).</li>
-<li>Calls <a class="el" href="#ae4ad039257d5695090655fbd89ef179b" title="Sends material-specific data beyond the standard textures and uniforms.">SendData()</a> for subclasses to push additional data.</li>
-</ul>
-<p>This is intended to be called by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> immediately before drawing. </p>
+<p>Activates the shader associated with this material. </p>
+<p>The current implementation forwards directly to <a class="el" href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title="Binds this shader program for subsequent rendering or uniform submission.">Shader::Use()</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00005">5</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    6</span>{</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;Use();</div>
+<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;Use();</div>
 <div class="line"><span class="lineno">    8</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae790a5b6e8836e871f6e01f4431350dd" name="ae790a5b6e8836e871f6e01f4431350dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae790a5b6e8836e871f6e01f4431350dd">&#9670;&#160;</a></span>EnableInstancing()</h2>
+<a id="aea9bb91a6549dadd72c68d17100dc388" name="aea9bb91a6549dadd72c68d17100dc388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea9bb91a6549dadd72c68d17100dc388">&#9670;&#160;</a></span>EnableInstancing()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,21 +338,27 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_mesh.html">Mesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>&#160;)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enables or disables instancing for this material and prepares the mesh for instanced draws. </p>
-<p>When enabling instancing, the engine may require Mesh-side instance attribute setup so that per-instance data (model/color/uv) can be streamed and used by the shader.</p>
-<p>Disabling instancing only toggles the material flag; <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> will then use non-instanced draws.</p>
+<p>Enables or disables instanced rendering support for this material. </p>
+<p>When enabling instancing, the current implementation validates:</p><ul>
+<li>mesh is not nullptr</li>
+<li>shader is not nullptr</li>
+<li>shader supports instancing</li>
+</ul>
+<p>If all checks pass and enabling is requested, the material marks instancing as enabled and asks the mesh to prepare instance attributes by calling <a class="el" href="class_mesh.html#a66fa02b2a66182031bb00a9aec134526" title="Creates and configures per-instance vertex attributes for instanced rendering.">Mesh::SetupInstanceAttributes()</a>.</p>
+<p>If the shader does not support the required "i_Model" attribute, the request is ignored and a warning is logged.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enable</td><td>True to enable instancing; false to disable. </td></tr>
-    <tr><td class="paramname">mesh</td><td><a class="el" href="class_mesh.html" title="GPU mesh wrapper that owns VAO/VBO/EBO and supports optional instanced rendering buffers.">Mesh</a> that will be used for instanced draws (used to set up instance attributes). </td></tr>
+    <tr><td class="paramname">enable</td><td>True to enable instancing, false to disable it. </td></tr>
+    <tr><td class="paramname">mesh</td><td><a class="el" href="class_mesh.html" title="Owns GPU-side mesh buffers and provides draw operations for normal and instanced rendering.">Mesh</a> whose instance vertex layout should be prepared.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Disabling instancing only updates the material flag. It does not remove instance buffers already created on the mesh. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00032">32</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
@@ -364,12 +367,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   36</span>        JIN_WRN(<span class="stringliteral">&quot;Enable Instancing skipped: Mesh is nullptr&quot;</span>);</div>
 <div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>)</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>)</div>
 <div class="line"><span class="lineno">   40</span>    {</div>
 <div class="line"><span class="lineno">   41</span>        JIN_WRN(<span class="stringliteral">&quot;Enable Instancing skipped: Shader is nullptr&quot;</span>);</div>
 <div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;SupportsInstancing())</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;SupportsInstancing())</div>
 <div class="line"><span class="lineno">   45</span>    {</div>
 <div class="line"><span class="lineno">   46</span>        JIN_WRN(<span class="stringliteral">&quot;Enable Instancing skipped: Tried enable instancing, but shader does not support &#39;i_Model&#39;.&quot;</span>);</div>
 <div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span>;</div>
@@ -379,15 +382,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (mesh &amp;&amp; <a class="code hl_variable" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a>)</div>
 <div class="line"><span class="lineno">   53</span>    {</div>
-<div class="line"><span class="lineno">   54</span>        mesh-&gt;<a class="code hl_function" href="class_mesh.html#a66fa02b2a66182031bb00a9aec134526">SetupInstanceAttributes</a>();</div>
+<div class="line"><span class="lineno">   54</span>        mesh-&gt;SetupInstanceAttributes();</div>
 <div class="line"><span class="lineno">   55</span>    }</div>
 <div class="line"><span class="lineno">   56</span>}</div>
-<div class="ttc" id="aclass_mesh_html_a66fa02b2a66182031bb00a9aec134526"><div class="ttname"><a href="class_mesh.html#a66fa02b2a66182031bb00a9aec134526">Mesh::SetupInstanceAttributes</a></div><div class="ttdeci">void SetupInstanceAttributes()</div><div class="ttdoc">Configures vertex attribute state for instance data.</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8cpp_source.html#l00069">Mesh.cpp:69</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a7b5cb52b3d21fc071a614b6051e816f7" name="a7b5cb52b3d21fc071a614b6051e816f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b5cb52b3d21fc071a614b6051e816f7">&#9670;&#160;</a></span>GetShader()</h2>
+<a id="a0f561871e45d9bcbfca8577e1b9cbd0a" name="a0f561871e45d9bcbfca8577e1b9cbd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f561871e45d9bcbfca8577e1b9cbd0a">&#9670;&#160;</a></span>GetShader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -396,7 +398,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_shader.html">Shader</a> * Material::GetShader </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt; Material::GetShader </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -409,16 +411,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the shader used by this material. </p>
-<p>This is a low-level helper for <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> to read the active shader during batching and binding. </p>
+<p>Returns the shader associated with this material. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the shader. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00234">234</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  234</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00268">268</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6324af47ca232b9af228180e11705588" name="a6324af47ca232b9af228180e11705588"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6324af47ca232b9af228180e11705588">&#9670;&#160;</a></span>HasShader()</h2>
+<a id="aff9499c23d18b7708ba83fd0fca55f9c" name="aff9499c23d18b7708ba83fd0fca55f9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9499c23d18b7708ba83fd0fca55f9c">&#9670;&#160;</a></span>HasShader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,7 +431,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool Material::HasShader </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> *</td>          <td class="paramname"><span class="paramname"><em>shader_</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_shader.html">Shader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>shader_</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -440,18 +442,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks whether this material uses the given shader pointer. </p>
+<p>Returns whether this material uses the specified shader. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shader_</td><td><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> pointer to test. </td></tr>
+    <tr><td class="paramname">shader_</td><td><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a> to compare against. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if shader_ matches this material's shader. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the stored shader pointer matches. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00093">93</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a> == shader_;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a> == shader_;</div>
 <div class="line"><span class="lineno">   96</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -479,16 +481,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether this material has at least one texture binding. </p>
+<p>Returns whether this material currently has at least one bound texture entry. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the internal texture map is not empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00210">210</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>{ <span class="keywordflow">return</span> !<a class="code hl_variable" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a>.empty(); }</div>
-<div class="ttc" id="aclass_material_html_a73c44b66bc920571726bfd6dbdeeec26"><div class="ttname"><a href="#a73c44b66bc920571726bfd6dbdeeec26">Material::textures</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Texture * &gt; textures</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00236">Material.h:236</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00245">245</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  245</span>{ <span class="keywordflow">return</span> !<a class="code hl_variable" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a>.empty(); }</div>
+<div class="ttc" id="aclass_material_html_a0dd86ec1b500bf510092d32ad68c6513"><div class="ttname"><a href="#a0dd86ec1b500bf510092d32ad68c6513">Material::textures</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::shared_ptr&lt; Texture &gt; &gt; textures</div><div class="ttdoc">Texture bindings indexed by sampler uniform name.</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00273">Material.h:273</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a7af8f16fc44c4a9dbf02d598b17597ae" name="a7af8f16fc44c4a9dbf02d598b17597ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7af8f16fc44c4a9dbf02d598b17597ae">&#9670;&#160;</a></span>HasTexture() <span class="overload">[2/2]</span></h2>
+<a id="a86935963c17d46ee375405b2001b7b7e" name="a86935963c17d46ee375405b2001b7b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86935963c17d46ee375405b2001b7b7e">&#9670;&#160;</a></span>HasTexture() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -499,7 +502,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool Material::HasTexture </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>texture</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -510,18 +513,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks whether the provided texture pointer is currently bound by this material. </p>
+<p>Returns whether the specified texture is already referenced by this material. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">texture</td><td><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> pointer to test. </td></tr>
+    <tr><td class="paramname">texture</td><td><a class="el" href="class_texture.html">Texture</a> to search for. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if any binding references the texture. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the texture pointer is present in any stored binding. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00081">81</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pair : <a class="code hl_variable" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a>)</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pair : <a class="code hl_variable" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a>)</div>
 <div class="line"><span class="lineno">   84</span>    {</div>
 <div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (pair.second == texture)</div>
 <div class="line"><span class="lineno">   86</span>        {</div>
@@ -556,13 +559,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Indicates whether this material is intended for compute dispatch. </p>
-<p>Regular materials return false. <a class="el" href="class_compute_material.html" title="Compute-only material that binds textures as images for compute shader dispatch.">ComputeMaterial</a> overrides this to return true. </p>
+<p>Returns whether this material is intended for compute dispatch. </p>
+<p>The base <a class="el" href="class_material.html" title="Rendering material that stores a shader, uniform values, and texture bindings.">Material</a> always returns false. <a class="el" href="class_compute_material.html" title="Specialized material type used for compute shader dispatch.">ComputeMaterial</a> overrides this to return true.</p>
+<dl class="section return"><dt>Returns</dt><dd>False for regular rendering materials. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_compute_material.html#ad5a9a88431fa1b207fb59f4d52528fe2">ComputeMaterial</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00085">85</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00102">102</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -589,13 +593,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether instanced rendering is supported for this material. </p>
-<p>This is typically determined by the underlying <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a>'s capabilities (e.g., presence of required instancing attributes/uniform conventions). If unsupported, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> should fall back to per-object draws even if objects are batchable.</p>
-<dl class="section return"><dt>Returns</dt><dd>True if instancing is supported; false otherwise. </dd></dl>
+<p>Returns whether this material can currently be used for instanced rendering. </p>
+<p>The current implementation returns true only when:</p><ul>
+<li>instancing has been enabled on this material</li>
+<li>a shader exists</li>
+<li>the shader reports instancing support</li>
+</ul>
+<p><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a> support is determined after linking by checking whether the attribute "i_Model" exists.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if instanced rendering is supported for this material in its current state. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00028">28</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a> &amp;&amp; <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a> &amp;&amp; <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;SupportsInstancing();</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a88e57329587a1d1d2852d926890e2c4f">isInstancingEnabled</a> &amp;&amp; <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a> &amp;&amp; <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;SupportsInstancing();</div>
 <div class="line"><span class="lineno">   31</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -623,8 +632,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sends material-specific data beyond the standard textures and uniforms. </p>
-<p>Base <a class="el" href="class_material.html" title="Render-time binding object that combines a Shader with textures and uniform parameters.">Material</a> implementation may be a no-op or may forward to SendUniforms/SendTextures. <a class="el" href="class_compute_material.html" title="Compute-only material that binds textures as images for compute shader dispatch.">ComputeMaterial</a> overrides this to bind images and set up compute-specific state. </p>
+<p>Sends all material data required before drawing. </p>
+<p>The base implementation sends textures first and then sends stored uniform values. This is the standard CPU-to-GPU submission path used by regular draw materials. :contentReference[oaicite:11]{index=11} </p>
 
 <p>Reimplemented in <a class="el" href="class_compute_material.html#a3c8944e037369072b1685f9e907bc7dc">ComputeMaterial</a>.</p>
 
@@ -633,8 +642,8 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   24</span>    <a class="code hl_function" href="#aa3a56da50b75b341743552348b587611">SendTextures</a>();</div>
 <div class="line"><span class="lineno">   25</span>    <a class="code hl_function" href="#a39001e95de2408283f42efa7e8657a05">SendUniforms</a>();</div>
 <div class="line"><span class="lineno">   26</span>}</div>
-<div class="ttc" id="aclass_material_html_a39001e95de2408283f42efa7e8657a05"><div class="ttname"><a href="#a39001e95de2408283f42efa7e8657a05">Material::SendUniforms</a></div><div class="ttdeci">void SendUniforms()</div><div class="ttdoc">Sends all typed uniform values stored in the uniform table to the shader.</div><div class="ttdef"><b>Definition</b> <a href="_material_8cpp_source.html#l00058">Material.cpp:58</a></div></div>
-<div class="ttc" id="aclass_material_html_aa3a56da50b75b341743552348b587611"><div class="ttname"><a href="#aa3a56da50b75b341743552348b587611">Material::SendTextures</a></div><div class="ttdeci">void SendTextures()</div><div class="ttdoc">Binds all textures stored in the texture table to texture units and assigns sampler uniforms.</div><div class="ttdef"><b>Definition</b> <a href="_material_8cpp_source.html#l00069">Material.cpp:69</a></div></div>
+<div class="ttc" id="aclass_material_html_a39001e95de2408283f42efa7e8657a05"><div class="ttname"><a href="#a39001e95de2408283f42efa7e8657a05">Material::SendUniforms</a></div><div class="ttdeci">void SendUniforms()</div><div class="ttdoc">Sends all cached uniform values to the shader.</div><div class="ttdef"><b>Definition</b> <a href="_material_8cpp_source.html#l00058">Material.cpp:58</a></div></div>
+<div class="ttc" id="aclass_material_html_aa3a56da50b75b341743552348b587611"><div class="ttname"><a href="#aa3a56da50b75b341743552348b587611">Material::SendTextures</a></div><div class="ttdeci">void SendTextures()</div><div class="ttdoc">Sends all stored texture bindings to the GPU.</div><div class="ttdef"><b>Definition</b> <a href="_material_8cpp_source.html#l00069">Material.cpp:69</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -661,21 +670,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Binds all textures stored in the texture table to texture units and assigns sampler uniforms. </p>
-<p>Iterates textures and:</p><ul>
-<li>binds each <a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> to a unit (<a class="el" href="class_texture.html#a6e1092f212113f38bf84b245b982943c" title="Binds the texture to a texture unit for sampling.">Texture::BindToUnit</a>)</li>
-<li>updates the corresponding sampler uniform to that unit</li>
-</ul>
-<p>The exact unit assignment strategy is implementation-defined. </p>
+<p>Sends all stored texture bindings to the GPU. </p>
+<p>The current implementation assigns texture units starting at zero, binds each texture through Texture::BindToUnit(unit), and updates the corresponding sampler uniform with that unit index. :contentReference[oaicite:13]{index=13} </p>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00069">69</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
 <div class="line"><span class="lineno">   71</span>    <span class="keywordtype">int</span> unit = 0;</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [uniformName, tex] : <a class="code hl_variable" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a>)</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [uniformName, tex] : <a class="code hl_variable" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a>)</div>
 <div class="line"><span class="lineno">   73</span>    {</div>
 <div class="line"><span class="lineno">   74</span>        <span class="keywordflow">if</span> (!tex) <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">   75</span>        tex-&gt;BindToUnit(unit);</div>
-<div class="line"><span class="lineno">   76</span>        <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;SendUniform(uniformName, unit);</div>
+<div class="line"><span class="lineno">   76</span>        <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;SendUniform(uniformName, unit);</div>
 <div class="line"><span class="lineno">   77</span>        unit++;</div>
 <div class="line"><span class="lineno">   78</span>    }</div>
 <div class="line"><span class="lineno">   79</span>}</div>
@@ -705,8 +710,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sends all typed uniform values stored in the uniform table to the shader. </p>
-<p>Iterates uniforms and uses the correct <a class="el" href="class_shader.html#a4729e93872d7483b6d5ec1680ec5f35f" title="Sends an integer uniform to the program.">Shader::SendUniform</a> overload based on the <a class="el" href="_material_8h.html#a06229a425f27fcb99ce02ae045b56e0d" title="Variant type used to store strongly-typed uniform values for a Material.">UniformValue</a> variant type. This is usually called during <a class="el" href="#a1fd6c6c16d1f04e747470a2cc0c52fa1" title="Binds this material for rendering.">Bind()</a>. </p>
+<p>Sends all cached uniform values to the shader. </p>
+<p>The current implementation iterates over the internal uniform map and visits each <a class="el" href="_material_8h.html#a06229a425f27fcb99ce02ae045b56e0d" title="Variant type used to store material uniform values in a type-safe way.">UniformValue</a> to dispatch the correct <a class="el" href="class_shader.html#a4729e93872d7483b6d5ec1680ec5f35f" title="Sends an integer uniform to the currently active shader program.">Shader::SendUniform()</a> overload. </p>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00058">58</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
@@ -714,16 +719,16 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   61</span>    {</div>
 <div class="line"><span class="lineno">   62</span>        std::visit([&amp;](<span class="keyword">auto</span>&amp;&amp; val)</div>
 <div class="line"><span class="lineno">   63</span>            {</div>
-<div class="line"><span class="lineno">   64</span>                <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;SendUniform(name, val);</div>
+<div class="line"><span class="lineno">   64</span>                <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;SendUniform(name, val);</div>
 <div class="line"><span class="lineno">   65</span>            }, value);</div>
 <div class="line"><span class="lineno">   66</span>    }</div>
 <div class="line"><span class="lineno">   67</span>}</div>
-<div class="ttc" id="aclass_material_html_ac18d1c428804aef46a8ec751989e0677"><div class="ttname"><a href="#ac18d1c428804aef46a8ec751989e0677">Material::uniforms</a></div><div class="ttdeci">std::unordered_map&lt; std::string, UniformValue &gt; uniforms</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00191">Material.h:191</a></div></div>
+<div class="ttc" id="aclass_material_html_ac18d1c428804aef46a8ec751989e0677"><div class="ttname"><a href="#ac18d1c428804aef46a8ec751989e0677">Material::uniforms</a></div><div class="ttdeci">std::unordered_map&lt; std::string, UniformValue &gt; uniforms</div><div class="ttdoc">Cached uniform values indexed by shader uniform name.</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00222">Material.h:222</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af587d5938f543479d1d2955cb4da1f48" name="af587d5938f543479d1d2955cb4da1f48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af587d5938f543479d1d2955cb4da1f48">&#9670;&#160;</a></span>SetTexture()</h2>
+<a id="ac70c0b1844f28c61d51cc5afc5f35897" name="ac70c0b1844f28c61d51cc5afc5f35897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac70c0b1844f28c61d51cc5afc5f35897">&#9670;&#160;</a></span>SetTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -739,7 +744,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_texture.html">Texture</a> *</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>&#160;)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_texture.html">Texture</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>texture</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -749,21 +754,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Binds a texture to a sampler uniform name. </p>
-<p>Stores the mapping in the internal texture table. The texture is not bound immediately; it is bound later during <a class="el" href="#aa3a56da50b75b341743552348b587611" title="Binds all textures stored in the texture table to texture units and assigns sampler uniforms.">SendTextures()</a> when <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> binds the material for a draw.</p>
-<p>If the same uniform name already exists, it is overwritten.</p>
+<p>Binds a texture to a named sampler uniform entry. </p>
+<p>The binding is stored in the internal texture map and later applied by <a class="el" href="#aa3a56da50b75b341743552348b587611" title="Sends all stored texture bindings to the GPU.">SendTextures()</a>. During <a class="el" href="#aa3a56da50b75b341743552348b587611" title="Sends all stored texture bindings to the GPU.">SendTextures()</a>, textures are assigned consecutive texture units in iteration order, bound through <a class="el" href="class_texture.html#a6e1092f212113f38bf84b245b982943c" title="Binds this texture to a texture sampling unit.">Texture::BindToUnit()</a>, and the matching sampler uniform is updated. :contentReference[oaicite:5]{index=5}</p>
+<p>If the same uniform name is assigned again, the previous binding is replaced.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">uniformName</td><td>Sampler uniform name expected by the shader (e.g., "u_Texture"). </td></tr>
-    <tr><td class="paramname">texture</td><td><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> pointer to bind to the sampler. </td></tr>
+    <tr><td class="paramname">uniformName</td><td>Name of the sampler uniform in the shader. </td></tr>
+    <tr><td class="paramname">texture</td><td><a class="el" href="class_texture.html">Texture</a> resource to bind. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00099">99</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>    {</div>
-<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a>[uniformName] = texture;</div>
-<div class="line"><span class="lineno">  102</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00117">117</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>    {</div>
+<div class="line"><span class="lineno">  119</span>        <a class="code hl_variable" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a>[uniformName] = texture;</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -794,20 +799,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets a typed uniform value to be sent during binding. </p>
-<p>Stores (name -&gt; value) in uniforms. Values are sent to the shader during <a class="el" href="#a1fd6c6c16d1f04e747470a2cc0c52fa1" title="Binds this material for rendering.">Bind()</a>/SendUniforms(). If the same uniform name already exists, it is overwritten.</p>
+<p>Stores or updates a named uniform value. </p>
+<p>The value is cached in the material and later sent to the shader by <a class="el" href="#a39001e95de2408283f42efa7e8657a05" title="Sends all cached uniform values to the shader.">SendUniforms()</a>. If the same uniform name already exists, the previous value is replaced.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>Uniform name expected by the shader. </td></tr>
-    <tr><td class="paramname">value</td><td>Typed uniform value (int/float/vec2/vec3/vec4/mat4). </td></tr>
+    <tr><td class="paramname">name</td><td>Uniform name as declared in the shader. </td></tr>
+    <tr><td class="paramname">value</td><td>Value to store. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00114">114</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>    {</div>
-<div class="line"><span class="lineno">  116</span>        <a class="code hl_variable" href="#ac18d1c428804aef46a8ec751989e0677">uniforms</a>[name] = value;</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00132">132</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>    {</div>
+<div class="line"><span class="lineno">  134</span>        <a class="code hl_variable" href="#ac18d1c428804aef46a8ec751989e0677">uniforms</a>[name] = value;</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -834,23 +839,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Unbinds this material after rendering. </p>
-<p>Expected responsibilities:</p><ul>
-<li>Unbind textures if the engine requires explicit cleanup.</li>
-<li>Deactivates the shader program.</li>
-</ul>
-<p>This is intended to be called by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> after drawing or when switching materials. </p>
+<p>Unbinds textures previously bound by this material and then disables the shader. </p>
+<p>The current implementation iterates over all stored texture bindings, unbinds each texture unit in the same sequential order used by <a class="el" href="#aa3a56da50b75b341743552348b587611" title="Sends all stored texture bindings to the GPU.">SendTextures()</a>, and then calls <a class="el" href="class_shader.html#a9429b4a4f790f9de8e5476ee65ed0dc9" title="Unbinds the currently active shader program.">Shader::Unuse()</a>. :contentReference[oaicite:10]{index=10} </p>
 
 <p class="definition">Definition at line <a class="el" href="_material_8cpp_source.html#l00010">10</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
 <div class="line"><span class="lineno">   12</span>    <span class="keywordtype">int</span> unit = 0;</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [uniformName, tex] : <a class="code hl_variable" href="#a73c44b66bc920571726bfd6dbdeeec26">textures</a>)</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [uniformName, tex] : <a class="code hl_variable" href="#a0dd86ec1b500bf510092d32ad68c6513">textures</a>)</div>
 <div class="line"><span class="lineno">   14</span>    {</div>
 <div class="line"><span class="lineno">   15</span>        <span class="keywordflow">if</span> (!tex) <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">   16</span>        tex-&gt;UnBind(unit);</div>
 <div class="line"><span class="lineno">   17</span>        unit++;</div>
 <div class="line"><span class="lineno">   18</span>    }</div>
-<div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="#abaac6082ee6cf042b2d4da4f6e6fe403">shader</a>-&gt;Unuse();</div>
+<div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="#a2528e7055a949798de91d54c259faf1e">shader</a>-&gt;Unuse();</div>
 <div class="line"><span class="lineno">   20</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -876,7 +877,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00192">192</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p>Whether instancing has been explicitly enabled for this material. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00227">227</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
@@ -900,12 +903,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00061">61</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00075">75</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
-<a id="abaac6082ee6cf042b2d4da4f6e6fe403" name="abaac6082ee6cf042b2d4da4f6e6fe403"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaac6082ee6cf042b2d4da4f6e6fe403">&#9670;&#160;</a></span>shader</h2>
+<a id="a2528e7055a949798de91d54c259faf1e" name="a2528e7055a949798de91d54c259faf1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2528e7055a949798de91d54c259faf1e">&#9670;&#160;</a></span>shader</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -914,7 +917,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_shader.html">Shader</a>* Material::shader</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_shader.html">Shader</a>&gt; Material::shader</td>
         </tr>
       </table>
   </td>
@@ -924,12 +927,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00190">190</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a> used by this material. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00217">217</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
-<a id="a73c44b66bc920571726bfd6dbdeeec26" name="a73c44b66bc920571726bfd6dbdeeec26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73c44b66bc920571726bfd6dbdeeec26">&#9670;&#160;</a></span>textures</h2>
+<a id="a0dd86ec1b500bf510092d32ad68c6513" name="a0dd86ec1b500bf510092d32ad68c6513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd86ec1b500bf510092d32ad68c6513">&#9670;&#160;</a></span>textures</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -938,7 +943,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="class_texture.html">Texture</a>*&gt; Material::textures</td>
+          <td class="memname">std::unordered_map&lt;std::string, std::shared_ptr&lt;<a class="el" href="class_texture.html">Texture</a>&gt; &gt; Material::textures</td>
         </tr>
       </table>
   </td>
@@ -948,7 +953,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00236">236</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p><a class="el" href="class_texture.html">Texture</a> bindings indexed by sampler uniform name. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00273">273</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>
@@ -972,7 +979,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00191">191</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
+<p>Cached uniform values indexed by shader uniform name. </p>
+
+<p class="definition">Definition at line <a class="el" href="_material_8h_source.html#l00222">222</a> of file <a class="el" href="_material_8h_source.html">Material.h</a>.</p>
 
 </div>
 </div>

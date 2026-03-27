@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_glyph.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Cached glyph metrics and atlas UV coordinates for a single Unicode codepoint.  
+<p>Stores baked glyph metrics and UV information inside the font atlas.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_font_8h_source.html">Font.h</a>&gt;</code></p>
@@ -112,27 +112,32 @@ $(function(){initNavTree('struct_glyph.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a6dacfc5a354c3458b8345e804b2637af" id="r_a6dacfc5a354c3458b8345e804b2637af"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dacfc5a354c3458b8345e804b2637af">size</a></td></tr>
+<tr class="memdesc:a6dacfc5a354c3458b8345e804b2637af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap size of the glyph in pixels.  <br /></td></tr>
 <tr class="separator:a6dacfc5a354c3458b8345e804b2637af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7757876feac1bfaadb127530f5f48b33" id="r_a7757876feac1bfaadb127530f5f48b33"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7757876feac1bfaadb127530f5f48b33">bearing</a></td></tr>
+<tr class="memdesc:a7757876feac1bfaadb127530f5f48b33"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_glyph.html" title="Stores baked glyph metrics and UV information inside the font atlas.">Glyph</a> bearing relative to the text origin and baseline.  <br /></td></tr>
 <tr class="separator:a7757876feac1bfaadb127530f5f48b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ca87856d75474821f736a7d64c63946" id="r_a8ca87856d75474821f736a7d64c63946"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ca87856d75474821f736a7d64c63946">advance</a></td></tr>
+<tr class="memdesc:a8ca87856d75474821f736a7d64c63946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Horizontal advance in 1/64 pixel units from FreeType.  <br /></td></tr>
 <tr class="separator:a8ca87856d75474821f736a7d64c63946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34a9c2f5bb4db32834e6bfbd67914f99" id="r_a34a9c2f5bb4db32834e6bfbd67914f99"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34a9c2f5bb4db32834e6bfbd67914f99">uvTopLeft</a></td></tr>
+<tr class="memdesc:a34a9c2f5bb4db32834e6bfbd67914f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Top-left UV coordinate of the baked glyph in the atlas.  <br /></td></tr>
 <tr class="separator:a34a9c2f5bb4db32834e6bfbd67914f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a6124bbab282e4263439dd0a30634f" id="r_ae5a6124bbab282e4263439dd0a30634f"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5a6124bbab282e4263439dd0a30634f">uvBottomRight</a></td></tr>
+<tr class="memdesc:ae5a6124bbab282e4263439dd0a30634f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bottom-right UV coordinate of the baked glyph in the atlas.  <br /></td></tr>
 <tr class="separator:ae5a6124bbab282e4263439dd0a30634f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cached glyph metrics and atlas UV coordinates for a single Unicode codepoint. </p>
-<p>This struct stores the data needed to layout and render a glyph quad:</p><ul>
-<li>size: bitmap width/height in pixels</li>
-<li>bearing: left/top bearing in pixels from baseline</li>
-<li>advance: FreeType advance value in 26.6 fixed-point format (advance &gt;&gt; 6 = pixels)</li>
-<li>uvTopLeft / uvBottomRight: normalized UV region in the font atlas texture</li>
+<div class="textblock"><p>Stores baked glyph metrics and UV information inside the font atlas. </p>
+<p>Each <a class="el" href="struct_glyph.html" title="Stores baked glyph metrics and UV information inside the font atlas.">Glyph</a> entry describes one Unicode codepoint that has been baked into the atlas texture. The stored data is later used to measure text and generate quad geometry.</p>
+<p>The current implementation stores:</p><ul>
+<li>pixel size of the bitmap</li>
+<li>bearing from the baseline/origin</li>
+<li>advance value from FreeType</li>
+<li>normalized atlas UV coordinates for the glyph rectangle :contentReference[oaicite:3]{index=3} </li>
 </ul>
-<p><a class="el" href="struct_glyph.html" title="Cached glyph metrics and atlas UV coordinates for a single Unicode codepoint.">Glyph</a> instances are stored in <a class="el" href="class_font.html#afbb7e0139ebb5cfbdd3c51a9bd070484">Font::glyphs</a> and are populated during baking via <a class="el" href="class_font.html#aa3f349ce0e57bfabb0ef4cea1431a1d6" title="Ensures the glyph for a Unicode codepoint exists in the atlas cache.">Font::TryBakeGlyph</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00059">59</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00070">70</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a8ca87856d75474821f736a7d64c63946" name="a8ca87856d75474821f736a7d64c63946"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ca87856d75474821f736a7d64c63946">&#9670;&#160;</a></span>advance</h2>
@@ -146,7 +151,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00063">63</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p>Horizontal advance in 1/64 pixel units from FreeType. </p>
+<p>The current implementation converts this using (advance &gt;&gt; 6) when measuring text width or advancing the text cursor. :contentReference[oaicite:4]{index=4} </p>
+
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00089">89</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 
 </div>
 </div>
@@ -162,7 +170,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00062">62</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p><a class="el" href="struct_glyph.html" title="Stores baked glyph metrics and UV information inside the font atlas.">Glyph</a> bearing relative to the text origin and baseline. </p>
+
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00080">80</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +188,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00061">61</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p>Bitmap size of the glyph in pixels. </p>
+
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00075">75</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +206,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00065">65</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p>Bottom-right UV coordinate of the baked glyph in the atlas. </p>
+
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00099">99</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 
 </div>
 </div>
@@ -210,7 +224,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00064">64</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
+<p>Top-left UV coordinate of the baked glyph in the atlas. </p>
+
+<p class="definition">Definition at line <a class="el" href="_font_8h_source.html#l00094">94</a> of file <a class="el" href="_font_8h_source.html">Font.h</a>.</p>
 
 </div>
 </div>

@@ -2,7 +2,7 @@
 \hypertarget{struct_shader_result}{}\label{struct_shader_result}\index{ShaderResult@{ShaderResult}}
 
 
-Result data produced by an asynchronous shader load.  
+Stores the completed result of an asynchronous shader source load.  
 
 
 
@@ -21,13 +21,13 @@ bool \mbox{\hyperlink{struct_shader_result_a43e045ed457a35530d5a1ea62a7d361e}{ok
 
 
 \doxysubsection{Detailed Description}
-Result data produced by an asynchronous shader load. 
+Stores the completed result of an asynchronous shader source load. 
 
-Contains the shader source strings per stage. The ok flag indicates whether all required source files were loaded successfully.
+\doxylink{struct_shader_result}{Shader\+Result} contains the shader tag, the in-\/memory source code for each shader stage, and a success flag indicating whether all requested files were read successfully.
 
-The main thread typically consumes this result to compile/link a GPU shader program. 
+The worker thread marks ok as false if any shader source file could not be read. \+:content\+Reference\mbox{[}oaicite\+:8\mbox{]}\{index=8\} 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00157}{157}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00181}{181}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -40,7 +40,7 @@ bool Shader\+Result\+::ok = false}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00161}{161}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00185}{185}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_shader_result_a02194f7377e8b3550f884a69ec5ede9d}\index{ShaderResult@{ShaderResult}!sources@{sources}}
 \index{sources@{sources}!ShaderResult@{ShaderResult}}
@@ -50,7 +50,7 @@ std\+::vector$<$\mbox{\hyperlink{struct_shader_source}{Shader\+Source}}$>$ Shade
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00160}{160}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00184}{184}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_shader_result_ac0cf072f6c38225b14a24f5dd6641432}\index{ShaderResult@{ShaderResult}!tag@{tag}}
 \index{tag@{tag}!ShaderResult@{ShaderResult}}
@@ -60,7 +60,7 @@ std\+::string Shader\+Result\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00159}{159}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00183}{183}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

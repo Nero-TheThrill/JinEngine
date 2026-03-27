@@ -1,6 +1,6 @@
 var class_text_object =
 [
-    [ "TextObject", "class_text_object.html#a39e1f9fe9cc0385e10f3c29ac8ab1bfe", null ],
+    [ "TextObject", "class_text_object.html#a5156e8c2737d10799e01d03beeee1fe1", null ],
     [ "~TextObject", "class_text_object.html#ad0b8bd85c7d39f8109d8f1025ba3b5f6", null ],
     [ "AttachAnimator", "class_text_object.html#a1337c05632a054194b4e8f42373a01bd", null ],
     [ "AttachAnimator", "class_text_object.html#a8b050cd1dcdef86b139cc9706042d226", null ],
@@ -9,8 +9,8 @@ var class_text_object =
     [ "Draw", "class_text_object.html#a534ee1073bdc4b0b2d953dfbe8166f03", null ],
     [ "Free", "class_text_object.html#a7aea94fb38f3c3e3771af8f88e4a7fc4", null ],
     [ "GetBoundingRadius", "class_text_object.html#a76097945db69268cb1970762ad1d4f23", null ],
-    [ "GetMaterial", "class_text_object.html#a2ddeaaee422f88c2ac6251119dfc25fd", null ],
-    [ "GetMesh", "class_text_object.html#a560a96aed0e107df59e96bbcffa74084", null ],
+    [ "GetMaterial", "class_text_object.html#a53e9e3c89fbc161b75238bf4ff428652", null ],
+    [ "GetMesh", "class_text_object.html#a0461df8152c996d129b8617e9afe5ffe", null ],
     [ "GetSpriteAnimator", "class_text_object.html#a35bec9d96e5bf82770bef2fa3a93c657", null ],
     [ "GetTextInstance", "class_text_object.html#a7cb75669bbe0cb18acbc2c3c2989c3c3", null ],
     [ "GetWorldPosition", "class_text_object.html#ae46387856cc2195661fd838ad862e516", null ],
@@ -22,9 +22,9 @@ var class_text_object =
     [ "SetAlignH", "class_text_object.html#a1bf378e176da4cecba2332929664aaac", null ],
     [ "SetAlignV", "class_text_object.html#a23b10b7bb52773bc289a9e1791d18037", null ],
     [ "SetMaterial", "class_text_object.html#a0121550e8ffdcf09ab1f47bf7d0bcd9f", null ],
-    [ "SetMaterial", "class_text_object.html#af23cfdfe8eafd743b798aab9f187d954", null ],
+    [ "SetMaterial", "class_text_object.html#a0d553d37053337922f6e0e47a7237766", null ],
     [ "SetMesh", "class_text_object.html#ac124a2f940a62efd2d63ca3decf321bb", null ],
-    [ "SetMesh", "class_text_object.html#a727d943d75ec32a4815699a8644ab282", null ],
+    [ "SetMesh", "class_text_object.html#acb359ead9cceed2f2aca9e884808e541", null ],
     [ "SetText", "class_text_object.html#af1154768cc7042d52deb50ace196502b", null ],
     [ "SetTextInstance", "class_text_object.html#adc5d289fc11362ba89c47bcdfe48c2cc", null ],
     [ "Update", "class_text_object.html#aff767a41326a8242063743e15bfb28d7", null ],
@@ -33,5 +33,5 @@ var class_text_object =
     [ "alignV", "class_text_object.html#a053ba58bf598730947f87eef44bd62a7", null ],
     [ "textAtlasVersionTracker", "class_text_object.html#af1db1db704b5f0b7b011a8b69b86bf7f", null ],
     [ "textInstance", "class_text_object.html#ac858bc57edde091f83b4ce3f7f3f7b21", null ],
-    [ "textMesh", "class_text_object.html#ae1cea3af3b91dcda314481b92f9a42ea", null ]
+    [ "textMesh", "class_text_object.html#a90d7d6930a50012732828d8caa072b54", null ]
 ];

@@ -107,7 +107,7 @@ $(function(){initNavTree('class_collider.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base collider that supports broad-phase + narrow-phase collision checks.  
+<p>Base interface for all collider shapes used by the engine.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_collider_8h_source.html">Collider.h</a>&gt;</code></p>
@@ -117,63 +117,62 @@ Inheritance diagram for Collider:</div>
  <div class="center">
   <img src="class_collider.png" usemap="#Collider_map" alt=""/>
   <map id="Collider_map" name="Collider_map">
-<area href="class_a_a_b_b_collider.html" title="Axis-aligned bounding box (AABB) collider implementation." alt="AABBCollider" shape="rect" coords="0,56,90,80"/>
-<area href="class_circle_collider.html" title="Circle collider implementation." alt="CircleCollider" shape="rect" coords="100,56,190,80"/>
+<area href="class_a_a_b_b_collider.html" title="Axis-aligned bounding box collider implementation." alt="AABBCollider" shape="rect" coords="0,56,90,80"/>
+<area href="class_circle_collider.html" title="Circle-shaped collider implementation." alt="CircleCollider" shape="rect" coords="100,56,190,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a02af0adc54359eddcd786735e7d0ce5b" id="r_a02af0adc54359eddcd786735e7d0ce5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02af0adc54359eddcd786735e7d0ce5b">Collider</a> ()=delete</td></tr>
-<tr class="memdesc:a02af0adc54359eddcd786735e7d0ce5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor to enforce owner association.  <br /></td></tr>
 <tr class="separator:a02af0adc54359eddcd786735e7d0ce5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a49c6e929279578b12e7d1c60c50c75" id="r_a5a49c6e929279578b12e7d1c60c50c75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a49c6e929279578b12e7d1c60c50c75">Collider</a> (<a class="el" href="class_object.html">Object</a> *owner_)</td></tr>
-<tr class="memdesc:a5a49c6e929279578b12e7d1c60c50c75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a collider bound to an owner object.  <br /></td></tr>
+<tr class="memdesc:a5a49c6e929279578b12e7d1c60c50c75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a collider and binds it to an owning object.  <br /></td></tr>
 <tr class="separator:a5a49c6e929279578b12e7d1c60c50c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b43c72a6424d8c11dec965d166953d3" id="r_a7b43c72a6424d8c11dec965d166953d3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b43c72a6424d8c11dec965d166953d3">~Collider</a> ()=default</td></tr>
-<tr class="memdesc:a7b43c72a6424d8c11dec965d166953d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for safe polymorphic deletion.  <br /></td></tr>
+<tr class="memdesc:a7b43c72a6424d8c11dec965d166953d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic collider deletion.  <br /></td></tr>
 <tr class="separator:a7b43c72a6424d8c11dec965d166953d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcbc7a880210f872f2704035940f243c" id="r_abcbc7a880210f872f2704035940f243c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcbc7a880210f872f2704035940f243c">SetUseTransformScale</a> (bool use)</td></tr>
-<tr class="memdesc:abcbc7a880210f872f2704035940f243c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables using the owner's transform scale to size the collider.  <br /></td></tr>
+<tr class="memdesc:abcbc7a880210f872f2704035940f243c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables automatic scaling from the owner's transform.  <br /></td></tr>
 <tr class="separator:abcbc7a880210f872f2704035940f243c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f9dd44c772f34a84789018f59df905a" id="r_a9f9dd44c772f34a84789018f59df905a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f9dd44c772f34a84789018f59df905a">IsUsingTransformScale</a> () const</td></tr>
-<tr class="memdesc:a9f9dd44c772f34a84789018f59df905a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this collider uses the owner's transform scale.  <br /></td></tr>
+<tr class="memdesc:a9f9dd44c772f34a84789018f59df905a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this collider currently follows the owner's transform scale.  <br /></td></tr>
 <tr class="separator:a9f9dd44c772f34a84789018f59df905a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad96c878cd28533c4ec6d3ad6b1decdae" id="r_ad96c878cd28533c4ec6d3ad6b1decdae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad96c878cd28533c4ec6d3ad6b1decdae">SetOffset</a> (const glm::vec2 &amp;pos)</td></tr>
-<tr class="memdesc:ad96c878cd28533c4ec6d3ad6b1decdae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the local-space offset of the collider relative to the owner's origin.  <br /></td></tr>
+<tr class="memdesc:ad96c878cd28533c4ec6d3ad6b1decdae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a local positional offset for the collider.  <br /></td></tr>
 <tr class="separator:ad96c878cd28533c4ec6d3ad6b1decdae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948b526d3829deb0418a4fb1db006474" id="r_a948b526d3829deb0418a4fb1db006474"><td class="memItemLeft" align="right" valign="top">const glm::vec2 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a948b526d3829deb0418a4fb1db006474">GetOffset</a> () const</td></tr>
-<tr class="memdesc:a948b526d3829deb0418a4fb1db006474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the local-space offset of the collider.  <br /></td></tr>
+<tr class="memdesc:a948b526d3829deb0418a4fb1db006474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collider's local offset.  <br /></td></tr>
 <tr class="separator:a948b526d3829deb0418a4fb1db006474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96da52831351800d25be94893cfaddf0" id="r_a96da52831351800d25be94893cfaddf0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96da52831351800d25be94893cfaddf0">CheckPointCollision</a> (const glm::vec2 &amp;point) const =0</td></tr>
-<tr class="memdesc:a96da52831351800d25be94893cfaddf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether a point lies within the collider shape.  <br /></td></tr>
+<tr class="memdesc:a96da52831351800d25be94893cfaddf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a world-space point overlaps this collider.  <br /></td></tr>
 <tr class="separator:a96da52831351800d25be94893cfaddf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1a1c25108da499b666799d7e8d4c2d5b" id="r_a1a1c25108da499b666799d7e8d4c2d5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a> () const</td></tr>
-<tr class="memdesc:a1a1c25108da499b666799d7e8d4c2d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object that owns this collider.  <br /></td></tr>
+<tr class="memdesc:a1a1c25108da499b666799d7e8d4c2d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owning object.  <br /></td></tr>
 <tr class="separator:a1a1c25108da499b666799d7e8d4c2d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a677c9e05fcee3ef2ed94998dc5f2458d" id="r_a677c9e05fcee3ef2ed94998dc5f2458d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395">ColliderType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a677c9e05fcee3ef2ed94998dc5f2458d">GetType</a> () const =0</td></tr>
 <tr class="memdesc:a677c9e05fcee3ef2ed94998dc5f2458d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the concrete collider type.  <br /></td></tr>
 <tr class="separator:a677c9e05fcee3ef2ed94998dc5f2458d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62c9c123b9a68da3b6eb13c718ccaa27" id="r_a62c9c123b9a68da3b6eb13c718ccaa27"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c9c123b9a68da3b6eb13c718ccaa27">GetBoundingRadius</a> () const =0</td></tr>
-<tr class="memdesc:a62c9c123b9a68da3b6eb13c718ccaa27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a radius that bounds the collider for broad-phase checks.  <br /></td></tr>
+<tr class="memdesc:a62c9c123b9a68da3b6eb13c718ccaa27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a broad-phase bounding radius for this collider.  <br /></td></tr>
 <tr class="separator:a62c9c123b9a68da3b6eb13c718ccaa27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41660505ae4b413d3d4b004162857426" id="r_a41660505ae4b413d3d4b004162857426"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41660505ae4b413d3d4b004162857426">CheckCollision</a> (const <a class="el" href="class_collider.html">Collider</a> *other) const =0</td></tr>
-<tr class="memdesc:a41660505ae4b413d3d4b004162857426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs narrow-phase collision test against another collider.  <br /></td></tr>
+<tr class="memdesc:a41660505ae4b413d3d4b004162857426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a collision test against another collider.  <br /></td></tr>
 <tr class="separator:a41660505ae4b413d3d4b004162857426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b1071065ccb7ddfc1ff8340a89246d7" id="r_a6b1071065ccb7ddfc1ff8340a89246d7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1071065ccb7ddfc1ff8340a89246d7">DispatchAgainst</a> (const <a class="el" href="class_circle_collider.html">CircleCollider</a> &amp;other) const =0</td></tr>
-<tr class="memdesc:a6b1071065ccb7ddfc1ff8340a89246d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Double-dispatch entry for testing against a circle collider.  <br /></td></tr>
+<tr class="memdesc:a6b1071065ccb7ddfc1ff8340a89246d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves collision against a circle collider.  <br /></td></tr>
 <tr class="separator:a6b1071065ccb7ddfc1ff8340a89246d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6038e89a98d8b252f143ddbc960a484" id="r_ae6038e89a98d8b252f143ddbc960a484"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6038e89a98d8b252f143ddbc960a484">DispatchAgainst</a> (const <a class="el" href="class_a_a_b_b_collider.html">AABBCollider</a> &amp;other) const =0</td></tr>
-<tr class="memdesc:ae6038e89a98d8b252f143ddbc960a484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Double-dispatch entry for testing against an AABB collider.  <br /></td></tr>
+<tr class="memdesc:ae6038e89a98d8b252f143ddbc960a484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves collision against an axis-aligned bounding box collider.  <br /></td></tr>
 <tr class="separator:ae6038e89a98d8b252f143ddbc960a484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a188380ff8ece20474e86a662f995887e" id="r_a188380ff8ece20474e86a662f995887e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a188380ff8ece20474e86a662f995887e">SyncWithTransformScale</a> ()=0</td></tr>
-<tr class="memdesc:a188380ff8ece20474e86a662f995887e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates internal scaled shape data based on the owner's transform scale.  <br /></td></tr>
+<tr class="memdesc:a188380ff8ece20474e86a662f995887e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the collider's effective size with the owner's transform scale.  <br /></td></tr>
 <tr class="separator:a188380ff8ece20474e86a662f995887e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a222e52491ae094943420952fd3182c90" id="r_a222e52491ae094943420952fd3182c90"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a222e52491ae094943420952fd3182c90">DrawDebug</a> (<a class="el" href="class_render_manager.html">RenderManager</a> *rm, <a class="el" href="class_camera2_d.html">Camera2D</a> *cam, const glm::vec4 &amp;color={ 1, 0, 0, 1 }) const =0</td></tr>
-<tr class="memdesc:a222e52491ae094943420952fd3182c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the collider shape for debugging purposes.  <br /></td></tr>
+<tr class="memdesc:a222e52491ae094943420952fd3182c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a debug visualization of the collider.  <br /></td></tr>
 <tr class="separator:a222e52491ae094943420952fd3182c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -197,19 +196,15 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1caafe48decccc01fc2b89fa84498938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base collider that supports broad-phase + narrow-phase collision checks. </p>
-<p><a class="el" href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks.">Collider</a> represents a shape attached to an <a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> and provides the core interfaces used by <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> and <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure using spatial hashing.">SpatialHashGrid</a>:</p><ul>
-<li>point containment test (CheckPointCollision)</li>
-<li>shape-vs-shape collision test (CheckCollision + DispatchAgainst)</li>
-<li>broad-phase approximation (GetBoundingRadius)</li>
-<li>optional transform scale synchronization (SyncWithTransformScale)</li>
-<li>debug visualization (DrawDebug)</li>
-</ul>
-<p>Narrow-phase collision is implemented using double dispatch: CheckCollision(other) calls other-&gt;DispatchAgainst(*thisConcrete) or an equivalent path, allowing Circle-vs-AABB and AABB-vs-Circle to be resolved without RTTI/dynamic_cast.</p>
-<p>Offset is stored separately from the owner's transform and is typically used to shift the collider relative to the owner's origin.</p>
-<p>This class is not default-constructible; an owner must be provided. </p>
+<div class="textblock"><p>Base interface for all collider shapes used by the engine. </p>
+<p><a class="el" href="class_collider.html" title="Base interface for all collider shapes used by the engine.">Collider</a> provides the common interface required by the collision system. Each collider is attached to an owning <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> and may optionally follow the owner's transform scale.</p>
+<p>The class exposes point collision checks publicly, while pairwise collision checks, bounding radius queries, transform synchronization, and debug drawing are kept protected because they are intended to be driven by engine systems such as <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> and <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure based on a spatial hash grid.">SpatialHashGrid</a>.</p>
+<p>Collision dispatch is implemented using double dispatch. The generic <a class="el" href="#a41660505ae4b413d3d4b004162857426" title="Performs a collision test against another collider.">CheckCollision()</a> entry point forwards the test to the other collider, which then resolves the exact shape-vs-shape routine through <a class="el" href="#a6b1071065ccb7ddfc1ff8340a89246d7" title="Resolves collision against a circle collider.">DispatchAgainst()</a>.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="class_collider.html" title="Base interface for all collider shapes used by the engine.">Collider</a> does not own the <a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> pointer. The owner must outlive the collider.</dd>
+<dd>
+When useTransformScale is enabled, the collider shape is updated from the owner's world scale during engine update. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00053">53</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00052">52</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a02af0adc54359eddcd786735e7d0ce5b" name="a02af0adc54359eddcd786735e7d0ce5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a02af0adc54359eddcd786735e7d0ce5b">&#9670;&#160;</a></span>Collider() <span class="overload">[1/2]</span></h2>
@@ -233,8 +228,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Deleted default constructor to enforce owner association. </p>
 
 </div>
 </div>
@@ -261,18 +254,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a collider bound to an owner object. </p>
+<p>Constructs a collider and binds it to an owning object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">owner_</td><td><a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> that owns this collider. </td></tr>
+    <tr><td class="paramname">owner_</td><td>Pointer to the object that owns this collider.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The offset is initialized to zero. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00070">70</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>: <a class="code hl_variable" href="#ae661027024ee407d042b8672625da377">owner</a>(owner_), <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a>() {}</div>
-<div class="ttc" id="aclass_collider_html_a7a84eff1697e0c8d54ef0df6427a8235"><div class="ttname"><a href="#a7a84eff1697e0c8d54ef0df6427a8235">Collider::offset</a></div><div class="ttdeci">glm::vec2 offset</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00187">Collider.h:187</a></div></div>
-<div class="ttc" id="aclass_collider_html_ae661027024ee407d042b8672625da377"><div class="ttname"><a href="#ae661027024ee407d042b8672625da377">Collider::owner</a></div><div class="ttdeci">Object * owner</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00185">Collider.h:185</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00069">69</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>: <a class="code hl_variable" href="#ae661027024ee407d042b8672625da377">owner</a>(owner_), <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a>() {}</div>
+<div class="ttc" id="aclass_collider_html_a7a84eff1697e0c8d54ef0df6427a8235"><div class="ttname"><a href="#a7a84eff1697e0c8d54ef0df6427a8235">Collider::offset</a></div><div class="ttdeci">glm::vec2 offset</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00198">Collider.h:198</a></div></div>
+<div class="ttc" id="aclass_collider_html_ae661027024ee407d042b8672625da377"><div class="ttname"><a href="#ae661027024ee407d042b8672625da377">Collider::owner</a></div><div class="ttdeci">Object * owner</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00196">Collider.h:196</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -299,7 +293,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for safe polymorphic deletion. </p>
+<p>Virtual destructor for polymorphic collider deletion. </p>
 
 </div>
 </div>
@@ -327,15 +321,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Performs narrow-phase collision test against another collider. </p>
-<p>Implementations typically use double dispatch by calling DispatchAgainst with the appropriate concrete type.</p>
+<p>Performs a collision test against another collider. </p>
+<p>This is the generic entry point used by the collision system. Implementations forward the call to the other collider's <a class="el" href="#a6b1071065ccb7ddfc1ff8340a89246d7" title="Resolves collision against a circle collider.">DispatchAgainst()</a> overload to resolve the exact shape combination. :contentReference[oaicite:2]{index=2}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>Other collider to test against. </td></tr>
+    <tr><td class="paramname">other</td><td>Pointer to the other collider. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if colliding; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the two colliders overlap. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a8bd480dffa6343fa74035a4df701ca22">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#a9598b67bc72342284318d19f3c0cf35b">CircleCollider</a>.</p>
 
@@ -364,14 +358,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tests whether a point lies within the collider shape. </p>
+<p>Checks whether a world-space point overlaps this collider. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">point</td><td>Point to test, typically in world space. </td></tr>
+    <tr><td class="paramname">point</td><td>Point in world space. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the point is inside or on the collider; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the point lies inside or on the collider. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a0d2cf23fe7b870bc02605ed78b7d4aba">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#a4fa87c8b2fb9204f9d5e9d47dc3a44bc">CircleCollider</a>.</p>
 
@@ -400,14 +394,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Double-dispatch entry for testing against an AABB collider. </p>
+<p>Resolves collision against an axis-aligned bounding box collider. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>Other collider as <a class="el" href="class_a_a_b_b_collider.html" title="Axis-aligned bounding box (AABB) collider implementation.">AABBCollider</a>. </td></tr>
+    <tr><td class="paramname">other</td><td>The AABB collider on the other side of the test. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if colliding; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the colliders overlap. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#acab757f9231fa6acb535784d77915600">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#a951f365eb24e6e1a286bc7c518e8ab46">CircleCollider</a>.</p>
 
@@ -436,14 +430,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Double-dispatch entry for testing against a circle collider. </p>
+<p>Resolves collision against a circle collider. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>Other collider as <a class="el" href="class_circle_collider.html" title="Circle collider implementation.">CircleCollider</a>. </td></tr>
+    <tr><td class="paramname">other</td><td>The circle collider on the other side of the test. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if colliding; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the colliders overlap. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#a69a051ea02a260f7b5c46cb76058cbe5">CircleCollider</a>.</p>
 
@@ -481,13 +475,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the collider shape for debugging purposes. </p>
-<p>Derived types should issue debug draw commands through the <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and transform into camera space using the provided <a class="el" href="class_camera2_d.html" title="2D camera providing view transformation and visibility tests.">Camera2D</a>.</p>
+<p>Draws a debug visualization of the collider. </p>
+<p>The current implementation uses <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> debug line commands. Circle colliders are drawn as segmented line loops. AABB colliders are drawn as four line edges.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rm</td><td>Render manager used for debug draw submission. </td></tr>
-    <tr><td class="paramname">cam</td><td>Camera used for world-to-screen/view transform. </td></tr>
-    <tr><td class="paramname">color</td><td>Debug draw color (default: red). </td></tr>
+    <tr><td class="paramname">rm</td><td>Render manager used to queue debug lines. </td></tr>
+    <tr><td class="paramname">cam</td><td>Camera used for debug line rendering. </td></tr>
+    <tr><td class="paramname">color</td><td>Debug draw color. </td></tr>
   </table>
   </dd>
 </dl>
@@ -519,8 +513,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns a radius that bounds the collider for broad-phase checks. </p>
-<p><a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure using spatial hashing.">SpatialHashGrid</a> may use this to classify large objects and/or to estimate which cells should contain an object. </p>
+<p>Returns a broad-phase bounding radius for this collider. </p>
+<p>This value is used by <a class="el" href="class_spatial_hash_grid.html" title="Broad-phase collision structure based on a spatial hash grid.">SpatialHashGrid</a> to estimate cell coverage and insertion area.</p>
+<dl class="section return"><dt>Returns</dt><dd>Bounding radius in world scale. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a0a0f0dcd7d52ac0ef8d11953424a752a">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#afc46297adb83cfaab9487e89d7a25298">CircleCollider</a>.</p>
 
@@ -549,10 +544,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the local-space offset of the collider. </p>
+<p>Returns the collider's local offset. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the current local offset. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00103">103</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00110">110</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -579,11 +575,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the object that owns this collider. </p>
+<p>Returns the owning object. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the owner object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00119">119</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae661027024ee407d042b8672625da377">owner</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00126">126</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae661027024ee407d042b8672625da377">owner</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -611,6 +607,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the concrete collider type. </p>
+<dl class="section return"><dt>Returns</dt><dd>Runtime collider type. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a02a5aef8ae047a6e77dea4d9ee3bdc91">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#ac2513ad483f0fc9789afe8e25f4797c1">CircleCollider</a>.</p>
 
@@ -639,11 +636,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether this collider uses the owner's transform scale. </p>
+<p>Returns whether this collider currently follows the owner's transform scale. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if transform scale synchronization is enabled. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00091">91</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>; }</div>
-<div class="ttc" id="aclass_collider_html_a10c23d55e50b048078cddb0f806d5731"><div class="ttname"><a href="#a10c23d55e50b048078cddb0f806d5731">Collider::useTransformScale</a></div><div class="ttdeci">bool useTransformScale</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00186">Collider.h:186</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00093">93</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>; }</div>
+<div class="ttc" id="aclass_collider_html_a10c23d55e50b048078cddb0f806d5731"><div class="ttname"><a href="#a10c23d55e50b048078cddb0f806d5731">Collider::useTransformScale</a></div><div class="ttdeci">bool useTransformScale</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00197">Collider.h:197</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -670,16 +668,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the local-space offset of the collider relative to the owner's origin. </p>
+<p>Sets a local positional offset for the collider. </p>
+<p>The offset is added to the owner's world position during collision checks and debug rendering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>Offset in the same coordinate space as the owner's transform. </td></tr>
+    <tr><td class="paramname">pos</td><td>Local offset from the owner's origin. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00098">98</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{ <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a> = pos; }</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00103">103</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{ <a class="code hl_variable" href="#a7a84eff1697e0c8d54ef0df6427a8235">offset</a> = pos; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -706,11 +705,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enables or disables using the owner's transform scale to size the collider. </p>
-<p>When enabled, derived colliders are expected to update their scaled shape in SyncWithTransformScale.</p>
+<p>Enables or disables automatic scaling from the owner's transform. </p>
+<p>When enabled, the collider shape is recalculated from the owner's world scale through <a class="el" href="#a188380ff8ece20474e86a662f995887e" title="Synchronizes the collider&#39;s effective size with the owner&#39;s transform scale.">SyncWithTransformScale()</a>. For <a class="el" href="class_circle_collider.html" title="Circle-shaped collider implementation.">CircleCollider</a>, the largest absolute scale axis is used. For <a class="el" href="class_a_a_b_b_collider.html" title="Axis-aligned bounding box collider implementation.">AABBCollider</a>, each axis is scaled independently. :contentReference[oaicite:1]{index=1}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">use</td><td>True to apply transform scale to the collider shape. </td></tr>
+    <tr><td class="paramname">use</td><td>True to follow transform scale, false to use manually assigned shape values. </td></tr>
   </table>
   </dd>
 </dl>
@@ -743,8 +742,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates internal scaled shape data based on the owner's transform scale. </p>
-<p>Called when useTransformScale is enabled and the owner's scale is expected to affect collider dimensions (e.g., radius / half-extents). </p>
+<p>Synchronizes the collider's effective size with the owner's transform scale. </p>
+<p>This is called by <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> during the update loop for alive objects that own a collider. </p>
 
 <p>Implemented in <a class="el" href="class_a_a_b_b_collider.html#a66dc8ecf507a6f3de51fb56f7cd0aa67">AABBCollider</a>, and <a class="el" href="class_circle_collider.html#a8f00aeea30fb3ffb45ebbcaab0d96fdd">CircleCollider</a>.</p>
 
@@ -771,7 +770,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00057">57</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00056">56</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -795,7 +794,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00056">56</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00055">55</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +818,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00055">55</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00054">54</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -843,7 +842,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00187">187</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00198">198</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -867,7 +866,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00185">185</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00196">196</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -891,7 +890,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00058">58</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00057">57</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -915,7 +914,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00186">186</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00197">197</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>

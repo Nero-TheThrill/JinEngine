@@ -2,7 +2,7 @@
 \hypertarget{class_mesh}{}\label{class_mesh}\index{Mesh@{Mesh}}
 
 
-GPU mesh wrapper that owns VAO/\+VBO/\+EBO and supports optional instanced rendering buffers.  
+Owns GPU-\/side mesh buffers and provides draw operations for normal and instanced rendering.  
 
 
 
@@ -13,28 +13,28 @@ GPU mesh wrapper that owns VAO/\+VBO/\+EBO and supports optional instanced rende
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_mesh_a2fae383fefb7fe9f7c5fae8266e53e97}{Mesh}} (const std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \&vertices, const std\+::vector$<$ unsigned int $>$ \&indices=\{\}, \mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type}} \mbox{\hyperlink{class_mesh_a213090871212181b474b4a13d5b05d0d}{primitive\+Type}}=\mbox{\hyperlink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9a7ca66fdfaad3eb33fc65d7490178f856}{Primitive\+Type\+::\+Triangles}})
-\begin{DoxyCompactList}\small\item\em Creates a mesh and uploads vertex/index data to the GPU. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates a mesh from vertex data, optional index data, and a primitive type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{\texorpdfstring{$\sim$}{\string~}\+Mesh}} ()
-\begin{DoxyCompactList}\small\item\em Destroys GPU buffers owned by this mesh. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Releases all GPU resources owned by this mesh. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_mesh_a4a8b413a54afd1dcb83df7c5e2bbefc8}{Get\+Local\+Bounds\+Half\+Size}} () const
-\begin{DoxyCompactList}\small\item\em Returns half of the local-\/space axis-\/aligned bounds size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the mesh\textquotesingle{}s local half-\/size computed from the original vertex positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_mesh_a30bf909bfd35c62be92824b7d3317326}{Bind\+VAO}} (bool instanced) const
-\begin{DoxyCompactList}\small\item\em Binds the appropriate VAO for drawing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Binds the appropriate VAO for either regular or instanced rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{Setup\+Instance\+Attributes}} ()
-\begin{DoxyCompactList}\small\item\em Configures vertex attribute state for instance data. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Creates and configures per-\/instance vertex attributes for instanced rendering. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_abf84fe4ef735490769268685087e0e32}{Draw}} () const
-\begin{DoxyCompactList}\small\item\em Issues a non-\/instanced draw call using this mesh\textquotesingle{}s topology. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draws the mesh once using its currently stored geometry buffers. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced}} (\mbox{\hyperlink{_mesh_8h_a2d467e230729e9194068528ee1985327}{GLsizei}} instance\+Count) const
-\begin{DoxyCompactList}\small\item\em Issues an instanced draw call using this mesh\textquotesingle{}s topology. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draws the mesh multiple times in a single instanced draw call. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{Setup\+Mesh}} (const std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \&vertices, const std\+::vector$<$ unsigned int $>$ \&indices)
-\begin{DoxyCompactList}\small\item\em Uploads vertex/index data and configures base vertex attributes. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Uploads vertex and optional index data and configures the base VAO layout. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{Compute\+Local\+Bounds}} (const std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \&vertices)
-\begin{DoxyCompactList}\small\item\em Computes an approximate local-\/space AABB half-\/size from vertex positions. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Computes a simple local-\/space bounding half-\/size from the input vertices. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{Update\+Instance\+Buffer}} (const std\+::vector$<$ glm\+::mat4 $>$ \&transforms, const std\+::vector$<$ glm\+::vec4 $>$ \&colors, const std\+::vector$<$ glm\+::vec2 $>$ \&uv\+Offsets, const std\+::vector$<$ glm\+::vec2 $>$ \&uv\+Scales) const
-\begin{DoxyCompactList}\small\item\em Updates GPU instance buffers used for instanced drawing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Uploads per-\/instance batch data into the mesh\textquotesingle{}s instance buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,29 +63,34 @@ glm\+::vec2 \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{local
 
 
 \doxysubsection{Detailed Description}
-GPU mesh wrapper that owns VAO/\+VBO/\+EBO and supports optional instanced rendering buffers. 
+Owns GPU-\/side mesh buffers and provides draw operations for normal and instanced rendering. 
 
-\doxylink{class_mesh}{Mesh} encapsulates Open\+GL buffer objects and draw routines. It supports\+:
+\doxylink{class_mesh}{Mesh} is the engine\textquotesingle{}s low-\/level geometry container. It creates and owns the Open\+GL objects required to render a piece of geometry\+:
 \begin{DoxyItemize}
-\item Non-\/indexed and indexed rendering (use\+Index + ebo + index\+Count).
-\item A primitive topology (\doxylink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type}) used for draw calls.
-\item A local-\/space bounds half-\/size (local\+Half\+Size) computed from vertex positions for culling/placement.
-\item Instanced rendering via a dedicated instance VAO and multiple instance VBOs\+:
-\begin{DoxyItemize}
-\item transforms (mat4)
-\item colors (vec4)
-\item uv\+Offsets (vec2)
-\item uv\+Scales (vec2)
-\end{DoxyItemize}
+\item a standard VAO for regular drawing
+\item a VBO for vertex data
+\item an optional EBO for indexed rendering
+\item a dedicated instancing VAO and per-\/instance buffers for batched rendering
 \end{DoxyItemize}
 
-Lifecycle and access\+:
+During construction, the mesh uploads the provided vertex/index data to GPU buffers and computes local bounds from the source vertices. Those bounds are later used by \doxylink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Object\+::\+Get\+Bounding\+Radius()} to estimate visibility and culling size.
+
+Instanced rendering support is not automatically enabled just because this class owns instance buffers. The mesh must first be prepared through \doxylink{class_material_aea9bb91a6549dadd72c68d17100dc388}{Material\+::\+Enable\+Instancing()}, which internally calls \doxylink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{Setup\+Instance\+Attributes()} after verifying that the bound shader supports instancing attributes. \+:content\+Reference\mbox{[}oaicite\+:5\mbox{]}\{index=5\}
+
+At runtime\+:
 \begin{DoxyItemize}
-\item \doxylink{class_mesh}{Mesh} is constructed from CPU vertex/index arrays, uploads them to GPU, and computes local bounds.
-\item \doxylink{class_render_manager}{Render\+Manager} and \doxylink{class_material}{Material} are friends to allow them to bind and draw meshes efficiently. 
+\item regular rendering uses \doxylink{class_mesh_abf84fe4ef735490769268685087e0e32}{Draw()}
+\item batched rendering uploads per-\/instance data through \doxylink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{Update\+Instance\+Buffer()} and then calls \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced()}
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00058}{58}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+The \doxylink{class_render_manager}{Render\+Manager} uses these paths when flushing draw commands. \+:content\+Reference\mbox{[}oaicite\+:6\mbox{]}\{index=6\}
+
+\begin{DoxyNote}{Note}
+This class is intentionally tightly integrated with \doxylink{class_material}{Material} and \doxylink{class_render_manager}{Render\+Manager}. Internal GPU setup and draw functions are kept private and are exposed only through friendship. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00089}{89}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 
@@ -98,27 +103,26 @@ Mesh\+::\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyp
 
 
 
-Creates a mesh and uploads vertex/index data to the GPU. 
+Creates a mesh from vertex data, optional index data, and a primitive type. 
 
-The constructor\+:
-\begin{DoxyItemize}
-\item Stores primitive\+Type.
-\item Creates and configures VAO/\+VBO (and EBO if indices are provided).
-\item Computes local bounds from the provided vertices (Compute\+Local\+Bounds).
-\item Prepares instance buffers/attributes so \doxylink{class_render_manager}{Render\+Manager} can draw instanced batches.
-\end{DoxyItemize}
+This constructor initializes all Open\+GL object handles to safe default values, stores the selected primitive topology, uploads the provided geometry to GPU buffers by calling \doxylink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{Setup\+Mesh()}, and computes the local bounding half-\/size by calling \doxylink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{Compute\+Local\+Bounds()}.
 
-If indices is empty, the mesh is treated as non-\/indexed (use\+Index = false).
+If the index array is empty, the mesh is treated as a non-\/indexed mesh and will later be rendered with gl\+Draw\+Arrays-\/style calls. Otherwise, it will use indexed drawing with gl\+Draw\+Elements-\/style calls. \+:content\+Reference\mbox{[}oaicite\+:7\mbox{]}\{index=7\}
+
+The computed local bound is later used indirectly for approximate culling and bounding radius calculation through \doxylink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Object\+::\+Get\+Bounding\+Radius()}. \+:content\+Reference\mbox{[}oaicite\+:8\mbox{]}\{index=8\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em vertices} & \doxylink{struct_vertex}{Vertex} array to upload. \\
+{\em vertices} & Source vertex array to upload into the mesh vertex buffer. \\
 \hline
-{\em indices} & Optional index array. If non-\/empty, indexed drawing is enabled. \\
+{\em indices} & Optional index array. If empty, the mesh will use non-\/indexed rendering. \\
 \hline
-{\em primitive\+Type} & Primitive topology used for draw calls. \\
+{\em primitive\+Type} & Primitive topology used when this mesh is drawn.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The constructor does not automatically configure instancing attributes. Instancing setup happens later only if a material explicitly enables it. 
+\end{DoxyNote}
 
 
 Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
@@ -141,9 +145,23 @@ Mesh\+::\texorpdfstring{$\sim$}{\string~}\+Mesh (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Destroys GPU buffers owned by this mesh. 
+Releases all GPU resources owned by this mesh. 
 
-Deletes VAO/\+VBO/\+EBO and instance VAO/\+VBOs if they were created. The mesh must not be in use by the GPU when destroyed (standard Open\+GL lifetime rules). 
+The destructor deletes\+:
+\begin{DoxyItemize}
+\item the element buffer
+\item the vertex buffer
+\item the regular VAO
+\item all per-\/instance buffers
+\item the instancing VAO
+\end{DoxyItemize}
+
+After deletion, the internal Open\+GL handles are reset to zero to avoid accidental reuse of stale IDs in debug scenarios. \+:content\+Reference\mbox{[}oaicite\+:9\mbox{]}\{index=9\}
+
+\begin{DoxyNote}{Note}
+This assumes the Open\+GL context is still valid at destruction time. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
 
@@ -172,13 +190,15 @@ void Mesh\+::\+Bind\+VAO (\begin{DoxyParamCaption}\item[{bool}]{instanced}{}\end
 
 
 
-Binds the appropriate VAO for drawing. 
+Binds the appropriate VAO for either regular or instanced rendering. 
 
-If instanced is true, binds instance\+VAO (which includes base vertex attributes + instance attributes). Otherwise binds the non-\/instanced VAO (vao).
+When instanced is false, this binds the standard VAO configured by \doxylink{class_mesh_a6f0136c650ed60f43587e3d8d0c121aa}{Setup\+Mesh()}. When instanced is true, this binds the dedicated instancing VAO configured by \doxylink{class_mesh_a66fa02b2a66182031bb00a9aec134526}{Setup\+Instance\+Attributes()}.
+
+This function is used internally by \doxylink{class_mesh_abf84fe4ef735490769268685087e0e32}{Draw()} and \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced()} before issuing the final Open\+GL draw call. \+:content\+Reference\mbox{[}oaicite\+:11\mbox{]}\{index=11\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em instanced} & Whether the draw call will be instanced. \\
+{\em instanced} & True to bind the instancing VAO, false to bind the standard VAO. \\
 \hline
 \end{DoxyParams}
 
@@ -200,53 +220,54 @@ void Mesh\+::\+Compute\+Local\+Bounds (\begin{DoxyParamCaption}\item[{const std\
 
 
 
-Computes an approximate local-\/space AABB half-\/size from vertex positions. 
+Computes a simple local-\/space bounding half-\/size from the input vertices. 
 
-Behavior\+:
+This helper scans the vertex positions, finds the local minimum and maximum XY extents, computes the size difference, and stores half of that size in local\+Half\+Size.
+
+The value is later used by \doxylink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Object\+::\+Get\+Bounding\+Radius()} as part of the engine\textquotesingle{}s approximate visibility and spatial checks.
+
+Special handling\+:
 \begin{DoxyItemize}
-\item If vertices is empty\+: local\+Half\+Size becomes (0.\+5, 0.\+5) as a conservative default.
-\item If vertices has one element\+: local\+Half\+Size becomes (0.\+0001, 0.\+0001) to avoid a zero-\/size bound.
-\item Otherwise\+: computes min/max over XY from all vertices and sets local\+Half\+Size = (max-\/min)\texorpdfstring{$\ast$}{*}0.5.
+\item if the mesh has no vertices, the bound defaults to (0.\+5, 0.\+5)
+\item if the mesh has exactly one vertex, a tiny non-\/zero bound is used
 \end{DoxyItemize}
-
-This function assumes mesh geometry is primarily 2D (XY plane), even though \doxylink{struct_vertex_a030819fdc241743bbd3e180a6b132ed3}{Vertex\+::position} is vec3.
 
 
 \begin{DoxyParams}{Parameters}
-{\em vertices} & \doxylink{struct_vertex}{Vertex} array used to compute bounds. \\
+{\em vertices} & Source vertex array used to estimate the local bound. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00175}{175}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00281}{281}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00176\ \ \ \ \ \{}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vertices.empty())}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.5f);}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertices.size()\ ==\ 1)}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.0001f);}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ glm::vec2\ minPos\ =\ vertices[0].position;}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ glm::vec2\ maxPos\ =\ vertices[1].position;}
-\DoxyCodeLine{00190\ }
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ v\ :\ vertices)}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ v.position;}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ minPos\ =\ glm::min(minPos,\ pos);}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ maxPos\ =\ glm::max(maxPos,\ pos);}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00197\ }
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ glm::vec2\ size\ =\ maxPos\ -\/\ minPos;}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ size\ *\ 0.5f;}
-\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vertices.empty())}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.5f);}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertices.size()\ ==\ 1)}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ glm::vec2(0.0001f);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ glm::vec2\ minPos\ =\ vertices[0].position;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ glm::vec2\ maxPos\ =\ vertices[1].position;}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ v\ :\ vertices)}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ v.position;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ minPos\ =\ glm::min(minPos,\ pos);}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ maxPos\ =\ glm::max(maxPos,\ pos);}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ glm::vec2\ size\ =\ maxPos\ -\/\ minPos;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}}\ =\ size\ *\ 0.5f;}
+\DoxyCodeLine{00306\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_mesh_abf84fe4ef735490769268685087e0e32}\index{Mesh@{Mesh}!Draw@{Draw}}
@@ -257,9 +278,17 @@ void Mesh\+::\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\h
 
 
 
-Issues a non-\/instanced draw call using this mesh\textquotesingle{}s topology. 
+Draws the mesh once using its currently stored geometry buffers. 
 
-Uses either gl\+Draw\+Elements (if use\+Index is true) or gl\+Draw\+Arrays (if use\+Index is false), mapping primitive\+Type to the appropriate Open\+GL primitive. 
+This function binds the regular VAO, converts the stored \doxylink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type} into an Open\+GL draw mode, and issues a single non-\/instanced draw call.
+
+The actual draw path depends on whether index data was provided at construction\+:
+\begin{DoxyItemize}
+\item indexed mesh -\/\texorpdfstring{$>$}{>} gl\+Draw\+Elements
+\item non-\/indexed -\/\texorpdfstring{$>$}{>} gl\+Draw\+Arrays
+\end{DoxyItemize}
+
+This function is used by the render manager for objects that are not currently rendered through the instancing path. 
 
 Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
 
@@ -288,13 +317,21 @@ void Mesh\+::\+Draw\+Instanced (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{
 
 
 
-Issues an instanced draw call using this mesh\textquotesingle{}s topology. 
+Draws the mesh multiple times in a single instanced draw call. 
 
-Uses either gl\+Draw\+Elements\+Instanced (if use\+Index is true) or gl\+Draw\+Arrays\+Instanced (if use\+Index is false). Instance attribute buffers must have been updated via \doxylink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{Update\+Instance\+Buffer()} prior to calling.
+This function binds the instancing VAO, converts the stored \doxylink{_mesh_8h_a240c1924416689e5700ff0d9f30539d9}{Primitive\+Type} into an Open\+GL draw mode, and issues an instanced draw call using the current instance buffers previously updated through \doxylink{class_mesh_a45673d65011bf8f70c0f7de2a37d7f6c}{Update\+Instance\+Buffer()}.
+
+The actual draw path depends on whether the mesh uses indices\+:
+\begin{DoxyItemize}
+\item indexed mesh -\/\texorpdfstring{$>$}{>} gl\+Draw\+Elements\+Instanced
+\item non-\/indexed -\/\texorpdfstring{$>$}{>} gl\+Draw\+Arrays\+Instanced
+\end{DoxyItemize}
+
+This path is used by \doxylink{class_render_manager}{Render\+Manager} when a batch of objects shares a compatible mesh/material combination and the material supports instancing.
 
 
 \begin{DoxyParams}{Parameters}
-{\em instance\+Count} & Number of instances to draw. \\
+{\em instance\+Count} & Number of instances to render in the batch. \\
 \hline
 \end{DoxyParams}
 
@@ -322,20 +359,28 @@ glm\+::vec2 Mesh\+::\+Get\+Local\+Bounds\+Half\+Size (\begin{DoxyParamCaption}{}
 
 
 
-Returns half of the local-\/space axis-\/aligned bounds size. 
+Returns the mesh\textquotesingle{}s local half-\/size computed from the original vertex positions. 
 
-This value is computed from vertex positions by \doxylink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{Compute\+Local\+Bounds()}. It is typically used as an approximate local-\/space size for visibility culling and debug bounds.
+This value is calculated in \doxylink{class_mesh_ad097772f26af95c8f7070cbb0e8cbfef}{Compute\+Local\+Bounds()} from the minimum and maximum vertex positions in local space. It represents half of the mesh\textquotesingle{}s width and height in local coordinates.
+
+The engine later uses this value to estimate an object\textquotesingle{}s bounding radius by multiplying it with the object\textquotesingle{}s scale and taking the vector length. This is used for view culling and related spatial checks.
+
+Special cases handled during bound computation\+:
+\begin{DoxyItemize}
+\item empty vertex list -\/\texorpdfstring{$>$}{>} defaults to 0.\+5f, 0.\+5f
+\item single vertex mesh -\/\texorpdfstring{$>$}{>} uses a very small half-\/size to avoid a zero-\/area bound
+\end{DoxyItemize}
 
 \begin{DoxyReturn}{Returns}
-Local bounds half-\/size in mesh local space. 
+Local-\/space half-\/size of the mesh as a 2D vector. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00099}{99}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00157}{157}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00099\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};\ \}}
+\DoxyCodeLine{00157\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}{localHalfSize}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_mesh_a66fa02b2a66182031bb00a9aec134526}\index{Mesh@{Mesh}!SetupInstanceAttributes@{SetupInstanceAttributes}}
@@ -346,17 +391,30 @@ void Mesh\+::\+Setup\+Instance\+Attributes (\begin{DoxyParamCaption}{}{}\end{Dox
 
 
 
-Configures vertex attribute state for instance data. 
+Creates and configures per-\/instance vertex attributes for instanced rendering. 
 
-Creates instance VAO/\+VBOs and sets up attribute pointers/divisors for\+:
+This function prepares the mesh for batched instanced draws by creating\+:
 \begin{DoxyItemize}
-\item mat4 transform (usually split across 4 vec4 attributes)
-\item vec4 color
-\item vec2 uv offset
-\item vec2 uv scale
+\item a dedicated instancing VAO
+\item four instance buffers used for per-\/instance data
 \end{DoxyItemize}
 
-The exact attribute locations must match the shader convention used by this engine (e.\+g., attributes named "{}i\+\_\+\+Model"{}, etc.). 
+The instanced layout contains\+:
+\begin{DoxyItemize}
+\item location 2\texorpdfstring{$\sim$}{\string~}5 \+: mat4 instance transform
+\item location 6 \+: vec4 instance color
+\item location 7 \+: vec2 instance UV offset
+\item location 8 \+: vec2 instance UV scale
+\end{DoxyItemize}
+
+Divisors are configured so that these attributes advance once per instance rather than once per vertex. If the mesh uses an index buffer, the same EBO is also attached to the instancing VAO. \+:content\+Reference\mbox{[}oaicite\+:12\mbox{]}\{index=12\}
+
+This function is not part of the normal public API. It is typically called indirectly through \doxylink{class_material_aea9bb91a6549dadd72c68d17100dc388}{Material\+::\+Enable\+Instancing()} after the material confirms that its shader exposes the required instancing attributes. \+:content\+Reference\mbox{[}oaicite\+:13\mbox{]}\{index=13\}
+
+\begin{DoxyNote}{Note}
+Calling this repeatedly is safe with respect to object creation checks, since the implementation only creates the VAO/\+VBO objects when they do not already exist. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
 
@@ -424,17 +482,31 @@ void Mesh\+::\+Setup\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::vector$<
 
 
 
-Uploads vertex/index data and configures base vertex attributes. 
+Uploads vertex and optional index data and configures the base VAO layout. 
 
-Creates and binds vao/vbo and uploads the vertex array. If indices is non-\/empty, creates/binds ebo and uploads indices, enabling indexed rendering and setting index\+Count.
+This function is called during construction and performs the core GPU setup for the mesh\+:
+\begin{DoxyItemize}
+\item determines whether indexed drawing will be used
+\item stores the effective draw count in index\+Count
+\item creates the regular VAO
+\item creates and uploads the vertex buffer
+\item binds vertex attributes for position and UV
+\item optionally creates and attaches an element buffer
+\end{DoxyItemize}
 
-Also configures vertex attribute pointers for the \doxylink{struct_vertex}{Vertex} layout (position + uv).
+\doxylink{struct_vertex}{Vertex} attributes are configured as\+:
+\begin{DoxyItemize}
+\item location 0 \+: vec3 position
+\item location 1 \+: vec2 uv
+\end{DoxyItemize}
+
+When indices are provided, index\+Count stores the number of indices. Otherwise, it stores the number of vertices, which becomes the draw count for gl\+Draw\+Arrays-\/based rendering. \+:content\+Reference\mbox{[}oaicite\+:16\mbox{]}\{index=16\}
 
 
 \begin{DoxyParams}{Parameters}
-{\em vertices} & \doxylink{struct_vertex}{Vertex} array to upload. \\
+{\em vertices} & \doxylink{struct_vertex}{Vertex} array to upload into the mesh VBO. \\
 \hline
-{\em indices} & Index array to upload (may be empty). \\
+{\em indices} & Optional index array to upload into the mesh EBO. \\
 \hline
 \end{DoxyParams}
 
@@ -479,26 +551,29 @@ void Mesh\+::\+Update\+Instance\+Buffer (\begin{DoxyParamCaption}\item[{const st
 
 
 
-Updates GPU instance buffers used for instanced drawing. 
+Uploads per-\/instance batch data into the mesh\textquotesingle{}s instance buffers. 
 
-Uploads per-\/instance arrays into instance\+VBO buffers so \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced()} can be executed. All arrays are expected to have the same length and match instance\+Count used in \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced()}.
-
-Typical contents\+:
+This function refreshes all instance buffers used by the instanced rendering path\+:
 \begin{DoxyItemize}
-\item transforms\+: model matrices for each instance.
-\item colors\+: per-\/instance color multiplier.
-\item uv\+Offsets / uv\+Scales\+: per-\/instance sprite sheet UV transform.
+\item transforms
+\item colors
+\item UV offsets
+\item UV scales
 \end{DoxyItemize}
+
+The render manager calls this immediately before \doxylink{class_mesh_ae2933e498cc249ab798bbf265dace77b}{Draw\+Instanced()} so that the GPU-\/side instance data matches the current batch contents for the frame.
+
+All buffers are uploaded using GL\+\_\+\+DYNAMIC\+\_\+\+DRAW because the data changes per frame or per batch.
 
 
 \begin{DoxyParams}{Parameters}
 {\em transforms} & Per-\/instance model matrices. \\
 \hline
-{\em colors} & Per-\/instance colors. \\
+{\em colors} & Per-\/instance tint colors. \\
 \hline
-{\em uv\+Offsets} & Per-\/instance UV offsets. \\
+{\em uv\+Offsets} & Per-\/instance UV offsets, commonly used for sprite-\/sheet animation. \\
 \hline
-{\em uv\+Scales} & Per-\/instance UV scales. \\
+{\em uv\+Scales} & Per-\/instance UV scales, commonly used for sprite-\/sheet animation. \\
 \hline
 \end{DoxyParams}
 
@@ -526,7 +601,7 @@ Definition at line \mbox{\hyperlink{_mesh_8cpp_source_l00152}{152}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00223}{223}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00333}{333}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_ae89f95e85ae7fa157545324aa5f5db7d}\index{Mesh@{Mesh}!indexCount@{indexCount}}
 \index{indexCount@{indexCount}!Mesh@{Mesh}}
@@ -536,7 +611,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00223}{223}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00224}{224}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00334}{334}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_ad41509844e200245ce71b4cc5441c504}\index{Mesh@{Mesh}!instanceVAO@{instanceVAO}}
 \index{instanceVAO@{instanceVAO}!Mesh@{Mesh}}
@@ -546,7 +621,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00224}{224}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00226}{226}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00336}{336}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_a33810b4cdfaae0d1eb1ada168cd3c1a5}\index{Mesh@{Mesh}!instanceVBO@{instanceVBO}}
 \index{instanceVBO@{instanceVBO}!Mesh@{Mesh}}
@@ -556,7 +631,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00226}{226}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00227}{227}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00337}{337}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_ab9d13fdb38eedf8e33aefa9f61056e95}\index{Mesh@{Mesh}!localHalfSize@{localHalfSize}}
 \index{localHalfSize@{localHalfSize}!Mesh@{Mesh}}
@@ -566,7 +641,7 @@ glm\+::vec2 Mesh\+::local\+Half\+Size\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00232}{232}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00342}{342}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_aa36ea23707449cf3c872cafa9068a4de}\index{Mesh@{Mesh}!Material@{Material}}
 \index{Material@{Material}!Mesh@{Mesh}}
@@ -576,7 +651,7 @@ friend Mesh\+::\+Material\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00059}{59}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00090}{90}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_a213090871212181b474b4a13d5b05d0d}\index{Mesh@{Mesh}!primitiveType@{primitiveType}}
 \index{primitiveType@{primitiveType}!Mesh@{Mesh}}
@@ -586,7 +661,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00059}{59}} of file \mbox{\
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00231}{231}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00341}{341}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_a99cf3d4862433af3b73292a510a6a179}\index{Mesh@{Mesh}!RenderManager@{RenderManager}}
 \index{RenderManager@{RenderManager}!Mesh@{Mesh}}
@@ -596,7 +671,7 @@ friend Mesh\+::\+Render\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00060}{60}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00091}{91}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_a3153eeca2bbde0037c365662bbeb52f1}\index{Mesh@{Mesh}!useIndex@{useIndex}}
 \index{useIndex@{useIndex}!Mesh@{Mesh}}
@@ -606,7 +681,7 @@ bool Mesh\+::use\+Index\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00229}{229}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00339}{339}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_a101a39d88bc5c8d33f0ebd6e77a60129}\index{Mesh@{Mesh}!vao@{vao}}
 \index{vao@{vao}!Mesh@{Mesh}}
@@ -616,7 +691,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00229}{229}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00221}{221}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00331}{331}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 \Hypertarget{class_mesh_ad8eff04c857fc1f1f42584af599f8267}\index{Mesh@{Mesh}!vbo@{vbo}}
 \index{vbo@{vbo}!Mesh@{Mesh}}
@@ -626,7 +701,7 @@ Definition at line \mbox{\hyperlink{_mesh_8h_source_l00221}{221}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{_mesh_8h_source_l00222}{222}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+Definition at line \mbox{\hyperlink{_mesh_8h_source_l00332}{332}} of file \mbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
 
 
 

@@ -2,7 +2,7 @@
 \hypertarget{struct_shader_source}{}\label{struct_shader_source}\index{ShaderSource@{ShaderSource}}
 
 
-\doxylink{class_shader}{Shader} source data for a single stage.  
+Stores one in-\/memory shader source produced by asynchronous file loading.  
 
 
 
@@ -19,9 +19,11 @@ std\+::string \mbox{\hyperlink{struct_shader_source_ab14f2db435cabdc1651c75344bb
 
 
 \doxysubsection{Detailed Description}
-\doxylink{class_shader}{Shader} source data for a single stage. 
+Stores one in-\/memory shader source produced by asynchronous file loading. 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00142}{142}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+\doxylink{struct_shader_source}{Shader\+Source} pairs a shader stage with the full source text read from disk. A \doxylink{struct_shader_result}{Shader\+Result} may contain multiple \doxylink{struct_shader_source}{Shader\+Source} entries that are later used to create and link a shader program on the main thread. 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00165}{165}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -34,7 +36,7 @@ std\+::string Shader\+Source\+::source}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00145}{145}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00168}{168}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_shader_source_a8cedb31bac20e900564eeeb48467640a}\index{ShaderSource@{ShaderSource}!stage@{stage}}
 \index{stage@{stage}!ShaderSource@{ShaderSource}}
@@ -44,7 +46,7 @@ Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00145}{145
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00144}{144}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00167}{167}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

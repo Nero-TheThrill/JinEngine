@@ -2,7 +2,7 @@
 \hypertarget{class_object}{}\label{class_object}\index{Object@{Object}}
 
 
-Base interface for all runtime entities managed by \doxylink{class_object_manager}{Object\+Manager} and rendered by \doxylink{class_render_manager}{Render\+Manager}.  
+Base abstract object class for all engine-\/managed runtime objects.  
 
 
 
@@ -19,106 +19,106 @@ Inheritance diagram for Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_a218968689a0b4e855c4de92eb6242bcb}{Object}} ()=delete
-\item 
+\begin{DoxyCompactList}\small\item\em Deleted default constructor. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Initializes the object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs the object\textquotesingle{}s initial setup phase. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_af71fa9147e1a1f17ca5e93cc599d8eef}{Late\+Init}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Second-\/phase initialization after all pending objects have completed \doxylink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init()}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs a secondary initialization phase after \doxylink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init()}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a6184ab2516fed16398670b75a2360859}{Update}} (float dt, const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Per-\/frame update. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the object\textquotesingle{}s main per-\/frame logic. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a8d36cf36a47b76a005590557116814e6}{Draw}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Per-\/frame draw hook. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Executes object-\/specific draw preparation logic before the renderer submits data. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_aceba19437c716d229fc247463c381da5}{Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Releases runtime resources owned by this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs the object\textquotesingle{}s primary cleanup phase. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_acbc48ef4fd5b14b01a681e8fef4aaa20}{Late\+Free}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context)=0
-\begin{DoxyCompactList}\small\item\em Second-\/phase free after all objects have completed \doxylink{class_object_aceba19437c716d229fc247463c381da5}{Free()}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs a late cleanup phase after \doxylink{class_object_aceba19437c716d229fc247463c381da5}{Free()}. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_object_a226f2ae2af766b77d83c09a4d766b725}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor for polymorphic deletion. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic deletion. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_object_a0230b42c88134134da384129e1a4d64d}{On\+Collision}} (\mbox{\hyperlink{class_object}{Object}} \texorpdfstring{$\ast$}{*}other)
-\begin{DoxyCompactList}\small\item\em Collision callback invoked when this object collides with another object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Receives a collision notification with another object. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_af92e9a809354c281d464011a1f009d02}{Is\+Alive}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether the object is alive. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is currently alive. \end{DoxyCompactList}\item 
 const bool \& \mbox{\hyperlink{class_object_a77092a4fc48339007ed32e7d48f6140a}{Is\+Visible}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether the object is visible. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object is currently visible. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a1905fc7497de984a176acdcf8ecb81be}{Set\+Visibility}} (bool \+\_\+is\+Visible)
-\begin{DoxyCompactList}\small\item\em Sets the visibility state. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets whether the object should be considered visible by the renderer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_abed008ac27116fcd520eed806751ed34}{Kill}} ()
-\begin{DoxyCompactList}\small\item\em Marks the object as dead. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Marks the object as no longer alive. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a5a8c0663fb3e668d16c8a045937a9c82}{Set\+Tag}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Sets the object tag used for lookup/grouping. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Assigns a user-\/defined object tag. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_a9744dc473026e6b7cba610d00f510e81}{Get\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s tag string. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_object_aeeca329acbcb4de9843012537efd02cc}{Get\+Render\+Layer\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the render-\/layer tag used for \doxylink{class_render_layer_manager}{Render\+Layer\+Manager} mapping. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the render layer tag assigned to this object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae14fd11d21f05d538d10813e53566152}{Set\+Render\+Layer}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Sets the render-\/layer tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Assigns the render layer tag used during render batch construction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a53ae391764eac5e3d62e52bf7441ceec}{Set\+Material}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Sets the material by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_object_aab1e520477fbd67aef665b8c8207a35d}{Set\+Material}} (\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}material\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets the material pointer directly. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ab521a1333884f821312dac04d176656d}{Get\+Material}} () const
-\begin{DoxyCompactList}\small\item\em Returns the assigned material pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resolves and assigns a material from \doxylink{class_render_manager}{Render\+Manager} using a resource tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_object_a59c5aa50483153339d2bcdfe500f5550}{Set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ material\+\_\+)
+\begin{DoxyCompactList}\small\item\em Assigns a material directly. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ \mbox{\hyperlink{class_object_a7ad7172879f1b2fd092561827aa2bbb1}{Get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Returns the currently assigned material resource. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a469da1fde04db75a05aad5cd30c6e4b2}{Set\+Mesh}} (const \mbox{\hyperlink{struct_engine_context}{Engine\+Context}} \&engine\+Context, const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Sets the mesh by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_object_ae94b6c3d2c0bdc27eff25f07390fdb58}{Set\+Mesh}} (\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets the mesh pointer directly. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad1325c6fcdb74f68110b0518bd7beb05}{Get\+Mesh}} () const
-\begin{DoxyCompactList}\small\item\em Returns the assigned mesh pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resolves and assigns a mesh from \doxylink{class_render_manager}{Render\+Manager} using a resource tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_object_a7bd73cf89491ef2986923815ed7c5219}{Set\+Mesh}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ mesh\+\_\+)
+\begin{DoxyCompactList}\small\item\em Assigns a mesh directly. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \mbox{\hyperlink{class_object_a54dba19ad0f92b77cb9f0ae61608b75d}{Get\+Mesh}} () const
+\begin{DoxyCompactList}\small\item\em Returns the currently assigned mesh resource. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_a2db79de87d0743178af0c8817ada974f}{Can\+Be\+Instanced}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether this object is eligible for instanced rendering. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether this object can participate in instanced rendering. \end{DoxyCompactList}\item 
 glm\+::mat4 \mbox{\hyperlink{class_object_aee07a084c7a7e462fe09a74a91f1bb45}{Get\+Transform2\+DMatrix}} ()
-\begin{DoxyCompactList}\small\item\em Returns the cached \doxylink{class_transform2_d}{Transform2D} matrix, updating it if necessary. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s current 2D transform matrix. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \& \mbox{\hyperlink{class_object_a453aea9866458ef777bbe908ac71b938}{Get\+Transform2D}} ()
-\begin{DoxyCompactList}\small\item\em Returns a mutable reference to the \doxylink{class_transform2_d}{Transform2D} component. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns mutable access to the internal \doxylink{class_transform2_d}{Transform2D}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a8d5b80a21f9fdb4e46f81936ae1d2b78}{Set\+Color}} (const glm\+::vec4 \&color\+\_\+)
-\begin{DoxyCompactList}\small\item\em Sets the per-\/object color used by the renderer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the object\textquotesingle{}s tint color. \end{DoxyCompactList}\item 
 const glm\+::vec4 \& \mbox{\hyperlink{class_object_adbcd6fb6a64f9921341d212558f23318}{Get\+Color}} ()
-\begin{DoxyCompactList}\small\item\em Returns the current per-\/object color. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s tint color. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_object_a73b8c8aca393668f11cef22b19b7070a}{Has\+Animation}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether the object currently has an animator attached. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object currently has a sprite animator attached. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a5037bc2d36bcecdb601fa135a8fc6bfc}{Get\+Sprite\+Animator}} () const
-\begin{DoxyCompactList}\small\item\em Returns the active \doxylink{class_sprite_animator}{Sprite\+Animator} pointer, if any. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the attached sprite animator. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_af39935a92d3881c1a0f2ca0a3c4ba027}{Attach\+Animator}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} $>$ anim)
-\begin{DoxyCompactList}\small\item\em Attaches an animator by transferring ownership. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_object_afdc6709946b43992d8dbb44c229adc0b}{Attach\+Animator}} (\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}sheet, float frame\+Time, bool loop=true)
-\begin{DoxyCompactList}\small\item\em Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a \doxylink{class_sprite_sheet}{Sprite\+Sheet} and playback settings. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Attaches an already-\/created sprite animator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_object_af7456f113bb930054b7937278b6a317d}{Attach\+Animator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} $>$ sheet, float frame\+Time, bool loop=true)
+\begin{DoxyCompactList}\small\item\em Creates and attaches a sprite animator from a sprite sheet. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ae3c65d98ad8b1c3fdae221a5390cc757}{Detach\+Animator}} ()
-\begin{DoxyCompactList}\small\item\em Detaches and destroys the current animator, if any. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Detaches and destroys the currently attached sprite animator. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a4ba9c8096492c37bf3db474b5c5f31a0}{Set\+Collider}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_collider}{Collider}} $>$ c)
-\begin{DoxyCompactList}\small\item\em Sets the collider by transferring ownership. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Assigns a collider to this object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_collider}{Collider}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad601234bc10ab7fbf84b1cf1e302f756}{Get\+Collider}} () const
-\begin{DoxyCompactList}\small\item\em Returns the current collider pointer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the currently attached collider. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a7ce1a12c241c5a64ec03e67ee17e1260}{Set\+Collision}} (\mbox{\hyperlink{class_object_manager}{Object\+Manager}} \&object\+Manager, const std\+::string \&tag, const std\+::vector$<$ std\+::string $>$ \&check\+Collision\+List)
-\begin{DoxyCompactList}\small\item\em Configures collision category and mask using \doxylink{class_object_manager}{Object\+Manager}\textquotesingle{}s collision registry. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Configures the object\textquotesingle{}s collision category and collision mask. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a76b94bea7f5f5e6454cd2c134ddc6260}{Get\+Collision\+Mask}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision mask used for collision filtering. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision mask bits for this object. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_object_a431dc9b1eab4227c9c5d002fae5ec017}{Get\+Collision\+Category}} () const
-\begin{DoxyCompactList}\small\item\em Returns the collision category used for collision filtering. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the collision category bit for this object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{Should\+Ignore\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Returns whether this object should ignore the active camera. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns whether the object should ignore the active render camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_a93406d31ceabece6e7fb08814ac188c5}{Set\+Ignore\+Camera}} (bool should\+Ignore\+Camera, \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*}camera\+For\+Transform\+Calc=nullptr)
-\begin{DoxyCompactList}\small\item\em Sets whether the object should ignore the active camera and optionally stores a reference camera. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables camera-\/ignoring behavior. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \mbox{\hyperlink{class_object_a2ce43cdb7eae414e94b4285dbe01a85c}{Get\+Type}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns this object\textquotesingle{}s runtime type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_a94edf37fadeb8c59420d35730d14464e}{Get\+Reference\+Camera}} () const
-\begin{DoxyCompactList}\small\item\em Returns the reference camera used when ignore\+Camera is enabled. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the camera reference used for camera-\/ignore correction. \end{DoxyCompactList}\item 
 virtual glm\+::vec2 \mbox{\hyperlink{class_object_a4c708099448203abe3182c8b0ae340ce}{Get\+World\+Position}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s world-\/space position used by systems like culling and debug drawing. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s current world position. \end{DoxyCompactList}\item 
 virtual glm\+::vec2 \mbox{\hyperlink{class_object_a8c2784b2a928fa1050d8a036091754c4}{Get\+World\+Scale}} () const
-\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s world-\/space scale used by systems like culling and collision sync. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the object\textquotesingle{}s current world scale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_acb3716809623d005e893452f2973b604}{Set\+Flip\+UV\+\_\+X}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Enables or disables horizontal UV flipping for this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables horizontal UV flipping. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_object_ac20a8c5f662aa6b8f7cc2e1da304c12f}{Set\+Flip\+UV\+\_\+Y}} (bool should\+Flip)
-\begin{DoxyCompactList}\small\item\em Enables or disables vertical UV flipping for this object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enables or disables vertical UV flipping. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{class_object_a9c9dd596d37ae4ab88ce7a33b725ba68}{Get\+UVFlip\+Vector}} () const
-\begin{DoxyCompactList}\small\item\em Returns a vector encoding UV flip multipliers used by the renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the UV flip multiplier vector used by the renderer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_object_ac31ad8e33d6fd852422f4605f287b2da}{Object}} (\mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} object\+Type)
-\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_object}{Object} with a concrete type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an object with an explicit runtime type. \end{DoxyCompactList}\item 
 virtual float \mbox{\hyperlink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Get\+Bounding\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Returns an approximate bounding radius used for camera visibility tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns an approximate bounding radius used for visibility testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -138,9 +138,9 @@ std\+::string \mbox{\hyperlink{class_object_aa00855f8cc3dc0f7fd06e2a76d523458}{r
 \item 
 \mbox{\hyperlink{class_transform2_d}{Transform2D}} \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}
 \item 
-\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}} = nullptr
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ \mbox{\hyperlink{class_object_af822711fb15809283931d0bfaa213b52}{material}}
 \item 
-\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}} = nullptr
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}
 \item 
 glm\+::vec4 \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}} = glm\+::vec4(1)
 \item 
@@ -164,35 +164,38 @@ friend \mbox{\hyperlink{class_object_a43cde657fec110a5fd0c24050d68065b}{Frustum\
 
 
 \doxysubsection{Detailed Description}
-Base interface for all runtime entities managed by \doxylink{class_object_manager}{Object\+Manager} and rendered by \doxylink{class_render_manager}{Render\+Manager}. 
+Base abstract object class for all engine-\/managed runtime objects. 
 
-\doxylink{class_object}{Object} defines the engine-\/level lifecycle and the common component set used by the renderer and collision system\+:
+\doxylink{class_object}{Object} is the common polymorphic foundation used by the engine to manage scene entities such as gameplay objects and text objects.
+
+This class stores and exposes the core shared state needed by multiple systems\+:
 \begin{DoxyItemize}
-\item Lifecycle\+: Init -\/\texorpdfstring{$>$}{>} Late\+Init -\/\texorpdfstring{$>$}{>} Update -\/\texorpdfstring{$>$}{>} Draw -\/\texorpdfstring{$>$}{>} Free -\/\texorpdfstring{$>$}{>} Late\+Free
-\item Rendering\+: \doxylink{class_transform2_d}{Transform2D}, Material\texorpdfstring{$\ast$}{*}, Mesh\texorpdfstring{$\ast$}{*}, render layer tag, per-\/object color, optional \doxylink{class_sprite_animator}{Sprite\+Animator}
-\item Collision\+: optional \doxylink{class_collider}{Collider} and collision category/mask filtering
+\item lifecycle state (alive / visible)
+\item transform data
+\item material and mesh references
+\item render layer tag
+\item tint color
+\item optional sprite animation
+\item optional collider
+\item collision category / mask bits
+\item camera-\/ignore behavior for HUD or screen-\/space style objects
+\item UV flip settings for mirrored rendering
 \end{DoxyItemize}
 
-Ownership notes\+:
+The renderer uses this class heavily during culling and draw submission. For example\+:
 \begin{DoxyItemize}
-\item \doxylink{class_object_manager}{Object\+Manager} owns \doxylink{class_object}{Object} instances via std\+::unique\+\_\+ptr$<$\+Object$>$.
-\item \doxylink{class_material}{Material} and \doxylink{class_mesh}{Mesh} are referenced as raw pointers and are owned/managed by \doxylink{class_render_manager}{Render\+Manager}.
-\item \doxylink{class_sprite_animator}{Sprite\+Animator} and \doxylink{class_collider}{Collider} are owned by the \doxylink{class_object}{Object} via std\+::unique\+\_\+ptr.
+\item \doxylink{class_frustum_culler}{Frustum\+Culler} checks \doxylink{class_object_af92e9a809354c281d464011a1f009d02}{Is\+Alive()}, \doxylink{class_object_a77092a4fc48339007ed32e7d48f6140a}{Is\+Visible()}, \doxylink{class_object_afe474c804f6bab83b89958356e1857af}{Should\+Ignore\+Camera()}, \doxylink{class_object_a4c708099448203abe3182c8b0ae340ce}{Get\+World\+Position()}, and \doxylink{class_object_ac5adc371bfc7b4216ffbc85907830e25}{Get\+Bounding\+Radius()}
+\item \doxylink{class_render_manager}{Render\+Manager} reads material, mesh, animation, color, transform, layer tag, and UV flip state when building render batches and issuing draws
 \end{DoxyItemize}
 
-Camera-\/space behavior\+:
-\begin{DoxyItemize}
-\item Objects can be configured to ignore the active camera and render in screen space.
-\item When ignoring the camera, a reference\+Camera may be used to compute world transforms consistently.
-\end{DoxyItemize}
+Derived classes must implement the full lifecycle interface and may override world-\/space queries when their positioning logic differs from the default transform-\/based behavior.
 
-Visibility and lifetime\+:
-\begin{DoxyItemize}
-\item is\+Alive controls whether the object is considered active; killed objects are freed and removed by \doxylink{class_object_manager}{Object\+Manager}.
-\item is\+Visible controls whether the object participates in rendering and (typically) debug visualization. 
-\end{DoxyItemize}
+\begin{DoxyNote}{Note}
+This class is abstract and cannot be instantiated directly. 
+\end{DoxyNote}
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00050}{50}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+
+Definition at line \mbox{\hyperlink{_object_8h_source_l00060}{60}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 
@@ -203,7 +206,11 @@ Definition at line \mbox{\hyperlink{_object_8h_source_l00050}{50}} of file \mbox
 {\footnotesize\ttfamily \label{class_object_a218968689a0b4e855c4de92eb6242bcb} 
 Object\+::\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-\Hypertarget{class_object_a226f2ae2af766b77d83c09a4d766b725}\index{Object@{Object}!````~Object@{\texorpdfstring{$\sim$}{\string~}Object}}
+
+
+Deleted default constructor. 
+
+Every \doxylink{class_object}{Object} must be created with an explicit \doxylink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} through the protected constructor so the engine can distinguish its runtime category. \Hypertarget{class_object_a226f2ae2af766b77d83c09a4d766b725}\index{Object@{Object}!````~Object@{\texorpdfstring{$\sim$}{\string~}Object}}
 \index{````~Object@{\texorpdfstring{$\sim$}{\string~}Object}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Object()}{\string~Object()}}
 {\footnotesize\ttfamily \label{class_object_a226f2ae2af766b77d83c09a4d766b725} 
@@ -211,7 +218,7 @@ virtual Object\+::\texorpdfstring{$\sim$}{\string~}\+Object (\begin{DoxyParamCap
 
 
 
-Virtual destructor for polymorphic deletion. 
+Virtual destructor for safe polymorphic deletion. 
 
 \Hypertarget{class_object_ac31ad8e33d6fd852422f4605f287b2da}\index{Object@{Object}!Object@{Object}}
 \index{Object@{Object}!Object@{Object}}
@@ -221,53 +228,53 @@ Object\+::\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_object_8h_a
 
 
 
-Constructs an \doxylink{class_object}{Object} with a concrete type. 
-
-Derived classes must call this constructor to set the object type.
+Constructs an object with an explicit runtime type. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em object\+Type} & Concrete object type. \\
+{\em object\+Type} & Runtime type assigned to this object. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00467}{467}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00562}{562}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00467\ :\ \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}}(objectType)\ \{\}}
+\DoxyCodeLine{00562\ :\ \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}}(objectType)\ \{\}}
 
 \end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_object_afdc6709946b43992d8dbb44c229adc0b}\index{Object@{Object}!AttachAnimator@{AttachAnimator}}
+\Hypertarget{class_object_af7456f113bb930054b7937278b6a317d}\index{Object@{Object}!AttachAnimator@{AttachAnimator}}
 \index{AttachAnimator@{AttachAnimator}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{AttachAnimator()}{AttachAnimator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_object_afdc6709946b43992d8dbb44c229adc0b} 
-void Object\+::\+Attach\+Animator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} \texorpdfstring{$\ast$}{*}}]{sheet}{, }\item[{float}]{frame\+Time}{, }\item[{bool}]{loop}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_object_af7456f113bb930054b7937278b6a317d} 
+void Object\+::\+Attach\+Animator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sprite_sheet}{Sprite\+Sheet}} $>$}]{sheet}{, }\item[{float}]{frame\+Time}{, }\item[{bool}]{loop}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Creates and attaches a \doxylink{class_sprite_animator}{Sprite\+Animator} from a \doxylink{class_sprite_sheet}{Sprite\+Sheet} and playback settings. 
+Creates and attaches a sprite animator from a sprite sheet. 
+
+This helper constructs a \doxylink{class_sprite_animator}{Sprite\+Animator} in place using the given sprite sheet, frame duration, and looping policy.
 
 
 \begin{DoxyParams}{Parameters}
-{\em sheet} & Sprite sheet to use. \\
+{\em sheet} & Sprite sheet used by the animator. \\
 \hline
-{\em frame\+Time} & Seconds per frame. \\
+{\em frame\+Time} & Duration of each frame. \\
 \hline
-{\em loop} & Whether to loop playback. \\
+{\em loop} & Whether the animation should loop. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00334}{334}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00402}{402}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00334\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ std::make\_unique<SpriteAnimator>(sheet,\ frameTime,\ loop);\ \}}
+\DoxyCodeLine{00402\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ std::make\_unique<SpriteAnimator>(sheet,\ frameTime,\ loop);\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_af39935a92d3881c1a0f2ca0a3c4ba027}\index{Object@{Object}!AttachAnimator@{AttachAnimator}}
@@ -278,20 +285,20 @@ void Object\+::\+Attach\+Animator (\begin{DoxyParamCaption}\item[{std\+::unique\
 
 
 
-Attaches an animator by transferring ownership. 
+Attaches an already-\/created sprite animator. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em anim} & Animator instance (ownership transferred). \\
+{\em anim} & Unique ownership of the animator to attach. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00325}{325}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00389}{389}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00325\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ std::move(anim);\ \}}
+\DoxyCodeLine{00389\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ std::move(anim);\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a2db79de87d0743178af0c8817ada974f}\index{Object@{Object}!CanBeInstanced@{CanBeInstanced}}
@@ -302,17 +309,19 @@ bool Object\+::\+Can\+Be\+Instanced (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Returns whether this object is eligible for instanced rendering. 
+Returns whether this object can participate in instanced rendering. 
 
-Typical requirements in this engine\+:
+This function checks\+:
 \begin{DoxyItemize}
-\item A valid \doxylink{class_mesh}{Mesh} and \doxylink{class_material}{Material} exist.
-\item The material\textquotesingle{}s shader supports the instancing attribute layout (e.\+g., "{}i\+\_\+\+Model"{}).
-\item The object is not using per-\/object features that break batching.
+\item that the mesh weak\+\_\+ptr can be locked
+\item that the material weak\+\_\+ptr can be locked
+\item that the material reports instancing support
 \end{DoxyItemize}
 
+It does not guarantee that the object will always be rendered through an instanced batch, but it is used by the renderer as a quick eligibility test.
+
 \begin{DoxyReturn}{Returns}
-True if the object can be included in an instanced batch. 
+True if both mesh/material exist and the material supports instancing. 
 \end{DoxyReturn}
 
 
@@ -321,10 +330,14 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00064}{64}} of file \mb
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00065\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}}\ ||\ !\mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}}-\/>IsInstancingSupported())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{auto}\ meshPtr\ =\ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}.lock();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{auto}\ materialPtr\ =\ \mbox{\hyperlink{class_object_af822711fb15809283931d0bfaa213b52}{material}}.lock();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (!meshPtr\ ||\ !materialPtr)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (!materialPtr-\/>IsInstancingSupported())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00073\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_ae3c65d98ad8b1c3fdae221a5390cc757}\index{Object@{Object}!DetachAnimator@{DetachAnimator}}
@@ -335,15 +348,15 @@ void Object\+::\+Detach\+Animator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 
 
-Detaches and destroys the current animator, if any. 
+Detaches and destroys the currently attached sprite animator. 
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00339}{339}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00407}{407}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00339\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00407\ \{\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ =\ \textcolor{keyword}{nullptr};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a8d36cf36a47b76a005590557116814e6}\index{Object@{Object}!Draw@{Draw}}
@@ -354,13 +367,15 @@ virtual void Object\+::\+Draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Per-\/frame draw hook. 
+Executes object-\/specific draw preparation logic before the renderer submits data. 
 
-In this engine architecture, draw submission is typically handled by Object\+Manager/\+Render\+Manager using the object\textquotesingle{}s Material/\+Mesh/\+Transform. This function exists for objects that need explicit draw-\/time behavior or debug submission.
+This function is called from the rendering path and is intended for object-\/specific draw-\/time preparation. In the current engine flow, \doxylink{class_render_manager}{Render\+Manager} may call \doxylink{class_object_a8d36cf36a47b76a005590557116814e6}{Draw()} before sending material data and issuing the final mesh draw call, so derived classes can use this hook to update uniforms or perform other per-\/object render setup.
+
+Objects should not assume this function alone performs the full Open\+GL draw. The renderer still controls actual batch submission and mesh rendering.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during drawing. \\
 \hline
 \end{DoxyParams}
 
@@ -375,13 +390,13 @@ virtual void Object\+::\+Free (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Releases runtime resources owned by this object. 
+Performs the object\textquotesingle{}s primary cleanup phase. 
 
-Called when the object is removed (killed) or when the owning \doxylink{class_game_state}{Game\+State} is being freed. Use this to release or unregister external references and to clear owned data.
+Derived classes should release or detach runtime resources that are no longer needed before the object is fully removed.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during cleanup. \\
 \hline
 \end{DoxyParams}
 
@@ -396,12 +411,22 @@ float Object\+::\+Get\+Bounding\+Radius (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Returns an approximate bounding radius used for camera visibility tests. 
+Returns an approximate bounding radius used for visibility testing. 
 
-\doxylink{class_frustum_culler}{Frustum\+Culler} uses this radius with \doxylink{class_object_a4c708099448203abe3182c8b0ae340ce}{Get\+World\+Position()} to decide whether the object is in view. Derived classes can override to provide tighter bounds.
+The default implementation\+:
+\begin{DoxyItemize}
+\item reads the mesh\textquotesingle{}s local half-\/size if a mesh exists
+\item falls back to a default half-\/size of (0.\+5, 0.\+5) otherwise
+\item multiplies the half-\/size by the current transform scale
+\item returns the vector length as an approximate world-\/space radius
+\end{DoxyItemize}
+
+\doxylink{class_frustum_culler}{Frustum\+Culler} uses this value together with \doxylink{class_object_a4c708099448203abe3182c8b0ae340ce}{Get\+World\+Position()} when deciding whether an object is inside the current camera view.
+
+Derived classes may override this if they need a more accurate bound.
 
 \begin{DoxyReturn}{Returns}
-Bounding radius in world units. 
+Approximate world-\/space bounding radius. 
 \end{DoxyReturn}
 
 
@@ -409,15 +434,17 @@ Reimplemented in \mbox{\hyperlink{class_text_object_a76097945db69268cb1970762ad1
 
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00152}{152}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00150\ \{}
-\DoxyCodeLine{00151\ \ \ \ \ glm::vec2\ halfSize\ =\ \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}}\ ?\ \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}}-\/>GetLocalBoundsHalfSize()\ :\ glm::vec2(0.5f);}
-\DoxyCodeLine{00152\ \ \ \ \ glm::vec2\ scaled\ =\ halfSize\ *\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale();}
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::length(scaled);}
-\DoxyCodeLine{00154\ \}}
+\DoxyCodeLine{00153\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{auto}\ meshPtr\ =\ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}.lock();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ glm::vec2\ halfSize\ =\ meshPtr\ ?\ meshPtr-\/>GetLocalBoundsHalfSize()\ :\ glm::vec2(0.5f);}
+\DoxyCodeLine{00157\ \ \ \ \ glm::vec2\ scaled\ =\ halfSize\ *\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale();}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::length(scaled);}
+\DoxyCodeLine{00159\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_ad601234bc10ab7fbf84b1cf1e302f756}\index{Object@{Object}!GetCollider@{GetCollider}}
@@ -428,18 +455,18 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00149}{149}} of file \m
 
 
 
-Returns the current collider pointer. 
+Returns the currently attached collider. 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{class_collider}{Collider} pointer or nullptr. 
+Raw pointer to the collider, or nullptr if none is attached. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00353}{353}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00424}{424}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00353\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}.get();\ \}}
+\DoxyCodeLine{00424\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}.get();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a431dc9b1eab4227c9c5d002fae5ec017}\index{Object@{Object}!GetCollisionCategory@{GetCollisionCategory}}
@@ -450,15 +477,18 @@ uint32\+\_\+t Object\+::\+Get\+Collision\+Category (\begin{DoxyParamCaption}{}{}
 
 
 
-Returns the collision category used for collision filtering. 
+Returns the collision category bit for this object. 
+
+\begin{DoxyReturn}{Returns}
+Bit representing this object\textquotesingle{}s collision category. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_object_8h_source_l00377}{377}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00455}{455}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00377\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collisionCategory}};\ \}}
+\DoxyCodeLine{00455\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collisionCategory}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a76b94bea7f5f5e6454cd2c134ddc6260}\index{Object@{Object}!GetCollisionMask@{GetCollisionMask}}
@@ -469,15 +499,18 @@ uint32\+\_\+t Object\+::\+Get\+Collision\+Mask (\begin{DoxyParamCaption}{}{}\end
 
 
 
-Returns the collision mask used for collision filtering. 
+Returns the collision mask bits for this object. 
+
+\begin{DoxyReturn}{Returns}
+Bitmask describing which categories this object can collide with. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_object_8h_source_l00372}{372}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00448}{448}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00372\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}};\ \}}
+\DoxyCodeLine{00448\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_adbcd6fb6a64f9921341d212558f23318}\index{Object@{Object}!GetColor@{GetColor}}
@@ -488,31 +521,36 @@ const glm\+::vec4 \& Object\+::\+Get\+Color (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Returns the current per-\/object color. 
+Returns the object\textquotesingle{}s tint color. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the stored RGBA tint color. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00087\ \{}
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}};}
-\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}};}
+\DoxyCodeLine{00092\ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_object_ab521a1333884f821312dac04d176656d}\index{Object@{Object}!GetMaterial@{GetMaterial}}
+\Hypertarget{class_object_a7ad7172879f1b2fd092561827aa2bbb1}\index{Object@{Object}!GetMaterial@{GetMaterial}}
 \index{GetMaterial@{GetMaterial}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{GetMaterial()}{GetMaterial()}}
-{\footnotesize\ttfamily \label{class_object_ab521a1333884f821312dac04d176656d} 
-\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*} Object\+::\+Get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{class_object_a7ad7172879f1b2fd092561827aa2bbb1} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$ Object\+::\+Get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
 
 
 
-Returns the assigned material pointer. 
+Returns the currently assigned material resource. 
+
+The internally stored weak\+\_\+ptr is locked before being returned. If the resource has already expired, this returns nullptr.
 
 \begin{DoxyReturn}{Returns}
-\doxylink{class_material}{Material} pointer (may be nullptr if not assigned). 
+Shared pointer to the assigned material, or nullptr if expired. 
 \end{DoxyReturn}
 
 
@@ -521,22 +559,24 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00049}{49}} of file \mb
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00050\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_af822711fb15809283931d0bfaa213b52}{material}}.lock();}
 \DoxyCodeLine{00052\ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_object_ad1325c6fcdb74f68110b0518bd7beb05}\index{Object@{Object}!GetMesh@{GetMesh}}
+\Hypertarget{class_object_a54dba19ad0f92b77cb9f0ae61608b75d}\index{Object@{Object}!GetMesh@{GetMesh}}
 \index{GetMesh@{GetMesh}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{GetMesh()}{GetMesh()}}
-{\footnotesize\ttfamily \label{class_object_ad1325c6fcdb74f68110b0518bd7beb05} 
-\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*} Object\+::\+Get\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{class_object_a54dba19ad0f92b77cb9f0ae61608b75d} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ Object\+::\+Get\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
 
 
 
-Returns the assigned mesh pointer. 
+Returns the currently assigned mesh resource. 
+
+The internally stored weak\+\_\+ptr is locked before being returned. If the resource has already expired, this returns nullptr.
 
 \begin{DoxyReturn}{Returns}
-\doxylink{class_mesh}{Mesh} pointer (may be nullptr if not assigned). 
+Shared pointer to the assigned mesh, or nullptr if expired. 
 \end{DoxyReturn}
 
 
@@ -545,7 +585,7 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00059}{59}} of file \mb
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00060\ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}.lock();}
 \DoxyCodeLine{00062\ \}}
 
 \end{DoxyCode}
@@ -557,18 +597,18 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00059}{59}} of file \mb
 
 
 
-Returns the reference camera used when ignore\+Camera is enabled. 
+Returns the camera reference used for camera-\/ignore correction. 
 
 \begin{DoxyReturn}{Returns}
-Camera pointer or nullptr. 
+Pointer to the reference camera, or nullptr if none is assigned. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00410}{410}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00495}{495}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00410\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}};\ \}}
+\DoxyCodeLine{00495\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_aeeca329acbcb4de9843012537efd02cc}\index{Object@{Object}!GetRenderLayerTag@{GetRenderLayerTag}}
@@ -579,9 +619,14 @@ const std\+::string \& Object\+::\+Get\+Render\+Layer\+Tag (\begin{DoxyParamCapt
 
 
 
-Returns the render-\/layer tag used for \doxylink{class_render_layer_manager}{Render\+Layer\+Manager} mapping. 
+Returns the render layer tag assigned to this object. 
 
-\doxylink{class_render_manager}{Render\+Manager} resolves this string into a numeric layer ID and uses it as the top-\/level ordering key. 
+\doxylink{class_render_manager}{Render\+Manager} uses this tag to resolve a layer ID through the render layer manager when building render batches.
+
+\begin{DoxyReturn}{Returns}
+Reference to the render layer tag. 
+\end{DoxyReturn}
+
 
 Definition at line \mbox{\hyperlink{_object_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
@@ -600,10 +645,10 @@ virtual \mbox{\hyperlink{class_sprite_animator}{Sprite\+Animator}} \texorpdfstri
 
 
 
-Returns the active \doxylink{class_sprite_animator}{Sprite\+Animator} pointer, if any. 
+Returns the attached sprite animator. 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{class_sprite_animator}{Sprite\+Animator} pointer or nullptr. 
+Raw pointer to the attached \doxylink{class_sprite_animator}{Sprite\+Animator}, or nullptr if none is attached. 
 \end{DoxyReturn}
 
 
@@ -611,11 +656,11 @@ Reimplemented in \mbox{\hyperlink{class_text_object_a35bec9d96e5bf82770bef2fa3a9
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00318}{318}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00382}{382}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00318\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}.get();\ \}}
+\DoxyCodeLine{00382\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}.get();\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a9744dc473026e6b7cba610d00f510e81}\index{Object@{Object}!GetTag@{GetTag}}
@@ -626,8 +671,11 @@ const std\+::string \& Object\+::\+Get\+Tag (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Returns the object tag. 
+Returns the object\textquotesingle{}s tag string. 
 
+\begin{DoxyReturn}{Returns}
+Reference to the stored object tag. 
+\end{DoxyReturn}
 
 
 Definition at line \mbox{\hyperlink{_object_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
@@ -647,17 +695,22 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00028}{28}} of file \mb
 
 
 
-Returns a mutable reference to the \doxylink{class_transform2_d}{Transform2D} component. 
+Returns mutable access to the internal \doxylink{class_transform2_d}{Transform2D}. 
+
+This allows derived classes or engine-\/side code to modify position, scale, rotation, depth, and other transform data directly.
+
+\begin{DoxyReturn}{Returns}
+Reference to the internal \doxylink{class_transform2_d}{Transform2D} instance. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00077\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}};}
-\DoxyCodeLine{00079\ \}}
+\DoxyCodeLine{00080\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}};}
+\DoxyCodeLine{00082\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_aee07a084c7a7e462fe09a74a91f1bb45}\index{Object@{Object}!GetTransform2DMatrix@{GetTransform2DMatrix}}
@@ -668,22 +721,22 @@ glm\+::mat4 Object\+::\+Get\+Transform2\+DMatrix (\begin{DoxyParamCaption}{}{}\e
 
 
 
-Returns the cached \doxylink{class_transform2_d}{Transform2D} matrix, updating it if necessary. 
+Returns the object\textquotesingle{}s current 2D transform matrix. 
 
-Uses \doxylink{class_transform2_d_a86e9a6ffac2c382a9e3467f8331bf86d}{Transform2\+D\+::\+Get\+Matrix()} internally. When ignore\+Camera is enabled, the returned matrix may be computed relative to reference\+Camera depending on Set\+Ignore\+Camera configuration.
+This is typically used by the renderer when preparing the model matrix for normal or instanced rendering.
 
 \begin{DoxyReturn}{Returns}
-Model matrix for this object. 
+Current transform matrix generated from \doxylink{class_transform2_d}{Transform2D}. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00072\ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetMatrix();}
-\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetMatrix();}
+\DoxyCodeLine{00077\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a2ce43cdb7eae414e94b4285dbe01a85c}\index{Object@{Object}!GetType@{GetType}}
@@ -694,15 +747,18 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00071}{71}} of file \mb
 
 
 
-Returns the object type. 
+Returns this object\textquotesingle{}s runtime type. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} assigned at construction. 
+\end{DoxyReturn}
 
 
-
-Definition at line \mbox{\hyperlink{_object_8h_source_l00403}{403}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00488}{488}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00403\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}};\ \}}
+\DoxyCodeLine{00488\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}{type}};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a9c9dd596d37ae4ab88ce7a33b725ba68}\index{Object@{Object}!GetUVFlipVector@{GetUVFlipVector}}
@@ -713,28 +769,22 @@ glm\+::vec2 Object\+::\+Get\+UVFlip\+Vector (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Returns a vector encoding UV flip multipliers used by the renderer. 
+Returns the UV flip multiplier vector used by the renderer. 
 
-Common convention is\+:
-\begin{DoxyItemize}
-\item (1, 1) when not flipped
-\item (-\/1, 1) for X flip
-\item (1, -\/1) for Y flip
-\item (-\/1, -\/1) for both
-\end{DoxyItemize}
+The returned vector is typically either (1,1), (-\/1,1), (1,-\/1), or (-\/1,-\/1). \doxylink{class_render_manager}{Render\+Manager} multiplies the model matrix by a scale derived from this value before drawing.
 
 \begin{DoxyReturn}{Returns}
 UV flip multiplier vector. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00144\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flipUV\_X}}\ ?\ -\/1.0f\ :\ 1.0f,\ \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flipUV\_Y}}\ ?\ -\/1.0f\ :\ 1.0f\ \};}
-\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00147\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flipUV\_X}}\ ?\ -\/1.0f\ :\ 1.0f,\ \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flipUV\_Y}}\ ?\ -\/1.0f\ :\ 1.0f\ \};}
+\DoxyCodeLine{00149\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a4c708099448203abe3182c8b0ae340ce}\index{Object@{Object}!GetWorldPosition@{GetWorldPosition}}
@@ -745,35 +795,44 @@ glm\+::vec2 Object\+::\+Get\+World\+Position (\begin{DoxyParamCaption}{}{}\end{D
 
 
 
-Returns the object\textquotesingle{}s world-\/space position used by systems like culling and debug drawing. 
+Returns the object\textquotesingle{}s current world position. 
 
-Default implementation reads \doxylink{class_transform2_d}{Transform2D} position and may adjust based on ignore\+Camera/reference\+Camera depending on engine conventions. 
+By default, this returns \doxylink{class_transform2_d_aa4c38c37820eaa6a4c61ee09f57d5053}{Transform2\+D\+::\+Get\+Position()}.
+
+If camera-\/ignore mode is enabled and a reference camera exists, the current implementation applies a correction using the camera position and zoom so that screen-\/space style objects can still participate in rendering and culling in a consistent way.
+
+Derived classes may override this if they define world position differently.
+
+\begin{DoxyReturn}{Returns}
+Current world position used by engine systems. 
+\end{DoxyReturn}
+
 
 Reimplemented in \mbox{\hyperlink{class_text_object_ae46387856cc2195661fd838ad862e516}{Text\+Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00116\ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{ShouldIgnoreCamera}}()\ \&\&\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}})}
-\DoxyCodeLine{00118\ \ \ \ \ \{}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zoom\ =\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetZoom();}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ glm::vec2\ camPos\ =\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetPosition();}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ glm::vec2\ screenSpace\ =\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetPosition();}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ glm::vec2\ offset\ =\ glm::vec2(1.0f\ /\ zoom);}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ glm::vec2\ corrected\ =\ (camPos+\ screenSpace)\ *\ offset;}
+\DoxyCodeLine{00119\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{ShouldIgnoreCamera}}()\ \&\&\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}})}
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zoom\ =\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetZoom();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ glm::vec2\ camPos\ =\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetPosition();}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ glm::vec2\ screenSpace\ =\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetPosition();}
 \DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ corrected;}
-\DoxyCodeLine{00127\ \ \ \ \ \}}
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00129\ \ \ \ \ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetPosition();}
-\DoxyCodeLine{00131\ \ \ \ \ \}}
-\DoxyCodeLine{00132\ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ glm::vec2\ offset\ =\ glm::vec2(1.0f\ /\ zoom);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ glm::vec2\ corrected\ =\ (camPos+\ screenSpace)\ *\ offset;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ corrected;}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetPosition();}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a8c2784b2a928fa1050d8a036091754c4}\index{Object@{Object}!GetWorldScale@{GetWorldScale}}
@@ -784,24 +843,33 @@ glm\+::vec2 Object\+::\+Get\+World\+Scale (\begin{DoxyParamCaption}{}{}\end{Doxy
 
 
 
-Returns the object\textquotesingle{}s world-\/space scale used by systems like culling and collision sync. 
+Returns the object\textquotesingle{}s current world scale. 
 
-Default implementation reads \doxylink{class_transform2_d}{Transform2D} scale and may adjust based on ignore\+Camera/reference\+Camera depending on engine conventions. 
+By default, this returns \doxylink{class_transform2_d_a132b1deed4b9b9224325dd7e6dd36476}{Transform2\+D\+::\+Get\+Scale()}.
+
+If camera-\/ignore mode is enabled and a reference camera exists, the current implementation divides the transform scale by camera zoom so the effective screen-\/space size remains stable relative to the view.
+
+Derived classes may override this if they define scale differently.
+
+\begin{DoxyReturn}{Returns}
+Current world scale used by engine systems. 
+\end{DoxyReturn}
+
 
 Reimplemented in \mbox{\hyperlink{class_text_object_aaa922c3c1925bcd634fd80a56f5a9e03}{Text\+Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00135}{135}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00136\ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{ShouldIgnoreCamera}}()\ \&\&\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}})}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale()\ /\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetZoom();}
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale();}
-\DoxyCodeLine{00141\ \}}
+\DoxyCodeLine{00139\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_afe474c804f6bab83b89958356e1857af}{ShouldIgnoreCamera}}()\ \&\&\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}})}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale()\ /\ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}-\/>GetZoom();}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab9fcb18ac9136f0354dfc053967fe892}{transform2D}}.GetScale();}
+\DoxyCodeLine{00144\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a73b8c8aca393668f11cef22b19b7070a}\index{Object@{Object}!HasAnimation@{HasAnimation}}
@@ -812,19 +880,22 @@ virtual bool Object\+::\+Has\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Returns whether the object currently has an animator attached. 
+Returns whether the object currently has a sprite animator attached. 
 
-Default implementation reports true when sprite\+Animator is non-\/null. \doxylink{class_text_object}{Text\+Object} overrides this to always return false. 
+\begin{DoxyReturn}{Returns}
+True if a \doxylink{class_sprite_animator}{Sprite\+Animator} exists; otherwise false. 
+\end{DoxyReturn}
+
 
 Reimplemented in \mbox{\hyperlink{class_text_object_aa9c94b7ea10661860492032d94c1c08e}{Text\+Object}}.
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00311}{311}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00375}{375}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00311\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ !=\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00375\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab373c4205c0460c9590f473b6c0c8304}{spriteAnimator}}\ !=\ \textcolor{keyword}{nullptr};\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}\index{Object@{Object}!Init@{Init}}
@@ -835,13 +906,15 @@ virtual void Object\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyper
 
 
 
-Initializes the object. 
+Performs the object\textquotesingle{}s initial setup phase. 
 
-Called once when the object is activated from the pending list. Use this to request engine resources (materials, meshes, spritesheets) and initialize runtime state.
+This function is intended for the first initialization stage after the object is created and inserted into the engine flow. Derived classes should allocate or bind resources, initialize state, and prepare anything needed before the object begins normal updates.
+
+The exact call timing depends on the object/state management flow used by the engine.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during initialization. \\
 \hline
 \end{DoxyParams}
 
@@ -856,12 +929,12 @@ const bool \& Object\+::\+Is\+Alive (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Returns whether the object is alive. 
+Returns whether the object is currently alive. 
 
-When false, \doxylink{class_object_manager}{Object\+Manager} will call Free/\+Late\+Free and remove the object from active lists.
+An object marked as not alive is skipped by systems such as visibility/culling and collision insertion logic.
 
 \begin{DoxyReturn}{Returns}
-Reference to the alive flag. 
+True if the object is alive; otherwise false. 
 \end{DoxyReturn}
 
 
@@ -882,12 +955,12 @@ const bool \& Object\+::\+Is\+Visible (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 
 
 
-Returns whether the object is visible. 
+Returns whether the object is currently visible. 
 
-Invisible objects are typically skipped during render submission and debug drawing.
+Invisible objects are skipped by rendering-\/related systems even if they otherwise remain alive in the engine.
 
 \begin{DoxyReturn}{Returns}
-Reference to the visibility flag. 
+True if the object is visible; otherwise false. 
 \end{DoxyReturn}
 
 
@@ -908,9 +981,9 @@ void Object\+::\+Kill (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
-Marks the object as dead. 
+Marks the object as no longer alive. 
 
-Equivalent to setting is\+Alive to false. The object is not immediately destroyed; it will be freed and removed by \doxylink{class_object_manager}{Object\+Manager} at the appropriate point in the frame. 
+This does not directly delete the object. It only changes the alive flag, allowing engine systems to ignore the object and later remove it safely through their own lifecycle management flow. 
 
 Definition at line \mbox{\hyperlink{_object_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
@@ -929,13 +1002,13 @@ virtual void Object\+::\+Late\+Free (\begin{DoxyParamCaption}\item[{const \mbox{
 
 
 
-Second-\/phase free after all objects have completed \doxylink{class_object_aceba19437c716d229fc247463c381da5}{Free()}. 
+Performs a late cleanup phase after \doxylink{class_object_aceba19437c716d229fc247463c381da5}{Free()}. 
 
-Mirrors \doxylink{class_object_af71fa9147e1a1f17ca5e93cc599d8eef}{Late\+Init()}. Use this for teardown that depends on other objects still existing during \doxylink{class_object_aceba19437c716d229fc247463c381da5}{Free()}.
+This hook exists for cases where destruction work should happen after the main cleanup phase, such as deferred dependency release or cleanup ordering.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during late cleanup. \\
 \hline
 \end{DoxyParams}
 
@@ -950,13 +1023,13 @@ virtual void Object\+::\+Late\+Init (\begin{DoxyParamCaption}\item[{const \mbox{
 
 
 
-Second-\/phase initialization after all pending objects have completed \doxylink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init()}. 
+Performs a secondary initialization phase after \doxylink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init()}. 
 
-This phase is intended for logic that depends on other objects existing and being initialized (e.\+g., acquiring pointers from \doxylink{class_object_manager}{Object\+Manager} queries, registering callbacks, resolving references).
+This hook exists for objects that need a follow-\/up initialization step after the main \doxylink{class_object_a97dc6d6a1c56efaa682b8eef6dd4384b}{Init()} phase has completed, such as resolving dependencies on other objects or resources that are expected to exist by then.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during late initialization. \\
 \hline
 \end{DoxyParams}
 
@@ -971,22 +1044,22 @@ virtual void Object\+::\+On\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hy
 
 
 
-Collision callback invoked when this object collides with another object. 
+Receives a collision notification with another object. 
 
-Called by \doxylink{class_object_manager}{Object\+Manager}\textquotesingle{}s collision pipeline after broad-\/phase and mask/category filtering, and after the \doxylink{class_collider}{Collider} narrow-\/phase test reports intersection.
+The default implementation does nothing. Derived classes may override this to react to collision events after the collision system determines that a contact has occurred.
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & The other colliding object. \\
+{\em other} & The other object involved in the collision event. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00137}{137}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00168}{168}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00137\ \{\}}
+\DoxyCodeLine{00168\ \{\}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a4ba9c8096492c37bf3db474b5c5f31a0}\index{Object@{Object}!SetCollider@{SetCollider}}
@@ -997,20 +1070,22 @@ void Object\+::\+Set\+Collider (\begin{DoxyParamCaption}\item[{std\+::unique\+\_
 
 
 
-Sets the collider by transferring ownership. 
+Assigns a collider to this object. 
+
+The collider becomes owned by the object through unique\+\_\+ptr.
 
 
 \begin{DoxyParams}{Parameters}
-{\em c} & \doxylink{class_collider}{Collider} instance (ownership transferred). \\
+{\em c} & \doxylink{class_collider}{Collider} instance to attach. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00346}{346}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00417}{417}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00346\ \{\ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}\ =\ std::move(c);\ \}}
+\DoxyCodeLine{00417\ \{\ \mbox{\hyperlink{class_object_a4b6e56f7a8f6d8dae69cb029cb6e5bd7}{collider}}\ =\ std::move(c);\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a7ce1a12c241c5a64ec03e67ee17e1260}\index{Object@{Object}!SetCollision@{SetCollision}}
@@ -1021,33 +1096,35 @@ void Object\+::\+Set\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Configures collision category and mask using \doxylink{class_object_manager}{Object\+Manager}\textquotesingle{}s collision registry. 
+Configures the object\textquotesingle{}s collision category and collision mask. 
 
-Resolves the object\textquotesingle{}s collision group (category) using the provided tag, then builds a mask from check\+Collision\+List. The resulting category/mask are used by \doxylink{class_object_manager}{Object\+Manager} to filter collision candidate pairs before running narrow-\/phase checks.
+This function queries the collision group registry from \doxylink{class_object_manager}{Object\+Manager}, converts the supplied group tags into bit values, stores the object\textquotesingle{}s own category bit, and builds a collision mask by OR-\/combining all target groups.
+
+The resulting values are later used by the collision system to decide which object pairs should be tested.
 
 
 \begin{DoxyParams}{Parameters}
-{\em object\+Manager} & \doxylink{class_object_manager}{Object\+Manager} providing the \doxylink{class_collision_group_registry}{Collision\+Group\+Registry}. \\
+{\em object\+Manager} & \doxylink{class_object}{Object} manager that owns the collision group registry. \\
 \hline
-{\em tag} & Collision group tag to assign to this object. \\
+{\em tag} & Collision group tag representing this object\textquotesingle{}s category. \\
 \hline
-{\em check\+Collision\+List} & List of collision group tags this object should test against. \\
+{\em check\+Collision\+List} & List of collision group tags this object wants to check against. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00092\ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{auto}\&\ reg\ =\ objectManager.\mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{GetCollisionGroupRegistry}}();}
-\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collisionCategory}}\ =\ reg.GetGroupBit(tag);}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}}\ =\ 0;}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ c\ :\ checkCollisionList)}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}}\ |=\ reg.GetGroupBit(c);}
-\DoxyCodeLine{00099\ \}}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{auto}\&\ reg\ =\ objectManager.\mbox{\hyperlink{class_object_manager_a3fc2a5eb9c5993c4ae3ee803e631699f}{GetCollisionGroupRegistry}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_object_aca82263c28421c17cb204ae27492d3e2}{collisionCategory}}\ =\ reg.GetGroupBit(tag);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}}\ =\ 0;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ c\ :\ checkCollisionList)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}{collisionMask}}\ |=\ reg.GetGroupBit(c);}
+\DoxyCodeLine{00102\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a8d5b80a21f9fdb4e46f81936ae1d2b78}\index{Object@{Object}!SetColor@{SetColor}}
@@ -1058,22 +1135,24 @@ void Object\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&
 
 
 
-Sets the per-\/object color used by the renderer. 
+Sets the object\textquotesingle{}s tint color. 
+
+The renderer reads this value and forwards it into material uniform data during rendering.
 
 
 \begin{DoxyParams}{Parameters}
-{\em color\+\_\+} & New RGBA color. \\
+{\em color\+\_\+} & New RGBA tint color. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00082\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}}\ =\ color\_;}
-\DoxyCodeLine{00084\ \}}
+\DoxyCodeLine{00085\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_object_a3d1a20796927cc278a924836c14cf48a}{color}}\ =\ color\_;}
+\DoxyCodeLine{00087\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_acb3716809623d005e893452f2973b604}\index{Object@{Object}!SetFlipUV\_X@{SetFlipUV\_X}}
@@ -1084,20 +1163,20 @@ void Object\+::\+Set\+Flip\+UV\+\_\+X (\begin{DoxyParamCaption}\item[{bool}]{sho
 
 
 
-Enables or disables horizontal UV flipping for this object. 
+Enables or disables horizontal UV flipping. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em should\+Flip} & True to flip horizontally. \\
+{\em should\+Flip} & True to flip along the X axis. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00435}{435}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00535}{535}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00435\ \{\ \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flipUV\_X}}\ =\ shouldFlip;\ \}}
+\DoxyCodeLine{00535\ \{\ \mbox{\hyperlink{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}{flipUV\_X}}\ =\ shouldFlip;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_ac20a8c5f662aa6b8f7cc2e1da304c12f}\index{Object@{Object}!SetFlipUV\_Y@{SetFlipUV\_Y}}
@@ -1108,20 +1187,20 @@ void Object\+::\+Set\+Flip\+UV\+\_\+Y (\begin{DoxyParamCaption}\item[{bool}]{sho
 
 
 
-Enables or disables vertical UV flipping for this object. 
+Enables or disables vertical UV flipping. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em should\+Flip} & True to flip vertically. \\
+{\em should\+Flip} & True to flip along the Y axis. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00442}{442}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00542}{542}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00442\ \{\ \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flipUV\_Y}}\ =\ shouldFlip;\ \}}
+\DoxyCodeLine{00542\ \{\ \mbox{\hyperlink{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}{flipUV\_Y}}\ =\ shouldFlip;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a93406d31ceabece6e7fb08814ac188c5}\index{Object@{Object}!SetIgnoreCamera@{SetIgnoreCamera}}
@@ -1132,30 +1211,32 @@ void Object\+::\+Set\+Ignore\+Camera (\begin{DoxyParamCaption}\item[{bool}]{shou
 
 
 
-Sets whether the object should ignore the active camera and optionally stores a reference camera. 
+Enables or disables camera-\/ignoring behavior. 
 
-When enabling ignore\+Camera, reference\+Camera can be provided so that world position/scale queries remain consistent with a chosen camera basis (implementation-\/defined).
+When enabled, the object stores an optional reference camera used to compute corrected world position and scale for rendering/culling.
+
+In the current implementation, the reference camera pointer is assigned only when enabling camera-\/ignore mode.
 
 
 \begin{DoxyParams}{Parameters}
-{\em should\+Ignore\+Camera} & New ignore-\/camera setting. \\
+{\em should\+Ignore\+Camera} & True to ignore the active camera during rendering logic. \\
 \hline
-{\em camera\+For\+Transform\+Calc} & Optional reference camera for transform calculations. \\
+{\em camera\+For\+Transform\+Calc} & Optional reference camera used for world-\/space correction. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00107\ \{}
-\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}}\ =\ shouldIgnoreCamera;}
-\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}})}
-\DoxyCodeLine{00110\ \ \ \ \ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}\ =\ cameraForTransformCalc;}
-\DoxyCodeLine{00112\ \ \ \ \ \}}
-\DoxyCodeLine{00113\ \}}
+\DoxyCodeLine{00110\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}}\ =\ shouldIgnoreCamera;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}})}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a45123ac0f3f66f1de94530810f52f61b}{referenceCamera}}\ =\ cameraForTransformCalc;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a53ae391764eac5e3d62e52bf7441ceec}\index{Object@{Object}!SetMaterial@{SetMaterial}}
@@ -1166,15 +1247,15 @@ void Object\+::\+Set\+Material (\begin{DoxyParamCaption}\item[{const \mbox{\hype
 
 
 
-Sets the material by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. 
+Resolves and assigns a material from \doxylink{class_render_manager}{Render\+Manager} using a resource tag. 
 
-Uses engine\+Context to access \doxylink{class_render_manager}{Render\+Manager} and resolves the material pointer by tag. If the tag is missing, \doxylink{class_render_manager}{Render\+Manager} typically provides a fallback default/error material.
+This function looks up a registered material through engine\+Context.\+render\+Manager and stores the returned shared resource as a weak reference inside the object.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services used to access \doxylink{class_render_manager}{Render\+Manager}. \\
 \hline
-{\em tag} & Registered material tag. \\
+{\em tag} & \doxylink{class_material}{Material} resource tag registered in the renderer. \\
 \hline
 \end{DoxyParams}
 
@@ -1184,34 +1265,34 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00043}{43}} of file \mb
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00044\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}}\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a529409768d03b2cf0638f07eadefaa5e}{GetMaterialByTag}}(tag);}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_object_af822711fb15809283931d0bfaa213b52}{material}}\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a5d09603de8d8e668d0df7bf335324e24}{GetMaterialByTag}}(tag);}
 \DoxyCodeLine{00046\ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_object_aab1e520477fbd67aef665b8c8207a35d}\index{Object@{Object}!SetMaterial@{SetMaterial}}
+\Hypertarget{class_object_a59c5aa50483153339d2bcdfe500f5550}\index{Object@{Object}!SetMaterial@{SetMaterial}}
 \index{SetMaterial@{SetMaterial}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{SetMaterial()}{SetMaterial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_object_aab1e520477fbd67aef665b8c8207a35d} 
-void Object\+::\+Set\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_material}{Material}} \texorpdfstring{$\ast$}{*}}]{material\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_object_a59c5aa50483153339d2bcdfe500f5550} 
+void Object\+::\+Set\+Material (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_material}{Material}} $>$}]{material\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Sets the material pointer directly. 
+Assigns a material directly. 
 
-The pointer is not owned by \doxylink{class_object}{Object}. It must remain valid for as long as the object uses it.
+The material is stored internally as a weak\+\_\+ptr. The object does not own the resource lifetime.
 
 
 \begin{DoxyParams}{Parameters}
-{\em material\+\_\+} & \doxylink{class_material}{Material} pointer. \\
+{\em material\+\_\+} & Shared material resource to reference. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00225}{225}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00267}{267}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00225\ \{\ \mbox{\hyperlink{class_object_af475bd962d08ec97add4497e92436076}{material}}\ =\ material\_;\ \}}
+\DoxyCodeLine{00267\ \{\ \mbox{\hyperlink{class_object_af822711fb15809283931d0bfaa213b52}{material}}\ =\ material\_;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a469da1fde04db75a05aad5cd30c6e4b2}\index{Object@{Object}!SetMesh@{SetMesh}}
@@ -1222,15 +1303,15 @@ void Object\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlin
 
 
 
-Sets the mesh by requesting it from \doxylink{class_render_manager}{Render\+Manager} using a tag. 
+Resolves and assigns a mesh from \doxylink{class_render_manager}{Render\+Manager} using a resource tag. 
 
-Uses engine\+Context to access \doxylink{class_render_manager}{Render\+Manager} and resolves the mesh pointer by tag. If the tag is missing, \doxylink{class_render_manager}{Render\+Manager} typically provides a fallback default mesh.
+This function looks up a registered mesh through engine\+Context.\+render\+Manager and stores the returned shared resource as a weak reference inside the object.
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services used to access \doxylink{class_render_manager}{Render\+Manager}. \\
 \hline
-{\em tag} & Registered mesh tag. \\
+{\em tag} & \doxylink{class_mesh}{Mesh} resource tag registered in the renderer. \\
 \hline
 \end{DoxyParams}
 
@@ -1240,34 +1321,34 @@ Definition at line \mbox{\hyperlink{_object_8cpp_source_l00054}{54}} of file \mb
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00055\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}}\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a499160c2c55c9da2db17bb372e8159b7}{GetMeshByTag}}(tag);}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a88e146303b2d71d26d1e9aa274f237ee}{GetMeshByTag}}(tag);}
 \DoxyCodeLine{00057\ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_object_ae94b6c3d2c0bdc27eff25f07390fdb58}\index{Object@{Object}!SetMesh@{SetMesh}}
+\Hypertarget{class_object_a7bd73cf89491ef2986923815ed7c5219}\index{Object@{Object}!SetMesh@{SetMesh}}
 \index{SetMesh@{SetMesh}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{SetMesh()}{SetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_object_ae94b6c3d2c0bdc27eff25f07390fdb58} 
-void Object\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_object_a7bd73cf89491ef2986923815ed7c5219} 
+void Object\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$}]{mesh\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Sets the mesh pointer directly. 
+Assigns a mesh directly. 
 
-The pointer is not owned by \doxylink{class_object}{Object}. It must remain valid for as long as the object uses it.
+The mesh is stored internally as a weak\+\_\+ptr. The object does not own the resource lifetime.
 
 
 \begin{DoxyParams}{Parameters}
-{\em mesh\+\_\+} & \doxylink{class_mesh}{Mesh} pointer. \\
+{\em mesh\+\_\+} & Shared mesh resource to reference. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00254}{254}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00301}{301}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00254\ \{\ \mbox{\hyperlink{class_object_ad755772f4633cd0ef94a05738ffb5e84}{mesh}}\ =\ mesh\_;\ \}}
+\DoxyCodeLine{00301\ \{\ \mbox{\hyperlink{class_object_a9197072c0174782f6999b02540f345bd}{mesh}}\ =\ mesh\_;\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_ae14fd11d21f05d538d10813e53566152}\index{Object@{Object}!SetRenderLayer@{SetRenderLayer}}
@@ -1278,11 +1359,11 @@ void Object\+::\+Set\+Render\+Layer (\begin{DoxyParamCaption}\item[{const std\+:
 
 
 
-Sets the render-\/layer tag. 
+Assigns the render layer tag used during render batch construction. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Render-\/layer name/tag. \\
+{\em tag} & Render layer tag to assign. \\
 \hline
 \end{DoxyParams}
 
@@ -1304,13 +1385,13 @@ void Object\+::\+Set\+Tag (\begin{DoxyParamCaption}\item[{const std\+::string \&
 
 
 
-Sets the object tag used for lookup/grouping. 
+Assigns a user-\/defined object tag. 
 
-Tags are used by \doxylink{class_object_manager}{Object\+Manager} queries and can be used to draw or find subsets of objects.
+This tag can be used by gameplay logic or object management code to identify the object semantically.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & New tag string. \\
+{\em tag} & New object tag string. \\
 \hline
 \end{DoxyParams}
 
@@ -1332,7 +1413,7 @@ void Object\+::\+Set\+Visibility (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+is
 
 
 
-Sets the visibility state. 
+Sets whether the object should be considered visible by the renderer. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -1358,17 +1439,22 @@ bool Object\+::\+Should\+Ignore\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 
-Returns whether this object should ignore the active camera. 
+Returns whether the object should ignore the active render camera. 
 
-When true, \doxylink{class_render_manager}{Render\+Manager} treats the object as screen-\/space (view = identity) for rendering, and \doxylink{class_frustum_culler}{Frustum\+Culler} typically includes it without camera view tests. 
+Objects that ignore the camera are treated specially by rendering and culling logic, which is useful for HUD-\/like elements or screen-\/space objects.
 
-Definition at line \mbox{\hyperlink{_object_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
+\begin{DoxyReturn}{Returns}
+True if the object should ignore camera transforms. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_object_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_object_8cpp_source}{Object.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00102\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}};}
-\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_object_ab4177081168011726b6dc63ab4e2b046}{ignoreCamera}};}
+\DoxyCodeLine{00107\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_object_a6184ab2516fed16398670b75a2360859}\index{Object@{Object}!Update@{Update}}
@@ -1379,15 +1465,15 @@ virtual void Object\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\
 
 
 
-Per-\/frame update. 
+Updates the object\textquotesingle{}s main per-\/frame logic. 
 
-Called every frame while the object is alive. \doxylink{class_object_manager}{Object\+Manager} may perform additional engine-\/side maintenance before/after this call (e.\+g., animator updates, collider scale sync).
+Derived classes should implement gameplay logic, animation progression, movement, internal timers, and other frame-\/based behavior here.
 
 
 \begin{DoxyParams}{Parameters}
-{\em dt} & Delta time in seconds. \\
+{\em dt} & Delta time for the current frame. \\
 \hline
-{\em engine\+Context} & Engine-\/wide context. \\
+{\em engine\+Context} & Shared engine services and managers available during update. \\
 \hline
 \end{DoxyParams}
 
@@ -1405,7 +1491,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_collider}{Collider}}$>$ Object\+
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00497}{497}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00601}{601}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_aca82263c28421c17cb204ae27492d3e2}\index{Object@{Object}!collisionCategory@{collisionCategory}}
 \index{collisionCategory@{collisionCategory}!Object@{Object}}
@@ -1415,7 +1501,7 @@ uint32\+\_\+t Object\+::collision\+Category = 0\hspace{0.3cm}{\ttfamily [protect
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00499}{499}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00603}{603}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a8b9f93c681a4d64d8ad30ea03b85c9a0}\index{Object@{Object}!collisionMask@{collisionMask}}
 \index{collisionMask@{collisionMask}!Object@{Object}}
@@ -1425,7 +1511,7 @@ uint32\+\_\+t Object\+::collision\+Mask = 0\hspace{0.3cm}{\ttfamily [protected]}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00500}{500}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00604}{604}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a3d1a20796927cc278a924836c14cf48a}\index{Object@{Object}!color@{color}}
 \index{color@{color}!Object@{Object}}
@@ -1435,7 +1521,7 @@ glm\+::vec4 Object\+::color = glm\+::vec4(1)\hspace{0.3cm}{\ttfamily [protected]
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00494}{494}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00598}{598}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_ad1e8846f2fcce8b11cf4e950379a7ba6}\index{Object@{Object}!flipUV\_X@{flipUV\_X}}
 \index{flipUV\_X@{flipUV\_X}!Object@{Object}}
@@ -1445,7 +1531,7 @@ bool Object\+::flip\+UV\+\_\+X = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00502}{502}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00606}{606}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_ac04012c6fb3b26b867320bdc9ab1ed3f}\index{Object@{Object}!flipUV\_Y@{flipUV\_Y}}
 \index{flipUV\_Y@{flipUV\_Y}!Object@{Object}}
@@ -1455,7 +1541,7 @@ bool Object\+::flip\+UV\+\_\+Y = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00503}{503}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00607}{607}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a43cde657fec110a5fd0c24050d68065b}\index{Object@{Object}!FrustumCuller@{FrustumCuller}}
 \index{FrustumCuller@{FrustumCuller}!Object@{Object}}
@@ -1465,7 +1551,7 @@ friend Object\+::\+Frustum\+Culler\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00052}{52}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00062}{62}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_ab4177081168011726b6dc63ab4e2b046}\index{Object@{Object}!ignoreCamera@{ignoreCamera}}
 \index{ignoreCamera@{ignoreCamera}!Object@{Object}}
@@ -1475,7 +1561,7 @@ bool Object\+::ignore\+Camera = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00484}{484}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00588}{588}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a6cad8db6361d0ab0b95ec578fdf0d1b7}\index{Object@{Object}!isAlive@{isAlive}}
 \index{isAlive@{isAlive}!Object@{Object}}
@@ -1485,7 +1571,7 @@ bool Object\+::is\+Alive = true\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00481}{481}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00585}{585}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a418eac6726dcadd9710d94a041446f28}\index{Object@{Object}!isVisible@{isVisible}}
 \index{isVisible@{isVisible}!Object@{Object}}
@@ -1495,27 +1581,27 @@ bool Object\+::is\+Visible = true\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00482}{482}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00586}{586}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
-\Hypertarget{class_object_af475bd962d08ec97add4497e92436076}\index{Object@{Object}!material@{material}}
+\Hypertarget{class_object_af822711fb15809283931d0bfaa213b52}\index{Object@{Object}!material@{material}}
 \index{material@{material}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{material}{material}}
-{\footnotesize\ttfamily \label{class_object_af475bd962d08ec97add4497e92436076} 
-\mbox{\hyperlink{class_material}{Material}}\texorpdfstring{$\ast$}{*} Object\+::material = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \label{class_object_af822711fb15809283931d0bfaa213b52} 
+std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_material}{Material}}$>$ Object\+::material\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00491}{491}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00595}{595}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
-\Hypertarget{class_object_ad755772f4633cd0ef94a05738ffb5e84}\index{Object@{Object}!mesh@{mesh}}
+\Hypertarget{class_object_a9197072c0174782f6999b02540f345bd}\index{Object@{Object}!mesh@{mesh}}
 \index{mesh@{mesh}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{mesh}{mesh}}
-{\footnotesize\ttfamily \label{class_object_ad755772f4633cd0ef94a05738ffb5e84} 
-\mbox{\hyperlink{class_mesh}{Mesh}}\texorpdfstring{$\ast$}{*} Object\+::mesh = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \label{class_object_a9197072c0174782f6999b02540f345bd} 
+std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_mesh}{Mesh}}$>$ Object\+::mesh\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00492}{492}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00596}{596}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a884feb6d3b893651c612a1a3254f73e6}\index{Object@{Object}!objectTag@{objectTag}}
 \index{objectTag@{objectTag}!Object@{Object}}
@@ -1525,7 +1611,7 @@ std\+::string Object\+::object\+Tag\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00487}{487}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00591}{591}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a45123ac0f3f66f1de94530810f52f61b}\index{Object@{Object}!referenceCamera@{referenceCamera}}
 \index{referenceCamera@{referenceCamera}!Object@{Object}}
@@ -1535,7 +1621,7 @@ Definition at line \mbox{\hyperlink{_object_8h_source_l00487}{487}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00485}{485}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00589}{589}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_aa00855f8cc3dc0f7fd06e2a76d523458}\index{Object@{Object}!renderLayerTag@{renderLayerTag}}
 \index{renderLayerTag@{renderLayerTag}!Object@{Object}}
@@ -1545,7 +1631,7 @@ std\+::string Object\+::render\+Layer\+Tag\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00488}{488}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00592}{592}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_ab373c4205c0460c9590f473b6c0c8304}\index{Object@{Object}!spriteAnimator@{spriteAnimator}}
 \index{spriteAnimator@{spriteAnimator}!Object@{Object}}
@@ -1555,7 +1641,7 @@ std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_sprite_animator}{Sprite\+Animato
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00496}{496}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00600}{600}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_ab9fcb18ac9136f0354dfc053967fe892}\index{Object@{Object}!transform2D@{transform2D}}
 \index{transform2D@{transform2D}!Object@{Object}}
@@ -1565,7 +1651,7 @@ Definition at line \mbox{\hyperlink{_object_8h_source_l00496}{496}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00490}{490}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00594}{594}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 \Hypertarget{class_object_a0075dcd793d09d14f5ff0b20ce4db4f7}\index{Object@{Object}!type@{type}}
 \index{type@{type}!Object@{Object}}
@@ -1575,7 +1661,7 @@ Definition at line \mbox{\hyperlink{_object_8h_source_l00490}{490}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{_object_8h_source_l00468}{468}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
+Definition at line \mbox{\hyperlink{_object_8h_source_l00564}{564}} of file \mbox{\hyperlink{_object_8h_source}{Object.\+h}}.
 
 
 

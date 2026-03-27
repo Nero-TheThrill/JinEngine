@@ -105,9 +105,6 @@ $(function(){initNavTree('class_transform2_d.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a 2D transform containing position, rotation, scale, and depth information.  
- <a href="#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_transform_8h_source.html">Transform.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,26 +113,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1cd8cbf27214b1b9ddec9e0740d1d52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a default 2D transform.  <br /></td></tr>
 <tr class="separator:a1cd8cbf27214b1b9ddec9e0740d1d52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa66fdff6518df44d6d64280a890e551" id="r_aaa66fdff6518df44d6d64280a890e551"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa66fdff6518df44d6d64280a890e551">SetPosition</a> (const glm::vec2 &amp;pos)</td></tr>
-<tr class="memdesc:aaa66fdff6518df44d6d64280a890e551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the absolute position of the transform.  <br /></td></tr>
+<tr class="memdesc:aaa66fdff6518df44d6d64280a890e551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the world position of the transform.  <br /></td></tr>
 <tr class="separator:aaa66fdff6518df44d6d64280a890e551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8029acaabfb6d4e0bd7a8b167cae05" id="r_aef8029acaabfb6d4e0bd7a8b167cae05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef8029acaabfb6d4e0bd7a8b167cae05">AddPosition</a> (const glm::vec2 &amp;pos)</td></tr>
 <tr class="memdesc:aef8029acaabfb6d4e0bd7a8b167cae05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an offset to the current position.  <br /></td></tr>
 <tr class="separator:aef8029acaabfb6d4e0bd7a8b167cae05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a205f74dfec3660f08b25ab0e782b885d" id="r_a205f74dfec3660f08b25ab0e782b885d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205f74dfec3660f08b25ab0e782b885d">SetRotation</a> (float rot)</td></tr>
-<tr class="memdesc:a205f74dfec3660f08b25ab0e782b885d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the absolute rotation of the transform.  <br /></td></tr>
+<tr class="memdesc:a205f74dfec3660f08b25ab0e782b885d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the rotation angle of the transform.  <br /></td></tr>
 <tr class="separator:a205f74dfec3660f08b25ab0e782b885d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af872385cf2e30773593ece402da4b6" id="r_a9af872385cf2e30773593ece402da4b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9af872385cf2e30773593ece402da4b6">AddRotation</a> (float rot)</td></tr>
-<tr class="memdesc:a9af872385cf2e30773593ece402da4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a delta to the current rotation.  <br /></td></tr>
+<tr class="memdesc:a9af872385cf2e30773593ece402da4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds to the current rotation angle.  <br /></td></tr>
 <tr class="separator:a9af872385cf2e30773593ece402da4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1edc82d3f10301c9792b8f98f144ed8b" id="r_a1edc82d3f10301c9792b8f98f144ed8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1edc82d3f10301c9792b8f98f144ed8b">SetScale</a> (const glm::vec2 &amp;scl)</td></tr>
-<tr class="memdesc:a1edc82d3f10301c9792b8f98f144ed8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the absolute scale of the transform.  <br /></td></tr>
+<tr class="memdesc:a1edc82d3f10301c9792b8f98f144ed8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the local 2D scale of the transform.  <br /></td></tr>
 <tr class="separator:a1edc82d3f10301c9792b8f98f144ed8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6305424de34e7b008aca1e340810a697" id="r_a6305424de34e7b008aca1e340810a697"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6305424de34e7b008aca1e340810a697">AddScale</a> (const glm::vec2 &amp;scl)</td></tr>
-<tr class="memdesc:a6305424de34e7b008aca1e340810a697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a delta to the current scale.  <br /></td></tr>
+<tr class="memdesc:a6305424de34e7b008aca1e340810a697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds to the current scale.  <br /></td></tr>
 <tr class="separator:a6305424de34e7b008aca1e340810a697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72f8feb7f93522297a09b0a254551120" id="r_a72f8feb7f93522297a09b0a254551120"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72f8feb7f93522297a09b0a254551120">SetDepth</a> (float dpth)</td></tr>
-<tr class="memdesc:a72f8feb7f93522297a09b0a254551120"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the depth value of the transform.  <br /></td></tr>
+<tr class="memdesc:a72f8feb7f93522297a09b0a254551120"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render depth value.  <br /></td></tr>
 <tr class="separator:a72f8feb7f93522297a09b0a254551120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5bc7283251cc367c1b01b2f68fd92d" id="r_a1e5bc7283251cc367c1b01b2f68fd92d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5bc7283251cc367c1b01b2f68fd92d">SetOffset</a> (glm::vec2 os)</td></tr>
+<tr class="memdesc:a1e5bc7283251cc367c1b01b2f68fd92d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an additional local translation offset.  <br /></td></tr>
+<tr class="separator:a1e5bc7283251cc367c1b01b2f68fd92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c38c37820eaa6a4c61ee09f57d5053" id="r_aa4c38c37820eaa6a4c61ee09f57d5053"><td class="memItemLeft" align="right" valign="top">const glm::vec2 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4c38c37820eaa6a4c61ee09f57d5053">GetPosition</a> () const</td></tr>
 <tr class="memdesc:aa4c38c37820eaa6a4c61ee09f57d5053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current position.  <br /></td></tr>
 <tr class="separator:aa4c38c37820eaa6a4c61ee09f57d5053"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,16 +146,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a132b1deed4b9b9224325dd7e6dd36476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current scale.  <br /></td></tr>
 <tr class="separator:a132b1deed4b9b9224325dd7e6dd36476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fc04cb417fb1169c2af9ba0b0539394" id="r_a8fc04cb417fb1169c2af9ba0b0539394"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fc04cb417fb1169c2af9ba0b0539394">GetDepth</a> () const</td></tr>
-<tr class="memdesc:a8fc04cb417fb1169c2af9ba0b0539394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current depth value.  <br /></td></tr>
+<tr class="memdesc:a8fc04cb417fb1169c2af9ba0b0539394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current render depth.  <br /></td></tr>
 <tr class="separator:a8fc04cb417fb1169c2af9ba0b0539394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ea7e63ba965f862da89c78dc3f5149" id="r_a99ea7e63ba965f862da89c78dc3f5149"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99ea7e63ba965f862da89c78dc3f5149">GetOffset</a> () const</td></tr>
+<tr class="memdesc:a99ea7e63ba965f862da89c78dc3f5149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current local offset.  <br /></td></tr>
+<tr class="separator:a99ea7e63ba965f862da89c78dc3f5149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86e9a6ffac2c382a9e3467f8331bf86d" id="r_a86e9a6ffac2c382a9e3467f8331bf86d"><td class="memItemLeft" align="right" valign="top">glm::mat4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d">GetMatrix</a> ()</td></tr>
-<tr class="memdesc:a86e9a6ffac2c382a9e3467f8331bf86d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the transformation matrix for this transform.  <br /></td></tr>
+<tr class="memdesc:a86e9a6ffac2c382a9e3467f8331bf86d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cached transform matrix.  <br /></td></tr>
 <tr class="separator:a86e9a6ffac2c382a9e3467f8331bf86d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a37619589b97a182f1aed38eeaf8e3a32" id="r_a37619589b97a182f1aed38eeaf8e3a32"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a></td></tr>
 <tr class="separator:a37619589b97a182f1aed38eeaf8e3a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f3a7a7ea24311e8e8b76005fa238872" id="r_a3f3a7a7ea24311e8e8b76005fa238872"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f3a7a7ea24311e8e8b76005fa238872">offset</a></td></tr>
+<tr class="separator:a3f3a7a7ea24311e8e8b76005fa238872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacb43ce156aa5fcf9cf0d385ed81832c" id="r_aacb43ce156aa5fcf9cf0d385ed81832c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a></td></tr>
 <tr class="separator:aacb43ce156aa5fcf9cf0d385ed81832c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a538205f416a3b800cae8268f6364b025" id="r_a538205f416a3b800cae8268f6364b025"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a538205f416a3b800cae8268f6364b025">rotation</a></td></tr>
@@ -168,12 +173,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a78a183e05988fdacd5dabb6d02e192b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a 2D transform containing position, rotation, scale, and depth information. </p>
-<p><a class="el" href="class_transform2_d.html" title="Represents a 2D transform containing position, rotation, scale, and depth information.">Transform2D</a> stores translation, rotation, scaling, and depth values for a 2D object and lazily computes a transformation matrix when requested. Any modification to position, rotation, scale, or depth marks the internal state as dirty via isChanged.</p>
-<p>The transformation matrix is only recomputed when <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the transformation matrix for this transform.">GetMatrix()</a> is called and the transform has changed since the last computation. This avoids unnecessary matrix recalculations each frame.</p>
-<p>Depth is stored separately from position to allow explicit control over rendering order or depth-based sorting without affecting the 2D transform matrix composition. </p>
-
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00018">18</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00004">4</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1cd8cbf27214b1b9ddec9e0740d1d52a" name="a1cd8cbf27214b1b9ddec9e0740d1d52a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cd8cbf27214b1b9ddec9e0740d1d52a">&#9670;&#160;</a></span>Transform2D()</h2>
@@ -199,19 +200,28 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs a default 2D transform. </p>
-<p>Initializes position to (0, 0), rotation to 0, scale to (1, 1), depth to 0, and the transformation matrix to identity. The transform is marked as changed so the matrix will be computed on first access. </p>
+<p>Initializes the transform with:</p><ul>
+<li>position = (0, 0)</li>
+<li>rotation = 0</li>
+<li>scale = (1, 1)</li>
+<li>matrix = identity</li>
+<li>isChanged = true</li>
+<li>depth = 0</li>
+</ul>
+<p>The matrix is not rebuilt immediately here. Instead, it is marked dirty and lazily recalculated the next time <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the cached transform matrix.">GetMatrix()</a> is called.</p>
+<dl class="section note"><dt>Note</dt><dd>The depth value is stored separately from the transform matrix and is used for render ordering rather than geometric transformation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00029">29</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>        : <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a>(0.f), <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>(0.f), <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>(1.f),</div>
-<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a>(1.f), <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a>(<span class="keyword">true</span>), <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a>(0.f)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>    }</div>
-<div class="ttc" id="aclass_transform2_d_html_a143a0ddbd4ce6c0dc7e1eb8833fcfdde"><div class="ttname"><a href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">Transform2D::matrix</a></div><div class="ttdeci">glm::mat4 matrix</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00156">Transform.h:156</a></div></div>
-<div class="ttc" id="aclass_transform2_d_html_a37619589b97a182f1aed38eeaf8e3a32"><div class="ttname"><a href="#a37619589b97a182f1aed38eeaf8e3a32">Transform2D::position</a></div><div class="ttdeci">glm::vec2 position</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00152">Transform.h:152</a></div></div>
-<div class="ttc" id="aclass_transform2_d_html_a538205f416a3b800cae8268f6364b025"><div class="ttname"><a href="#a538205f416a3b800cae8268f6364b025">Transform2D::rotation</a></div><div class="ttdeci">float rotation</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00154">Transform.h:154</a></div></div>
-<div class="ttc" id="aclass_transform2_d_html_a78a183e05988fdacd5dabb6d02e192b0"><div class="ttname"><a href="#a78a183e05988fdacd5dabb6d02e192b0">Transform2D::isChanged</a></div><div class="ttdeci">bool isChanged</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00157">Transform.h:157</a></div></div>
-<div class="ttc" id="aclass_transform2_d_html_a89af86aaab034fb63ac7f8c86579f435"><div class="ttname"><a href="#a89af86aaab034fb63ac7f8c86579f435">Transform2D::scale</a></div><div class="ttdeci">glm::vec2 scale</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00155">Transform.h:155</a></div></div>
-<div class="ttc" id="aclass_transform2_d_html_aacb43ce156aa5fcf9cf0d385ed81832c"><div class="ttname"><a href="#aacb43ce156aa5fcf9cf0d385ed81832c">Transform2D::depth</a></div><div class="ttdeci">float depth</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00153">Transform.h:153</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00026">26</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>        : <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a>(0.f), <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>(0.f), <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>(1.f),</div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a>(1.f), <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a>(<span class="keyword">true</span>), <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a>(0.f)</div>
+<div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="ttc" id="aclass_transform2_d_html_a143a0ddbd4ce6c0dc7e1eb8833fcfdde"><div class="ttname"><a href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">Transform2D::matrix</a></div><div class="ttdeci">glm::mat4 matrix</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00248">Transform.h:248</a></div></div>
+<div class="ttc" id="aclass_transform2_d_html_a37619589b97a182f1aed38eeaf8e3a32"><div class="ttname"><a href="#a37619589b97a182f1aed38eeaf8e3a32">Transform2D::position</a></div><div class="ttdeci">glm::vec2 position</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00243">Transform.h:243</a></div></div>
+<div class="ttc" id="aclass_transform2_d_html_a538205f416a3b800cae8268f6364b025"><div class="ttname"><a href="#a538205f416a3b800cae8268f6364b025">Transform2D::rotation</a></div><div class="ttdeci">float rotation</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00246">Transform.h:246</a></div></div>
+<div class="ttc" id="aclass_transform2_d_html_a78a183e05988fdacd5dabb6d02e192b0"><div class="ttname"><a href="#a78a183e05988fdacd5dabb6d02e192b0">Transform2D::isChanged</a></div><div class="ttdeci">bool isChanged</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00249">Transform.h:249</a></div></div>
+<div class="ttc" id="aclass_transform2_d_html_a89af86aaab034fb63ac7f8c86579f435"><div class="ttname"><a href="#a89af86aaab034fb63ac7f8c86579f435">Transform2D::scale</a></div><div class="ttdeci">glm::vec2 scale</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00247">Transform.h:247</a></div></div>
+<div class="ttc" id="aclass_transform2_d_html_aacb43ce156aa5fcf9cf0d385ed81832c"><div class="ttname"><a href="#aacb43ce156aa5fcf9cf0d385ed81832c">Transform2D::depth</a></div><div class="ttdeci">float depth</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00245">Transform.h:245</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -240,18 +250,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds an offset to the current position. </p>
+<p>Accumulates the given value onto the current position and marks the transform matrix as dirty.</p>
+<p>This is useful for movement updates such as velocity-based translation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>Delta value to add to the current position. </td></tr>
+    <tr><td class="paramname">pos</td><td>Position delta to add. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00051">51</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>    {</div>
-<div class="line"><span class="lineno">   53</span>        <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a> += pos;</div>
-<div class="line"><span class="lineno">   54</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00060">60</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>    {</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a> += pos;</div>
+<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -278,7 +290,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Adds a delta to the current rotation. </p>
+<p>Adds to the current rotation angle. </p>
+<p>Accumulates the given rotation amount and marks the cached matrix as dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rot</td><td>Rotation delta to add. </td></tr>
@@ -286,11 +299,11 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00076">76</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>    {</div>
-<div class="line"><span class="lineno">   78</span>        <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a> += rot;</div>
-<div class="line"><span class="lineno">   79</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00098">98</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a> += rot;</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,19 +330,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Adds a delta to the current scale. </p>
+<p>Adds to the current scale. </p>
+<p>Accumulates the given scale delta onto the current scale and marks the matrix as dirty.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scl</td><td>Scale delta to add. </td></tr>
+    <tr><td class="paramname">scl</td><td>Scale delta to add.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This performs additive scaling, not multiplicative scaling. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00098">98</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>    {</div>
-<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a> += scl;</div>
-<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  102</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00134">134</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>    {</div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a> += scl;</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  138</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -356,10 +371,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current depth value. </p>
+<p>Returns the current render depth. </p>
+<dl class="section return"><dt>Returns</dt><dd>Stored depth value used for draw ordering. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00137">137</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  137</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00211">211</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,22 +402,58 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the transformation matrix for this transform. </p>
-<p>If the transform has changed since the last call, the matrix is recomputed using the current position, rotation, and scale. The updated matrix is cached and reused until another modification occurs.</p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the internally stored transformation matrix. </dd></dl>
+<p>Returns the cached transform matrix. </p>
+<p>Rebuilds the matrix only when the transform has changed. In the current implementation, the matrix is composed as:</p>
+<p>position translation * offset translation * rotation * scale</p>
+<p>After rebuilding, the dirty flag is cleared and the cached matrix is reused until another transform-changing function marks it dirty again.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the internally cached 4x4 transform matrix.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The returned reference remains valid as long as this <a class="el" href="class_transform2_d.html">Transform2D</a> instance exists. The depth value is not included in this matrix. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_transform_8cpp_source.html#l00003">3</a> of file <a class="el" href="_transform_8cpp_source.html">Transform.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    4</span>{</div>
 <div class="line"><span class="lineno">    5</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a>)</div>
 <div class="line"><span class="lineno">    6</span>    {</div>
 <div class="line"><span class="lineno">    7</span>        glm::mat4 t = glm::translate(glm::mat4(1.0f), glm::vec3(<a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a>, 0.0f));</div>
-<div class="line"><span class="lineno">    8</span>        glm::mat4 r = glm::rotate(glm::mat4(1.0f), <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>, glm::vec3(0, 0, 1));</div>
-<div class="line"><span class="lineno">    9</span>        glm::mat4 s = glm::scale(glm::mat4(1.0f), glm::vec3(<a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>, 1.0f));</div>
-<div class="line"><span class="lineno">   10</span>        <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a> = t * r * s;</div>
-<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   12</span>    }</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a>;</div>
-<div class="line"><span class="lineno">   14</span>}</div>
+<div class="line"><span class="lineno">    8</span>        glm::mat4 o = glm::translate(glm::mat4(1.0f), glm::vec3(<a class="code hl_variable" href="#a3f3a7a7ea24311e8e8b76005fa238872">offset</a>.x, <a class="code hl_variable" href="#a3f3a7a7ea24311e8e8b76005fa238872">offset</a>.y, 0.0f));</div>
+<div class="line"><span class="lineno">    9</span>        glm::mat4 r = glm::rotate(glm::mat4(1.0f), <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>, glm::vec3(0, 0, 1));</div>
+<div class="line"><span class="lineno">   10</span>        glm::mat4 s = glm::scale(glm::mat4(1.0f), glm::vec3(<a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>, 1.0f));</div>
+<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a> = t * o * r * s;</div>
+<div class="line"><span class="lineno">   12</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   13</span>    }</div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a143a0ddbd4ce6c0dc7e1eb8833fcfdde">matrix</a>;</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+<div class="ttc" id="aclass_transform2_d_html_a3f3a7a7ea24311e8e8b76005fa238872"><div class="ttname"><a href="#a3f3a7a7ea24311e8e8b76005fa238872">Transform2D::offset</a></div><div class="ttdeci">glm::vec2 offset</div><div class="ttdef"><b>Definition</b> <a href="_transform_8h_source.html#l00244">Transform.h:244</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a99ea7e63ba965f862da89c78dc3f5149" name="a99ea7e63ba965f862da89c78dc3f5149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99ea7e63ba965f862da89c78dc3f5149">&#9670;&#160;</a></span>GetOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 Transform2D::GetOffset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the current local offset. </p>
+<dl class="section return"><dt>Returns</dt><dd>Stored offset vector. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00219">219</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  219</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a3f3a7a7ea24311e8e8b76005fa238872">offset</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -429,9 +481,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the current position. </p>
+<dl class="section return"><dt>Returns</dt><dd>Constant reference to the stored 2D position. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00122">122</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  122</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00187">187</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -459,9 +512,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the current rotation value. </p>
+<dl class="section return"><dt>Returns</dt><dd>Stored rotation angle. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00127">127</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00195">195</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -489,9 +543,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the current scale. </p>
+<dl class="section return"><dt>Returns</dt><dd>Constant reference to the stored 2D scale. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00132">132</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00203">203</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  203</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -518,8 +573,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the depth value of the transform. </p>
-<p>Depth does not directly affect the transformation matrix but can be used externally for render ordering or depth-based logic.</p>
+<p>Sets the render depth value. </p>
+<p>Stores the depth used for render ordering. This value does not mark the transform matrix as dirty because it is not included in the matrix built by <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the cached transform matrix.">GetMatrix()</a>.</p>
+<p>In the current rendering flow, depth is read separately and quantized for render-map sorting.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dpth</td><td>New depth value. </td></tr>
@@ -527,11 +583,51 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00113">113</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>    {</div>
-<div class="line"><span class="lineno">  115</span>        <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a> = dpth;</div>
-<div class="line"><span class="lineno">  116</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00154">154</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  155</span>    {</div>
+<div class="line"><span class="lineno">  156</span>        <a class="code hl_variable" href="#aacb43ce156aa5fcf9cf0d385ed81832c">depth</a> = dpth;</div>
+<div class="line"><span class="lineno">  157</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1e5bc7283251cc367c1b01b2f68fd92d" name="a1e5bc7283251cc367c1b01b2f68fd92d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5bc7283251cc367c1b01b2f68fd92d">&#9670;&#160;</a></span>SetOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Transform2D::SetOffset </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec2</td>          <td class="paramname"><span class="paramname"><em>os</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets an additional local translation offset. </p>
+<p>Stores an extra translation that is applied inside the final transform matrix after the main position translation and before rotation and scale.</p>
+<p>Based on the current <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the cached transform matrix.">GetMatrix()</a> implementation, the matrix is built as: position translation * offset translation * rotation * scale</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Local offset to store.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If this value changes, the matrix should also be considered dirty because it affects the final matrix result. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00176">176</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>    {</div>
+<div class="line"><span class="lineno">  178</span>        <a class="code hl_variable" href="#a3f3a7a7ea24311e8e8b76005fa238872">offset</a> = os;</div>
+<div class="line"><span class="lineno">  179</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -558,19 +654,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the absolute position of the transform. </p>
+<p>Sets the world position of the transform. </p>
+<p>Replaces the current 2D position with the given value and marks the internal matrix as dirty so it will be rebuilt on the next <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the cached transform matrix.">GetMatrix()</a> call.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>New position in 2D space. </td></tr>
+    <tr><td class="paramname">pos</td><td>New 2D position to assign. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00040">40</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>    {</div>
-<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a> = pos;</div>
-<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00042">42</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>    {</div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="#a37619589b97a182f1aed38eeaf8e3a32">position</a> = pos;</div>
+<div class="line"><span class="lineno">   45</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -597,20 +694,22 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the absolute rotation of the transform. </p>
-<p>Rotation is stored as a single float value, typically interpreted as radians.</p>
+<p>Sets the rotation angle of the transform. </p>
+<p>Replaces the current rotation value and marks the matrix as dirty. The actual matrix rebuild happens lazily in <a class="el" href="#a86e9a6ffac2c382a9e3467f8331bf86d" title="Returns the cached transform matrix.">GetMatrix()</a>.</p>
+<p>The rotation is applied around the Z axis in the generated 4x4 matrix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rot</td><td>New rotation value. </td></tr>
+    <tr><td class="paramname">rot</td><td>New rotation angle.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This implementation passes the stored value directly into glm::rotate(). In the current codebase, that means the unit must match what the rest of your engine expects when building transforms. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00065">65</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>    {</div>
-<div class="line"><span class="lineno">   67</span>        <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a> = rot;</div>
-<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00083">83</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="#a538205f416a3b800cae8268f6364b025">rotation</a> = rot;</div>
+<div class="line"><span class="lineno">   86</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -637,19 +736,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the absolute scale of the transform. </p>
+<p>Sets the local 2D scale of the transform. </p>
+<p>Replaces the current scale and marks the matrix as dirty. The scale is later applied as the last multiplication step when rebuilding the matrix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scl</td><td>New scale vector. </td></tr>
+    <tr><td class="paramname">scl</td><td>New 2D scale. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00087">87</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>    {</div>
-<div class="line"><span class="lineno">   89</span>        <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a> = scl;</div>
-<div class="line"><span class="lineno">   90</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00115">115</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_variable" href="#a89af86aaab034fb63ac7f8c86579f435">scale</a> = scl;</div>
+<div class="line"><span class="lineno">  118</span>        <a class="code hl_variable" href="#a78a183e05988fdacd5dabb6d02e192b0">isChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  119</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -674,7 +774,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00153">153</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00245">245</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>
@@ -698,7 +798,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00157">157</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00249">249</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>
@@ -722,7 +822,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00156">156</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00248">248</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+
+</div>
+</div>
+<a id="a3f3a7a7ea24311e8e8b76005fa238872" name="a3f3a7a7ea24311e8e8b76005fa238872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f3a7a7ea24311e8e8b76005fa238872">&#9670;&#160;</a></span>offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 Transform2D::offset</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00244">244</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>
@@ -746,7 +870,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00152">152</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00243">243</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>
@@ -770,7 +894,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00154">154</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00246">246</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +918,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00155">155</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_transform_8h_source.html#l00247">247</a> of file <a class="el" href="_transform_8h_source.html">Transform.h</a>.</p>
 
 </div>
 </div>

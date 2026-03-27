@@ -105,7 +105,7 @@ $(function(){initNavTree('class_loading_state.html',''); initResizable(true); })
 </div><!--header-->
 <div class="contents">
 
-<p>A transitional <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> that asynchronously loads resources and then switches to the next <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  
+<p>A <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> responsible for asynchronous resource loading with visual progress feedback.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>&gt;</code></p>
@@ -115,72 +115,72 @@ Inheritance diagram for LoadingState:</div>
  <div class="center">
   <img src="class_loading_state.png" usemap="#LoadingState_map" alt=""/>
   <map id="LoadingState_map" name="LoadingState_map">
-<area href="class_game_state.html" title="Base class representing a single game state." alt="GameState" shape="rect" coords="0,0,85,24"/>
+<area href="class_game_state.html" title="Base class representing one runtime game state in the engine." alt="GameState" shape="rect" coords="0,0,85,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac696a3c24805322e0b09a104ceb132e8" id="r_ac696a3c24805322e0b09a104ceb132e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac696a3c24805322e0b09a104ceb132e8">LoadingState</a> (std::function&lt; std::unique_ptr&lt; <a class="el" href="class_game_state.html">GameState</a> &gt;()&gt; <a class="el" href="#a40db3522932ae35699d1db2ab5d728b0">nextFactory</a>)</td></tr>
-<tr class="memdesc:ac696a3c24805322e0b09a104ceb132e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_loading_state.html" title="A transitional GameState that asynchronously loads resources and then switches to the next GameState.">LoadingState</a> that will transition to the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> produced by nextFactory.  <br /></td></tr>
+<tr class="memdesc:ac696a3c24805322e0b09a104ceb132e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_loading_state.html" title="A GameState responsible for asynchronous resource loading with visual progress feedback.">LoadingState</a> with a factory for the next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a>.  <br /></td></tr>
 <tr class="separator:ac696a3c24805322e0b09a104ceb132e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abece8e8c4a6e42ee1540b5130fc2fde7" id="r_abece8e8c4a6e42ee1540b5130fc2fde7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abece8e8c4a6e42ee1540b5130fc2fde7">Load</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:abece8e8c4a6e42ee1540b5130fc2fde7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts asynchronous loading and prepares UI resources used during the loading screen.  <br /></td></tr>
+<tr class="memdesc:abece8e8c4a6e42ee1540b5130fc2fde7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts asynchronous loading and prepares UI resources.  <br /></td></tr>
 <tr class="separator:abece8e8c4a6e42ee1540b5130fc2fde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84ce856d66c4167866a24f49d5c7f471" id="r_a84ce856d66c4167866a24f49d5c7f471"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84ce856d66c4167866a24f49d5c7f471">Init</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a84ce856d66c4167866a24f49d5c7f471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes loading-screen objects (progress text).  <br /></td></tr>
+<tr class="memdesc:a84ce856d66c4167866a24f49d5c7f471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes loading UI objects.  <br /></td></tr>
 <tr class="separator:a84ce856d66c4167866a24f49d5c7f471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeb0439da526b6933f6b61bde194a64f" id="r_aaeb0439da526b6933f6b61bde194a64f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaeb0439da526b6933f6b61bde194a64f">LateInit</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:aaeb0439da526b6933f6b61bde194a64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Late initialization hook for the loading state.  <br /></td></tr>
+<tr class="memdesc:aaeb0439da526b6933f6b61bde194a64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs late initialization after all objects are created.  <br /></td></tr>
 <tr class="separator:aaeb0439da526b6933f6b61bde194a64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56063d7d8b5ae48cbbee33d16aad3e93" id="r_a56063d7d8b5ae48cbbee33d16aad3e93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56063d7d8b5ae48cbbee33d16aad3e93">Update</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a56063d7d8b5ae48cbbee33d16aad3e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches completed load jobs, uploads results to GPU/systems, updates UI, and transitions when finished.  <br /></td></tr>
+<tr class="memdesc:a56063d7d8b5ae48cbbee33d16aad3e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates loading progress and processes completed jobs.  <br /></td></tr>
 <tr class="separator:a56063d7d8b5ae48cbbee33d16aad3e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f934a83650c18f8603320de29a18fbe" id="r_a7f934a83650c18f8603320de29a18fbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f934a83650c18f8603320de29a18fbe">LateUpdate</a> (float dt, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a7f934a83650c18f8603320de29a18fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Late update hook for the loading state.  <br /></td></tr>
+<tr class="memdesc:a7f934a83650c18f8603320de29a18fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs late update logic.  <br /></td></tr>
 <tr class="separator:a7f934a83650c18f8603320de29a18fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d7471af478429371619bff2ccda0e2a" id="r_a9d7471af478429371619bff2ccda0e2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d7471af478429371619bff2ccda0e2a">Draw</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a9d7471af478429371619bff2ccda0e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the loading progress bar and renders loading-screen objects.  <br /></td></tr>
+<tr class="memdesc:a9d7471af478429371619bff2ccda0e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders loading UI.  <br /></td></tr>
 <tr class="separator:a9d7471af478429371619bff2ccda0e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f2fb872ba3b6dbcb11bfbc46b72c386" id="r_a1f2fb872ba3b6dbcb11bfbc46b72c386"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f2fb872ba3b6dbcb11bfbc46b72c386">Free</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a1f2fb872ba3b6dbcb11bfbc46b72c386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases resources owned by the loading state and stops the loader.  <br /></td></tr>
+<tr class="memdesc:a1f2fb872ba3b6dbcb11bfbc46b72c386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the loader and releases resources.  <br /></td></tr>
 <tr class="separator:a1f2fb872ba3b6dbcb11bfbc46b72c386"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3754de47c0b00b40517645df5e5625cf" id="r_a3754de47c0b00b40517645df5e5625cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3754de47c0b00b40517645df5e5625cf">Unload</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext) override</td></tr>
-<tr class="memdesc:a3754de47c0b00b40517645df5e5625cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads the loading state.  <br /></td></tr>
+<tr class="memdesc:a3754de47c0b00b40517645df5e5625cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads state-specific resources.  <br /></td></tr>
 <tr class="separator:a3754de47c0b00b40517645df5e5625cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0573a8838bb173f6bd6c6a881931cd8" id="r_af0573a8838bb173f6bd6c6a881931cd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0573a8838bb173f6bd6c6a881931cd8">QueueTexture</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag, const std::string &amp;filePath, const <a class="el" href="struct_texture_settings.html">TextureSettings</a> &amp;settings={})</td></tr>
-<tr class="memdesc:af0573a8838bb173f6bd6c6a881931cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an asynchronous texture load job if the texture tag is not already registered.  <br /></td></tr>
+<tr class="memdesc:af0573a8838bb173f6bd6c6a881931cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a texture loading job.  <br /></td></tr>
 <tr class="separator:af0573a8838bb173f6bd6c6a881931cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeeb157f13d158cd0d4ae1590dec2178" id="r_aeeeb157f13d158cd0d4ae1590dec2178"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeeb157f13d158cd0d4ae1590dec2178">QueueShader</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag, const std::vector&lt; std::pair&lt; <a class="el" href="_shader_8h.html#a22fa67f5720e9bfbd075bd088285c531">ShaderStage</a>, <a class="el" href="_render_manager_8h.html#a1db05f4e4bd57f5e7db00f908dab03be">FilePath</a> &gt; &gt; &amp;files)</td></tr>
-<tr class="memdesc:aeeeb157f13d158cd0d4ae1590dec2178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an asynchronous shader load job if the shader tag is not already registered.  <br /></td></tr>
+<tr class="memdesc:aeeeb157f13d158cd0d4ae1590dec2178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a shader loading job.  <br /></td></tr>
 <tr class="separator:aeeeb157f13d158cd0d4ae1590dec2178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f683c033cd51cf736410353556ff668" id="r_a6f683c033cd51cf736410353556ff668"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f683c033cd51cf736410353556ff668">QueueFont</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext, const std::string &amp;tag, const std::string &amp;ttfPath, uint32_t pixelSize)</td></tr>
-<tr class="memdesc:a6f683c033cd51cf736410353556ff668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an asynchronous font load job if the font tag is not already registered.  <br /></td></tr>
+<tr class="memdesc:a6f683c033cd51cf736410353556ff668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a font loading job.  <br /></td></tr>
 <tr class="separator:a6f683c033cd51cf736410353556ff668"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0f36c66d2fdfd6b186b49dac023ca27" id="r_ae0f36c66d2fdfd6b186b49dac023ca27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0f36c66d2fdfd6b186b49dac023ca27">QueueSound</a> (const std::string &amp;tag, const std::string &amp;path, bool loop)</td></tr>
-<tr class="memdesc:ae0f36c66d2fdfd6b186b49dac023ca27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an asynchronous sound load job.  <br /></td></tr>
+<tr class="memdesc:ae0f36c66d2fdfd6b186b49dac023ca27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a sound loading job.  <br /></td></tr>
 <tr class="separator:ae0f36c66d2fdfd6b186b49dac023ca27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a2abd4d6eae2b9f012e02bdc718dd69" id="r_a2a2abd4d6eae2b9f012e02bdc718dd69"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a2abd4d6eae2b9f012e02bdc718dd69">GetProgress01</a> () const</td></tr>
-<tr class="memdesc:a2a2abd4d6eae2b9f012e02bdc718dd69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns overall loading progress as a normalized value in [0, 1].  <br /></td></tr>
+<tr class="memdesc:a2a2abd4d6eae2b9f012e02bdc718dd69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns loading progress as a normalized value.  <br /></td></tr>
 <tr class="separator:a2a2abd4d6eae2b9f012e02bdc718dd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d02a948b169581ad59b589c67f1f589" id="r_a8d02a948b169581ad59b589c67f1f589"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d02a948b169581ad59b589c67f1f589">UploadToGPU</a> (const <a class="el" href="_async_resource_loader_8h.html#a6a60ad85728d8591ed1f4246e5d3af21">LoadResult</a> &amp;r, const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a8d02a948b169581ad59b589c67f1f589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a completed load result to engine runtime systems (GPU upload / registration).  <br /></td></tr>
+<tr class="memdesc:a8d02a948b169581ad59b589c67f1f589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uploads a loaded resource to GPU.  <br /></td></tr>
 <tr class="separator:a8d02a948b169581ad59b589c67f1f589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_game_state"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_game_state')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_game_state.html">GameState</a></td></tr>
 <tr class="memitem:adc1bfdf7ee7c1f48e4841995db4e16c3 inherit pub_methods_class_game_state" id="r_adc1bfdf7ee7c1f48e4841995db4e16c3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#adc1bfdf7ee7c1f48e4841995db4e16c3">~GameState</a> ()=default</td></tr>
-<tr class="memdesc:adc1bfdf7ee7c1f48e4841995db4e16c3 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>.  <br /></td></tr>
+<tr class="memdesc:adc1bfdf7ee7c1f48e4841995db4e16c3 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic state cleanup.  <br /></td></tr>
 <tr class="separator:adc1bfdf7ee7c1f48e4841995db4e16c3 inherit pub_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea569338b92e0b499193fdbdab94e86 inherit pub_methods_class_game_state" id="r_abea569338b92e0b499193fdbdab94e86"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_object_manager.html">ObjectManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#abea569338b92e0b499193fdbdab94e86">GetObjectManager</a> ()</td></tr>
-<tr class="memdesc:abea569338b92e0b499193fdbdab94e86 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> owned by this game state.  <br /></td></tr>
+<tr class="memdesc:abea569338b92e0b499193fdbdab94e86 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_object_manager.html" title="Owns, initializes, updates, renders, and removes runtime objects for the active game state.">ObjectManager</a> owned by this state.  <br /></td></tr>
 <tr class="separator:abea569338b92e0b499193fdbdab94e86 inherit pub_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a116bca1d8804cda67f37e199eb470dfd inherit pub_methods_class_game_state" id="r_a116bca1d8804cda67f37e199eb470dfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera_manager.html">CameraManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#a116bca1d8804cda67f37e199eb470dfd">GetCameraManager</a> ()</td></tr>
-<tr class="memdesc:a116bca1d8804cda67f37e199eb470dfd inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_camera_manager.html" title="Manages multiple Camera2D instances identified by string tags.">CameraManager</a> owned by this game state.  <br /></td></tr>
+<tr class="memdesc:a116bca1d8804cda67f37e199eb470dfd inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_camera_manager.html" title="Manages multiple Camera2D instances using string tags.">CameraManager</a> owned by this state.  <br /></td></tr>
 <tr class="separator:a116bca1d8804cda67f37e199eb470dfd inherit pub_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca3df3a97dc9c97a03665bc1842ffd78 inherit pub_methods_class_game_state" id="r_aca3df3a97dc9c97a03665bc1842ffd78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera2_d.html">Camera2D</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#aca3df3a97dc9c97a03665bc1842ffd78">GetActiveCamera</a> () const</td></tr>
-<tr class="memdesc:aca3df3a97dc9c97a03665bc1842ffd78 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently active <a class="el" href="class_camera2_d.html" title="2D camera providing view transformation and visibility tests.">Camera2D</a>.  <br /></td></tr>
+<tr class="memdesc:aca3df3a97dc9c97a03665bc1842ffd78 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently active camera for this state.  <br /></td></tr>
 <tr class="separator:aca3df3a97dc9c97a03665bc1842ffd78 inherit pub_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadc8c33fe485c1f8ac9bccaec1cebe74 inherit pub_methods_class_game_state" id="r_aadc8c33fe485c1f8ac9bccaec1cebe74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#aadc8c33fe485c1f8ac9bccaec1cebe74">SetActiveCamera</a> (const std::string &amp;tag)</td></tr>
-<tr class="memdesc:aadc8c33fe485c1f8ac9bccaec1cebe74 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active camera using a registered camera tag.  <br /></td></tr>
+<tr class="memdesc:aadc8c33fe485c1f8ac9bccaec1cebe74 inherit pub_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state's active camera by tag.  <br /></td></tr>
 <tr class="separator:aadc8c33fe485c1f8ac9bccaec1cebe74 inherit pub_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -197,53 +197,51 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aecfe4e3c0b70523fe2f15935743340a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_game_state"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_game_state')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_game_state.html">GameState</a></td></tr>
 <tr class="memitem:a688b4f8864623a3d8e9ad873434b062e inherit pro_attribs_class_game_state" id="r_a688b4f8864623a3d8e9ad873434b062e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object_manager.html">ObjectManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#a688b4f8864623a3d8e9ad873434b062e">objectManager</a></td></tr>
+<tr class="memdesc:a688b4f8864623a3d8e9ad873434b062e inherit pro_attribs_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_object.html" title="Base abstract object class for all engine-managed runtime objects.">Object</a> manager owned by this state.  <br /></td></tr>
 <tr class="separator:a688b4f8864623a3d8e9ad873434b062e inherit pro_attribs_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8791f5177bdd9959553a98bac8cf092b inherit pro_attribs_class_game_state" id="r_a8791f5177bdd9959553a98bac8cf092b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera_manager.html">CameraManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#a8791f5177bdd9959553a98bac8cf092b">cameraManager</a></td></tr>
+<tr class="memdesc:a8791f5177bdd9959553a98bac8cf092b inherit pro_attribs_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera manager owned by this state.  <br /></td></tr>
 <tr class="separator:a8791f5177bdd9959553a98bac8cf092b inherit pro_attribs_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_game_state"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_game_state')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_game_state.html">GameState</a></td></tr>
 <tr class="memitem:a5b46058b4310096491ff70ed2fccc94d inherit pro_methods_class_game_state" id="r_a5b46058b4310096491ff70ed2fccc94d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#a5b46058b4310096491ff70ed2fccc94d">PostProcessing</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a5b46058b4310096491ff70ed2fccc94d inherit pro_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies post-processing effects.  <br /></td></tr>
+<tr class="memdesc:a5b46058b4310096491ff70ed2fccc94d inherit pro_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after the main scene frame has been rendered.  <br /></td></tr>
 <tr class="separator:a5b46058b4310096491ff70ed2fccc94d inherit pro_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a279f1dc798ad39da9329dc73c1c85933 inherit pro_methods_class_game_state" id="r_a279f1dc798ad39da9329dc73c1c85933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_state.html#a279f1dc798ad39da9329dc73c1c85933">Restart</a> (const <a class="el" href="struct_engine_context.html">EngineContext</a> &amp;engineContext)</td></tr>
-<tr class="memdesc:a279f1dc798ad39da9329dc73c1c85933 inherit pro_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restarts the game state.  <br /></td></tr>
+<tr class="memdesc:a279f1dc798ad39da9329dc73c1c85933 inherit pro_methods_class_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restarts the state by running cleanup and initialization again.  <br /></td></tr>
 <tr class="separator:a279f1dc798ad39da9329dc73c1c85933 inherit pro_methods_class_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A transitional <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> that asynchronously loads resources and then switches to the next <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>. </p>
-<p><a class="el" href="class_loading_state.html" title="A transitional GameState that asynchronously loads resources and then switches to the next GameState.">LoadingState</a> owns an <a class="el" href="class_async_resource_loader.html" title="Background worker that processes resource load requests asynchronously.">AsyncResourceLoader</a> and provides a queue-style API (QueueTexture/QueueShader/QueueFont/QueueSound) for scheduling resource loads on worker threads. Each frame, it fetches completed load results and uploads them to engine-managed systems (RenderManager/SoundManager).</p>
-<p>Flow (based on <a class="el" href="_loading_state_8cpp.html">LoadingState.cpp</a>):</p><ul>
-<li><a class="el" href="#abece8e8c4a6e42ee1540b5130fc2fde7" title="Starts asynchronous loading and prepares UI resources used during the loading screen.">Load()</a>:<ul>
-<li>Starts the loader.</li>
-<li>Ensures a UI font is registered (uiFontTag), then marks UI as ready.</li>
+<div class="textblock"><p>A <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> responsible for asynchronous resource loading with visual progress feedback. </p>
+<p><a class="el" href="class_loading_state.html" title="A GameState responsible for asynchronous resource loading with visual progress feedback.">LoadingState</a> handles background loading of resources such as textures, shaders, fonts, and sounds using <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a>. It displays a loading UI and transitions to the next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> once all resources are loaded.</p>
+<p>Core responsibilities:</p><ul>
+<li>Queue resource loading jobs (CPU-side)</li>
+<li>Process completed jobs and upload them to GPU</li>
+<li>Display loading progress UI</li>
+<li>Transition to the next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> when loading completes</li>
+</ul>
+<p>Loading flow:</p><ol type="1">
+<li><a class="el" href="#abece8e8c4a6e42ee1540b5130fc2fde7" title="Starts asynchronous loading and prepares UI resources.">Load()</a> → Starts loader and prepares UI resources</li>
+<li><a class="el" href="#a84ce856d66c4167866a24f49d5c7f471" title="Initializes loading UI objects.">Init()</a> → Creates loading UI (<a class="el" href="class_text_object.html" title="Represents a renderable text object whose mesh is generated from a Font at runtime.">TextObject</a>)</li>
+<li><a class="el" href="#a56063d7d8b5ae48cbbee33d16aad3e93" title="Updates loading progress and processes completed jobs.">Update()</a> →<ul>
+<li>Fetch completed jobs</li>
+<li>Upload resources to GPU</li>
+<li>Update progress UI</li>
+<li>Transition when loading completes</li>
 </ul>
 </li>
-<li><a class="el" href="#a84ce856d66c4167866a24f49d5c7f471" title="Initializes loading-screen objects (progress text).">Init()</a>:<ul>
-<li>If UI is ready, creates a screen-space <a class="el" href="class_text_object.html" title="Scene object responsible for rendering text within the standard Object pipeline.">TextObject</a> showing loading progress and registers it via <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a>.</li>
+<li><a class="el" href="#a9d7471af478429371619bff2ccda0e2a" title="Renders loading UI.">Draw()</a> → Renders loading bar and text</li>
+<li><a class="el" href="#a1f2fb872ba3b6dbcb11bfbc46b72c386" title="Stops the loader and releases resources.">Free()</a> → Stops loader thread</li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>Resource loading is split into:<ul>
+<li>CPU loading (<a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a> thread)</li>
+<li>GPU upload (main thread via UploadToGPU) </li>
 </ul>
-</li>
-<li><a class="el" href="#a56063d7d8b5ae48cbbee33d16aad3e93" title="Fetches completed load jobs, uploads results to GPU/systems, updates UI, and transitions when finishe...">Update()</a>:<ul>
-<li>Fetches completed results and uploads them to GPU / systems.</li>
-<li>Updates the progress text.</li>
-<li>When loading finishes, fetches any remaining results, uploads them, then requests <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> to change to <a class="el" href="#a40db3522932ae35699d1db2ab5d728b0">nextFactory()</a>.</li>
-</ul>
-</li>
-<li><a class="el" href="#a9d7471af478429371619bff2ccda0e2a" title="Draws the loading progress bar and renders loading-screen objects.">Draw()</a>:<ul>
-<li>Draws a simple progress bar using <a class="el" href="class_render_manager.html#a80b5e6df0bbbb276abb3a2da87bb2007" title="Clears a rectangular region with a color using scissor test.">RenderManager::ClearBackground</a> and draws all objects (including the progress text).</li>
-</ul>
-</li>
-<li><a class="el" href="#a1f2fb872ba3b6dbcb11bfbc46b72c386" title="Releases resources owned by the loading state and stops the loader.">Free()</a>:<ul>
-<li>Stops the loader.</li>
-</ul>
-</li>
-</ul>
-<p>nextFactory:</p><ul>
-<li>A factory callback that creates the next <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> once loading has completed. </li>
-</ul>
+</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00032">32</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00036">36</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac696a3c24805322e0b09a104ceb132e8" name="ac696a3c24805322e0b09a104ceb132e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac696a3c24805322e0b09a104ceb132e8">&#9670;&#160;</a></span>LoadingState()</h2>
@@ -268,11 +266,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_loading_state.html" title="A transitional GameState that asynchronously loads resources and then switches to the next GameState.">LoadingState</a> that will transition to the <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> produced by nextFactory. </p>
-<p>nextFactory is stored and invoked once the <a class="el" href="class_async_resource_loader.html" title="Background worker that processes resource load requests asynchronously.">AsyncResourceLoader</a> reports completion. If nextFactory is null, the state will not automatically transition.</p>
+<p>Constructs a <a class="el" href="class_loading_state.html" title="A GameState responsible for asynchronous resource loading with visual progress feedback.">LoadingState</a> with a factory for the next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nextFactory</td><td>Factory function that returns the next <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> to run after loading completes. </td></tr>
+    <tr><td class="paramname">nextFactory</td><td>A function that creates the next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> after loading completes. </td></tr>
   </table>
   </dd>
 </dl>
@@ -281,7 +278,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">    4</span>    : <a class="code hl_variable" href="#a40db3522932ae35699d1db2ab5d728b0">nextFactory</a>(std::move(nextFactory_))</div>
 <div class="line"><span class="lineno">    5</span>{</div>
 <div class="line"><span class="lineno">    6</span>}</div>
-<div class="ttc" id="aclass_loading_state_html_a40db3522932ae35699d1db2ab5d728b0"><div class="ttname"><a href="#a40db3522932ae35699d1db2ab5d728b0">LoadingState::nextFactory</a></div><div class="ttdeci">std::function&lt; std::unique_ptr&lt; GameState &gt;()&gt; nextFactory</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00229">LoadingState.h:229</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_a40db3522932ae35699d1db2ab5d728b0"><div class="ttname"><a href="#a40db3522932ae35699d1db2ab5d728b0">LoadingState::nextFactory</a></div><div class="ttdeci">std::function&lt; std::unique_ptr&lt; GameState &gt;()&gt; nextFactory</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00196">LoadingState.h:196</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,18 +306,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the loading progress bar and renders loading-screen objects. </p>
-<p><a class="el" href="#a9d7471af478429371619bff2ccda0e2a" title="Draws the loading progress bar and renders loading-screen objects.">Draw()</a> computes a centered progress bar rectangle based on the current window size. It draws:</p><ul>
-<li>a dark background bar</li>
-<li>a filled bar whose width is barW * <a class="el" href="#a2a2abd4d6eae2b9f012e02bdc718dd69" title="Returns overall loading progress as a normalized value in [0, 1].">GetProgress01()</a></li>
+<p>Renders loading UI. </p>
+<p>Draws:</p><ul>
+<li>Background loading bar</li>
+<li>Filled progress bar</li>
+<li>Progress text </li>
 </ul>
-<p>Then it draws all objects via ObjectManager::DrawAll(engineContext) (including progressText).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context providing access to <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a> and <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#ab3f79ba850091b4853d800b1ff2e2974">GameState</a>.</p>
 
@@ -341,13 +332,13 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>        engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a80b5e6df0bbbb276abb3a2da87bb2007">ClearBackground</a>(x, y, filled, barH, { 0.1f, 0.4f, 1.0f, 1.0f });</div>
 <div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="class_game_state.html#a688b4f8864623a3d8e9ad873434b062e">objectManager</a>.DrawAll(engineContext);</div>
 <div class="line"><span class="lineno">   86</span>}</div>
-<div class="ttc" id="aclass_game_state_html_a688b4f8864623a3d8e9ad873434b062e"><div class="ttname"><a href="class_game_state.html#a688b4f8864623a3d8e9ad873434b062e">GameState::objectManager</a></div><div class="ttdeci">ObjectManager objectManager</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00145">GameState.h:145</a></div></div>
-<div class="ttc" id="aclass_loading_state_html_a2a2abd4d6eae2b9f012e02bdc718dd69"><div class="ttname"><a href="#a2a2abd4d6eae2b9f012e02bdc718dd69">LoadingState::GetProgress01</a></div><div class="ttdeci">float GetProgress01() const</div><div class="ttdoc">Returns overall loading progress as a normalized value in [0, 1].</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00204">LoadingState.h:204</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a80b5e6df0bbbb276abb3a2da87bb2007"><div class="ttname"><a href="class_render_manager.html#a80b5e6df0bbbb276abb3a2da87bb2007">RenderManager::ClearBackground</a></div><div class="ttdeci">void ClearBackground(int x, int y, int width, int height, glm::vec4 color)</div><div class="ttdoc">Clears a rectangular region with a color using scissor test.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00314">RenderManager.cpp:314</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="class_window_manager.html#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the cached framebuffer height of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00068">WindowManager.h:68</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="class_window_manager.html#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the cached framebuffer width of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00060">WindowManager.h:60</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the RenderManager responsible for rendering operations.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00053">EngineContext.h:53</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the WindowManager handling window creation and events.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00043">EngineContext.h:43</a></div></div>
+<div class="ttc" id="aclass_game_state_html_a688b4f8864623a3d8e9ad873434b062e"><div class="ttname"><a href="class_game_state.html#a688b4f8864623a3d8e9ad873434b062e">GameState::objectManager</a></div><div class="ttdeci">ObjectManager objectManager</div><div class="ttdoc">Object manager owned by this state.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00255">GameState.h:255</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_a2a2abd4d6eae2b9f012e02bdc718dd69"><div class="ttname"><a href="#a2a2abd4d6eae2b9f012e02bdc718dd69">LoadingState::GetProgress01</a></div><div class="ttdeci">float GetProgress01() const</div><div class="ttdoc">Returns loading progress as a normalized value.</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00176">LoadingState.h:176</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a80b5e6df0bbbb276abb3a2da87bb2007"><div class="ttname"><a href="class_render_manager.html#a80b5e6df0bbbb276abb3a2da87bb2007">RenderManager::ClearBackground</a></div><div class="ttdeci">void ClearBackground(int x, int y, int width, int height, glm::vec4 color)</div><div class="ttdoc">Clears a rectangular background region using scissor testing.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00339">RenderManager.cpp:339</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="class_window_manager.html#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the current cached window height.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00065">WindowManager.h:65</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="class_window_manager.html#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the current cached window width.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00053">WindowManager.h:53</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the render manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00072">EngineContext.h:72</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the window manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00056">EngineContext.h:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -374,14 +365,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Releases resources owned by the loading state and stops the loader. </p>
-<p>Calls loader.Stop(). Actual resource ownership is handled by RenderManager/SoundManager after upload.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Stops the loader and releases resources. </p>
+<p>Stops <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a> thread safely. </p>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#a46b0b108e44fa42845f27d20bc242d93">GameState</a>.</p>
 
@@ -389,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
 <div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="#af7bd294a5dfe6f36c4e6291bf64aa219">loader</a>.Stop();</div>
 <div class="line"><span class="lineno">   95</span>}</div>
-<div class="ttc" id="aclass_loading_state_html_af7bd294a5dfe6f36c4e6291bf64aa219"><div class="ttname"><a href="#af7bd294a5dfe6f36c4e6291bf64aa219">LoadingState::loader</a></div><div class="ttdeci">AsyncResourceLoader loader</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00228">LoadingState.h:228</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_af7bd294a5dfe6f36c4e6291bf64aa219"><div class="ttname"><a href="#af7bd294a5dfe6f36c4e6291bf64aa219">LoadingState::loader</a></div><div class="ttdeci">AsyncResourceLoader loader</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00195">LoadingState.h:195</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,12 +401,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns overall loading progress as a normalized value in [0, 1]. </p>
-<p>This forwards to <a class="el" href="class_async_resource_loader.html#a5689fa771581393a3186273928d5fae0" title="Returns progress as loadedCount / totalCount.">AsyncResourceLoader::GetProgress()</a>.</p>
-<dl class="section return"><dt>Returns</dt><dd>Loading progress ratio. </dd></dl>
+<p>Returns loading progress as a normalized value. </p>
+<dl class="section return"><dt>Returns</dt><dd>Progress in range [0.0, 1.0] </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00204">204</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  204</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#af7bd294a5dfe6f36c4e6291bf64aa219">loader</a>.GetProgress(); }</div>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00176">176</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#af7bd294a5dfe6f36c4e6291bf64aa219">loader</a>.GetProgress(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -448,14 +432,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes loading-screen objects (progress text). </p>
-<p>If uiReady is true and the UI font can be retrieved, creates a <a class="el" href="class_text_object.html" title="Scene object responsible for rendering text within the standard Object pipeline.">TextObject</a> displaying "Loading... 0%" and configures it as screen-space by calling SetIgnoreCamera(true, GetActiveCamera()). The created <a class="el" href="class_text_object.html" title="Scene object responsible for rendering text within the standard Object pipeline.">TextObject</a> is added to the <a class="el" href="class_object_manager.html" title="Owns and orchestrates the lifecycle, rendering submission, and collision checks of Object instances i...">ObjectManager</a> and its alignment is set to centered.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Initializes loading UI objects. </p>
+<p>Creates a <a class="el" href="class_text_object.html" title="Represents a renderable text object whose mesh is generated from a Font at runtime.">TextObject</a> displaying loading progress. The text is centered and ignores camera transform. </p>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#ab4bdccf42209d9d3465a33739ad59646">GameState</a>.</p>
 
@@ -463,7 +441,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
 <div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aebe9d65f3f4ff289a2d0b76f020e5c1e">uiReady</a>)</div>
 <div class="line"><span class="lineno">   21</span>    {</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keyword">auto</span>* font = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a1db9a464555a13cecb1a865f92eae85c">GetFontByTag</a>(<a class="code hl_variable" href="#a27df9fbc8edb1b1a7f2ec5d52af2f50f">uiFontTag</a>);</div>
+<div class="line"><span class="lineno">   22</span>        std::shared_ptr&lt;Font&gt; font = engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#aee7353551b04f2a1d1e2736173c60093">GetFontByTag</a>(<a class="code hl_variable" href="#a27df9fbc8edb1b1a7f2ec5d52af2f50f">uiFontTag</a>);</div>
 <div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span> (font)</div>
 <div class="line"><span class="lineno">   24</span>        {</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">auto</span> text = std::make_unique&lt;TextObject&gt;(font, <span class="stringliteral">&quot;Loading... 0%&quot;</span>);</div>
@@ -475,15 +453,15 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>        }</div>
 <div class="line"><span class="lineno">   32</span>    }</div>
 <div class="line"><span class="lineno">   33</span>}</div>
-<div class="ttc" id="a_font_8h_html_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd"><div class="ttname"><a href="_font_8h.html#adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd">TextAlignH::Center</a></div><div class="ttdeci">@ Center</div><div class="ttdef"><b>Definition</b> <a href="_font_8h_source.html#l00028">Font.h:28</a></div></div>
-<div class="ttc" id="a_font_8h_html_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05"><div class="ttname"><a href="_font_8h.html#adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05">TextAlignV::Middle</a></div><div class="ttdeci">@ Middle</div><div class="ttdef"><b>Definition</b> <a href="_font_8h_source.html#l00042">Font.h:42</a></div></div>
-<div class="ttc" id="aclass_game_state_html_abea569338b92e0b499193fdbdab94e86"><div class="ttname"><a href="class_game_state.html#abea569338b92e0b499193fdbdab94e86">GameState::GetObjectManager</a></div><div class="ttdeci">virtual ObjectManager &amp; GetObjectManager()</div><div class="ttdoc">Returns the ObjectManager owned by this game state.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00039">GameState.h:39</a></div></div>
-<div class="ttc" id="aclass_game_state_html_aca3df3a97dc9c97a03665bc1842ffd78"><div class="ttname"><a href="class_game_state.html#aca3df3a97dc9c97a03665bc1842ffd78">GameState::GetActiveCamera</a></div><div class="ttdeci">Camera2D * GetActiveCamera() const</div><div class="ttdoc">Returns the currently active Camera2D.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00053">GameState.h:53</a></div></div>
-<div class="ttc" id="aclass_loading_state_html_a27df9fbc8edb1b1a7f2ec5d52af2f50f"><div class="ttname"><a href="#a27df9fbc8edb1b1a7f2ec5d52af2f50f">LoadingState::uiFontTag</a></div><div class="ttdeci">std::string uiFontTag</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00231">LoadingState.h:231</a></div></div>
-<div class="ttc" id="aclass_loading_state_html_aebe9d65f3f4ff289a2d0b76f020e5c1e"><div class="ttname"><a href="#aebe9d65f3f4ff289a2d0b76f020e5c1e">LoadingState::uiReady</a></div><div class="ttdeci">bool uiReady</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00232">LoadingState.h:232</a></div></div>
-<div class="ttc" id="aclass_loading_state_html_aecfe4e3c0b70523fe2f15935743340a3"><div class="ttname"><a href="#aecfe4e3c0b70523fe2f15935743340a3">LoadingState::progressText</a></div><div class="ttdeci">TextObject * progressText</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00233">LoadingState.h:233</a></div></div>
-<div class="ttc" id="aclass_object_manager_html_ae1f29824763903213d6044d463742db4"><div class="ttname"><a href="class_object_manager.html#ae1f29824763903213d6044d463742db4">ObjectManager::AddObject</a></div><div class="ttdeci">Object * AddObject(std::unique_ptr&lt; Object &gt; obj, const std::string &amp;tag=&quot;&quot;)</div><div class="ttdoc">Enqueues an object to be added to the manager and assigns an optional tag.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00007">ObjectManager.cpp:7</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a1db9a464555a13cecb1a865f92eae85c"><div class="ttname"><a href="class_render_manager.html#a1db9a464555a13cecb1a865f92eae85c">RenderManager::GetFontByTag</a></div><div class="ttdeci">Font * GetFontByTag(const std::string &amp;tag)</div><div class="ttdoc">Returns the Font registered under the given tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01094">RenderManager.cpp:1094</a></div></div>
+<div class="ttc" id="a_font_8h_html_adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd"><div class="ttname"><a href="_font_8h.html#adba6445b3653352a2f932f18e80c4c44a4f1f6016fc9f3f2353c0cc7c67b292bd">TextAlignH::Center</a></div><div class="ttdeci">@ Center</div><div class="ttdef"><b>Definition</b> <a href="_font_8h_source.html#l00034">Font.h:34</a></div></div>
+<div class="ttc" id="a_font_8h_html_adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05"><div class="ttname"><a href="_font_8h.html#adddce2e8703c25cb1fda789220605572ab1ca34f82e83c52b010f86955f264e05">TextAlignV::Middle</a></div><div class="ttdeci">@ Middle</div><div class="ttdef"><b>Definition</b> <a href="_font_8h_source.html#l00053">Font.h:53</a></div></div>
+<div class="ttc" id="aclass_game_state_html_abea569338b92e0b499193fdbdab94e86"><div class="ttname"><a href="class_game_state.html#abea569338b92e0b499193fdbdab94e86">GameState::GetObjectManager</a></div><div class="ttdeci">virtual ObjectManager &amp; GetObjectManager()</div><div class="ttdoc">Returns the ObjectManager owned by this state.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00059">GameState.h:59</a></div></div>
+<div class="ttc" id="aclass_game_state_html_aca3df3a97dc9c97a03665bc1842ffd78"><div class="ttname"><a href="class_game_state.html#aca3df3a97dc9c97a03665bc1842ffd78">GameState::GetActiveCamera</a></div><div class="ttdeci">Camera2D * GetActiveCamera() const</div><div class="ttdoc">Returns the currently active camera for this state.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00080">GameState.h:80</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_a27df9fbc8edb1b1a7f2ec5d52af2f50f"><div class="ttname"><a href="#a27df9fbc8edb1b1a7f2ec5d52af2f50f">LoadingState::uiFontTag</a></div><div class="ttdeci">std::string uiFontTag</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00198">LoadingState.h:198</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_aebe9d65f3f4ff289a2d0b76f020e5c1e"><div class="ttname"><a href="#aebe9d65f3f4ff289a2d0b76f020e5c1e">LoadingState::uiReady</a></div><div class="ttdeci">bool uiReady</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00199">LoadingState.h:199</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_aecfe4e3c0b70523fe2f15935743340a3"><div class="ttname"><a href="#aecfe4e3c0b70523fe2f15935743340a3">LoadingState::progressText</a></div><div class="ttdeci">TextObject * progressText</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8h_source.html#l00200">LoadingState.h:200</a></div></div>
+<div class="ttc" id="aclass_object_manager_html_ae1f29824763903213d6044d463742db4"><div class="ttname"><a href="class_object_manager.html#ae1f29824763903213d6044d463742db4">ObjectManager::AddObject</a></div><div class="ttdeci">Object * AddObject(std::unique_ptr&lt; Object &gt; obj, const std::string &amp;tag=&quot;&quot;)</div><div class="ttdoc">Queues a new object for later initialization and activation.</div><div class="ttdef"><b>Definition</b> <a href="_object_manager_8cpp_source.html#l00007">ObjectManager.cpp:7</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_aee7353551b04f2a1d1e2736173c60093"><div class="ttname"><a href="class_render_manager.html#aee7353551b04f2a1d1e2736173c60093">RenderManager::GetFontByTag</a></div><div class="ttdeci">std::shared_ptr&lt; Font &gt; GetFontByTag(const std::string &amp;tag)</div><div class="ttdoc">Resolves a font by tag.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01085">RenderManager.cpp:1085</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -510,14 +488,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Late initialization hook for the loading state. </p>
-<p>Forwards to GameState::LateInit(engineContext).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Performs late initialization after all objects are created. </p>
+<p>Calls base <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> LateInit logic. </p>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#a98a9fbfcd4afe6bcd90fc94d5aa93b85">GameState</a>.</p>
 
@@ -525,7 +497,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
 <div class="line"><span class="lineno">   37</span>    <a class="code hl_function" href="class_game_state.html#a98a9fbfcd4afe6bcd90fc94d5aa93b85">GameState::LateInit</a>(engineContext);</div>
 <div class="line"><span class="lineno">   38</span>}</div>
-<div class="ttc" id="aclass_game_state_html_a98a9fbfcd4afe6bcd90fc94d5aa93b85"><div class="ttname"><a href="class_game_state.html#a98a9fbfcd4afe6bcd90fc94d5aa93b85">GameState::LateInit</a></div><div class="ttdeci">virtual void LateInit(const EngineContext &amp;engineContext)</div><div class="ttdoc">Performs post-object initialization logic.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00078">GameState.h:78</a></div></div>
+<div class="ttc" id="aclass_game_state_html_a98a9fbfcd4afe6bcd90fc94d5aa93b85"><div class="ttname"><a href="class_game_state.html#a98a9fbfcd4afe6bcd90fc94d5aa93b85">GameState::LateInit</a></div><div class="ttdeci">virtual void LateInit(const EngineContext &amp;engineContext)</div><div class="ttdoc">Called after Init() and after pending objects have completed initialization.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00121">GameState.h:121</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -556,15 +528,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Late update hook for the loading state. </p>
-<p>Forwards to GameState::LateUpdate(dt, engineContext).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Performs late update logic. </p>
+<p>Calls base <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> LateUpdate. </p>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#a5079b8eccc7846e03e17917e07d6da3f">GameState</a>.</p>
 
@@ -572,7 +537,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
 <div class="line"><span class="lineno">   67</span>    <a class="code hl_function" href="class_game_state.html#a5079b8eccc7846e03e17917e07d6da3f">GameState::LateUpdate</a>(dt, engineContext);</div>
 <div class="line"><span class="lineno">   68</span>}</div>
-<div class="ttc" id="aclass_game_state_html_a5079b8eccc7846e03e17917e07d6da3f"><div class="ttname"><a href="class_game_state.html#a5079b8eccc7846e03e17917e07d6da3f">GameState::LateUpdate</a></div><div class="ttdeci">virtual void LateUpdate(float dt, const EngineContext &amp;engineContext)</div><div class="ttdoc">Performs late update logic after collision checks.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00095">GameState.h:95</a></div></div>
+<div class="ttc" id="aclass_game_state_html_a5079b8eccc7846e03e17917e07d6da3f"><div class="ttname"><a href="class_game_state.html#a5079b8eccc7846e03e17917e07d6da3f">GameState::LateUpdate</a></div><div class="ttdeci">virtual void LateUpdate(float dt, const EngineContext &amp;engineContext)</div><div class="ttdoc">Called after the main Update phase and after built-in collision/debug processing.</div><div class="ttdef"><b>Definition</b> <a href="_game_state_8h_source.html#l00151">GameState.h:151</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -599,14 +564,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Starts asynchronous loading and prepares UI resources used during the loading screen. </p>
-<p>Starts <a class="el" href="class_async_resource_loader.html" title="Background worker that processes resource load requests asynchronously.">AsyncResourceLoader</a>. Ensures the loading UI font is registered in <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> under uiFontTag. Sets uiReady to true so <a class="el" href="#a84ce856d66c4167866a24f49d5c7f471" title="Initializes loading-screen objects (progress text).">Init()</a> can spawn UI objects.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context providing access to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Starts asynchronous loading and prepares UI resources. </p>
+<ul>
+<li>Starts <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a> thread</li>
+<li>Ensures UI font is registered</li>
+<li>Marks UI as ready for initialization </li>
+</ul>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#a89713af22cf5b07b602c3315b1f90296">GameState</a>.</p>
 
@@ -619,8 +582,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   14</span>    }</div>
 <div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="#aebe9d65f3f4ff289a2d0b76f020e5c1e">uiReady</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   16</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a0762465f3bfa7573ec3261767a68eb16"><div class="ttname"><a href="class_render_manager.html#a0762465f3bfa7573ec3261767a68eb16">RenderManager::RegisterFont</a></div><div class="ttdeci">void RegisterFont(const std::string &amp;tag, const std::string &amp;ttfPath, uint32_t pixelSize)</div><div class="ttdoc">Registers a Font under a tag by loading a TTF file at a given pixel size.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00791">RenderManager.cpp:791</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a125f91cca7722e193b0d60f408f50858"><div class="ttname"><a href="class_render_manager.html#a125f91cca7722e193b0d60f408f50858">RenderManager::HasFont</a></div><div class="ttdeci">bool HasFont(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a Font with the given tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01025">RenderManager.cpp:1025</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a0762465f3bfa7573ec3261767a68eb16"><div class="ttname"><a href="class_render_manager.html#a0762465f3bfa7573ec3261767a68eb16">RenderManager::RegisterFont</a></div><div class="ttdeci">void RegisterFont(const std::string &amp;tag, const std::string &amp;ttfPath, uint32_t pixelSize)</div><div class="ttdoc">Registers a font from a TTF file and pixel size.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00848">RenderManager.cpp:848</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a125f91cca7722e193b0d60f408f50858"><div class="ttname"><a href="class_render_manager.html#a125f91cca7722e193b0d60f408f50858">RenderManager::HasFont</a></div><div class="ttdeci">bool HasFont(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a font tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01026">RenderManager.cpp:1026</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -653,14 +616,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an asynchronous font load job if the font tag is not already registered. </p>
-<p>If <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> already has a font registered for tag, the request is ignored. Otherwise, a <a class="el" href="struct_font_job.html" title="Load request describing a font resource to be registered.">FontJob</a> is enqueued.</p>
+<p>Queues a font loading job. </p>
+<p>Adds a font load request using TTF file and pixel size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context (used to query <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>). </td></tr>
-    <tr><td class="paramname">tag</td><td><a class="el" href="class_font.html" title="FreeType-backed font that generates text meshes using a dynamically baked atlas.">Font</a> tag to register under. </td></tr>
-    <tr><td class="paramname">ttfPath</td><td>Path to a .ttf file. </td></tr>
-    <tr><td class="paramname">pixelSize</td><td><a class="el" href="class_font.html" title="FreeType-backed font that generates text meshes using a dynamically baked atlas.">Font</a> pixel size used when creating the <a class="el" href="class_font.html" title="FreeType-backed font that generates text meshes using a dynamically baked atlas.">Font</a>. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Engine context </td></tr>
+    <tr><td class="paramname">tag</td><td>Resource tag </td></tr>
+    <tr><td class="paramname">ttfPath</td><td>Path to font file </td></tr>
+    <tr><td class="paramname">pixelSize</td><td><a class="el" href="class_font.html" title="FreeType-backed font resource that manages glyph baking, atlas storage, and text mesh generation.">Font</a> size in pixels </td></tr>
   </table>
   </dd>
 </dl>
@@ -698,13 +661,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an asynchronous shader load job if the shader tag is not already registered. </p>
-<p>If <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> already has a shader registered for tag, the request is ignored. Otherwise, a <a class="el" href="struct_shader_job.html" title="Load request describing a shader program to be loaded asynchronously.">ShaderJob</a> is built from (stage, file path) pairs and enqueued.</p>
+<p>Queues a shader loading job. </p>
+<p>Adds a shader load request consisting of multiple shader stages.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context (used to query <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>). </td></tr>
-    <tr><td class="paramname">tag</td><td><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a> tag to register under. </td></tr>
-    <tr><td class="paramname">files</td><td>List of shader stage + file path pairs to load and compile. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Engine context </td></tr>
+    <tr><td class="paramname">tag</td><td>Resource tag </td></tr>
+    <tr><td class="paramname">files</td><td>List of shader stage + file path pairs </td></tr>
   </table>
   </dd>
 </dl>
@@ -719,9 +682,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  113</span>        job.<a class="code hl_variable" href="struct_shader_job.html#a5eb2b74c79feb2632bb8a0e9ec39f0fc">sources</a>.push_back(ShaderFile{ f.first, f.second });</div>
 <div class="line"><span class="lineno">  114</span>    <a class="code hl_variable" href="#af7bd294a5dfe6f36c4e6291bf64aa219">loader</a>.Enqueue(job);</div>
 <div class="line"><span class="lineno">  115</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_af2a96d2e81a279531985c0f1ef093e76"><div class="ttname"><a href="class_render_manager.html#af2a96d2e81a279531985c0f1ef093e76">RenderManager::HasShader</a></div><div class="ttdeci">bool HasShader(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a Shader with the given tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01021">RenderManager.cpp:1021</a></div></div>
-<div class="ttc" id="astruct_shader_job_html_a1bcf780b68eb6f40150fae5d7cc83df5"><div class="ttname"><a href="struct_shader_job.html#a1bcf780b68eb6f40150fae5d7cc83df5">ShaderJob::tag</a></div><div class="ttdeci">std::string tag</div><div class="ttdef"><b>Definition</b> <a href="_async_resource_loader_8h_source.html#l00053">AsyncResourceLoader.h:53</a></div></div>
-<div class="ttc" id="astruct_shader_job_html_a5eb2b74c79feb2632bb8a0e9ec39f0fc"><div class="ttname"><a href="struct_shader_job.html#a5eb2b74c79feb2632bb8a0e9ec39f0fc">ShaderJob::sources</a></div><div class="ttdeci">std::vector&lt; ShaderFile &gt; sources</div><div class="ttdef"><b>Definition</b> <a href="_async_resource_loader_8h_source.html#l00054">AsyncResourceLoader.h:54</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_af2a96d2e81a279531985c0f1ef093e76"><div class="ttname"><a href="class_render_manager.html#af2a96d2e81a279531985c0f1ef093e76">RenderManager::HasShader</a></div><div class="ttdeci">bool HasShader(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a shader tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01022">RenderManager.cpp:1022</a></div></div>
+<div class="ttc" id="astruct_shader_job_html_a1bcf780b68eb6f40150fae5d7cc83df5"><div class="ttname"><a href="struct_shader_job.html#a1bcf780b68eb6f40150fae5d7cc83df5">ShaderJob::tag</a></div><div class="ttdeci">std::string tag</div><div class="ttdef"><b>Definition</b> <a href="_async_resource_loader_8h_source.html#l00063">AsyncResourceLoader.h:63</a></div></div>
+<div class="ttc" id="astruct_shader_job_html_a5eb2b74c79feb2632bb8a0e9ec39f0fc"><div class="ttname"><a href="struct_shader_job.html#a5eb2b74c79feb2632bb8a0e9ec39f0fc">ShaderJob::sources</a></div><div class="ttdeci">std::vector&lt; ShaderFile &gt; sources</div><div class="ttdef"><b>Definition</b> <a href="_async_resource_loader_8h_source.html#l00064">AsyncResourceLoader.h:64</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -749,13 +712,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an asynchronous sound load job. </p>
-<p>Unlike textures/shaders/fonts, this does not check for existing registrations in the provided implementation. The <a class="el" href="struct_sound_job.html" title="Load request describing a sound asset to be loaded asynchronously.">SoundJob</a> result is applied during <a class="el" href="#a8d02a948b169581ad59b589c67f1f589" title="Applies a completed load result to engine runtime systems (GPU upload / registration).">UploadToGPU()</a> by calling SoundManager::LoadSound(tag, filePath, loop).</p>
+<p>Queues a sound loading job. </p>
+<p>Adds a sound load request to <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>Sound tag. </td></tr>
-    <tr><td class="paramname">path</td><td>Sound file path. </td></tr>
-    <tr><td class="paramname">loop</td><td>Whether the sound should loop. </td></tr>
+    <tr><td class="paramname">tag</td><td>Resource tag </td></tr>
+    <tr><td class="paramname">path</td><td>Path to sound file </td></tr>
+    <tr><td class="paramname">loop</td><td>Whether the sound should loop </td></tr>
   </table>
   </dd>
 </dl>
@@ -796,14 +759,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enqueues an asynchronous texture load job if the texture tag is not already registered. </p>
-<p>If <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> already has a texture registered for tag, the request is ignored. Otherwise, a <a class="el" href="struct_texture_job.html" title="Load request describing a texture to be loaded asynchronously.">TextureJob</a> is enqueued into <a class="el" href="class_async_resource_loader.html" title="Background worker that processes resource load requests asynchronously.">AsyncResourceLoader</a>.</p>
+<p>Queues a texture loading job. </p>
+<p>Adds a texture load request to <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a> if not already registered.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context (used to query <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>). </td></tr>
-    <tr><td class="paramname">tag</td><td><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> tag to register under. </td></tr>
-    <tr><td class="paramname">filePath</td><td>File path for the texture to load. </td></tr>
-    <tr><td class="paramname">settings</td><td><a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> sampling/wrap/mipmap settings applied when creating the GPU texture. </td></tr>
+    <tr><td class="paramname">engineContext</td><td>Engine context </td></tr>
+    <tr><td class="paramname">tag</td><td>Resource tag </td></tr>
+    <tr><td class="paramname">filePath</td><td>Path to texture file </td></tr>
+    <tr><td class="paramname">settings</td><td><a class="el" href="class_texture.html">Texture</a> settings </td></tr>
   </table>
   </dd>
 </dl>
@@ -814,7 +777,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="#af7bd294a5dfe6f36c4e6291bf64aa219">loader</a>.Enqueue(TextureJob{ tag, filePath, settings });</div>
 <div class="line"><span class="lineno">  104</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a687a26c8df1f31684d40c4c122480194"><div class="ttname"><a href="class_render_manager.html#a687a26c8df1f31684d40c4c122480194">RenderManager::HasTexture</a></div><div class="ttdeci">bool HasTexture(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a Texture with the given tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01017">RenderManager.cpp:1017</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a687a26c8df1f31684d40c4c122480194"><div class="ttname"><a href="class_render_manager.html#a687a26c8df1f31684d40c4c122480194">RenderManager::HasTexture</a></div><div class="ttdeci">bool HasTexture(const std::string &amp;tag) const</div><div class="ttdoc">Returns whether a texture tag is registered.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l01018">RenderManager.cpp:1018</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -841,14 +804,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Unloads the loading state. </p>
-<p>Currently a no-op in the provided implementation.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Unloads state-specific resources. </p>
+<p>Currently unused but reserved for future resource cleanup. </p>
 
 <p>Reimplemented from <a class="el" href="class_game_state.html#ab9a398de72a4201a69093dfd574220c6">GameState</a>.</p>
 
@@ -885,19 +842,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Fetches completed load jobs, uploads results to GPU/systems, updates UI, and transitions when finished. </p>
-<p>Each frame:</p><ul>
-<li>Calls loader.FetchCompleted() and uploads each <a class="el" href="_async_resource_loader_8h.html#a6a60ad85728d8591ed1f4246e5d3af21" title="Variant type representing any supported completed load result.">LoadResult</a> via <a class="el" href="#a8d02a948b169581ad59b589c67f1f589" title="Applies a completed load result to engine runtime systems (GPU upload / registration).">UploadToGPU()</a>.</li>
-<li>Updates the progressText with the current percentage from <a class="el" href="#a2a2abd4d6eae2b9f012e02bdc718dd69" title="Returns overall loading progress as a normalized value in [0, 1].">GetProgress01()</a>.</li>
-</ul>
-<p>When loader.HasFinished() becomes true and nextFactory is valid:</p><ul>
-<li>Fetches completed results again to flush any remaining uploads.</li>
-<li>Calls engineContext.stateManager-&gt;ChangeState(nextFactory()) to transition.</li>
+<p>Updates loading progress and processes completed jobs. </p>
+<ul>
+<li>Fetches completed resource loading results</li>
+<li>Uploads them to GPU via <a class="el" href="#a8d02a948b169581ad59b589c67f1f589" title="Uploads a loaded resource to GPU.">UploadToGPU()</a></li>
+<li>Updates loading progress text</li>
+<li>Transitions to next <a class="el" href="class_game_state.html" title="Base class representing one runtime game state in the engine.">GameState</a> when loading finishes</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Delta time in seconds. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context. </td></tr>
+    <tr><td class="paramname">dt</td><td>Delta time </td></tr>
   </table>
   </dd>
 </dl>
@@ -928,9 +882,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   61</span>        engineContext.<a class="code hl_variable" href="struct_engine_context.html#a67f96c1b09ab0393d4f8434900d7419a">stateManager</a>-&gt;<a class="code hl_function" href="class_state_manager.html#a5337ecd1c035794817b1de05f961d352">ChangeState</a>(<a class="code hl_variable" href="#a40db3522932ae35699d1db2ab5d728b0">nextFactory</a>());</div>
 <div class="line"><span class="lineno">   62</span>    }</div>
 <div class="line"><span class="lineno">   63</span>}</div>
-<div class="ttc" id="aclass_loading_state_html_a8d02a948b169581ad59b589c67f1f589"><div class="ttname"><a href="#a8d02a948b169581ad59b589c67f1f589">LoadingState::UploadToGPU</a></div><div class="ttdeci">void UploadToGPU(const LoadResult &amp;r, const EngineContext &amp;engineContext)</div><div class="ttdoc">Applies a completed load result to engine runtime systems (GPU upload / registration).</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8cpp_source.html#l00132">LoadingState.cpp:132</a></div></div>
-<div class="ttc" id="aclass_state_manager_html_a5337ecd1c035794817b1de05f961d352"><div class="ttname"><a href="class_state_manager.html#a5337ecd1c035794817b1de05f961d352">StateManager::ChangeState</a></div><div class="ttdeci">void ChangeState(std::unique_ptr&lt; GameState &gt; newState)</div><div class="ttdoc">Requests a transition to a new GameState.</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8cpp_source.html#l00008">StateManager.cpp:8</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a67f96c1b09ab0393d4f8434900d7419a"><div class="ttname"><a href="struct_engine_context.html#a67f96c1b09ab0393d4f8434900d7419a">EngineContext::stateManager</a></div><div class="ttdeci">StateManager * stateManager</div><div class="ttdoc">Pointer to the StateManager responsible for game state transitions.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00038">EngineContext.h:38</a></div></div>
+<div class="ttc" id="aclass_loading_state_html_a8d02a948b169581ad59b589c67f1f589"><div class="ttname"><a href="#a8d02a948b169581ad59b589c67f1f589">LoadingState::UploadToGPU</a></div><div class="ttdeci">void UploadToGPU(const LoadResult &amp;r, const EngineContext &amp;engineContext)</div><div class="ttdoc">Uploads a loaded resource to GPU.</div><div class="ttdef"><b>Definition</b> <a href="_loading_state_8cpp_source.html#l00132">LoadingState.cpp:132</a></div></div>
+<div class="ttc" id="aclass_state_manager_html_a5337ecd1c035794817b1de05f961d352"><div class="ttname"><a href="class_state_manager.html#a5337ecd1c035794817b1de05f961d352">StateManager::ChangeState</a></div><div class="ttdeci">void ChangeState(std::unique_ptr&lt; GameState &gt; newState)</div><div class="ttdoc">Schedules a transition to a new game state.</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8cpp_source.html#l00008">StateManager.cpp:8</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a67f96c1b09ab0393d4f8434900d7419a"><div class="ttname"><a href="struct_engine_context.html#a67f96c1b09ab0393d4f8434900d7419a">EngineContext::stateManager</a></div><div class="ttdeci">StateManager * stateManager</div><div class="ttdoc">Pointer to the state manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00048">EngineContext.h:48</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -953,30 +907,17 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies a completed load result to engine runtime systems (GPU upload / registration). </p>
-<p>Uses std::visit on the <a class="el" href="_async_resource_loader_8h.html#a6a60ad85728d8591ed1f4246e5d3af21" title="Variant type representing any supported completed load result.">LoadResult</a> variant:</p><ul>
-<li><a class="el" href="struct_texture_result.html" title="Result data produced by an asynchronous texture load.">TextureResult</a>:<ul>
-<li>Creates a <a class="el" href="class_texture.html" title="Encapsulates an OpenGL texture object and its associated metadata.">Texture</a> from raw pixel data and registers it to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> under the result tag.</li>
+<p>Uploads a loaded resource to GPU. </p>
+<p>Converts CPU-loaded data into GPU resources:</p><ul>
+<li><a class="el" href="class_texture.html">Texture</a> → OpenGL texture</li>
+<li><a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and manages shader compilation, attachment, linking,...">Shader</a> → Compiled shader program</li>
+<li><a class="el" href="class_font.html" title="FreeType-backed font resource that manages glyph baking, atlas storage, and text mesh generation.">Font</a> → Registered font with atlas</li>
+<li>Sound → Loaded into <a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a></li>
 </ul>
-</li>
-<li><a class="el" href="struct_shader_result.html" title="Result data produced by an asynchronous shader load.">ShaderResult</a>:<ul>
-<li>Creates a <a class="el" href="class_shader.html" title="Wraps an OpenGL shader program and provides module attachment, linking, and uniform updates.">Shader</a>, attaches sources, links it, then registers it to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.</li>
-</ul>
-</li>
-<li><a class="el" href="struct_font_result.html" title="Result data for a font job.">FontResult</a>:<ul>
-<li>Registers the font to <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> via RegisterFont(tag, ttfPath, pixelSize).</li>
-</ul>
-</li>
-<li><a class="el" href="struct_sound_result.html" title="Result data for a sound job.">SoundResult</a>:<ul>
-<li>Registers the sound via SoundManager::LoadSound(tag, filePath, loop).</li>
-</ul>
-</li>
-</ul>
-<p>Failed results (ok == false) are skipped for <a class="el" href="struct_texture_result.html" title="Result data produced by an asynchronous texture load.">TextureResult</a> and <a class="el" href="struct_shader_result.html" title="Result data produced by an asynchronous shader load.">ShaderResult</a>.</p>
+<p>Must be called from main thread.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>Completed load result. </td></tr>
-    <tr><td class="paramname">engineContext</td><td>Engine-wide context providing <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a>. </td></tr>
+    <tr><td class="paramname">r</td><td>Load result from <a class="el" href="class_async_resource_loader.html" title="Loads resource data asynchronously on a background worker thread.">AsyncResourceLoader</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -991,7 +932,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  139</span>                <span class="keywordflow">if</span> (!res.ok)</div>
 <div class="line"><span class="lineno">  140</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>                <span class="keyword">auto</span> tex = std::make_unique&lt;Texture&gt;(res.pixels.data(), res.width, res.height, res.channels, res.settings);</div>
+<div class="line"><span class="lineno">  142</span>                <span class="keyword">auto</span> tex = std::make_shared&lt;Texture&gt;(res.pixels.data(), res.width, res.height, res.channels, res.settings);</div>
 <div class="line"><span class="lineno">  143</span>                engineContext.<a class="code hl_variable" href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">renderManager</a>-&gt;<a class="code hl_function" href="class_render_manager.html#a8645efdc911bde8ae83409d18a2d9cfd">RegisterTexture</a>(res.tag, std::move(tex));</div>
 <div class="line"><span class="lineno">  144</span>            }</div>
 <div class="line"><span class="lineno">  145</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, ShaderResult&gt;)</div>
@@ -999,7 +940,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  147</span>                <span class="keywordflow">if</span> (!res.ok)</div>
 <div class="line"><span class="lineno">  148</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>                <span class="keyword">auto</span> shader = std::make_unique&lt;Shader&gt;();</div>
+<div class="line"><span class="lineno">  150</span>                <span class="keyword">auto</span> shader = std::make_shared&lt;Shader&gt;();</div>
 <div class="line"><span class="lineno">  151</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; s : res.sources)</div>
 <div class="line"><span class="lineno">  152</span>                {</div>
 <div class="line"><span class="lineno">  153</span>                    shader-&gt;AttachFromSource(s.stage, s.source);</div>
@@ -1021,10 +962,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  169</span>            }</div>
 <div class="line"><span class="lineno">  170</span>        }, r);</div>
 <div class="line"><span class="lineno">  171</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a3ad25e59a96852a1685a0eba9898d11d"><div class="ttname"><a href="class_render_manager.html#a3ad25e59a96852a1685a0eba9898d11d">RenderManager::RegisterShader</a></div><div class="ttdeci">void RegisterShader(const std::string &amp;tag, const std::vector&lt; std::pair&lt; ShaderStage, FilePath &gt; &gt; &amp;sources)</div><div class="ttdoc">Registers a Shader program under a tag by compiling sources from files.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00674">RenderManager.cpp:674</a></div></div>
-<div class="ttc" id="aclass_render_manager_html_a8645efdc911bde8ae83409d18a2d9cfd"><div class="ttname"><a href="class_render_manager.html#a8645efdc911bde8ae83409d18a2d9cfd">RenderManager::RegisterTexture</a></div><div class="ttdeci">void RegisterTexture(const std::string &amp;tag, const FilePath &amp;path, const TextureSettings &amp;settings={})</div><div class="ttdoc">Registers a Texture under a tag by loading it from a file path.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00710">RenderManager.cpp:710</a></div></div>
-<div class="ttc" id="aclass_sound_manager_html_a8e52926369f4ff23599507c5e7cf7246"><div class="ttname"><a href="class_sound_manager.html#a8e52926369f4ff23599507c5e7cf7246">SoundManager::LoadSound</a></div><div class="ttdeci">void LoadSound(const std::string &amp;tag, const std::string &amp;filepath, bool loop=false)</div><div class="ttdoc">Registers a sound asset under a tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00087">SoundManager.cpp:87</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_aa5985216cfd74ab389769abc5a5fdfb6"><div class="ttname"><a href="struct_engine_context.html#aa5985216cfd74ab389769abc5a5fdfb6">EngineContext::soundManager</a></div><div class="ttdeci">SoundManager * soundManager</div><div class="ttdoc">Pointer to the SoundManager handling audio playback and control.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00058">EngineContext.h:58</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a3ad25e59a96852a1685a0eba9898d11d"><div class="ttname"><a href="class_render_manager.html#a3ad25e59a96852a1685a0eba9898d11d">RenderManager::RegisterShader</a></div><div class="ttdeci">void RegisterShader(const std::string &amp;tag, const std::vector&lt; std::pair&lt; ShaderStage, FilePath &gt; &gt; &amp;sources)</div><div class="ttdoc">Registers a shader from a list of shader stage/file path pairs.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00719">RenderManager.cpp:719</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a8645efdc911bde8ae83409d18a2d9cfd"><div class="ttname"><a href="class_render_manager.html#a8645efdc911bde8ae83409d18a2d9cfd">RenderManager::RegisterTexture</a></div><div class="ttdeci">void RegisterTexture(const std::string &amp;tag, const FilePath &amp;path, const TextureSettings &amp;settings={})</div><div class="ttdoc">Registers a texture from a file path.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00758">RenderManager.cpp:758</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a8e52926369f4ff23599507c5e7cf7246"><div class="ttname"><a href="class_sound_manager.html#a8e52926369f4ff23599507c5e7cf7246">SoundManager::LoadSound</a></div><div class="ttdeci">void LoadSound(const std::string &amp;tag, const std::string &amp;filepath, bool loop=false)</div><div class="ttdoc">Registers a sound resource under a tag.</div><div class="ttdef"><b>Definition</b> <a href="_sound_manager_8cpp_source.html#l00091">SoundManager.cpp:91</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_aa5985216cfd74ab389769abc5a5fdfb6"><div class="ttname"><a href="struct_engine_context.html#aa5985216cfd74ab389769abc5a5fdfb6">EngineContext::soundManager</a></div><div class="ttdeci">SoundManager * soundManager</div><div class="ttdoc">Pointer to the sound manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00080">EngineContext.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1049,7 +990,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00228">228</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00195">195</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 
 </div>
 </div>
@@ -1073,7 +1014,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00229">229</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00196">196</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 
 </div>
 </div>
@@ -1097,7 +1038,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00233">233</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00200">200</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 
 </div>
 </div>
@@ -1121,7 +1062,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00231">231</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00198">198</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1086,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00232">232</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_loading_state_8h_source.html#l00199">199</a> of file <a class="el" href="_loading_state_8h_source.html">LoadingState.h</a>.</p>
 
 </div>
 </div>

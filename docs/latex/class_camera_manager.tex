@@ -2,7 +2,7 @@
 \hypertarget{class_camera_manager}{}\label{class_camera_manager}\index{CameraManager@{CameraManager}}
 
 
-Manages multiple \doxylink{class_camera2_d}{Camera2D} instances identified by string tags.  
+Manages multiple \doxylink{class_camera2_d}{Camera2D} instances using string tags.  
 
 
 
@@ -13,23 +13,23 @@ Manages multiple \doxylink{class_camera2_d}{Camera2D} instances identified by st
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{Camera\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Constructs an empty \doxylink{class_camera_manager}{Camera\+Manager}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs the \doxylink{class_camera_manager}{Camera\+Manager} and initializes a default camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{Register\+Camera}} (const std\+::string \&tag, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_camera2_d}{Camera2D}} $>$ camera)
-\begin{DoxyCompactList}\small\item\em Registers (or replaces) a camera under the given tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Registers a new camera with a tag. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{Get\+Camera}} (const std\+::string \&tag) const
-\begin{DoxyCompactList}\small\item\em Returns the camera associated with the given tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a camera by its tag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{Set\+Active\+Camera}} (const std\+::string \&tag)
-\begin{DoxyCompactList}\small\item\em Sets the active camera by tag if the tag exists. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the active camera using its tag. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_camera2_d}{Camera2D}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}{Get\+Active\+Camera}} () const
 \begin{DoxyCompactList}\small\item\em Returns the currently active camera. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}{Get\+Active\+Camera\+Tag}} () const
-\begin{DoxyCompactList}\small\item\em Returns the tag string of the active camera. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the tag of the currently active camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}{Set\+Screen\+Size\+For\+All}} (int width, int height)
-\begin{DoxyCompactList}\small\item\em Updates screen size on all registered cameras. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets screen size for all registered cameras. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}{Set\+Screen\+Size}} (const std\+::string \&tag, int width, int height)
-\begin{DoxyCompactList}\small\item\em Updates screen size on a specific camera by tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets screen size for a specific camera. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_camera_manager_ace05611218ec9a7e43db3e658b51f404}{Clear}} ()
-\begin{DoxyCompactList}\small\item\em Removes all registered cameras. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clears all registered cameras. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,17 +40,16 @@ std\+::string \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a45993
 
 
 \doxysubsection{Detailed Description}
-Manages multiple \doxylink{class_camera2_d}{Camera2D} instances identified by string tags. 
+Manages multiple \doxylink{class_camera2_d}{Camera2D} instances using string tags. 
 
-\doxylink{class_camera_manager}{Camera\+Manager} owns \doxylink{class_camera2_d}{Camera2D} objects via std\+::unique\+\_\+ptr and provides\+:
-\begin{DoxyItemize}
-\item Registration of cameras by tag
-\item Lookup by tag
-\item Active camera selection by tag
-\item Bulk screen size propagation (useful on window resize)
-\end{DoxyItemize}
+\doxylink{class_camera_manager}{Camera\+Manager} is responsible for storing, retrieving, and managing multiple \doxylink{class_camera2_d}{Camera2D} objects. Cameras are identified by string tags and stored internally using unique\+\_\+ptr for ownership safety.
 
-The active camera is tracked by its tag (active\+Camera\+Tag). If the active tag does not exist in the map, Get\+Active\+Camera returns nullptr. 
+Upon construction, a default camera with the tag "{}main"{} is automatically created and set as active. The manager allows switching between cameras, resizing all cameras, and clearing all registered cameras.
+
+\begin{DoxyNote}{Note}
+The manager owns all \doxylink{class_camera2_d}{Camera2D} instances. External code should not delete cameras manually. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00020}{20}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
@@ -65,9 +64,14 @@ Camera\+Manager\+::\+Camera\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 
 
 
-Constructs an empty \doxylink{class_camera_manager}{Camera\+Manager}. 
+Constructs the \doxylink{class_camera_manager}{Camera\+Manager} and initializes a default camera. 
 
-Initializes internal containers. No camera is active until Register\+Camera and Set\+Active\+Camera are used. 
+Creates a default \doxylink{class_camera2_d}{Camera2D} with screen size (1,1), sets its zoom to 1.\+0, and registers it under the tag "{}main"{}. This camera is also set as the active camera.
+
+\begin{DoxyNote}{Note}
+This ensures that there is always at least one valid camera available. 
+\end{DoxyNote}
+
 
 Definition at line \mbox{\hyperlink{_camera_manager_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_camera_manager_8cpp_source}{Camera\+Manager.\+cpp}}.
 
@@ -92,17 +96,22 @@ void Camera\+Manager\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Removes all registered cameras. 
+Clears all registered cameras. 
 
-Clears the internal map and destroys owned \doxylink{class_camera2_d}{Camera2D} instances. The active\+Camera\+Tag string is not modified by this function. 
+Removes all cameras from the internal map. This will destroy all \doxylink{class_camera2_d}{Camera2D} instances managed by this class.
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00155}{155}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+\begin{DoxyNote}{Note}
+After calling this, active\+Camera\+Tag may become invalid. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00152}{152}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00156\ \ \ \ \ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.clear();}
-\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.clear();}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_ab79f4b85ebdfddc40bb595bcc09fc52a}\index{CameraManager@{CameraManager}!GetActiveCamera@{GetActiveCamera}}
@@ -115,20 +124,20 @@ Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00155}{155}} of f
 
 Returns the currently active camera. 
 
-This function performs a tag lookup using active\+Camera\+Tag. If the active tag is not registered, nullptr is returned.
+Internally calls Get\+Camera using the stored active\+Camera\+Tag.
 
 \begin{DoxyReturn}{Returns}
-Pointer to the active \doxylink{class_camera2_d}{Camera2D}, or nullptr. 
+Pointer to the active \doxylink{class_camera2_d}{Camera2D}, or nullptr if not found. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00094}{94}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00091}{91}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00095\ \ \ \ \ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}});}
-\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}{GetCamera}}(\mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}});}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_a62ae7c37b7886b7cb34ba936d3255fe6}\index{CameraManager@{CameraManager}!GetActiveCameraTag@{GetActiveCameraTag}}
@@ -139,20 +148,20 @@ const std\+::string \& Camera\+Manager\+::\+Get\+Active\+Camera\+Tag (\begin{Dox
 
 
 
-Returns the tag string of the active camera. 
+Returns the tag of the currently active camera. 
 
 \begin{DoxyReturn}{Returns}
-Reference to the active camera tag. 
+Reference to the active camera tag string. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00104}{104}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00101}{101}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00105\ \ \ \ \ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
-\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}};}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_a49970228383aa277bcb8c24fd7a5762f}\index{CameraManager@{CameraManager}!GetCamera@{GetCamera}}
@@ -163,28 +172,28 @@ Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00104}{104}} of f
 
 
 
-Returns the camera associated with the given tag. 
+Retrieves a camera by its tag. 
 
-Returns nullptr if no camera is registered under the tag.
+Searches the internal camera map and returns a raw pointer to the camera. Returns nullptr if the tag does not exist.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & String identifier of the camera to retrieve. \\
+{\em tag} & The tag of the camera to retrieve. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\doxylink{class_camera2_d}{Camera2D} pointer if found; otherwise nullptr. 
+Pointer to the \doxylink{class_camera2_d}{Camera2D} instance, or nullptr if not found. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00062}{62}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00060}{60}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00063\ \ \ \ \ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag);}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (it\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())\ ?\ it-\/>second.get()\ :\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (it\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())\ ?\ it-\/>second.get()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}\index{CameraManager@{CameraManager}!RegisterCamera@{RegisterCamera}}
@@ -195,33 +204,26 @@ void Camera\+Manager\+::\+Register\+Camera (\begin{DoxyParamCaption}\item[{const
 
 
 
-Registers (or replaces) a camera under the given tag. 
+Registers a new camera with a tag. 
 
-The passed unique\+\_\+ptr is moved into the internal map. If the tag already exists, the previous camera is destroyed.
+Takes ownership of the given \doxylink{class_camera2_d}{Camera2D} instance and stores it in the internal map. If a camera with the same tag already exists, it will be overwritten.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & String identifier used to store and retrieve the camera. \\
+{\em tag} & Unique string identifier for the camera. \\
 \hline
-{\em camera} & Owning pointer to the \doxylink{class_camera2_d}{Camera2D} instance.\\
+{\em camera} & Unique pointer to the \doxylink{class_camera2_d}{Camera2D} instance. \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{class_camera_manager_ab66d897f3d5f01efe7e4368f16c42d7f}{CameraManager}}\ cameraManager;}
-\DoxyCodeLine{cameraManager.\mbox{\hyperlink{class_camera_manager_a1e0ed16927c7e6c0cf8b5d6dcf583263}{RegisterCamera}}(\textcolor{stringliteral}{"{}Main"{}},\ std::make\_unique<Camera2D>());}
-\DoxyCodeLine{cameraManager.\mbox{\hyperlink{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}{SetActiveCamera}}(\textcolor{stringliteral}{"{}Main"{}});}
 
-\end{DoxyCode}
- 
-
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00048}{48}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00045}{45}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00049\ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]\ =\ std::move(camera);}
-\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]\ =\ std::move(camera);}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_a2ec4a19008209c6c5c0bfc3ae0e7d98f}\index{CameraManager@{CameraManager}!SetActiveCamera@{SetActiveCamera}}
@@ -232,27 +234,27 @@ void Camera\+Manager\+::\+Set\+Active\+Camera (\begin{DoxyParamCaption}\item[{co
 
 
 
-Sets the active camera by tag if the tag exists. 
+Sets the active camera using its tag. 
 
-If the tag is not found in camera\+Map, this function does nothing and the current active\+Camera\+Tag is preserved.
+Updates the currently active camera only if the provided tag exists in the map. If the tag is not found, the active camera remains unchanged.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Tag of the camera to make active. \\
+{\em tag} & The tag of the camera to set as active. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00077}{77}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00075}{75}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00078\ \ \ \ \ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag)\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}}\ =\ tag;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag)\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end())}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a6ffafdd404a8c7a807978a4599360135}{activeCameraTag}}\ =\ tag;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_aa144aad46badc68fdac5b23be17b91c9}\index{CameraManager@{CameraManager}!SetScreenSize@{SetScreenSize}}
@@ -263,31 +265,30 @@ void Camera\+Manager\+::\+Set\+Screen\+Size (\begin{DoxyParamCaption}\item[{cons
 
 
 
-Updates screen size on a specific camera by tag. 
+Sets screen size for a specific camera. 
 
-This function indexes camera\+Map with the given tag. If the stored pointer is non-\/null, Set\+Screen\+Size is applied.
-
-Note\+: Using operator\mbox{[}\mbox{]} on an unordered\+\_\+map may insert a default value if the key does not exist.
+Updates only the camera associated with the given tag.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tag} & Tag of the camera to update. \\
+{\em tag} & Target camera tag. \\
 \hline
-{\em width} & New screen width in pixels. \\
+{\em width} & New screen width. \\
 \hline
-{\em height} & New screen height in pixels. \\
+{\em height} & New screen height. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00142}{142}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00135}{135}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00143\ \ \ \ \ \{}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag])}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}[tag]-\/>SetScreenSize(width,\ height);}
-\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.find(tag);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}}.end()\ \&\&\ it-\/>second)}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>second-\/>SetScreenSize(width,\ height);}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_camera_manager_a2d94c81e097f06d18ffbfd7a38ef8f48}\index{CameraManager@{CameraManager}!SetScreenSizeForAll@{SetScreenSizeForAll}}
@@ -298,30 +299,30 @@ void Camera\+Manager\+::\+Set\+Screen\+Size\+For\+All (\begin{DoxyParamCaption}\
 
 
 
-Updates screen size on all registered cameras. 
+Sets screen size for all registered cameras. 
 
-This is typically called when the window size changes. Null camera pointers are skipped defensively.
+Iterates through all cameras and updates their screen size. Used typically when the window is resized.
 
 
 \begin{DoxyParams}{Parameters}
-{\em width} & New screen width in pixels. \\
+{\em width} & New screen width. \\
 \hline
-{\em height} & New screen height in pixels. \\
+{\em height} & New screen height. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00119}{119}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00116}{116}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00120\ \ \ \ \ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [tag,\ cam]\ :\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}})}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cam)}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cam-\/>SetScreenSize(width,\ height);}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [tag,\ cam]\ :\ \mbox{\hyperlink{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}{cameraMap}})}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cam)}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cam-\/>SetScreenSize(width,\ height);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -335,7 +336,7 @@ std\+::string Camera\+Manager\+::active\+Camera\+Tag\hspace{0.3cm}{\ttfamily [pr
 
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00162}{162}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00159}{159}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 \Hypertarget{class_camera_manager_a766512f18ed65d79f35fe37b9846ae14}\index{CameraManager@{CameraManager}!cameraMap@{cameraMap}}
 \index{cameraMap@{cameraMap}!CameraManager@{CameraManager}}
@@ -345,7 +346,7 @@ std\+::unordered\+\_\+map$<$std\+::string, std\+::unique\+\_\+ptr$<$\mbox{\hyper
 
 
 
-Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00161}{161}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
+Definition at line \mbox{\hyperlink{_camera_manager_8h_source_l00158}{158}} of file \mbox{\hyperlink{_camera_manager_8h_source}{Camera\+Manager.\+h}}.
 
 
 

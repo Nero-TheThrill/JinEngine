@@ -10,14 +10,14 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_object}{Object}}
-\begin{DoxyCompactList}\small\item\em Base interface for all runtime entities managed by \doxylink{class_object_manager}{Object\+Manager} and rendered by \doxylink{class_render_manager}{Render\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Base abstract object class for all engine-\/managed runtime objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type}} \{ \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}{GAME}}
 , \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980a61a96ffcb251bb9bf0abf8fec19d0ea8}{TEXT}}
  \}
-\begin{DoxyCompactList}\small\item\em Identifies the runtime category of an \doxylink{class_object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Identifies the runtime category of an engine object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -29,9 +29,9 @@ enum class \mbox{\hyperlink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object
 
 
 
-Identifies the runtime category of an \doxylink{class_object}{Object}. 
+Identifies the runtime category of an engine object. 
 
-The engine uses \doxylink{_object_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} to distinguish between gameplay objects and text objects. Some systems (render submission, resource validation, font/mesh sync, etc.) may branch behavior based on this type. \begin{DoxyEnumFields}[2]{Enumerator}
+This value is used to distinguish between general scene/renderable objects and text-\/specific objects. Some engine systems, such as resource validation or specialized rendering paths, may branch their behavior based on this type. \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GAME@{GAME}!Object.h@{Object.h}}\index{Object.h@{Object.h}!GAME@{GAME}}}\Hypertarget{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13}\label{_object_8h_a842c5e2e69277690b064bf363c017980a4504e1ed59cd9732b8a844e5424e6f13} 
 GAME&\\
 \hline

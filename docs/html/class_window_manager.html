@@ -108,87 +108,89 @@ $(function(){initNavTree('class_window_manager.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>Manages the application's primary GLFW window and related OS-facing behaviors.  
- <a href="#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a576b3252a0c57544b78e227330ebd945" id="r_a576b3252a0c57544b78e227330ebd945"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a576b3252a0c57544b78e227330ebd945">ResizeCallback</a> = std::function&lt;void(int , int )&gt;</td></tr>
-<tr class="memdesc:a576b3252a0c57544b78e227330ebd945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback signature for resize notifications.  <br /></td></tr>
 <tr class="separator:a576b3252a0c57544b78e227330ebd945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a283b34c19aaa20296befaabad4d29b" id="r_a3a283b34c19aaa20296befaabad4d29b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a283b34c19aaa20296befaabad4d29b">WindowManager</a> ()</td></tr>
-<tr class="memdesc:a3a283b34c19aaa20296befaabad4d29b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the manager with a null window handle and default window settings.  <br /></td></tr>
+<tr class="memdesc:a3a283b34c19aaa20296befaabad4d29b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_window_manager.html">WindowManager</a> with default window state.  <br /></td></tr>
 <tr class="separator:a3a283b34c19aaa20296befaabad4d29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac706fd9adb665063dbb9cc72006369a1" id="r_ac706fd9adb665063dbb9cc72006369a1"><td class="memItemLeft" align="right" valign="top">GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac706fd9adb665063dbb9cc72006369a1">GetHandle</a> () const</td></tr>
-<tr class="memdesc:ac706fd9adb665063dbb9cc72006369a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the underlying GLFWwindow handle.  <br /></td></tr>
+<tr class="memdesc:ac706fd9adb665063dbb9cc72006369a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the raw GLFW window handle.  <br /></td></tr>
 <tr class="separator:ac706fd9adb665063dbb9cc72006369a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8e16ad88c8eb3e3889d5c3dbe7891cb" id="r_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8e16ad88c8eb3e3889d5c3dbe7891cb">GetWidth</a> () const</td></tr>
-<tr class="memdesc:ad8e16ad88c8eb3e3889d5c3dbe7891cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cached framebuffer width of the window in pixels.  <br /></td></tr>
+<tr class="memdesc:ad8e16ad88c8eb3e3889d5c3dbe7891cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current cached window width.  <br /></td></tr>
 <tr class="separator:ad8e16ad88c8eb3e3889d5c3dbe7891cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50c9f12a67f69e822b4e70077773c9ca" id="r_a50c9f12a67f69e822b4e70077773c9ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50c9f12a67f69e822b4e70077773c9ca">GetHeight</a> () const</td></tr>
-<tr class="memdesc:a50c9f12a67f69e822b4e70077773c9ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cached framebuffer height of the window in pixels.  <br /></td></tr>
+<tr class="memdesc:a50c9f12a67f69e822b4e70077773c9ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current cached window height.  <br /></td></tr>
 <tr class="separator:a50c9f12a67f69e822b4e70077773c9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24d38fa5a052f50bd7e42bbde4c32b3" id="r_aa24d38fa5a052f50bd7e42bbde4c32b3"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24d38fa5a052f50bd7e42bbde4c32b3">GetWindowSize</a> () const</td></tr>
+<tr class="memdesc:aa24d38fa5a052f50bd7e42bbde4c32b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current cached window size as a 2D integer vector.  <br /></td></tr>
+<tr class="separator:aa24d38fa5a052f50bd7e42bbde4c32b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231381ad1948955f29a6702b4a0e2111" id="r_a231381ad1948955f29a6702b4a0e2111"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a231381ad1948955f29a6702b4a0e2111">Resize</a> (int width, int height)</td></tr>
-<tr class="memdesc:a231381ad1948955f29a6702b4a0e2111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the window be resized to the given width/height.  <br /></td></tr>
+<tr class="memdesc:a231381ad1948955f29a6702b4a0e2111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests a window size change.  <br /></td></tr>
 <tr class="separator:a231381ad1948955f29a6702b4a0e2111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29f286d83dbec6ce3ec1b0b6fd11f80d" id="r_a29f286d83dbec6ce3ec1b0b6fd11f80d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29f286d83dbec6ce3ec1b0b6fd11f80d">SetTitle</a> (const std::string &amp;title) const</td></tr>
-<tr class="memdesc:a29f286d83dbec6ce3ec1b0b6fd11f80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the OS window title text.  <br /></td></tr>
+<tr class="memdesc:a29f286d83dbec6ce3ec1b0b6fd11f80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the native window title text.  <br /></td></tr>
 <tr class="separator:a29f286d83dbec6ce3ec1b0b6fd11f80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07f70a67fdcabe9945f227589aba35ce" id="r_a07f70a67fdcabe9945f227589aba35ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07f70a67fdcabe9945f227589aba35ce">SetBackgroundColor</a> (glm::vec4 color)</td></tr>
-<tr class="memdesc:a07f70a67fdcabe9945f227589aba35ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the background clear color used by <a class="el" href="#ac1f44592045972fb10bf4cf991266cb2" title="Clears the color buffer using the current backgroundColor.">ClearScreen()</a>.  <br /></td></tr>
+<tr class="memdesc:a07f70a67fdcabe9945f227589aba35ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the background clear color used when clearing the frame.  <br /></td></tr>
 <tr class="separator:a07f70a67fdcabe9945f227589aba35ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59013354581a7c02e9755ae1624bd3dc" id="r_a59013354581a7c02e9755ae1624bd3dc"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59013354581a7c02e9755ae1624bd3dc">GetBackgroundColor</a> () const</td></tr>
-<tr class="memdesc:a59013354581a7c02e9755ae1624bd3dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently configured background clear color.  <br /></td></tr>
+<tr class="memdesc:a59013354581a7c02e9755ae1624bd3dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently stored background clear color.  <br /></td></tr>
 <tr class="separator:a59013354581a7c02e9755ae1624bd3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace8ed5c7b820428fc835bbe33a732d4c" id="r_ace8ed5c7b820428fc835bbe33a732d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace8ed5c7b820428fc835bbe33a732d4c">SetFullScreen</a> (bool enable)</td></tr>
-<tr class="memdesc:ace8ed5c7b820428fc835bbe33a732d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles fullscreen mode using the primary monitor.  <br /></td></tr>
+<tr class="memdesc:ace8ed5c7b820428fc835bbe33a732d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switches the window between windowed mode and fullscreen mode.  <br /></td></tr>
 <tr class="separator:ace8ed5c7b820428fc835bbe33a732d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1f28e7be82fb12644c7737316d4b21c" id="r_ae1f28e7be82fb12644c7737316d4b21c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1f28e7be82fb12644c7737316d4b21c">IsFullScreen</a> () const</td></tr>
-<tr class="memdesc:ae1f28e7be82fb12644c7737316d4b21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the window is currently in fullscreen mode.  <br /></td></tr>
+<tr class="memdesc:ae1f28e7be82fb12644c7737316d4b21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the manager is currently in fullscreen mode.  <br /></td></tr>
 <tr class="separator:ae1f28e7be82fb12644c7737316d4b21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7de28f37875508720696225cbee9c54d" id="r_a7de28f37875508720696225cbee9c54d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7de28f37875508720696225cbee9c54d">RestrictResizing</a> (bool shouldRestrict)</td></tr>
-<tr class="memdesc:a7de28f37875508720696225cbee9c54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables user resizing of the window.  <br /></td></tr>
+<tr class="memdesc:a7de28f37875508720696225cbee9c54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables user-driven window resizing.  <br /></td></tr>
 <tr class="separator:a7de28f37875508720696225cbee9c54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ba845debdc3cfc8111ff74a8c03918f" id="r_a8ba845debdc3cfc8111ff74a8c03918f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ba845debdc3cfc8111ff74a8c03918f">SetCursorVisible</a> (bool visible)</td></tr>
-<tr class="memdesc:a8ba845debdc3cfc8111ff74a8c03918f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows or hides the OS cursor while the window is focused.  <br /></td></tr>
+<tr class="memdesc:a8ba845debdc3cfc8111ff74a8c03918f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows or hides the mouse cursor for this window.  <br /></td></tr>
 <tr class="separator:a8ba845debdc3cfc8111ff74a8c03918f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad62fde3811107d11f0444abf3195707b" id="r_ad62fde3811107d11f0444abf3195707b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad62fde3811107d11f0444abf3195707b">AddResizeCallback</a> (const std::string &amp;key, <a class="el" href="#a576b3252a0c57544b78e227330ebd945">ResizeCallback</a> cb)</td></tr>
-<tr class="memdesc:ad62fde3811107d11f0444abf3195707b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers or replaces a resize callback identified by a string key.  <br /></td></tr>
+<tr class="memdesc:ad62fde3811107d11f0444abf3195707b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers or replaces a resize callback under a string key.  <br /></td></tr>
 <tr class="separator:ad62fde3811107d11f0444abf3195707b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19bcb4b81402b8627227a4e3d9752469" id="r_a19bcb4b81402b8627227a4e3d9752469"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19bcb4b81402b8627227a4e3d9752469">RemoveResizeCallback</a> (const std::string &amp;key)</td></tr>
-<tr class="memdesc:a19bcb4b81402b8627227a4e3d9752469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a previously registered resize callback by key.  <br /></td></tr>
+<tr class="memdesc:a19bcb4b81402b8627227a4e3d9752469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a previously registered resize callback.  <br /></td></tr>
 <tr class="separator:a19bcb4b81402b8627227a4e3d9752469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5b4ee360c72b19e135eeac7267074964" id="r_a5b4ee360c72b19e135eeac7267074964"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b4ee360c72b19e135eeac7267074964">Init</a> (int _windowWidth, int _windowHeight, <a class="el" href="class_jin_engine.html">JinEngine</a> &amp;engine)</td></tr>
-<tr class="memdesc:a5b4ee360c72b19e135eeac7267074964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes GLFW, creates the window, and installs engine-level callbacks.  <br /></td></tr>
+<tr class="memdesc:a5b4ee360c72b19e135eeac7267074964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the GLFW window and initializes the window subsystem.  <br /></td></tr>
 <tr class="separator:a5b4ee360c72b19e135eeac7267074964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac822306fe0eb51630f31874ec6c469a4" id="r_ac822306fe0eb51630f31874ec6c469a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac822306fe0eb51630f31874ec6c469a4">SetWidth</a> (int width)</td></tr>
-<tr class="memdesc:ac822306fe0eb51630f31874ec6c469a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cached window width without calling GLFW APIs.  <br /></td></tr>
+<tr class="memdesc:ac822306fe0eb51630f31874ec6c469a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cached width value.  <br /></td></tr>
 <tr class="separator:ac822306fe0eb51630f31874ec6c469a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1224bd8fbce3dac6125e053422c02380" id="r_a1224bd8fbce3dac6125e053422c02380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1224bd8fbce3dac6125e053422c02380">SetHeight</a> (int height)</td></tr>
-<tr class="memdesc:a1224bd8fbce3dac6125e053422c02380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cached window height without calling GLFW APIs.  <br /></td></tr>
+<tr class="memdesc:a1224bd8fbce3dac6125e053422c02380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cached height value.  <br /></td></tr>
 <tr class="separator:a1224bd8fbce3dac6125e053422c02380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92ad411afe26567e222240842364e84b" id="r_a92ad411afe26567e222240842364e84b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92ad411afe26567e222240842364e84b">SetWindowSize</a> (glm::ivec2 size)</td></tr>
+<tr class="memdesc:a92ad411afe26567e222240842364e84b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cached window size using a 2D vector.  <br /></td></tr>
+<tr class="separator:a92ad411afe26567e222240842364e84b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8b4e018e5210b06095779adb68203b" id="r_aef8b4e018e5210b06095779adb68203b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef8b4e018e5210b06095779adb68203b">SwapBuffers</a> () const</td></tr>
-<tr class="memdesc:aef8b4e018e5210b06095779adb68203b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the front/back buffers of the window.  <br /></td></tr>
+<tr class="memdesc:aef8b4e018e5210b06095779adb68203b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the front and back buffers of the window.  <br /></td></tr>
 <tr class="separator:aef8b4e018e5210b06095779adb68203b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f44592045972fb10bf4cf991266cb2" id="r_ac1f44592045972fb10bf4cf991266cb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1f44592045972fb10bf4cf991266cb2">ClearScreen</a> () const</td></tr>
-<tr class="memdesc:ac1f44592045972fb10bf4cf991266cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the color buffer using the current backgroundColor.  <br /></td></tr>
+<tr class="memdesc:ac1f44592045972fb10bf4cf991266cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the current framebuffer using the stored background color.  <br /></td></tr>
 <tr class="separator:ac1f44592045972fb10bf4cf991266cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac8852f37e8b30eb90e4ece0279284e6" id="r_aac8852f37e8b30eb90e4ece0279284e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac8852f37e8b30eb90e4ece0279284e6">PollEvents</a> () const</td></tr>
-<tr class="memdesc:aac8852f37e8b30eb90e4ece0279284e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls GLFW events.  <br /></td></tr>
+<tr class="memdesc:aac8852f37e8b30eb90e4ece0279284e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls and dispatches pending window/input events.  <br /></td></tr>
 <tr class="separator:aac8852f37e8b30eb90e4ece0279284e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad476b2084cbbde321623094d616f9427" id="r_ad476b2084cbbde321623094d616f9427"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad476b2084cbbde321623094d616f9427">Free</a> () const</td></tr>
-<tr class="memdesc:ad476b2084cbbde321623094d616f9427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the GLFW window and unregisters callbacks.  <br /></td></tr>
+<tr class="memdesc:ad476b2084cbbde321623094d616f9427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the window and unregisters installed GLFW callbacks.  <br /></td></tr>
 <tr class="separator:ad476b2084cbbde321623094d616f9427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac494c42b664babdcd3871974eae6fb52" id="r_ac494c42b664babdcd3871974eae6fb52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac494c42b664babdcd3871974eae6fb52">NotifyResize</a> (int width, int height)</td></tr>
-<tr class="memdesc:ac494c42b664babdcd3871974eae6fb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes all registered resize callbacks with the new size.  <br /></td></tr>
+<tr class="memdesc:ac494c42b664babdcd3871974eae6fb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes all registered resize callbacks.  <br /></td></tr>
 <tr class="separator:ac494c42b664babdcd3871974eae6fb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -224,12 +226,8 @@ Friends</h2></td></tr>
 <tr class="separator:a5180f7bf2b71421af837035824a8c8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages the application's primary GLFW window and related OS-facing behaviors. </p>
-<p><a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a> owns the GLFWwindow handle and tracks the current window size and presentation state (windowed vs fullscreen). It also stores a background clear color used by the engine's per-frame clear routine.</p>
-<p>Resize handling is driven by the GLFW framebuffer size callback (framebuffer_size_callback), which updates this manager's cached width/height, updates all cameras' screen sizes through the active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a>'s <a class="el" href="class_camera_manager.html" title="Manages multiple Camera2D instances identified by string tags.">CameraManager</a>, notifies the <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> about the resize, and finally invokes any user-registered resize callbacks via <a class="el" href="#ac494c42b664babdcd3871974eae6fb52" title="Invokes all registered resize callbacks with the new size.">NotifyResize()</a>.</p>
-<p>Most lifecycle and per-frame operations (Init/SwapBuffers/ClearScreen/PollEvents/Free) are private and are intended to be orchestrated by <a class="el" href="class_jin_engine.html" title="Top-level engine facade that owns core managers and drives the main game loop.">JinEngine</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00024">24</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00008">8</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a576b3252a0c57544b78e227330ebd945" name="a576b3252a0c57544b78e227330ebd945"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a576b3252a0c57544b78e227330ebd945">&#9670;&#160;</a></span>ResizeCallback</h2>
@@ -243,10 +241,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Callback signature for resize notifications. </p>
-<p>The callback receives the new framebuffer width/height in pixels, matching the values reported by GLFW's framebuffer size callback. </p>
-
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00036">36</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00013">13</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -274,15 +269,16 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs the manager with a null window handle and default window settings. </p>
-<p>The default size is 800x600 and the default background clear color is (0.4, 0.4, 0.4, 1). The actual window is created during <a class="el" href="#a5b4ee360c72b19e135eeac7267074964" title="Initializes GLFW, creates the window, and installs engine-level callbacks.">Init()</a>. </p>
+<p>Constructs a <a class="el" href="class_window_manager.html">WindowManager</a> with default window state. </p>
+<p>Initializes the internal window handle to nullptr and sets the default window size to 800x600. The default clear color is initialized to (0.4, 0.4, 0.4, 1.0). This constructor only prepares the manager state; it does not create a GLFW window or initialize OpenGL.</p>
+<dl class="section note"><dt>Note</dt><dd>Actual window creation happens later through <a class="el" href="#a5b4ee360c72b19e135eeac7267074964" title="Creates the GLFW window and initializes the window subsystem.">Init()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00045">45</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>:<a class="code hl_variable" href="#a6e43767214a47577fb721a6407fccf83">window</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a>(800), <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a>(600), <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a>(0.4, 0.4, 0.4, 1) {}</div>
-<div class="ttc" id="aclass_window_manager_html_a42b88c6c3ab344ca4cb29d7e79892af5"><div class="ttname"><a href="#a42b88c6c3ab344ca4cb29d7e79892af5">WindowManager::windowWidth</a></div><div class="ttdeci">int windowWidth</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00256">WindowManager.h:256</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a4c7712cdc2f3ac47f02d0e3cbdf63d70"><div class="ttname"><a href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">WindowManager::windowHeight</a></div><div class="ttdeci">int windowHeight</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00257">WindowManager.h:257</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a6e43767214a47577fb721a6407fccf83"><div class="ttname"><a href="#a6e43767214a47577fb721a6407fccf83">WindowManager::window</a></div><div class="ttdeci">GLFWwindow * window</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00255">WindowManager.h:255</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ae6a6e3845a54918d3c1ebb90b511ada3"><div class="ttname"><a href="#ae6a6e3845a54918d3c1ebb90b511ada3">WindowManager::backgroundColor</a></div><div class="ttdeci">glm::vec4 backgroundColor</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00258">WindowManager.h:258</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00027">27</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>:<a class="code hl_variable" href="#a6e43767214a47577fb721a6407fccf83">window</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a>(800), <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a>(600), <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a>(0.4, 0.4, 0.4, 1) {}</div>
+<div class="ttc" id="aclass_window_manager_html_a42b88c6c3ab344ca4cb29d7e79892af5"><div class="ttname"><a href="#a42b88c6c3ab344ca4cb29d7e79892af5">WindowManager::windowWidth</a></div><div class="ttdeci">int windowWidth</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00365">WindowManager.h:365</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a4c7712cdc2f3ac47f02d0e3cbdf63d70"><div class="ttname"><a href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">WindowManager::windowHeight</a></div><div class="ttdeci">int windowHeight</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00366">WindowManager.h:366</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a6e43767214a47577fb721a6407fccf83"><div class="ttname"><a href="#a6e43767214a47577fb721a6407fccf83">WindowManager::window</a></div><div class="ttdeci">GLFWwindow * window</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00364">WindowManager.h:364</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ae6a6e3845a54918d3c1ebb90b511ada3"><div class="ttname"><a href="#ae6a6e3845a54918d3c1ebb90b511ada3">WindowManager::backgroundColor</a></div><div class="ttdeci">glm::vec4 backgroundColor</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00367">WindowManager.h:367</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -306,13 +302,12 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Registers or replaces a resize callback identified by a string key. </p>
-<p>The callback is stored in an internal map. If the key already exists, the previous callback is replaced.</p>
-<p>Callbacks are invoked from <a class="el" href="#ac494c42b664babdcd3871974eae6fb52" title="Invokes all registered resize callbacks with the new size.">NotifyResize()</a>, which is called by the GLFW framebuffer size callback.</p>
+<p>Registers or replaces a resize callback under a string key. </p>
+<p>Stores the callback in an internal unordered_map using the given key. If the same key already exists, the previous callback is overwritten. Registered callbacks are invoked from <a class="el" href="#ac494c42b664babdcd3871974eae6fb52" title="Invokes all registered resize callbacks.">NotifyResize()</a>, which is triggered by the framebuffer size callback after engine-side resize handling has already updated the window size, active state camera sizes, and render target sizes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">key</td><td>Unique identifier for the callback entry. </td></tr>
-    <tr><td class="paramname">cb</td><td>Callable to execute when the framebuffer size changes. </td></tr>
+    <tr><td class="paramname">key</td><td>Unique identifier for the callback entry.</td></tr>
+    <tr><td class="paramname">cb</td><td>Callback to invoke with the new width and height. </td></tr>
   </table>
   </dd>
 </dl>
@@ -321,7 +316,7 @@ Friends</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  195</span>{</div>
 <div class="line"><span class="lineno">  196</span>    <a class="code hl_variable" href="#aa7c4930ec65bec72c75b1e20b22096ff">resizeCallbacks</a>[key] = std::move(cb);</div>
 <div class="line"><span class="lineno">  197</span>}</div>
-<div class="ttc" id="aclass_window_manager_html_aa7c4930ec65bec72c75b1e20b22096ff"><div class="ttname"><a href="#aa7c4930ec65bec72c75b1e20b22096ff">WindowManager::resizeCallbacks</a></div><div class="ttdeci">std::unordered_map&lt; std::string, ResizeCallback &gt; resizeCallbacks</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00265">WindowManager.h:265</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_aa7c4930ec65bec72c75b1e20b22096ff"><div class="ttname"><a href="#aa7c4930ec65bec72c75b1e20b22096ff">WindowManager::resizeCallbacks</a></div><div class="ttdeci">std::unordered_map&lt; std::string, ResizeCallback &gt; resizeCallbacks</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00374">WindowManager.h:374</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -348,8 +343,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Clears the color buffer using the current backgroundColor. </p>
-<p>This calls glClearColor(backgroundColor) followed by glClear(GL_COLOR_BUFFER_BIT). </p>
+<p>Clears the current framebuffer using the stored background color. </p>
+<p>Calls glClearColor() with the color configured through <a class="el" href="#a07f70a67fdcabe9945f227589aba35ce" title="Sets the background clear color used when clearing the frame.">SetBackgroundColor()</a>, then clears the color buffer bit.</p>
+<dl class="section note"><dt>Note</dt><dd>In the current engine loop this is called before state update and draw. If <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> offscreen rendering is enabled, BeginFrame() performs its own clear on the offscreen target as well. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00183">183</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
@@ -382,9 +378,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Releases the GLFW window and unregisters callbacks. </p>
-<p>This clears installed GLFW callbacks, clears the window user pointer, destroys the GLFW window, and leaves the <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a>'s raw window handle in its current state.</p>
-<p>This function does not call glfwTerminate(). </p>
+<p>Destroys the window and unregisters installed GLFW callbacks. </p>
+<p>Clears the framebuffer, scroll, key, mouse button, and close callbacks, removes the user pointer, and destroys the GLFW window. This is part of the engine shutdown sequence executed after state, render, and sound systems have been freed.</p>
+<dl class="section note"><dt>Note</dt><dd>The current implementation destroys the GLFW window but does not null out the stored pointer afterward. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00164">164</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
@@ -425,10 +421,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the currently configured background clear color. </p>
+<p>Returns the currently stored background clear color. </p>
+<p>The returned color is used by both <a class="el" href="#ac1f44592045972fb10bf4cf991266cb2" title="Clears the current framebuffer using the stored background color.">WindowManager::ClearScreen()</a> and the <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> offscreen frame begin path when clearing the current frame.</p>
+<dl class="section return"><dt>Returns</dt><dd>The currently stored RGBA clear color. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00102">102</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00135">135</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,11 +453,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the underlying GLFWwindow handle. </p>
-<dl class="section return"><dt>Returns</dt><dd>A raw GLFWwindow pointer, or nullptr if <a class="el" href="#a5b4ee360c72b19e135eeac7267074964" title="Initializes GLFW, creates the window, and installs engine-level callbacks.">Init()</a> has not created the window yet. </dd></dl>
+<p>Returns the raw GLFW window handle. </p>
+<p>Provides direct access to the internally managed GLFWwindow pointer. This is mainly used by engine systems that need to call GLFW APIs directly, such as input initialization or low-level window operations.</p>
+<dl class="section return"><dt>Returns</dt><dd>The internal GLFWwindow pointer, or nullptr if the window has not been created yet. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00052">52</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a6e43767214a47577fb721a6407fccf83">window</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00041">41</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a6e43767214a47577fb721a6407fccf83">window</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -486,11 +485,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the cached framebuffer height of the window in pixels. </p>
-<p>This value is updated when <a class="el" href="#a231381ad1948955f29a6702b4a0e2111" title="Requests the window be resized to the given width/height.">Resize()</a> is called and also when GLFW reports a framebuffer size change. </p>
+<p>Returns the current cached window height. </p>
+<p>This value is updated during initialization, explicit <a class="el" href="#a231381ad1948955f29a6702b4a0e2111" title="Requests a window size change.">Resize()</a> calls, fullscreen transitions, and framebuffer resize callbacks.</p>
+<dl class="section return"><dt>Returns</dt><dd>The current window height in pixels. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00068">68</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00065">65</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -517,11 +517,44 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the cached framebuffer width of the window in pixels. </p>
-<p>This value is updated when <a class="el" href="#a231381ad1948955f29a6702b4a0e2111" title="Requests the window be resized to the given width/height.">Resize()</a> is called and also when GLFW reports a framebuffer size change. </p>
+<p>Returns the current cached window width. </p>
+<p>This value is updated during initialization, explicit <a class="el" href="#a231381ad1948955f29a6702b4a0e2111" title="Requests a window size change.">Resize()</a> calls, fullscreen transitions, and framebuffer resize callbacks.</p>
+<dl class="section return"><dt>Returns</dt><dd>The current window width in pixels. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00060">60</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00053">53</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa24d38fa5a052f50bd7e42bbde4c32b3" name="aa24d38fa5a052f50bd7e42bbde4c32b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24d38fa5a052f50bd7e42bbde4c32b3">&#9670;&#160;</a></span>GetWindowSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::ivec2 WindowManager::GetWindowSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the current cached window size as a 2D integer vector. </p>
+<p>Combines the internally stored width and height into a single glm::ivec2 value. This is a convenience wrapper around <a class="el" href="#ad8e16ad88c8eb3e3889d5c3dbe7891cb" title="Returns the current cached window width.">GetWidth()</a> and <a class="el" href="#a50c9f12a67f69e822b4e70077773c9ca" title="Returns the current cached window height.">GetHeight()</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A glm::ivec2 containing {windowWidth, windowHeight}. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00078">78</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{ <span class="keywordflow">return</span> glm::ivec2(<a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a>, <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a>); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -557,25 +590,25 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes GLFW, creates the window, and installs engine-level callbacks. </p>
-<p><a class="el" href="#a5b4ee360c72b19e135eeac7267074964" title="Initializes GLFW, creates the window, and installs engine-level callbacks.">Init()</a> performs the following:</p><ul>
-<li>Initializes GLFW and configures an OpenGL core profile context (4.6).</li>
-<li>Creates a GLFW window and makes its context current.</li>
-<li>Initializes GLAD for OpenGL function loading.</li>
-<li>Enables OpenGL debug output and installs a debug message callback (non-notification severities).</li>
-<li>Sets the GLFW user pointer to the provided <a class="el" href="class_jin_engine.html" title="Top-level engine facade that owns core managers and drives the main game loop.">JinEngine</a> instance.</li>
-<li>Registers callbacks for framebuffer resize, scroll, key input, mouse buttons, and window close.</li>
+<p>Creates the GLFW window and initializes the window subsystem. </p>
+<p>This is the core startup routine used by <a class="el" href="class_jin_engine.html#af2b70669383ccdbbc05309c7e4eb50db" title="Initializes all core engine systems.">JinEngine::Init()</a>. It initializes GLFW, configures the OpenGL context version and profile, creates the native window, makes the context current, loads GLAD, enables OpenGL debug output, sets the initial viewport, stores the engine pointer as the GLFW user pointer, and installs the engine's window/input callbacks.</p>
+<p>Installed callbacks include:</p><ul>
+<li>framebuffer size callback for resize propagation</li>
+<li>scroll callback for <a class="el" href="class_input_manager.html" title="Central input state manager for keyboard, mouse buttons, cursor position, and scroll input.">InputManager</a> scroll accumulation</li>
+<li>key callback for staged keyboard input</li>
+<li>mouse button callback for staged mouse input</li>
+<li>window close callback to request engine shutdown</li>
 </ul>
-<p>The framebuffer resize callback updates <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a> dimensions, updates cameras, notifies the <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>, and then broadcasts to user resize callbacks.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_windowWidth</td><td>Initial window width. </td></tr>
-    <tr><td class="paramname">_windowHeight</td><td>Initial window height. </td></tr>
-    <tr><td class="paramname">engine</td><td>Engine instance stored into GLFW's window user pointer. </td></tr>
+    <tr><td class="paramname">_windowWidth</td><td>Initial window width in pixels.</td></tr>
+    <tr><td class="paramname">_windowHeight</td><td>Initial window height in pixels.</td></tr>
+    <tr><td class="paramname">engine</td><td>Owning engine instance used as the GLFW user pointer so callbacks can reach <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> and related managers.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if initialization succeeds and the window is created; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if initialization succeeds, otherwise false.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is intentionally private because the engine controls the full lifecycle of the window. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00038">38</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
@@ -663,14 +696,14 @@ Friends</h2></td></tr>
 <div class="line"><span class="lineno">  121</span>}</div>
 <div class="ttc" id="a_material_8h_html_a9b79d6d8dc8627e68412974748f1c08c"><div class="ttname"><a href="_material_8h.html#a9b79d6d8dc8627e68412974748f1c08c">GLuint</a></div><div class="ttdeci">unsigned int GLuint</div><div class="ttdef"><b>Definition</b> <a href="_material_8h_source.html#l00014">Material.h:14</a></div></div>
 <div class="ttc" id="a_mesh_8h_html_a2d467e230729e9194068528ee1985327"><div class="ttname"><a href="_mesh_8h.html#a2d467e230729e9194068528ee1985327">GLsizei</a></div><div class="ttdeci">int GLsizei</div><div class="ttdef"><b>Definition</b> <a href="_mesh_8h_source.html#l00008">Mesh.h:8</a></div></div>
-<div class="ttc" id="a_shader_8h_html_aabcf3e059d4bfe03f96c378d2533c3ba"><div class="ttname"><a href="_shader_8h.html#aabcf3e059d4bfe03f96c378d2533c3ba">GLenum</a></div><div class="ttdeci">unsigned int GLenum</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00032">Shader.h:32</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_a84f610e644a2de5cb64b55220d4a4c8e"><div class="ttname"><a href="class_input_manager.html#a84f610e644a2de5cb64b55220d4a4c8e">InputManager::OnMouseButton</a></div><div class="ttdeci">void OnMouseButton(int button, int action, int)</div><div class="ttdoc">Receives mouse button input events from GLFW.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00146">InputManager.cpp:146</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_a9a7e6c988123d556523b698ae010cc5b"><div class="ttname"><a href="class_input_manager.html#a9a7e6c988123d556523b698ae010cc5b">InputManager::AddScroll</a></div><div class="ttdeci">void AddScroll(double dx, double dy)</div><div class="ttdoc">Accumulates scroll input delta values.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00099">InputManager.cpp:99</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_ae569ff5be56bca62b47a7bdfffe2c867"><div class="ttname"><a href="class_input_manager.html#ae569ff5be56bca62b47a7bdfffe2c867">InputManager::OnKey</a></div><div class="ttdeci">void OnKey(int key, int, int action, int)</div><div class="ttdoc">Receives keyboard input events from GLFW.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00130">InputManager.cpp:130</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_a304c17961ba994ba426ac9c42bb95c0f"><div class="ttname"><a href="class_jin_engine.html#a304c17961ba994ba426ac9c42bb95c0f">JinEngine::GetEngineContext</a></div><div class="ttdeci">EngineContext &amp; GetEngineContext()</div><div class="ttdoc">Returns the EngineContext owned by the engine.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00080">JinEngine.h:80</a></div></div>
+<div class="ttc" id="a_shader_8h_html_aabcf3e059d4bfe03f96c378d2533c3ba"><div class="ttname"><a href="_shader_8h.html#aabcf3e059d4bfe03f96c378d2533c3ba">GLenum</a></div><div class="ttdeci">unsigned int GLenum</div><div class="ttdef"><b>Definition</b> <a href="_shader_8h_source.html#l00036">Shader.h:36</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_a84f610e644a2de5cb64b55220d4a4c8e"><div class="ttname"><a href="class_input_manager.html#a84f610e644a2de5cb64b55220d4a4c8e">InputManager::OnMouseButton</a></div><div class="ttdeci">void OnMouseButton(int button, int action, int)</div><div class="ttdoc">Receives a mouse button event from the window callback layer.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00146">InputManager.cpp:146</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_a9a7e6c988123d556523b698ae010cc5b"><div class="ttname"><a href="class_input_manager.html#a9a7e6c988123d556523b698ae010cc5b">InputManager::AddScroll</a></div><div class="ttdeci">void AddScroll(double dx, double dy)</div><div class="ttdoc">Accumulates scroll wheel input.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00099">InputManager.cpp:99</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_ae569ff5be56bca62b47a7bdfffe2c867"><div class="ttname"><a href="class_input_manager.html#ae569ff5be56bca62b47a7bdfffe2c867">InputManager::OnKey</a></div><div class="ttdeci">void OnKey(int key, int, int action, int)</div><div class="ttdoc">Receives a keyboard event from the window callback layer.</div><div class="ttdef"><b>Definition</b> <a href="_input_manager_8cpp_source.html#l00130">InputManager.cpp:130</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a304c17961ba994ba426ac9c42bb95c0f"><div class="ttname"><a href="class_jin_engine.html#a304c17961ba994ba426ac9c42bb95c0f">JinEngine::GetEngineContext</a></div><div class="ttdeci">EngineContext &amp; GetEngineContext()</div><div class="ttdoc">Returns a reference to the engine context.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00097">JinEngine.h:97</a></div></div>
 <div class="ttc" id="aclass_window_manager_html_a5180f7bf2b71421af837035824a8c8ac"><div class="ttname"><a href="#a5180f7bf2b71421af837035824a8c8ac">WindowManager::framebuffer_size_callback</a></div><div class="ttdeci">friend void framebuffer_size_callback(GLFWwindow *, int, int)</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8cpp_source.html#l00005">WindowManager.cpp:5</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_af2a43e83e4ce9b3bdd9cb8703c8c8cea"><div class="ttname"><a href="#af2a43e83e4ce9b3bdd9cb8703c8c8cea">WindowManager::JinEngine</a></div><div class="ttdeci">friend JinEngine</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00026">WindowManager.h:26</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a9c8f61ef311c6f84a93d342eaaa1864a"><div class="ttname"><a href="struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a">EngineContext::inputManager</a></div><div class="ttdeci">InputManager * inputManager</div><div class="ttdoc">Pointer to the InputManager handling keyboard and mouse input.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00048">EngineContext.h:48</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_af2a43e83e4ce9b3bdd9cb8703c8c8cea"><div class="ttname"><a href="#af2a43e83e4ce9b3bdd9cb8703c8c8cea">WindowManager::JinEngine</a></div><div class="ttdeci">friend JinEngine</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00010">WindowManager.h:10</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a9c8f61ef311c6f84a93d342eaaa1864a"><div class="ttname"><a href="struct_engine_context.html#a9c8f61ef311c6f84a93d342eaaa1864a">EngineContext::inputManager</a></div><div class="ttdeci">InputManager * inputManager</div><div class="ttdoc">Pointer to the input manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00064">EngineContext.h:64</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -697,11 +730,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether the window is currently in fullscreen mode. </p>
+<p>Returns whether the manager is currently in fullscreen mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if fullscreen mode is enabled, otherwise false. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00121">121</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a33c7b7c623763a5336fa5b2b835fbd74">isFullscreen</a>; }</div>
-<div class="ttc" id="aclass_window_manager_html_a33c7b7c623763a5336fa5b2b835fbd74"><div class="ttname"><a href="#a33c7b7c623763a5336fa5b2b835fbd74">WindowManager::isFullscreen</a></div><div class="ttdeci">bool isFullscreen</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00260">WindowManager.h:260</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00167">167</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a33c7b7c623763a5336fa5b2b835fbd74">isFullscreen</a>; }</div>
+<div class="ttc" id="aclass_window_manager_html_a33c7b7c623763a5336fa5b2b835fbd74"><div class="ttname"><a href="#a33c7b7c623763a5336fa5b2b835fbd74">WindowManager::isFullscreen</a></div><div class="ttdeci">bool isFullscreen</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00369">WindowManager.h:369</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -732,12 +766,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Invokes all registered resize callbacks with the new size. </p>
-<p>Each stored callback is checked for validity before invocation.</p>
+<p>Invokes all registered resize callbacks. </p>
+<p>Iterates through every stored callback and passes the new width and height values to each valid entry. This is called from the framebuffer resize callback after core engine resize propagation has already run.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">width</td><td>New framebuffer width in pixels. </td></tr>
-    <tr><td class="paramname">height</td><td>New framebuffer height in pixels. </td></tr>
+    <tr><td class="paramname">width</td><td>Updated framebuffer width.</td></tr>
+    <tr><td class="paramname">height</td><td>Updated framebuffer height. </td></tr>
   </table>
   </dd>
 </dl>
@@ -776,8 +810,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Polls GLFW events. </p>
-<p>This wraps glfwPollEvents() and is intended to be called once per frame by the engine. </p>
+<p>Polls and dispatches pending window/input events. </p>
+<p>Wraps glfwPollEvents() and is called once per frame in the main engine loop before input state promotion and game-state update. </p>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00189">189</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  190</span>{</div>
@@ -801,10 +835,11 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Removes a previously registered resize callback by key. </p>
+<p>Removes a previously registered resize callback. </p>
+<p>Erases the callback associated with the given key from the internal callback map. If the key does not exist, nothing happens.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">key</td><td>Key used when the callback was registered. </td></tr>
+    <tr><td class="paramname">key</td><td>Identifier of the callback to remove. </td></tr>
   </table>
   </dd>
 </dl>
@@ -835,12 +870,13 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Requests the window be resized to the given width/height. </p>
-<p>This calls glfwSetWindowSize() and updates the cached width/height immediately. Note that GLFW may also trigger the framebuffer size callback depending on platform and DPI scaling.</p>
+<p>Requests a window size change. </p>
+<p>Calls glfwSetWindowSize() on the managed window and immediately updates the cached width and height values stored in this manager. This function only performs the resize request when a valid window exists.</p>
+<p>Unlike the framebuffer resize callback path, this function itself does not directly update camera sizes, render targets, or registered resize callbacks. Those follow-up reactions occur through the GLFW resize callback when the underlying windowing system reports the size change.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">width</td><td>Target width in pixels. </td></tr>
-    <tr><td class="paramname">height</td><td>Target height in pixels. </td></tr>
+    <tr><td class="paramname">width</td><td>The new requested window width in pixels.</td></tr>
+    <tr><td class="paramname">height</td><td>The new requested window height in pixels. </td></tr>
   </table>
   </dd>
 </dl>
@@ -872,11 +908,11 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enables or disables user resizing of the window. </p>
-<p>Internally this sets the GLFW_RESIZABLE window attribute. When shouldRestrict is true, the window becomes non-resizable.</p>
+<p>Enables or disables user-driven window resizing. </p>
+<p>Internally calls glfwSetWindowAttrib() with GLFW_RESIZABLE. Passing true restricts resizing by making the window non-resizable, while passing false allows the user to resize the window.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shouldRestrict</td><td>True to prevent resizing, false to allow resizing. </td></tr>
+    <tr><td class="paramname">shouldRestrict</td><td>True to prevent manual resizing, false to allow it. </td></tr>
   </table>
   </dd>
 </dl>
@@ -911,17 +947,17 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the background clear color used by <a class="el" href="#ac1f44592045972fb10bf4cf991266cb2" title="Clears the color buffer using the current backgroundColor.">ClearScreen()</a>. </p>
-<p>The color is stored and later applied through glClearColor() when the engine clears the frame.</p>
+<p>Sets the background clear color used when clearing the frame. </p>
+<p>Stores the color that will later be used by <a class="el" href="#ac1f44592045972fb10bf4cf991266cb2" title="Clears the current framebuffer using the stored background color.">ClearScreen()</a>. The actual OpenGL clear call does not happen here.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td>RGBA color in linear float components. </td></tr>
+    <tr><td class="paramname">color</td><td>RGBA color used as the frame clear color. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00097">97</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>{ <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a> = color; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00123">123</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{ <a class="code hl_variable" href="#ae6a6e3845a54918d3c1ebb90b511ada3">backgroundColor</a> = color; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -940,14 +976,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Shows or hides the OS cursor while the window is focused. </p>
-<p>This maps to GLFW cursor input modes (GLFW_CURSOR_NORMAL vs GLFW_CURSOR_HIDDEN). Note that this function does not update the cached isCursorVisible flag.</p>
+<p>Shows or hides the mouse cursor for this window. </p>
+<p>Uses glfwSetInputMode() with GLFW_CURSOR. When visible is true, the cursor is restored to normal display mode. When false, the cursor is hidden. This function only changes GLFW cursor mode and does not update the isCursorVisible member variable in the current implementation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">visible</td><td>True to show the cursor, false to hide it. </td></tr>
+    <tr><td class="paramname">visible</td><td>True to show the cursor, false to hide it.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The current implementation changes the actual GLFW cursor state, but the cached isCursorVisible flag is not synchronized here. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00030">30</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
@@ -974,15 +1011,16 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Toggles fullscreen mode using the primary monitor. </p>
-<p>When enabling fullscreen, the current windowed position and size are saved and the window is switched to the primary monitor's current video mode. When disabling, the saved windowed position/size are restored.</p>
-<p>If the window is null or the requested state matches the current state, this function does nothing.</p>
+<p>Switches the window between windowed mode and fullscreen mode. </p>
+<p>When entering fullscreen, the current windowed position and size are saved so that they can be restored later. The function then attaches the window to the primary monitor using that monitor's current video mode. When leaving fullscreen, the saved windowed position and size are restored.</p>
+<p>The internal cached width and height are updated immediately after the mode switch. This function returns early if no window exists or if the requested fullscreen state already matches the current state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enable</td><td>True to enter fullscreen, false to return to windowed mode. </td></tr>
+    <tr><td class="paramname">enable</td><td>True to switch to fullscreen mode, false to restore windowed mode.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function updates the cached size values directly, but any framebuffer-dependent systems should still rely on the actual resize callback path for full synchronization. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00138">138</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
@@ -1010,10 +1048,10 @@ Friends</h2></td></tr>
 <div class="line"><span class="lineno">  161</span>    <a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a> = enable ? mode-&gt;height : <a class="code hl_variable" href="#acb28e5ac0d82147063513465e0ebde25">windowedHeight</a>;</div>
 <div class="line"><span class="lineno">  162</span> </div>
 <div class="line"><span class="lineno">  163</span>}</div>
-<div class="ttc" id="aclass_window_manager_html_a20538b93498f90a58eee5caeda18adf2"><div class="ttname"><a href="#a20538b93498f90a58eee5caeda18adf2">WindowManager::windowedPosX</a></div><div class="ttdeci">int windowedPosX</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00262">WindowManager.h:262</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ab1f2a4f9b7cf006e0a16b6013e7c6761"><div class="ttname"><a href="#ab1f2a4f9b7cf006e0a16b6013e7c6761">WindowManager::windowedPosY</a></div><div class="ttdeci">int windowedPosY</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00262">WindowManager.h:262</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_acb28e5ac0d82147063513465e0ebde25"><div class="ttname"><a href="#acb28e5ac0d82147063513465e0ebde25">WindowManager::windowedHeight</a></div><div class="ttdeci">int windowedHeight</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00263">WindowManager.h:263</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ae11cf9d376af70a8a246bcb1f9496780"><div class="ttname"><a href="#ae11cf9d376af70a8a246bcb1f9496780">WindowManager::windowedWidth</a></div><div class="ttdeci">int windowedWidth</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00263">WindowManager.h:263</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a20538b93498f90a58eee5caeda18adf2"><div class="ttname"><a href="#a20538b93498f90a58eee5caeda18adf2">WindowManager::windowedPosX</a></div><div class="ttdeci">int windowedPosX</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00371">WindowManager.h:371</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ab1f2a4f9b7cf006e0a16b6013e7c6761"><div class="ttname"><a href="#ab1f2a4f9b7cf006e0a16b6013e7c6761">WindowManager::windowedPosY</a></div><div class="ttdeci">int windowedPosY</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00371">WindowManager.h:371</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_acb28e5ac0d82147063513465e0ebde25"><div class="ttname"><a href="#acb28e5ac0d82147063513465e0ebde25">WindowManager::windowedHeight</a></div><div class="ttdeci">int windowedHeight</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00372">WindowManager.h:372</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ae11cf9d376af70a8a246bcb1f9496780"><div class="ttname"><a href="#ae11cf9d376af70a8a246bcb1f9496780">WindowManager::windowedWidth</a></div><div class="ttdeci">int windowedWidth</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00372">WindowManager.h:372</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1040,17 +1078,17 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the cached window height without calling GLFW APIs. </p>
-<p>This is primarily used by the GLFW framebuffer size callback to keep the cached dimensions in sync.</p>
+<p>Updates the cached height value. </p>
+<p>This helper is primarily used by the framebuffer resize callback after GLFW reports the actual framebuffer size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">height</td><td>New cached height in pixels. </td></tr>
+    <tr><td class="paramname">height</td><td>New cached height. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00207">207</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  207</span>{ this-&gt;<a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a> = height; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00291">291</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  291</span>{ this-&gt;<a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a> = height; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1069,10 +1107,11 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the OS window title text. </p>
+<p>Sets the native window title text. </p>
+<p>Forwards the given string to glfwSetWindowTitle(). The engine uses this during the main loop to display the current FPS in the title bar.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">title</td><td>New title string to pass to GLFW. </td></tr>
+    <tr><td class="paramname">title</td><td>The title string to display on the window. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1107,17 +1146,53 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the cached window width without calling GLFW APIs. </p>
-<p>This is primarily used by the GLFW framebuffer size callback to keep the cached dimensions in sync.</p>
+<p>Updates the cached width value. </p>
+<p>This helper is primarily used by the framebuffer resize callback after GLFW reports the actual framebuffer size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">width</td><td>New cached width in pixels. </td></tr>
+    <tr><td class="paramname">width</td><td>New cached width. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00197">197</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  197</span>{ this-&gt;<a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a> = width; }</div>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00279">279</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  279</span>{ this-&gt;<a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a> = width; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a92ad411afe26567e222240842364e84b" name="a92ad411afe26567e222240842364e84b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ad411afe26567e222240842364e84b">&#9670;&#160;</a></span>SetWindowSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WindowManager::SetWindowSize </td>
+          <td>(</td>
+          <td class="paramtype">glm::ivec2</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the cached window size using a 2D vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>New cached size expressed as {width, height}. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00299">299</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  299</span>{ this-&gt;<a class="code hl_variable" href="#a42b88c6c3ab344ca4cb29d7e79892af5">windowWidth</a> = size.x; this-&gt;<a class="code hl_variable" href="#a4c7712cdc2f3ac47f02d0e3cbdf63d70">windowHeight</a> = size.y; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1144,8 +1219,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Swaps the front/back buffers of the window. </p>
-<p>This wraps glfwSwapBuffers(window) and is intended to be called once per frame by the engine. </p>
+<p>Swaps the front and back buffers of the window. </p>
+<p>Called once per frame near the end of <a class="el" href="class_jin_engine.html#ad8355b55406f0be0b2f39b910ff7913e" title="Starts the main game loop.">JinEngine::Run()</a> after update, draw, and audio processing are complete. </p>
 
 <p class="definition">Definition at line <a class="el" href="_window_manager_8cpp_source.html#l00178">178</a> of file <a class="el" href="_window_manager_8cpp_source.html">WindowManager.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  179</span>{</div>
@@ -1206,16 +1281,16 @@ Friends</h2></td></tr>
 <div class="line"><span class="lineno">   21</span>        JIN_LOG(<span class="stringliteral">&quot;changed: &quot;</span> &lt;&lt; jinEngine-&gt;<a class="code hl_function" href="class_jin_engine.html#a304c17961ba994ba426ac9c42bb95c0f">GetEngineContext</a>().<a class="code hl_variable" href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">windowManager</a>-&gt;<a class="code hl_function" href="#ad8e16ad88c8eb3e3889d5c3dbe7891cb">GetWidth</a>() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; jinEngine-&gt;<a class="code hl_function" href="class_jin_engine.html#a304c17961ba994ba426ac9c42bb95c0f">GetEngineContext</a>().<a class="code hl_variable" href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">windowManager</a>-&gt;<a class="code hl_function" href="#a50c9f12a67f69e822b4e70077773c9ca">GetHeight</a>());</div>
 <div class="line"><span class="lineno">   22</span>    }</div>
 <div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a092a8dc2478bd39b98b8f7434da2a8d0"><div class="ttname"><a href="class_render_manager.html#a092a8dc2478bd39b98b8f7434da2a8d0">RenderManager::OnResize</a></div><div class="ttdeci">void OnResize(int width, int height)</div><div class="ttdoc">Handles window resize events for offscreen rendering.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00119">RenderManager.cpp:119</a></div></div>
-<div class="ttc" id="aclass_state_manager_html_aeb24049cbe185fe0faec5c771e34c2bb"><div class="ttname"><a href="class_state_manager.html#aeb24049cbe185fe0faec5c771e34c2bb">StateManager::GetCurrentState</a></div><div class="ttdeci">GameState * GetCurrentState() const</div><div class="ttdoc">Returns the currently active GameState.</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8cpp_source.html#l00003">StateManager.cpp:3</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a1224bd8fbce3dac6125e053422c02380"><div class="ttname"><a href="#a1224bd8fbce3dac6125e053422c02380">WindowManager::SetHeight</a></div><div class="ttdeci">void SetHeight(int height)</div><div class="ttdoc">Updates the cached window height without calling GLFW APIs.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00207">WindowManager.h:207</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the cached framebuffer height of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00068">WindowManager.h:68</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ac494c42b664babdcd3871974eae6fb52"><div class="ttname"><a href="#ac494c42b664babdcd3871974eae6fb52">WindowManager::NotifyResize</a></div><div class="ttdeci">void NotifyResize(int width, int height)</div><div class="ttdoc">Invokes all registered resize callbacks with the new size.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8cpp_source.html#l00204">WindowManager.cpp:204</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ac822306fe0eb51630f31874ec6c469a4"><div class="ttname"><a href="#ac822306fe0eb51630f31874ec6c469a4">WindowManager::SetWidth</a></div><div class="ttdeci">void SetWidth(int width)</div><div class="ttdoc">Updates the cached window width without calling GLFW APIs.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00197">WindowManager.h:197</a></div></div>
-<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the cached framebuffer width of the window in pixels.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00060">WindowManager.h:60</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a67f96c1b09ab0393d4f8434900d7419a"><div class="ttname"><a href="struct_engine_context.html#a67f96c1b09ab0393d4f8434900d7419a">EngineContext::stateManager</a></div><div class="ttdeci">StateManager * stateManager</div><div class="ttdoc">Pointer to the StateManager responsible for game state transitions.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00038">EngineContext.h:38</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the RenderManager responsible for rendering operations.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00053">EngineContext.h:53</a></div></div>
-<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the WindowManager handling window creation and events.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00043">EngineContext.h:43</a></div></div>
+<div class="ttc" id="aclass_render_manager_html_a092a8dc2478bd39b98b8f7434da2a8d0"><div class="ttname"><a href="class_render_manager.html#a092a8dc2478bd39b98b8f7434da2a8d0">RenderManager::OnResize</a></div><div class="ttdeci">void OnResize(int width, int height)</div><div class="ttdoc">Recreates the offscreen scene target when the window size changes.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00120">RenderManager.cpp:120</a></div></div>
+<div class="ttc" id="aclass_state_manager_html_aeb24049cbe185fe0faec5c771e34c2bb"><div class="ttname"><a href="class_state_manager.html#aeb24049cbe185fe0faec5c771e34c2bb">StateManager::GetCurrentState</a></div><div class="ttdeci">GameState * GetCurrentState() const</div><div class="ttdoc">Returns the currently active game state.</div><div class="ttdef"><b>Definition</b> <a href="_state_manager_8cpp_source.html#l00003">StateManager.cpp:3</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a1224bd8fbce3dac6125e053422c02380"><div class="ttname"><a href="#a1224bd8fbce3dac6125e053422c02380">WindowManager::SetHeight</a></div><div class="ttdeci">void SetHeight(int height)</div><div class="ttdoc">Updates the cached height value.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00291">WindowManager.h:291</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_a50c9f12a67f69e822b4e70077773c9ca"><div class="ttname"><a href="#a50c9f12a67f69e822b4e70077773c9ca">WindowManager::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdoc">Returns the current cached window height.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00065">WindowManager.h:65</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ac494c42b664babdcd3871974eae6fb52"><div class="ttname"><a href="#ac494c42b664babdcd3871974eae6fb52">WindowManager::NotifyResize</a></div><div class="ttdeci">void NotifyResize(int width, int height)</div><div class="ttdoc">Invokes all registered resize callbacks.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8cpp_source.html#l00204">WindowManager.cpp:204</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ac822306fe0eb51630f31874ec6c469a4"><div class="ttname"><a href="#ac822306fe0eb51630f31874ec6c469a4">WindowManager::SetWidth</a></div><div class="ttdeci">void SetWidth(int width)</div><div class="ttdoc">Updates the cached width value.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00279">WindowManager.h:279</a></div></div>
+<div class="ttc" id="aclass_window_manager_html_ad8e16ad88c8eb3e3889d5c3dbe7891cb"><div class="ttname"><a href="#ad8e16ad88c8eb3e3889d5c3dbe7891cb">WindowManager::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdoc">Returns the current cached window width.</div><div class="ttdef"><b>Definition</b> <a href="_window_manager_8h_source.html#l00053">WindowManager.h:53</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a67f96c1b09ab0393d4f8434900d7419a"><div class="ttname"><a href="struct_engine_context.html#a67f96c1b09ab0393d4f8434900d7419a">EngineContext::stateManager</a></div><div class="ttdeci">StateManager * stateManager</div><div class="ttdoc">Pointer to the state manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00048">EngineContext.h:48</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_a8f4c861adc4684975fa767ae4723e095"><div class="ttname"><a href="struct_engine_context.html#a8f4c861adc4684975fa767ae4723e095">EngineContext::renderManager</a></div><div class="ttdeci">RenderManager * renderManager</div><div class="ttdoc">Pointer to the render manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00072">EngineContext.h:72</a></div></div>
+<div class="ttc" id="astruct_engine_context_html_ab6fa006055c2a224931059f7ed840bed"><div class="ttname"><a href="struct_engine_context.html#ab6fa006055c2a224931059f7ed840bed">EngineContext::windowManager</a></div><div class="ttdeci">WindowManager * windowManager</div><div class="ttdoc">Pointer to the window manager.</div><div class="ttdef"><b>Definition</b> <a href="_engine_context_8h_source.html#l00056">EngineContext.h:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1240,7 +1315,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00258">258</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00367">367</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1264,7 +1339,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00261">261</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00370">370</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1288,7 +1363,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00260">260</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00369">369</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1312,7 +1387,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00026">26</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00010">10</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1411,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00265">265</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00374">374</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1360,7 +1435,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00255">255</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00364">364</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1384,7 +1459,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00263">263</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00372">372</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1408,7 +1483,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00262">262</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00371">371</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1432,7 +1507,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00262">262</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00371">371</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1456,7 +1531,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00263">263</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00372">372</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1480,7 +1555,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00257">257</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00366">366</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>
@@ -1504,7 +1579,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00256">256</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_window_manager_8h_source.html#l00365">365</a> of file <a class="el" href="_window_manager_8h_source.html">WindowManager.h</a>.</p>
 
 </div>
 </div>

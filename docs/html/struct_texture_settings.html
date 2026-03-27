@@ -104,7 +104,7 @@ $(function(){initNavTree('struct_texture_settings.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
-<p>Describes configuration parameters used when creating or updating a texture.  
+<p>Describes sampler-state options used when creating a texture object.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_texture_8h_source.html">Texture.h</a>&gt;</code></p>
@@ -123,10 +123,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7e4fe01f2ced85bd77fedc1ea9e36518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Describes configuration parameters used when creating or updating a texture. </p>
-<p><a class="el" href="struct_texture_settings.html" title="Describes configuration parameters used when creating or updating a texture.">TextureSettings</a> encapsulates common OpenGL texture state such as filtering, wrapping, and mipmap generation. It is passed to texture creation and update routines to ensure consistent configuration. </p>
+<div class="textblock"><p>Describes sampler-state options used when creating a texture object. </p>
+<p>This structure is consumed by <a class="el" href="class_texture.html">Texture</a> constructors and by the internal texture regeneration path. It controls minification and magnification filters, wrap modes for the S and T axes, and whether mipmaps are generated after uploading the texture data.</p>
+<p>The implementation applies these values directly to the OpenGL texture object after storage allocation and pixel upload. When generateMipmap is enabled, the texture allocates enough mip levels for the full chain and generates them immediately after the base level upload.</p>
+<dl class="section note"><dt>Note</dt><dd>These settings are only applied when a GPU texture is created or recreated. Updating a wrapper to reference an external OpenGL texture ID does not reapply these settings automatically. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00059">59</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00049">49</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a7e4fe01f2ced85bd77fedc1ea9e36518" name="a7e4fe01f2ced85bd77fedc1ea9e36518"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e4fe01f2ced85bd77fedc1ea9e36518">&#9670;&#160;</a></span>generateMipmap</h2>
@@ -140,7 +142,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00065">65</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00055">55</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 
 </div>
 </div>
@@ -156,7 +158,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00062">62</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00052">52</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 
 </div>
 </div>
@@ -172,7 +174,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00061">61</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00051">51</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 
 </div>
 </div>
@@ -188,7 +190,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00063">63</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00053">53</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +206,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00064">64</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00054">54</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 
 </div>
 </div>

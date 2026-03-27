@@ -2,7 +2,7 @@
 \hypertarget{struct_sprite_frame}{}\label{struct_sprite_frame}\index{SpriteFrame@{SpriteFrame}}
 
 
-Describes a single sprite frame region within a sprite sheet.  
+Stores per-\/frame UV data and optional layout metadata for a sprite frame.  
 
 
 
@@ -23,13 +23,13 @@ glm\+::ivec2 \mbox{\hyperlink{struct_sprite_frame_ab73f8b723cf751ae293bcfe7cef58
 
 
 \doxysubsection{Detailed Description}
-Describes a single sprite frame region within a sprite sheet. 
+Stores per-\/frame UV data and optional layout metadata for a sprite frame. 
 
-\doxylink{struct_sprite_frame}{Sprite\+Frame} stores precomputed UV coordinates and pixel-\/space properties for one frame in a texture atlas/sprite sheet.
+This structure represents one logical frame inside a sprite sheet. It stores the UV rectangle used to sample the frame from the texture, along with optional pixel-\/space size and offset values that may be used for alignment, layout correction, or future frame-\/specific rendering logic.
 
-The engine can use uv\+Top\+Left/uv\+Bottom\+Right to sample the correct region, while pixel\+Size/offset can be used for layout or pivot adjustments. 
+In the current animation flow, the engine mainly relies on frame indices and grid-\/based UV lookup through \doxylink{class_sprite_sheet}{Sprite\+Sheet}. This structure is still useful as a general-\/purpose frame description container. 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00017}{17}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00022}{22}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 
@@ -42,7 +42,7 @@ glm\+::ivec2 Sprite\+Frame\+::offset}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00022}{22}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00027}{27}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_frame_a35d1b1e3cd586985e36e3e0286757721}\index{SpriteFrame@{SpriteFrame}!pixelSize@{pixelSize}}
 \index{pixelSize@{pixelSize}!SpriteFrame@{SpriteFrame}}
@@ -52,7 +52,7 @@ glm\+::ivec2 Sprite\+Frame\+::pixel\+Size}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00021}{21}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00026}{26}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_frame_acceeda89842d01cc0a6a042c37d0eeb1}\index{SpriteFrame@{SpriteFrame}!uvBottomRight@{uvBottomRight}}
 \index{uvBottomRight@{uvBottomRight}!SpriteFrame@{SpriteFrame}}
@@ -62,7 +62,7 @@ glm\+::vec2 Sprite\+Frame\+::uv\+Bottom\+Right}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00020}{20}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00025}{25}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 \Hypertarget{struct_sprite_frame_a664f4e5144e2577acd35c8c8e1d60a5f}\index{SpriteFrame@{SpriteFrame}!uvTopLeft@{uvTopLeft}}
 \index{uvTopLeft@{uvTopLeft}!SpriteFrame@{SpriteFrame}}
@@ -72,7 +72,7 @@ glm\+::vec2 Sprite\+Frame\+::uv\+Top\+Left}
 
 
 
-Definition at line \mbox{\hyperlink{_animation_8h_source_l00019}{19}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
+Definition at line \mbox{\hyperlink{_animation_8h_source_l00024}{24}} of file \mbox{\hyperlink{_animation_8h_source}{Animation.\+h}}.
 
 
 

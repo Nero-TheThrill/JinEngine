@@ -2,7 +2,7 @@
 \hypertarget{struct_shader_job}{}\label{struct_shader_job}\index{ShaderJob@{ShaderJob}}
 
 
-Load request describing a shader program to be loaded asynchronously.  
+Describes a shader loading request for the asynchronous resource loader.  
 
 
 
@@ -19,11 +19,13 @@ std\+::vector$<$ \mbox{\hyperlink{struct_shader_file}{Shader\+File}} $>$ \mbox{\
 
 
 \doxysubsection{Detailed Description}
-Load request describing a shader program to be loaded asynchronously. 
+Describes a shader loading request for the asynchronous resource loader. 
 
-\doxylink{struct_shader_job}{Shader\+Job} groups multiple stage files under a single tag. The worker thread reads each file into memory and produces \doxylink{struct_shader_result}{Shader\+Result} containing source strings per stage. 
+\doxylink{struct_shader_job}{Shader\+Job} stores the resource tag and a list of shader source files to read. The worker thread reads each file into memory and converts it into a \doxylink{struct_shader_result}{Shader\+Result} containing stage/source string pairs.
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00051}{51}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Actual shader compilation and program linking are not performed on the worker thread in the current design. Instead, the loaded source strings are passed back to the main thread for final resource creation. \+:content\+Reference\mbox{[}oaicite\+:2\mbox{]}\{index=2\} 
+
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00061}{61}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 
@@ -36,7 +38,7 @@ std\+::vector$<$\mbox{\hyperlink{struct_shader_file}{Shader\+File}}$>$ Shader\+J
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00054}{54}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00064}{64}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 \Hypertarget{struct_shader_job_a1bcf780b68eb6f40150fae5d7cc83df5}\index{ShaderJob@{ShaderJob}!tag@{tag}}
 \index{tag@{tag}!ShaderJob@{ShaderJob}}
@@ -46,7 +48,7 @@ std\+::string Shader\+Job\+::tag}
 
 
 
-Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00053}{53}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
+Definition at line \mbox{\hyperlink{_async_resource_loader_8h_source_l00063}{63}} of file \mbox{\hyperlink{_async_resource_loader_8h_source}{Async\+Resource\+Loader.\+h}}.
 
 
 

@@ -106,7 +106,7 @@ $(function(){initNavTree('class_circle_collider.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 
-<p>Circle collider implementation.  
+<p>Circle-shaped collider implementation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_collider_8h_source.html">Collider.h</a>&gt;</code></p>
@@ -116,48 +116,47 @@ Inheritance diagram for CircleCollider:</div>
  <div class="center">
   <img src="class_circle_collider.png" usemap="#CircleCollider_map" alt=""/>
   <map id="CircleCollider_map" name="CircleCollider_map">
-<area href="class_collider.html" title="Abstract base collider that supports broad-phase + narrow-phase collision checks." alt="Collider" shape="rect" coords="0,0,90,24"/>
+<area href="class_collider.html" title="Base interface for all collider shapes used by the engine." alt="Collider" shape="rect" coords="0,0,90,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a597cd7fc15521b49b7bda1476caaadb4" id="r_a597cd7fc15521b49b7bda1476caaadb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a597cd7fc15521b49b7bda1476caaadb4">CircleCollider</a> (<a class="el" href="class_object.html">Object</a> *<a class="el" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>, float size)</td></tr>
-<tr class="memdesc:a597cd7fc15521b49b7bda1476caaadb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a circle collider from a diameter-like size value.  <br /></td></tr>
+<tr class="memdesc:a597cd7fc15521b49b7bda1476caaadb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a circle collider from a diameter value.  <br /></td></tr>
 <tr class="separator:a597cd7fc15521b49b7bda1476caaadb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5679b18c3379fb6303c1f41288a4a5b7" id="r_a5679b18c3379fb6303c1f41288a4a5b7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a> () const</td></tr>
-<tr class="memdesc:a5679b18c3379fb6303c1f41288a4a5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current scaled radius used for collision tests.  <br /></td></tr>
+<tr class="memdesc:a5679b18c3379fb6303c1f41288a4a5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the effective radius of the circle.  <br /></td></tr>
 <tr class="separator:a5679b18c3379fb6303c1f41288a4a5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bcc2d7586a3380e55317e7671c52d94" id="r_a8bcc2d7586a3380e55317e7671c52d94"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bcc2d7586a3380e55317e7671c52d94">GetSize</a> () const</td></tr>
-<tr class="memdesc:a8bcc2d7586a3380e55317e7671c52d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current scaled diameter-like size (radius * 2).  <br /></td></tr>
+<tr class="memdesc:a8bcc2d7586a3380e55317e7671c52d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the effective diameter of the circle.  <br /></td></tr>
 <tr class="separator:a8bcc2d7586a3380e55317e7671c52d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add83b7e1b2eb124b5d065bf96ea4dcd3" id="r_add83b7e1b2eb124b5d065bf96ea4dcd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add83b7e1b2eb124b5d065bf96ea4dcd3">SetRadius</a> (float r)</td></tr>
-<tr class="memdesc:add83b7e1b2eb124b5d065bf96ea4dcd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the base radius and updates the scaled radius accordingly.  <br /></td></tr>
+<tr class="memdesc:add83b7e1b2eb124b5d065bf96ea4dcd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the radius manually.  <br /></td></tr>
 <tr class="separator:add83b7e1b2eb124b5d065bf96ea4dcd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fa87c8b2fb9204f9d5e9d47dc3a44bc" id="r_a4fa87c8b2fb9204f9d5e9d47dc3a44bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fa87c8b2fb9204f9d5e9d47dc3a44bc">CheckPointCollision</a> (const glm::vec2 &amp;point) const override</td></tr>
-<tr class="memdesc:a4fa87c8b2fb9204f9d5e9d47dc3a44bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether a point lies within the circle area.  <br /></td></tr>
+<tr class="memdesc:a4fa87c8b2fb9204f9d5e9d47dc3a44bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a world-space point lies inside the circle.  <br /></td></tr>
 <tr class="separator:a4fa87c8b2fb9204f9d5e9d47dc3a44bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_collider"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_collider')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_collider.html">Collider</a></td></tr>
 <tr class="memitem:a02af0adc54359eddcd786735e7d0ce5b inherit pub_methods_class_collider" id="r_a02af0adc54359eddcd786735e7d0ce5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a02af0adc54359eddcd786735e7d0ce5b">Collider</a> ()=delete</td></tr>
-<tr class="memdesc:a02af0adc54359eddcd786735e7d0ce5b inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor to enforce owner association.  <br /></td></tr>
 <tr class="separator:a02af0adc54359eddcd786735e7d0ce5b inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a49c6e929279578b12e7d1c60c50c75 inherit pub_methods_class_collider" id="r_a5a49c6e929279578b12e7d1c60c50c75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a5a49c6e929279578b12e7d1c60c50c75">Collider</a> (<a class="el" href="class_object.html">Object</a> *owner_)</td></tr>
-<tr class="memdesc:a5a49c6e929279578b12e7d1c60c50c75 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a collider bound to an owner object.  <br /></td></tr>
+<tr class="memdesc:a5a49c6e929279578b12e7d1c60c50c75 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a collider and binds it to an owning object.  <br /></td></tr>
 <tr class="separator:a5a49c6e929279578b12e7d1c60c50c75 inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b43c72a6424d8c11dec965d166953d3 inherit pub_methods_class_collider" id="r_a7b43c72a6424d8c11dec965d166953d3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a7b43c72a6424d8c11dec965d166953d3">~Collider</a> ()=default</td></tr>
-<tr class="memdesc:a7b43c72a6424d8c11dec965d166953d3 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for safe polymorphic deletion.  <br /></td></tr>
+<tr class="memdesc:a7b43c72a6424d8c11dec965d166953d3 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for polymorphic collider deletion.  <br /></td></tr>
 <tr class="separator:a7b43c72a6424d8c11dec965d166953d3 inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcbc7a880210f872f2704035940f243c inherit pub_methods_class_collider" id="r_abcbc7a880210f872f2704035940f243c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#abcbc7a880210f872f2704035940f243c">SetUseTransformScale</a> (bool use)</td></tr>
-<tr class="memdesc:abcbc7a880210f872f2704035940f243c inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables using the owner's transform scale to size the collider.  <br /></td></tr>
+<tr class="memdesc:abcbc7a880210f872f2704035940f243c inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables automatic scaling from the owner's transform.  <br /></td></tr>
 <tr class="separator:abcbc7a880210f872f2704035940f243c inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f9dd44c772f34a84789018f59df905a inherit pub_methods_class_collider" id="r_a9f9dd44c772f34a84789018f59df905a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a9f9dd44c772f34a84789018f59df905a">IsUsingTransformScale</a> () const</td></tr>
-<tr class="memdesc:a9f9dd44c772f34a84789018f59df905a inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this collider uses the owner's transform scale.  <br /></td></tr>
+<tr class="memdesc:a9f9dd44c772f34a84789018f59df905a inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this collider currently follows the owner's transform scale.  <br /></td></tr>
 <tr class="separator:a9f9dd44c772f34a84789018f59df905a inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad96c878cd28533c4ec6d3ad6b1decdae inherit pub_methods_class_collider" id="r_ad96c878cd28533c4ec6d3ad6b1decdae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#ad96c878cd28533c4ec6d3ad6b1decdae">SetOffset</a> (const glm::vec2 &amp;pos)</td></tr>
-<tr class="memdesc:ad96c878cd28533c4ec6d3ad6b1decdae inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the local-space offset of the collider relative to the owner's origin.  <br /></td></tr>
+<tr class="memdesc:ad96c878cd28533c4ec6d3ad6b1decdae inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a local positional offset for the collider.  <br /></td></tr>
 <tr class="separator:ad96c878cd28533c4ec6d3ad6b1decdae inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948b526d3829deb0418a4fb1db006474 inherit pub_methods_class_collider" id="r_a948b526d3829deb0418a4fb1db006474"><td class="memItemLeft" align="right" valign="top">const glm::vec2 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a> () const</td></tr>
-<tr class="memdesc:a948b526d3829deb0418a4fb1db006474 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the local-space offset of the collider.  <br /></td></tr>
+<tr class="memdesc:a948b526d3829deb0418a4fb1db006474 inherit pub_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the collider's local offset.  <br /></td></tr>
 <tr class="separator:a948b526d3829deb0418a4fb1db006474 inherit pub_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -166,22 +165,22 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:ac2513ad483f0fc9789afe8e25f4797c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">ColliderType::Circle</a>.  <br /></td></tr>
 <tr class="separator:ac2513ad483f0fc9789afe8e25f4797c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc46297adb83cfaab9487e89d7a25298" id="r_afc46297adb83cfaab9487e89d7a25298"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc46297adb83cfaab9487e89d7a25298">GetBoundingRadius</a> () const override</td></tr>
-<tr class="memdesc:afc46297adb83cfaab9487e89d7a25298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a broad-phase bounding radius for the circle.  <br /></td></tr>
+<tr class="memdesc:afc46297adb83cfaab9487e89d7a25298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the broad-phase bounding radius for this collider.  <br /></td></tr>
 <tr class="separator:afc46297adb83cfaab9487e89d7a25298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9598b67bc72342284318d19f3c0cf35b" id="r_a9598b67bc72342284318d19f3c0cf35b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9598b67bc72342284318d19f3c0cf35b">CheckCollision</a> (const <a class="el" href="class_collider.html">Collider</a> *other) const override</td></tr>
-<tr class="memdesc:a9598b67bc72342284318d19f3c0cf35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs narrow-phase collision test using double dispatch.  <br /></td></tr>
+<tr class="memdesc:a9598b67bc72342284318d19f3c0cf35b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs generic collision against another collider.  <br /></td></tr>
 <tr class="separator:a9598b67bc72342284318d19f3c0cf35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69a051ea02a260f7b5c46cb76058cbe5" id="r_a69a051ea02a260f7b5c46cb76058cbe5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a051ea02a260f7b5c46cb76058cbe5">DispatchAgainst</a> (const <a class="el" href="class_circle_collider.html">CircleCollider</a> &amp;other) const override</td></tr>
-<tr class="memdesc:a69a051ea02a260f7b5c46cb76058cbe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circle-vs-circle narrow-phase collision.  <br /></td></tr>
+<tr class="memdesc:a69a051ea02a260f7b5c46cb76058cbe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves circle-vs-circle collision.  <br /></td></tr>
 <tr class="separator:a69a051ea02a260f7b5c46cb76058cbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a951f365eb24e6e1a286bc7c518e8ab46" id="r_a951f365eb24e6e1a286bc7c518e8ab46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a951f365eb24e6e1a286bc7c518e8ab46">DispatchAgainst</a> (const <a class="el" href="class_a_a_b_b_collider.html">AABBCollider</a> &amp;other) const override</td></tr>
-<tr class="memdesc:a951f365eb24e6e1a286bc7c518e8ab46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circle-vs-AABB narrow-phase collision.  <br /></td></tr>
+<tr class="memdesc:a951f365eb24e6e1a286bc7c518e8ab46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves circle-vs-AABB collision.  <br /></td></tr>
 <tr class="separator:a951f365eb24e6e1a286bc7c518e8ab46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f00aeea30fb3ffb45ebbcaab0d96fdd" id="r_a8f00aeea30fb3ffb45ebbcaab0d96fdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f00aeea30fb3ffb45ebbcaab0d96fdd">SyncWithTransformScale</a> () override</td></tr>
-<tr class="memdesc:a8f00aeea30fb3ffb45ebbcaab0d96fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates scaledRadius based on owner transform scale when enabled.  <br /></td></tr>
+<tr class="memdesc:a8f00aeea30fb3ffb45ebbcaab0d96fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the scaled radius from the owner's transform.  <br /></td></tr>
 <tr class="separator:a8f00aeea30fb3ffb45ebbcaab0d96fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae67885becfba36118e3ed5fc7a35d252" id="r_ae67885becfba36118e3ed5fc7a35d252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae67885becfba36118e3ed5fc7a35d252">DrawDebug</a> (<a class="el" href="class_render_manager.html">RenderManager</a> *rm, <a class="el" href="class_camera2_d.html">Camera2D</a> *cam, const glm::vec4 &amp;color) const override</td></tr>
-<tr class="memdesc:ae67885becfba36118e3ed5fc7a35d252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the circle collider for debugging.  <br /></td></tr>
+<tr class="memdesc:ae67885becfba36118e3ed5fc7a35d252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues debug lines that approximate the circle.  <br /></td></tr>
 <tr class="separator:ae67885becfba36118e3ed5fc7a35d252"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -199,7 +198,7 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_collider"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_collider')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_collider.html">Collider</a></td></tr>
 <tr class="memitem:a1a1c25108da499b666799d7e8d4c2d5b inherit pro_methods_class_collider" id="r_a1a1c25108da499b666799d7e8d4c2d5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a> () const</td></tr>
-<tr class="memdesc:a1a1c25108da499b666799d7e8d4c2d5b inherit pro_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the object that owns this collider.  <br /></td></tr>
+<tr class="memdesc:a1a1c25108da499b666799d7e8d4c2d5b inherit pro_methods_class_collider"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owning object.  <br /></td></tr>
 <tr class="separator:a1a1c25108da499b666799d7e8d4c2d5b inherit pro_methods_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_collider"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_collider')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_collider.html">Collider</a></td></tr>
 <tr class="memitem:ae661027024ee407d042b8672625da377 inherit pro_attribs_class_collider" id="r_ae661027024ee407d042b8672625da377"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a></td></tr>
@@ -210,11 +209,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a7a84eff1697e0c8d54ef0df6427a8235 inherit pro_attribs_class_collider"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Circle collider implementation. </p>
-<p><a class="el" href="class_circle_collider.html" title="Circle collider implementation.">CircleCollider</a> stores both a base radius and a scaled radius. When transform scale syncing is enabled, scaledRadius is updated relative to baseRadius in SyncWithTransformScale.</p>
-<p>The constructor receives a size and converts it to radius by dividing by 2. </p>
+<div class="textblock"><p>Circle-shaped collider implementation. </p>
+<p><a class="el" href="class_circle_collider.html" title="Circle-shaped collider implementation.">CircleCollider</a> stores both a base radius and a scaled radius. When transform scaling is enabled, <a class="el" href="#a5679b18c3379fb6303c1f41288a4a5b7" title="Returns the effective radius of the circle.">GetRadius()</a> derives the effective size from the owner's world scale using the larger absolute axis. Otherwise, the manually stored scaledRadius value is used. :contentReference[oaicite:5]{index=5}</p>
+<p>Circle-vs-circle checks are resolved by comparing squared distance against the squared sum of radii. Circle-vs-AABB checks are forwarded to <a class="el" href="class_a_a_b_b_collider.html" title="Axis-aligned bounding box collider implementation.">AABBCollider</a> for mixed-shape resolution. </p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00200">200</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00213">213</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a597cd7fc15521b49b7bda1476caaadb4" name="a597cd7fc15521b49b7bda1476caaadb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a597cd7fc15521b49b7bda1476caaadb4">&#9670;&#160;</a></span>CircleCollider()</h2>
@@ -243,22 +242,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a circle collider from a diameter-like size value. </p>
+<p>Constructs a circle collider from a diameter value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">owner</td><td><a class="el" href="class_object.html" title="Base interface for all runtime entities managed by ObjectManager and rendered by RenderManager.">Object</a> that owns this collider. </td></tr>
-    <tr><td class="paramname">size</td><td>Full size (diameter) used to initialize radius as size/2. </td></tr>
+    <tr><td class="paramname">owner</td><td>Pointer to the owning object. </td></tr>
+    <tr><td class="paramname">size</td><td>Circle diameter.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The constructor stores size / 2 as both baseRadius and scaledRadius. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00211">211</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>        : <a class="code hl_function" href="class_collider.html#a02af0adc54359eddcd786735e7d0ce5b">Collider</a>(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>), <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a>(size / 2.f), <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a>(size / 2.f) {</div>
-<div class="line"><span class="lineno">  213</span>    }</div>
-<div class="ttc" id="aclass_circle_collider_html_a5309cb556ef23c1eba1c9ffbddffe1d0"><div class="ttname"><a href="#a5309cb556ef23c1eba1c9ffbddffe1d0">CircleCollider::scaledRadius</a></div><div class="ttdeci">float scaledRadius</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00277">Collider.h:277</a></div></div>
-<div class="ttc" id="aclass_circle_collider_html_a9ec4c0b866383ac3d9e81afd3fba7d5b"><div class="ttname"><a href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">CircleCollider::baseRadius</a></div><div class="ttdeci">float baseRadius</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00276">Collider.h:276</a></div></div>
-<div class="ttc" id="aclass_collider_html_a02af0adc54359eddcd786735e7d0ce5b"><div class="ttname"><a href="class_collider.html#a02af0adc54359eddcd786735e7d0ce5b">Collider::Collider</a></div><div class="ttdeci">Collider()=delete</div><div class="ttdoc">Deleted default constructor to enforce owner association.</div></div>
-<div class="ttc" id="aclass_collider_html_ae661027024ee407d042b8672625da377"><div class="ttname"><a href="class_collider.html#ae661027024ee407d042b8672625da377">Collider::owner</a></div><div class="ttdeci">Object * owner</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00185">Collider.h:185</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00227">227</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  228</span>        : <a class="code hl_function" href="class_collider.html#a02af0adc54359eddcd786735e7d0ce5b">Collider</a>(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>), <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a>(size / 2.f), <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a>(size / 2.f) {</div>
+<div class="line"><span class="lineno">  229</span>    }</div>
+<div class="ttc" id="aclass_circle_collider_html_a5309cb556ef23c1eba1c9ffbddffe1d0"><div class="ttname"><a href="#a5309cb556ef23c1eba1c9ffbddffe1d0">CircleCollider::scaledRadius</a></div><div class="ttdeci">float scaledRadius</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00338">Collider.h:338</a></div></div>
+<div class="ttc" id="aclass_circle_collider_html_a9ec4c0b866383ac3d9e81afd3fba7d5b"><div class="ttname"><a href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">CircleCollider::baseRadius</a></div><div class="ttdeci">float baseRadius</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00337">Collider.h:337</a></div></div>
+<div class="ttc" id="aclass_collider_html_a02af0adc54359eddcd786735e7d0ce5b"><div class="ttname"><a href="class_collider.html#a02af0adc54359eddcd786735e7d0ce5b">Collider::Collider</a></div><div class="ttdeci">Collider()=delete</div></div>
+<div class="ttc" id="aclass_collider_html_ae661027024ee407d042b8672625da377"><div class="ttname"><a href="class_collider.html#ae661027024ee407d042b8672625da377">Collider::owner</a></div><div class="ttdeci">Object * owner</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00196">Collider.h:196</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -286,15 +286,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Performs narrow-phase collision test using double dispatch. </p>
+<p>Performs generic collision against another collider. </p>
+<p>This forwards to other-&gt;DispatchAgainst(*this) to resolve the actual shape pair. :contentReference[oaicite:8]{index=8}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Other collider. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if overlapping. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#a41660505ae4b413d3d4b004162857426">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00033">33</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> other-&gt;<a class="code hl_function" href="class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7">DispatchAgainst</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-<div class="ttc" id="aclass_collider_html_a6b1071065ccb7ddfc1ff8340a89246d7"><div class="ttname"><a href="class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7">Collider::DispatchAgainst</a></div><div class="ttdeci">virtual bool DispatchAgainst(const CircleCollider &amp;other) const =0</div><div class="ttdoc">Double-dispatch entry for testing against a circle collider.</div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00031">31</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> other-&gt;<a class="code hl_function" href="class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7">DispatchAgainst</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   34</span>}</div>
+<div class="ttc" id="aclass_collider_html_a6b1071065ccb7ddfc1ff8340a89246d7"><div class="ttname"><a href="class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7">Collider::DispatchAgainst</a></div><div class="ttdeci">virtual bool DispatchAgainst(const CircleCollider &amp;other) const =0</div><div class="ttdoc">Resolves collision against a circle collider.</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -321,25 +329,25 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tests whether a point lies within the circle area. </p>
+<p>Checks whether a world-space point lies inside the circle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">point</td><td>Point to test. </td></tr>
+    <tr><td class="paramname">point</td><td>Point in world space. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if inside or on the circle; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the point is inside or on the circle. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#a96da52831351800d25be94893cfaddf0">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00061">61</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
-<div class="line"><span class="lineno">   63</span>    glm::vec2 center = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition() + <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordtype">float</span> distSqr = glm::dot(center - point, center - point);</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> distSqr &lt;= <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>() * <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
-<div class="line"><span class="lineno">   66</span>}</div>
-<div class="ttc" id="aclass_circle_collider_html_a5679b18c3379fb6303c1f41288a4a5b7"><div class="ttname"><a href="#a5679b18c3379fb6303c1f41288a4a5b7">CircleCollider::GetRadius</a></div><div class="ttdeci">float GetRadius() const</div><div class="ttdoc">Returns the current scaled radius used for collision tests.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8cpp_source.html#l00010">Collider.cpp:10</a></div></div>
-<div class="ttc" id="aclass_collider_html_a948b526d3829deb0418a4fb1db006474"><div class="ttname"><a href="class_collider.html#a948b526d3829deb0418a4fb1db006474">Collider::GetOffset</a></div><div class="ttdeci">const glm::vec2 &amp; GetOffset() const</div><div class="ttdoc">Returns the local-space offset of the collider.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00103">Collider.h:103</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00059">59</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    glm::vec2 center = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition() + <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordtype">float</span> distSqr = glm::dot(center - point, center - point);</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> distSqr &lt;= <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>() * <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
+<div class="line"><span class="lineno">   64</span>}</div>
+<div class="ttc" id="aclass_circle_collider_html_a5679b18c3379fb6303c1f41288a4a5b7"><div class="ttname"><a href="#a5679b18c3379fb6303c1f41288a4a5b7">CircleCollider::GetRadius</a></div><div class="ttdeci">float GetRadius() const</div><div class="ttdoc">Returns the effective radius of the circle.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8cpp_source.html#l00010">Collider.cpp:10</a></div></div>
+<div class="ttc" id="aclass_collider_html_a948b526d3829deb0418a4fb1db006474"><div class="ttname"><a href="class_collider.html#a948b526d3829deb0418a4fb1db006474">Collider::GetOffset</a></div><div class="ttdeci">const glm::vec2 &amp; GetOffset() const</div><div class="ttdoc">Returns the collider&#39;s local offset.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00110">Collider.h:110</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,15 +374,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Circle-vs-AABB narrow-phase collision. </p>
+<p>Resolves circle-vs-AABB collision. </p>
+<p>This implementation forwards the mixed-shape test to the AABB collider side.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Other AABB collider. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if overlapping. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#ae6038e89a98d8b252f143ddbc960a484">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00048">48</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> other.<a class="code hl_function" href="class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846">DispatchAgainst</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-<div class="ttc" id="aclass_a_a_b_b_collider_html_a22a432aea0dae3f7683c338db68f5846"><div class="ttname"><a href="class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846">AABBCollider::DispatchAgainst</a></div><div class="ttdeci">bool DispatchAgainst(const CircleCollider &amp;other) const override</div><div class="ttdoc">AABB-vs-circle narrow-phase collision.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8cpp_source.html#l00162">Collider.cpp:162</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00046">46</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> other.<a class="code hl_function" href="class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846">DispatchAgainst</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+<div class="ttc" id="aclass_a_a_b_b_collider_html_a22a432aea0dae3f7683c338db68f5846"><div class="ttname"><a href="class_a_a_b_b_collider.html#a22a432aea0dae3f7683c338db68f5846">AABBCollider::DispatchAgainst</a></div><div class="ttdeci">bool DispatchAgainst(const CircleCollider &amp;other) const override</div><div class="ttdoc">Resolves AABB-vs-circle collision.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8cpp_source.html#l00158">Collider.cpp:158</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -401,22 +417,30 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Circle-vs-circle narrow-phase collision. </p>
+<p>Resolves circle-vs-circle collision. </p>
+<p>Uses squared distance comparison for efficiency.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Other circle collider. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the circles overlap. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#a6b1071065ccb7ddfc1ff8340a89246d7">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00038">38</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>    glm::vec2 a = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition()+ <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
-<div class="line"><span class="lineno">   41</span>    glm::vec2 b = other.<a class="code hl_function" href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a>()-&gt;<a class="code hl_function" href="class_object.html#a4c708099448203abe3182c8b0ae340ce">GetWorldPosition</a>() + other.<a class="code hl_function" href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a>()-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()-&gt;<a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordtype">float</span> distSqr = glm::length2(a - b);</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordtype">float</span> rSum = <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>() + other.<a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> distSqr &lt;= rSum * rSum;</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-<div class="ttc" id="aclass_collider_html_a1a1c25108da499b666799d7e8d4c2d5b"><div class="ttname"><a href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">Collider::GetOwner</a></div><div class="ttdeci">Object * GetOwner() const</div><div class="ttdoc">Returns the object that owns this collider.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00119">Collider.h:119</a></div></div>
-<div class="ttc" id="aclass_object_html_a4c708099448203abe3182c8b0ae340ce"><div class="ttname"><a href="class_object.html#a4c708099448203abe3182c8b0ae340ce">Object::GetWorldPosition</a></div><div class="ttdeci">virtual glm::vec2 GetWorldPosition() const</div><div class="ttdoc">Returns the object&#39;s world-space position used by systems like culling and debug drawing.</div><div class="ttdef"><b>Definition</b> <a href="_object_8cpp_source.html#l00115">Object.cpp:115</a></div></div>
-<div class="ttc" id="aclass_object_html_ad601234bc10ab7fbf84b1cf1e302f756"><div class="ttname"><a href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">Object::GetCollider</a></div><div class="ttdeci">Collider * GetCollider() const</div><div class="ttdoc">Returns the current collider pointer.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00353">Object.h:353</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00036">36</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
+<div class="line"><span class="lineno">   38</span>    glm::vec2 a = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition()+ <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
+<div class="line"><span class="lineno">   39</span>    glm::vec2 b = other.<a class="code hl_function" href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a>()-&gt;<a class="code hl_function" href="class_object.html#a4c708099448203abe3182c8b0ae340ce">GetWorldPosition</a>() + other.<a class="code hl_function" href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">GetOwner</a>()-&gt;<a class="code hl_function" href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">GetCollider</a>()-&gt;<a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordtype">float</span> distSqr = glm::length2(a - b);</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordtype">float</span> rSum = <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>() + other.<a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> distSqr &lt;= rSum * rSum;</div>
+<div class="line"><span class="lineno">   44</span>}</div>
+<div class="ttc" id="aclass_collider_html_a1a1c25108da499b666799d7e8d4c2d5b"><div class="ttname"><a href="class_collider.html#a1a1c25108da499b666799d7e8d4c2d5b">Collider::GetOwner</a></div><div class="ttdeci">Object * GetOwner() const</div><div class="ttdoc">Returns the owning object.</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00126">Collider.h:126</a></div></div>
+<div class="ttc" id="aclass_object_html_a4c708099448203abe3182c8b0ae340ce"><div class="ttname"><a href="class_object.html#a4c708099448203abe3182c8b0ae340ce">Object::GetWorldPosition</a></div><div class="ttdeci">virtual glm::vec2 GetWorldPosition() const</div><div class="ttdoc">Returns the object&#39;s current world position.</div><div class="ttdef"><b>Definition</b> <a href="_object_8cpp_source.html#l00118">Object.cpp:118</a></div></div>
+<div class="ttc" id="aclass_object_html_ad601234bc10ab7fbf84b1cf1e302f756"><div class="ttname"><a href="class_object.html#ad601234bc10ab7fbf84b1cf1e302f756">Object::GetCollider</a></div><div class="ttdeci">Collider * GetCollider() const</div><div class="ttdoc">Returns the currently attached collider.</div><div class="ttdef"><b>Definition</b> <a href="_object_8h_source.html#l00424">Object.h:424</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -452,29 +476,38 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the circle collider for debugging. </p>
+<p>Queues debug lines that approximate the circle. </p>
+<p>The implementation currently uses 20 line segments to visualize the circle. :contentReference[oaicite:10]{index=10}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rm</td><td>Render manager used for debug line submission. </td></tr>
+    <tr><td class="paramname">cam</td><td>Camera used for rendering the debug lines. </td></tr>
+    <tr><td class="paramname">color</td><td>Line color. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_collider.html#a222e52491ae094943420952fd3182c90">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00068">68</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    glm::vec2 center = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition() + <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">float</span> r = <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> segments = 20;</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> angleStep = glm::two_pi&lt;float&gt;() / segments;</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; segments; ++i)</div>
-<div class="line"><span class="lineno">   76</span>    {</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordtype">float</span> angleA = i * angleStep;</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordtype">float</span> angleB = (i + 1) * angleStep;</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>        glm::vec2 a = center + r * glm::vec2(std::cos(angleA), std::sin(angleA));</div>
-<div class="line"><span class="lineno">   81</span>        glm::vec2 b = center + r * glm::vec2(std::cos(angleB), std::sin(angleB));</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>        rm-&gt;<a class="code hl_function" href="class_render_manager.html#a30299b0394f71c9ac4d924a24addbf26">DrawDebugLine</a>(a, b, cam, color);</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-<div class="ttc" id="aclass_render_manager_html_a30299b0394f71c9ac4d924a24addbf26"><div class="ttname"><a href="class_render_manager.html#a30299b0394f71c9ac4d924a24addbf26">RenderManager::DrawDebugLine</a></div><div class="ttdeci">void DrawDebugLine(const glm::vec2 &amp;from, const glm::vec2 &amp;to, Camera2D *camera=nullptr, const glm::vec4 &amp;color={ 1, 1, 1, 1 }, float lineWidth=1.0f)</div><div class="ttdoc">Queues a debug line to be drawn during the debug-line flush pass.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00323">RenderManager.cpp:323</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00066">66</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    glm::vec2 center = <a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldPosition() + <a class="code hl_function" href="class_collider.html#a948b526d3829deb0418a4fb1db006474">GetOffset</a>();</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordtype">float</span> r = <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> segments = 20;</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> angleStep = glm::two_pi&lt;float&gt;() / segments;</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; segments; ++i)</div>
+<div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordtype">float</span> angleA = i * angleStep;</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordtype">float</span> angleB = (i + 1) * angleStep;</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>        glm::vec2 a = center + r * glm::vec2(std::cos(angleA), std::sin(angleA));</div>
+<div class="line"><span class="lineno">   79</span>        glm::vec2 b = center + r * glm::vec2(std::cos(angleB), std::sin(angleB));</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>        rm-&gt;<a class="code hl_function" href="class_render_manager.html#a30299b0394f71c9ac4d924a24addbf26">DrawDebugLine</a>(a, b, cam, color);</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+<div class="ttc" id="aclass_render_manager_html_a30299b0394f71c9ac4d924a24addbf26"><div class="ttname"><a href="class_render_manager.html#a30299b0394f71c9ac4d924a24addbf26">RenderManager::DrawDebugLine</a></div><div class="ttdeci">void DrawDebugLine(const glm::vec2 &amp;from, const glm::vec2 &amp;to, Camera2D *camera=nullptr, const glm::vec4 &amp;color={ 1, 1, 1, 1 }, float lineWidth=1.0f)</div><div class="ttdoc">Queues a debug line to be drawn later in the frame.</div><div class="ttdef"><b>Definition</b> <a href="_render_manager_8cpp_source.html#l00348">RenderManager.cpp:348</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -501,14 +534,15 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns a broad-phase bounding radius for the circle. </p>
+<p>Returns the broad-phase bounding radius for this collider. </p>
+<dl class="section return"><dt>Returns</dt><dd>The same value as <a class="el" href="#a5679b18c3379fb6303c1f41288a4a5b7" title="Returns the effective radius of the circle.">GetRadius()</a>. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#a62c9c123b9a68da3b6eb13c718ccaa27">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00028">28</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
-<div class="line"><span class="lineno">   31</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00026">26</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a5679b18c3379fb6303c1f41288a4a5b7">GetRadius</a>();</div>
+<div class="line"><span class="lineno">   29</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -535,13 +569,15 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current scaled radius used for collision tests. </p>
+<p>Returns the effective radius of the circle. </p>
+<p>If transform scaling is enabled, the radius is computed as: baseRadius * max(abs(worldScale.x), abs(worldScale.y)). Otherwise, the stored scaledRadius is returned. :contentReference[oaicite:6]{index=6}</p>
+<dl class="section return"><dt>Returns</dt><dd>Effective world-space radius. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00010">10</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
 <div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a> ? <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a> * std::max(glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().x), glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().y)): <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a>;</div>
 <div class="line"><span class="lineno">   13</span>}</div>
-<div class="ttc" id="aclass_collider_html_a10c23d55e50b048078cddb0f806d5731"><div class="ttname"><a href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">Collider::useTransformScale</a></div><div class="ttdeci">bool useTransformScale</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00186">Collider.h:186</a></div></div>
+<div class="ttc" id="aclass_collider_html_a10c23d55e50b048078cddb0f806d5731"><div class="ttname"><a href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">Collider::useTransformScale</a></div><div class="ttdeci">bool useTransformScale</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00197">Collider.h:197</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -568,7 +604,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the current scaled diameter-like size (radius * 2). </p>
+<p>Returns the effective diameter of the circle. </p>
+<dl class="section return"><dt>Returns</dt><dd>Radius * 2. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00015">15</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
@@ -601,11 +638,12 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns <a class="el" href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">ColliderType::Circle</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Circle collider type. </dd></dl>
 
 <p>Implements <a class="el" href="class_collider.html#a677c9e05fcee3ef2ed94998dc5f2458d">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00244">244</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  244</span>{ <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">ColliderType::Circle</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00275">275</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>{ <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">ColliderType::Circle</a>; }</div>
 <div class="ttc" id="a_collider_8h_html_a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3"><div class="ttname"><a href="_collider_8h.html#a7f138e75fc3cc79e825c39e040690395a30954d90085f6eaaf5817917fc5fecb3">ColliderType::Circle</a></div><div class="ttdeci">@ Circle</div><div class="ttdef"><b>Definition</b> <a href="_collider_8h_source.html#l00028">Collider.h:28</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -625,21 +663,20 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the base radius and updates the scaled radius accordingly. </p>
+<p>Sets the radius manually. </p>
+<p>This only changes the stored radius when transform scaling is disabled. If transform scaling is enabled, the effective radius continues to follow the owner's scale. :contentReference[oaicite:7]{index=7}</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>New base radius. </td></tr>
+    <tr><td class="paramname">r</td><td>New radius value. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00020">20</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a> = r;</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>)</div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a> = r;</div>
-<div class="line"><span class="lineno">   26</span>}</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>)</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a> = r;</div>
+<div class="line"><span class="lineno">   24</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,17 +703,18 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates scaledRadius based on owner transform scale when enabled. </p>
+<p>Updates the scaled radius from the owner's transform. </p>
+<p>When transform scaling is enabled, scaledRadius is recalculated using the largest absolute world scale axis. :contentReference[oaicite:9]{index=9} </p>
 
 <p>Implements <a class="el" href="class_collider.html#a188380ff8ece20474e86a662f995887e">Collider</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00053">53</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordtype">float</span> scale = std::max(glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().x),glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().y));</div>
-<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a> = <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a> * scale;</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_collider_8cpp_source.html#l00051">51</a> of file <a class="el" href="_collider_8cpp_source.html">Collider.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_collider.html#a10c23d55e50b048078cddb0f806d5731">useTransformScale</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">float</span> scale = std::max(glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().x),glm::abs(<a class="code hl_variable" href="class_collider.html#ae661027024ee407d042b8672625da377">owner</a>-&gt;GetWorldScale().y));</div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#a5309cb556ef23c1eba1c9ffbddffe1d0">scaledRadius</a> = <a class="code hl_variable" href="#a9ec4c0b866383ac3d9e81afd3fba7d5b">baseRadius</a> * scale;</div>
+<div class="line"><span class="lineno">   57</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -701,7 +739,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00202">202</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00215">215</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -725,7 +763,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00276">276</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00337">337</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -749,7 +787,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00277">277</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00338">338</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>
@@ -773,7 +811,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00203">203</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_collider_8h_source.html#l00216">216</a> of file <a class="el" href="_collider_8h_source.html">Collider.h</a>.</p>
 
 </div>
 </div>

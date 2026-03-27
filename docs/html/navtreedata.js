@@ -61,8 +61,9 @@ var NAVTREEINDEX =
 "_animation_8cpp.html",
 "_texture_8cpp.html#a5452d1498009851a733aba8e0484032b",
 "class_input_manager.html#a766a16e7ae54676804c08e80bb061233",
-"class_render_manager.html#a7c058729d4929a4295ebee1c6d324001",
-"class_window_manager.html#ac706fd9adb665063dbb9cc72006369a1"
+"class_render_manager.html#a8645efdc911bde8ae83409d18a2d9cfd",
+"class_window_manager.html#a07f70a67fdcabe9945f227589aba35ce",
+"struct_vec2_hash.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

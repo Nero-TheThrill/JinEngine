@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AsyncResourceLoader", "class_async_resource_loader.html", null ],
+    [ "SpriteAnimator::CallbackEntry", "struct_sprite_animator_1_1_callback_entry.html", null ],
     [ "Camera2D", "class_camera2_d.html", null ],
     [ "RenderManager::CameraAndWidthHash", "struct_render_manager_1_1_camera_and_width_hash.html", null ],
     [ "CameraManager", "class_camera_manager.html", null ],

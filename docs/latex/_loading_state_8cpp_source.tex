@@ -23,7 +23,7 @@
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00019}00019\ \{}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_loading_state_aebe9d65f3f4ff289a2d0b76f020e5c1e}{uiReady}})}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00021}00021\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ font\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a1db9a464555a13cecb1a865f92eae85c}{GetFontByTag}}(\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}});}
+\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ std::shared\_ptr<Font>\ font\ =\ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_aee7353551b04f2a1d1e2736173c60093}{GetFontByTag}}(\mbox{\hyperlink{class_loading_state_a27df9fbc8edb1b1a7f2ec5d52af2f50f}{uiFontTag}});}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (font)}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ text\ =\ std::make\_unique<TextObject>(font,\ \textcolor{stringliteral}{"{}Loading...\ 0\%"{}});}
@@ -143,7 +143,7 @@
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!res.ok)}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00141}00141\ }
-\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tex\ =\ std::make\_unique<Texture>(res.pixels.data(),\ res.width,\ res.height,\ res.channels,\ res.settings);}
+\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tex\ =\ std::make\_shared<Texture>(res.pixels.data(),\ res.width,\ res.height,\ res.channels,\ res.settings);}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ engineContext.\mbox{\hyperlink{struct_engine_context_a8f4c861adc4684975fa767ae4723e095}{renderManager}}-\/>\mbox{\hyperlink{class_render_manager_a8645efdc911bde8ae83409d18a2d9cfd}{RegisterTexture}}(res.tag,\ std::move(tex));}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ ShaderResult>)}
@@ -151,7 +151,7 @@
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!res.ok)}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00149}00149\ }
-\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ shader\ =\ std::make\_unique<Shader>();}
+\DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ shader\ =\ std::make\_shared<Shader>();}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ res.sources)}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_loading_state_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shader-\/>AttachFromSource(s.stage,\ s.source);}

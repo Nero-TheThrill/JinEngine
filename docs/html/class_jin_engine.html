@@ -106,7 +106,7 @@ $(function(){initNavTree('class_jin_engine.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Top-level engine facade that owns core managers and drives the main game loop.  
+<p>Core engine class that manages initialization, main loop execution, and system lifecycle.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>&gt;</code></p>
@@ -114,34 +114,33 @@ $(function(){initNavTree('class_jin_engine.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a96d62d7f74d9cad8036483f977da378a" id="r_a96d62d7f74d9cad8036483f977da378a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96d62d7f74d9cad8036483f977da378a">JinEngine</a> ()=default</td></tr>
-<tr class="memdesc:a96d62d7f74d9cad8036483f977da378a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the engine with default state.  <br /></td></tr>
 <tr class="separator:a96d62d7f74d9cad8036483f977da378a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2b70669383ccdbbc05309c7e4eb50db" id="r_af2b70669383ccdbbc05309c7e4eb50db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2b70669383ccdbbc05309c7e4eb50db">Init</a> (int windowWidth, int windowHeight)</td></tr>
-<tr class="memdesc:af2b70669383ccdbbc05309c7e4eb50db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes all core subsystems and prepares the engine to run.  <br /></td></tr>
+<tr class="memdesc:af2b70669383ccdbbc05309c7e4eb50db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes all core engine systems.  <br /></td></tr>
 <tr class="separator:af2b70669383ccdbbc05309c7e4eb50db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8355b55406f0be0b2f39b910ff7913e" id="r_ad8355b55406f0be0b2f39b910ff7913e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e">Run</a> ()</td></tr>
-<tr class="memdesc:ad8355b55406f0be0b2f39b910ff7913e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the main loop until <a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd" title="Requests the engine to stop running at the next safe point in the main loop.">RequestQuit()</a> is called.  <br /></td></tr>
+<tr class="memdesc:ad8355b55406f0be0b2f39b910ff7913e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the main game loop.  <br /></td></tr>
 <tr class="separator:ad8355b55406f0be0b2f39b910ff7913e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fff451b96b00ef74a4a9975239adfdd" id="r_a0fff451b96b00ef74a4a9975239adfdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd">RequestQuit</a> ()</td></tr>
-<tr class="memdesc:a0fff451b96b00ef74a4a9975239adfdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the engine to stop running at the next safe point in the main loop.  <br /></td></tr>
+<tr class="memdesc:a0fff451b96b00ef74a4a9975239adfdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests termination of the main loop.  <br /></td></tr>
 <tr class="separator:a0fff451b96b00ef74a4a9975239adfdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a304c17961ba994ba426ac9c42bb95c0f" id="r_a304c17961ba994ba426ac9c42bb95c0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_engine_context.html">EngineContext</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a304c17961ba994ba426ac9c42bb95c0f">GetEngineContext</a> ()</td></tr>
-<tr class="memdesc:a304c17961ba994ba426ac9c42bb95c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> owned by the engine.  <br /></td></tr>
+<tr class="memdesc:a304c17961ba994ba426ac9c42bb95c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the engine context.  <br /></td></tr>
 <tr class="separator:a304c17961ba994ba426ac9c42bb95c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb48d74bdf8780af4dc942c60752d6ae" id="r_abb48d74bdf8780af4dc942c60752d6ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb48d74bdf8780af4dc942c60752d6ae">RenderDebugDraws</a> (bool shouldShow)</td></tr>
-<tr class="memdesc:abb48d74bdf8780af4dc942c60752d6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables rendering of engine-level debug visuals.  <br /></td></tr>
+<tr class="memdesc:abb48d74bdf8780af4dc942c60752d6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables debug drawing.  <br /></td></tr>
 <tr class="separator:abb48d74bdf8780af4dc942c60752d6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35998b207827eaccd30459251853c9da" id="r_a35998b207827eaccd30459251853c9da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35998b207827eaccd30459251853c9da">ShouldRenderDebugDraws</a> () const</td></tr>
-<tr class="memdesc:a35998b207827eaccd30459251853c9da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether debug visuals should be rendered.  <br /></td></tr>
+<tr class="memdesc:a35998b207827eaccd30459251853c9da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether debug drawing is enabled.  <br /></td></tr>
 <tr class="separator:a35998b207827eaccd30459251853c9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a00fa0799a110bb78192a6a643f55d309" id="r_a00fa0799a110bb78192a6a643f55d309"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00fa0799a110bb78192a6a643f55d309">Free</a> () const</td></tr>
-<tr class="memdesc:a00fa0799a110bb78192a6a643f55d309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases core subsystems owned by the engine.  <br /></td></tr>
+<tr class="memdesc:a00fa0799a110bb78192a6a643f55d309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates the engine and releases platform-level resources.  <br /></td></tr>
 <tr class="separator:a00fa0799a110bb78192a6a643f55d309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71b75d88fc59fe7c07d7b39585b9a6d4" id="r_a71b75d88fc59fe7c07d7b39585b9a6d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71b75d88fc59fe7c07d7b39585b9a6d4">SetEngineContext</a> ()</td></tr>
-<tr class="memdesc:a71b75d88fc59fe7c07d7b39585b9a6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populates <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> so all systems can be accessed consistently by runtime code.  <br /></td></tr>
+<tr class="memdesc:a71b75d88fc59fe7c07d7b39585b9a6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> structure.  <br /></td></tr>
 <tr class="separator:a71b75d88fc59fe7c07d7b39585b9a6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -164,23 +163,24 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a8f3e51bf086d9173e625e844b1e866c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Top-level engine facade that owns core managers and drives the main game loop. </p>
-<p><a class="el" href="class_jin_engine.html" title="Top-level engine facade that owns core managers and drives the main game loop.">JinEngine</a> is the central orchestrator that:</p><ul>
-<li>Owns and initializes the window, input, render, sound, and state systems.</li>
-<li>Builds an <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> that exposes pointers/references to those systems for use by GameState/Object code.</li>
-<li>Runs the main loop (Run) until <a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd" title="Requests the engine to stop running at the next safe point in the main loop.">RequestQuit()</a> is called.</li>
+<div class="textblock"><p>Core engine class that manages initialization, main loop execution, and system lifecycle. </p>
+<p><a class="el" href="class_jin_engine.html" title="Core engine class that manages initialization, main loop execution, and system lifecycle.">JinEngine</a> is the central coordinator of all engine subsystems including windowing, input, rendering, sound, and state management. It owns all major managers and provides a unified <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> that is passed to all systems and game states.</p>
+<p>The engine lifecycle is as follows:</p><ol type="1">
+<li><a class="el" href="#af2b70669383ccdbbc05309c7e4eb50db" title="Initializes all core engine systems.">Init()</a> ¡æ Initializes all subsystems and sets up <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a></li>
+<li><a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Starts the main game loop.">Run()</a> ¡æ Executes the main game loop</li>
+<li><a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd" title="Requests termination of the main loop.">RequestQuit()</a> ¡æ Signals the loop to terminate</li>
+<li><a class="el" href="#a00fa0799a110bb78192a6a643f55d309" title="Terminates the engine and releases platform-level resources.">Free()</a> ¡æ Cleans up resources and terminates GLFW</li>
+</ol>
+<p>Internally, <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Starts the main game loop.">Run()</a> performs:</p><ul>
+<li>Frame timing (<a class="el" href="struct_engine_timer.html" title="Frame timing utility used for delta time calculation and FPS measurement.">EngineTimer</a>)</li>
+<li>Input processing</li>
+<li>State update and rendering</li>
+<li>Sound update</li>
+<li>Buffer swapping</li>
 </ul>
-<p>Lifetime:</p><ul>
-<li><a class="el" href="#af2b70669383ccdbbc05309c7e4eb50db" title="Initializes all core subsystems and prepares the engine to run.">Init()</a> creates/initializes core subsystems and sets up <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a>.</li>
-<li><a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Runs the main loop until RequestQuit() is called.">Run()</a> repeatedly updates input, state, rendering, and window events until shouldRun becomes false.</li>
-<li><a class="el" href="#a00fa0799a110bb78192a6a643f55d309" title="Releases core subsystems owned by the engine.">Free()</a> performs shutdown/cleanup in the correct order.</li>
-</ul>
-<p>Debug draw:</p><ul>
-<li><a class="el" href="#abb48d74bdf8780af4dc942c60752d6ae" title="Enables or disables rendering of engine-level debug visuals.">RenderDebugDraws()</a> toggles engine-wide debug rendering.</li>
-<li><a class="el" href="#a35998b207827eaccd30459251853c9da" title="Returns whether debug visuals should be rendered.">ShouldRenderDebugDraws()</a> is mainly used internally by rendering/debug systems to branch behavior. </li>
-</ul>
+<dl class="section note"><dt>Note</dt><dd>This class should typically be instantiated once per application. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00022">22</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00028">28</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a96d62d7f74d9cad8036483f977da378a" name="a96d62d7f74d9cad8036483f977da378a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96d62d7f74d9cad8036483f977da378a">&#9670;&#160;</a></span>JinEngine()</h2>
@@ -204,8 +204,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Constructs the engine with default state. </p>
 
 </div>
 </div>
@@ -233,14 +231,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Releases core subsystems owned by the engine. </p>
-<p>Expected responsibilities:</p><ul>
-<li>Request <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> shutdown through <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> (Free/Unload if applicable).</li>
-<li>Release renderer resources and GPU objects through <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>.</li>
-<li>Shut down audio through <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a>.</li>
-<li>Destroy the window and terminate related platform resources through <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a>.</li>
-</ul>
-<p>This is called during engine shutdown after <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Runs the main loop until RequestQuit() is called.">Run()</a> ends or if <a class="el" href="#af2b70669383ccdbbc05309c7e4eb50db" title="Initializes all core subsystems and prepares the engine to run.">Init()</a> fails after partial initialization. </p>
+<p>Terminates the engine and releases platform-level resources. </p>
+<p>Currently responsible for terminating GLFW. Called at the end of <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Starts the main game loop.">Run()</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="_jin_engine_8cpp_source.html#l00074">74</a> of file <a class="el" href="_jin_engine_8cpp_source.html">JinEngine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
@@ -272,13 +264,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> owned by the engine. </p>
-<p><a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> is configured by <a class="el" href="#a71b75d88fc59fe7c07d7b39585b9a6d4" title="Populates EngineContext so all systems can be accessed consistently by runtime code.">SetEngineContext()</a> and typically contains pointers/references to <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a>, <a class="el" href="class_input_manager.html" title="Manages keyboard, mouse button, cursor position, and scroll input states.">InputManager</a>, <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a>, <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a>, <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a>, and other shared systems.</p>
-<dl class="section return"><dt>Returns</dt><dd>Mutable reference to the engine's <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a>. </dd></dl>
+<p>Returns a reference to the engine context. </p>
+<p><a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> provides access to all core systems such as:</p><ul>
+<li><a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a></li>
+<li><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a></li>
+<li><a class="el" href="class_input_manager.html" title="Central input state manager for keyboard, mouse buttons, cursor position, and scroll input.">InputManager</a></li>
+<li><a class="el" href="class_window_manager.html">WindowManager</a></li>
+<li><a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a></li>
+</ul>
+<p>This is the primary interface used by game states and objects.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00080">80</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7ec216ca83286f8ad98aead4cfb13d53">engineContext</a>; }</div>
-<div class="ttc" id="aclass_jin_engine_html_a7ec216ca83286f8ad98aead4cfb13d53"><div class="ttname"><a href="#a7ec216ca83286f8ad98aead4cfb13d53">JinEngine::engineContext</a></div><div class="ttdeci">EngineContext engineContext</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00131">JinEngine.h:131</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00097">97</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7ec216ca83286f8ad98aead4cfb13d53">engineContext</a>; }</div>
+<div class="ttc" id="aclass_jin_engine_html_a7ec216ca83286f8ad98aead4cfb13d53"><div class="ttname"><a href="#a7ec216ca83286f8ad98aead4cfb13d53">JinEngine::engineContext</a></div><div class="ttdeci">EngineContext engineContext</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00142">JinEngine.h:142</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,24 +308,22 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes all core subsystems and prepares the engine to run. </p>
-<p>Expected responsibilities:</p><ul>
-<li>Initialize <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a> with the requested window size.</li>
-<li>Initialize <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and create required default resources (fallback shader/texture/mesh/material).</li>
-<li>Initialize <a class="el" href="class_input_manager.html" title="Manages keyboard, mouse button, cursor position, and scroll input states.">InputManager</a> with a valid window handle.</li>
-<li>Initialize <a class="el" href="class_sound_manager.html" title="Manages sound asset registration and runtime playback instances using miniaudio.">SoundManager</a> audio backend.</li>
-<li>Initialize <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> to a valid initial state (or a loading/boot state), depending on engine setup.</li>
-<li>Build <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> so that it exposes the above systems consistently to GameState/Object code.</li>
+<p>Initializes all core engine systems. </p>
+<p>This function sets up the <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> and initializes:</p><ul>
+<li><a class="el" href="class_window_manager.html">WindowManager</a> (creates OpenGL context and window)</li>
+<li><a class="el" href="class_input_manager.html" title="Central input state manager for keyboard, mouse buttons, cursor position, and scroll input.">InputManager</a> (binds input callbacks)</li>
+<li><a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a> (initializes audio engine)</li>
+<li><a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> (prepares rendering pipeline)</li>
 </ul>
-<p>If any subsystem fails to initialize, <a class="el" href="#af2b70669383ccdbbc05309c7e4eb50db" title="Initializes all core subsystems and prepares the engine to run.">Init()</a> returns false and the engine should not <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Runs the main loop until RequestQuit() is called.">Run()</a>.</p>
+<p>If any critical subsystem fails to initialize, the function returns false.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">windowWidth</td><td>Initial window width in pixels. </td></tr>
-    <tr><td class="paramname">windowHeight</td><td>Initial window height in pixels. </td></tr>
+    <tr><td class="paramname">windowWidth</td><td>Width of the application window. </td></tr>
+    <tr><td class="paramname">windowHeight</td><td>Height of the application window. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if initialization succeeded; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if initialization succeeded, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_jin_engine_8cpp_source.html#l00021">21</a> of file <a class="el" href="_jin_engine_8cpp_source.html">JinEngine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   22</span>{</div>
@@ -346,11 +343,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   36</span> </div>
 <div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   38</span>}</div>
-<div class="ttc" id="aclass_jin_engine_html_a426193d5cd44181e51632e8ea5608386"><div class="ttname"><a href="#a426193d5cd44181e51632e8ea5608386">JinEngine::inputManager</a></div><div class="ttdeci">InputManager inputManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00134">JinEngine.h:134</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_a71b75d88fc59fe7c07d7b39585b9a6d4"><div class="ttname"><a href="#a71b75d88fc59fe7c07d7b39585b9a6d4">JinEngine::SetEngineContext</a></div><div class="ttdeci">void SetEngineContext()</div><div class="ttdoc">Populates EngineContext so all systems can be accessed consistently by runtime code.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8cpp_source.html#l00010">JinEngine.cpp:10</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_a85df41758913ae8039aec5730977343c"><div class="ttname"><a href="#a85df41758913ae8039aec5730977343c">JinEngine::renderManager</a></div><div class="ttdeci">RenderManager renderManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00135">JinEngine.h:135</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_a9763340f0811b106956345b6408501e9"><div class="ttname"><a href="#a9763340f0811b106956345b6408501e9">JinEngine::windowManager</a></div><div class="ttdeci">WindowManager windowManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00133">JinEngine.h:133</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_af6d08539edce1338de7b7363d70a68cb"><div class="ttname"><a href="#af6d08539edce1338de7b7363d70a68cb">JinEngine::soundManager</a></div><div class="ttdeci">SoundManager soundManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00136">JinEngine.h:136</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a426193d5cd44181e51632e8ea5608386"><div class="ttname"><a href="#a426193d5cd44181e51632e8ea5608386">JinEngine::inputManager</a></div><div class="ttdeci">InputManager inputManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00145">JinEngine.h:145</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a71b75d88fc59fe7c07d7b39585b9a6d4"><div class="ttname"><a href="#a71b75d88fc59fe7c07d7b39585b9a6d4">JinEngine::SetEngineContext</a></div><div class="ttdeci">void SetEngineContext()</div><div class="ttdoc">Initializes the EngineContext structure.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8cpp_source.html#l00010">JinEngine.cpp:10</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a85df41758913ae8039aec5730977343c"><div class="ttname"><a href="#a85df41758913ae8039aec5730977343c">JinEngine::renderManager</a></div><div class="ttdeci">RenderManager renderManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00146">JinEngine.h:146</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a9763340f0811b106956345b6408501e9"><div class="ttname"><a href="#a9763340f0811b106956345b6408501e9">JinEngine::windowManager</a></div><div class="ttdeci">WindowManager windowManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00144">JinEngine.h:144</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_af6d08539edce1338de7b7363d70a68cb"><div class="ttname"><a href="#af6d08539edce1338de7b7363d70a68cb">JinEngine::soundManager</a></div><div class="ttdeci">SoundManager soundManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00147">JinEngine.h:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,18 +374,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enables or disables rendering of engine-level debug visuals. </p>
-<p>This is a global toggle used by debug rendering paths (e.g., collider debug drawing, line debug drawing). Render systems should consult <a class="el" href="#a35998b207827eaccd30459251853c9da" title="Returns whether debug visuals should be rendered.">ShouldRenderDebugDraws()</a> to decide whether to submit/flush debug primitives.</p>
+<p>Enables or disables debug drawing. </p>
+<p>When enabled, debug rendering such as collider outlines or debug lines will be rendered during the frame.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shouldShow</td><td>True to enable debug draw; false to disable. </td></tr>
+    <tr><td class="paramname">shouldShow</td><td>Whether debug drawing should be enabled. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00091">91</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{ <a class="code hl_variable" href="#a8f3e51bf086d9173e625e844b1e866c2">showDebugDraw</a> = shouldShow; }</div>
-<div class="ttc" id="aclass_jin_engine_html_a8f3e51bf086d9173e625e844b1e866c2"><div class="ttname"><a href="#a8f3e51bf086d9173e625e844b1e866c2">JinEngine::showDebugDraw</a></div><div class="ttdeci">bool showDebugDraw</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00138">JinEngine.h:138</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00108">108</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>{ <a class="code hl_variable" href="#a8f3e51bf086d9173e625e844b1e866c2">showDebugDraw</a> = shouldShow; }</div>
+<div class="ttc" id="aclass_jin_engine_html_a8f3e51bf086d9173e625e844b1e866c2"><div class="ttname"><a href="#a8f3e51bf086d9173e625e844b1e866c2">JinEngine::showDebugDraw</a></div><div class="ttdeci">bool showDebugDraw</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00150">JinEngine.h:150</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -407,14 +404,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Requests the engine to stop running at the next safe point in the main loop. </p>
-<p>Sets shouldRun to false. <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Runs the main loop until RequestQuit() is called.">Run()</a> is expected to observe this flag and exit its loop. </p>
+<p>Requests termination of the main loop. </p>
+<p>Sets an internal flag that causes <a class="el" href="#ad8355b55406f0be0b2f39b910ff7913e" title="Starts the main game loop.">Run()</a> to exit on the next frame. This is typically triggered by window close callbacks or user-defined logic. </p>
 
 <p class="definition">Definition at line <a class="el" href="_jin_engine_8cpp_source.html#l00079">79</a> of file <a class="el" href="_jin_engine_8cpp_source.html">JinEngine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
 <div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="#a77f01c1522c951fd70f0556b8e0fbae7">shouldRun</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   82</span>}</div>
-<div class="ttc" id="aclass_jin_engine_html_a77f01c1522c951fd70f0556b8e0fbae7"><div class="ttname"><a href="#a77f01c1522c951fd70f0556b8e0fbae7">JinEngine::shouldRun</a></div><div class="ttdeci">bool shouldRun</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00137">JinEngine.h:137</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a77f01c1522c951fd70f0556b8e0fbae7"><div class="ttname"><a href="#a77f01c1522c951fd70f0556b8e0fbae7">JinEngine::shouldRun</a></div><div class="ttdeci">bool shouldRun</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00149">JinEngine.h:149</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -433,13 +430,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Runs the main loop until <a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd" title="Requests the engine to stop running at the next safe point in the main loop.">RequestQuit()</a> is called. </p>
-<p>Expected responsibilities per frame:</p><ul>
-<li>Poll window events and update input state.</li>
-<li>Update the active <a class="el" href="class_game_state.html" title="Base class representing a single game state.">GameState</a> through <a class="el" href="class_state_manager.html" title="Manages the lifetime and transition of GameState instances.">StateManager</a> (Update/Draw/Free transition handling).</li>
-<li>BeginFrame/EndFrame rendering via <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration and batched object rendering.">RenderManager</a> and swap buffers via <a class="el" href="class_window_manager.html" title="Manages the application&#39;s primary GLFW window and related OS-facing behaviors.">WindowManager</a>.</li>
+<p>Starts the main game loop. </p>
+<p>This function runs the core loop until:</p><ul>
+<li><a class="el" href="#a0fff451b96b00ef74a4a9975239adfdd" title="Requests termination of the main loop.">RequestQuit()</a> is called, or</li>
+<li>The window is closed by the user.</li>
 </ul>
-<p>The loop continues while shouldRun is true. </p>
+<p>Each frame performs:</p><ul>
+<li>Delta time calculation (<a class="el" href="struct_engine_timer.html" title="Frame timing utility used for delta time calculation and FPS measurement.">EngineTimer</a>)</li>
+<li>Event polling and input update</li>
+<li><a class="el" href="class_state_manager.html" title="Manages the active game state and performs deferred state transitions for the engine.">StateManager</a> update and draw</li>
+<li><a class="el" href="class_sound_manager.html" title="Manages sound resource registration, runtime playback instances, and global sound control for the eng...">SoundManager</a> update</li>
+<li>Buffer swap</li>
+</ul>
+<p>After exiting the loop, all subsystems are properly freed.</p>
+<dl class="section note"><dt>Note</dt><dd>This function blocks until the engine terminates. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_jin_engine_8cpp_source.html#l00041">41</a> of file <a class="el" href="_jin_engine_8cpp_source.html">JinEngine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
@@ -468,16 +472,16 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>    }</div>
 <div class="line"><span class="lineno">   66</span> </div>
 <div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="#af6d08539edce1338de7b7363d70a68cb">soundManager</a>.Free();</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_variable" href="#a85df41758913ae8039aec5730977343c">renderManager</a>.Free();</div>
-<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="#ad502186dc160a7220927bb097efdf8c8">stateManager</a>.Free(<a class="code hl_variable" href="#a7ec216ca83286f8ad98aead4cfb13d53">engineContext</a>);</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_variable" href="#ad502186dc160a7220927bb097efdf8c8">stateManager</a>.Free(<a class="code hl_variable" href="#a7ec216ca83286f8ad98aead4cfb13d53">engineContext</a>);</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="#a85df41758913ae8039aec5730977343c">renderManager</a>.Free();</div>
 <div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="#a9763340f0811b106956345b6408501e9">windowManager</a>.Free();</div>
 <div class="line"><span class="lineno">   71</span>    <a class="code hl_function" href="#a00fa0799a110bb78192a6a643f55d309">Free</a>();</div>
 <div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="aclass_jin_engine_html_a00fa0799a110bb78192a6a643f55d309"><div class="ttname"><a href="#a00fa0799a110bb78192a6a643f55d309">JinEngine::Free</a></div><div class="ttdeci">void Free() const</div><div class="ttdoc">Releases core subsystems owned by the engine.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8cpp_source.html#l00074">JinEngine.cpp:74</a></div></div>
-<div class="ttc" id="aclass_jin_engine_html_ad502186dc160a7220927bb097efdf8c8"><div class="ttname"><a href="#ad502186dc160a7220927bb097efdf8c8">JinEngine::stateManager</a></div><div class="ttdeci">StateManager stateManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00132">JinEngine.h:132</a></div></div>
-<div class="ttc" id="astruct_engine_timer_html_aaf262d9972999ca9e988923b79c7c9eb"><div class="ttname"><a href="struct_engine_timer.html#aaf262d9972999ca9e988923b79c7c9eb">EngineTimer::ShouldUpdateFPS</a></div><div class="ttdeci">bool ShouldUpdateFPS(float &amp;outFPS)</div><div class="ttdoc">Determines whether an updated FPS value should be reported.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00028">EngineTimer.cpp:28</a></div></div>
-<div class="ttc" id="astruct_engine_timer_html_abe3aa7aae238367ee3d3cee3ce7678de"><div class="ttname"><a href="struct_engine_timer.html#abe3aa7aae238367ee3d3cee3ce7678de">EngineTimer::Tick</a></div><div class="ttdeci">float Tick(const EngineContext &amp;engineContext)</div><div class="ttdoc">Advances the timer and computes delta time for the current frame.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00013">EngineTimer.cpp:13</a></div></div>
-<div class="ttc" id="astruct_engine_timer_html_ad25e0e9f721178342c6f3c7b953befd9"><div class="ttname"><a href="struct_engine_timer.html#ad25e0e9f721178342c6f3c7b953befd9">EngineTimer::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Initializes the timer state.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00006">EngineTimer.cpp:6</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_a00fa0799a110bb78192a6a643f55d309"><div class="ttname"><a href="#a00fa0799a110bb78192a6a643f55d309">JinEngine::Free</a></div><div class="ttdeci">void Free() const</div><div class="ttdoc">Terminates the engine and releases platform-level resources.</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8cpp_source.html#l00074">JinEngine.cpp:74</a></div></div>
+<div class="ttc" id="aclass_jin_engine_html_ad502186dc160a7220927bb097efdf8c8"><div class="ttname"><a href="#ad502186dc160a7220927bb097efdf8c8">JinEngine::stateManager</a></div><div class="ttdeci">StateManager stateManager</div><div class="ttdef"><b>Definition</b> <a href="_jin_engine_8h_source.html#l00143">JinEngine.h:143</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_aaf262d9972999ca9e988923b79c7c9eb"><div class="ttname"><a href="struct_engine_timer.html#aaf262d9972999ca9e988923b79c7c9eb">EngineTimer::ShouldUpdateFPS</a></div><div class="ttdeci">bool ShouldUpdateFPS(float &amp;outFPS)</div><div class="ttdoc">Determines whether FPS should be updated and computes it.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00028">EngineTimer.cpp:28</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_abe3aa7aae238367ee3d3cee3ce7678de"><div class="ttname"><a href="struct_engine_timer.html#abe3aa7aae238367ee3d3cee3ce7678de">EngineTimer::Tick</a></div><div class="ttdeci">float Tick(const EngineContext &amp;engineContext)</div><div class="ttdoc">Advances the timer by one frame and computes delta time.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00013">EngineTimer.cpp:13</a></div></div>
+<div class="ttc" id="astruct_engine_timer_html_ad25e0e9f721178342c6f3c7b953befd9"><div class="ttname"><a href="struct_engine_timer.html#ad25e0e9f721178342c6f3c7b953befd9">EngineTimer::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Initializes the timer.</div><div class="ttdef"><b>Definition</b> <a href="_engine_timer_8cpp_source.html#l00006">EngineTimer.cpp:6</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -504,12 +508,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Populates <a class="el" href="struct_engine_context.html" title="Aggregates pointers to core engine subsystems.">EngineContext</a> so all systems can be accessed consistently by runtime code. </p>
-<p>Expected responsibilities:</p><ul>
-<li>Assign pointers/references in engineContext to the owned managers (stateManager, windowManager, etc.).</li>
-<li>Store any derived/shared runtime values that should be globally accessible.</li>
-</ul>
-<p>Must be called after the owned manager instances are in a valid initialized state. </p>
+<p>Initializes the <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> structure. </p>
+<p>Assigns pointers of all subsystem managers into <a class="el" href="struct_engine_context.html" title="Lightweight context container that provides access to core engine systems.">EngineContext</a> so that other systems can access them in a unified way.</p>
+<p>This must be called before any subsystem initialization. </p>
 
 <p class="definition">Definition at line <a class="el" href="_jin_engine_8cpp_source.html#l00010">10</a> of file <a class="el" href="_jin_engine_8cpp_source.html">JinEngine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
@@ -546,12 +547,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns whether debug visuals should be rendered. </p>
-<p>This function is primarily an internal branch point for renderer/debug systems. External gameplay code typically should not need to query it directly; use <a class="el" href="#abb48d74bdf8780af4dc942c60752d6ae" title="Enables or disables rendering of engine-level debug visuals.">RenderDebugDraws()</a> to control the behavior instead.</p>
-<dl class="section return"><dt>Returns</dt><dd>True if debug draw is enabled; false otherwise. </dd></dl>
+<p>Checks whether debug drawing is enabled. </p>
+<p>Used internally by <a class="el" href="class_render_manager.html" title="Central rendering system responsible for resource registration, batching, culling integration,...">RenderManager</a> to determine whether debug draw commands should be flushed.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if debug drawing is enabled, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00103">103</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8f3e51bf086d9173e625e844b1e866c2">showDebugDraw</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00119">119</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a8f3e51bf086d9173e625e844b1e866c2">showDebugDraw</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -576,7 +577,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00131">131</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00142">142</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -600,7 +601,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00134">134</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00145">145</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -624,7 +625,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00135">135</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00146">146</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -648,7 +649,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00137">137</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00149">149</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -672,7 +673,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00138">138</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00150">150</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -696,7 +697,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00136">136</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00147">147</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -720,7 +721,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00132">132</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00143">143</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
@@ -744,7 +745,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00133">133</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_jin_engine_8h_source.html#l00144">144</a> of file <a class="el" href="_jin_engine_8h_source.html">JinEngine.h</a>.</p>
 
 </div>
 </div>
