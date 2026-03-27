@@ -49,8 +49,9 @@ public:
 
     void SetScreenSize(const std::string& tag, int width, int height)
     {
-        if (cameraMap[tag])
-            cameraMap[tag]->SetScreenSize(width, height);
+        auto it = cameraMap.find(tag);
+        if (it != cameraMap.end() && it->second)
+            it->second->SetScreenSize(width, height);
     }
 
     void Clear()

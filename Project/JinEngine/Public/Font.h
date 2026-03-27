@@ -42,7 +42,7 @@ struct Glyph
 class Font
 {
 public:
-    Font(RenderManager& engineContext, const std::string& ttfPath, uint32_t fontSize);
+    Font(RenderManager& renderManager, const std::string& ttfPath, uint32_t fontSize);
     ~Font();
 
     [[nodiscard]] std::shared_ptr<Material> GetMaterial() const { return material; }
