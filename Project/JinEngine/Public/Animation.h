@@ -349,6 +349,9 @@ public:
      */
     [[nodiscard]] int GetCurrentFrame() const { return currentFrame; }
 
+
+    void SetSpriteSheet(std::shared_ptr<SpriteSheet> newSheet);
+
     /**
      * @brief Returns the sprite sheet used by this animator.
      *

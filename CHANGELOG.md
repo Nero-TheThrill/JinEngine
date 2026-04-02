@@ -10,6 +10,7 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - Added per-animation clip playback speed setting.
 - Added animation clip callback function support.
 - Added example usage for custom loading state.
+- User can change SpriteSheet for SpriteAnimator
 
 ### Changed
 - Changed material, shader, texture, and spritesheet ownership from `unique_ptr` to `shared_ptr`.
