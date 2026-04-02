@@ -60,12 +60,12 @@ public:
     [[nodiscard]] glm::vec2 GetUVOffset() const;
     [[nodiscard]] glm::vec2 GetUVScale() const;
 
-    void SetSpriteSheet(std::shared_ptr<SpriteSheet> newSheet);
     [[nodiscard]] std::shared_ptr<Texture> GetTexture() { return sheet ? sheet->GetTexture() : nullptr; }
 
     void SetFrame(int frame) { currentFrame = frame; }
     [[nodiscard]] int GetCurrentFrame() const { return currentFrame; }
 
+    void SetSpriteSheet(std::shared_ptr<SpriteSheet> newSheet);
     [[nodiscard]] std::shared_ptr<SpriteSheet> GetSpriteSheet() const { return sheet; }
 
     [[nodiscard]] bool IsClipFinished() const { return isClipFinished; }
