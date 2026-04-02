@@ -176,6 +176,28 @@ glm::vec2 SpriteAnimator::GetUVScale() const
     return sheet ? sheet->GetUVScale() : glm::vec2(1.0f);
 }
 
+void SpriteAnimator::SetSpriteSheet(std::shared_ptr<SpriteSheet> newSheet)
+{
+    if (!newSheet)
+    {
+        JIN_ERR("SetSpriteSheet failed: nullptr");
+        return;
+    }
+
+    sheet = std::move(newSheet);
+
+    playingClip = nullptr;
+    currentClipName.clear();
+
+    startFrame = 0;
+    endFrame = sheet->GetFrameCount() - 1;
+    currentFrame = 0;
+
+    clipFrameIndex = 0;
+    elapsed = 0.0f;
+    isClipFinished = false;
+}
+
 void SpriteAnimator::SetPlaybackSpeed(float speed)
 {
     if (speed <= 0.0f)
