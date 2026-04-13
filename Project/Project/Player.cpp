@@ -114,7 +114,7 @@ void Player::LateFree(const EngineContext& engineContext)
     JIN_LOG("Player LateFree Called");
 }
 
-void Player::OnCollision(Object* other)
+void Player::OnCollision(Object* other, const EngineContext& engineContext)
 {
     //if (other->GetTag() == "enemyBullet")
     //{

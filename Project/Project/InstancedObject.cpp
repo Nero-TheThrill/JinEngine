@@ -109,7 +109,7 @@ void InstancedObject::LateFree(const EngineContext& engineContext)
 	GameObject::LateFree(engineContext);
 }
 
-void InstancedObject::OnCollision(Object* other)
+void InstancedObject::OnCollision(Object* other, const EngineContext& engineContext)
 {
-	GameObject::OnCollision(other);
+	GameObject::OnCollision(other, engineContext);
 }

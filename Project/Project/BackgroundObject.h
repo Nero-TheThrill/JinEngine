@@ -13,7 +13,7 @@ public:
 	void Free(const EngineContext& engineContext) override;
 	void LateFree(const EngineContext& engineContext) override;
 
-	void OnCollision(Object* other) override;
+	void OnCollision(Object* other, const EngineContext& engineContext) override;
 
 	void SetFactor(float ftr);
 

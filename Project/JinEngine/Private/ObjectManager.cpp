@@ -182,7 +182,7 @@ void ObjectManager::FindByTag(const std::string& tag, std::vector<Object*>& resu
             result.push_back(obj);
     }
 }
-void ObjectManager::CheckCollision()
+void ObjectManager::CheckCollision(const EngineContext& engineContext)
 {
     std::unordered_set<uint64_t> checkedPairs;
     checkedPairs.reserve(2000);
@@ -212,8 +212,8 @@ void ObjectManager::CheckCollision()
 
             if (a->GetCollider()->CheckCollision(b->GetCollider()))
             {
-                a->OnCollision(b);
-                b->OnCollision(a);
+                a->OnCollision(b, engineContext);
+                b->OnCollision(a, engineContext);
             }
         });
 }

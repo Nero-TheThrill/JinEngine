@@ -59,9 +59,9 @@ void BackgroundObject::LateFree(const EngineContext& engineContext)
 	GameObject::LateFree(engineContext);
 }
 
-void BackgroundObject::OnCollision(Object* other)
+void BackgroundObject::OnCollision(Object* other, const EngineContext& engineContext)
 {
-	GameObject::OnCollision(other);
+	GameObject::OnCollision(other, engineContext);
 }
 
 void BackgroundObject::SetFactor(float ftr)

@@ -70,7 +70,7 @@ private:
     {
         Update(dt, engineContext);
 
-        objectManager.CheckCollision();
+        objectManager.CheckCollision(engineContext);
         if (engineContext.engine->ShouldRenderDebugDraws())
             objectManager.DrawColliderDebug(engineContext.renderManager, cameraManager.GetActiveCamera());
 

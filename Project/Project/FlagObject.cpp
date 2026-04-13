@@ -58,7 +58,7 @@ void FlagObject::LateFree(const EngineContext& engineContext)
 	GameObject::LateFree(engineContext);
 }
 
-void FlagObject::OnCollision(Object* other)
+void FlagObject::OnCollision(Object* other, const EngineContext& engineContext)
 {
 	if (other->GetTag()=="[Object]player")
 	{

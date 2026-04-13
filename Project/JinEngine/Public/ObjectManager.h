@@ -27,7 +27,7 @@ public:
 
     [[nodiscard]] Object* FindByTag(const std::string& tag) const;
     void FindByTag(const std::string& tag, std::vector<Object*>& result);
-    void CheckCollision();
+    void CheckCollision(const EngineContext& engineContext);
 
     [[nodiscard]] CollisionGroupRegistry& GetCollisionGroupRegistry() { return collisionGroupRegistry; }
 

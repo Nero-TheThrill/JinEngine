@@ -32,7 +32,7 @@ public:
 
     virtual ~Object() = default;
 
-    virtual void OnCollision(Object* other) {}
+    virtual void OnCollision(Object* other, const EngineContext& engineContext) {}
 
     [[nodiscard]] const bool& IsAlive() const;
 

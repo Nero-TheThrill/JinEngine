@@ -21,7 +21,7 @@ public:
     void Draw(const EngineContext& engineContext) override;
     void Free(const EngineContext& engineContext) override;
     void LateFree(const EngineContext& engineContext) override;
-    void OnCollision(Object* other) override;
+    void OnCollision(Object* other, const EngineContext& engineContext) override;
 private:
     float timer = 0.0f;
     LeafParams leafParams;
