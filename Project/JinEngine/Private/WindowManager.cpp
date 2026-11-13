@@ -80,6 +80,7 @@ bool WindowManager::Init(int _windowWidth, int _windowHeight, JinEngine& engine)
             else { JIN_LOG(std::string("[GL] ") + msg); }
         }, nullptr);
 
+    glfwGetFramebufferSize(window, &windowWidth, &windowHeight);
     glViewport(0, 0, windowWidth, windowHeight);
     glfwSetWindowUserPointer(window, &engine);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -125,8 +126,6 @@ void WindowManager::Resize(int width, int height)
     if (window)
     {
         glfwSetWindowSize(window, width, height);
-        windowWidth = width;
-        windowHeight = height;
     }
 }
 
@@ -156,10 +155,6 @@ void WindowManager::SetFullScreen(bool enable)
     }
 
     isFullscreen = enable;
-
-    windowWidth = enable ? mode->width : windowedWidth;
-    windowHeight = enable ? mode->height : windowedHeight;
-
 }
 void WindowManager::Free() const
 {

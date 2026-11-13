@@ -71,10 +71,12 @@ private:
         Update(dt, engineContext);
 
         objectManager.CheckCollision(engineContext);
-        if (engineContext.engine->ShouldRenderDebugDraws())
-            objectManager.DrawColliderDebug(engineContext.renderManager, cameraManager.GetActiveCamera());
-
         LateUpdate(dt, engineContext);
+    }
+
+    void DrawColliderDebug(const EngineContext& engineContext)
+    {
+        objectManager.DrawColliderDebug(engineContext.renderManager, GetActiveCamera());
     }
 
     virtual void SystemFree(const EngineContext& engineContext)

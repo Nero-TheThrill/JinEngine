@@ -4,6 +4,16 @@
 #include "ext/matrix_clip_space.hpp"
 #include "gl.h"
 
+namespace
+{
+    glm::mat4 MakeScreenProjection(const Camera2D* camera, const WindowManager& window)
+    {
+        const float halfWidth = (camera ? camera->GetScreenWidth() : window.GetWidth()) / 2.0f;
+        const float halfHeight = (camera ? camera->GetScreenHeight() : window.GetHeight()) / 2.0f;
+        return glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight);
+    }
+}
+
 void RenderManager::Submit(const std::vector<Object*>& objects, const EngineContext& engineContext)
 {
     std::vector<Object*> visibleObjects;
@@ -226,15 +236,7 @@ void RenderManager::FlushDrawCommands(const EngineContext& engineContext)
                             ? glm::mat4(1.0f)
                             : (renderCamera ? renderCamera->GetViewMatrix() : glm::mat4(1.0f));
 
-                        int w = renderCamera ? renderCamera->GetScreenWidth() : engineContext.windowManager->GetWidth();
-                        int h = renderCamera ? renderCamera->GetScreenHeight() : engineContext.windowManager->GetHeight();
-
-                        glm::mat4 projection = glm::ortho(
-                            -static_cast<float>(w) / 2.0f,
-                            static_cast<float>(w) / 2.0f,
-                            -static_cast<float>(h) / 2.0f,
-                            static_cast<float>(h) / 2.0f
-                        );
+                        glm::mat4 projection = MakeScreenProjection(renderCamera, *engineContext.windowManager);
 
                         material->SetUniform("u_View", view);
                         material->SetUniform("u_Projection", projection);
@@ -281,15 +283,7 @@ void RenderManager::FlushDrawCommands(const EngineContext& engineContext)
                                 ? glm::mat4(1.0f)
                                 : (renderCamera ? renderCamera->GetViewMatrix() : glm::mat4(1.0f));
 
-                            int w = renderCamera ? renderCamera->GetScreenWidth() : engineContext.windowManager->GetWidth();
-                            int h = renderCamera ? renderCamera->GetScreenHeight() : engineContext.windowManager->GetHeight();
-
-                            glm::mat4 projection = glm::ortho(
-                                -static_cast<float>(w) / 2.0f,
-                                static_cast<float>(w) / 2.0f,
-                                -static_cast<float>(h) / 2.0f,
-                                static_cast<float>(h) / 2.0f
-                            );
+                            glm::mat4 projection = MakeScreenProjection(renderCamera, *engineContext.windowManager);
 
                             objMaterial->SetUniform("u_View", view);
                             objMaterial->SetUniform("u_Projection", projection);
@@ -362,11 +356,7 @@ void RenderManager::FlushDebugLineDrawCommands(const EngineContext& engineContex
         glm::mat4 view = camera
             ? camera->GetViewMatrix()
             : glm::mat4(1);
-        glm::mat4 proj = glm::ortho(
-            -static_cast<float>(engineContext.windowManager->GetWidth()) / 2,
-            static_cast<float>(engineContext.windowManager->GetWidth()) / 2,
-            -static_cast<float>(engineContext.windowManager->GetHeight()) / 2,
-            static_cast<float>(engineContext.windowManager->GetHeight()) / 2);
+        glm::mat4 proj = MakeScreenProjection(camera, *engineContext.windowManager);
 
         debugLineShader->SendUniform("u_View", view);
         debugLineShader->SendUniform("u_Projection", proj);

@@ -40,7 +40,10 @@ void StateManager::Draw(const EngineContext& engineContext)
 	currentState->Draw(engineContext);
 	engineContext.renderManager->FlushDrawCommands(engineContext);
 	if (engineContext.engine->ShouldRenderDebugDraws())
+	{
+	    currentState->DrawColliderDebug(engineContext);
 	    engineContext.renderManager->FlushDebugLineDrawCommands(engineContext);
+	}
 
 	engineContext.renderManager->EndFrame(engineContext);
 
